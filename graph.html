@@ -1,0 +1,424 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="oneflow.linalg" href="linalg.html" /><link rel="prev" title="oneflow.nn.Module" href="module.html" />
+
+    <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
+        <title>oneflow.nn.Graph - OneFlow documentation</title>
+      <link rel="stylesheet" href="_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
+    <link rel="stylesheet" href="_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" href="_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">OneFlow  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">OneFlow  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OneFlow Python API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="oneflow.html">oneflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tensor.html">oneflow.Tensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nn.html">oneflow.nn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functional.html">oneflow.nn.functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module.html">oneflow.nn.Module</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">oneflow.nn.Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linalg.html">oneflow.linalg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">oneflow.nn.image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optim.html">oneflow.optim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">oneflow.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cuda.html">oneflow.cuda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributed.html">oneflow.distributed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comm.html">oneflow.comm</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="oneflow-nn-graph">
+<h1>oneflow.nn.Graph<a class="headerlink" href="#oneflow-nn-graph" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="base-class-for-running-neural-networks-in-graph-mode">
+<h2>Base class for running neural networks in Graph Mode.<a class="headerlink" href="#base-class-for-running-neural-networks-in-graph-mode" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="oneflow.nn.Graph">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">Graph</span></code><a class="headerlink" href="#oneflow.nn.Graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for training or evaluating a neural network in graph mode.</p>
+<p>To use graph mode for model training or evaluation in OneFlow, you should:</p>
+<ol class="arabic simple">
+<li><p>Define your customized graph as a subclass of <code class="docutils literal notranslate"><span class="pre">nn.Graph</span></code>.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code> in your subclass’s <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>.</p></li>
+<li><p>Add modules to your graph as regular attributes.</p></li>
+<li><p>Define computation logical in <code class="docutils literal notranslate"><span class="pre">build()</span></code> method.</p></li>
+<li><p>Instantiate your graph then call it.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">LinearGraph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
+<span class="gp">... </span>   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>       <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<span class="gp">... </span>       <span class="c1"># Add a module to the graph.</span>
+<span class="gp">... </span>       <span class="bp">self</span><span class="o">.</span><span class="n">linear</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+<span class="gp">... </span>   <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>       <span class="c1"># Use the module to build the computation logic of the graph.</span>
+<span class="gp">... </span>       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="go"># Instantiate the graph</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linear_graph</span> <span class="o">=</span> <span class="n">LinearGraph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="go"># First call on graph will run graph's build() method to</span>
+<span class="go"># trace a computatioin graph. Then the computation graph will be</span>
+<span class="go"># optimized and executed for the first time.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linear_graph</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">oneflow.Size([4, 8])</span>
+
+<span class="go"># Later call on graph will execute the computation graph directly.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linear_graph</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">oneflow.Size([4, 8])</span>
+</pre></div>
+</div>
+<p>Note that Graph cannot be nested at the moment.</p>
+<dl class="py method">
+<dt id="oneflow.nn.Graph.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Graph.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes internal Graph states. It MUST be called in <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method of subclass.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">SubclassGraph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span> <span class="c1"># MUST be called</span>
+<span class="gp">... </span>        <span class="c1"># Then define the graph attributes</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">pass</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="oneflow.nn.Graph.build">
+<code class="sig-name descname"><span class="pre">build</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Graph.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">build()</span></code> method must be overridden to define neural network
+computaion logic.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">build()</span></code> method of nn.Graph is very similar to the <code class="docutils literal notranslate"><span class="pre">forward()</span></code>
+method of nn.Module. It is used to describe the computatioin logical of
+a neural network.</p>
+<p>When a graph object being called for the first time, the <code class="docutils literal notranslate"><span class="pre">build()</span></code>
+method will be called implicitly to build the computatioin graph.</p>
+<p>Make sure to call modules’s <code class="docutils literal notranslate"><span class="pre">train()</span></code> or <code class="docutils literal notranslate"><span class="pre">eval()</span></code> method before the
+first call of your graph to make the module executing the right
+training or evaluation logic if needed.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MyGraph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">linear</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linear_graph</span> <span class="o">=</span> <span class="n">MyGraph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">linear_graph</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># The build() method is called implicitly</span>
+</pre></div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">build()</span></code> method’s inputs and outputs only accept positional
+arguements at the moment, each argument must be one of these types:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Tensor</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">list</span></code> of <code class="docutils literal notranslate"><span class="pre">Tensor</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+</ul>
+</dd></dl>
+<dl class="py method">
+<dt id="oneflow.nn.Graph.add_optimizer">
+<code class="sig-name descname"><span class="pre">add_optimizer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow.nn.optimizer.optimizer.Optimizer</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr_sch</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow.nn.optimizer.lr_scheduler.LrScheduler</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Graph.add_optimizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an optimizer, an learning rate scheduler to the graph.</p>
+<p>To do training with nn.Graph, you should do 2 more things:</p>
+<ol class="arabic simple">
+<li><p>Add at least one optimier(learning rate schedulers are optional) with <code class="docutils literal notranslate"><span class="pre">add_optimizer()</span></code> method.</p></li>
+<li><p>Call loss tensor’s <code class="docutils literal notranslate"><span class="pre">backward()</span></code> method in <code class="docutils literal notranslate"><span class="pre">build()</span></code> method.</p></li>
+</ol>
+<p>Note that the computaion graph will automatically execute these methods:</p>
+<ul class="simple">
+<li><p>optimizer’s <code class="docutils literal notranslate"><span class="pre">clip_grad()</span></code> if a optimizer is set to do grad cliping.</p></li>
+<li><p>optimizer’s <code class="docutils literal notranslate"><span class="pre">step()</span></code>.</p></li>
+<li><p>optimizer’s <code class="docutils literal notranslate"><span class="pre">zero_grad()</span></code>.</p></li>
+<li><p>learn rate scheduler’s <code class="docutils literal notranslate"><span class="pre">step()</span></code>.</p></li>
+</ul>
+<p>Also note that only scalar tensor are allowed to call <code class="docutils literal notranslate"><span class="pre">backward()</span></code>
+in <code class="docutils literal notranslate"><span class="pre">nn.Graph.build()</span></code> for the moment. So you may call <code class="docutils literal notranslate"><span class="pre">Tensor.sum()</span></code>
+or <code class="docutils literal notranslate"><span class="pre">Tensor.mean()</span></code> to make the loss tensor a scalar tensor.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loss_fn</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">(</span><span class="n">reduction</span><span class="o">=</span><span class="s2">"sum"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">LinearTrainGraph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">loss_fn</span> <span class="o">=</span> <span class="n">loss_fn</span>
+<span class="gp">... </span>        <span class="c1"># Add an optimizer</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_optimizer</span><span class="p">(</span><span class="n">optimizer</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="n">y_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss_fn</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="c1"># Call loss tensor's backward(), loss tensor must be a scalar tensor</span>
+<span class="gp">... </span>        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="n">loss</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linear_graph</span> <span class="o">=</span> <span class="n">LinearTrainGraph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">loss</span> <span class="o">=</span> <span class="n">linear_graph</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>optim</strong> (<a class="reference internal" href="optim.html#oneflow.optim.Optimizer" title="oneflow.optim.Optimizer"><em>oneflow.optim.Optimizer</em></a>) – The optimizer.</p></li>
+<li><p><strong>lr_sch</strong> – The learning rate scheduler, see oneflow.optim.lr_scheduler.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="oneflow.nn.Graph.set_grad_scaler">
+<code class="sig-name descname"><span class="pre">set_grad_scaler</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grad_scaler</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow.amp.grad_scaler.GradScaler</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Graph.set_grad_scaler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the GradScaler for gradient and loss scaling.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="oneflow.nn.Graph.__call__">
+<code class="sig-name descname"><span class="pre">__call__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Graph.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call nn.Graph subclass instance to run your customized graph.</p>
+<p>Call your customized graph after the instantiation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">CustomGraph</span><span class="p">()</span>
+<span class="n">out_tensors</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">input_tensors</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The inputs of <code class="docutils literal notranslate"><span class="pre">__call__</span></code> method must match the inputs of <code class="docutils literal notranslate"><span class="pre">build()</span></code>
+method. And the <code class="docutils literal notranslate"><span class="pre">__call__</span></code> method will return outputs matching the
+outputs of <code class="docutils literal notranslate"><span class="pre">build()</span></code> method.</p>
+<p>Note that the first call takes longer than later calls, because nn.Graph
+will do the computaion graph generation and optimization at the first call.</p>
+<p>Donot override this function.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="oneflow.nn.Graph.name">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">name</span></code><a class="headerlink" href="#oneflow.nn.Graph.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name auto-generated for this graph.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="oneflow.nn.Graph.training">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">training</span></code><a class="headerlink" href="#oneflow.nn.Graph.training" title="Permalink to this definition">¶</a></dt>
+<dd><p>In traninig mode if the graph has an optimizer.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="oneflow.nn.Graph.debug">
+<code class="sig-name descname"><span class="pre">debug</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#oneflow.nn.Graph.debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open or close debug mode of the graph.</p>
+<p>If in debug mode, logs of computation graph building will be
+printed on rank 0.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">CustomGraph</span><span class="p">()</span>
+
+<span class="c1"># Open debug mode</span>
+<span class="n">g</span><span class="o">.</span><span class="n">debug</span><span class="p">()</span>
+
+<span class="n">out_tensors</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">input_tensors</span><span class="p">)</span>  <span class="c1"># Will print log for debug at the first call</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="oneflow.nn.Graph.__repr__">
+<code class="sig-name descname"><span class="pre">__repr__</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Graph.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>For printing the graph structure.</p>
+<p>The graph structure can be printed after graph instantiation.</p>
+<p>After the first call of graph, inputs and outputs will be added to
+the graph structure.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">CustomGraph</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+<span class="n">out_tensors</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">input_tensors</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="c1"># Inputs and Outputs infos are added</span>
+</pre></div>
+</div>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="linalg.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">oneflow.linalg</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="module.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">oneflow.nn.Module</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2020, OneFlow
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="_sources/graph.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">oneflow.nn.Graph</a><ul>
+<li><a class="reference internal" href="#base-class-for-running-neural-networks-in-graph-mode">Base class for running neural networks in Graph Mode.</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

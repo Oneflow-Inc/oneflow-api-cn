@@ -1,0 +1,428 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="oneflow.distributed" href="distributed.html" />
+
+    <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
+        <title>oneflow.comm - OneFlow documentation</title>
+      <link rel="stylesheet" href="_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
+    <link rel="stylesheet" href="_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" href="_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">OneFlow  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">OneFlow  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OneFlow Python API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="oneflow.html">oneflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tensor.html">oneflow.Tensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nn.html">oneflow.nn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functional.html">oneflow.nn.functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module.html">oneflow.nn.Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph.html">oneflow.nn.Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linalg.html">oneflow.linalg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">oneflow.nn.image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optim.html">oneflow.optim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">oneflow.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cuda.html">oneflow.cuda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributed.html">oneflow.distributed</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">oneflow.comm</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="oneflow-comm">
+<h1>oneflow.comm<a class="headerlink" href="#oneflow-comm" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-oneflow.comm">
+<span id="oneflow-communication-function"></span><h2>oneflow communication function<a class="headerlink" href="#module-oneflow.comm" title="Permalink to this headline">¶</a></h2>
+<p>Copyright 2020 The OneFlow Authors. All rights reserved.</p>
+<p>Licensed under the Apache License, Version 2.0 (the “License”);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+<blockquote>
+<div><p><a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+</div></blockquote>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an “AS IS” BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+<dl class="py function">
+<dt id="oneflow.comm.all_gather">
+<code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">all_gather</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.all_gather" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gathers tensors from the whole group in a list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tensor_list</strong> (<em>list</em><em>[</em><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em>]</em>) – Output list. It should contain
+correctly-sized tensors to be used for output of the collective.</p></li>
+<li><p><strong>tensor</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – Tensor to be broadcast from current process.</p></li>
+</ul>
+</dd>
+</dl>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># We have 1 process groups, 2 ranks.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span> <span class="o">+</span> <span class="n">flow</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">get_local_rank</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># input on rank0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> 
+<span class="go">tensor([[1, 2],</span>
+<span class="go">        [3, 4]], device='cuda:0', dtype=oneflow.int64)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># input on rank1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> 
+<span class="go">tensor([[2, 3],</span>
+<span class="go">        [4, 5]], device='cuda:1', dtype=oneflow.int64)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">flow</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">all_gather</span><span class="p">(</span><span class="n">tensor_list</span><span class="p">,</span> <span class="nb">input</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># result on rank0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor_list</span> 
+<span class="go">[tensor([[1, 2],</span>
+<span class="go">        [3, 4]], device='cuda:0', dtype=oneflow.int64), tensor([[2, 3],</span>
+<span class="go">        [4, 5]], device='cuda:0', dtype=oneflow.int64)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># result on rank1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor_list</span> 
+<span class="go">[tensor([[1, 2],</span>
+<span class="go">        [3, 4]], device='cuda:1', dtype=oneflow.int64), tensor([[2, 3],</span>
+<span class="go">        [4, 5]], device='cuda:1', dtype=oneflow.int64)]</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt id="oneflow.comm.all_reduce">
+<code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">all_reduce</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.all_reduce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reduces the tensor data across all machines in such a way that all get
+the final result.
+After the call <code class="docutils literal notranslate"><span class="pre">tensor</span></code> is going to be bitwise identical in all processes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tensor</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – the input tensor</p>
+</dd>
+</dl>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># We have 1 process groups, 2 ranks.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span> <span class="o">+</span> <span class="n">flow</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">get_local_rank</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># input on rank0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> 
+<span class="go">tensor([[1, 2],</span>
+<span class="go">        [3, 4]], device='cuda:0', dtype=oneflow.int64)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># input on rank1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> 
+<span class="go">tensor([[2, 3],</span>
+<span class="go">        [4, 5]], device='cuda:1', dtype=oneflow.int64)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">all_reduce</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="go">array([[3, 5],</span>
+<span class="go">       [7, 9]])</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt id="oneflow.comm.broadcast">
+<code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">broadcast</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.broadcast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Broadcasts the tensor to the whole group.
+<code class="docutils literal notranslate"><span class="pre">tensor</span></code> must have the same number of elements in all processes
+participating in the collective.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tensor</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – Data to be sent if <code class="docutils literal notranslate"><span class="pre">src</span></code> is the rank of current
+process, and tensor to be used to save received data otherwise.</p></li>
+<li><p><strong>src</strong> (<em>int</em>) – Source rank.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># We have 1 process groups, 2 ranks.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span> <span class="o">+</span> <span class="n">flow</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">get_local_rank</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># input on rank0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span> 
+<span class="go">tensor([[1, 2],</span>
+<span class="go">        [3, 4]], device='cuda:0', dtype=oneflow.int64)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># input on rank1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span> 
+<span class="go">tensor([[2, 3],</span>
+<span class="go">        [4, 5]], device='cuda:1', dtype=oneflow.int64)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">broadcast</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># result on rank0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span> 
+<span class="go">tensor([[1, 2],</span>
+<span class="go">        [3, 4]], device='cuda:0', dtype=oneflow.int64)</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt id="oneflow.comm.gather">
+<code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">gather</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gather_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.gather" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gathers a list of tensors in a single process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tensor</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – Input tensor.</p></li>
+<li><p><strong>gather_list</strong> (<em>list</em><em>[</em><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em>]</em><em>, </em><em>optional</em>) – List of appropriately-sized
+tensors to use for gathered data (default is None, must be specified
+on the destination rank)</p></li>
+<li><p><strong>dst</strong> (<em>int</em><em>, </em><em>optional</em>) – Destination rank (default is 0)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt id="oneflow.comm.recv">
+<code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">recv</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.recv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receives a tensor synchronously.</p>
+<p>All(send_meta is False) or none of shape, dtype and device should have value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src</strong> (<em>int</em><em>, </em><em>optional</em>) – Source rank. Will receive from any
+process if unspecified.</p></li>
+<li><p><strong>Shape</strong> (<em>optional</em>) – output tensor shape.</p></li>
+<li><p><strong>DataType</strong> (<em>optional</em>) – output tensor data type.</p></li>
+<li><p><strong>Device</strong> (<em>optional</em>) – output tensor device.</p></li>
+<li><p><strong>out</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em>, </em><em>optional</em>) – Tensor to fill with received data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>if out is None, return received tensor. otherwise got data from out self without return.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt id="oneflow.comm.reduce">
+<code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">reduce</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.reduce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reduces the tensor data across all machines.</p>
+<p>Only the process with rank <code class="docutils literal notranslate"><span class="pre">dst</span></code> is going to receive the final result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tensor</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – Input and output of the collective. The function
+operates in-place.</p></li>
+<li><p><strong>dst</strong> (<em>int</em>) – Destination rank</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt id="oneflow.comm.reduce_scatter">
+<code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">reduce_scatter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.reduce_scatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reduces, then scatters a list of tensors to all processes in a group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – Output tensor.</p></li>
+<li><p><strong>input_list</strong> (<em>list</em><em>[</em><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em>]</em>) – List of tensors to reduce and scatter.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt id="oneflow.comm.scatter">
+<code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">scatter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scatter_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.scatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scatters a list of tensors to all processes in a group.</p>
+<p>Each process will receive exactly one tensor and store its data in the
+<code class="docutils literal notranslate"><span class="pre">tensor</span></code> argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tensor</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – Output tensor.</p></li>
+<li><p><strong>scatter_list</strong> (<em>list</em><em>[</em><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em>]</em>) – List of tensors to scatter (default is
+None, must be specified on the source rank)</p></li>
+<li><p><strong>src</strong> (<em>int</em>) – Source rank (default is 0)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt id="oneflow.comm.send">
+<code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">send</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a tensor synchronously.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tensor</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – Tensor to send.</p></li>
+<li><p><strong>dst</strong> (<em>int</em>) – Destination rank.</p></li>
+<li><p><strong>send_meta</strong> (<em>Bool</em>) – Whether to send meta information (default is True)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="distributed.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">oneflow.distributed</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2020, OneFlow
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="_sources/comm.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">oneflow.comm</a><ul>
+<li><a class="reference internal" href="#module-oneflow.comm">oneflow communication function</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>
