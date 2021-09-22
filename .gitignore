@@ -1,0 +1,11 @@
+build/
+dist/
+/docs/build/
+/docs/build-cn/
+_build/
+_generate/
+*.so
+*.py[cod]
+*.egg-info
+*env*
+log/
