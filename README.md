@@ -1,3 +1,11 @@
+克隆仓库：
+
+```shell
+git clone https://github.com/Oneflow-Inc/oneflow-api-cn.git
+cd oneflow-api-cn
+git submodule update --init --recursive
+```
+
 ## 首次翻译的准备
 
 如果是首次进行翻译工作，需要运行以下命令（只需运行一次，之后不需要运行）：
