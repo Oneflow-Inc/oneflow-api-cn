@@ -42,20 +42,20 @@ reset_docstr(
     """,
 )
 
-reset_docstr(oneflow.sub, """计算输入与每个元素的差，支持标量和广播。
+reset_docstr(oneflow.sub, """计算'input'和'other'的差，支持 element-wise、标量和广播形式的加法。
     公式为：
 
     .. math::
         out = input - other
     
-    例如：
+    示例：
 
     .. code-block:: python
 
         >>> import numpy as np
         >>> import oneflow as flow
         
-        # 元素减法
+        # element-wise 减法
         >>> input = flow.tensor(np.random.randn(2,3), dtype=flow.float32)
         >>> other = flow.tensor(np.random.randn(2,3), dtype=flow.float32)
         >>> out = flow.sub(input,other).numpy()
@@ -76,4 +76,5 @@ reset_docstr(oneflow.sub, """计算输入与每个元素的差，支持标量和
         >>> out.shape
         (2, 3)
 
-    """)
+    """,
+)
