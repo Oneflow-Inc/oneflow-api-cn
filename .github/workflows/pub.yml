@@ -25,7 +25,7 @@ jobs:
           cd docs && make html_cn SPHINXOPTS="-W --keep-going"
           cd ../
           mkdir _site
-          cp -r docs/* ./_site/
+          cp -r docs/build-cn/html/* ./_site/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
