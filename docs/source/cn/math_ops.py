@@ -42,7 +42,9 @@ reset_docstr(
     """,
 )
 
-reset_docstr(oneflow.sub, """计算'input'和'other'的差，支持 element-wise、标量和广播形式的加法。
+reset_docstr(
+    oneflow.sub,
+    r"""计算 `input` 和 `other` 的差，支持 element-wise、标量和广播形式的加法。
     公式为：
 
     .. math::
