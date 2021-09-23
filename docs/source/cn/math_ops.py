@@ -46,7 +46,7 @@ reset_docstr(
     oneflow.sub,
     r"""sub(input, other)
     
-    计算 `input` 和 `other` 的差，支持 element-wise、标量和广播形式的加法。
+    计算 `input` 和 `other` 的差，支持 element-wise、标量和广播形式的减法。
     公式为：
 
     .. math::
@@ -110,7 +110,7 @@ reset_docstr(
     oneflow.div,
     r"""div(input, other)
     
-    计算 `input` 除以 `other`，支持 element-wise、标量和广播形式的加法。
+    计算 `input` 除以 `other`，支持 element-wise、标量和广播形式的除法。
     公式为：
 
     .. math::
@@ -155,7 +155,7 @@ reset_docstr(
     oneflow.mul,
     r"""mul(input, other)
     
-    计算 `input` 与 `other` 相乘，支持 element-wise、标量和广播形式的加法。
+    计算 `input` 与 `other` 相乘，支持 element-wise、标量和广播形式的乘法。
     
     公式为：
 
@@ -323,7 +323,7 @@ reset_docstr(
         input (oneflow.Tensor): 张量
     
     返回值：
-        oneflow.Tensor: The result Tensor
+        oneflow.Tensor: 结果张量
 
     示例： 
 
@@ -400,7 +400,7 @@ reset_docstr(
     返回值：
         oneflow.Tensor: 结果张量
 
-    例如：
+    示例：
 
     .. code-block:: python
 
