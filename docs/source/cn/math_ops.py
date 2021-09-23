@@ -78,5 +78,4 @@ reset_docstr(
         >>> out.shape
         (2, 3)
 
-    """,
-)
+    """)
