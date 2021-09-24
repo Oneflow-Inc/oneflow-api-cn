@@ -14,7 +14,7 @@ help:
 .PHONY: help Makefile
 
 test_cn: Makefile
-	@cd source && DOCTEST=1 python -c "import cn"
+	@cd source && DOCTEST=1 python3 -c "import cn"
 
 html_cn: Makefile
 	@CN_DOCS=1 DOCBUILD=1 $(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)-cn" $(SPHINXOPTS) $(O)
