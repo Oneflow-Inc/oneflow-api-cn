@@ -114,7 +114,7 @@ reset_docstr(
     公式为：
 
     .. math::
-        out = \\frac{input}{other}
+        out = \frac{input}{other}
     
     参数：
         input (Union[int, float, oneflow.Tensor]): input.
@@ -160,7 +160,7 @@ reset_docstr(
     公式为：
 
     .. math::
-        out = input \\times other
+        out = input \times other
     
     示例：
 
@@ -220,7 +220,7 @@ reset_docstr(
     返回一个新的 tensor 包含 :attr:`input` 中每个元素的反正弦。
 
     .. math::
-        \\text{out}_{i} = \\sin^{-1}(\\text{input}_{i})
+        \text{out}_{i} = \sin^{-1}(\text{input}_{i})
 
     参数：
         input (Tensor): 输入张量
@@ -254,7 +254,7 @@ reset_docstr(
     返回一个包含 :attr:`input` 中每个元素的反双曲正弦的新 tensor。
 
     .. math::
-        \\text{out}_{i} = \\sinh^{-1}(\\text{input}_{i})
+        \text{out}_{i} = \sinh^{-1}(\text{input}_{i})
 
     参数：
         input (Tensor): 输入张量
@@ -290,7 +290,7 @@ reset_docstr(
     返回一个包含 :attr:`input` 中所有元素的反正切的新 tensor。
 
     .. math::
-        \\text{out}_{i} = \\tan^{-1}(\\text{input}_{i})
+        \text{out}_{i} = \tan^{-1}(\text{input}_{i})
 
     参数：
         input (Tensor): 输入张量
@@ -313,11 +313,11 @@ reset_docstr(
     oneflow.ceil,
     r"""ceil(input)
     
-    返回一个新的 tensor，tensor 中元素为大于或等于 :attr:`input` 中元素的值的最小整数。
+    返回一个新的 tensor，tensor 中元素为大于或等于 :attr:`input` 中元素的最小整数。
     公式为： 
 
     .. math::
-        \\text{out}_{i} = \\left\\lceil \\text{input}_{i} \\right\\rceil = \\left\\lfloor \\text{input}_{i} \\right\\rfloor + 1
+        \text{out}_{i} = \left\lceil \text{input}_{i} \right\rceil = \left\lfloor \text{input}_{i} \right\rfloor + 1
 
     参数：
         input (oneflow.Tensor): 张量
@@ -366,7 +366,7 @@ reset_docstr(
     返回一个新的 tensor，其自然对数为 (1 + input)。
 
     .. math::
-        \\text{out}_{i}=\\log_e(1+\\text{input}_{i})
+        \text{out}_{i}=\log_e(1+\text{input}_{i})
 
     示例：
 
