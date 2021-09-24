@@ -33,9 +33,11 @@ jobs:
         run: |
           docker rm -f ${{ env.TEST_CONTAINER_NAME }} || true
       - name: Cancel Previous Runs
+        continue-on-error: true
         uses: styfle/cancel-workflow-action@0.9.1
         with:
           access_token: ${{ github.token }}
+          all_but_latest: true
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       # Runs a set of commands using the runners shell
