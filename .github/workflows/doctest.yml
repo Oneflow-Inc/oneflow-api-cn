@@ -21,7 +21,7 @@ jobs:
     runs-on: [self-hosted, linux, gpu]
     env:
       TEST_CONTAINER_NAME: "pr-${{ github.event.pull_request.number }}-run-id-${{ github.run_id }}-${{ matrix.entry }}-test"
-      TEST_WITH_TORCH_IMG_TAG: registry.cn-beijing.aliyuncs.com/oneflow/test-with-pytorch-1.9.0:e7a497b41d8b7f1bce055b1f23d027f93b1557ae
+      TEST_IMG_TAG: registry.cn-beijing.aliyuncs.com/oneflow/test-with-pytorch-1.9.0:e7a497b41d8b7f1bce055b1f23d027f93b1557ae
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Fix permissions
@@ -53,7 +53,7 @@ jobs:
             -v $PWD:$PWD \
             -w $PWD \
             --name ${TEST_CONTAINER_NAME} \
-            ${{ env.TEST_WITH_TORCH_IMG_TAG }} \
+            ${{ env.TEST_IMG_TAG }} \
             sleep 3600
       # TODO: remove submodule. It often fails on self-hosted hosts
       - name: Install docreset
