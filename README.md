@@ -3,7 +3,6 @@
 ```shell
 git clone https://github.com/Oneflow-Inc/oneflow-api-cn.git
 cd oneflow-api-cn
-git submodule update --init --recursive
 ```
 
 ## 首次翻译的准备
@@ -13,6 +12,7 @@ git submodule update --init --recursive
 1. 安装可以重置 `docstr` 的 Python 包：
 
 ```shell
+python3 -m pip install -r dev-requirements.txt
 python3 setup.py install
 ```
 
@@ -36,7 +36,7 @@ python3 -m pip install -f https://staging.oneflow.info/branch/master/cu102 onefl
 reset_docstr(
     oneflow.add,
     r"""add(input, other)
-    
+
     计算 `input` 和 `other` 的和。支持 element-wise、标量和广播形式的加法。
     公式为：
 
@@ -49,7 +49,7 @@ reset_docstr(
 
         >>> import numpy as np
         >>> import oneflow as flow
-        
+
         # element-wise 加法
         >>> x = flow.tensor(np.random.randn(2,3), dtype=flow.float32)
         >>> y = flow.tensor(np.random.randn(2,3), dtype=flow.float32)
