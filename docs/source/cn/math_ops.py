@@ -3,7 +3,7 @@ from docreset import reset_docstr
 
 reset_docstr(
     oneflow.add,
-    r"""add(input, other)
+    r"""add(input: Tensor, other: Tensor) -> Tensor
     
     计算 `input` 和 `other` 的和。支持 element-wise、标量和广播形式的加法。
     公式为：
@@ -44,7 +44,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.sub,
-    r"""sub(input, other)
+    r"""sub(input: Tensor, other: Tensor) -> Tensor
     
     计算 `input` 和 `other` 的差，支持 element-wise、标量和广播形式的减法。
     公式为：
@@ -85,7 +85,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.abs,
-    r"""abs(input)
+    r"""abs(input: Tensor) -> Tensor
     
     返回一个包含 `input` 中每个元素的绝对值的tensor:`y = |x|`。
     
@@ -108,7 +108,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.div,
-    r"""div(input, other)
+    r"""div(input: Tensor, other: Tensor) -> Tensor
     
     计算 `input` 除以 `other`，支持 element-wise、标量和广播形式的除法。
     公式为：
@@ -153,7 +153,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.mul,
-    r"""mul(input, other)
+    r"""mul(input: Tensor, other: Tensor) -> Tensor
     
     计算 `input` 与 `other` 相乘，支持 element-wise、标量和广播形式的乘法。
     
@@ -195,7 +195,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.reciprocal,
-    r"""reciprocal(x)
+    r"""reciprocal(x: Tensor) -> Tensor
     计算x的倒数，如果x为0，倒数将被设置为0。
 
     示例：
@@ -215,7 +215,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.asin,
-    r"""asin(input)
+    r"""asin(input: Tensor) -> Tensor
 
     返回一个新的 tensor 包含 :attr:`input` 中每个元素的反正弦。
 
@@ -249,7 +249,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.asinh,
-    r"""asinh()
+    r"""asinh(input: Tensor) -> Tensor
     
     返回一个包含 :attr:`input` 中每个元素的反双曲正弦的新 tensor。
 
@@ -285,7 +285,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.atan,
-    r"""atan(input)
+    r"""atan(input: Tensor) -> Tensor
 
     返回一个包含 :attr:`input` 中所有元素的反正切的新 tensor。
 
@@ -311,7 +311,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.ceil,
-    r"""ceil(input)
+    r"""ceil(input: Tensor) -> Tensor
     
     返回一个新的 tensor，tensor 中元素为大于或等于 :attr:`input` 中元素的最小整数。
     公式为： 
@@ -361,7 +361,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.log1p,
-    r"""log1p(input)
+    r"""log1p(input: Tensor) -> Tensor
     
     返回一个新的 tensor，其自然对数为 (1 + input)。
 
@@ -384,9 +384,9 @@ reset_docstr(
 
 reset_docstr(
     oneflow.exp,
-    r"""exp(x)
+    r"""exp(x: Tensor) -> Tensor
 
-    此运算符计算 `input` 的指数。
+    此运算符计算 `x` 的指数。
 
     公式为：
 
@@ -411,6 +411,325 @@ reset_docstr(
         >>> y = flow.exp(x)
         >>> y
         tensor([ 2.7183,  7.3891, 20.0855], dtype=oneflow.float32)
+
+    """,
+)
+
+reset_docstr(
+    oneflow.acos,
+    r"""acos(input: Tensor) -> Tensor
+
+    返回一个包含 :attr:`input` 中元素的反余弦值的新 tensor。
+    公式为：
+
+    .. math::
+        \text{out}_{i} = \arccos(\text{input}_{i})
+
+    参数：
+        input (Tensor): 输入张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+
+        >>> arr = np.array([0.5, 0.6, 0.7])
+        >>> input = flow.tensor(arr, dtype=flow.float32)
+        >>> output = flow.acos(input)
+        >>> output
+        tensor([1.0472, 0.9273, 0.7954], dtype=oneflow.float32)
+    """,
+)
+
+reset_docstr(
+    oneflow.acosh,
+    r"""acosh(input: Tensor) -> Tensor
+
+    返回具有 :attr:`input` 中元素的反双曲余弦的新 tensor。
+    公式为：
+
+    .. math::
+
+        \text{out}_{i} = \cosh^{-1}(\text{input}_{i})
+
+    参数：
+        input (Tensor): 输入张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        >>> x1 = flow.tensor(np.array([2, 3, 4]).astype(np.float32))
+        >>> out1 = flow.acosh(x1)
+        >>> out1
+        tensor([1.3170, 1.7627, 2.0634], dtype=oneflow.float32)
+        >>> x2 = flow.tensor(np.array([1.5, 2.6, 3.7]).astype(np.float32),device=flow.device('cuda'))
+        >>> out2 = flow.acosh(x2)
+        >>> out2
+        tensor([0.9624, 1.6094, 1.9827], device='cuda:0', dtype=oneflow.float32)
+    """,
+)
+
+reset_docstr(
+    oneflow.atanh,
+    r"""atanh(input: Tensor) -> Tensor
+    
+    返回一个包含 :attr:`input` 中元素的反双曲正切值的新 tensor。
+    公式为：
+
+    .. math::
+        \text{out}_{i} = \tanh^{-1}(\text{input}_{i})
+
+    参数：
+        input (Tensor): 输入张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        >>> np_arr = np.array([0.5, 0.6, 0.7]).astype(np.float32)
+        >>> input = flow.tensor(np_arr, dtype=flow.float32)
+        >>> output = flow.atanh(input)
+        >>> output
+        tensor([0.5493, 0.6931, 0.8673], dtype=oneflow.float32)
+
+    """,
+)
+
+reset_docstr(
+    oneflow.sign,
+    r"""sign(input: Tensor) -> Tensor
+    
+    求 `input` 中元素的正负。
+    公式为：
+
+    .. math::
+
+        \text{out}_{i}  = \text{sgn}(\text{input}_{i})
+
+    参数：
+        input (Tensor): 输入张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        >>> x1 = flow.tensor(np.array([-2, 0, 2]).astype(np.float32))
+        >>> out1 = flow.sign(x1)
+        >>> out1.numpy()
+        array([-1.,  0.,  1.], dtype=float32)
+        >>> x2 = flow.tensor(np.array([-3.2, -4.5, 5.8]).astype(np.float32),device=flow.device('cuda'))
+        >>> out2 = flow.sign(x2)
+        >>> out2.numpy()
+        array([-1., -1.,  1.], dtype=float32)
+
+    """,
+)
+
+reset_docstr(
+    oneflow.sinh,
+    r"""sinh(input: Tensor) -> Tensor
+
+    返回一个包含 :attr:`input` 中元素的双曲正弦值的新 tensor。
+    公式为：
+
+    .. math::
+        \text{out}_{i} = \sinh(\text{input}_{i})
+
+    参数：
+        input (Tensor): the input tensor.
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+
+        >>> x1 = flow.tensor(np.array([1, 2, 3]), dtype=flow.float32)
+        >>> x2 = flow.tensor(np.array([1.53123589,0.54242598,0.15117185]), dtype=flow.float32)
+        >>> x3 = flow.tensor(np.array([1,0,-1]), dtype=flow.float32)
+
+        >>> flow.sinh(x1).numpy()
+        array([ 1.1752012,  3.6268604, 10.017875 ], dtype=float32)
+        >>> flow.sinh(x2).numpy()
+        array([2.20381  , 0.5694193, 0.1517483], dtype=float32)
+        >>> flow.sinh(x3).numpy()
+        array([ 1.1752012,  0.       , -1.1752012], dtype=float32)
+
+    """,
+)
+
+reset_docstr(
+    oneflow.tan,
+    r"""tan(input: Tensor) -> Tensor
+    
+    返回一个包含 :attr:`input` 中元素的正切值的新 tensor。
+    公式为：
+
+    .. math::
+        \text{out}_{i} = \tan(\text{input}_{i})
+
+    参数：
+        input (Tensor): the input tensor.
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        >>> np_arr = np.array([-1/4*np.pi, 0, 1/4*np.pi]).astype(np.float32)
+        >>> input = flow.tensor(np_arr, dtype=flow.float32)
+        >>> output = flow.tan(input)
+        >>> output
+        tensor([-1.,  0.,  1.], dtype=oneflow.float32)
+
+    """,
+)
+
+reset_docstr(
+    oneflow._C.sin,
+    r"""
+    sin(x: Tensor) -> Tensor
+
+    返回一个包含 :attr:`input` 中元素正弦值的新 tensor。
+
+    .. math::
+
+        \text{y}_{i} = \sin(\text{x}_{i})
+
+    参数：
+        x (Tensor): 输入函数
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+
+        >>> x1 = flow.tensor(np.array([-0.5461,  0.1347, -2.7266, -0.2746]).astype(np.float32))
+        >>> y1 = flow._C.sin(x1)
+        >>> y1
+        tensor([-0.5194,  0.1343, -0.4032, -0.2712], dtype=oneflow.float32)
+        >>> x2 = flow.tensor(np.array([-1.4, 2.6, 3.7]).astype(np.float32), device=flow.device('cuda'))
+        >>> y2 = flow._C.sin(x2)
+        >>> y2
+        tensor([-0.9854,  0.5155, -0.5298], device='cuda:0', dtype=oneflow.float32)
+    """,
+)
+
+reset_docstr(
+    oneflow.clamp,
+    r"""clamp(input, min = None, max = None, out=None) -> Tensor
+
+    返回新的结果 tensor，结果 tensor 中将 :attr:`input` 中元素限制在范围 `[` :attr:`min`, :attr:`max` `]` 中。
+    公式为：
+
+    .. math::
+        y_i = \begin{cases}
+            \text{min} & \text{if } x_i < \text{min} \\
+            x_i & \text{if } \text{min} \leq x_i \leq \text{max} \\
+            \text{max} & \text{if } x_i > \text{max}
+        \end{cases}
+
+    如果 :attr:`input` 的类型是 `FloatTensor` 或 `FloatTensor`，参数 :attr:`min` 
+    和 :attr:`max` 必须为实数， 如果 :attr:`input` 为其它类型的 tensor，参数 
+    :attr:`min` 和 :attr:`max` 必须为 `integer`。
+
+    参数：
+        input (Tensor): 输入张量
+        min (Number): 要限制到的范围的下限，默认为None
+        max (Number): 要限制到的范围的上限，默认为None
+        out (Tensor, optional): 输出张量
+
+    示例：
+
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        >>> arr = np.array([0.2, 0.6, -1.5, -0.3])
+        >>> input = flow.tensor(arr, dtype=flow.float32)
+        >>> output = flow.clamp(input, min=-0.5, max=0.5)
+        >>> output
+        tensor([ 0.2000,  0.5000, -0.5000, -0.3000], dtype=oneflow.float32)
+
+        >>> arr = np.array([0.2, 0.6, -1.5, -0.3])
+        >>> input = flow.tensor(arr, dtype=flow.float32)
+        >>> output = flow.clamp(input, min=None, max=0.5)
+        >>> output
+        tensor([ 0.2000,  0.5000, -1.5000, -0.3000], dtype=oneflow.float32)
+
+        >>> arr = np.array([0.2, 0.6, -1.5, -0.3])
+        >>> input = flow.tensor(arr, dtype=flow.float32)
+        >>> output = flow.clamp(input, min=-0.5, max=None)
+        >>> output
+        tensor([ 0.2000,  0.6000, -0.5000, -0.3000], dtype=oneflow.float32)
+
+    """,
+)
+
+reset_docstr(
+    oneflow.cos,
+    r"""cos(input: Tensor) -> Tensor
+    返回一个包含 :attr:`input` 中元素的余弦值的新 tensor。
+    公式为：
+
+    .. math::
+        \text{out}_{i} = \cos(\text{input}_{i})
+
+    参数：
+        input (Tensor): 输入张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        >>> arr = np.array([1.4309,  1.2706, -0.8562,  0.9796])
+        >>> input = flow.tensor(arr, dtype=flow.float32)
+        >>> output = flow.cos(input).numpy()
+
+    """,
+)
+
+reset_docstr(
+    oneflow.cosh,
+    r"""cosh(input: Tensor) -> Tensor
+
+    返回一个包含 :attr:`input` 中元素的双曲余弦值的新 tensor。
+    公式为：
+
+    .. math::
+        \text{out}_{i} = \cosh(\text{input}_{i})
+
+    参数：
+        input (Tensor): 输入张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+        
+        >>> arr = np.array([ 0.1632,  1.1835, -0.6979, -0.7325])
+        >>> input = flow.tensor(arr, dtype=flow.float32)
+        >>> output = flow.cosh(input).numpy()
+        >>> output
+        array([1.0133467, 1.7859949, 1.2535787, 1.2804903], dtype=float32)
 
     """,
 )
