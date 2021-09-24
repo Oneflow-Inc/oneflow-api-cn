@@ -18,10 +18,20 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
+    runs-on: [self-hosted, linux, gpu]
+    env:
+      TEST_CONTAINER_NAME: "pr-${{ github.event.pull_request.number }}-run-id-${{ github.run_id }}-${{ matrix.entry }}-test"
+      TEST_WITH_TORCH_IMG_TAG: registry.cn-beijing.aliyuncs.com/oneflow/test-with-pytorch-1.9.0:e7a497b41d8b7f1bce055b1f23d027f93b1557ae
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Fix permissions
+        run: |
+          set -x
+          docker run --rm -v $PWD:/p -w /p busybox chown -R $(id -u):$(id -g) .
+      - name: Remove container
+        timeout-minutes: 45
+        run: |
+          docker rm -f ${{ env.TEST_CONTAINER_NAME }} || true
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.9.1
         with:
@@ -30,14 +40,34 @@ jobs:
       - uses: actions/checkout@v2
       # Runs a set of commands using the runners shell
       - name: Pip Install Requirements
+        timeout-minutes: 45
         run: |
-          python3 -m pip install -r docs/requirements.txt --user
-      
+          docker pull ${{ env.TEST_IMG_TAG }}
+          docker run -d --rm --privileged --network host --shm-size=8g \
+            --cap-add=SYS_PTRACE --security-opt seccomp=unconfined \
+            --runtime=nvidia \
+            -v $HOME/test-container-cache/dot-local:/root/.local \
+            -v $HOME/test-container-cache/dot-cache:/root/.cache \
+            -v $PWD:$PWD \
+            -w $PWD \
+            --name ${TEST_CONTAINER_NAME} \
+            ${{ env.TEST_WITH_TORCH_IMG_TAG }} \
+            sleep 3600
+      # TODO: remove submodule. It often fails on self-hosted hosts
       - name: Install docreset
+        timeout-minutes: 45
         run: |
           git submodule update --init --recursive
-          python3 setup.py install --user
-          
+          docker exec ${TEST_CONTAINER_NAME} python3 -m pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+          docker exec ${{ env.TEST_CONTAINER_NAME }} python3 -m pip install -f https://staging.oneflow.info/branch/master/cu102 oneflow
+          docker exec ${{ env.TEST_CONTAINER_NAME }} python3 setup.py install --user
       - name: DocTest
+        timeout-minutes: 45
         run: |
-          cd docs && make test_cn
+          docker exec -w $PWD/docs ${{ env.TEST_CONTAINER_NAME }} make test_cn
+      - name: Remove container
+        timeout-minutes: 45
+        if: ${{ always() }}
+        run: |
+          docker rm -f ${TEST_CONTAINER_NAME} || true
+          docker run --rm -v $PWD:/p -w /p busybox chown -R $(id -u):$(id -g) . || true
