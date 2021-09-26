@@ -3,7 +3,7 @@ from docreset import reset_docstr
 
 reset_docstr(
     oneflow.add,
-    r"""add(input, other)
+    r"""add(input, other, *, out=None) -> Tensor
     
     计算 `input` 和 `other` 的和。支持 element-wise、标量和广播形式的加法。
 
@@ -15,6 +15,9 @@ reset_docstr(
     参数：
         - **input** (Tensor): 输入张量
         - **other** (Tensor): 输入张量
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -52,7 +55,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.sub,
-    r"""sub(input, other)
+    r"""sub(input, other, *, out=None) -> Tensor
     
     计算 `input` 和 `other` 的差，支持 element-wise、标量和广播形式的减法。
 
@@ -64,6 +67,9 @@ reset_docstr(
     参数：
         - **input** (Tensor): 输入张量
         - **other** (Tensor): 输入张量
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -101,12 +107,15 @@ reset_docstr(
 
 reset_docstr(
     oneflow.abs,
-    r"""abs(input)
+    r"""abs(input, *, out=None) -> Tensor
     
     返回一个包含 `input` 中每个元素的绝对值的tensor:`y = |x|`。
     
     参数：
         **input** (Tensor): 输入张量
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -127,7 +136,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.div,
-    r"""div(input, other)
+    r"""div(input, other, *, out=None) -> Tensor
     
     计算 `input` 除以 `other`，支持 element-wise、标量和广播形式的除法。
 
@@ -139,6 +148,9 @@ reset_docstr(
     参数：
         - **input** (Union[int, float, oneflow.Tensor]): input.
         - **other** (Union[int, float, oneflow.Tensor]): other.
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -176,7 +188,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.mul,
-    r"""mul(input, other)
+    r"""mul(input, other, *, out=None) -> Tensor
     
     计算 `input` 与 `other` 相乘，支持 element-wise、标量和广播形式的乘法。
     
@@ -188,6 +200,9 @@ reset_docstr(
     参数：
         - **input** (Tensor): 输入张量。
         - **other** (Tensor): 输入张量。
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -225,11 +240,14 @@ reset_docstr(
 
 reset_docstr(
     oneflow.reciprocal,
-    r"""reciprocal(x)
-    计算x的倒数，如果x为0，倒数将被设置为0。
+    r"""reciprocal(input, *, out=None) -> Tensor
+    计算 :attr:`input` 的倒数，如果 :attr:`input` 为0，倒数将被设置为0。
 
     参数：
-        **x** (Tensor): 输入张量。
+        **input** (Tensor): 输入张量。
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -251,7 +269,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.asin,
-    r"""arcsin(input)
+    r"""arcsin(input, *, out=None) -> Tensor
 
     返回一个新的 tensor 包含 :attr:`input` 中每个元素的反正弦。
 
@@ -260,6 +278,9 @@ reset_docstr(
 
     参数：
         **input** (Tensor): 输入张量
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -288,7 +309,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.asinh,
-    r"""arcsinh(input)
+    r"""arcsinh(input, *, out=None) -> Tensor
     
     返回一个包含 :attr:`input` 中每个元素的反双曲正弦的新 tensor。
 
@@ -297,6 +318,9 @@ reset_docstr(
 
     参数：
         **input** (Tensor): 输入张量
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -327,7 +351,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.atan,
-    r"""arctan(input)
+    r"""arctan(input, *, out=None) -> Tensor
 
     返回一个包含 :attr:`input` 中所有元素的反正切的新 tensor。
 
@@ -336,6 +360,9 @@ reset_docstr(
 
     参数：
         **input** (Tensor): 输入张量
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -356,7 +383,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.ceil,
-    r"""ceil(input)
+    r"""ceil(input, *, out=None) -> Tensor
     
     返回一个新的 tensor，tensor 中元素为大于或等于 :attr:`input` 中元素的最小整数。
     公式为： 
@@ -366,6 +393,9 @@ reset_docstr(
 
     参数：
         **input** (oneflow.Tensor): 张量
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
     
     返回值：
         oneflow.Tensor: 结果张量
@@ -406,15 +436,18 @@ reset_docstr(
 
 reset_docstr(
     oneflow.log1p,
-    r"""log1p(input)
+    r"""log1p(input, *, out=None) -> Tensor
     
-    返回一个新的 tensor，其自然对数为 (1 + input)。
+    返回一个新的 tensor，其自然对数的公式为 (1 + input)。
 
     .. math::
         \text{out}_{i}=\log_e(1+\text{input}_{i})
 
     参数：
         **input** (Tensor): 张量
+    
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
     
     返回值：
         oneflow.Tensor: 结果张量
@@ -435,18 +468,21 @@ reset_docstr(
 
 reset_docstr(
     oneflow.exp,
-    r"""exp(x)
+    r"""exp(input, *, out=None) -> Tensor
 
-    此运算符计算 `x` 的指数。
+    此运算符计算 :attr:`input` 的指数。
 
     公式为：
 
     .. math::
 
-        out = e^x
+        out = e^input
 
     参数：
-        **x** (Tensor): 张量
+        **input** (Tensor): 张量
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -468,7 +504,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.acos,
-    r"""acos(input)
+    r"""acos(input, *, out=None) -> Tensor
 
     返回一个包含 :attr:`input` 中元素的反余弦值的新 tensor。
     公式为：
@@ -478,6 +514,10 @@ reset_docstr(
 
     参数：
         **input** (Tensor): 输入张量
+
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
     
     返回值：
         oneflow.Tensor: 结果张量
@@ -499,7 +539,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.acosh,
-    r"""acosh(input)
+    r"""acosh(input, *, out=None) -> Tensor
 
     返回具有 :attr:`input` 中元素的反双曲余弦的新 tensor。
     公式为：
@@ -510,6 +550,9 @@ reset_docstr(
 
     参数：
         **input** (Tensor): 输入张量
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
     
     返回值：
         oneflow.Tensor: 结果张量
@@ -533,7 +576,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.atanh,
-    r"""arctanh(input)
+    r"""arctanh(input, *, out=None) -> Tensor
     
     返回一个包含 :attr:`input` 中元素的反双曲正切值的新 tensor。
     公式为：
@@ -543,6 +586,9 @@ reset_docstr(
 
     参数：
         **input** (Tensor): 输入张量
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -564,7 +610,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.sign,
-    r"""sign(input)
+    r"""sign(input, *, out=None) -> Tensor
     
     求 `input` 中元素的正负。
     公式为：
@@ -575,6 +621,9 @@ reset_docstr(
 
     参数：
         **input** (Tensor): 输入张量
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -599,7 +648,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.sinh,
-    r"""sinh(input)
+    r"""sinh(input, *, out=None) -> Tensor
 
     返回一个包含 :attr:`input` 中元素的双曲正弦值的新 tensor。
     公式为：
@@ -609,6 +658,9 @@ reset_docstr(
 
     参数：
         **input** (Tensor): 输入张量
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -636,7 +688,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.tan,
-    r"""tan(input)
+    r"""tan(input, *, out=None) -> Tensor
     
     返回一个包含 :attr:`input` 中元素的正切值的新 tensor。
     公式为：
@@ -646,6 +698,9 @@ reset_docstr(
 
     参数：
         **input** (Tensor): 输入张量
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -667,7 +722,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow._C.sin,
-    r"""sin(x: Tensor) -> Tensor
+    r"""sin(input: Tensor)  -> Tensor
 
     返回一个包含 :attr:`input` 中元素正弦值的新 tensor。
 
@@ -676,7 +731,7 @@ reset_docstr(
         \text{y}_{i} = \sin(\text{x}_{i})
 
     参数：
-        **x** (Tensor): 输入函数
+        **input** (Tensor): 输入函数
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -701,7 +756,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.clamp,
-    r"""clamp(input, min = None, max = None, out=None)
+    r"""clamp(input, min = None, max = None, *, out=None) -> Tensor
 
     返回新的结果 tensor，结果 tensor 中将 :attr:`input` 中元素限制在范围 `[` :attr:`min`, :attr:`max` `]` 中。
     公式为：
@@ -756,7 +811,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.cos,
-    r"""cos(input)
+    r"""cos(input, *, out=None) -> Tensor
     返回一个包含 :attr:`input` 中元素的余弦值的新 tensor。
     公式为：
 
@@ -765,6 +820,9 @@ reset_docstr(
 
     参数：
         **input** (Tensor): 输入张量
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -784,7 +842,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.cosh,
-    r"""cosh(input)
+    r"""cosh(input, *, out=None) -> Tensor
 
     返回一个包含 :attr:`input` 中元素的双曲余弦值的新 tensor。
     公式为：
@@ -794,6 +852,9 @@ reset_docstr(
 
     参数：
         **input** (Tensor): 输入张量
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -811,5 +872,324 @@ reset_docstr(
         >>> output
         array([1.0133467, 1.7859949, 1.2535787, 1.2804903], dtype=float32)
 
+    """,
+)
+
+reset_docstr(
+    oneflow.erf,
+    r"""erf(input, *, out=None) -> Tensor
+    
+    计算每个元素的误差函数。误差函数定义如下：
+
+    .. math::
+            \operatorname{erf}(x)=\frac{2}{\sqrt{\pi}} \int_{0}^{x} e^{-t^{2}} d t
+
+    参数：
+        **input** (oneflow.Tensor): 输入张量
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
+
+    返回值：
+        oneflow.Tensor: 结果张量   
+               
+    示例
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        
+        >>> x = flow.tensor(np.array([0, -1., 10.]), dtype=flow.float32)
+        >>> out = flow.erf(x)
+        >>> out.shape
+        oneflow.Size([3])
+        >>> out.numpy()
+        array([ 0.       , -0.8427008,  1.       ], dtype=float32)
+
+        >>> x = flow.tensor(np.array([[0, -1., 10.], [5, 7, 0.8]]), dtype=flow.float32)
+        >>> out = flow.erf(x)
+        >>> out.shape
+        oneflow.Size([2, 3])
+        >>> out.numpy()
+        array([[ 0.        , -0.8427008 ,  1.        ],
+               [ 1.        ,  1.        ,  0.74210095]], dtype=float32)
+
+        >>> x = flow.tensor(np.array([[0, -1., 10.], [5, 7, 0.8], [2, 3, 4]]), dtype=flow.float32)
+        >>> out = x.erf()
+        >>> out.shape
+        oneflow.Size([3, 3])
+        >>> out.numpy()
+        array([[ 0.        , -0.8427008 ,  1.        ],
+               [ 1.        ,  1.        ,  0.74210095],
+               [ 0.9953223 ,  0.9999779 ,  1.        ]], dtype=float32)
+
+    """,
+)
+
+reset_docstr(
+    oneflow.erfc,
+    r"""erfc(input, *, out=None) -> Tensor
+    
+    计算 :attr:`input` 的每个元素的互补误差函数。互补误差函数定义如下：
+    
+    .. math::
+            \operatorname{erfc}(x)=1-\frac{2}{\sqrt{\pi}} \int_{0}^{x} e^{-t^{2}} d t
+
+    参数：
+        **x** (oneflow.Tensor): 输入张量
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
+
+    返回至：
+        oneflow.Tensor: 结果张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        
+        >>> x = flow.tensor(np.array([0, -1., 10.]), dtype=flow.float32)
+        >>> out = flow.erfc(x)
+        >>> out
+        tensor([1.0000e+00, 1.8427e+00, 2.8026e-45], dtype=oneflow.float32)
+
+        >>> x = flow.tensor(np.array([[0, -1., 10.], [5, 7, 0.8]]), dtype=flow.float32)
+        >>> out = flow.erfc(x)
+        >>> out
+        tensor([[1.0000e+00, 1.8427e+00, 2.8026e-45],
+                [1.5375e-12, 4.1838e-23, 2.5790e-01]], dtype=oneflow.float32)
+        
+    """,
+)
+
+reset_docstr(
+    oneflow.expm1,
+    r"""expm1(input, *, out=None) -> Tensor
+    
+    返回一个新的张量，其元素为 :attr:`input` 的元素指数减去 1。 
+
+    公式为：
+
+    .. math::
+        y_{i} = e^{x_{i}} - 1
+
+    参数：
+        **input** (oneflow.Tensor): 输入张量
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
+    
+    返回值：
+        oneflow.Tensor: 结果张量
+
+    示例：
+
+    .. code-block:: python 
+        
+        >>> import oneflow as flow
+        >>> import numpy as np
+        >>> x = flow.tensor(np.array([1, 2, 3]).astype(np.float32))
+        >>> y = flow.expm1(x)
+        >>> y.shape
+        oneflow.Size([3])
+        >>> y
+        tensor([ 1.7183,  6.3891, 19.0855], dtype=oneflow.float32)
+
+        >>> x = flow.tensor(np.array([[[2, 4, 6],[7, 8, 9]],[[10,11,12],[13,14,15]]]).astype(np.float32))
+        >>> y = flow.expm1(x)
+        >>> print(y.shape)
+        oneflow.Size([2, 2, 3])
+        >>> print(y.numpy())
+        [[[6.3890562e+00 5.3598152e+01 4.0242880e+02]
+          [1.0956332e+03 2.9799580e+03 8.1020840e+03]]
+        <BLANKLINE>
+         [[2.2025465e+04 5.9873141e+04 1.6275380e+05]
+          [4.4241238e+05 1.2026032e+06 3.2690165e+06]]]
+
+
+    """,
+)
+
+reset_docstr(
+    oneflow.fmod,
+    r"""fmod(input, other, *, out=None) -> Tensor
+
+    计算逐元素余数。
+
+    被除数和除数可能同时包含整数和浮点数。余数与被除数 :attr:`input` 同号。
+
+    支持广播到通用形状、整数和浮点输入。
+
+    参数：
+        - **input** (Tensor): 被除数
+        - **other** (Tensor or Scalar): 除数
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
+
+    返回值：
+        oneflow.Tensor: 结果张量
+
+    示例：
+
+        >>> import oneflow as flow
+        >>> flow.fmod(flow.tensor([-3., -2, -1, 1, 2, 3], dtype=flow.float32), 2.)
+        tensor([-1., -0., -1.,  1.,  0.,  1.], dtype=oneflow.float32)
+        >>> flow.fmod(flow.tensor([1, 2, 3, 4, 5.], dtype=flow.float32), 1.5)
+        tensor([1.0000, 0.5000, 0.0000, 1.0000, 0.5000], dtype=oneflow.float32)
+        >>> flow.fmod(flow.tensor([1, 2, 3, 4., -5]), flow.tensor([4, 2, 1, 3., 1]))
+        tensor([1., 0., 0., 1., -0.], dtype=oneflow.float32)
+
+    """,
+)
+
+reset_docstr(
+    oneflow.log,
+    r"""log(input, *, out=None) -> Tensor
+
+    返回一个新 tensor 包含 :attr:`input` 中元素的自然对数。
+    公式为：
+
+    .. math::
+        y_{i} = \log_{e} (x_{i})
+
+    参数：
+        **input** (Tensor): 输入张量
+    
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
+
+    返回值：
+        oneflow.Tensor: 结果张量
+    
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as f  
+        >>> arr = np.random.randn(2, 3, 4, 5)
+        >>> input = flow.tensor(arr, dtype=flow.float32)
+        >>> output = flow.log(input)
+
+
+    """,
+)
+
+reset_docstr(
+    oneflow.minimum,
+    r"""minimum(input, other, *, out=None) -> Tensor
+    
+    计算 `input` 和 `other` 的 element-wise 最小值。
+
+    参数：
+        -**input** (Tensor): 输入张量
+        -**other** (Tensor): 输入张量
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
+
+    返回值：
+        oneflow.Tensor: 结果张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+
+        >>> x = flow.tensor((1, 2, -1), dtype=flow.float32)
+        >>> y = flow.tensor((3, 0, 4), dtype=flow.float32)
+        >>> flow.minimum(x, y)
+        tensor([ 1.,  0., -1.], dtype=oneflow.float32)
+
+        >>> x = flow.tensor((1,), dtype=flow.float32)
+        >>> y = flow.tensor((3, 0, 4), dtype=flow.float32)
+        >>> flow.minimum(x, y)
+        tensor([1., 0., 1.], dtype=oneflow.float32)
+    """,
+)
+
+reset_docstr(
+    oneflow.maximum,
+    r"""maximum(input, other, *, out=None) -> Tensor
+    计算 `input` 和 `other` 的 element-wise 最大值。
+
+    参数：
+        -**input** (Tensor): 输入张量
+        -**other** (Tensor): 输入张量
+
+    关键词参数：
+        **out** (Tensor, optional): 输出张量
+
+    返回值：
+        oneflow.Tensor: 结果张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+
+        >>> x = flow.tensor((1, 2, -1), dtype=flow.float32)
+        >>> y = flow.tensor((3, 0, 4), dtype=flow.float32)
+        >>> flow.maximum(x, y)
+        tensor([3., 2., 4.], dtype=oneflow.float32)
+
+        >>> x = flow.tensor((1,), dtype=flow.float32)
+        >>> y = flow.tensor((3, 0, 4), dtype=flow.float32)
+        >>> flow.maximum(x, y)
+        tensor([3., 1., 4.], dtype=oneflow.float32)
+    """,
+)
+
+reset_docstr(
+    oneflow.pow,
+    r"""pow(input, exponent, *, out=None) -> Tensor
+    
+    返回一个Tensor, 其元素为用 `exponent` 计算 `input` 中
+    每​​个元素的幂。`exponent` 可以是单个浮点数，整数或者与 
+    `input` 具有相同形状的 tensor。
+
+    当指数是标量时，操作为：
+
+    .. math::
+        \text{out}_i = x_i ^ \text{exponent}
+\u200b
+    When exponent is a tensor, the operation applied is:
+
+    .. math::
+        \text{out}_i = x_i ^ {\text{exponent}_i}
+
+    参数：
+        - **input** (Tensor): 输入张量
+        - **exponent** (int, float, Tensor): 指数
+
+    返回值：
+        Tensor: 张量 `input` 数轴上的方差结果
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        
+        >>> x = flow.tensor(np.array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0]), dtype=flow.float32)
+        >>> out = flow.pow(x, 2)
+        >>> out
+        tensor([ 1.,  4.,  9., 16., 25., 36.], dtype=oneflow.float32)
+
+        >>> x = flow.tensor(np.array([1.0, 2.0, 3.0, 4.0]), dtype=flow.float32)
+        >>> y = flow.tensor(np.array([1.0, 2.0, 3.0, 4.0]), dtype=flow.float32)
+        >>> out = flow.pow(x, y)
+        >>> out
+        tensor([  1.,   4.,  27., 256.], dtype=oneflow.float32)
+        
     """,
 )
