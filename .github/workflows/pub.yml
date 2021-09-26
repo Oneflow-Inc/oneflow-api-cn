@@ -18,11 +18,11 @@ jobs:
 
       - name: Pip Install Requirements
         run: |
+          python3 -m pip install pybind11 --user
           python3 -m pip install -r docs/requirements.txt --user
 
       - name: Install docreset
         run: |
-          git submodule update --init --recursive
           python3 setup.py install --user
 
       - name: DocTest
