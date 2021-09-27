@@ -101,12 +101,12 @@ reset_docstr(
 
 reset_docstr(
     oneflow.abs,
-    r"""abs(input) -> Tensor
+    r"""abs(x) -> Tensor
     
-    返回一个包含 `input` 中每个元素的绝对值的tensor:`y = |x|`。
+    返回一个包含 `x` 中每个元素的绝对值的tensor:`y = |x|`。
     
     参数：
-        **input** (Tensor): 输入张量
+        **x** (Tensor): 输入张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -251,9 +251,9 @@ reset_docstr(
 
 reset_docstr(
     oneflow.asin,
-    r"""arcsin(input) -> Tensor
+    r"""arcsin(x) -> Tensor
 
-    返回一个新的 tensor 包含 :attr:`input` 中每个元素的反正弦。
+    返回一个新的 tensor 包含 :attr:`x` 中每个元素的反正弦。
 
     公式为：
 
@@ -261,7 +261,7 @@ reset_docstr(
         \text{out}_{i} = \sin^{-1}(\text{input}_{i})
 
     参数：
-        **input** (Tensor): 输入张量
+        **x** (Tensor): 输入张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -290,9 +290,9 @@ reset_docstr(
 
 reset_docstr(
     oneflow.asinh,
-    r"""arcsinh(input) -> Tensor
+    r"""arcsinh(x) -> Tensor
     
-    返回一个包含 :attr:`input` 中每个元素的反双曲正弦的新 tensor。
+    返回一个包含 :attr:`x` 中每个元素的反双曲正弦的新 tensor。
 
     公式为：
 
@@ -300,7 +300,7 @@ reset_docstr(
         \text{out}_{i} = \sinh^{-1}(\text{input}_{i})
 
     参数：
-        **input** (Tensor): 输入张量
+        **x** (Tensor): 输入张量
 
     关键词参数：
         **out** (Tensor, optional): 输出张量
@@ -334,9 +334,9 @@ reset_docstr(
 
 reset_docstr(
     oneflow.atan,
-    r"""arctan(input) -> Tensor
+    r"""arctan(x) -> Tensor
 
-    返回一个包含 :attr:`input` 中所有元素的反正切的新 tensor。
+    返回一个包含 :attr:`x` 中所有元素的反正切的新 tensor。
 
     公式为：
 
@@ -344,7 +344,7 @@ reset_docstr(
         \text{out}_{i} = \tan^{-1}(\text{input}_{i})
 
     参数：
-        **input** (Tensor): 输入张量
+        **x** (Tensor): 输入张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -365,9 +365,9 @@ reset_docstr(
 
 reset_docstr(
     oneflow.ceil,
-    r"""ceil(input) -> Tensor
+    r"""ceil(x) -> Tensor
     
-    返回一个新的 tensor，tensor 中元素为大于或等于 :attr:`input` 中元素的最小整数。
+    返回一个新的 tensor，tensor 中元素为大于或等于 :attr:`x` 中元素的最小整数。
 
     公式为： 
 
@@ -375,7 +375,7 @@ reset_docstr(
         \text{out}_{i} = \left\lceil \text{input}_{i} \right\rceil = \left\lfloor \text{input}_{i} \right\rfloor + 1
 
     参数：
-        **input** (oneflow.Tensor): 张量
+        **x** (oneflow.Tensor): 张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -416,15 +416,15 @@ reset_docstr(
 
 reset_docstr(
     oneflow.log1p,
-    r"""log1p(input) -> Tensor
+    r"""log1p(x) -> Tensor
     
-    返回一个新的 tensor，其自然对数的公式为 (1 + input)。
+    返回一个新的 tensor，其自然对数的公式为 (1 + x)。
 
     .. math::
         \text{out}_{i}=\log_e(1+\text{input}_{i})
 
     参数：
-        **input** (Tensor): 张量
+        **x** (Tensor): 张量
     
     返回值：
         oneflow.Tensor: 结果张量
@@ -478,9 +478,9 @@ reset_docstr(
 
 reset_docstr(
     oneflow.acos,
-    r"""acos(input) -> Tensor
+    r"""acos(x) -> Tensor
 
-    返回一个包含 :attr:`input` 中元素的反余弦值的新 tensor。
+    返回一个包含 :attr:`x` 中元素的反余弦值的新 tensor。
 
     公式为：
 
@@ -488,7 +488,7 @@ reset_docstr(
         \text{out}_{i} = \arccos(\text{input}_{i})
 
     参数：
-        **input** (Tensor): 输入张量
+        **x** (Tensor): 输入张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -510,9 +510,9 @@ reset_docstr(
 
 reset_docstr(
     oneflow.acosh,
-    r"""acosh(input) -> Tensor
+    r"""acosh(x) -> Tensor
 
-    返回具有 :attr:`input` 中元素的反双曲余弦的新 tensor。
+    返回具有 :attr:`x` 中元素的反双曲余弦的新 tensor。
 
     公式为：
 
@@ -521,7 +521,7 @@ reset_docstr(
         \text{out}_{i} = \cosh^{-1}(\text{input}_{i})
 
     参数：
-        **input** (Tensor): 输入张量
+        **x** (Tensor): 输入张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -545,9 +545,9 @@ reset_docstr(
 
 reset_docstr(
     oneflow.atanh,
-    r"""arctanh(input) -> Tensor
+    r"""arctanh(x) -> Tensor
     
-    返回一个包含 :attr:`input` 中元素的反双曲正切值的新 tensor。
+    返回一个包含 :attr:`x` 中元素的反双曲正切值的新 tensor。
 
     公式为：
 
@@ -555,7 +555,7 @@ reset_docstr(
         \text{out}_{i} = \tanh^{-1}(\text{input}_{i})
 
     参数：
-        **input** (Tensor): 输入张量
+        **x** (Tensor): 输入张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -577,9 +577,9 @@ reset_docstr(
 
 reset_docstr(
     oneflow.sign,
-    r"""sign(input) -> Tensor
+    r"""sign(x) -> Tensor
     
-    求 `input` 中元素的正负。
+    求 `x` 中元素的正负。
 
     公式为：
 
@@ -588,7 +588,7 @@ reset_docstr(
         \text{out}_{i}  = \text{sgn}(\text{input}_{i})
 
     参数：
-        **input** (Tensor): 输入张量
+        **x** (Tensor): 输入张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -613,9 +613,9 @@ reset_docstr(
 
 reset_docstr(
     oneflow.sinh,
-    r"""sinh(input) -> Tensor
+    r"""sinh(x) -> Tensor
 
-    返回一个包含 :attr:`input` 中元素的双曲正弦值的新 tensor。
+    返回一个包含 :attr:`x` 中元素的双曲正弦值的新 tensor。
 
     公式为：
 
@@ -623,7 +623,7 @@ reset_docstr(
         \text{out}_{i} = \sinh(\text{input}_{i})
 
     参数：
-        **input** (Tensor): 输入张量
+        **x** (Tensor): 输入张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -651,9 +651,9 @@ reset_docstr(
 
 reset_docstr(
     oneflow.tan,
-    r"""tan(input) -> Tensor
+    r"""tan(x) -> Tensor
     
-    返回一个包含 :attr:`input` 中元素的正切值的新 tensor。
+    返回一个包含 :attr:`x` 中元素的正切值的新 tensor。
 
     公式为：
 
@@ -661,7 +661,7 @@ reset_docstr(
         \text{out}_{i} = \tan(\text{input}_{i})
 
     参数：
-        **input** (Tensor): 输入张量
+        **x** (Tensor): 输入张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -774,8 +774,8 @@ reset_docstr(
 
 reset_docstr(
     oneflow.cos,
-    r"""cos(input) -> Tensor
-    返回一个包含 :attr:`input` 中元素的余弦值的新 tensor。
+    r"""cos(x) -> Tensor
+    返回一个包含 :attr:`x` 中元素的余弦值的新 tensor。
 
     公式为：
 
@@ -783,7 +783,7 @@ reset_docstr(
         \text{out}_{i} = \cos(\text{input}_{i})
 
     参数：
-        **input** (Tensor): 输入张量
+        **x** (Tensor): 输入张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -803,9 +803,9 @@ reset_docstr(
 
 reset_docstr(
     oneflow.cosh,
-    r"""cosh(input) -> Tensor
+    r"""cosh(x) -> Tensor
 
-    返回一个包含 :attr:`input` 中元素的双曲余弦值的新 tensor。
+    返回一个包含 :attr:`x` 中元素的双曲余弦值的新 tensor。
 
     公式为：
 
@@ -813,7 +813,7 @@ reset_docstr(
         \text{out}_{i} = \cosh(\text{input}_{i})
 
     参数：
-        **input** (Tensor): 输入张量
+        **x** (Tensor): 输入张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -921,9 +921,9 @@ reset_docstr(
 
 reset_docstr(
     oneflow.expm1,
-    r"""expm1(input) -> Tensor
+    r"""expm1(x) -> Tensor
     
-    返回一个新的张量，其元素为 :attr:`input` 的元素指数减去 1。 
+    返回一个新的张量，其元素为 :attr:`x` 的元素指数减去 1。 
 
     公式为：
 
@@ -931,7 +931,7 @@ reset_docstr(
         y_{i} = e^{x_{i}} - 1
 
     参数：
-        **input** (oneflow.Tensor): 输入张量
+        **x** (oneflow.Tensor): 输入张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -996,16 +996,16 @@ reset_docstr(
 
 reset_docstr(
     oneflow.log,
-    r"""log(input) -> Tensor
+    r"""log(x) -> Tensor
 
-    返回一个新 tensor 包含 :attr:`input` 中元素的自然对数。
+    返回一个新 tensor 包含 :attr:`x` 中元素的自然对数。
     公式为：
 
     .. math::
         y_{i} = \log_{e} (x_{i})
 
     参数：
-        **input** (Tensor): 输入张量
+        **x** (Tensor): 输入张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -1014,7 +1014,8 @@ reset_docstr(
 
     .. code-block:: python
 
-        >>> import oneflow as f  
+        >>> import oneflow as flow  
+        >>> import numpy as np
         >>> arr = np.random.randn(2, 3, 4, 5)
         >>> input = flow.tensor(arr, dtype=flow.float32)
         >>> output = flow.log(input)
@@ -1100,7 +1101,7 @@ reset_docstr(
     .. math::
         \text{out}_i = x_i ^ \text{exponent}
 \u200b
-    When exponent is a tensor, the operation applied is:
+    当指数是张量时：
 
     .. math::
         \text{out}_i = x_i ^ {\text{exponent}_i}
@@ -1130,5 +1131,126 @@ reset_docstr(
         >>> out
         tensor([  1.,   4.,  27., 256.], dtype=oneflow.float32)
         
+    """,
+)
+
+reset_docstr(
+    oneflow.rsqrt,
+    r""" rsqrt(x) -> Tensor
+    
+    返回一个新的 Tensor, 其元素为 :attr:`x` 中元素的平方根的倒数
+
+    公式为：
+
+    .. math::
+        \\text{out}_{i} = \\frac{1}{\\sqrt{\\text{input}_{i}}}
+
+    参数：
+        **x** (Tensor): 输入张量
+    
+    返回值：
+        oneflow.Tensor: 结果张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+            
+        >>> a = flow.tensor(np.array([1.0, 2.0, 3.0]), dtype=flow.float32)
+        >>> out = flow.rsqrt(a).numpy()
+        >>> out
+        array([1.        , 0.70710677, 0.57735026], dtype=float32)
+
+    """,
+)
+
+reset_docstr(
+    oneflow.square,
+    r"""square(x)  -> Tensor
+
+    返回一个新的张量，其元素为 :attr:`x` 中元素的的平方。
+
+    .. math::
+        \\text{out}_{i} = \\sqrt{\\text{input}_{i}}
+
+    参数：
+        **x** (Tensor): 输入张量
+    
+    返回值：
+        oneflow.Tensor: 结果张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+            
+        >>> arr = np.array([1.0, 2.0, 3.0])
+        >>> input = flow.tensor(arr, dtype=flow.float32)
+        >>> output = flow.square(input).numpy()
+        >>> output
+        array([1., 4., 9.], dtype=float32)
+
+    """,
+)
+
+reset_docstr(
+    oneflow.matmul,
+    r"""matmul(a, b) -> Tensor
+
+    此运算符将矩阵乘法应用于两个 Tensor :attr:`a` 和 :attr:`b`。
+
+    参数：
+        - **a** (oneflow.Tensor): 张量
+        - **b** (oneflow.Tensor): 张量
+
+    返回值：
+        oneflow.Tensor: 结果张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        >>> input1 = flow.tensor(np.random.randn(2, 6), dtype=flow.float32)
+        >>> input2 = flow.tensor(np.random.randn(6, 5), dtype=flow.float32)
+        >>> of_out = flow.matmul(input1, input2)
+        >>> of_out.shape
+        oneflow.Size([2, 5])
+
+    """,
+)
+
+reset_docstr(
+    oneflow.round,
+    r"""round(x)
+    
+    返回一个新 tensor，其元素为 :attr:`x` 中元素四舍五入到整数。
+
+    参数：
+        **x** (oneflow.Tensor): 输入张量
+
+    返回值：
+        oneflow.Tensor: 结果张量
+    
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        >>> x1 = flow.tensor(np.array([1.49999, 1.500001, 2.7]).astype(np.float32))
+        >>> out1 = flow.round(x1)
+        >>> out1.numpy()
+        array([1., 2., 3.], dtype=float32)
+        >>> x2 = flow.tensor(np.array([2.499999, 7.5000001, 5.3, 6.8]).astype(np.float32))
+        >>> out2 = flow.round(x2)
+        >>> out2.numpy()
+        array([2., 8., 5., 7.], dtype=float32)
+
     """,
 )
