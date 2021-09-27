@@ -23,8 +23,8 @@ reset_docstr(
 
     .. code-block:: python
 
-        >>> import numpy as np
         >>> import oneflow as flow
+        >>> import numpy as np
         
         # element-wise 加法
         >>> x = flow.tensor(np.random.randn(2,3), dtype=flow.float32)
@@ -1143,7 +1143,7 @@ reset_docstr(
     公式为：
 
     .. math::
-        \\text{out}_{i} = \\frac{1}{\\sqrt{\\text{input}_{i}}}
+        \text{out}_{i} = \frac{1}{\sqrt{\text{input}_{i}}}
 
     参数：
         **x** (Tensor): 输入张量
@@ -1173,7 +1173,7 @@ reset_docstr(
     返回一个新的张量，其元素为 :attr:`x` 中元素的的平方。
 
     .. math::
-        \\text{out}_{i} = \\sqrt{\\text{input}_{i}}
+        \text{out}_{i} = \sqrt{\text{input}_{i}}
 
     参数：
         **x** (Tensor): 输入张量
