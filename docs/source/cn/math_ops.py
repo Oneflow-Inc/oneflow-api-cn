@@ -740,7 +740,6 @@ reset_docstr(
         - **input** (Tensor): 输入张量
         - **min** (Number): 要限制到的范围的下限，默认为None
         - **max** (Number): 要限制到的范围的上限，默认为None
-        - **out** (Tensor, optional): 输出张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -967,7 +966,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.fmod,
-    r"""fmod(input, other, *, out=None) -> Tensor
+    r"""fmod(input, other) -> Tensor
 
     计算逐元素余数。
 
@@ -978,10 +977,7 @@ reset_docstr(
     参数：
         - **input** (Tensor): 被除数
         - **other** (Tensor or Scalar): 除数
-
-    关键词参数：
-        **out** (Tensor, optional): 输出张量
-
+    
     返回值：
         oneflow.Tensor: 结果张量
 
@@ -1034,8 +1030,8 @@ reset_docstr(
     计算 `x` 和 `y` 的 element-wise 最小值。
 
     参数：
-        -**x** (Tensor): 输入张量
-        -**y** (Tensor): 输入张量
+        - **x** (Tensor): 输入张量
+        - **y** (Tensor): 输入张量
 
     返回值：
         oneflow.Tensor: 结果张量
@@ -1066,8 +1062,8 @@ reset_docstr(
     计算 `x` 和 `y` 的 element-wise 最大值。
 
     参数：
-        -**x** (Tensor): 输入张量
-        -**y** (Tensor): 输入张量
+        - **x** (Tensor): 输入张量
+        - **y** (Tensor): 输入张量
 
     返回值：
         oneflow.Tensor: 结果张量
