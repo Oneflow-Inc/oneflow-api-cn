@@ -1019,6 +1019,7 @@ reset_docstr(
         >>> y = flow.tensor((3, 0, 4), dtype=flow.float32)
         >>> flow.maximum(x, y)
         tensor([3., 1., 4.], dtype=oneflow.float32)
+        
     """,
 )
 
