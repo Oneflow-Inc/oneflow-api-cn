@@ -588,6 +588,18 @@ reset_docstr(
 
     示例：
 
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> x1 = flow.tensor([-2, 0, 2], dtype=flow.float32)
+        >>> out1 = flow.sign(x1)
+        >>> out1
+        tensor([-1.,  0.,  1.], dtype=oneflow.float32)
+        >>> x2 = flow.tensor([-3.2, -4.5, 5.8], dtype=flow.float32, device=flow.device('cuda'))
+        >>> out2 = flow.sign(x2)
+        >>> out2
+        tensor([-1., -1.,  1.], device='cuda:0', dtype=oneflow.float32)
 
     """,
 )
@@ -1019,7 +1031,7 @@ reset_docstr(
         >>> y = flow.tensor((3, 0, 4), dtype=flow.float32)
         >>> flow.maximum(x, y)
         tensor([3., 1., 4.], dtype=oneflow.float32)
-        
+
     """,
 )
 
