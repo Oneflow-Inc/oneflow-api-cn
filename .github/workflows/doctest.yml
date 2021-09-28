@@ -5,8 +5,6 @@ name: DocTest
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [master]
   pull_request:
     branches: [master]
 
@@ -68,6 +66,10 @@ jobs:
         timeout-minutes: 45
         run: |
           docker exec -w $PWD/docs ${{ env.TEST_CONTAINER_NAME }} make test_cn
+      - name: DocBuildTest
+        timeout-minutes: 45
+        run: |
+          docker exec -w $PWD/docs ${{ env.TEST_CONTAINER_NAME }} make html_cn
       - name: Remove container
         timeout-minutes: 45
         if: ${{ always() }}
