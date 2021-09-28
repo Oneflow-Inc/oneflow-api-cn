@@ -15,29 +15,28 @@ reset_docstr(
 
     .. code-block:: python
 
-        >>> import numpy as np
         >>> import oneflow as flow
         
         # element-wise 加法
-        >>> x = flow.tensor(np.random.randn(2,3), dtype=flow.float32)
-        >>> y = flow.tensor(np.random.randn(2,3), dtype=flow.float32)
-        >>> out = flow.add(x, y).numpy()
+        >>> x = flow.randn(2, 3, dtype=flow.float32)
+        >>> y = flow.randn(2, 3, dtype=flow.float32)
+        >>> out = flow.add(x, y)
         >>> out.shape
-        (2, 3)
+        oneflow.Size([2, 3])
 
         # 标量加法
         >>> x = 5
-        >>> y = flow.tensor(np.random.randn(2,3), dtype=flow.float32)
-        >>> out = flow.add(x, y).numpy()
+        >>> y = flow.randn(2, 3, dtype=flow.float32)
+        >>> out = flow.add(x, y)
         >>> out.shape
-        (2, 3)
+        oneflow.Size([2, 3])
 
         # 广播加法
-        >>> x = flow.tensor(np.random.randn(1,1), dtype=flow.float32)
-        >>> y = flow.tensor(np.random.randn(2,3), dtype=flow.float32)
-        >>> out = flow.add(x, y).numpy()
+        >>> x = flow.randn(1, 1, dtype=flow.float32)
+        >>> y = flow.randn(2, 3, dtype=flow.float32)
+        >>> out = flow.add(x, y)
         >>> out.shape
-        (2, 3)
+        oneflow.Size([2, 3])
 
     """,
 )
@@ -97,9 +96,8 @@ reset_docstr(
     .. code-block:: python
 
         >>> import oneflow as flow
-        >>> import numpy as np
 
-        >>> x = flow.tensor(np.array([-1, 2, -3, 4]).astype(np.float32))
+        >>> x = flow.tensor([-1, 2, -3, 4], dtype=flow.float32)
         >>> flow.abs(x)
         tensor([1., 2., 3., 4.], dtype=oneflow.float32)
     
@@ -202,14 +200,13 @@ reset_docstr(
 
     .. code-block:: python
 
-        >>> import numpy as np
         >>> import oneflow as flow
         
-        >>> x = flow.tensor(np.array([[1, 2, 3], [4, 5, 6]]), dtype=flow.float32)
+        >>> x = flow.tensor([[1, 2, 3], [4, 5, 6]], dtype=flow.float32)
         >>> out = flow.reciprocal(x)
-        >>> out.numpy()
-        array([[1.        , 0.5       , 0.33333334],
-               [0.25      , 0.2       , 0.16666667]], dtype=float32)
+        >>> out
+        tensor([[1.0000, 0.5000, 0.3333],
+                [0.2500, 0.2000, 0.1667]], dtype=oneflow.float32)
     """,
 )
 
@@ -433,13 +430,12 @@ reset_docstr(
     .. code-block:: python
 
         >>> import oneflow as flow
-        >>> import numpy as np
 
-        >>> arr = np.array([0.5, 0.6, 0.7])
-        >>> input = flow.tensor(arr, dtype=flow.float32)
+        >>> input = flow.tensor([0.5, 0.6, 0.7], dtype=flow.float32)
         >>> output = flow.acos(input)
         >>> output
         tensor([1.0472, 0.9273, 0.7954], dtype=oneflow.float32)
+
     """,
 )
 
@@ -551,19 +547,18 @@ reset_docstr(
 
     .. code-block:: python
 
-        >>> import numpy as np
         >>> import oneflow as flow
 
-        >>> x1 = flow.tensor(np.array([1, 2, 3]), dtype=flow.float32)
-        >>> x2 = flow.tensor(np.array([1.53123589,0.54242598,0.15117185]), dtype=flow.float32)
-        >>> x3 = flow.tensor(np.array([1,0,-1]), dtype=flow.float32)
+        >>> x1 = flow.tensor([1, 2, 3], dtype=flow.float32)
+        >>> x2 = flow.tensor([1.53123589,0.54242598,0.15117185], dtype=flow.float32)
+        >>> x3 = flow.tensor([1,0,-1], dtype=flow.float32)
 
-        >>> flow.sinh(x1).numpy()
-        array([ 1.1752012,  3.6268604, 10.017875 ], dtype=float32)
-        >>> flow.sinh(x2).numpy()
-        array([2.20381  , 0.5694193, 0.1517483], dtype=float32)
-        >>> flow.sinh(x3).numpy()
-        array([ 1.1752012,  0.       , -1.1752012], dtype=float32)
+        >>> flow.sinh(x1)
+        tensor([ 1.1752,  3.6269, 10.0179], dtype=oneflow.float32)
+        >>> flow.sinh(x2)
+        tensor([2.2038, 0.5694, 0.1517], dtype=oneflow.float32)
+        >>> flow.sinh(x3)
+        tensor([ 1.1752,  0.0000, -1.1752], dtype=oneflow.float32)
 
     """,
 )
@@ -593,38 +588,6 @@ reset_docstr(
         >>> output
         tensor([-1.,  0.,  1.], dtype=oneflow.float32)
 
-    """,
-)
-
-reset_docstr(
-    oneflow._C.sin,
-    r"""
-    sin(x: Tensor) -> Tensor
-
-    返回一个包含 :attr:`input` 中元素正弦值的新 tensor。
-
-    .. math::
-
-        \text{y}_{i} = \sin(\text{x}_{i})
-
-    参数：
-        x (Tensor): 输入函数
-
-    示例：
-
-    .. code-block:: python
-
-        >>> import oneflow as flow
-        >>> import numpy as np
-
-        >>> x1 = flow.tensor(np.array([-0.5461,  0.1347, -2.7266, -0.2746]).astype(np.float32))
-        >>> y1 = flow._C.sin(x1)
-        >>> y1
-        tensor([-0.5194,  0.1343, -0.4032, -0.2712], dtype=oneflow.float32)
-        >>> x2 = flow.tensor(np.array([-1.4, 2.6, 3.7]).astype(np.float32), device=flow.device('cuda'))
-        >>> y2 = flow._C.sin(x2)
-        >>> y2
-        tensor([-0.9854,  0.5155, -0.5298], device='cuda:0', dtype=oneflow.float32)
     """,
 )
 
