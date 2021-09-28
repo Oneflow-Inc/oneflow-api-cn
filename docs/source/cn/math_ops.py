@@ -1060,7 +1060,7 @@ reset_docstr(
 
     .. math::
         \text{out}_i = x_i ^ \text{exponent}
-\u200b
+
     当指数是张量时：
 
     .. math::
