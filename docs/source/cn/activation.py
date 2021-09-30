@@ -21,10 +21,8 @@ reset_docstr(
     .. code-block:: python
 
         >>> import oneflow as flow
-        >>> import numpy as np
         >>> relu = flow.nn.ReLU()
-        >>> ndarr = np.asarray([1, -2, 3])
-        >>> x = flow.Tensor(ndarr)
+        >>> x = flow.tensor([1, -2, 3], dtype=flow.float32)
         >>> relu(x)
         tensor([1., 0., 3.], dtype=oneflow.float32)
 
