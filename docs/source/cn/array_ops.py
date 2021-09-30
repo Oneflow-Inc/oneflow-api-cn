@@ -97,7 +97,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.batch_gather,
-    r"""batch_gather(in, indices) -> Tensor
+    r"""batch_gather(in, indices) -> Tensor 
     
     用branch dims批量处理元素。
     

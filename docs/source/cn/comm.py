@@ -17,7 +17,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.comm.recv,
-    r"""recv(src, shape=None, dtype=None, device=None, *, out=None)
+    r"""recv(src, shape=None, dtype=None, device=None, *, out=None) 
     
     同步接收张量。
     

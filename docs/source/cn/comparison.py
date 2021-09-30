@@ -42,7 +42,7 @@ reset_docstr(
         - **other** (oneflow.Tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor: 数据类型为 `int8` 的张量
+        oneflow.Tensor: 数据类型为 `int8` 的张量 
 
     示例：
 
