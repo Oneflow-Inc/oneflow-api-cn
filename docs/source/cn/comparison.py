@@ -3,7 +3,7 @@ from docreset import reset_docstr
 
 reset_docstr(
     oneflow.greater,
-    r"""greater(input, other)
+    r"""gt(input, other)
     
     返回 :math:`input > other` 的 element-wise 真实值。
 
@@ -32,7 +32,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.greater_equal,
-    r"""greater_equal(input, other)
+    r"""ge(input, other)
     
     
     返回 :math:`input >= other` 的 element-wise 真实值。

@@ -106,8 +106,9 @@ reset_docstr(
         - **indices** (Tensor): 索引张量，它的数据类型必须是 int32/64。
 
     示例：
-    
+
     示例1:
+
     .. code-block:: python
        
         >>> import oneflow as flow 
@@ -120,6 +121,7 @@ reset_docstr(
                 [1., 2., 3.]], dtype=oneflow.float32)
 
     示例2：
+    
     .. code-block:: python
         
         >>> import oneflow as flow 
