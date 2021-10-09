@@ -38,6 +38,8 @@ jobs:
           all_but_latest: true
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+        with:
+          submodules: false
       # Runs a set of commands using the runners shell
       - name: Start container
         timeout-minutes: 45
