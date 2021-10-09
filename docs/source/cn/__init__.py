@@ -6,4 +6,6 @@ from .comm import *
 from .comparison import *
 from .constant import *
 from .random import *
-from .random import *
+from .tensor import *
+from .trigonometric_ops import *
+from .pooling import *

@@ -14,8 +14,8 @@ reset_docstr(
         - **out** (Tensor, optional): 输出张量
 
     形状：
-        - **Input** :math:`(*)`. Input can be of any shape
-        - **Output** :math:`(*)`. Output is of the same shape as input
+        - **Input** :math:`(*)`： 输入可以是任何形状
+        - **Output** :math:`(*)`： 输出与输入的形状相同
 
     示例：
 
@@ -33,23 +33,3 @@ reset_docstr(
     """,
 )
 
-reset_docstr(
-    oneflow.Tensor.atan2,
-    r"""
-    参考 :func:`oneflow.atan2`
-    """,
-)
-
-reset_docstr(
-    oneflow.Tensor.numel,
-    r"""
-    参考 :func:`oneflow.numel`
-    """,
-)
-
-reset_docstr(    
-    oneflow.Tensor.transpose,
-    r"""
-    参考 :func:`oneflow.transpose`
-    """,
-    )
