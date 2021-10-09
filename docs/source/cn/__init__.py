@@ -4,3 +4,6 @@ from .array_ops import *
 from .cast import *
 from .comm import *
 from .comparison import *
+from .constant import *
+from .random import *
+from .random import *
