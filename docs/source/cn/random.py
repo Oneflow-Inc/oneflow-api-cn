@@ -9,9 +9,9 @@ reset_docstr(
     返回一个Tensor其参数为带有来自伯努利分布的二进制随机数(0 / 1) 。
 
     参数：
-        - **input** (Tensor): the input tensor of probability values for the Bernoulli distribution
-        - **generator** (Generator, optional) a pseudorandom number generator for sampling
-        - **out** (Tensor, optional): the output tensor.
+        - **x** (Tensor)： 伯努利分布的概率值的输入张量
+        - **generator** (Generator, optional)： 用于采样的伪随机数生成器
+        - **out** (Tensor, optional): 输出张量
 
     形状：
         - **Input** :math:`(*)`. Input can be of any shape
@@ -32,3 +32,24 @@ reset_docstr(
 
     """,
 )
+
+reset_docstr(
+    oneflow.Tensor.atan2,
+    r"""
+    参考 :func:`oneflow.atan2`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.numel,
+    r"""
+    参考 :func:`oneflow.numel`
+    """,
+)
+
+reset_docstr(    
+    oneflow.Tensor.transpose,
+    r"""
+    参考 :func:`oneflow.transpose`
+    """,
+    )
