@@ -5,8 +5,9 @@ reset_docstr(
     oneflow.atan2,
     r"""atan2(input, other)
 
-    考虑象限的 input{i}/other{i} 的按元素反正切。返回元素为向量 (other{i},input{i}) 和向量 
-    (1, 0) 之间的带符号角（以弧度表示）的新张量。
+    考虑象限的 input/other
+    的按元素反正切。返回元素为向量 (other,input) 
+    和向量 (1, 0) 之间的按元素夹角（以弧度表示并带符号）的新张量。
 
     `input` 和 `other` 的形状必须是可广播的。
 
