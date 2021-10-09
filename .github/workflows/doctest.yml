@@ -53,11 +53,9 @@ jobs:
             --name ${TEST_CONTAINER_NAME} \
             ${{ env.TEST_IMG_TAG }} \
             sleep 3600
-      # TODO: remove submodule. It often fails on self-hosted hosts
       - name: Install docreset
         timeout-minutes: 45
         run: |
-          git submodule update --init --recursive
           docker exec ${TEST_CONTAINER_NAME} python3 -m pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
           docker exec ${{ env.TEST_CONTAINER_NAME }} python3 -m pip install -f https://staging.oneflow.info/branch/master/cu102 oneflow
           docker exec ${{ env.TEST_CONTAINER_NAME }} python3 -m pip install -r dev-requirements.txt --user
