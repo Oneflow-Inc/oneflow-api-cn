@@ -99,7 +99,7 @@ reset_docstr(
     oneflow.batch_gather,
     r"""batch_gather(in, indices) -> Tensor
     
-    用branch dims批量处理元素。
+    用 `indices` 重新排列元素
     
     参数：
         - **in** (Tensor): 输入张量 
