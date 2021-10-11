@@ -59,3 +59,33 @@ reset_docstr(
 
     """,
 )
+
+reset_docstr(
+    oneflow.eq,
+    r"""oneflow.eq(input, other) -> Tensor
+    
+    计算元素的相等性，第二个参数应可以广播为第一个参数的形状。
+
+    参数：
+        - **input** (oneflow.Tensor): 要去对比的张量
+        - **other** (oneflow.Tensor, float or int): 对比的目标
+
+    返回类型：
+        - oneflow.Tensor，元素为 boolean, 若 :attr:`input` 等于 :attr:`other` 则为 True。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.tensor([2, 3, 4, 5], dtype=flow.float32)
+        >>> other = flow.tensor([2, 3, 4, 1], dtype=flow.float32)
+
+        >>> y = flow.eq(input, other)
+        >>> y
+        tensor([1, 1, 1, 0], dtype=oneflow.int8)
+
+
+    """
+)

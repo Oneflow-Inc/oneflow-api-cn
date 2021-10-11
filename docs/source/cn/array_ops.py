@@ -138,3 +138,93 @@ reset_docstr(
                  
     """,
 )
+
+reset_docstr(
+    oneflow.argwhere,
+    r"""argwhere(input, dtype=flow.int32) -> Tensor
+    
+    返回一个包含所有 :attr:`input` 中非 0 元素的 `index` 的列表。返回列表为一个 tensor，其中元素为坐标值。
+
+    参数：
+        - **input** (oneflow.Tensor): 输入张量
+        - **dtype** (Optional[flow.dtype], 可选): 输出的数据类型，默认为 flow.int32
+
+    返回类型：
+        oneflow.Tensor
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> input = flow.tensor([[0, 1, 0], [2, 0, 2]], dtype=flow.int32)
+        >>> output = flow.argwhere(input)
+        >>> output
+        tensor([[0, 1],
+                [1, 0],
+                [1, 2]], dtype=oneflow.int32)
+
+    """
+)
+
+reset_docstr(
+    oneflow.broadcast_like,
+    r"""broadcast_like(x, like_tensor, broadcast_axes=None) -> Tensor
+    
+    将 :attr:`x` 沿着 :attr:`broadcast_axes` 广播为 :attr:`like_tensor` 的形式。
+
+    参数：
+        - **x** (Tensor): 输入张量
+        - **like_tensor** (Tensor): 参考张量  
+        - **broadcast_axes** (Optional[Sequence], 可选): 想要广播的轴，默认为None。
+
+    返回类型：
+        oneflow.Tensor: 广播输入张量。
+
+    示例：
+
+    .. code:: python
+
+        >>> import oneflow as flow 
+
+        >>> x = flow.randn(3, 1, 1)
+        >>> like_tensor = flow.randn(3, 4, 5)
+        >>> broadcast_tensor = flow.broadcast_like(x, like_tensor, broadcast_axes=[1, 2]) 
+        >>> broadcast_tensor.shape
+        oneflow.Size([3, 4, 5])
+
+    """
+)
+
+reset_docstr(
+    oneflow.cat,
+    r"""cat(inputs, dim=0) -> Tensor
+
+    在指定的维度 :attr:`dim` 上连接两个或以上 tensor。
+
+    类似于 `numpy.concatenate <https://docs.scipy.org/doc/numpy/reference/generated/numpy.concatenate.html>`_
+
+    参数：
+        - **inputs** : 一个包含要连接的 `Tensor` 的 `list` 。
+        - **dim** (int): 要连接的维度。
+
+    返回类型：
+        oneflow.Tensor
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> input1 = flow.randn(2, 6, 5, 3, dtype=flow.float32)
+        >>> input2 = flow.randn(2, 6, 5, 3, dtype=flow.float32)
+        >>> input3 = flow.randn(2, 6, 5, 3, dtype=flow.float32)
+
+        >>> out = flow.cat([input1, input2, input3], dim=1)
+        >>> out.shape
+        oneflow.Size([2, 18, 5, 3])
+    
+    """
+)

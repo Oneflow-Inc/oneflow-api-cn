@@ -1196,3 +1196,95 @@ reset_docstr(
 
     """,
 )
+
+reset_docstr(
+    oneflow.addmm,
+    r"""addmm(beta=1, input, alpha=1, mat1, mat2, out=None) -> Tensor
+    
+    返回对 :attr:`mat1` 和 :attr:`mat2` 进行矩阵乘法的结果与 :attr:`input` 的和。
+    
+    如果 :attr:`mat1` 是一个 :math:`(n \times m)` 张量，同时 :attr:`mat2` 是一个 :math:`(m \times p)` 张量，
+    则 :attr:`input` 必须是可广播为 `(n \times p)` 的张量，:attr:`out` 也必须为 :math:`(n \times p)` 的张量。
+
+    公式为：
+
+    :attr:`alpha` 是 :attr:`mat1` 和 :attr:`mat2` 的矩阵向量乘积的缩放比例因数，
+    :attr:`beta` 是 :attr:`input` 的因数
+
+    .. math::
+        \text{out} = \beta\ \text{input} + \alpha\ (\text{mat1}_i \mathbin{@} \text{mat2}_i)
+
+    如果 :attr:`input` 的类型为 `FloatTensor` 或 `DoubleTensor`，
+    参数 :attr:`beta` 和 :attr:`alpha` 应为实数，否则只能是整数(integers)。
+
+    参数：
+        - **beta** (Number, 可选): :attr:`input` 的因数 (:math:`\beta`)
+        - **input** (Tensor): 作为加数的矩阵
+        - **alpha** (Number, 可选): :math:`mat1 \mathbin{@} mat2` 的因数 (:math:`\alpha`)
+        - **mat1** (Tensor): 作为第一个乘数的矩阵
+        - **mat2** (Tensor): 作为第二个乘数的矩阵
+        - **out** (Tensor, 可选): 输出张量
+
+    返回类型：
+        oneflow.Tensor
+
+    示例：
+    .. code-block:: python
+    
+        >>> import oneflow as flow
+        >>> input = flow.tensor([[1,2,4],[5,11,9.1]], dtype=flow.float64)
+        >>> mat1 = flow.tensor([[7.3,1.9,7.3],[10.2,1,5.5]], dtype=flow.float64)
+        >>> mat2 = flow.tensor([[7.3,1.9,7.3],[10.2,1,5.5],[3.7,2.2,8.1]], dtype=flow.float64)
+        >>> output = flow.addmm(input, mat1, mat2)
+        >>> output
+        tensor([[100.6800,  33.8300, 126.8700],
+                [110.0100,  43.4800, 133.6100]], dtype=oneflow.float64)
+        >>> output.shape
+        oneflow.Size([2, 3])
+
+        >>> input2 = flow.tensor([1.7], dtype=flow.float64)
+        >>> mat1 = flow.tensor([[1,2],[5,9.1],[7.7,1.4]], dtype=flow.float64)
+        >>> mat2 = flow.tensor([[1,2,3.7],[5,9.1,6.8]], dtype=flow.float64)
+        >>> output2 = flow.addmm(input2, mat1, mat2, alpha=1, beta=2)
+        >>> output2
+        tensor([[14.4000, 23.6000, 20.7000],
+                [53.9000, 96.2100, 83.7800],
+                [18.1000, 31.5400, 41.4100]], dtype=oneflow.float64)
+        >>> output2.shape
+        oneflow.Size([3, 3])
+    
+    """
+)
+
+reset_docstr(
+    oneflow.argmax,
+    r"""argmax(input, dim=-1, keepdim=False) -> Tensor
+
+    返回 :attr:`input` 在指定轴上的最大值的 `index` 。
+
+    参数：
+        - **input** (oneflow.Tensor): 输入张量
+        - **dim** (int, 可选): 要计算的维度，默认为最大维度(-1)。
+        - **keepdim** (bool，可选的): 返回值是否保留 input 的原有维数。默认为 False 。
+
+    返回类型：
+        oneflow.Tensor: 包含 :attr:`input` 特定轴最大值的 index 的新张量(dtype=int64)。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.tensor([[1, 3, 8, 7, 2],
+        ...            [1, 9, 4, 3, 2]], dtype=flow.float32)
+        >>> output = flow.argmax(input)
+        >>> output
+        tensor(6, dtype=oneflow.int64)
+        >>> output = flow.argmax(input, dim=1)
+        >>> output
+        tensor([2, 1], dtype=oneflow.int64)
+    
+    """
+
+)
