@@ -28,7 +28,7 @@ reset_docstr(
     oneflow.zeros_like,
     r"""zeros_like(x) -> Tensor
 
-    返回一个元素全部为值为 0 的标量，形状和 `x` 相同。
+    返回一个元素全部为值为 0 的标量，形状和 `x` 相同的 Tensor。
     flow.zeros_like(x) 等价于 flow.zeros(x.shape, dtype=x.dtype)
 
     参数：
