@@ -228,3 +228,92 @@ reset_docstr(
     
     """
 )
+
+reset_docstr(
+    oneflow.eye,
+    r"""eye(n, m=None, dtype=flow.float, device=None, placement=None, sbp=None, requires_grad=False) -> Tensor
+    
+    返回一个二维 tensor ，对角线上的元素为 1 ，其他元素为 0 。
+
+    参数：
+        - **n** (int): 行数
+        - **m** (Optional[int], 可选): 列数，如果为 None ，则默认与 `n` 相值。
+    
+    关键词参数：
+        - **device** (flow.device, 可选): 返回张量的所需设备。如果为 None ，则使用当前设备作为默认张量。
+        - **requires_grad** (bool, 可选): 使用 autograd 记录对返回张量的操作。默认值： `False` 。
+    
+    返回值：
+        oneflow.Tensor: 对角线上为 1，其他地方为 0 的 Blob。
+    
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> out = flow.eye(3, 3)
+        >>> out
+        tensor([[1., 0., 0.],
+                [0., 1., 0.],
+                [0., 0., 1.]], dtype=oneflow.float32)
+    
+    """
+)
+
+reset_docstr(
+    oneflow.flatten,
+    r"""flatten(input, start_dim=0, end_dim=-1) -> Tensor
+    
+    将连续范围的维度展平为 tensor 。
+
+    参数：
+        - **start_dim** (int): 起始维度 (默认为 0)。
+        - **end_dim** (int): 结束维度 (默认为 -1)。
+    
+    示例：
+
+    .. code-block:: python 
+
+        >>> import oneflow as flow
+        >>> input = flow.Tensor(32, 1, 5, 5)
+        >>> output = input.flatten(start_dim=1)
+        >>> output.shape
+        oneflow.Size([32, 25])
+
+    """
+)
+
+reset_docstr(
+    oneflow.flip, 
+    r"""flip(input, dims) -> Tensor
+    
+    沿指定维度 :attr:`dims` 反转 n-D 张量的顺序。
+
+    .. note::
+        有别于 NumPy 的算子 `np.flip` 在一定时间内返回一个 :attr:`input` 的视图，
+        `oneflow.flip` 创建一个 :attr:`input` 的备份。因为创建 tensor 的备份所需的工作量比查看数据 `oneflow.flip` 比 `np.flip` 慢。
+
+    参数：
+        - **input** (Tensor): 输入张量
+        - **dims** (list 或者 tuple): 要翻转的轴
+        
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.arange(0, 8, dtype=flow.float32).reshape(2, 2, -1)
+        >>> input.shape
+        oneflow.Size([2, 2, 2])
+        >>> out = flow.flip(input, [0, 1])
+        >>> out
+        tensor([[[6., 7.],
+                 [4., 5.]],
+        <BLANKLINE>
+                [[2., 3.],
+                 [0., 1.]]], dtype=oneflow.float32)
+
+    """
+)

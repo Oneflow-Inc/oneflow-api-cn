@@ -13,3 +13,5 @@ from .sort_ops import *
 from .chunk import *
 from .arange import *
 from .expand import *
+from .index_select import *
+from .tensor_ops import *

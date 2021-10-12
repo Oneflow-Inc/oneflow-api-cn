@@ -1288,3 +1288,140 @@ reset_docstr(
     """
 
 )
+
+reset_docstr(
+    oneflow.floor,
+    r"""floor(input) -> Tensor
+
+    返回一个新 tensor ，其元素为小于 :attr:`input` 元素的最大整数。
+
+    .. math::
+        \text{out}_{i} = \lfloor \text{input}_{i} \rfloor
+
+    参数:
+        **input** (Tensor): 输入张量
+        
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> input = flow.tensor([-0.5,  1.5, 0,  0.8], dtype=flow.float32)
+        >>> output = flow.floor(input)
+        >>> output.shape
+        oneflow.Size([4])
+        >>> output
+        tensor([-1.,  1.,  0.,  0.], dtype=oneflow.float32)
+        
+        >>> input1 = flow.tensor([[0.8, 1.0], [-0.6, 2.5]], dtype=flow.float32)
+        >>> output1 = input1.floor()
+        >>> output1.shape
+        oneflow.Size([2, 2])
+        >>> output1
+        tensor([[ 0.,  1.],
+                [-1.,  2.]], dtype=oneflow.float32)
+    
+    """
+)
+
+reset_docstr(
+    oneflow.full,
+    r"""full(size, value, dtype=None, device=None, placement=None, sbp=None, requires_grad=False) -> Tensor
+    
+    创建并返回一个大小为 :attr:`size` ，其元素全部为 :attr:`value` 的 tensor。此 tensor 的数据类型与 `value` 相同。
+
+    参数：
+        - **size** (int...): 列表，元组或者描述输出张量的整数 torch.Size
+        - **fill_value** (Scalar): 用于填充输出张量的值
+        - **dtype** (flow.dtype, 可选): 返回张量的数据类型
+        - **device** (flow.device, 可选): 返回张量的所需设备。如果为 None ，使用当前设备
+        - **placement** (flow.placement, 可选): 返回的一致张量的期望位置。如果为 None ，则返回的张量是使用参数 `device` 的本地张量。
+        - **sbp** (flow.sbp.sbp 或 flow.sbp.sbp 的元组, 可选): 返回的一致张量的所需 sbp 描述符。如果为 None ，则返回的张量是使用参数 `device` 的本地张量。
+        - **requires_grad** (bool, 可选): 使用 autograd 记录对返回张量的操作。默认值： `False` 。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> y = flow.full((5,),5)
+        >>> y
+        tensor([5, 5, 5, 5, 5], dtype=oneflow.int64)
+        >>> y = flow.full((2,3),5.0)
+        >>> y
+        tensor([[5., 5., 5.],
+                [5., 5., 5.]], dtype=oneflow.float32)
+
+    """
+)
+
+reset_docstr(
+    oneflow.gelu,
+    r"""gelu(x) -> Tensor
+
+    Gelu 激活算子.
+
+    公式为：
+
+    .. math::
+        out = 0.5 * x * (1 + tanh(\sqrt{\frac{2}{\pi}} * (x + 0.044715x^{3})))
+
+    参数：
+        **x** (oneflow.Tensor): 输入张量
+
+    返回类型：
+         oneflow.Tensor
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.tensor([-0.5, 0, 0.5], dtype=flow.float32)
+        >>> gelu = flow.nn.GELU()
+
+        >>> out = gelu(input)
+        >>> out
+        tensor([-0.1543,  0.0000,  0.3457], dtype=oneflow.float32)
+
+    """
+)
+
+reset_docstr(
+    oneflow.in_top_k,
+    r"""in_top_k(targets, predictions, k) -> Tensor
+    
+    目标是否在前 :attr:`k` 个预测中。
+
+    参数：
+        - **targets** (Tensor): 数据类型为 int32 或 int64 的目标张量
+        - **predictions** (Tensor): float32 类型的预测张量
+        - **k** (int): 要查看计算精度的最大元素的数量
+
+    返回类型：
+        oneflow.Tensor: 元素为 boolean 的张量。k 处的计算精度作 bool 张量值。
+    
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> targets1 = flow.tensor([3, 1], dtype=flow.int32)
+        >>> predictions1 = flow.tensor([[0.0, 1.0, 2.0, 3.0], [3.0, 2.0, 1.0, 0.0],], dtype=flow.float32)
+        >>> out1 = flow.in_top_k(targets1, predictions1, k=1)
+        >>> out1
+        tensor([1, 0], dtype=oneflow.int8)
+        >>> out2 = flow.in_top_k(targets1, predictions1, k=2)
+        >>> out2
+        tensor([1, 1], dtype=oneflow.int8)
+        >>> targets2 = flow.tensor([3, 1], dtype=flow.int32, device=flow.device('cuda'))
+        >>> predictions2 = flow.tensor([[0.0, 1.0, 2.0, 3.0], [3.0, 2.0, 1.0, 0.0],], dtype=flow.float32, device=flow.device('cuda'))
+        >>> out3 = flow.in_top_k(targets2, predictions2, k=1)
+        >>> out3
+        tensor([1, 0], device='cuda:0', dtype=oneflow.int8)
+
+    """
+)
