@@ -227,37 +227,8 @@ The formula is:</p>
 <dd></dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.argmax">
-<code class="sig-name descname"><span class="pre">argmax</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#oneflow.Tensor.int" title="oneflow.Tensor.int"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.argmax" title="Permalink to this definition">¶</a></dt>
-<dd><p>The op computes the index with the largest value of a Tensor at specified axis.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><em>oneflow.Tensor</em></a>) – Input Tensor</p></li>
-<li><p><strong>dim</strong> (<em>int</em><em>, </em><em>optional</em>) – dimension to be calculated. Defaults to the last dim (-1)</p></li>
-<li><p><strong>keepdim</strong> (<em>bool optional</em>) – whether the output tensor has dim retained or not. Ignored if dim=None.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A Tensor(dtype=int64) contains the index with the largest value of <cite>input</cite></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor">oneflow.Tensor</a></p>
-</dd>
-</dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
-<span class="gp">... </span>           <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span>
-<span class="go">tensor(6, dtype=oneflow.int64)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span>
-<span class="go">tensor([2, 1], dtype=oneflow.int64)</span>
-</pre></div>
-</div>
-</dd></dl>
+<code class="sig-name descname"><span class="pre">argmax</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.argmax" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.argsort">
 <code class="sig-name descname"><span class="pre">argsort</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#oneflow.Tensor.int" title="oneflow.Tensor.int"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descending</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.argsort" title="Permalink to this definition">¶</a></dt>
@@ -321,7 +292,8 @@ The formula is:</p>
 <dl class="py method">
 <dt id="oneflow.Tensor.atan2">
 <code class="sig-name descname"><span class="pre">atan2</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.atan2" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>See <a class="reference internal" href="oneflow.html#oneflow.atan2" title="oneflow.atan2"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.atan2()</span></code></a></p>
+</dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.atanh">
 <code class="sig-name descname"><span class="pre">atanh</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.atanh" title="Permalink to this definition">¶</a></dt>
@@ -1213,7 +1185,8 @@ The second argument can be a number or a tensor whose shape is broadcastable wit
 <dl class="py method">
 <dt id="oneflow.Tensor.numel">
 <code class="sig-name descname"><span class="pre">numel</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.numel" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>See <code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.numel()</span></code></p>
+</dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.numpy">
 <code class="sig-name descname"><span class="pre">numpy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.numpy" title="Permalink to this definition">¶</a></dt>
@@ -1275,8 +1248,7 @@ be also set to zero.</p>
 <dl class="py method">
 <dt id="oneflow.Tensor.relu">
 <code class="sig-name descname"><span class="pre">relu</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.relu" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies the rectified linear unit function element-wise. See <a class="reference internal" href="oneflow.html#oneflow.relu" title="oneflow.relu"><code class="xref py py-class docutils literal notranslate"><span class="pre">relu</span></code></a> for more details.</p>
-</dd></dl>
+<dd></dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.repeat">
 <code class="sig-name descname"><span class="pre">repeat</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">sizes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.repeat" title="Permalink to this definition">¶</a></dt>
@@ -1947,32 +1919,7 @@ the indices are the indices of the elements in the original input tensor.</p>
 <dl class="py method">
 <dt id="oneflow.Tensor.transpose">
 <code class="sig-name descname"><span class="pre">transpose</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.transpose" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a tensor that is a transposed version of input. The given dimensions dim0 and dim1 are swapped.</p>
-<p>The resulting out tensor shares its underlying storage with the input tensor, so changing the content of one would change the content of the other.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><em>oneflow.Tensor</em></a>) – The input tensor.</p></li>
-<li><p><strong>dim0</strong> (<em>int</em>) – the first dimension to be transposed.</p></li>
-<li><p><strong>dim1</strong> (<em>int</em>) – the second dimension to be transposed.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A transposed tensor.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor">Tensor</a></p>
-</dd>
-</dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span>
-<span class="go">oneflow.Size([6, 2, 5, 3])</span>
-</pre></div>
-</div>
+<dd><p>See <a class="reference internal" href="oneflow.html#oneflow.transpose" title="oneflow.transpose"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.transpose()</span></code></a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.tril">

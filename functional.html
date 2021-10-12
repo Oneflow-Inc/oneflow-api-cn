@@ -303,14 +303,24 @@ several input planes.</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.functional.relu">
-<code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">relu</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.relu" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies the rectified linear unit function element-wise. See
-<a class="reference internal" href="nn.html#oneflow.nn.ReLU" title="oneflow.nn.ReLU"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReLU</span></code></a> for more details.</p>
+<code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">relu</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.relu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the rectified linear unit function element-wise. See <a class="reference internal" href="nn.html#oneflow.nn.ReLU" title="oneflow.nn.ReLU"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReLU</span></code></a> for more details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>inplace</strong> – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, will do this operation in-place. Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
 </dd>
 </dl>
+<p>For examples:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ndarr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">ndarr</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span>
+<span class="go">tensor([1., 0., 3.], dtype=oneflow.float32)</span>
+</pre></div>
+</div>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.functional.hardsigmoid">
@@ -528,11 +538,11 @@ Default: <code class="docutils literal notranslate"><span class="pre">'constant'
 <a class="reference internal" href="nn.html#oneflow.nn.PReLU" title="oneflow.nn.PReLU"><code class="xref py py-class docutils literal notranslate"><span class="pre">PReLU</span></code></a> for more details.</p>
 </dd></dl>
 <dl class="py function">
-<dt id="oneflow.nn.functional.log_sigmoid">
-<code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">log_sigmoid</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.log_sigmoid" title="Permalink to this definition">¶</a></dt>
+<dt id="oneflow.nn.functional.logsigmoid">
+<code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">logsigmoid</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.logsigmoid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Applies the element-wise function:</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{log_sigmoid}(x) = \log\left(\frac{ 1 }{ 1 + \exp(-x)}\right)\]</div></div>
+\[\text{logsigmoid}(x) = \log\left(\frac{ 1 }{ 1 + \exp(-x)}\right)\]</div></div>
 <p>For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
@@ -540,7 +550,7 @@ Default: <code class="docutils literal notranslate"><span class="pre">'constant'
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">log_sigmoid</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">logsigmoid</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span>
 <span class="go">tensor([-0.9741, -0.6931, -0.4741], dtype=oneflow.float32)</span>
 </pre></div>
