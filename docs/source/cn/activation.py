@@ -74,3 +74,31 @@ reset_docstr(
 
     """,
 )
+
+reset_docstr(
+    oneflow.mish,
+    r"""
+    mish(x: Tensor) -> Tensor 
+
+    应用此 element-wise 公式：
+
+    .. math::
+        \text{mish}(x) = x * \text{tanh}(\text{softplus}(x))
+
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.tensor([1, 2, 3], dtype=flow.float32)       
+
+        >>> out = flow.mish(input)
+        >>> out
+        tensor([0.8651, 1.9440, 2.9865], dtype=oneflow.float32)
+
+    更多细节参考 :class:`~oneflow.nn.Mish` 。
+    
+    """
+)

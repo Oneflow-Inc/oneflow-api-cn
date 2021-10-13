@@ -15,3 +15,6 @@ from .arange import *
 from .expand import *
 from .index_select import *
 from .tensor_ops import *
+from .logical_ops import *
+from .reduce_ops import *
+from .meshgrid import *

@@ -317,3 +317,72 @@ reset_docstr(
 
     """
 )
+
+reset_docstr(
+    oneflow.masked_fill,
+    r"""masked_fill(input, mask, value) -> Tensor
+
+    如果参数 :attr:`mask` 为 True ，则在 :attr:`input` 中填充 :attr:`value` 。
+    参数 :attr:`mask` 的形状必须能被广播为 :attr:`input` 的形状。
+
+    参数：
+        - **input** (Tensor): 被填充的张量
+        - **mask** (BoolTensor): 决定是否填充的 boolean 张量
+        - **value** (float): 要填充的值
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> fill_value = 8.7654321 # random value e.g. -1e9 3.1415
+        >>> input = flow.tensor([[[-0.13169311,  0.97277078,  1.23305363,  1.56752789],
+        ...                       [-1.51954275,  1.87629473, -0.53301206,  0.53006478],
+        ...                       [-1.38244183, -2.63448052,  1.30845795, -0.67144869]],
+        ...                      [[ 0.41502161,  0.14452418,  0.38968   , -1.76905653],
+        ...                       [ 0.34675095, -0.7050969 , -0.7647731 , -0.73233418],
+        ...                       [-1.90089858,  0.01262963,  0.74693893,  0.57132389]]], dtype=flow.float32)
+        >>> mask = flow.gt(input, 0)
+        >>> output = flow.masked_fill(input, mask, fill_value)
+        >>> output
+        tensor([[[-0.1317,  8.7654,  8.7654,  8.7654],
+                 [-1.5195,  8.7654, -0.5330,  8.7654],
+                 [-1.3824, -2.6345,  8.7654, -0.6714]],
+        <BLANKLINE>
+                [[ 8.7654,  8.7654,  8.7654, -1.7691],
+                 [ 8.7654, -0.7051, -0.7648, -0.7323],
+                 [-1.9009,  8.7654,  8.7654,  8.7654]]], dtype=oneflow.float32)
+
+    """    
+)
+
+reset_docstr(
+    oneflow.masked_select,
+    r"""masked_select(input, mask) -> Tensor
+
+    返回一个新的 tensor ，其元素为依据 :attr:`mask` 的真实值在 :attr:`input` 中索引的元素。
+
+    :attr:`mask` 是一个 BoolTensor （在 oneflow 中， BoolTensor 被替换为 Int8Tensor ）
+
+    参数 :attr:`mask` 的形状必须能被广播为 :attr:`input` 的形状。
+
+    参数：
+        - **input** (Tensor): 输入张量
+        - **mask** (Tensor): 包含要索引的二进制掩码的张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.tensor([[-0.4620, 0.3139], [0.3898, -0.7197], [0.0478, -0.1657]], dtype=flow.float32)
+        >>> mask = input.gt(0.05)
+        >>> out = flow.masked_select(input, mask)
+        >>> out
+        tensor([0.3139, 0.3898], dtype=oneflow.float32)
+    
+    """
+)
+

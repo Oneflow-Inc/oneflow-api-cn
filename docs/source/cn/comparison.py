@@ -89,3 +89,32 @@ reset_docstr(
 
     """
 )
+
+reset_docstr(
+    oneflow.lt,
+    r"""lt(input, other) -> Tensor
+
+    返回一个张量，其元素为 :math:`input < other` 的逐元素真实值
+
+    参数：
+        - **input** (oneflow.Tensor): 输入张量
+        - **other** (oneflow.Tensor): 输入张量
+
+    返回类型：
+        oneflow.Tensor: 数据类型为 int8 的张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input1 = flow.tensor([1, 2, 3], dtype=flow.float32)
+        >>> input2 = flow.tensor([1, 2, 4], dtype=flow.float32)
+
+        >>> out = flow.lt(input1, input2)
+        >>> out
+        tensor([0, 0, 1], dtype=oneflow.int8)
+    
+    """
+)

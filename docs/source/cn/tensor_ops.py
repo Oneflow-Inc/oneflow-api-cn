@@ -28,7 +28,7 @@ reset_docstr(
     oneflow.is_nonzero,
     r"""is_nonzero(input) -> Tensor
     
-    如果 :attr:`input` 是转换类型后不等于值为 0 的单元素张量
+    如果 :attr:`input` 是转换类型后不等于值为 0 的单元素张量的张量
     （ :attr:`flow.tensor([0.])` 或者 :attr:`flow.tensor([0])` ）返回 True 。
 
     报告 :attr:`RuntimeError` 如果 :attr:`input.shape.numel()!=1`
