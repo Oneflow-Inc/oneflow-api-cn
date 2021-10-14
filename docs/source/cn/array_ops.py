@@ -386,3 +386,109 @@ reset_docstr(
     """
 )
 
+reset_docstr(
+    oneflow.nonzero,
+    r"""nonzero(input, as_tuple=False) -> Tensor or tuple of Tensors
+
+    .. note::
+        当 :attr:`as_tuple` 默认为 ``False`` 时，返回一个 2-D tensor，每一行是一个非 0 值的索引（index）。
+
+        当 :attr:`as_tuple` 为 ``True`` 时，返回一个包含 1-D 索引张量的元组，允许高级索引，
+        因此 ``x[x.nonzero(as_tuple=True)]`` 给出 ``x`` 的所有非 0 值。在返回的元组中，每个
+        索引张量包含特定维度的非 0 元素的索引。
+
+        有关这两种情况的更多详细信息，请参见下文。
+
+    **当** :attr:`as_tuple` **为** ``False`` **时（默认）** ：
+
+    返回一个 tensor 包含所有 :attr:`input` 中非 0 元素的索引（index）。结果中的每一行包含 :attr:`input` 中一个
+    非 0 元素的索引，结果按字典顺序排序，对最后一个索引的改变最快（C-style）。
+
+    如果 :attr:`input` 的维度数为 :math:`n` ，则结果索引张量 :attr:`out` 的形状为 :math:`(z \\times n)` ，
+    :math:`z` 是 :attr:`input` 中非 0 元素的数量。
+
+    **当** :attr:`as_tuple` **为** ``True`` **时**：
+
+    返回一个包含 1-D 张量的元组，每个张量分别对应 :attr:`input` 的每个维度，并包含 :attr:`input` 当前维度中所有非
+    0 元素的索引。
+
+    如果 :attr:`input` 的维度数为 :math:`n` ，则此返回元组包含 :math:`n` 个大小为 :math:`z` 的张量， :math:`z` 
+    为 :attr:`input` 中非 0 元素的总数。
+
+    有一种特殊情况是，当 :attr:`input` 是 0 维张量并且有一个非 0 的标量值，则被视为一个只有一个元素的 1 维张量
+    As a special case, when :attr:`input` has zero dimensions and a nonzero scalar
+    value, it is treated as a one-dimensional tensor with one element.
+
+    参数：
+        **input** (Tensor): 输入张量
+
+    关键词参数：
+        **out** (Tensor, optional): 包含索引的输出张量
+
+    返回类型：
+        如果 :attr:`as_tuple` 为 ``False`` ，则返回 oneflow.Tensor ，其元素为 :attr:`input` 中的索引。
+        如果 :attr:`as_tuple` 为 ``True`` ，则返回包含 oneflow.Tensor 的元组，
+        每个张量包含非 0 元素在当前维度的索引。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> flow.nonzero(flow.tensor([1, 1, 1, 0, 1]))
+        tensor([[0],
+                [1],
+                [2],
+                [4]], dtype=oneflow.int32)
+        >>> flow.nonzero(flow.tensor([[0.6, 0.0, 0.0, 0.0],
+        ...                             [0.0, 0.4, 0.0, 0.0],
+        ...                             [0.0, 0.0, 1.2, 0.0],
+        ...                             [0.0, 0.0, 0.0,-0.4]]))
+        tensor([[0, 0],
+                [1, 1],
+                [2, 2],
+                [3, 3]], dtype=oneflow.int32)
+        >>> flow.nonzero(flow.tensor([1, 1, 1, 0, 1]), as_tuple=True)
+        (tensor([0, 1, 2, 4], dtype=oneflow.int32),)
+        >>> flow.nonzero(flow.tensor([[0.6, 0.0, 0.0, 0.0],
+        ...                             [0.0, 0.4, 0.0, 0.0],
+        ...                             [0.0, 0.0, 1.2, 0.0],
+        ...                             [0.0, 0.0, 0.0,-0.4]]), as_tuple=True)
+        (tensor([0, 1, 2, 3], dtype=oneflow.int32), tensor([0, 1, 2, 3], dtype=oneflow.int32))
+        >>> flow.nonzero(flow.tensor(5), as_tuple=True)
+        (tensor([0], dtype=oneflow.int32),)
+
+    """
+)
+
+reset_docstr(
+    oneflow.reshape,
+    r"""reshape(input, shape=None) -> Tensor
+
+    返回一个新张量，此张量为改变形状的 :attr:`input` 。
+
+    我们可以将 :attr:`shape` 中的一个维度设置为 `-1` ，算子会自动推断出完整的形状。
+
+    参数：
+        - **input**: 输入张量
+        - **shape**: 输出张量的形状
+
+    返回类型：
+        oneflow.Tensor: 数据类型与 :attr:`input` 相同的张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> input = flow.tensor(
+        ...    [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]], dtype=flow.float32
+        ... )
+
+        >>> y = flow.reshape(input, shape=[2, 2, 2, -1]).shape
+        >>> y
+        oneflow.Size([2, 2, 2, 2])
+
+    """
+)

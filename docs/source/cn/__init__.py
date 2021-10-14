@@ -18,3 +18,5 @@ from .tensor_ops import *
 from .logical_ops import *
 from .reduce_ops import *
 from .meshgrid import *
+from .random_ops import *
+from .loss_ops import *

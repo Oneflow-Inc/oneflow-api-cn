@@ -62,12 +62,10 @@ reset_docstr(
     .. code-block:: python
 
 
-        >>> import numpy as np
         >>> import oneflow as flow
         
         >>> m = flow.nn.Hardtanh()
-        >>> arr = np.array([0.2, 0.3, 3.0, 4.0])
-        >>> x = flow.Tensor(arr)
+        >>> x = flow.tensor([0.2, 0.3, 3.0, 4.0], dtype=flow.float32)
         >>> out = m(x)
         >>> out
         tensor([0.2000, 0.3000, 1.0000, 1.0000], dtype=oneflow.float32)

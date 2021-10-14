@@ -95,3 +95,31 @@ reset_docstr(
 
     """
 )
+
+reset_docstr(
+    oneflow.prod,
+    r"""prod(input, dim=None, keepdim=False) -> Tensor
+    
+    在给定轴上计算 :attr:`input` 中每行中元素的乘积，并返回一个包含结果的新 tensor 。
+    
+    注意： `如果参数 dim 为 None ，返回一个只有一个元素的 tensor ，其元素为 input 中所有数之积`
+
+    参数：
+        - **input** (Tensor): 输入源张量
+        - **dim** (int): 要做乘法的轴
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> input = flow.Tensor([[1, 2, 3], [4, 5, 6]])
+        >>> flow.prod(input)
+        tensor(720., dtype=oneflow.float32)
+        >>> flow.prod(input, dim=0)
+        tensor([ 4., 10., 18.], dtype=oneflow.float32)
+        >>> flow.prod(input, dim=1)
+        tensor([  6., 120.], dtype=oneflow.float32)
+
+    """
+)
