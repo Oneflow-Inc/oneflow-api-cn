@@ -6,7 +6,7 @@ reset_docstr(
     r"""arange(start=0, end, step=1, *, dtype=kInt64, device=None, requires_grad=Flase) -> Tensor
 
     返回一个大小为 :math:`\left\lfloor \frac{\text{end} - \text{start}}{\text{step}} \right\rfloor + 1`
-    ， 其 元素为从 :attr:`start` （包括）到 :attr:`end` （不包括）跨度为 :attr:`step` 的所有整数。
+    ， 其元素为从 :attr:`start` （包括）到 :attr:`end` （不包括）跨度为 :attr:`step` 的所有整数。
 
     公式为：
 
