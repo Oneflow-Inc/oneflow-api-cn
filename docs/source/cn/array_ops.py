@@ -5,7 +5,7 @@ reset_docstr(
     oneflow.diag,
     r"""diag(x, diagonal=0) -> Tensor
 
-    如果 :attr:`x` 是一个向量（一维张量），返回一个个二维平方张量，其中 :attr:`x` 的元素作为对角线。
+    如果 :attr:`x` 是一个向量（一维张量），返回一个二维平方张量，其中 :attr:`x` 的元素作为对角线。
     如果 :attr:`x` 是一个矩阵（二维张量），返回一个一维张量，其元素为 :attr:`x` 的对角线元素。
 
     参数：
