@@ -5,7 +5,7 @@ reset_docstr(
     oneflow.max,
     r"""max(input, dim=None, keepdim=False) -> Tensor
 
-    返回一个包含 :attr:`input` 中元素最大值的 tensor.
+    返回 :attr:`input` 中的最大值。
     
     参数：
         - **input** (oneflow.Tensor): 输入张量
@@ -15,8 +15,8 @@ reset_docstr(
     返回类型：
         张量或元组（oneflow.Tensor, oneflow.Tensor(dtype=int64)）：
         如果参数 :attr:`dim` 是 `None` ，返回 :attr:`input` 所有元素中的最大值。如果 :attr:`dim` 不是 `None` ，
-        则返回一个包含张量的元组(values, indices)， `values` 是 :attr:`input` 当前轴的最大值，
-        `indices` 是最大值在 :attr:`input` 中当前轴的索引。
+        则返回一个包含张量的元组(values, indices)， `values` 是 :attr:`input` 当前维度的最大值，
+        `indices` 是最大值在 :attr:`input` 中当前维度的索引。
 
     示例：
 
@@ -66,7 +66,7 @@ reset_docstr(
     oneflow.min,
     r"""min(input, dim=None, keepdim=False) -> Tensor
 
-    返回一个包含 :attr:`input` 中元素最小值的 tensor.
+    返回 :attr:`input` 中的最小值。
     
     参数：
         - **input** (oneflow.Tensor): 输入张量
@@ -76,8 +76,8 @@ reset_docstr(
     返回类型：
         张量或元组（oneflow.Tensor, oneflow.Tensor(dtype=int64)）：
         如果参数 :attr:`dim` 是 `None` ，返回 :attr:`input` 所有元素中的最小值。如果 :attr:`dim` 不是 `None` ，
-        则返回一个包含张量的元组(values, indices)， `values` 是 :attr:`input` 当前轴的最小值，
-        `indices` 是最小值在 :attr:`input` 中当前轴的索引。
+        则返回一个包含张量的元组(values, indices)， `values` 是 :attr:`input` 当前维度的最小值，
+        `indices` 是最小值在 :attr:`input` 中当前维度的索引。
     
     示例：
 
@@ -100,13 +100,13 @@ reset_docstr(
     oneflow.prod,
     r"""prod(input, dim=None, keepdim=False) -> Tensor
     
-    在给定轴上计算 :attr:`input` 中每行中元素的乘积，并返回一个包含结果的新 tensor 。
+    在给定维度上计算 :attr:`input` 中每行中元素的乘积，并返回一个包含结果的新 tensor 。
     
     注意： `如果参数 dim 为 None ，返回一个只有一个元素的 tensor ，其元素为 input 中所有数之积`
 
     参数：
         - **input** (Tensor): 输入源张量
-        - **dim** (int): 要做乘法的轴
+        - **dim** (int): 要做乘法的维度
 
     示例：
 

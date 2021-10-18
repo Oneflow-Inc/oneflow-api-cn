@@ -64,7 +64,7 @@ reset_docstr(
     oneflow.eq,
     r"""oneflow.eq(input, other) -> Tensor
     
-    计算元素的相等性，第二个参数应可以广播为第一个参数的形状。
+    返回 :math:`input == other` 的 element-wise 真实值。
 
     参数：
         - **input** (oneflow.Tensor): 要去对比的张量
@@ -94,7 +94,7 @@ reset_docstr(
     oneflow.lt,
     r"""lt(input, other) -> Tensor
 
-    返回一个张量，其元素为 :math:`input < other` 的逐元素真实值
+    返回 :math:`input < other` 的 element-wise 真实值。
 
     参数：
         - **input** (oneflow.Tensor): 输入张量

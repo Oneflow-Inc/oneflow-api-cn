@@ -20,3 +20,5 @@ from .reduce_ops import *
 from .meshgrid import *
 from .random_ops import *
 from .loss_ops import *
+from .narrow import *
+from .autograd_mode import *

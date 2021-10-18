@@ -5,7 +5,7 @@ reset_docstr(
     oneflow.repeat,
     r"""repeat(input, *sizes) -> Tensor
     
-    沿指定轴通过重复使 :attr:`input` 尺寸变大，并返回。
+    沿指定维度通过重复使 :attr:`input` 尺寸变大，并返回。
 
     参数：
         - **x** (oneflow.Tensor): 输入张量

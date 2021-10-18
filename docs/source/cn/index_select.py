@@ -16,7 +16,7 @@ reset_docstr(
 
     参数：
         - **input** (Tensor): 源张量
-        - **dim** (int): :attr:`index` 沿的轴
+        - **dim** (int): :attr:`index` 沿的维度
         - **index** (Tensor): 包含要索引的 :attr:`index` 的一维张量
     
     示例：

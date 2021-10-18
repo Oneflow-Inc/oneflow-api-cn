@@ -4,7 +4,7 @@ from docreset import reset_docstr
 reset_docstr(
     oneflow.no_grad,
     r"""
-    禁用梯度计算上下文管理器。
+    禁用梯度计算的上下文管理器。
 
     当确定不调用 Tensor.backward() 时，禁用梯度计算对于推理很有用，此操作相比 requires_grad=True 
     时可以减少计算的内存消耗。

@@ -1201,7 +1201,7 @@ reset_docstr(
     oneflow.addmm,
     r"""addmm(beta=1, input, alpha=1, mat1, mat2, out=None) -> Tensor
     
-    返回对 :attr:`mat1` 和 :attr:`mat2` 进行矩阵乘法的结果与 :attr:`input` 的和。
+    对 :attr:`mat1` 和 :attr:`mat2` 进行矩阵乘法，并且将结果与 :attr:`input` 相加求和后，返回计算结果。
     
     如果 :attr:`mat1` 是一个 :math:`(n \times m)` 张量，同时 :attr:`mat2` 是一个 :math:`(m \times p)` 张量，
     则 :attr:`input` 必须是可广播为 `(n \times p)` 的张量，:attr:`out` 也必须为 :math:`(n \times p)` 的张量。
@@ -1214,7 +1214,7 @@ reset_docstr(
     .. math::
         \text{out} = \beta\ \text{input} + \alpha\ (\text{mat1}_i \mathbin{@} \text{mat2}_i)
 
-    如果 :attr:`input` 的类型为 `FloatTensor` 或 `DoubleTensor`，
+    如果 :attr:`input` 的类型为 `float` 或 `double`，
     参数 :attr:`beta` 和 :attr:`alpha` 应为实数，否则只能是整数(integers)。
 
     参数：
@@ -1260,7 +1260,7 @@ reset_docstr(
     oneflow.argmax,
     r"""argmax(input, dim=-1, keepdim=False) -> Tensor
 
-    返回 :attr:`input` 在指定轴上的最大值的 `index` 。
+    返回 :attr:`input` 在指定维度上的最大值的 `index` 。
 
     参数：
         - **input** (oneflow.Tensor): 输入张量
@@ -1268,7 +1268,7 @@ reset_docstr(
         - **keepdim** (bool，可选的): 返回值是否保留 input 的原有维数。默认为 False 。
 
     返回类型：
-        oneflow.Tensor: 包含 :attr:`input` 特定轴最大值的 index 的新张量(dtype=int64)。
+        oneflow.Tensor: 包含 :attr:`input` 特定维度最大值的 index 的新张量(dtype=int64)。
 
     示例：
 
@@ -1293,7 +1293,7 @@ reset_docstr(
     oneflow.floor,
     r"""floor(input) -> Tensor
 
-    返回一个新 tensor ，其元素为小于 :attr:`input` 元素的最大整数。
+    返回一个新 tensor ，其元素为对 :attr:`input` 向下取整的结果。
 
     .. math::
         \text{out}_{i} = \lfloor \text{input}_{i} \rfloor
@@ -1333,11 +1333,11 @@ reset_docstr(
 
     参数：
         - **size** (int...): 列表，元组或者描述输出张量的整数 torch.Size
-        - **fill_value** (Scalar): 用于填充输出张量的值
+        - **fill_value** (Number): 用于填充输出张量的值
         - **dtype** (flow.dtype, 可选): 返回张量的数据类型
         - **device** (flow.device, 可选): 返回张量的所需设备。如果为 None ，使用当前设备
-        - **placement** (flow.placement, 可选): 返回的一致张量的期望位置。如果为 None ，则返回的张量是使用参数 `device` 的本地张量。
-        - **sbp** (flow.sbp.sbp 或 flow.sbp.sbp 的元组, 可选): 返回的一致张量的所需 sbp 描述符。如果为 None ，则返回的张量是使用参数 `device` 的本地张量。
+        - **placement** (flow.placement, 可选): 返回的consistent tensor的期望位置。如果为 None ，则返回的张量是使用参数 `device` 的本地张量。
+        - **sbp** (flow.sbp.sbp 或 flow.sbp.sbp 的元组, 可选): 返回的consistent tensor的所需 sbp 描述符。如果为 None ，则返回的张量是使用参数 `device` 的本地张量。
         - **requires_grad** (bool, 可选): 使用 autograd 记录对返回张量的操作。默认值： `False` 。
 
     示例：
@@ -1401,7 +1401,7 @@ reset_docstr(
         - **k** (int): 要查看计算精度的最大元素的数量
 
     返回类型：
-        oneflow.Tensor: 元素为 boolean 的张量。k 处的计算精度作 bool 张量值。
+        oneflow.Tensor: 元素为 bool 的张量。k 处的计算精度作 bool 张量值。
     
     示例：
 

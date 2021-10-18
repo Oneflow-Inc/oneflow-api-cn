@@ -6,7 +6,7 @@ reset_docstr(
     r"""
     bernoulli(x, *, generator=None, out=None)
     
-    返回一个Tensor其参数为伯努利分布的二进制随机数(0 / 1) 。
+    返回一个 Tensor，起元素为0或1，且符合伯努利分布 。
 
     参数：
         - **x** (Tensor)： 伯努利分布的概率值的输入张量

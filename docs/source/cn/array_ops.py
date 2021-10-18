@@ -5,13 +5,16 @@ reset_docstr(
     oneflow.diag,
     r"""diag(x, diagonal=0) -> Tensor
 
-    如果 :attr:`x` 是一个向量（一维张量），返回一个个二维平方张量，其中 :attr:`x` 的元素作为对角线。
+    如果 :attr:`x` 是一个向量（一维张量），返回一个二维平方张量，其中 :attr:`x` 的元素作为对角线。
     如果 :attr:`x` 是一个矩阵（二维张量），返回一个一维张量，其元素为 :attr:`x` 的对角线元素。
 
+    参数 :attr:`diagonal` 决定要考虑哪条对角线：
+        - 如果 diagonal = 0，则考虑主对角线
+        - 如果 diagonal > 0，则考虑主对角线上方
+        - 如果 diagonal < 0，则考虑主对角线下方
     参数：
         - **x** (Tensor): 输入张量
-        - **diagonal** (Optional[Int32], 0): 要考虑的对角线
-            如果 diagonal = 0，则考虑主对角线，如果 diagonal > 0，则考虑主对角线上方，如果 diagonal < 0，则考虑主对角线下方。默认为0。
+        - **diagonal** (Optional[Int32], 0): 要考虑的对角线（默认为0）
     
     返回类型：
         oneflow.Tensor
@@ -38,12 +41,12 @@ reset_docstr(
     oneflow.tril,
     r"""tril(x, diagonal=0) -> Tensor
     
-    返回输入矩阵（二维张量）或矩阵批的沿指定对角线的下三角部分，结果张量的其他元素设置为 0。
+    返回输入矩阵（二维张量）或矩阵批次的沿指定对角线的下三角部分，结果张量的其他元素设置为 0。
     
     .. note::
-        如果 diagonal = 0，返回张量的对角线是主对角线，
-        如果 diagonal > 0，返回张量的对角线在主对角线之上，
-        如果 diagonal < 0，返回张量的对角线在主对角线之下。
+        - 如果 diagonal = 0，返回张量的对角线是主对角线
+        - 如果 diagonal > 0，返回张量的对角线在主对角线之上
+        - 如果 diagonal < 0，返回张量的对角线在主对角线之下
 
     参数：
         - **x** (Tensor): 输入张量 
@@ -71,7 +74,7 @@ reset_docstr(
     oneflow.triu,
     r"""triu(x, diagonal=0) -> Tensor
 
-    返回输入矩阵（二维张量）或矩阵批的沿指定对角线的上三角部分，结果张量的其他元素设置为 0。
+    返回输入矩阵（二维张量）或矩阵批次的沿指定对角线的上三角部分，结果张量的其他元素设置为 0。
     
     参数：
         - **x** (Tensor): 输入张量 
@@ -177,7 +180,7 @@ reset_docstr(
     参数：
         - **x** (Tensor): 输入张量
         - **like_tensor** (Tensor): 参考张量  
-        - **broadcast_axes** (Optional[Sequence], 可选): 想要广播的轴，默认为None。
+        - **broadcast_axes** (Optional[Sequence], 可选): 想要广播的维度，默认为None。
 
     返回类型：
         oneflow.Tensor: 广播输入张量。
@@ -244,7 +247,7 @@ reset_docstr(
         - **requires_grad** (bool, 可选): 使用 autograd 记录对返回张量的操作。默认值： `False` 。
     
     返回值：
-        oneflow.Tensor: 对角线上为 1，其他地方为 0 的 Blob。
+        oneflow.Tensor: 对角线上为 1，其他地方为 0 的 tensor 。
     
     示例：
 
@@ -265,7 +268,7 @@ reset_docstr(
     oneflow.flatten,
     r"""flatten(input, start_dim=0, end_dim=-1) -> Tensor
     
-    将连续范围的维度展平为 tensor 。
+    将 tensor 指定连续范围的维度展平。
 
     参数：
         - **start_dim** (int): 起始维度 (默认为 0)。
@@ -296,7 +299,7 @@ reset_docstr(
 
     参数：
         - **input** (Tensor): 输入张量
-        - **dims** (list 或者 tuple): 要翻转的轴
+        - **dims** (list 或者 tuple): 要翻转的维度
         
     示例：
 
@@ -416,8 +419,6 @@ reset_docstr(
     为 :attr:`input` 中非 0 元素的总数。
 
     有一种特殊情况是，当 :attr:`input` 是 0 维张量并且有一个非 0 的标量值，则被视为一个只有一个元素的 1 维张量
-    As a special case, when :attr:`input` has zero dimensions and a nonzero scalar
-    value, it is treated as a one-dimensional tensor with one element.
 
     参数：
         **input** (Tensor): 输入张量
@@ -465,9 +466,9 @@ reset_docstr(
     oneflow.reshape,
     r"""reshape(input, shape=None) -> Tensor
 
-    返回一个新张量，此张量为改变形状的 :attr:`input` 。
+    返回一个新张量，此张量的内容为输入 :attr:`input`，形状为指定的 :attr:`shape`。
 
-    我们可以将 :attr:`shape` 中的一个维度设置为 `-1` ，算子会自动推断出完整的形状。
+    我们可以将 :attr:`shape` 中的某一个维度设置为 `-1` ，算子会自动推断出完整的形状。
 
     参数：
         - **input**: 输入张量
