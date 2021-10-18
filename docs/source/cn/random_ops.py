@@ -28,14 +28,14 @@ reset_docstr(
     .. code-block:: python
 
         >>> import oneflow as flow
-        >>> x = flow.rand(3,3)
+        >>> x = flow.rand(3,3) # 构造 local tensor
         >>> x.shape
         oneflow.Size([3, 3])
         >>> x.is_consistent
         False
         >>> placement = flow.placement("cpu", {0: [0]})
         >>> sbp = flow.sbp.broadcast
-        >>> x = flow.rand(3, 3, placement=placement, sbp=sbp)
+        >>> x = flow.rand(3, 3, placement=placement, sbp=sbp) # 构造 consistent tensor
         >>> x.is_consistent
         True
 
@@ -73,14 +73,14 @@ reset_docstr(
     .. code-block:: python
 
         >>> import oneflow as flow
-        >>> x = flow.randn(3,3)
+        >>> x = flow.randn(3,3) # 构造 local tensor
         >>> x.shape
         oneflow.Size([3, 3])
         >>> x.is_consistent
         False
         >>> placement = flow.placement("cpu", {0:[0]})
         >>> sbp = flow.sbp.broadcast
-        >>> x = flow.randn(3,3,placement=placement,sbp=sbp)
+        >>> x = flow.randn(3,3,placement=placement,sbp=sbp) # 构造 consistent tensor
         >>> x.is_consistent
         True
 
@@ -120,10 +120,17 @@ reset_docstr(
         >>> import oneflow as flow
         >>> generator = flow.Generator()
         >>> generator.manual_seed(0)
-        >>> flow.randint(0, 5, (3,3), generator=generator)
+        >>> y = flow.randint(0, 5, (3,3), generator=generator)
+        >>> y
         tensor([[2, 2, 3],
                 [4, 3, 4],
                 [2, 4, 2]], dtype=oneflow.int64)
+        >>> y.is_consistent
+        False
+        >>> placement = flow.placement("cpu", {0: [0]})
+        >>> y = flow.randint(0, 5, (3,3), generator=generator, placement=placement, sbp=flow.sbp.broadcast) # 构造 consistent tensor
+        >>> y.is_consistent
+        True
 
     """
 )
@@ -158,7 +165,15 @@ reset_docstr(
         >>> import oneflow as flow
         >>> generator = flow.Generator()
         >>> generator.manual_seed(0)
-        >>> flow.randperm(5, generator=generator)
+        >>> y = flow.randperm(5, generator=generator)
+        >>> y
         tensor([2, 4, 3, 0, 1], dtype=oneflow.int32)
+        >>> y.is_consistent
+        False
+        >>> placement = flow.placement("cpu", {0: [0]})
+        >>> y = flow.randperm(5, generator=generator, placement=placement, sbp=flow.sbp.broadcast) # 构造 consistent tensor
+        >>> y.is_consistent
+        True
+        
     """
 )

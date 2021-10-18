@@ -1345,13 +1345,17 @@ reset_docstr(
     .. code-block:: python
 
         >>> import oneflow as flow
-        >>> y = flow.full((5,),5)
+        >>> y = flow.full((5,),5) 
         >>> y
         tensor([5, 5, 5, 5, 5], dtype=oneflow.int64)
-        >>> y = flow.full((2,3),5.0)
+        >>> y = flow.full((2,3),5.0) # 构造 local tensor
         >>> y
         tensor([[5., 5., 5.],
                 [5., 5., 5.]], dtype=oneflow.float32)
+        >>> placement = flow.placement("cpu", {0: [0]})
+        >>> y = flow.full((2,3),5.0, placement=placement, sbp=flow.sbp.broadcast)  # 构造 consistent tensor
+        >>> y.is_consistent
+        True
 
     """
 )
