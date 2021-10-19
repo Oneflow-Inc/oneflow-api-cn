@@ -10,11 +10,11 @@ reset_docstr(
 
 
     参数：
-        - **input** (oneflow.Tensor): 输入张量
-        - **other** (oneflow.Tensor): 计算 `and` 逻辑的另一个张量
+        - **input** (oneflow.tensor): 输入张量
+        - **other** (oneflow.tensor): 计算 `and` 逻辑的另一个张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -40,11 +40,11 @@ reset_docstr(
     值为 0 的元素被视作 `False` ，非 0 元素被视作 `True` 。
 
     参数：
-        - **input** (oneflow.Tensor): 输入张量
-        - **other** (oneflow.Tensor): 计算 `or` 逻辑的另一个张量
+        - **input** (oneflow.tensor): 输入张量
+        - **other** (oneflow.tensor): 计算 `or` 逻辑的另一个张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -70,11 +70,11 @@ reset_docstr(
     值为 0 的元素被视作 `False` ，非 0 元素被视作 `True` 。
 
     参数：
-        - **input** (oneflow.Tensor): 输入张量
-        - **other** (oneflow.Tensor): 计算 `xor` 逻辑的另一个张量
+        - **input** (oneflow.tensor): 输入张量
+        - **other** (oneflow.tensor): 计算 `xor` 逻辑的另一个张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 

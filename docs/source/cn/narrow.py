@@ -14,7 +14,7 @@ reset_docstr(
         - **length** : 到结束维度的距离
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 

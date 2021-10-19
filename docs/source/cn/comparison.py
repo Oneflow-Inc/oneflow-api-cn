@@ -8,11 +8,11 @@ reset_docstr(
     返回 :math:`input > other` 的 element-wise 真实值。
 
     参数：
-        - **input** (oneflow.Tensor): 输入张量
-        - **other** (oneflow.Tensor): 输入张量
+        - **input** (oneflow.tensor): 输入张量
+        - **other** (oneflow.tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor: 数据类型为 `int8` 的张量
+        oneflow.tensor: 数据类型为 `int8` 的张量
 
     示例：
 
@@ -38,11 +38,11 @@ reset_docstr(
     返回 :math:`input >= other` 的 element-wise 真实值。
 
     参数：
-        - **input** (oneflow.Tensor): 输入张量
-        - **other** (oneflow.Tensor): 输入张量
+        - **input** (oneflow.tensor): 输入张量
+        - **other** (oneflow.tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor: 数据类型为 `int8` 的张量 
+        oneflow.tensor: 数据类型为 `int8` 的张量 
 
     示例：
 
@@ -67,11 +67,11 @@ reset_docstr(
     返回 :math:`input == other` 的 element-wise 真实值。
 
     参数：
-        - **input** (oneflow.Tensor): 要去对比的张量
-        - **other** (oneflow.Tensor, float or int): 对比的目标
+        - **input** (oneflow.tensor): 要去对比的张量
+        - **other** (oneflow.tensor, float or int): 对比的目标
 
     返回类型：
-        - oneflow.Tensor，元素为 boolean, 若 :attr:`input` 等于 :attr:`other` 则为 True。
+        - oneflow.tensor，元素为 boolean, 若 :attr:`input` 等于 :attr:`other` 则为 True。
 
     示例：
 
@@ -97,11 +97,11 @@ reset_docstr(
     返回 :math:`input < other` 的 element-wise 真实值。
 
     参数：
-        - **input** (oneflow.Tensor): 输入张量
-        - **other** (oneflow.Tensor): 输入张量
+        - **input** (oneflow.tensor): 输入张量
+        - **other** (oneflow.tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor: 数据类型为 int8 的张量
+        oneflow.tensor: 数据类型为 int8 的张量
 
     示例：
 

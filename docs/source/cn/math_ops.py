@@ -17,7 +17,7 @@ reset_docstr(
         - **other** (Tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -65,7 +65,7 @@ reset_docstr(
         - **other** (Tensor): 输入张量
 
     返回类型：   
-        oneflow.Tensor
+        oneflow.tensor
     
     示例：
 
@@ -107,7 +107,7 @@ reset_docstr(
         **x** (Tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -134,11 +134,11 @@ reset_docstr(
         out = \frac{input}{other}
     
     参数：
-        - **input** (Union[int, float, oneflow.Tensor]): input.
-        - **other** (Union[int, float, oneflow.Tensor]): other.
+        - **input** (Union[int, float, oneflow.tensor]): input.
+        - **other** (Union[int, float, oneflow.tensor]): other.
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -186,7 +186,7 @@ reset_docstr(
         - **other** (Tensor): 输入张量。
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
     
     示例：
 
@@ -227,7 +227,7 @@ reset_docstr(
         **x** (Tensor): 输入张量。
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -258,7 +258,7 @@ reset_docstr(
         **x** (Tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -300,7 +300,7 @@ reset_docstr(
         **out** (Tensor, optional): 输出张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -341,7 +341,7 @@ reset_docstr(
         **x** (Tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -369,10 +369,10 @@ reset_docstr(
         \text{out}_{i} = \left\lceil \text{input}_{i} \right\rceil = \left\lfloor \text{input}_{i} \right\rfloor + 1
 
     参数：
-        **x** (oneflow.Tensor): 张量
+        **x** (oneflow.tensor): 张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例： 
 
@@ -421,7 +421,7 @@ reset_docstr(
         **x** (Tensor): 张量
     
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -453,7 +453,7 @@ reset_docstr(
         **x** (Tensor): 张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -484,7 +484,7 @@ reset_docstr(
         **x** (Tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -516,7 +516,7 @@ reset_docstr(
         **x** (Tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
     
@@ -552,7 +552,7 @@ reset_docstr(
         **x** (Tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -584,7 +584,7 @@ reset_docstr(
         **x** (Tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -619,7 +619,7 @@ reset_docstr(
         **x** (Tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -656,7 +656,7 @@ reset_docstr(
         **x** (Tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -698,7 +698,7 @@ reset_docstr(
         - **max** (Number): 要限制到的范围的上限，默认为None
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -737,7 +737,7 @@ reset_docstr(
         **x** (Tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -766,7 +766,7 @@ reset_docstr(
         **x** (Tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -792,10 +792,10 @@ reset_docstr(
             \operatorname{erf}(x)=\frac{2}{\sqrt{\pi}} \int_{0}^{x} e^{-t^{2}} d t
 
     参数：
-        **x** (oneflow.Tensor): 输入张量
+        **x** (oneflow.tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
                
     示例
 
@@ -838,10 +838,10 @@ reset_docstr(
             \operatorname{erfc}(x)=1-\frac{2}{\sqrt{\pi}} \int_{0}^{x} e^{-t^{2}} d t
 
     参数：
-        **x** (oneflow.Tensor): 输入张量
+        **x** (oneflow.tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -875,10 +875,10 @@ reset_docstr(
         y_{i} = e^{x_{i}} - 1
 
     参数：
-        **x** (oneflow.Tensor): 输入张量
+        **x** (oneflow.tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -926,7 +926,7 @@ reset_docstr(
         - **other** (Tensor or Scalar): 除数
     
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -958,7 +958,7 @@ reset_docstr(
         **x** (Tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
     
     示例：
 
@@ -983,7 +983,7 @@ reset_docstr(
         - **y** (Tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -1014,7 +1014,7 @@ reset_docstr(
         - **y** (Tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -1058,7 +1058,7 @@ reset_docstr(
         - **exponent** (int, float, Tensor): 指数
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -1095,7 +1095,7 @@ reset_docstr(
         **x** (Tensor): 输入张量
     
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -1123,7 +1123,7 @@ reset_docstr(
         **x** (Tensor): 输入张量
     
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -1146,11 +1146,11 @@ reset_docstr(
     此运算符将矩阵乘法应用于两个 Tensor :attr:`a` 和 :attr:`b`。
 
     参数：
-        - **a** (oneflow.Tensor): 张量
-        - **b** (oneflow.Tensor): 张量
+        - **a** (oneflow.tensor): 张量
+        - **b** (oneflow.tensor): 张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -1174,10 +1174,10 @@ reset_docstr(
     返回一个新 tensor，其元素为 :attr:`x` 中元素四舍五入到整数。
 
     参数：
-        **x** (oneflow.Tensor): 输入张量
+        **x** (oneflow.tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
     
     示例：
 
@@ -1226,7 +1226,7 @@ reset_docstr(
         - **out** (Tensor, 可选): 输出张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
     .. code-block:: python
@@ -1263,12 +1263,12 @@ reset_docstr(
     返回 :attr:`input` 在指定维度上的最大值的 `index` 。
 
     参数：
-        - **input** (oneflow.Tensor): 输入张量
+        - **input** (oneflow.tensor): 输入张量
         - **dim** (int, 可选): 要计算的维度，默认为最大维度(-1)。
         - **keepdim** (bool，可选的): 返回值是否保留 input 的原有维数。默认为 False 。
 
     返回类型：
-        oneflow.Tensor: 包含 :attr:`input` 特定维度最大值的 index 的新张量(dtype=int64)。
+        oneflow.tensor: 包含 :attr:`input` 特定维度最大值的 index 的新张量(dtype=int64)。
 
     示例：
 
@@ -1300,6 +1300,9 @@ reset_docstr(
 
     参数:
         **input** (Tensor): 输入张量
+
+    返回类型：
+        oneflow.tensor
         
     示例：
 
@@ -1340,6 +1343,9 @@ reset_docstr(
         - **sbp** (flow.sbp.sbp 或 flow.sbp.sbp 的元组, 可选): 返回的consistent tensor的所需 sbp 描述符。如果为 None ，则返回的张量是使用参数 `device` 的本地张量。
         - **requires_grad** (bool, 可选): 使用 autograd 记录对返回张量的操作。默认值： `False` 。
 
+    返回类型：
+        oneflow.tensor
+
     示例：
 
     .. code-block:: python
@@ -1372,10 +1378,10 @@ reset_docstr(
         out = 0.5 * x * (1 + tanh(\sqrt{\frac{2}{\pi}} * (x + 0.044715x^{3})))
 
     参数：
-        **x** (oneflow.Tensor): 输入张量
+        **x** (oneflow.tensor): 输入张量
 
     返回类型：
-         oneflow.Tensor
+         oneflow.tensor
 
     示例：
 
@@ -1405,7 +1411,7 @@ reset_docstr(
         - **k** (int): 要查看计算精度的最大元素的数量
 
     返回类型：
-        oneflow.Tensor: 元素为 bool 的张量。k 处的计算精度作 bool 张量值。
+        oneflow.tensor: 元素为 bool 的张量。k 处的计算精度作 bool 张量值。
     
     示例：
 

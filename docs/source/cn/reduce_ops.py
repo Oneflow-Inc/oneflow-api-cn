@@ -8,12 +8,12 @@ reset_docstr(
     返回 :attr:`input` 中的最大值。
     
     参数：
-        - **input** (oneflow.Tensor): 输入张量
+        - **input** (oneflow.tensor): 输入张量
         - **dim** (int, optional): 要进行计算的维度。默认： `None`
         - **keepdim** (bool, optional): 输出张量是否保留 :attr:`input` 的维度。默认： `False`
 
     返回类型：
-        张量或元组（oneflow.Tensor, oneflow.Tensor(dtype=int64)）：
+        张量或元组（oneflow.tensor, oneflow.tensor(dtype=int64)）：
         如果参数 :attr:`dim` 是 `None` ，返回 :attr:`input` 所有元素中的最大值。如果 :attr:`dim` 不是 `None` ，
         则返回一个包含张量的元组(values, indices)， `values` 是 :attr:`input` 当前维度的最大值，
         `indices` 是最大值在 :attr:`input` 中当前维度的索引。
@@ -42,7 +42,7 @@ reset_docstr(
     计算给定维度上张量中各行元素的均值，如果 :attr:`dim` 为 None ，则计算所有元素的均值。
 
     参数：
-        - **input** (oneflow.Tensor): 输入张量
+        - **input** (oneflow.tensor): 输入张量
         - **dim** (int, optional): 要进行计算的维度。默认： `None`
         - **keepdim** (bool, optional): 输出张量是否保留 :attr:`input` 的维度。默认： `False`
 
@@ -69,12 +69,12 @@ reset_docstr(
     返回 :attr:`input` 中的最小值。
     
     参数：
-        - **input** (oneflow.Tensor): 输入张量
+        - **input** (oneflow.tensor): 输入张量
         - **dim** (int, optional): 要进行计算的维度。默认： `None`
         - **keepdim** (bool, optional): 输出张量是否保留 :attr:`input` 的维度。默认： `False`
 
     返回类型：
-        张量或元组（oneflow.Tensor, oneflow.Tensor(dtype=int64)）：
+        张量或元组（oneflow.tensor, oneflow.tensor(dtype=int64)）：
         如果参数 :attr:`dim` 是 `None` ，返回 :attr:`input` 所有元素中的最小值。如果 :attr:`dim` 不是 `None` ，
         则返回一个包含张量的元组(values, indices)， `values` 是 :attr:`input` 当前维度的最小值，
         `indices` 是最小值在 :attr:`input` 中当前维度的索引。

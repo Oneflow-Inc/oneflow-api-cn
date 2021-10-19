@@ -10,12 +10,12 @@ reset_docstr(
     最后一个块会小于其他的块如果在指定的维度 :attr:`dim` 上 :attr:`input` 的大小不能被 :attr:`chunks` 整除。
 
     参数：
-        - **input** (oneflow.Tensor): 要拆分的张量
+        - **input** (oneflow.tensor): 要拆分的张量
         - **chunks** (int): 要返回的块数。
         - **dim** (int): 拆分张量的维度。
 
     返回类型：
-        包含 Tensor 的 List。
+        包含 oneflow.tensor 的 List。
 
     示例：
 

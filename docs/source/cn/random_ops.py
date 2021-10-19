@@ -21,7 +21,7 @@ reset_docstr(
         - **requires_grad** (bool, 可选): 用 autograd 记录对返回张量的操作，默认为 False
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -66,7 +66,7 @@ reset_docstr(
         - **requires_grad** (bool, 可选): 用 autograd 记录对返回张量的操作，默认为 False
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
     
     示例：
 
@@ -111,7 +111,7 @@ reset_docstr(
         - **requires_grad** (bool, 可选): 用 autograd 记录对返回张量的操作，默认为 False
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -120,7 +120,7 @@ reset_docstr(
         >>> import oneflow as flow
         >>> generator = flow.Generator()
         >>> generator.manual_seed(0)
-        >>> y = flow.randint(0, 5, (3,3), generator=generator)
+        >>> y = flow.randint(0, 5, (3,3), generator=generator) # 构造 local tensor
         >>> y
         tensor([[2, 2, 3],
                 [4, 3, 4],
@@ -145,7 +145,7 @@ reset_docstr(
         - **n** (int): 最大值（不包括）
     
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     关键词参数：
         - **generator** (flow.Generator, 可选): 用于采样的伪随机数生成器
@@ -165,7 +165,7 @@ reset_docstr(
         >>> import oneflow as flow
         >>> generator = flow.Generator()
         >>> generator.manual_seed(0)
-        >>> y = flow.randperm(5, generator=generator)
+        >>> y = flow.randperm(5, generator=generator) # 构造 local tensor
         >>> y
         tensor([2, 4, 3, 0, 1], dtype=oneflow.int32)
         >>> y.is_consistent
@@ -174,6 +174,6 @@ reset_docstr(
         >>> y = flow.randperm(5, generator=generator, placement=placement, sbp=flow.sbp.broadcast) # 构造 consistent tensor
         >>> y.is_consistent
         True
-        
+
     """
 )

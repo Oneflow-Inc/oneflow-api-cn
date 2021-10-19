@@ -8,11 +8,11 @@ reset_docstr(
     将输入张量 `x` 转化为数据类型 `dtype`
 
     参数：
-        - **x** (oneflow.Tensor): 输入张量
+        - **x** (oneflow.tensor): 输入张量
         - **dtype** (flow.dtype): 输出张量的数据类型
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 

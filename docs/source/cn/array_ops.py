@@ -17,7 +17,7 @@ reset_docstr(
         - **diagonal** (Optional[Int32], 0): 要考虑的对角线（默认为0）
     
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -53,7 +53,7 @@ reset_docstr(
         - **diagonal** (Optional[Int64], 0): 要考虑的对角线
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -81,7 +81,7 @@ reset_docstr(
         - **diagonal** (Optional[Int64], 0): 要考虑的对角线
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -149,11 +149,11 @@ reset_docstr(
     返回一个包含所有 :attr:`input` 中非 0 元素的 `index` 的列表。返回列表为一个 tensor，其中元素为坐标值。
 
     参数：
-        - **input** (oneflow.Tensor): 输入张量
+        - **input** (oneflow.tensor): 输入张量
         - **dtype** (Optional[flow.dtype], 可选): 输出的数据类型，默认为 flow.int32
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -183,7 +183,7 @@ reset_docstr(
         - **broadcast_axes** (Optional[Sequence], 可选): 想要广播的维度，默认为None。
 
     返回类型：
-        oneflow.Tensor: 广播输入张量。
+        oneflow.tensor: 广播输入张量。
 
     示例：
 
@@ -213,7 +213,7 @@ reset_docstr(
         - **dim** (int): 要连接的维度。
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 
@@ -247,7 +247,7 @@ reset_docstr(
         - **requires_grad** (bool, 可选): 使用 autograd 记录对返回张量的操作。默认值： `False` 。
     
     返回值：
-        oneflow.Tensor: 对角线上为 1，其他地方为 0 的 tensor 。
+        oneflow.tensor: 对角线上为 1，其他地方为 0 的 tensor 。
     
     示例：
 
@@ -427,8 +427,8 @@ reset_docstr(
         **out** (Tensor, optional): 包含索引的输出张量
 
     返回类型：
-        如果 :attr:`as_tuple` 为 ``False`` ，则返回 oneflow.Tensor ，其元素为 :attr:`input` 中的索引。
-        如果 :attr:`as_tuple` 为 ``True`` ，则返回包含 oneflow.Tensor 的元组，
+        如果 :attr:`as_tuple` 为 ``False`` ，则返回 oneflow.tensor ，其元素为 :attr:`input` 中的索引。
+        如果 :attr:`as_tuple` 为 ``True`` ，则返回包含 oneflow.tensor 的元组，
         每个张量包含非 0 元素在当前维度的索引。
 
     示例：
@@ -475,7 +475,7 @@ reset_docstr(
         - **shape**: 输出张量的形状
 
     返回类型：
-        oneflow.Tensor: 数据类型与 :attr:`input` 相同的张量
+        oneflow.tensor: 数据类型与 :attr:`input` 相同的张量
 
     示例：
 
