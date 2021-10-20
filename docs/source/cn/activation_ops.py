@@ -120,7 +120,7 @@ reset_docstr(
 )
 
 reset_docstr(
-    oneflow._C.softsign,
+    oneflow.softsign,
     r"""
     softsign(x) -> Tensor 
 
