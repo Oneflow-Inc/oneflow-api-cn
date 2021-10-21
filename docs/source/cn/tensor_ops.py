@@ -56,10 +56,10 @@ reset_docstr(
     返回 :attr:`input` 的负值。
 
     参数：
-        - **input** (oneflow.Tensor): 输入张量
+        - **input** (oneflow.tensor): 输入张量
 
     返回类型：
-        oneflow.Tensor
+        oneflow.tensor
 
     示例：
 

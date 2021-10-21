@@ -8,12 +8,12 @@ reset_docstr(
     在指定维度对 :attr:`input` 进行排序并返回排序后的张量的 `index` 。
 
     参数：
-        - **input** (oneflow.Tensor): 输入张量
+        - **input** (oneflow.tensor): 输入张量
         - **dim** (int, 可选): 要进行排序的维度，默认为最大维度(-1)。
         - **descending** (bool, 可选): 排序顺序（升序或降序，`False` 为降序）。
 
     返回类型：
-        oneflow.Tensor: 排序后的张量的 `index`
+        oneflow.tensor: 排序后的张量的 `index`
 
     示例：
 
