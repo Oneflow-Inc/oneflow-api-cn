@@ -16,7 +16,7 @@ reset_docstr(
         - **layout** (可选): 返回的 Tensor 的 layout。
         - **generator** (flow.Generator, 可选): 用于采样的伪随机数生成器
         - **device** (flow.device, 可选): 返回的本地张量的所需设备。默认使用当前设备
-        - **placement** (flow.placement, 可选): 返回consistent tensor的所需设备。如果为None，则构造 local tensor
+        - **placement** (flow.placement, 可选): 设置返回张量的 placement 属性。如果为None，则构造 local tensor
         - **sbp** (flow.sbp, 可选): 返回的consistent tensor的所需 sbp 描述符。必须和 placement 的数量相等
         - **requires_grad** (bool, 可选): 用 autograd 记录对返回张量的操作，默认为 False
 
@@ -61,7 +61,7 @@ reset_docstr(
         - **layout** (可选): 返回的 Tensor 的 layout。
         - **generator** (flow.Generator, 可选): 用于采样的伪随机数生成器
         - **device** (flow.device, 可选): 返回的本地张量的所需设备。默认使用当前设备
-        - **placement** (flow.placement, 可选): 返回consistent tensor的所需设备。如果为None，则构造 local tensor
+        - **placement** (flow.placement, 可选): 设置返回张量的 placement 属性。如果为None，则构造 local tensor
         - **sbp** (flow.sbp, 可选): 返回的consistent tensor的所需 sbp 描述符。必须和 placement 的数量相等
         - **requires_grad** (bool, 可选): 用 autograd 记录对返回张量的操作，默认为 False
 
@@ -106,7 +106,7 @@ reset_docstr(
         - **layout** (可选): 返回的 Tensor 的 layout。
         - **generator** (flow.Generator, 可选): 用于采样的伪随机数生成器
         - **device** (flow.device, 可选): 返回的本地张量的所需设备。默认使用当前设备
-        - **placement** (flow.placement, 可选): 返回consistent tensor的所需设备。如果为None，则构造 local tensor
+        - **placement** (flow.placement, 可选): 设置返回张量的 placement 属性。如果为None，则构造 local tensor
         - **sbp** (flow.sbp, 可选): 返回的consistent tensor的所需 sbp 描述符。必须和 placement 的数量相等
         - **requires_grad** (bool, 可选): 用 autograd 记录对返回张量的操作，默认为 False
 
@@ -153,7 +153,7 @@ reset_docstr(
         - **dtype** (flow.dtype, 可选): 返回张量的数据类型。默认： ``flow.float32`` 
         - **layout** (可选): 返回的 Tensor 的 layout。
         - **device** (flow.device, 可选): 返回的本地张量的所需设备。默认使用当前设备
-        - **placement** (flow.placement, 可选): 返回consistent tensor的所需设备。如果为None，则构造 local tensor
+        - **placement** (flow.placement, 可选): 设置返回张量的 placement 属性。如果为None，则构造 local tensor
         - **sbp** (flow.sbp, 可选): 返回的consistent tensor的所需 sbp 描述符。必须和 placement 的数量相等
         - **requires_grad** (bool, 可选): 用 autograd 记录对返回张量的操作，默认为 False
         - **pin_memory** (bool, 可选)：目前不支持 pin_memory
