@@ -281,22 +281,19 @@ on the destination rank)</p></li>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.comm.recv">
-<code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">recv</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.recv" title="Permalink to this definition">¶</a></dt>
-<dd><p>Receives a tensor synchronously.</p>
-<p>All(send_meta is False) or none of shape, dtype and device should have value.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>src</strong> (<em>int</em><em>, </em><em>optional</em>) – Source rank. Will receive from any
-process if unspecified.</p></li>
-<li><p><strong>Shape</strong> (<em>optional</em>) – output tensor shape.</p></li>
-<li><p><strong>DataType</strong> (<em>optional</em>) – output tensor data type.</p></li>
-<li><p><strong>Device</strong> (<em>optional</em>) – output tensor device.</p></li>
-<li><p><strong>out</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em>, </em><em>optional</em>) – Tensor to fill with received data.</p></li>
+<code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">recv</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.recv" title="Permalink to this definition">¶</a></dt>
+<dd><p>同步接收张量。</p>
+<p>如果 send_meta = False，所有 <cite>shape</cite> 和 <cite>dtype</cite> 要有值，否则全部为 None 。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>src</strong> (int, optional): 来源 rank 。如果未指定，将从任何进程接收。</p></li>
+<li><p><strong>shape</strong> (optional): 输出张量形状。</p></li>
+<li><p><strong>dataType</strong> (optional): 输出张量数据类型。</p></li>
+<li><p><strong>device</strong> (optional): 输出张量设备。</p></li>
+<li><p><strong>out</strong> (Tensor, optional): 填充接收到的数据的张量。</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>if out is None, return received tensor. otherwise got data from out self without return.</p>
+<dt>返回类型：</dt><dd><p>如果 <cite>out</cite> 为 None，则返回接收到的张量。否则 out 将获取数据而不返回数据。</p>
 </dd>
 </dl>
 </dd></dl>
@@ -347,14 +344,13 @@ None, must be specified on the source rank)</p></li>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.comm.send">
-<code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">send</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.send" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sends a tensor synchronously.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>tensor</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – Tensor to send.</p></li>
-<li><p><strong>dst</strong> (<em>int</em>) – Destination rank.</p></li>
-<li><p><strong>send_meta</strong> (<em>Bool</em>) – Whether to send meta information (default is True)</p></li>
+<code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">send</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">send_meta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>同步发送张量。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>input</strong> (tensor): 要发送的张量</p></li>
+<li><p><strong>dst</strong> (int): 目的地rank</p></li>
+<li><p><strong>send_meta</strong> (bool): 是否发送元信息（默认为 True）</p></li>
 </ul>
 </dd>
 </dl>
