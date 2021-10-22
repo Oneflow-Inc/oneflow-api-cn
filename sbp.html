@@ -2,10 +2,11 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="oneflow.placement" href="placement.html" />
 
-    <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/><title>Python Module Index - OneFlow documentation</title>
-<link rel="stylesheet" href="_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
+    <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
+        <title>oneflow.sbp.sbp - OneFlow documentation</title>
+      <link rel="stylesheet" href="_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
     <link rel="stylesheet" href="_static/pygments.css">
     <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css">
     
@@ -88,7 +89,7 @@
       <a href="index.html"><div class="brand">OneFlow  documentation</div></a>
     </div>
     <div class="header-right">
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
     </div>
@@ -110,7 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OneFlow Python API</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="oneflow.html">oneflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tensor.html">oneflow.Tensor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nn.html">oneflow.nn</a></li>
@@ -125,7 +126,7 @@
 <li class="toctree-l1"><a class="reference internal" href="distributed.html">oneflow.distributed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comm.html">oneflow.comm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="placement.html">oneflow.placement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sbp.html">oneflow.sbp.sbp</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">oneflow.sbp.sbp</a></li>
 </ul>
 
 </div>
@@ -137,96 +138,79 @@
   <main class="main">
     <div class="content">
       <article role="main">
-        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        
-<section class="domainindex-section">
-  <h1>Python Module Index</h1>
-  <div class="domainindex-jumpbox"><a href="#cap-o"><strong>o</strong></a></div>
-</section>
-<table class="domainindex-table">
-  <tr class="pcap">
-    <td></td><td>&#160;</td><td></td>
-  </tr>
-  <tr class="cap" id="cap-o">
-    <td></td><td><strong>o</strong></td><td></td>
-  </tr>
-  <tr>
-    <td><img src="_static/minus.png" class="toggler"
-              id="toggle-1" style="display: none" alt="-" /></td>
-    <td>
-        <a href="oneflow.html#module-oneflow"><code class="xref">oneflow</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="comm.html#module-oneflow.comm"><code class="xref">oneflow.comm</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="cuda.html#module-oneflow.cuda"><code class="xref">oneflow.cuda</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="nn.html#module-oneflow.nn"><code class="xref">oneflow.nn</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="image.html#module-oneflow.nn.image"><code class="xref">oneflow.nn.image</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="optim.html#module-oneflow.optim"><code class="xref">oneflow.optim</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="optim.html#module-oneflow.optim.lr_scheduler"><code class="xref">oneflow.optim.lr_scheduler</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="utils.html#module-oneflow.utils.data"><code class="xref">oneflow.utils.data</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="utils.html#module-oneflow.utils.data.distributed"><code class="xref">oneflow.utils.data.distributed</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="utils.html#module-oneflow.utils.vision.datasets"><code class="xref">oneflow.utils.vision.datasets</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="utils.html#module-oneflow.utils.vision.transforms"><code class="xref">oneflow.utils.vision.transforms</code></a></td><td>
-    <em></em></td>
-  </tr>
-</table>
+        <div class="section" id="oneflow-sbp-sbp">
+<h1>oneflow.sbp.sbp<a class="headerlink" href="#oneflow-sbp-sbp" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="oneflow-sbp-class">
+<h2>OneFlow sbp Class<a class="headerlink" href="#oneflow-sbp-class" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="oneflow.sbp.sbp">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.sbp.</span></code><code class="sig-name descname"><span class="pre">sbp</span></code><a class="headerlink" href="#oneflow.sbp.sbp" title="Permalink to this definition">¶</a></dt>
+<dd><p>A sbp is an object representing the distribution type of a oneflow.Tensor around the device group,
+which represents the mapping relationship between the logical Tensor and the physical Tensor.</p>
+<p>sbp includes three types:</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>split:</dt><dd><p>Indicates that the physical Tensors are obtained by splitting the logical Tensor.
+Split will contain a parameter Axis, which represents the dimension to be split.
+If all the physical Tensors are spliced according to the dimensions of Split,
+the logical Tensor can be restored.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>broadcast:</dt><dd><p>Indicates that the physical Tensors are copies of the logical Tensor, which are
+exactly the same.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>partial_sum:</dt><dd><p>Indicates that the physical Tensors have the same shape as the logical Tensor,
+but the value of the element at each corresponding position is a part of the
+value of the element at the corresponding position of the logical Tensor. The
+logical Tensor can be returned by adding all the physical Tensors according to
+the corresponding positions (element-wise).</p>
+</dd>
+</dl>
+</li>
+</ol>
+<p>A oneflow.Tensor’s sbp can be accessed via the Tensor.sbp property.</p>
+<p>A sbp can be constructed in several ways:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">oneflow.sbp.split(axis=0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">broadcast</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">oneflow.sbp.broadcast</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">partial_sum</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span>
+<span class="go">oneflow.sbp.partial_sum</span>
+</pre></div>
+</div>
+</dd></dl>
+</div>
+</div>
 
       </article>
       <footer>
         
         <div class="related-pages">
           
-          
+          <a class="prev-page" href="placement.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">oneflow.placement</div>
+                
+              </div>
+            </a>
         </div>
 
         <div class="related-information">
@@ -236,12 +220,36 @@
               and
               <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
               <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="_sources/sbp.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
         </div>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">oneflow.sbp.sbp</a><ul>
+<li><a class="reference internal" href="#oneflow-sbp-class">OneFlow sbp Class</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

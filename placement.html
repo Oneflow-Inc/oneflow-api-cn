@@ -2,10 +2,10 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="oneflow.optim" href="optim.html" /><link rel="prev" title="oneflow.linalg" href="linalg.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="oneflow.sbp.sbp" href="sbp.html" /><link rel="prev" title="oneflow.comm" href="comm.html" />
 
     <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
-        <title>oneflow.nn.image - OneFlow documentation</title>
+        <title>oneflow.placement - OneFlow documentation</title>
       <link rel="stylesheet" href="_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
     <link rel="stylesheet" href="_static/pygments.css">
     <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css">
@@ -119,13 +119,13 @@
 <li class="toctree-l1"><a class="reference internal" href="module.html">oneflow.nn.Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graph.html">oneflow.nn.Graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linalg.html">oneflow.linalg</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">oneflow.nn.image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">oneflow.nn.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="optim.html">oneflow.optim</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils.html">oneflow.utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cuda.html">oneflow.cuda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="distributed.html">oneflow.distributed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comm.html">oneflow.comm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="placement.html">oneflow.placement</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">oneflow.placement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sbp.html">oneflow.sbp.sbp</a></li>
 </ul>
 
@@ -141,46 +141,50 @@
         <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <div class="section" id="oneflow-nn-image">
-<h1>oneflow.nn.image<a class="headerlink" href="#oneflow-nn-image" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-oneflow.nn.image">
-<span id="image-operations-for-neural-networks"></span><h2>Image operations for neural networks<a class="headerlink" href="#module-oneflow.nn.image" title="Permalink to this headline">¶</a></h2>
-<p>Copyright 2020 The OneFlow Authors. All rights reserved.</p>
-<p>Licensed under the Apache License, Version 2.0 (the “License”);
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at</p>
-<blockquote>
-<div><p><a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
-</div></blockquote>
-<p>Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an “AS IS” BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.</p>
-<dl class="py attribute">
-<dt id="oneflow.nn.image.Resize">
-<code class="sig-prename descclassname"><span class="pre">oneflow.nn.image.</span></code><code class="sig-name descname"><span class="pre">Resize</span></code><a class="headerlink" href="#oneflow.nn.image.Resize" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.nn.modules.dataset.ImageResize</span></code></p>
+        <div class="section" id="oneflow-placement">
+<h1>oneflow.placement<a class="headerlink" href="#oneflow-placement" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="oneflow-placement-class">
+<h2>OneFlow placement Class<a class="headerlink" href="#oneflow-placement-class" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="oneflow.placement">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">placement</span></code><a class="headerlink" href="#oneflow.placement" title="Permalink to this definition">¶</a></dt>
+<dd><p>A oneflow.palcement is an object representing the device group on which a oneflow.Tensor is or will be allocated. The oneflow.palcement contains a device type (‘cpu’ or ‘cuda’) and corresponding device sequence.</p>
+<p>A oneflow.Tensor’s palcement can be accessed via the Tensor.palcement property.</p>
+<p>A oneflow.palcement can be constructed in several ways:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">,</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span>
+<span class="go">oneflow.placement(device_type="cuda", machine_device_ids={0 : [0, 1, 2, 3]}, hierarchy=(4,))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">,</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)},</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span>
+<span class="go">oneflow.placement(device_type="cuda", machine_device_ids={0 : [0, 1, 2, 3]}, hierarchy=(2, 2))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">,</span> <span class="p">{</span><span class="mi">0</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]},</span> <span class="p">(</span><span class="mi">4</span><span class="p">,))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span>
+<span class="go">oneflow.placement(device_type="cpu", machine_device_ids={0 : [0, 1], 1 : [2, 3]}, hierarchy=(4,))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">,</span> <span class="p">{</span><span class="mi">0</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]},</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span>
+<span class="go">oneflow.placement(device_type="cpu", machine_device_ids={0 : [0, 1, 2, 3]}, hierarchy=(2, 2))</span>
+</pre></div>
+</div>
 </dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.nn.image.batch_align">
-<code class="sig-prename descclassname"><span class="pre">oneflow.nn.image.</span></code><code class="sig-name descname"><span class="pre">batch_align</span></code><a class="headerlink" href="#oneflow.nn.image.batch_align" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.nn.modules.dataset.ImageBatchAlign</span></code></p>
-</dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.nn.image.decode">
-<code class="sig-prename descclassname"><span class="pre">oneflow.nn.image.</span></code><code class="sig-name descname"><span class="pre">decode</span></code><a class="headerlink" href="#oneflow.nn.image.decode" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.nn.modules.dataset.ImageDecode</span></code></p>
-</dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.nn.image.flip">
-<code class="sig-prename descclassname"><span class="pre">oneflow.nn.image.</span></code><code class="sig-name descname"><span class="pre">flip</span></code><a class="headerlink" href="#oneflow.nn.image.flip" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.nn.modules.dataset.ImageFlip</span></code></p>
-</dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.nn.image.normalize">
-<code class="sig-prename descclassname"><span class="pre">oneflow.nn.image.</span></code><code class="sig-name descname"><span class="pre">normalize</span></code><a class="headerlink" href="#oneflow.nn.image.normalize" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.nn.modules.dataset.ImageNormalize</span></code></p>
+<dl class="py function">
+<dt id="oneflow.env.all_device_placement">
+<code class="sig-prename descclassname"><span class="pre">oneflow.env.</span></code><code class="sig-name descname"><span class="pre">all_device_placement</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> → <span class="pre">oneflow._oneflow_internal.placement</span><a class="headerlink" href="#oneflow.env.all_device_placement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a placement containing all devices of all machines under env.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>device_type</strong> (<em>str</em>) – cuda or cpu</p>
+</dd>
+</dl>
+<p>For examples:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># world_size = 4, node_size = 1</span>
+<span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">all_device_placement</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">)</span> <span class="c1"># oneflow.placement(device_type="cuda", machine_device_ids={0 : [0, 1, 2, 3]}, hierarchy=(4,))</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">all_device_placement</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">)</span> <span class="c1"># oneflow.placement(device_type="cpu", machine_device_ids={0 : [0, 1, 2, 3]}, hierarchy=(4,))</span>
+</pre></div>
+</div>
 </dd></dl>
 </div>
 </div>
@@ -189,23 +193,23 @@ limitations under the License.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="optim.html">
+          <a class="next-page" href="sbp.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">oneflow.optim</div>
+                <div class="title">oneflow.sbp.sbp</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="linalg.html">
+          <a class="prev-page" href="comm.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">oneflow.linalg</div>
+                <div class="title">oneflow.comm</div>
                 
               </div>
             </a>
@@ -219,7 +223,7 @@ limitations under the License.</p>
               <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
               <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             |
-            <a class="muted-link" href="_sources/image.rst.txt"
+            <a class="muted-link" href="_sources/placement.rst.txt"
                rel="nofollow">
               Show Source
             </a>
@@ -239,8 +243,8 @@ limitations under the License.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">oneflow.nn.image</a><ul>
-<li><a class="reference internal" href="#module-oneflow.nn.image">Image operations for neural networks</a></li>
+<li><a class="reference internal" href="#">oneflow.placement</a><ul>
+<li><a class="reference internal" href="#oneflow-placement-class">OneFlow placement Class</a></li>
 </ul>
 </li>
 </ul>

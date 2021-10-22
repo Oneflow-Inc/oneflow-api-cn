@@ -125,6 +125,8 @@
 <li class="toctree-l1"><a class="reference internal" href="cuda.html">oneflow.cuda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="distributed.html">oneflow.distributed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comm.html">oneflow.comm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="placement.html">oneflow.placement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sbp.html">oneflow.sbp.sbp</a></li>
 </ul>
 
 </div>
@@ -228,6 +230,10 @@ The formula is:</p>
 <dl class="py method">
 <dt id="oneflow.Tensor.argmax">
 <code class="sig-name descname"><span class="pre">argmax</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.argmax" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="oneflow.Tensor.argmin">
+<code class="sig-name descname"><span class="pre">argmin</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.argmin" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.argsort">
@@ -627,6 +633,19 @@ The second argument can be a number or a tensor whose shape is broadcastable wit
 <span class="go">oneflow.Size([1, 3, 2, 2])</span>
 </pre></div>
 </div>
+</dd></dl>
+<dl class="py method">
+<dt id="oneflow.Tensor.expand_as">
+<code class="sig-name descname"><span class="pre">expand_as</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.Tensor.expand_as" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expand this tensor to the same size as <code class="xref py py-attr docutils literal notranslate"><span class="pre">other</span></code>.
+<code class="docutils literal notranslate"><span class="pre">self.expand_as(other)</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">self.expand(other.size())</span></code>.</p>
+<p>Please see <a class="reference internal" href="#oneflow.Tensor.expand" title="oneflow.Tensor.expand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">expand()</span></code></a> for more information about <code class="docutils literal notranslate"><span class="pre">expand</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.Tensor</span></code></a>) – The result tensor has the same size
+as <code class="xref py py-attr docutils literal notranslate"><span class="pre">other</span></code>.</p>
+</dd>
+</dl>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.expm1">
@@ -1185,7 +1204,7 @@ The second argument can be a number or a tensor whose shape is broadcastable wit
 <dl class="py method">
 <dt id="oneflow.Tensor.numel">
 <code class="sig-name descname"><span class="pre">numel</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.numel" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.numel()</span></code></p>
+<dd><p>See <a class="reference internal" href="oneflow.html#oneflow.numel" title="oneflow.numel"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.numel()</span></code></a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.numpy">
@@ -1390,50 +1409,7 @@ the elements of <code class="xref py py-attr docutils literal notranslate"><span
 <dl class="py method">
 <dt id="oneflow.Tensor.softmax">
 <code class="sig-name descname"><span class="pre">softmax</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.softmax" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies the Softmax function to an n-dimensional input Tensor
-rescaling them so that the elements of the n-dimensional output Tensor
-lie in the range [0,1] and sum to 1.</p>
-<p>Softmax is defined as:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{Softmax}(x_{i}) = \frac{\exp(x_i)}{\sum_j \exp(x_j)}\]</div></div>
-<p>When the input Tensor is a sparse tensor then the unspecifed
-values are treated as <code class="docutils literal notranslate"><span class="pre">-inf</span></code>.</p>
-<dl class="simple">
-<dt>Shape:</dt><dd><ul class="simple">
-<li><p>Input: <span class="math notranslate nohighlight">\((*)\)</span> where <cite>*</cite> means, any number of additional
-dimensions</p></li>
-<li><p>Output: <span class="math notranslate nohighlight">\((*)\)</span>, same shape as the input</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>a Tensor of the same dimension and shape as the input with
-values in the range [0, 1]</p>
-</dd>
-<dt class="field-even">Parameters</dt>
-<dd class="field-even"><p><strong>dim</strong> (<em>int</em>) – A dimension along which Softmax will be computed (so every slice
-along dim will sum to 1).</p>
-</dd>
-</dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Softmax</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span>
-<span class="gp">... </span>   <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
-<span class="gp">... </span>       <span class="p">[[[</span><span class="o">-</span><span class="mf">0.46716809</span><span class="p">,</span>  <span class="mf">0.40112534</span><span class="p">,</span>  <span class="mf">0.61984003</span><span class="p">],</span>
-<span class="gp">... </span>       <span class="p">[</span><span class="o">-</span><span class="mf">1.31244969</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.42528763</span><span class="p">,</span>  <span class="mf">1.47953856</span><span class="p">]]]</span>
-<span class="gp">... </span>   <span class="p">)</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span>
-<span class="go">tensor([[[0.1575, 0.3754, 0.4671],</span>
-<span class="go">         [0.0507, 0.1230, 0.8263]]], dtype=oneflow.float32)</span>
-</pre></div>
-</div>
-</dd></dl>
+<dd></dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.softplus">
 <code class="sig-name descname"><span class="pre">softplus</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.softplus" title="Permalink to this definition">¶</a></dt>
@@ -1570,98 +1546,13 @@ with sizes in <cite>dim</cite> according to <cite>split_size_or_sections</cite>.
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.squeeze">
-<code class="sig-name descname"><span class="pre">squeeze</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#oneflow.Tensor.int" title="oneflow.Tensor.int"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.squeeze" title="Permalink to this definition">¶</a></dt>
-<dd><p>This operator removes the specified dimention which size is 1 of the input Tensor.
-If the <cite>dim</cite> is not specified, this operator will remove all the dimention which size is 1 of the input Tensor.</p>
-<p>The amount of element in return value is the same as Tensor <cite>input</cite>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><em>oneflow.Tensor</em></a>) – The input Tensor.</p></li>
-<li><p><strong>dim</strong> (<em>Optional</em><em>[</em><em>Sequence</em><em>[</em><em>int</em><em>]</em><em>]</em>) – The dim. Defaults to None.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The result Tensor.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor">Tensor</a></p>
-</dd>
-</dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]]])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span>
-<span class="go">oneflow.Size([1, 1, 1, 3])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">shape</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span>
-<span class="go">oneflow.Size([1, 3])</span>
-</pre></div>
-</div>
-</dd></dl>
-<dl class="py method">
-<dt id="oneflow.Tensor.stack">
-<code class="sig-name descname"><span class="pre">stack</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#oneflow.Tensor.int" title="oneflow.Tensor.int"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#oneflow.Tensor.stack" title="Permalink to this definition">¶</a></dt>
-<dd><p>Concatenates a sequence of tensors along a new dimension.
-The returned tensor shares the same underlying data with input tensors.</p>
-<p>A <a class="reference internal" href="#oneflow.Tensor.dim" title="oneflow.Tensor.dim"><code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code></a> value within the range <cite>[-input.ndimension() - 1, input.ndimension() + 1]</cite>
-can be used. Negative <a class="reference internal" href="#oneflow.Tensor.dim" title="oneflow.Tensor.dim"><code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code></a> will correspond to <a class="reference internal" href="oneflow.html#oneflow.stack" title="oneflow.stack"><code class="xref py py-meth docutils literal notranslate"><span class="pre">stack()</span></code></a>
-applied at <a class="reference internal" href="#oneflow.Tensor.dim" title="oneflow.Tensor.dim"><code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code></a> = <code class="docutils literal notranslate"><span class="pre">dim</span> <span class="pre">+</span> <span class="pre">input.ndimension()</span> <span class="pre">+</span> <span class="pre">1</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>inputs</strong> (<em>List</em><em>[</em><a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><em>oneflow.Tensor</em></a><em>]</em>) – the list of input tensors. Each tensor should have the same shape.</p></li>
-<li><p><strong>dim</strong> (<em>int</em>) – the index at which to insert the concatenated dimension.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A <cite>Tensor</cite></p>
-</dd>
-</dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">dim</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span><span class="o">.</span><span class="n">shape</span>
-<span class="go">oneflow.Size([1, 3, 5, 2])</span>
-</pre></div>
-</div>
+<code class="sig-name descname"><span class="pre">squeeze</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.squeeze" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="oneflow.html#oneflow.squeeze" title="oneflow.squeeze"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.squeeze()</span></code></a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.std">
-<code class="sig-name descname"><span class="pre">std</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unbiased</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.std" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the standard-deviation of each row of the <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> tensor in the
-dimension <a class="reference internal" href="#oneflow.Tensor.dim" title="oneflow.Tensor.dim"><code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code></a>. If <a class="reference internal" href="#oneflow.Tensor.dim" title="oneflow.Tensor.dim"><code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code></a> is a list of dimensions,
-reduce over all of them.</p>
-<p>If keepdim is True, the output tensor is of the same size as input except in
-the dimension(s) dim where it is of size 1. Otherwise, dim is squeezed,
-resulting in the output tensor having 1 (or len(dim)) fewer dimension(s).</p>
-<p>If <code class="xref py py-attr docutils literal notranslate"><span class="pre">unbiased</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>, then the standard-deviation will be calculated
-via the biased estimator. Otherwise, Bessel’s correction will be used.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – the input tensor.</p></li>
-<li><p><strong>(</strong><strong>int</strong><strong> or </strong><strong>tuple of python</strong> (<em>dim</em>) – ints): the dimension or dimensions to reduce.</p></li>
-<li><p><strong>unbiased</strong> (<em>bool</em>) – whether to use the unbiased estimation or not</p></li>
-<li><p><strong>keepdim</strong> (<em>bool</em>) – whether the output tensor has <cite>dim</cite> retained or not.</p></li>
-</ul>
-</dd>
-</dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span>
-<span class="go">array(0.8164968, dtype=float32)</span>
-</pre></div>
-</div>
+<code class="sig-name descname"><span class="pre">std</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unbiased</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.std" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="oneflow.html#oneflow.std" title="oneflow.std"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.std()</span></code></a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.storage_offset">
@@ -1991,35 +1882,7 @@ applied at <a class="reference internal" href="#oneflow.Tensor.dim" title="onefl
 <dl class="py method">
 <dt id="oneflow.Tensor.var">
 <code class="sig-name descname"><span class="pre">var</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unbiased</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.var" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the variance of each row of the <cite>input</cite> tensor in the given dimension <cite>dim</cite>.</p>
-<p>If <cite>keepdim</cite> is <cite>True</cite>, the output tensor is of the same size as <cite>input</cite> except in the dimension(s) <cite>dim</cite>
-where it is of size 1. Otherwise, dim is squeezed (see <cite>flow.squeeze()</cite>), resulting in the output
-tensor having 1 (or <cite>len(dim)</cite>) fewer dimension(s).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – the input tensor.</p></li>
-<li><p><strong>(</strong><strong>int</strong><strong> or </strong><strong>tuple of python</strong> (<em>dim</em>) – ints): the dimension or dimensions to reduce. Defaults to None.</p></li>
-<li><p><strong>unbiased</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to use Bessel’s correction (<span class="math notranslate nohighlight">\(\delta N = 1\)</span>). Defaults to True.</p></li>
-<li><p><strong>keepdim</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether the output tensor has dim retained or not. Defaults to False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The result of variance on the specified axis of input Tensor</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor">Tensor</a></p>
-</dd>
-</dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np_arr</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
-</pre></div>
-</div>
+<dd><p>See <a class="reference internal" href="oneflow.html#oneflow.var" title="oneflow.var"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.var()</span></code></a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.view">

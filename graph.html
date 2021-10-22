@@ -125,6 +125,8 @@
 <li class="toctree-l1"><a class="reference internal" href="cuda.html">oneflow.cuda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="distributed.html">oneflow.distributed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comm.html">oneflow.comm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="placement.html">oneflow.placement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sbp.html">oneflow.sbp.sbp</a></li>
 </ul>
 
 </div>
@@ -316,11 +318,13 @@ will do the computaion graph generation and optimization at the first call.</p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.Graph.debug">
-<code class="sig-name descname"><span class="pre">debug</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranks</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#oneflow.nn.Graph.debug" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">debug</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranks</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#oneflow.nn.Graph.debug" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open or close debug mode of the graph.</p>
 <p>If in debug mode, logs of computation graph building infos or warnings will be
 printed. Otherwise, only errors will be printed.</p>
-<p>Use <code class="docutils literal notranslate"><span class="pre">v_level</span></code> to choose verbose debug info level, default level is 0, max level is 1.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">v_level</span></code> to choose verbose debug info level, default level is 0, max level is 1.
+<code class="docutils literal notranslate"><span class="pre">v_level</span></code> 0 will print warning and graph creating stages. <code class="docutils literal notranslate"><span class="pre">v_level</span></code> 1 will additionally
+print graph build info of each module.</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">ranks</span></code> to choose which rank to print the debug information.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">CustomGraph</span><span class="p">()</span>
 <span class="n">g</span><span class="o">.</span><span class="n">debug</span><span class="p">()</span>  <span class="c1"># Open debug mode</span>
@@ -330,10 +334,10 @@ printed. Otherwise, only errors will be printed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mode</strong> (<em>bool</em>) – whether to set debug mode (“True”) or not (<code class="docutils literal notranslate"><span class="pre">False</span></code>). Default: <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>v_level</strong> (<em>int</em>) – choose verbose debug info level, default v_level is 0, max v_level is 1.</p></li>
 <li><p><strong>ranks</strong> (<em>int</em><em> or </em><em>list</em><em>(</em><em>int</em><em>)</em>) – choose ranks to print the debug information. Default rank <code class="docutils literal notranslate"><span class="pre">0</span></code>.
 You can choose any valid rank. Ranks equals <code class="docutils literal notranslate"><span class="pre">-1</span></code> means debug on all ranks.</p></li>
+<li><p><strong>mode</strong> (<em>bool</em>) – whether to set debug mode (<code class="docutils literal notranslate"><span class="pre">True</span></code>) or not (<code class="docutils literal notranslate"><span class="pre">False</span></code>). Default: <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
