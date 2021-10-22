@@ -100,3 +100,18 @@ reset_docstr(
     
     """
 )
+
+reset_docstr(
+    oneflow.tanh,
+    r"""
+    tanh(x) -> Tensor 
+
+    公式为：
+
+    .. math::
+
+        out = \frac{e^x-e^{-x}}{e^x+e^{-x}}
+
+    更多信息请参考 :class:`~oneflow.nn.Tanh` 。
+    """,
+)

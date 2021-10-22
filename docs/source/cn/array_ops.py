@@ -493,3 +493,103 @@ reset_docstr(
 
     """
 )
+
+reset_docstr(
+    oneflow.squeeze,
+    r"""squeeze(input, dim = None) -> Tensor
+    
+    移除 :attr:`input` 中指定大小为1的维度。
+    如果 :attr:`dim` 没被设定，则移除 :attr:`input` 中所有大小为 1 的维度。
+
+    返回值中的元素数量与 tensor :attr:`input` 相同。
+
+    参数：
+        - **input** (oneflow.tensor): 输入张量
+        - **dim** (int, 可选): 输入张量只会在这个维度上被压缩，默认为 None
+
+    返回类型：
+        oneflow.tensor
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> input = flow.tensor([[[[1, 1, 1]]]], dtype=flow.float32)
+        >>> input.shape
+        oneflow.Size([1, 1, 1, 3])
+        >>> out = flow.squeeze(input, dim=[1, 2]).shape
+        >>> out
+        oneflow.Size([1, 3])
+
+    """
+)
+
+reset_docstr(
+    oneflow.stack,
+    r"""stack(input, dim=0) -> Tensor
+    
+    沿新维度连接多个张量。
+    返回的 tensor 和 :attr:`input` 共享相同的基础数据。
+
+    若定义参数 :attr:`dim` ，其应在范围 `[-input.ndimension() - 1, input.ndimension() + 1]` 内，值为负的 :attr:`dim` 会导致 
+    :attr:`dim` = ``dim + input.ndimension() + 1`` 上的 :meth:`stack` 。
+
+
+    参数：
+        - **inputs** (List[oneflow.Tensor]): 输入张量的列表。每个张量应该具有相同的形状
+        - **dim** (int): 要连接维度的索引。默认为0、
+    
+    返回类型：
+        oneflow.tensor
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> x1 = flow.rand(1, 3, 5)
+        >>> x2 = flow.rand(1, 3, 5)
+        >>> y = flow.stack([x1, x2], dim = -1)
+        >>> y.shape
+        oneflow.Size([1, 3, 5, 2])
+    """
+)
+
+reset_docstr(
+    oneflow.split,
+    r"""split(x, split_size_or_sections, dim=0) -> Tensor
+    
+    将张量分成块。
+
+    如果 :attr:`split_size_or_sections` 为一个整数，则 :attr:`x` 会被分成等大的块。
+    如果给定维度 :attr:`dim` 上的 tensor 大小不能被 split_size 整除，则最后一块的大小会小于其它块。
+
+    如果 :attr:`split_size_or_sections` 是一个列表，
+    那么 x 将根据 :attr:`split_size_or_sections` 被拆分为 :attr:`len(split_size_or_sections)` 个大小为 `dim` 的块。
+
+    参数：
+        - **x** (Tensor): 要拆分的张量
+        - **split_size_or_sections** (Union[int, List[int]]): 单个块的大小或包含每个块大小的列表
+        - **dim** (int): 拆分张量所沿的维度。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> a = flow.arange(10).view(5, 2)
+        >>> flow.split(a, 2)
+        (tensor([[0, 1],
+                [2, 3]], dtype=oneflow.int64), tensor([[4, 5],
+                [6, 7]], dtype=oneflow.int64), tensor([[8, 9]], dtype=oneflow.int64))
+        >>> flow.split(a, [1, 4])
+        (tensor([[0, 1]], dtype=oneflow.int64), tensor([[2, 3],
+                [4, 5],
+                [6, 7],
+                [8, 9]], dtype=oneflow.int64))
+
+    """
+)

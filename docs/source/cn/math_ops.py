@@ -1435,3 +1435,27 @@ reset_docstr(
 
     """
 )
+
+reset_docstr(
+    oneflow.sqrt,
+    r"""返回一个元素为 :attr:`input` 元素平方根的新 tensor 。
+        公式为：
+
+        .. math::
+            \text{out}_{i} = \sqrt{\text{input}_{i}}
+
+        参数：
+            - **input** (Tensor): 输入张量
+
+        示例：
+
+        .. code-block:: python
+
+            >>> import oneflow as flow
+            
+            >>> input = flow.tensor([1.0, 2.0, 3.0], dtype=flow.float32)
+            >>> output = flow.sqrt(input)
+            >>> output
+            tensor([1.0000, 1.4142, 1.7321], dtype=oneflow.float32)
+    """,
+)
