@@ -593,3 +593,31 @@ reset_docstr(
 
     """
 )
+
+reset_docstr(
+    oneflow.unsqueeze,
+    r"""unsqueeze(input, dim) -> Tensor
+
+    将 :attr:`input` 的某个指定位置增加一个大小为1的维度并返回。
+
+    返回的 tensor 与此 :attr:`input` 共享相同的基础数据。
+
+    参数 :attr:`dim` 应在范围 `[-input.ndimension() - 1, input.ndimension() + 1]` 内，
+    值为负的 :attr:`dim` 会导致 :attr:`dim` = ``dim + input.ndimension() + 1`` 上的 :meth:`stack` 。
+
+    参数：
+        - **input** (Tensor): 输入张量
+        - **dim** (int): 插入维度的索引
+
+    示例：
+
+    .. code-block:: python 
+
+        >>> import oneflow as flow
+        
+        >>> x = flow.randn(2, 3, 4)
+        >>> y = x.unsqueeze(2)
+        >>> y.shape
+        oneflow.Size([2, 3, 1, 4])
+    """
+)
