@@ -115,3 +115,26 @@ reset_docstr(
     更多信息请参考 :class:`~oneflow.nn.Tanh` 。
     """,
 )
+reset_docstr(
+    oneflow.relu,
+    r"""relu(input, inplace) -> Tensor
+
+    对 :attr:`input` 逐元素应用线性整流函数。更多信息请参考 :class:`~oneflow.nn.ReLU` 。
+
+    参数：
+        - **input** (Tensor)
+        - **inplace** (Bool): 如果为 ``True`` ，则以原地算法执行此算子。默认为 ``False``
+    
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> input = flow.tensor([1, -2, 3], dtype=flow.float32)
+        >>> output = flow.relu(input)
+        >>> output
+        tensor([1., 0., 3.], dtype=oneflow.float32)
+
+    """,
+)
