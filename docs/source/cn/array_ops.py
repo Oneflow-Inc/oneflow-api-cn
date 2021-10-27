@@ -637,11 +637,8 @@ reset_docstr(
 
     参数：
         - **condition** (IntTensor): 如果不为 0 则 yield x ，否则 yield y
-        - **x** (Tensor 或 Scalar): 当 :attr:`condition` 为 True 时，如果 :attr:`x` 为标量则为值，
-        如果 :attr:`x` 为标量则为在索引处选择的值
-        
-        - **y** (Tensor 或 Scalar): 当 :attr:`condition` 为 False 时，如果 :attr:`x` 为标量则为值，
-        如果 :attr:`x` 为标量则为在索引处选择的值
+        - **x** (Tensor 或 Scalar): 当 :attr:`condition` 为 True 时，如果 :attr:`x` 为标量则为值，如果 :attr:`x` 为标量则为在索引处选择的值
+        - **y** (Tensor 或 Scalar): 当 :attr:`condition` 为 False 时，如果 :attr:`x` 为标量则为值，如果 :attr:`x` 为标量则为在索引处选择的值
     
     返回类型：
         oneflow.tensor: 与 :attr:`condition` 、 :attr:`x` 、 :attr:`y` 广播形状相同的 tensor 。
