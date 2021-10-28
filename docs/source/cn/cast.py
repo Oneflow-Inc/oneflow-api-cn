@@ -40,7 +40,7 @@ reset_docstr(
 
     参数：
         - **input** (oneflow.tensor): 输入张量
-        - **args** (oneflow.tensor 或 oneflow.device 湖泊 oneflow.dtype): 位置参数
+        - **args** (oneflow.tensor 或 oneflow.device 或 oneflow.dtype): 位置参数
         - **kwargs** (oneflow.device 或 oneflow.dtype) : 关键值参数
 
     返回类型：

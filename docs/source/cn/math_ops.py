@@ -1466,7 +1466,7 @@ reset_docstr(
 
     返回给定维度 :attr:`dim` 中 :attr:`input` 张量的每一行的方差。
 
-    如果 :attr:`keepdim` 为 `True` ，输出张量与 `input` 的大小相同，除非维度 attr:`dim`  的大小为 1 。
+    如果 :attr:`keepdim` 为 `True` ，输出张量与 :attr:`input` 的大小相同。除非维度 :attr:`dim`  的大小为 1 ，
     否则输出的维度将被压缩 (参见 `flow.squeeze()` ) 导致输出张量的维度少 1 （或 `len(dim)` ）。
 
     参数：

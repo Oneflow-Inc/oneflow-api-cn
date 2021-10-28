@@ -55,7 +55,7 @@ reset_docstr(
 
     类似地，如果 :attr:`input` 的维度少于 :attr:`reps` 指定的维度，则 :attr:`input` 被视为在维度 0 处未压缩，
     直到它的维度与 :attr:`reps` 指定的一样多。例如，如果 :attr:`input` 的形状为 (4, 2) 而 ``reps`` 为 (3, 3, 2, 2)，
-    则视 :attr:`input` 形状为 (1, 1、4、2）。
+    则视 :attr:`input` 形状为 (1, 1, 4, 2)。
 
     .. note::
         这个函数类似于 NumPy 的 tile 函数。

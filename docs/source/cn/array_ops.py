@@ -539,7 +539,7 @@ reset_docstr(
 
     参数：
         - **inputs** (List[oneflow.Tensor]): 输入张量的列表。每个张量应该具有相同的形状
-        - **dim** (int): 要连接维度的索引。默认为0、
+        - **dim** (int): 要连接维度的索引。默认为0
     
     返回类型：
         oneflow.tensor
@@ -568,7 +568,7 @@ reset_docstr(
     如果给定维度 :attr:`dim` 上的 tensor 大小不能被 split_size 整除，则最后一块的大小会小于其它块。
 
     如果 :attr:`split_size_or_sections` 是一个列表，
-    那么 x 将根据 :attr:`split_size_or_sections` 被拆分为 :attr:`len(split_size_or_sections)` 个大小为 `dim` 的块。
+    那么 :attr:`x` 将根据 :attr:`split_size_or_sections` 被拆分为 :attr:`len(split_size_or_sections)` 个大小为 :attr:`dim` 的块。
 
     参数：
         - **x** (Tensor): 要拆分的张量
@@ -637,8 +637,8 @@ reset_docstr(
 
     参数：
         - **condition** (IntTensor): 如果不为 0 则 yield x ，否则 yield y
-        - **x** (Tensor 或 Scalar): 当 :attr:`condition` 为 True 时，如果 :attr:`x` 为标量则为值，如果 :attr:`x` 为标量则为在索引处选择的值
-        - **y** (Tensor 或 Scalar): 当 :attr:`condition` 为 False 时，如果 :attr:`x` 为标量则为值，如果 :attr:`x` 为标量则为在索引处选择的值
+        - **x** (Tensor 或 Scalar): 当 :attr:`condition` 为 True 时，如果 :attr:`x` 为标量则为值，如果 :attr:`x` 不为标量则为在索引处选择的值
+        - **y** (Tensor 或 Scalar): 当 :attr:`condition` 为 False 时，如果 :attr:`x` 为标量则为值，如果 :attr:`x` 不为标量则为在索引处选择的值
     
     返回类型：
         oneflow.tensor: 与 :attr:`condition` 、 :attr:`x` 、 :attr:`y` 广播形状相同的 tensor 。

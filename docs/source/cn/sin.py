@@ -14,6 +14,7 @@ reset_docstr(
         **input** (Tensor): 输入张量
         
     示例：
+    
     .. code-block:: python
 
         >>> import oneflow as flow
@@ -21,7 +22,6 @@ reset_docstr(
         >>> y1 = flow.sin(x1)
         >>> y1
         tensor([-0.5194,  0.1343, -0.4032, -0.2712], dtype=oneflow.float32)
-        
         >>> x2 = flow.tensor([-1.4, 2.6, 3.7], dtype=flow.float32, device=flow.device('cuda'))
         >>> y2 = flow.sin(x2)
         >>> y2
