@@ -211,7 +211,7 @@ reset_docstr(
 
 ## 查看效果
 
-可以在本地编译文档，查看效果：
+可以编译文档并下载整个 [docs/build-cn/html](./docs/build-cn/html) 文件夹到本地，查看效果：
 
 ```shell
 cd docs && make html_cn
@@ -246,13 +246,11 @@ make html_cn
 ```
 后未出现 warning ，则可以提交翻译进度。
 
-
 查看哪些文件被修改过：
 
 ```shell
 git status
 ```
-
 
 对所有要提交的文件执行以下代码，将文件添加到暂存区:
 
@@ -260,13 +258,11 @@ git status
 git add [file1] [file2] ...
 ```
 
-
 将暂存区内容添加到本地仓库中， \[message] 为要备注的信息:
 
 ```shell
 git commit -m [message]
 ```
-
 
 从将本地的分支版本上传到远程：
 
@@ -274,9 +270,7 @@ git commit -m [message]
 git push origin <本地分支名>
 ```
 
-
 如果是第一次 push ，则需要在 github 新建 pr 。新 pr 名应该为英文。
-
 
 每合并一个 pr 后，应该同步 `master` ，
 ```shell
@@ -287,3 +281,5 @@ git pull origin master
 ```shell
 git checkout -m <本地新分支名>
 ```
+
+提交翻译时应附上中文版算子的网页截图以及英文版文本在 oneflow 仓库(https://github.com/Oneflow-Inc/oneflow) 中位置的链接以方便审核。
