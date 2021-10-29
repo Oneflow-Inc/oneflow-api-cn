@@ -232,7 +232,7 @@ python3
 ### 常见问题
 
 1. WARNING: Inline strong start-string without end-string.
-解决方法：注意是否前后 * 、 \` 数量一致，并在最后一个 * 或 \` 后面有空格。如果没有空格会导致此错误。
+解决方法：注意是否前后 * 或 \` 数量一致，并在最后一个 * 或 \` 后面有空格。如果没有空格会导致此错误。
 
 ## 提交翻译
 
@@ -271,6 +271,7 @@ git push origin <本地分支名>
 ```
 
 如果是第一次 push ，则需要在 github 新建 pr 。新 pr 名应该为英文。
+提交翻译时应附上中文版算子的网页截图以及英文版文本在 oneflow 仓库(https://github.com/Oneflow-Inc/oneflow) 中位置的链接以方便审核。
 
 每合并一个 pr 后，应该同步 `master` ，
 ```shell
@@ -281,5 +282,3 @@ git pull origin master
 ```shell
 git checkout -m <本地新分支名>
 ```
-
-提交翻译时应附上中文版算子的网页截图以及英文版文本在 oneflow 仓库(https://github.com/Oneflow-Inc/oneflow) 中位置的链接以方便审核。
