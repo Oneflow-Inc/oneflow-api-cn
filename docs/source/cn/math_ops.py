@@ -13,8 +13,8 @@ reset_docstr(
         out = input + other
 
     参数：
-        - **input** (Tensor): 输入张量
-        - **other** (Tensor): 输入张量
+        - **input** (Tensor) - 输入张量
+        - **other** (Tensor) - 输入张量
 
     返回类型：
         oneflow.tensor
@@ -255,7 +255,7 @@ reset_docstr(
         \text{out}_{i} = \sin^{-1}(\text{input}_{i})
 
     参数：
-        **x** (Tensor): 输入张量
+        **x** (Tensor) - 输入张量
 
     返回类型：
         oneflow.tensor
