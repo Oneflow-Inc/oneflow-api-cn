@@ -493,3 +493,33 @@ reset_docstr(
 
     """
 )
+
+reset_docstr(
+    oneflow.Tensor.reshape,
+    r"""reshape(*shape) -> Tensor
+    
+    此运算符改变张量的形状。
+
+    我们可以将 `shape` 中的一个元素设置为 `-1` ，算子会推断出完整的形状。
+
+    参数：
+        - **input** : 输入张量
+        - **shape** : 输出张量的形状
+    
+    返回类型：
+        和输入数据类一样的张量。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> input = flow.tensor([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]], dtype=flow.float32)
+
+        >>> y = flow.reshape(input, shape=[2, 2, 2, -1]).shape
+        >>> y
+        oneflow.Size([2, 2, 2, 2])
+
+    """
+)

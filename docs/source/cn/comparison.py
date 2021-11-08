@@ -118,3 +118,33 @@ reset_docstr(
     
     """
 )
+
+reset_docstr(
+    oneflow.Tensor.ne,
+    r"""ne(inout, other) -> Tensor
+
+    计算 element-wise 元素不相等性。
+    第二个参数 :attr:`other` 可以是一个数字或张量，其形状可以用第一个参数 :attr:`input` 广播。
+
+    参数：
+        - **input** (oneflow.Tensor): 要比较的张量
+        - **other** (oneflow.Tensor, float 或 int): 要做比较的目标
+
+    返回类型：
+        - **oneflow.Tensor** : 一个包含 bool 的张量，如果 :attr:`input` 的元素不等于 :attr:`other` 的元素则为 True 。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.tensor([2, 3, 4, 5], dtype=flow.float32)
+        >>> other = flow.tensor([2, 3, 4, 1], dtype=flow.float32)
+
+        >>> y = flow.ne(input, other)
+        >>> y
+        tensor([0, 0, 0, 1], dtype=oneflow.int8)
+
+    """
+)

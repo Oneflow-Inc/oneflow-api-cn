@@ -240,3 +240,28 @@ reset_docstr(
         1.0
     """
 )
+
+reset_docstr(
+    oneflow.Tensor.reciprocal,
+    r"""reciprocal(x) -> Tensor
+    计算 :attr:`x` 的倒数，如果 :attr:`x` 为0，倒数将被设置为0。
+
+    参数：
+        **x** (Tensor): 输入张量。
+
+    返回类型：
+        oneflow.tensor
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> x = flow.tensor([[1, 2, 3], [4, 5, 6]], dtype=flow.float32)
+        >>> out = flow.reciprocal(x)
+        >>> out
+        tensor([[1.0000, 0.5000, 0.3333],
+                [0.2500, 0.2000, 0.1667]], dtype=oneflow.float32)
+    """,
+)
