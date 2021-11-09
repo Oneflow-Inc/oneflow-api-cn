@@ -120,7 +120,7 @@ reset_docstr(
     返回一个用标量值 0 填充的 tensor ，其形状由变量参数 :attr:`size` 定义。
 
     参数：
-        - ***size** (整数或整数元组): 定义输出张量的形状。可以是可变数量的参数或是像列表或元组这样的集合。
+        - **size** (整数或整数元组): 定义输出张量的形状。可以是可变数量的参数或是像列表或元组这样的集合。
         - **dtype** (flow.dtype, 可选): 返回张量的数据类型
         - **device** (flow.device, 可选): 返回的本地张量的所需设备。默认使用当前设备
         - **placement** (flow.placement, 可选): 设置返回张量的 placement 属性。如果为None，则构造 local tensor 
