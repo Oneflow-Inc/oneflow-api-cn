@@ -1484,10 +1484,9 @@ reset_docstr(
 
         >>> import oneflow as flow
         
-        >>> input = flow.randn(2, 3, 4, 5)
+        >>> input = flow.tensor([[-0.8166, -1.3802, -0.3560]], dtype=flow.float32)
         >>> output = flow.var(input, 1, True)
-        >>> output.shape
-        oneflow.Size([2, 4, 5])
+        tensor([0.2631], dtype=oneflow.float32)
         
     """,
 )

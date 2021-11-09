@@ -91,6 +91,7 @@ reset_docstr(
     oneflow.scatter_nd,
     r"""oneflow.scatter_nd(index, update, shape) -> Tensor
 
+    此接口与 TensorFlow 保持一致，更多信息请参考 https://www.tensorflow.org/api_docs/python/tf/scatter_nd 。
     依据 `shape` 创建一个新的元素皆为 0 的 tensor ，并根据 `index` 在新的 tensor 中插入 `update` 的元素。
 
     参数：
