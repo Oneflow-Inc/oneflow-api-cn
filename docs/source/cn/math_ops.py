@@ -1486,6 +1486,7 @@ reset_docstr(
         
         >>> input = flow.tensor([[-0.8166, -1.3802, -0.3560]], dtype=flow.float32)
         >>> output = flow.var(input, 1, True)
+        >>> output
         tensor([0.2631], dtype=oneflow.float32)
         
     """,
