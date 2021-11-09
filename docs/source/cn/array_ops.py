@@ -663,7 +663,7 @@ reset_docstr(
 reset_docstr(
     oneflow.env.get_rank,
     r"""  
-    返回当前进程组的 rank 。
+    返回当前进程组的 rank 值。
 
     返回值：
         进程组的 rank 。

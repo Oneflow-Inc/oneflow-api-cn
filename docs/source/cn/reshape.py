@@ -25,7 +25,7 @@ reset_docstr(
 
     参数：
         - **input** (Tensor)
-        - ***shape** (flow.Size 或 int...)
+        - **shape** (flow.Size 或 int...)
 
     返回类型：
         与 :attr:`input` 数据类型相同的 tensor

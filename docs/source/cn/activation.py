@@ -119,7 +119,7 @@ reset_docstr(
     oneflow.relu,
     r"""relu(input, inplace) -> Tensor
 
-    对 :attr:`input` 逐元素应用线性整流函数。更多信息请参考 :class:`~oneflow.nn.ReLU` 。
+    对 :attr:`input` 逐元素应用 ReLU 函数(Rectified Linear Unit，线性整流函数)。更多信息请参考 :class:`~oneflow.nn.ReLU` 。
 
     参数：
         - **input** (Tensor)
