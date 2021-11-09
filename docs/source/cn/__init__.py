@@ -1,5 +1,10 @@
 from .math_ops import *
 from .activation import *
+from .scatter import *
+from .activation_ops import *
+from .sin import *
+from .slice import *
+from .sort import *
 from .array_ops import *
 from .cast import *
 from .comm import *
@@ -22,3 +27,4 @@ from .random_ops import *
 from .loss_ops import *
 from .narrow import *
 from .autograd_mode import *
+from .reshape import *
