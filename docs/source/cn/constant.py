@@ -86,11 +86,11 @@ reset_docstr(
 
     参数：
         - **size** (一个整数或包含整数的元组)): 决定输出张量的形状，可以是数字变量或集合例如列表或元组
-        - **dtype** (flow.dtype, 可选): 返回张量的数据类型。
+        - **dtype** (flow.dtype, 可选): 返回张量的数据类型
         - **device** (flow.device, 可选): 返回的本地张量的所需设备。默认使用当前设备
-        - **placement** (flow.placement, 可选): 设置返回张量的 placement 属性。如果为None，则构造 local tensor 。
-        - **sbp** (flow.sbp.sbp 或包含 flow.sbp.sbp 的元组, 可选): 返回的consistent tensor的所需 sbp 描述符。如果为 None ，则返回的张量是使用参数 `device` 的本地张量。
-        - **requires_grad** (bool, 可选): 用 autograd 记录对返回张量的操作，默认为 False。
+        - **placement** (flow.placement, 可选): 设置返回张量的 placement 属性。如果为None，则构造 local tensor 
+        - **sbp** (flow.sbp.sbp 或包含 flow.sbp.sbp 的元组, 可选): 返回的consistent tensor的所需 sbp 描述符。如果为 None ，则返回的张量是使用参数 `device` 的本地张量
+        - **requires_grad** (bool, 可选): 用 autograd 记录对返回张量的操作，默认为 False
 
     示例：
 
@@ -190,6 +190,7 @@ reset_docstr(
     .. code-block:: python
 
         >>> import oneflow as flow
+
         >>> from oneflow import linalg as LA
         >>> a = flow.arange(9, dtype=flow.float32) - 4
         >>> a
@@ -240,4 +241,34 @@ reset_docstr(
         tensor([6., 6.], dtype=oneflow.float32)
 
     """,
+)
+
+reset_docstr(
+    oneflow.zeros,
+    r"""zeros(*size, dtype=None, device=None, placement=None, sbp=None, requires_grad=False) -> Tensor
+
+    返回一个用标量值 0 填充的 tensor ，其形状由变量参数 :attr:`size` 定义。
+
+    参数：
+        - **size** (整数或整数元组): 定义输出张量的形状。可以是可变数量的参数或是像列表或元组这样的集合。
+        - **dtype** (flow.dtype, 可选): 返回张量的数据类型
+        - **device** (flow.device, 可选): 返回的本地张量的所需设备。默认使用当前设备
+        - **placement** (flow.placement, 可选): 设置返回张量的 placement 属性。如果为None，则构造 local tensor 
+        - **sbp** (flow.sbp.sbp 或 tuple of flow.sbp.sbp, 可选): 返回的consistent tensor的所需 sbp 描述符。如果为 None ，则返回的张量是使用参数 `device` 的本地张量
+        - **requires_grad** (bool, 可选): 用 autograd 记录对返回张量的操作，默认为 False
+  
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> y = flow.zeros(5)
+        >>> y
+        tensor([0., 0., 0., 0., 0.], dtype=oneflow.float32)
+        >>> y = flow.zeros(2,3)
+        >>> y
+        tensor([[0., 0., 0.],
+                [0., 0., 0.]], dtype=oneflow.float32)
+
+    """
 )

@@ -1435,3 +1435,59 @@ reset_docstr(
 
     """
 )
+ 
+reset_docstr(
+    oneflow.sqrt,
+    r"""返回一个元素为 :attr:`input` 元素平方根的新 tensor 。
+        公式为：
+
+        .. math::
+            \text{out}_{i} = \sqrt{\text{input}_{i}}
+
+        参数：
+            - **input** (Tensor): 输入张量
+
+        示例：
+
+        .. code-block:: python
+
+            >>> import oneflow as flow
+            
+            >>> input = flow.tensor([1.0, 2.0, 3.0], dtype=flow.float32)
+            >>> output = flow.sqrt(input)
+            >>> output
+            tensor([1.0000, 1.4142, 1.7321], dtype=oneflow.float32)
+    """,
+)
+
+reset_docstr(
+    oneflow.var,
+    r"""var(input, dim=None, unbiased=True,  keepdim=False) -> Tensor
+
+    返回给定维度 :attr:`dim` 中 :attr:`input` 张量的每一行的方差。
+
+    如果 :attr:`keepdim` 为 `True` ，输出张量与 :attr:`input` 的大小相同。除非维度 :attr:`dim`  的大小为 1 ，
+    否则输出的维度将被压缩 (参见 `flow.squeeze()` ) 导致输出张量的维度少 1 （或 `len(dim)` ）。
+
+    参数：
+        - **input** (Tensor): 输入张量
+        - **dim** (int 或者 tuple of python:ints): 要减少的一个或多个维度。默认为None
+        - **unbiased** (bool, 可选): 是否使用贝塞尔校正 (:math:`\delta N = 1`) 。 默认为 True
+        - **keepdim** (bool, 可选): 输出张量是否保留了 :attr:`input` 的维度。 默认为 False
+
+    返回类型：
+        oneflow.tensor
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.tensor([[-0.8166, -1.3802, -0.3560]], dtype=flow.float32)
+        >>> output = flow.var(input, 1, True)
+        >>> output
+        tensor([0.2631], dtype=oneflow.float32)
+        
+    """,
+)
