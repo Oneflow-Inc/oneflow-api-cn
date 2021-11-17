@@ -760,3 +760,78 @@ reset_docstr(
 
     """
 )
+
+reset_docstr(
+    oneflow.Tensor.type_as,
+    r"""type_as(target) -> Tensor
+
+    将 :attr:`input` 的数据类型转换为 :attr:`target` 的数据类型。
+    如果 :attr:`input` 的数据类型已经和 :attr:`target` 的数据类型一致，则不做操作。
+
+    参数：
+        - **input** (Tensor): 输入张量
+        - **target** (Tensor): 具有要转换类型的张量。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.randn(1, 2, 3, dtype = flow.float32)
+        >>> target = flow.randint(0, 4, (5, 6))
+        >>> input = input.type_as(target)
+        >>> input.dtype
+        oneflow.int64
+
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.topk,
+    r"""topk(k, dim=None, largest=True, sorted=True) -> Tesnor
+    
+    查找指定维度上最大或最小的 :attr:`k` 个值和其索引。
+
+    参数：
+        - **input** (oneflow.Tensor): 输入张量
+        - **k** (int): 最大最小值的数量
+        - **dim** (int, 可选的): 要排序的维度，默认为（dim = -1）
+        - **largest** (bool, 可选的): 控制查找的是最大值还是最小值
+        - **sorted** (bool, 可选的): 是否返回排好序的元素（目前只支持 True）
+
+    返回类型：        
+        Tuple(oneflow.Tensor, oneflow.Tensor(dtype=int32)): 一个形状为 (values, indices) 的元组。 :attr:`indices` 为输出元素在输入张量中的索引。
+
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> x = flow.tensor([[1, 3, 8, 7, 2], [1, 9, 4, 3, 2]], dtype=flow.float32)
+        >>> (values, indices) = flow.topk(flow.Tensor(x), k=3, dim=1)
+        >>> values
+        tensor([[8., 7., 3.],
+                [9., 4., 3.]], dtype=oneflow.float32)
+        >>> indices
+        tensor([[2, 3, 1],
+                [1, 2, 3]], dtype=oneflow.int32)
+        >>> values.shape
+        oneflow.Size([2, 3])
+        >>> indices.shape
+        oneflow.Size([2, 3])
+        >>> (values, indices) = flow.topk(flow.Tensor(x), k=2, dim=1, largest=False)
+        >>> values
+        tensor([[1., 2.],
+                [1., 2.]], dtype=oneflow.float32)
+        >>> indices
+        tensor([[0, 4],
+                [0, 4]], dtype=oneflow.int32)
+        >>> values.shape
+        oneflow.Size([2, 2])
+        >>> indices.shape
+        oneflow.Size([2, 2])
+
+    """
+)
