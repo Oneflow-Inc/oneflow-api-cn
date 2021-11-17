@@ -138,11 +138,10 @@ reset_docstr(
         - **Input** : :math:`(N,*)` 其中 `*` 的意思是，可以增加任意维度
         - **Target** : :math:`(N,*)` 与输入形状一样
         - **Output** : 标量。如果 :attr:`reduction` 为 ``"none"`` ，则 :math:`(N,*)` 和输入形状一样
-
+        
     示例：
 
     .. code-block:: python
-
         >>> import oneflow as flow
         >>> input = flow.tensor([[1.2, 0.2, -0.3], [0.7, 0.6, -2], [0.7, 0.6, -2]], dtype=flow.float32)
         >>> target = flow.tensor([[0, 1, 0], [1, 0, 1], [1, 0, 1]], dtype=flow.float32)
@@ -166,6 +165,52 @@ reset_docstr(
         >>> out
         tensor(23.5865, dtype=oneflow.float32)
 
+    """
+)
+
+reset_docstr(
+    oneflow.tile,
+    r"""tile(input, reps) -> Tensor
+    
+    
+    此接口与 PyTorch 一致。
+    文档参考自：
+    https://pytorch.org/docs/stable/generated/torch.tile.html
+
+
+    
+    通过重复 :attr:`input` 的元素构造一个新张量。 :attr:`reps` 参数指定每个维度的重复次数。
+
+    如果 :attr:`reps` 的长度小于 :attr:`input` 的维度，则在 :attr:`reps` 前添加 1 。直到 :attr:`reps` 的长度
+    等于 :attr:`input` 的维度。例如： :attr:`input` 的形状为  (8, 6, 4, 2)  ，而 :attr:`reps` 为 (2, 2) ，
+    则 :attr:`reps` 被认为是 (1, 1, 2, 2) 。
+
+    类似地，如果 :attr:`input` 的维度少于 :attr:`reps` 指定的维度，则 :attr:`input` 被视为在维度 0 处未压缩，
+    直到它的维度与 :attr:`reps` 指定的一样多。例如，如果 :attr:`input` 的形状为 (4, 2) 而 ``reps`` 为 (3, 3, 2, 2)，
+    则视 :attr:`input` 形状为 (1, 1, 4, 2)。
+
+    .. note::
+        这个函数类似于 NumPy 的 tile 函数。
+
+    参数：
+        - **input** (oneflow.tensor): 要重复元素的张量
+        - **reps** (元组): 每个维度要重复的次数
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+                
+        >>> input = flow.tensor([1, 2], dtype=flow.int32)
+        >>> out = input.tile(reps=(2,))
+        >>> out
+        tensor([1, 2, 1, 2], dtype=oneflow.int32)
+
+        >>> input = flow.randn(5, 2, 1)
+        >>> out = input.tile(reps=(3, 4))
+        >>> out.size()
+        oneflow.Size([5, 6, 4])
 
     """
 )
