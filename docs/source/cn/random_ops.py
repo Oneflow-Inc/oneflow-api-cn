@@ -167,7 +167,7 @@ reset_docstr(
         >>> generator.manual_seed(0)
         >>> x = flow.randperm(5, generator=generator) # 构造 local tensor
         >>> x
-        tensor([2, 4, 3, 0, 1], dtype=oneflow.int32)
+        tensor([2, 4, 3, 0, 1], dtype=oneflow.int64)
         >>> x.is_consistent
         False
         >>> placement = flow.placement("cpu", {0: [0]})
