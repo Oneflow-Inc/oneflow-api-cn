@@ -28,3 +28,4 @@ from .loss_ops import *
 from .narrow import *
 from .autograd_mode import *
 from .reshape import *
+from .nn import *
