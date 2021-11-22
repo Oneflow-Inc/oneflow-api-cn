@@ -28,45 +28,6 @@ reset_docstr(
 )    
 
 reset_docstr(
-    oneflow.to,
-    r"""to(input, *args, **kwargs) -> Tensor
-    
-    执行张量 dtype 和 device 转换。
-        flow.dtype 和 flow.device 由 `input.to(*args, **kwargs)` 的参数推导而来。
-
-    .. note::
-        如果 tensor :attr:`input` 的 :class:`flow.dtype` 已经与参数一致，则返回 :attr:`input` 。
-        否则创建一个符合条件的 :attr:`input` 备份。
-
-    参数：
-        - **input** (oneflow.tensor): 输入张量
-
-    返回类型：
-        oneflow.tensor
-
-    示例：
-
-    .. code-block:: python
-
-        >>> import oneflow as flow
-
-        >>> input = flow.randint(1, 9, size=(1, 2, 3, 4))
-        >>> output = input.to(dtype=flow.float32)
-        >>> flow.eq(input, output)
-        tensor([[[[1, 1, 1, 1],
-                  [1, 1, 1, 1],
-                  [1, 1, 1, 1]],
-        <BLANKLINE>  
-                 [[1, 1, 1, 1],
-                  [1, 1, 1, 1],
-                  [1, 1, 1, 1]]]], dtype=oneflow.int8)
-        >>> cuda0 = flow.device('cuda:0')
-        >>> output = input.to(device=cuda0)
-        
-    """
-)
-
-reset_docstr(
     oneflow.transpose,
     r"""transpose(input, dim0, dim1) -> Tensor
     
