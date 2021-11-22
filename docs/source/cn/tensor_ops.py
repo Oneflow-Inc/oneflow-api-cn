@@ -311,7 +311,7 @@ reset_docstr(
 )
 
 reset_docstr(
-    oneflow.rsqrt,
+    oneflow.Tensor.rsqrt,
     r"""rsqrt(input) -> Tensor
         
         返回一个新的张量，它的元素是 :attr:`input` 的每个元素的平方根的倒数。
