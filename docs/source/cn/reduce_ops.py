@@ -123,3 +123,24 @@ reset_docstr(
 
     """
 )
+
+reset_docstr(
+    oneflow.sum,
+    r"""sum(input, dim=None, keepdim=False) -> Tensor
+    
+    在给定的维度 :attr:`dim` 计算 :attr:`input` 每列的元素和。如果没有设定 :attr:`dim` ，则会计算 :attr:`input` 所有元素的和。
+    
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> input = flow.Tensor([[1, 2, 3], [4, 5, 6]])
+        >>> flow.sum(input)
+        tensor(21., dtype=oneflow.float32)
+        >>> flow.sum(input, dim=0)
+        tensor([5., 7., 9.], dtype=oneflow.float32)
+        >>> flow.sum(input, dim=1)
+        tensor([ 6., 15.], dtype=oneflow.float32)
+"""
+)

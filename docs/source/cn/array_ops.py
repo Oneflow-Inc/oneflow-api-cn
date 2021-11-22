@@ -493,3 +493,211 @@ reset_docstr(
 
     """
 )
+
+reset_docstr(
+    oneflow.squeeze,
+    r"""squeeze(input, dim = None) -> Tensor
+    
+    移除 :attr:`input` 中指定大小为1的维度。
+    如果 :attr:`dim` 没被设定，则移除 :attr:`input` 中所有大小为 1 的维度。
+
+    返回值中的元素数量与 tensor :attr:`input` 相同。
+
+    参数：
+        - **input** (oneflow.tensor): 输入张量
+        - **dim** (int, 可选): 输入张量只会在这个维度上被压缩，默认为 None
+
+    返回类型：
+        oneflow.tensor
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> input = flow.tensor([[[[1, 1, 1]]]], dtype=flow.float32)
+        >>> input.shape
+        oneflow.Size([1, 1, 1, 3])
+        >>> out = flow.squeeze(input, dim=[1, 2]).shape
+        >>> out
+        oneflow.Size([1, 3])
+
+    """
+)
+
+reset_docstr(
+    oneflow.stack,
+    r"""stack(input, dim=0) -> Tensor
+    
+    沿新维度连接多个张量。
+    返回的 tensor 和 :attr:`input` 共享相同的基础数据。
+
+    若定义参数 :attr:`dim` ，其应在范围 `[-input.ndimension() - 1, input.ndimension() + 1]` 内，值为负的 :attr:`dim` 会导致 
+    :attr:`dim` = ``dim + input.ndimension() + 1`` 上的 :meth:`stack` 。
+
+
+    参数：
+        - **inputs** (List[oneflow.Tensor]): 输入张量的列表。每个张量应该具有相同的形状
+        - **dim** (int): 要连接维度的索引。默认为0
+    
+    返回类型：
+        oneflow.tensor
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> x1 = flow.rand(1, 3, 5)
+        >>> x2 = flow.rand(1, 3, 5)
+        >>> y = flow.stack([x1, x2], dim = -1)
+        >>> y.shape
+        oneflow.Size([1, 3, 5, 2])
+    """
+)
+
+reset_docstr(
+    oneflow.split,
+    r"""split(x, split_size_or_sections, dim=0) -> Tensor
+    
+    将张量分成块。
+
+    如果 :attr:`split_size_or_sections` 为一个整数，则 :attr:`x` 会被分成等大的块。
+    如果给定维度 :attr:`dim` 上的 tensor 大小不能被 split_size 整除，则最后一块的大小会小于其它块。
+
+    如果 :attr:`split_size_or_sections` 是一个列表，
+    那么 :attr:`x` 将根据 :attr:`split_size_or_sections` 被拆分为 :attr:`len(split_size_or_sections)` 个大小为 :attr:`dim` 的块。
+
+    参数：
+        - **x** (Tensor): 要拆分的张量
+        - **split_size_or_sections** (Union[int, List[int]]): 单个块的大小或包含每个块大小的列表
+        - **dim** (int): 拆分张量所沿的维度。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> a = flow.arange(10).view(5, 2)
+        >>> flow.split(a, 2)
+        (tensor([[0, 1],
+                [2, 3]], dtype=oneflow.int64), tensor([[4, 5],
+                [6, 7]], dtype=oneflow.int64), tensor([[8, 9]], dtype=oneflow.int64))
+        >>> flow.split(a, [1, 4])
+        (tensor([[0, 1]], dtype=oneflow.int64), tensor([[2, 3],
+                [4, 5],
+                [6, 7],
+                [8, 9]], dtype=oneflow.int64))
+
+    """
+)
+
+reset_docstr(
+    oneflow.unsqueeze,
+    r"""unsqueeze(input, dim) -> Tensor
+
+    将 :attr:`input` 的某个指定位置增加一个大小为1的维度并返回。
+
+    返回的 tensor 与此 :attr:`input` 共享相同的基础数据。
+
+    参数 :attr:`dim` 应在范围 `[-input.ndimension() - 1, input.ndimension() + 1]` 内，
+    值为负的 :attr:`dim` 会导致 :attr:`dim` = ``dim + input.ndimension() + 1`` 上的 :meth:`stack` 。
+
+    参数：
+        - **input** (Tensor): 输入张量
+        - **dim** (int): 插入维度的索引
+
+    示例：
+
+    .. code-block:: python 
+
+        >>> import oneflow as flow
+        
+        >>> x = flow.randn(2, 3, 4)
+        >>> y = x.unsqueeze(2)
+        >>> y.shape
+        oneflow.Size([2, 3, 1, 4])
+    """
+)
+
+reset_docstr(
+    oneflow.where, 
+    r"""where(condition, x=None, y=None) -> Tensor
+    
+    返回一个 tensor 其元素为从 :attr:`x` 或 :attr:`y` 中依据 :attr:`condition` 的真实值选择的元素，
+    如果 :attr:`condition` 中的元素大于 0 ，则取 :attr:`x` 中的元素，否则取 :attr:`y` 的元素。
+
+    .. note::
+        如果 :attr:`x` 为 None 并且 :attr:`y` 为 None ，则 flow.where(condition) 等同于 
+        flow.nonzero(condition, as_tuple=True) 。
+        
+        :attr:`condition` 、 :attr:`x` 、 :attr:`y` 必须可互相广播。
+
+    参数：
+        - **condition** (IntTensor): 如果不为 0 则 yield x ，否则 yield y
+        - **x** (Tensor 或 Scalar): 当 :attr:`condition` 为 True 时，如果 :attr:`x` 为标量则为值，如果 :attr:`x` 不为标量则为在索引处选择的值
+        - **y** (Tensor 或 Scalar): 当 :attr:`condition` 为 False 时，如果 :attr:`x` 为标量则为值，如果 :attr:`x` 不为标量则为在索引处选择的值
+    
+    返回类型：
+        oneflow.tensor: 与 :attr:`condition` 、 :attr:`x` 、 :attr:`y` 广播形状相同的 tensor 。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> x = flow.tensor([[-0.4620, 0.3139], [0.3898, -0.7197], [0.0478, -0.1657]], dtype=flow.float32)
+        >>> y = flow.ones(3, 2, dtype=flow.float32)
+        >>> condition = flow.tensor([[0, 1], [1, 0], [1, 0]], dtype=flow.int32)
+        >>> out = condition.where(x, y)
+        >>> out #doctest: +ELLIPSIS
+        tensor([[1.0000, 0.3139],
+                ...
+                [0.0478, 1.0000]], dtype=oneflow.float32)
+
+    """
+)
+
+reset_docstr(
+    oneflow.env.get_rank,
+    r"""  
+    返回当前进程组的 rank 值。
+
+    返回值：
+        进程组的 rank 。
+
+    """
+)
+
+reset_docstr(
+    oneflow.argmin,
+    r"""
+    返回 :attr:`input` 在指定维度上的最小值的 `index` 。
+
+    参数：
+        - **input** (oneflow.tensor): 输入张量
+        - **dim** (int, 可选): 要计算的维度，默认为最大维度(-1)。
+        - **keepdim** (bool，可选的): 返回值是否保留 input 的原有维数。默认为 False 。
+
+    返回类型：
+        oneflow.tensor: 包含 :attr:`input` 特定维度最小值的 index 的新张量(dtype=int64)。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.tensor([[4, 3, 1, 0, 2],
+        ...            [5, 9, 7, 6, 8]], dtype=flow.float32)
+        >>> output = flow.argmin(input)
+        >>> output
+        tensor(3, dtype=oneflow.int64)
+        >>> output = flow.argmin(input, dim=1)
+        >>> output
+        tensor([3, 0], dtype=oneflow.int64)
+
+    """,
+)
