@@ -257,3 +257,274 @@ reset_docstr(
     """
 
 )
+
+reset_docstr(
+    oneflow.nn.Conv1d,
+    r"""Conv1d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode='zeros')
+    
+    此接口与 PyTorch 一致。
+    文档参考自：https://pytorch.org/docs/master/generated/torch.nn.Conv1d.html#conv1d
+    
+    对由多个平面组成的输入信号应用 1D 卷积。
+
+    在最简单的情况下，大小为 :math:`(N, C_{\text{in}}, L)` 的输入层的输出值和输出 :math:`(N, C_{\text{out}}, L_{\text{out}})` 可以被准确的表述为：
+
+    .. math::
+        \text{out}(N_i, C_{\text{out}_j}) = \text{bias}(C_{\text{out}_j}) +
+        \sum_{k = 0}^{C_{in} - 1} \text{weight}(C_{\text{out}_j}, k)
+        \star \text{input}(N_i, k)
+
+    其中 :math:`\star` 为有效的 `cross-correlation`_ 运算符， :math:`N` 是批量大小， :math:`C` 表示通道数， 
+    :math:`L` 是信号序列的长度。
+
+    * :attr:`stride` 是控制互相关 (cross-correlation) 的步幅 (stride) 的单个数字或单元素元组。
+
+    * :attr:`padding` 控制应用于输入的填充量。可以是 `string` {{'valid', 'same'}}
+      或一个给出在两侧的隐式填充量的整数元组。
+
+    * :attr:`dilation` 控制核心点 (kernel points) 之间的间距，也称为 `à trous algorithm` 。此操作很难描述，
+      但是 `link`_ 很好的将 :attr:`dilation` 的作用可视化。
+
+    Note:
+        ``padding='valid'`` 等同于无填充。 ``padding='same'`` 填充输入，使输出具有与输入相同的形状。
+        但是此种情况下不支持除了 1 以外的任何步幅 (stride) 值。
+
+    参数：
+        - **in_channels** (int): 输入图像的通道数
+        - **out_channels** (int): 卷积产生的通道数
+        - **kernel_size** (int 或者 tuple): 卷积核的大小
+        - **stride** (int or tuple, 可选的): 卷积的步幅 (stride) 。默认： 1
+        - **padding** (int, tuple 或者 str, 可选的): 添加到输入两侧的填充值。默认： 0
+        - **padding_mode** (string, 可选的): 默认： ``'zeros'``
+        - **dilation** (int or tuple, 可选的): 核心的元素之间的间距。默认： 1
+        - **groups** (int, 可选的): 从输入通道到输出通道的 `blocked connections` 数。默认：1
+        - **bias** (bool, 可选的): 如果为 ``True`` ，则向输出添加可学习的偏差。默认：``True``
+
+    形状：
+        - **Input** : :math:`(N, C_{in}, L_{in})`
+        - **Output** : :math:`(N, C_{out}, L_{out})` 其中
+
+          .. math::
+              L_{out} = \left\lfloor\frac{L_{in} + 2 \times \text{padding} - \text{dilation}
+                        \times (\text{kernel\_size} - 1) - 1}{\text{stride}} + 1\right\rfloor
+
+    Attributes:
+        weight (Tensor): 形状为 :math:`(\text{out\_channels}, 
+            \frac{\text{in\_channels}}{\text{groups}}, \text{kernel\_size})` 的模块可学习权重。
+            这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
+            :math:`k = \frac{groups}{C_\text{in} * \text{kernel\_size}}` 
+
+        bias (Tensor):  形状为 (out_channels) 的模块可学习权重。如果 :attr:`bias` 为 ``True`` ，
+            则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
+            :math:`k = \frac{groups}{C_\text{in} * \text{kernel\_size}}`
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import oneflow.nn as nn
+        
+        >>> input = flow.randn(20, 16, 50)
+        >>> m = nn.Conv1d(16, 33, 3, stride=2)
+        >>> output = m(input)
+
+    .. _cross-correlation:
+        https://en.wikipedia.org/wiki/Cross-correlation
+
+    .. _link:
+        https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md
+    """
+
+)  
+
+reset_docstr(
+    oneflow.nn.Conv2d,
+    r"""Conv2d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode='zeros')
+    
+    此接口与 PyTorch 一致。
+    文档参考自：https://pytorch.org/docs/master/generated/torch.nn.Conv2d.html#conv2d
+    
+    对由多个平面组成的输入信号应用 2D 卷积。
+
+    在最简单的情况下，大小为 :math:`(N, C_{\text{in}}, H, W)` 的输入层的输出值和输出 
+    :math:`(N, C_{\text{out}}, H_{\text{out}}, W_{\text{out}})` 可以被准确的表述为：
+
+    .. math::
+        \text{out}(N_i, C_{\text{out}_j}) = \text{bias}(C_{\text{out}_j}) +
+        \sum_{k = 0}^{C_{\text{in}} - 1} \text{weight}(C_{\text{out}_j}, k) \star \text{input}(N_i, k)
+
+    其中 :math:`\star` 为有效的 2D `cross-correlation`_ 运算符， :math:`N` 是批量大小， :math:`C` 表示通道数，
+    :math:`H` 是以像素为单位的输入平面的高度，和 :math:`W` 是以像素为单位的宽度。
+
+
+    * :attr:`stride` 是控制互相关 (cross-correlation) 的步幅 (stride) 的单个数字或单元素元组。
+
+    * :attr:`padding` 控制在输入每个维度两侧隐式填充 :attr:`padding` 个点。
+
+    * :attr:`dilation` 控制核心点 (kernel points) 之间的间距，也称为 `à trous algorithm` 。此操作很难描述，
+      但是 `link`_ 很好的将 :attr:`dilation` 的作用可视化。
+
+    * :attr:`groups` 控制输入和输出之间的连接。 :attr:`in_channels` 和 :attr:`out_channels` 都必须能被 :attr:`groups` 整除。
+      例如，
+
+        * 当 groups=1 时，所有输入都卷积到输出。
+
+        * 当 groups=2 时，该操作等效于并排放置两个 conv 层，其中每个层检查一半的输入通道并产生一半的输出通道，然后将两者连接起来。
+
+        * 当 groups= :attr:`in_channels` 时， 每个输入通道都与它自己的一组过滤器(大小为
+          :math:`\frac{\text{out_channels}}{\text{in_channels}}`)进行卷积。
+
+    参数 :attr:`kernel_size` 、 :attr:`stride` 、 :attr:`padding` 、 :attr:`dilation` 可以是：
+
+        - 单个 ``int`` -- 在这种情况下，高度和宽度使用相同的值
+        - 两个整数的``tuple`` -- 在这种情况下，第一个 `int` 用于高度，第二个 `int` 用于宽度
+
+    Note:
+        当 `groups == in_channels` 并且 `out_channels == K * in_channels` 时，其中 `K` 是一个正整数，这个操作被称为“深度卷积”。
+
+        换句话说，对于大小为 :math:`(N, C_{in}, L_{in})` 的输入，可以使用参数 :math:`(C_\text{in}=C_\text{in}, C_\text{out}=C_\text{in} \times \text{K}, ..., \text{groups}=C_\text{in})` 
+        执行具有深度乘数 `K` 的深度卷积。
+
+    参数：
+        - **in_channels** (int): 输入图像的通道数
+        - **out_channels** (int): 卷积产生的通道数
+        - **kernel_size** (int 或者 tuple): 卷积核的大小
+        - **stride** (int or tuple, 可选的): 卷积的步幅 (stride) 。默认： 1
+        - **padding** (int, tuple 或者 str, 可选的): 添加到输入两侧的填充值。默认： 0
+        - **padding_mode** (string, 可选的): 默认： ``'zeros'``
+        - **dilation** (int or tuple, 可选的): 核心的元素之间的间距。默认： 1
+        - **groups** (int, 可选的): 从输入通道到输出通道的 `blocked connections` 数。默认：1
+        - **bias** (bool, 可选的): 如果为 ``True`` ，则向输出添加可学习的偏差。默认：``True``
+
+    形状：
+        - **Input** : :math:`(N, C_{in}, H_{in}, W_{in})`
+        - **Output** : :math:`(N, C_{out}, H_{out}, W_{out})` 其中
+
+          .. math::
+              H_{out} = \left\lfloor\frac{H_{in}  + 2 \times \text{padding}[0] - \text{dilation}[0]
+                        \times (\text{kernel_size}[0] - 1) - 1}{\text{stride}[0]} + 1\right\rfloor
+
+          .. math::
+              W_{out} = \left\lfloor\frac{W_{in}  + 2 \times \text{padding}[1] - \text{dilation}[1]
+                        \times (\text{kernel_size}[1] - 1) - 1}{\text{stride}[1]} + 1\right\rfloor
+
+    Attributes:
+        weight (Tensor): 形状为 :math:`(\text{out_channels}, \frac{\text{in_channels}}{\text{groups}},`
+            :math:`\text{kernel_size[0]}, \text{kernel_size[1]})` 的模块可学习权重。
+            这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
+            :math:`k = \frac{groups}{C_\text{in} * \prod_{i=0}^{1}\text{kernel_size}[i]}`
+
+        bias (Tensor):  形状为 (out_channels) 的模块可学习权重。如果 :attr:`bias` 为 ``True`` ，
+            则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
+            :math:`k = \frac{groups}{C_\text{in} * \prod_{i=0}^{1}\text{kernel_size}[i]}`
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import oneflow.nn as nn
+        
+        >>> input = flow.randn(20, 16, 50, 100)
+        >>> m = nn.Conv2d(16, 33, (3, 5), stride=(2, 1), padding=(4, 2), dilation=(3, 1))
+        >>> output = m(input)
+
+    .. _cross-correlation:
+        https://en.wikipedia.org/wiki/Cross-correlation
+
+    .. _link:
+        https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md
+    """
+
+)
+
+reset_docstr(
+    oneflow.nn.Conv3d,
+    r"""Conv3d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode='zeros')
+
+    此接口与 PyTorch 一致。
+    文档参考自：https://pytorch.org/docs/master/generated/torch.nn.Conv3d.html#conv3d
+
+    对由多个平面组成的输入信号应用 3D 卷积。
+
+    在最简单的情况下，大小为 :math:`(N, C_{in}, D, H, W)` 的输入层的输出值和输出 
+    :math:`(N, C_{out}, D_{out}, H_{out}, W_{out})` 可以被准确的表述为：
+
+    .. math::
+        out(N_i, C_{out_j}) = bias(C_{out_j}) +
+                                \sum_{k = 0}^{C_{in} - 1} weight(C_{out_j}, k) \star input(N_i, k)
+
+    其中 :math:`\star` 为有效的 3D `cross-correlation`_ 运算符。
+
+    * :attr:`stride` 是控制互相关 (cross-correlation) 的步幅 (stride) 的单个数字或单元素元组。
+
+    * :attr:`padding` 控制应用于输入的填充量。可以是 `string` {{'valid', 'same'}}
+      或一个给出在两侧的隐式填充量的整数元组。
+
+    * :attr:`dilation` 控制核心点 (kernel points) 之间的间距，也称为 `à trous algorithm` 。此操作很难描述，
+      但是 `link`_ 很好的将 :attr:`dilation` 的作用可视化。
+
+    参数 :attr:`kernel_size` 、 :attr:`stride` 、 :attr:`padding` 、 :attr:`dilation` 可以是：
+
+        - 单个 ``int`` -- 在这种情况下，长度、宽度和高度使用相同的值
+        - 两个整数的``tuple`` -- 在这种情况下，第一个 `int` 用于长度，第二个 `int` 用于高度，第三个 `int` 用于宽度。
+
+    Note:
+        ``padding='valid'`` 等同于无填充。 ``padding='same'`` 填充输入，使输出具有与输入相同的形状。
+        但是此种情况下不支持除了 1 以外的任何步幅 (stride) 值。
+
+    参数：
+        - **in_channels** (int): 输入图像的通道数
+        - **out_channels** (int): 卷积产生的通道数
+        - **kernel_size** (int 或者 tuple): 卷积核的大小
+        - **stride** (int or tuple, 可选的): 卷积的步幅 (stride) 。默认： 1
+        - **padding** (int, tuple 或者 str, 可选的): 添加到输入两侧的填充值。默认： 0
+        - **padding_mode** (string, 可选的): 默认： ``'zeros'``
+        - **dilation** (int or tuple, 可选的): 核心的元素之间的间距。默认： 1
+        - **groups** (int, 可选的): 从输入通道到输出通道的 `blocked connections` 数。默认：1
+        - **bias** (bool, 可选的): 如果为 ``True`` ，则向输出添加可学习的偏差。默认：``True``
+    
+    形状：
+        - **Input** : :math:`(N, C_{in}, D_{in}, H_{in}, W_{in})`
+        - **Output** : :math:`(N, C_{out}, D_{out}, H_{out}, W_{out})` 其中
+
+          .. math::
+              D_{out} = \left\lfloor\frac{D_{in} + 2 \times \text{padding}[0] - \text{dilation}[0]
+                    \times (\text{kernel\_size}[0] - 1) - 1}{\text{stride}[0]} + 1\right\rfloor
+
+          .. math::
+              H_{out} = \left\lfloor\frac{H_{in} + 2 \times \text{padding}[1] - \text{dilation}[1]
+                    \times (\text{kernel\_size}[1] - 1) - 1}{\text{stride}[1]} + 1\right\rfloor
+
+          .. math::
+              W_{out} = \left\lfloor\frac{W_{in} + 2 \times \text{padding}[2] - \text{dilation}[2]
+                    \times (\text{kernel\_size}[2] - 1) - 1}{\text{stride}[2]} + 1\right\rfloor
+
+    Attributes:
+        weight (Tensor): 形状为 :math:`(\text{out\_channels}, \frac{\text{in\_channels}}{\text{groups}},`
+                         :math:`\text{kernel\_size[0]}, \text{kernel\_size[1]}, \text{kernel\_size[2]})` 的模块可学习权重。
+                         这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
+                         :math:`k = \frac{groups}{C_\text{in} * \prod_{i=0}^{2}\text{kernel\_size}[i]}` 
+
+        bias (Tensor):  形状为 (out_channels) 的模块可学习权重。如果 :attr:`bias` 为 ``True`` ，
+                         则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
+                         :math:`k = \frac{groups}{C_\text{in} * \prod_{i=0}^{2}\text{kernel\_size}[i]}`
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import oneflow.nn as nn
+
+        >>> input = flow.randn(1, 2, 5, 5, 5)
+        >>> m = nn.Conv3d(2, 4, kernel_size=3, stride=1)
+        >>> output = m(input)
+        
+    .. _cross-correlation:
+        https://en.wikipedia.org/wiki/Cross-correlation
+    .. _link:
+        https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md
+    """
+)
