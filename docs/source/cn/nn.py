@@ -528,3 +528,276 @@ reset_docstr(
         https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md
     """
 )
+
+reset_docstr(
+    oneflow.nn.ConvTranspose1d,
+    r"""ConvTranspose1d(in_channels, out_channels, kernel_size, stride=1, padding=0, output_padding=0, groups=1, bias=True, dilation=1, padding_mode='zeros')
+
+    在由多个输入平面组成的输入图像上应用 1D 转置卷积算子。
+
+    该 module 可以看作是 Conv1d 相对于其输入的梯度。它也称为分数步幅卷积或反卷积（尽管它实际上不是反卷积操作）。
+
+    此 module 支持 TensorFloat32 。
+
+    * :attr:`stride` 控制互相关 (cross-correlation) 的步幅 (stride) 。
+
+    * :attr:`padding` 控制应用于输入两侧，点的数量为 ``dilation * (kernel_size - 1) - padding`` 的隐式 0 填充。
+      更多细节请参考 ``note`` 。
+
+    * :attr:`output_padding`  控制添加到输出形状一侧的大小。更多信息请参考 ``note`` 。
+
+    * :attr:`dilation` 控制核心点 (kernel points) 之间的间距，也称为 `à trous algorithm` 。此操作很难描述，
+      但是 `link`_ 很好的将 :attr:`dilation` 的作用可视化。
+
+    Note:
+        :attr:`padding` 参数有效地将 ``dilation * (kernel_size - 1) - padding`` 个 0 填充到输入的两侧。
+        设定此项的目的是当 :class:`~torch.nn.Conv1d` 与 :class:`~torch.nn.ConvTranspose1d` 用相同的参数初始化时，
+        它们的输入和输出的形状是互逆的。然而，当 ``stride > 1`` 时， :class:`~torch.nn.Conv1d` 
+        将多个输入形状映射到相同的输出形状。则使用 :attr:`output_padding` 有效地增加一侧的输出形状来解决这种歧义。
+        请注意，:attr:`output_padding` 仅用于查找输出形状，但实际上并未填充输出。
+
+    Note:
+        在某些情况下，将 CUDA 后端与 CuDNN 一起使用时，此运算符可能会选择非确定性算法来提高性能。
+        如果此操作有不确定性，您可以尝试通过设置 ``torch.backends.cudnn.deterministic =
+        True`` 来使操作具有确定性（可能以性能为代价）。
+        背景请参阅有关随机性 (randomness)  的 note 。
+
+    参数：
+        - **in_channels** (int): 输入图像的通道数
+        - **out_channels** (int): 卷积产生的通道数
+        - **kernel_size** (int 或 tuple): 卷积核的大小
+        - **stride** (int 或 tuple, 可选的): 卷积的步幅 (stride) 。默认： 1
+        - **padding** (int 或 tuple, 可选的): 添加到输入每侧的 ``dilation * (kernel_size - 1) - padding`` 大小的 0 填充值。默认： 0
+        - **output_padding** (int 或 tuple, 可选的): 添加到输出形状一侧的大小。默认：0
+        - **groups** (int, 可选的): 从输入通道到输出通道的 `blocked connections` 数。默认：1
+        - **bias** (bool, 可选的): 如果为 ``True`` ，则向输出添加可学习的偏差。默认：``True``
+        - **dilation** (int 或 tuple, 可选的): 核心的元素之间的间距。默认： 1
+
+    形状：
+        - **Input** : :math:`(N, C_{in}, L_{in})`
+        - **Output** : :math:`(N, C_{out}, L_{out})` 其中
+
+          .. math::
+              L_{out} = (L_{in} - 1) \times \text{stride} - 2 \times \text{padding} + \text{dilation}
+                        \times (\text{kernel_size} - 1) + \text{output_padding} + 1
+
+    Attributes:
+        weight (Tensor): 形状为 :math:`(\\text{in\_channels}, \frac{\text{out\_channels}}{\text{groups}},`
+                         :math:`\text{kernel\\_size})` 的模块可学习权重。
+                         这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
+                         :math:`k = \frac{groups}{C_\text{out} * \text{kernel\_size}}`
+
+        bias (Tensor):   形状为 (out_channels) 的模块可学习权重。如果 :attr:`bias` 为 ``True`` ，
+                         则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
+                         :math:`k = \frac{groups}{C_\text{out} * \text{kernel\_size}}`
+    
+    .. _cross-correlation:
+        https://en.wikipedia.org/wiki/Cross-correlation
+
+    .. _link:
+        https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md
+    """
+)
+
+reset_docstr(
+    oneflow.nn.ConvTranspose2d,
+    r"""ConvTranspose2d(in_channels, out_channels, kernel_size, stride=1, padding=0, output_padding=0, groups=1, bias=True, dilation=1, padding_mode='zeros')
+    
+    在由多个输入平面组成的输入图像上应用 2D 转置卷积算子。
+
+    该 module 可以看作是 Conv2d 相对于其输入的梯度。它也称为分数步幅卷积或反卷积（尽管它实际上不是反卷积操作）。
+
+    参数：
+        - **in_channels** (int): 输入图像的通道数
+        - **out_channels** (int): 卷积产生的通道数
+        - **kernel_size** (int 或 tuple): 卷积核的大小
+        - **stride** (int 或 tuple, 可选的): 卷积的步幅 (stride) 。默认： 1
+        - **padding** (int 或 tuple, 可选的): 添加到输入每侧的 ``dilation * (kernel_size - 1) - padding`` 大小的 0 填充值。默认： 0
+        - **output_padding** (int 或 tuple, 可选的): 添加到输出形状一侧的大小。默认：0
+        - **groups** (int, 可选的): 从输入通道到输出通道的 `blocked connections` 数。默认：1
+        - **bias** (bool, 可选的): 如果为 ``True`` ，则向输出添加可学习的偏差。默认：``True``
+        - **dilation** (int 或 tuple, 可选的): 核心的元素之间的间距。默认： 1
+
+    形状：
+        - **Input** : :math:`(N, C_{in}, H_{in}, W_{in})`
+        - **Output** : :math:`(N, C_{out}, H_{out}, W_{out})` 其中
+
+        .. math::
+              H_{out} = (H_{in} - 1) \times \text{stride}[0] - 2 \times \text{padding}[0] + \text{dilation}[0] 
+
+                        \times (\text{kernel_size}[0] - 1) + \text{output_padding}[0] + 1
+        .. math::
+              W_{out} = (W_{in} - 1) \times \text{stride}[1] - 2 \times \text{padding}[1] + \text{dilation}[1]
+              
+                        \times (\text{kernel_size}[1] - 1) + \text{output_padding}[1] + 1
+
+    Attributes:
+        ConvTranspose2d.weight (Tensor): 形状为 :math:`(\text{in_channels}, \frac{\text{out_channels}}{\text{groups}},`
+                         :math:`\text{kernel_size[0]}, \text{kernel_size[1]})` 的模块可学习权重。
+                         这些权重的值是由公式 `\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
+                         :math:`k = \frac{groups}{C_\text{out} * \prod_{i=0}^{1}\text{kernel_size}[i]}`
+
+        ConvTranspose2d.bias (Tensor):   形状为 (out_channels) 的模块可学习权重。如果 :attr:`bias` 为 ``True`` ，
+                         则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
+                         :math:`k = \frac{groups}{C_\text{out} * \text{kernel\_size}}`
+
+
+    示例：
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import oneflow.nn as nn
+        
+        >>> m = nn.ConvTranspose2d(16, 33, 3, stride=2)
+        >>> # non-square kernels and unequal stride and with padding
+        >>> m = nn.ConvTranspose2d(16, 33, (3, 5), stride=(2, 1), padding=(4, 2))
+        >>> m = m.to("cuda")
+        >>> input = flow.randn(20, 16, 50, 100, device=flow.device("cuda"))
+        >>> output = m(input)
+        >>> output.size()
+        oneflow.Size([20, 33, 93, 100])
+
+    .. _cross-correlation:
+        https://en.wikipedia.org/wiki/Cross-correlation
+
+    .. _link:
+        https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md
+    """
+)
+
+reset_docstr(
+    oneflow.nn.ConvTranspose3d,
+    r"""ConvTranspose3d(in_channels, out_channels, kernel_size, stride=1, padding=0, output_padding=0, groups=1, bias=True, dilation=1, padding_mode='zeros')
+
+    在由多个输入平面组成的输入图像上应用 3D 转置卷积算子。
+
+    转置卷积算子将每个输入值逐元素乘以一个可学习的内核 (kernel) ，并对所有输入特征平面的输出求和。
+
+    该 module 可以看作是 Conv3d 相对于其输入的梯度。它也称为分数步幅卷积或反卷积（尽管它实际上不是反卷积操作）。
+
+    此 module 支持 TensorFloat32 。
+
+    * :attr:`stride` 控制互相关 (cross-correlation) 的步幅 (stride) 。
+
+    * :attr:`padding` 控制应用于输入两侧，点的数量为 ``dilation * (kernel_size - 1) - padding`` 的隐式 0 填充。
+      更多细节请参考 ``note`` 。
+
+    * :attr:`output_padding`  控制添加到输出形状一侧的大小。更多信息请参考 ``note`` 。
+
+    * :attr:`dilation` 控制核心点 (kernel points) 之间的间距，也称为 `à trous algorithm` 。此操作很难描述，
+      但是 `link`_ 很好的将 :attr:`dilation` 的作用可视化。
+
+    参数 :attr:`kernel_size` 、 :attr:`stride` 、 :attr:`padding` 、 :attr:`output_padding` 可以是以下形式：
+
+        - 单个 ``int`` -- 在这种情况下，长度、高度和宽度尺寸使用相同的值
+        - 三个整数的 ``tuple`` -- 在这种情况下，第一个 `int` 用于长度，第二个 `int` 表示高度，第三个 `int` 表示宽度
+
+    Note:
+        :attr:`padding` 参数有效地将 ``dilation * (kernel_size - 1) - padding`` 个 0 填充到输入的两侧。
+        设定此项的目的是当 :class:`~torch.nn.Conv3d` 与 :class:`~torch.nn.ConvTranspose3d` 用相同的参数初始化时，
+        它们的输入和输出的形状是互逆的。然而，当 ``stride > 1`` 时， :class:`~torch.nn.Conv3d` 
+        将多个输入形状映射到相同的输出形状。则使用 :attr:`output_padding` 有效地增加一侧的输出形状来解决这种歧义。
+        请注意，:attr:`output_padding` 仅用于查找输出形状，但实际上并未填充输出。
+
+    参数：
+        - **in_channels** (int): 输入图像的通道数
+        - **out_channels** (int): 卷积产生的通道数
+        - **kernel_size** (int 或 tuple): 卷积核的大小
+        - **stride** (int 或 tuple, 可选的): 卷积的步幅 (stride) 。默认： 1
+        - **padding** (int 或 tuple, 可选的): 添加到输入每侧的 ``dilation * (kernel_size - 1) - padding`` 大小的 0 填充值。默认： 0
+        - **output_padding** (int 或 tuple, 可选的): 添加到输出形状一侧的大小。默认：0
+        - **groups** (int, 可选的): 从输入通道到输出通道的 `blocked connections` 数。默认：1
+        - **bias** (bool, 可选的): 如果为 ``True`` ，则向输出添加可学习的偏差。默认：``True``
+        - **dilation** (int 或 tuple, 可选的): 核心的元素之间的间距。默认： 1
+
+    形状：
+        - **Input** : :math:`(N, C_{in}, D_{in}, H_{in}, W_{in})`
+        - **Output** : :math:`(N, C_{out}, D_{out}, H_{out}, W_{out})` 其中
+
+        .. math::
+              D_{out} = (D_{in} - 1) \times \text{stride}[0] - 2 \times \text{padding}[0] + \text{dilation}[0]
+                        \times (\text{kernel_size}[0] - 1) + \text{output_padding}[0] + 1
+        .. math::
+              H_{out} = (H_{in} - 1) \times \text{stride}[1] - 2 \times \text{padding}[1] + \text{dilation}[1]
+                        \times (\text{kernel_size}[1] - 1) + \text{output_padding}[1] + 1
+        .. math::
+              W_{out} = (W_{in} - 1) \times \text{stride}[2] - 2 \times \text{padding}[2] + \text{dilation}[2]
+                        \times (\text{kernel_size}[2] - 1) + \text{output_padding}[2] + 1
+
+    Attributes:
+        weight (Tensor): 形状为 :math:`(\text{in_channels}, \frac{\text{out_channels}}{\text{groups}},`
+                         :math:`\text{kernel_size[0]}, \text{kernel_size[1]}, \text{kernel_size[2]})` 的模块可学习权重。
+                         这些权重的值是由公式 `\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
+                         :math:`k = \frac{groups}{C_\text{out} * \prod_{i=0}^{2}\text{kernel_size}[i]}`
+
+        bias (Tensor):   形状为 (out_channels) 的模块可学习权重。如果 :attr:`bias` 为 ``True`` ，
+                         则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
+                         :math:`k = \frac{groups}{C_\text{out} * \text{kernel\_size}}`
+
+
+    示例：
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import oneflow.nn as nn
+        >>> # With square kernels and equal stride 
+        >>> m = nn.ConvTranspose3d(16, 33, 3, stride=2) 
+        >>> # non-square kernels and unequal stride and with padding
+        >>> m = nn.ConvTranspose3d(16, 33, (3, 5, 2), stride=(2, 1, 1), padding=(0, 4, 2)) 
+        >>> input = flow.randn(20, 16, 10, 50, 100)
+        >>> output = m(input)
+
+    .. _cross-correlation:
+        https://en.wikipedia.org/wiki/Cross-correlation
+
+    .. _link:
+        https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md
+    """
+)
+
+reset_docstr(
+    oneflow._C.dropout,
+    r"""
+    dropout(x: Tensor, p:float = 0.5, generator :Generator = None) -> Tensor 
+
+    此接口与 PyTorch 一致，参考：
+    https://pytorch.org/docs/stable/generated/torch.nn.functional.dropout.html
+
+    在训练期间，使用来 Bernoulli distribution 的样本，以概率 :attr:`p` 随机将输入张量的一些元素归零。
+
+    参数失准说明：
+
+    参数 :attr:`generator` : oneflow.nn.functional.dropout 有，而 torch.nn.functional.dropout 没有。
+
+    参数 :attr:`training` : torch.nn.functional.dropout 有，而 oneflow.nn.functional.dropout 没有。
+
+
+    参数：      
+        - **p** (float): 元素归零的概率。默认：0.5       
+        - **generator** (Generator, 可选的):  用于采样的伪随机数生成器
+    
+        
+
+    形状：
+        - **Input** : :math:`(*)` 。 输入可以是任何形状
+        - **Output** : :math:`(*)` 。 输出与输入的形状相同
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> x = flow.tensor( [[-0.7797, 0.2264, 0.2458, 0.4163], [0.4299, 0.3626, -0.4892, 0.4141], [-1.4115, 1.2183, -0.5503, 0.6520]], dtype=flow.float32)
+        >>> y = flow.nn.functional.dropout(x, p=0) 
+
+        >>> x = flow.tensor([[-0.7797, 0.2264, 0.2458, 0.4163], [0.4299, 0.3626, -0.4892, 0.4141], [-1.4115, 1.2183, -0.5503, 0.6520]], dtype=flow.float32)
+        >>> generator = flow.Generator()
+        >>> y = flow.nn.functional.dropout(x, 0.5, generator=generator) 
+      
+
+    
+    更多信息请参考 :class:`~oneflow.nn.Dropout` 。  
+ 
+    """,
+)
