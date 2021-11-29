@@ -754,50 +754,56 @@ reset_docstr(
         https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md
     """
 )
-
 reset_docstr(
-    oneflow._C.dropout,
-    r"""
-    dropout(x: Tensor, p:float = 0.5, generator :Generator = None) -> Tensor 
+    oneflow.nn.CrossEntropyLoss,
+    r"""CrossEntropyLoss(weight=None, ignore_index=100, reduction='mean')
 
-    此接口与 PyTorch 一致，参考：
-    https://pytorch.org/docs/stable/generated/torch.nn.functional.dropout.html
+    将类 :class:`~flow.nn.LogSoftmax` 和 :class:`~flow.nn.NLLLoss` 组合在一起。
 
-    在训练期间，使用来 Bernoulli distribution 的样本，以概率 :attr:`p` 随机将输入张量的一些元素归零。
+    该类在使用 `C` 类训练分类问题时很有用。
 
-    参数失准说明：
+    :attr:`input` 应包含每个类的原始的，非标准化分数。
 
-    参数 :attr:`generator` : oneflow.nn.functional.dropout 有，而 torch.nn.functional.dropout 没有。
+    在 `K` 维下， :attr:`input` 的大小必须为 :math:`(minibatch, C)` 或 :math:`(minibatch, C, d_1, d_2, ..., d_K)` ，
+    其中 :math:`K \geq 1` （见下文）。
 
-    参数 :attr:`training` : torch.nn.functional.dropout 有，而 oneflow.nn.functional.dropout 没有。
+    在此标准中，类的索引应在 :math:`[0, C-1]` 范围内并引作为大小为 `minibatch` 的 1D tensor 的 `target` ；
 
+    该损失可以被描述为：
 
-    参数：      
-        - **p** (float): 元素归零的概率。默认：0.5       
-        - **generator** (Generator, 可选的):  用于采样的伪随机数生成器
-    
-        
+    .. math::
+        \text{loss}(x, class) = -\log\left(\frac{\exp(x[class])}{\sum_j \exp(x[j])}\right)
+                       = -x[class] + \log\left(\sum_j \exp(x[j])\right)
 
-    形状：
-        - **Input** : :math:`(*)` 。 输入可以是任何形状
-        - **Output** : :math:`(*)` 。 输出与输入的形状相同
+    通过提供大小为 :math:`(minibatch, C, d_1, d_2, ..., d_K)` 的输入和适当形状的目标（其中 :math:`K \geq 1` ， :math:`K` 是维度数），
+    此类也可用于更高维度的输入，例如 2D 图像（见下文）。
+
+    参数：
+        - **reduction** (string, 可选的): 指定应用于输出的简化（可以是 ``'none'`` 、 ``'mean'`` 、 ``'sum'`` ，默认为 ``'mean'`` ）：
+            - ``'none'`` :不进行简化；
+            - ``'mean'`` :取输出的加权平均值；
+            - ``'sum'`` :取输出的和。
 
     示例：
 
     .. code-block:: python
 
         >>> import oneflow as flow
+        
+        >>> input = flow.tensor(
+        ...    [[-0.1664078, -1.7256707, -0.14690138],
+        ...        [-0.21474946, 0.53737473, 0.99684894],
+        ...        [-1.135804, -0.50371903, 0.7645404]], dtype=flow.float32)
+        >>> target = flow.tensor([0, 1, 2], dtype=flow.int32)
+        >>> out = flow.nn.CrossEntropyLoss(reduction="none")(input, target)
+        >>> out
+        tensor([0.8020, 1.1167, 0.3583], dtype=oneflow.float32)
+        >>> out_sum = flow.nn.CrossEntropyLoss(reduction="sum")(input, target)
+        >>> out_sum
+        tensor(2.2769, dtype=oneflow.float32)
+        >>> out_mean = flow.nn.CrossEntropyLoss(reduction="mean")(input, target)
+        >>> out_mean
+        tensor(0.7590, dtype=oneflow.float32)
 
-        >>> x = flow.tensor( [[-0.7797, 0.2264, 0.2458, 0.4163], [0.4299, 0.3626, -0.4892, 0.4141], [-1.4115, 1.2183, -0.5503, 0.6520]], dtype=flow.float32)
-        >>> y = flow.nn.functional.dropout(x, p=0) 
+    """)
 
-        >>> x = flow.tensor([[-0.7797, 0.2264, 0.2458, 0.4163], [0.4299, 0.3626, -0.4892, 0.4141], [-1.4115, 1.2183, -0.5503, 0.6520]], dtype=flow.float32)
-        >>> generator = flow.Generator()
-        >>> y = flow.nn.functional.dropout(x, 0.5, generator=generator) 
-      
-
-    
-    更多信息请参考 :class:`~oneflow.nn.Dropout` 。  
- 
-    """,
-)
