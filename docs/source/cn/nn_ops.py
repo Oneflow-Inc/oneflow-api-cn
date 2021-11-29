@@ -72,7 +72,8 @@ reset_docstr(
         >>> out
         tensor([-0.3935,  0.0000,  0.5000], dtype=oneflow.float32)
 
-    """)
+    """
+)
     
 reset_docstr(
     oneflow.nn.Embedding,
@@ -166,6 +167,106 @@ reset_docstr(
         ...    scale,
         ...    zero_point,
         ... )
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.Flatten,
+    r"""Flatten(start_dim=1, end_dim=-1)
+    
+    将 tensor 指定连续范围的维度展平。用于：nn.Sequential 。
+
+    参数：
+        - **start_dim** (int): first dim to flatten (default = 1).
+        - **end_dim** (int): last dim to flatten (default = -1).
+    
+    示例：
+
+    .. code-block:: python 
+
+        >>> import oneflow as flow
+        >>> input = flow.Tensor(32, 1, 5, 5)
+        >>> m = flow.nn.Flatten()
+        >>> output = m(input)
+        >>> output.shape
+        oneflow.Size([32, 25])
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.FusedBatchNorm1d,
+    r"""FusedBatchNorm1d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    
+    在 2D 或 3D 输入上应用 Fused Batch Normalization，公式为：
+    
+    .. math:: 
+
+        out = ReLU(BatchNorm(input) + addend)
+
+    Batch Normalization 的公式为：
+
+    .. math::
+
+        y = \frac{x - \mathrm{E}[x]}{\sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \beta
+
+    The mean and standard-deviation are calculated per-dimension over
+    the mini-batches and :math:`\\gamma` and :math:`\\beta` are learnable parameter vectors
+    of size `C` (where `C` is the input size). By default, the elements of :math:`\\gamma` are set
+    to 1 and the elements of :math:`\\beta` are set to 0. The standard-deviation is calculated
+    via the biased estimator, equivalent to `torch.var(input, unbiased=False)`.
+
+    Also by default, during training this layer keeps running estimates of its
+    computed mean and variance, which are then used for normalization during
+    evaluation. The running estimates are kept with a default :attr:`momentum`
+    of 0.1.
+
+    If :attr:`track_running_stats` is set to ``False``, this layer then does not
+    keep running estimates, and batch statistics are instead used during
+    evaluation time as well.
+
+    .. note::
+        This :attr:`momentum` argument is different from one used in optimizer
+        classes and the conventional notion of momentum. Mathematically, the
+        update rule for running statistics here is
+        :math:`\\hat{x}_\\text{new} = (1 - \\text{momentum}) \\times \\hat{x} + \\text{momentum} \\times x_t`,
+        where :math:`\\hat{x}` is the estimated statistic and :math:`x_t` is the
+        new observed value.
+
+    Because the Batch Normalization is done over the `C` dimension, computing statistics
+    on `(N, L)` slices, it's common terminology to call this Temporal Batch Normalization.
+
+    Args:
+        num_features: :math:`C` from an expected input of size
+            :math:`(N, C, L)` or :math:`L` from input of size :math:`(N, L)`
+        eps: a value added to the denominator for numerical stability.
+            Default: 1e-5
+        momentum: the value used for the running_mean and running_var
+            computation. Can be set to ``None`` for cumulative moving average
+            (i.e. simple average). Default: 0.1
+        affine: a boolean value that when set to ``True``, this module has
+            learnable affine parameters. Default: ``True``
+        track_running_stats: a boolean value that when set to ``True``, this
+            module tracks the running mean and variance, and when set to ``False``,
+            this module does not track such statistics, and initializes statistics
+            buffers :attr:`running_mean` and :attr:`running_var` as ``None``.
+            When these buffers are ``None``, this module always uses batch statistics.
+            in both training and eval modes. Default: ``True``
+
+    Shape:
+        - **Input** : :math:`(N, C)` or :math:`(N, C, L)`
+        - **Output** : :math:`(N, C)` or :math:`(N, C, L)` (same shape as input)
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> x = flow.randn(20, 100).to("cuda") # FusedBatchNorm support in GPU currently. 
+        >>> m = flow.nn.FusedBatchNorm1d(num_features=100, eps=1e-5, momentum=0.1).to("cuda")
+        >>> y = m(x, addend=None)
 
     """
 )
