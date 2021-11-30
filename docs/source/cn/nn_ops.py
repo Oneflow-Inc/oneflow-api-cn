@@ -199,7 +199,7 @@ reset_docstr(
     oneflow.nn.FusedBatchNorm1d,
     r"""FusedBatchNorm1d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
     
-    在 2D 或 3D 输入上应用 Fused Batch Normalization，公式为：
+    在 2D 或 3D 输入上应用 Fused Batch Normalization ，公式为：
     
     .. math:: 
 
@@ -211,52 +211,37 @@ reset_docstr(
 
         y = \frac{x - \mathrm{E}[x]}{\sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \beta
 
-    The mean and standard-deviation are calculated per-dimension over
-    the mini-batches and :math:`\\gamma` and :math:`\\beta` are learnable parameter vectors
-    of size `C` (where `C` is the input size). By default, the elements of :math:`\\gamma` are set
-    to 1 and the elements of :math:`\\beta` are set to 0. The standard-deviation is calculated
-    via the biased estimator, equivalent to `torch.var(input, unbiased=False)`.
+    逐维度小批量计算均值和标准差，其中 :math:`\gamma` 和 :math:`\beta`  是大小为 `C` （ `C` 是输入大小）
+    的可学习参数向量。默认情况下， :math:`\gamma` 的元素被设置为 1 ，并且 :math:`\beta` 被设置为 0 。通过
+    有偏估计器 (biased estimator) 计算标准差，相当于 `torch.var(input, unbiased=False)` 。
 
-    Also by default, during training this layer keeps running estimates of its
-    computed mean and variance, which are then used for normalization during
-    evaluation. The running estimates are kept with a default :attr:`momentum`
-    of 0.1.
+    默认情况下，该层在训练期间不断估计计算的均值和方差，然后在评估期间用于归一化（normalization）。
+    运行估计期间， :attr:`momentum` 为 0.1 。
 
-    If :attr:`track_running_stats` is set to ``False``, this layer then does not
-    keep running estimates, and batch statistics are instead used during
-    evaluation time as well.
+    如果将 :attr:`track_running_stats` 设置为 ``False`` ，则该层不会继续进行估计，
+    而是在评估期间也使用批处理统计信息。
 
     .. note::
-        This :attr:`momentum` argument is different from one used in optimizer
-        classes and the conventional notion of momentum. Mathematically, the
-        update rule for running statistics here is
-        :math:`\\hat{x}_\\text{new} = (1 - \\text{momentum}) \\times \\hat{x} + \\text{momentum} \\times x_t`,
-        where :math:`\\hat{x}` is the estimated statistic and :math:`x_t` is the
-        new observed value.
+        参数 :attr:`momentum` 与优化器 (optimizer) 中使用的参数和传统的动量 (momentum) 概念都不同。
+        在数学上，这里运行统计的更新规则是 :math:`\hat{x}_\text{new} = (1 - \text{momentum}) \times \hat{x} + \text{momentum} \times x_t` ，
+        其中 :math:`\hat{x}` 是估计的统计量，:math:`x_t` 是新的观察值。
+    
+    因为 Batch Normalization 是在维度 `C` 上完成的，并在 `(N, L)` 切片上计算统计数据，所以学术上普遍称之为 Temporal Batch Normalization 。
 
-    Because the Batch Normalization is done over the `C` dimension, computing statistics
-    on `(N, L)` slices, it's common terminology to call this Temporal Batch Normalization.
+    参数：
+        - **num_features** : 来自大小为 :math:`(N, C, L)` 的预期输入的 :math:`C` 或者
+            来自大小为 :math:`(N, L)` 的输入的 :math:`L` 
+        - **eps** : 为数值稳定性而添加到分母的值。默认： 1e-5
+        - **momentum** : 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。
+            可以设置为 ``None`` 以计算累积移动平均。默认： 0.1
+        - **affine** (bool, 可选): 如果为 ``True`` ，则该模块具有可学习的仿射参数。默认： ``True``
+        - **track_running_stats** (bool, 可选): 如果为 ``True`` ，则此模块跟踪运行均值和方差，
+            。如果为 ``False`` ，此模块不跟踪此类统计信息，同时初始化统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 
+            为 ``None`` 。当这些缓冲区为 ``None`` 时， 此模块在训练和评估模式中始终使用 batch statistics 。默认： ``True`` 
 
-    Args:
-        num_features: :math:`C` from an expected input of size
-            :math:`(N, C, L)` or :math:`L` from input of size :math:`(N, L)`
-        eps: a value added to the denominator for numerical stability.
-            Default: 1e-5
-        momentum: the value used for the running_mean and running_var
-            computation. Can be set to ``None`` for cumulative moving average
-            (i.e. simple average). Default: 0.1
-        affine: a boolean value that when set to ``True``, this module has
-            learnable affine parameters. Default: ``True``
-        track_running_stats: a boolean value that when set to ``True``, this
-            module tracks the running mean and variance, and when set to ``False``,
-            this module does not track such statistics, and initializes statistics
-            buffers :attr:`running_mean` and :attr:`running_var` as ``None``.
-            When these buffers are ``None``, this module always uses batch statistics.
-            in both training and eval modes. Default: ``True``
-
-    Shape:
-        - **Input** : :math:`(N, C)` or :math:`(N, C, L)`
-        - **Output** : :math:`(N, C)` or :math:`(N, C, L)` (same shape as input)
+    形状：
+        - **Input** : :math:`(N, C)` 或 :math:`(N, C, L)`
+        - **Output** : :math:`(N, C)` 或 :math:`(N, C, L)` （与输入形状相同）
 
     示例：
 
@@ -264,9 +249,291 @@ reset_docstr(
 
         >>> import oneflow as flow
         
-        >>> x = flow.randn(20, 100).to("cuda") # FusedBatchNorm support in GPU currently. 
+        >>> x = flow.randn(20, 100).to("cuda") # 目前 GPU 支持 FusedBatchNorm 。
         >>> m = flow.nn.FusedBatchNorm1d(num_features=100, eps=1e-5, momentum=0.1).to("cuda")
         >>> y = m(x, addend=None)
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.FusedBatchNorm2d,
+    r"""FusedBatchNorm2d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    
+    在 4D 输入上应用 Fused Batch Normalization ，公式为：
+    
+    .. math:: 
+
+        out = ReLU(BatchNorm(input) + addend)
+
+    Batch Normalization 的公式为：
+
+    .. math::
+
+        y = \frac{x - \mathrm{E}[x]}{\sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \beta
+
+    逐维度小批量计算均值和标准差，其中 :math:`\gamma` 和 :math:`\beta`  是大小为 `C` （ `C` 是输入大小）
+    的可学习参数向量。默认情况下， :math:`\gamma` 的元素被设置为 1 ，并且 :math:`\beta` 被设置为 0 。通过
+    有偏估计器 (biased estimator) 计算标准差，相当于 `torch.var(input, unbiased=False)` 。
+
+    默认情况下，该层在训练期间不断估计计算的均值和方差，然后在评估期间用于归一化（normalization）。
+    运行估计期间， :attr:`momentum` 为 0.1 。
+
+    如果将 :attr:`track_running_stats` 设置为 ``False`` ，则该层不会继续进行估计，
+    而是在评估期间也使用批处理统计信息。
+    
+    .. note::
+        参数 :attr:`momentum` 与优化器 (optimizer) 中使用的参数和传统的动量 (momentum) 概念都不同。
+        在数学上，这里运行统计的更新规则是 :math:`\hat{x}_\text{new} = (1 - \text{momentum}) \times \hat{x} + \text{momentum} \times x_t` ，
+        其中 :math:`\hat{x}` 是估计的统计量，:math:`x_t` 是新的观察值。
+
+    因为 Batch Normalization 是在维度 `C` 上完成的，并在 `(N, H, W)` 切片上计算统计数据，所以学术上普遍称之为 Temporal Batch Normalization 。
+
+    参数：
+        - **num_features** : 来自大小为 :math:`(N, C, H, W)` 的预期输入的 :math:`C` 
+        - **eps** : 为数值稳定性而添加到分母的值。默认： 1e-5
+        - **momentum** : 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。
+            可以设置为 ``None`` 以计算累积移动平均。默认： 0.1
+        - **affine** (bool, 可选): 如果为 ``True`` ，则该模块具有可学习的仿射参数。默认： ``True``
+        - **track_running_stats** (bool, 可选): 如果为 ``True`` ，则此模块跟踪运行均值和方差，
+            。如果为 ``False`` ，此模块不跟踪此类统计信息，同时初始化统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 
+            为 ``None`` 。当这些缓冲区为 ``None`` 时， 此模块在训练和评估模式中始终使用 batch statistics 。默认： ``True`` 
+
+    形状：
+        - Input: :math:`(N, C, H, W)`
+        - Output: :math:`(N, C, H, W)` （与输入形状相同）
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> x = flow.randn(4, 2, 8, 3).to("cuda") # 目前 GPU 支持 FusedBatchNorm 。
+        >>> m = flow.nn.FusedBatchNorm2d(num_features=2, eps=1e-5, momentum=0.1).to("cuda")
+        >>> y = m(x, addend=None)
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.FusedBatchNorm3d,
+    r"""FusedBatchNorm3d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    
+    在 5D 输入上应用 Fused Batch Normalization ，公式为：
+    
+    .. math:: 
+
+        out = ReLU(BatchNorm(input) + addend)
+
+    The formula of Batch Normalization is: 
+
+    .. math::
+
+        y = \frac{x - \mathrm{E}[x]}{\sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \beta
+
+    逐维度小批量计算均值和标准差，其中 :math:`\gamma` 和 :math:`\beta`  是大小为 `C` （ `C` 是输入大小）
+    的可学习参数向量。默认情况下， :math:`\gamma` 的元素被设置为 1 ，并且 :math:`\beta` 被设置为 0 。通过
+    有偏估计器 (biased estimator) 计算标准差，相当于 `torch.var(input, unbiased=False)` 。
+
+    默认情况下，该层在训练期间不断估计计算的均值和方差，然后在评估期间用于归一化（normalization）。
+    运行估计期间， :attr:`momentum` 为 0.1 。
+
+    如果将 :attr:`track_running_stats` 设置为 ``False`` ，则该层不会继续进行估计，
+    而是在评估期间也使用批处理统计信息。
+
+    .. note::
+        参数 :attr:`momentum` 与优化器 (optimizer) 中使用的参数和传统的动量 (momentum) 概念都不同。
+        在数学上，这里运行统计的更新规则是 :math:`\hat{x}_\text{new} = (1 - \text{momentum}) \times \hat{x} + \text{momentum} \times x_t` ，
+        其中 :math:`\hat{x}` 是估计的统计量，:math:`x_t` 是新的观察值。
+
+    因为 Batch Normalization 是在维度 `C` 上完成的，并在 `(N, D, H, W)` 切片上计算统计数据，所以学术上普遍称之为 Temporal Batch Normalization 。
+
+    参数：
+        - **num_features** : 来自大小为 :math:`(N, C, D, H, W)` 的预期输入的 :math:`C` 
+        - **eps** : 为数值稳定性而添加到分母的值。默认： 1e-5
+        - **momentum** : 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。
+            可以设置为 ``None`` 以计算累积移动平均。默认： 0.1
+        - **affine** (bool, 可选): 如果为 ``True`` ，则该模块具有可学习的仿射参数。默认： ``True``
+        - **track_running_stats** (bool, 可选): 如果为 ``True`` ，则此模块跟踪运行均值和方差，
+            。如果为 ``False`` ，此模块不跟踪此类统计信息，同时初始化统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 
+            为 ``None`` 。当这些缓冲区为 ``None`` 时， 此模块在训练和评估模式中始终使用 batch statistics 。默认： ``True`` 
+
+    形状：
+        - Input: :math:`(N, C, D, H, W)`
+        - Output: :math:`(N, C, D, H, W)` （与输入形状相同）
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> x = flow.randn(3, 2, 5, 8, 4).to("cuda") # 目前 GPU 中支持 FusedBatchNorm 。
+        >>> m = flow.nn.FusedBatchNorm3d(num_features=2, eps=1e-5, momentum=0.1).to("cuda")
+        >>> y = m(x, addend=None)
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.GELU,
+    r"""
+    Gelu 激活算子。
+
+    公式为：
+
+    .. math::
+        out = 0.5 * x * (1 + tanh(\sqrt{\frac{2}{\pi}} * (x + 0.044715x^{3})))
+
+    参数：
+        **x** (oneflow.tensor): 输入张量
+
+    返回类型：
+         oneflow.tensor
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.tensor([-0.5, 0, 0.5], dtype=flow.float32)
+        >>> gelu = flow.nn.GELU()
+
+        >>> out = gelu(input)
+        >>> out
+        tensor([-0.1543,  0.0000,  0.3457], dtype=oneflow.float32)
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.GLU,
+    r"""GLU(dim=-1)
+    
+    GLU 激活算子。
+
+    参数：
+        - **input** (Tensor, float): 输入张量
+        - **dim** (int, 可选的): 分割输入的维度。默认：-1
+
+    形状：
+        - Input: :math:`(\ast_1, N, \ast_2)` 其中 `*` 表示任意数量的额外维度
+        - Output: :math:`(\ast_1, M, \ast_2)` 其中 :math:`M=N/2`
+
+    公式为：
+    
+    .. math::  
+
+        GLU(input) = GLU(a, b) = a \otimes sigmoid(b)
+
+    .. note::
+        其中输入沿 :attr:`dim` 分成 a 和 b ，⊗ 是矩阵之间的元素积。
+
+    示例：
+    
+    .. code-block:: python
+    
+        >>> import oneflow as flow
+        >>> import oneflow.nn as nn
+        >>> m = nn.GLU()
+        >>> x = flow.tensor([[1, 2, 3, 4], [5, 6, 7, 8]], dtype=flow.float32)
+        >>> y = m(x)
+        >>> y
+        tensor([[0.9526, 1.9640],
+                [4.9954, 5.9980]], dtype=oneflow.float32)
+    
+    
+    """
+)
+
+reset_docstr(
+    oneflow.nn.GroupNorm,
+    r"""GroupNorm(num_groups: int, num_channels: int, eps: float = 1e-05, affine: bool = True)
+    
+    此接口与 PyTorch 对其，可参考以下文档：
+    https://pytorch.org/docs/stable/generated/torch.nn.GroupNorm.html
+
+    对小批量输入应用组归一化 (Group Normalization) 的行为按论文 <https://arxiv.org/abs/1803.08494>`__ 中所述
+
+    公式为：
+
+    .. math::
+
+        y = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \beta
+
+    输入通道被分成 :attr:`num_groups` 个组，每组包含 ``num_channels / num_groups`` 个通道。
+    每个组的平均值和标准差分开计算。如果 :attr:`affine` 为 ``True`` ，则
+    :math:`\gamma` 和 :math:`\beta` 是大小为 :attr:`num_channels` 的可学习逐通道仿射变换参数向量
+    (learnable per-channel affine transform parameter vectors)。
+
+    通过有偏估计器 (biased estimator) 计算标准差，相当于 `torch.var(input, unbiased=False)` 。
+
+    该层在训练和评估模式下都使用从输入计算的统计数据。
+
+    参数：
+        - **num_groups** (int): 将通道分成的组数
+        - **num_channels** (int): 输入中预期的通道数
+        - **eps** (float, 可选): 为数值稳定性而添加到分母的值。默认：1e-5
+        - **affine** (bool, 可选): 如果为 ``True`` ，该模块具有可学习逐通道仿射变换参数，
+            并初始化为 1 （对于权重）和 0（对于偏差）。默认： ``True`` 
+
+    形状：
+        - Input: :math:`(N, C, *)` 其中 :math:`C=\\text{num_channels}`
+        - Output: :math:`(N, C, *)` （与输入形状相同）
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> input = flow.randn(20, 6, 10, 10)
+        >>> # 将 6 个通道分成 3 组
+        >>> m = flow.nn.GroupNorm(3, 6)
+        >>> # 将6个通道分成6组（相当于InstanceNorm）
+        >>> m = flow.nn.GroupNorm(6, 6)
+        >>> # 将所有 6 个通道放在一个组中（相当于 LayerNorm）
+        >>> m = flow.nn.GroupNorm(1, 6)
+        >>> # 激活模块
+        >>> output = m(input)
+    
+    """
+)
+
+reset_docstr(
+    oneflow.nn.Hardsigmoid,
+    r"""Hardsigmoid(inplace=False)
+    
+    应用逐元素公式：
+
+    .. math::
+        \text{Hardsigmoid}(x) = \begin{cases}
+            0 & \text{ if } x \le -3  \\
+            1 & \text{ if } x \ge +3 \\
+            \frac{x}{6} + \frac{1}{2} & \text{ otherwise } \\
+        \end{cases}
+
+    参数：
+        - **inplace** (bool): 是否进行 in-place 操作。默认： ``False``
+
+    形状：
+        - **Input** : :math:`(N, *)` 其中 `*` 表示任意数量的额外维度
+        - **Output** : :math:`(N, *)`, 与输入相同的形状
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.tensor([-0.5, 0, 0.5], dtype=flow.float32)
+        >>> hardsigmoid = flow.nn.Hardsigmoid()
+
+        >>> out = hardsigmoid(input)
+        >>> out
+        tensor([0.4167, 0.5000, 0.5833], dtype=oneflow.float32)
 
     """
 )
