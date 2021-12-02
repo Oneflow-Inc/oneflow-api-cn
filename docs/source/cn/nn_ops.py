@@ -537,3 +537,303 @@ reset_docstr(
 
     """
 )
+
+reset_docstr(
+    oneflow.nn.Hardswish,
+    r"""Hardswish(inplace=False)
+    
+    如论文 `Searching for MobileNetV3`_ 中所述，逐元素应用 Hardswish 函数。
+
+    公式为：
+
+    .. math::
+        \text{Hardswish}(x) = \begin{cases}
+            0 & \text{ if } x \le -3  \\
+            x & \text{ if } x \ge +3 \\
+            x*(x+3)/6 & \text{ otherwise } \\
+        \end{cases}
+
+    参数：
+        - **inplace** (bool, 可选): 是否执行 in-place 操作。默认： ``False`` 
+
+    形状：
+        - **Input** : :math:`(N, *)` 其中 `*` 表示任意数量的额外维度
+        - **Output** : :math:`(N, *)` 与输入形状相同
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.tensor([-0.5, 0, 0.5], dtype=flow.float32)
+        >>> hardswish = flow.nn.Hardswish()
+
+        >>> out = hardswish(input)
+        >>> out
+        tensor([-0.2083,  0.0000,  0.2917], dtype=oneflow.float32)
+
+    .. _`Searching for MobileNetV3`:
+        https://arxiv.org/abs/1905.02244
+    
+    
+    """
+)
+
+reset_docstr(
+    oneflow.nn.Hardtanh,
+    r"""Hardtanh(min_val=-1, max_val=1, inplace=False, min_value=None, max_value=None)
+
+    逐元素应用 HardTanh 函数。
+
+    公式为：
+
+    .. math::
+        \text{HardTanh}(x) = \begin{cases}
+            1 & \text{ if } x > 1 \\
+            -1 & \text{ if } x < -1 \\
+            x & \text{ otherwise } \\
+        \end{cases}
+
+    可以使用参数 :attr:`min_val` 和 :attr:`max_val` 调整线性区域的范围 :math:`[-1, 1]`  。
+
+    参数：
+        - **min_val** (float): 线性区域范围的最小值。默认：-1
+        - **max_val** (float): 线性区域范围的最大值。默认：1
+        - **inplace** (bool): 是否执行 in-place 操作。默认： ``False`` 
+
+    关键词参数： :attr:`min_value` 和 :attr:`max_value` 已被弃用，由 :attr:`min_val` 和 :attr:`max_val` 替代。
+
+    形状：
+        - **Input** : :math:`(N, *)` 其中 `*` 表示任意数量的额外维度
+        - **Output** : :math:`(N, *)` 与输入形状相同
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> m = flow.nn.Hardtanh()
+        >>> x = flow.tensor([0.2, 0.3, 3.0, 4.0],dtype=flow.float32)
+        >>> out = m(x)
+        >>> out
+        tensor([0.2000, 0.3000, 1.0000, 1.0000], dtype=oneflow.float32)
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.Identity,
+    r"""
+    对参数不敏感的占位符标识运算符。
+
+    示例：
+        - **args** : 任何参数（未使用）
+        - **kwargs** : 任何关键词参数（未使用）
+
+    示例：
+
+    .. code-block:: python
+
+        import oneflow as flow
+
+        m = flow.nn.Identity()
+        input = flow.rand(2, 3, 4, 5)
+
+        output = m(input)
+
+        # output = input
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.InstanceNorm1d,
+    r"""InstanceNorm1d(num_features, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+
+    此接口与 PyTorch 一致。可以在 https://pytorch.org/docs/stable/generated/torch.nn.InstanceNorm1d.html 参考相关文档。
+
+    将实例归一化 (Instance Normalization) 应用于 3D 输入（具有可选附加通道维度的小批量 1D 输入），行为如论文
+    `Instance Normalization: The Missing Ingredient for Fast Stylization
+    <https://arxiv.org/abs/1607.08022>`__ 所述。
+
+    公式为：
+
+    .. math::
+
+        y = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \beta
+
+    逐维度小批量单独计算均值和标准差。
+    如果 :attr:`affine` 为 ``True`` ， :math:`\gamma` 和 :math:`\beta` 是大小为 `C` 的可学习参数向量（其中 `C` 是输入大小）。
+    标准差是通过有偏估计器 (biased estimator) 计算的，相当于 `torch.var(input, unbiased=False)` 。
+
+    默认情况下，该层在训练和评估模式下都使用从输入数据计算的实例统计信息。
+
+    如果 :attr:`track_running_stats` 为 ``True`` ，在训练期间，该层会不断计算均值和方差的估计值，
+    然后在评估期间将其用于归一化 (normalization) 。运行期间 :attr:`momentum` 为 0.1 。
+
+    .. note::
+        参数 :attr:`momentum` 与优化器 (optimizer) 中使用的参数和传统的动量 (momentum) 概念都不同。
+        在数学上，这里运行统计的更新规则是 :math:`\hat{x}_\text{new} = (1 - \text{momentum}) \times \hat{x} + \text{momentum} \times x_t` ，
+        其中 :math:`\hat{x}` 是估计的统计量，:math:`x_t` 是新的观察值。
+
+    .. note::
+        尽管 :class:`InstanceNorm1d` 与 :class:`LayerNorm` 非常相似，但有一些细微的区别。 
+        :class:`InstanceNorm1d` 应用于多维时间序列等通道数据的每个通道，但 :class:`LayerNorm` 
+        通常应用于整个样本，并且经常应用于 NLP 任务。此外， :class:`LayerNorm` 应用逐元素仿射变换，
+        而 :class:`InstanceNorm1d` 通常不应用仿射变换。
+
+    参数：
+        - **num_features** (int): 来自大小为 :math:`(N, C, L)` 的预期输入的 :math:`C` 或者来自大小为 :math:`(N, L)` 的预期输入的 :math:`L` 
+        - **eps** (float): 为数值稳定性而添加到分母的值。默认：1e-5
+        - **momentum** (float): 用于计算 running_mean 和 running_var 。默认：0.1
+        - **affine** (bool): 如果为 ``True`` ，该模块具有可学习的仿射参数 (learnable affine parameters) ，初始化方式与批量标准化 (batch normalization) 相同。默认： ``False``
+        - **track_running_stats** (bool): 如果为 ``True`` ，该模块记录运行均值和方差，
+            如果为 ``True`` ，该模块不记录运行均值和方差，并且始终在训练和评估模式下都使用批处理该类统计信息。默认： ``False``
+
+    形状：
+        - **Input** : :math:`(N, C, L)`
+        - **Output** : :math:`(N, C, L)` （与输入相同）
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> # 没有可学习的参数
+        >>> m = flow.nn.InstanceNorm1d(100)
+        >>> # 有可学习的参数
+        >>> m = flow.nn.InstanceNorm1d(100, affine=True)
+        >>> x = flow.randn(20, 100, 40)
+        >>> output = m(x)
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.InstanceNorm2d,
+    r"""InstanceNorm2d(num_features, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+
+    此接口与 PyTorch 一致。可以在 https://pytorch.org/docs/stable/generated/torch.nn.InstanceNorm1d.html 参考相关文档。
+
+    将实例归一化 (Instance Normalization) 应用于 4D 输入（具有可选附加通道维度的小批量 2D 输入），行为如论文
+    `Instance Normalization: The Missing Ingredient for Fast Stylization
+    <https://arxiv.org/abs/1607.08022>`__ 所述。
+
+    公式为：
+
+    .. math::
+
+        y = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \beta
+
+    逐维度小批量单独计算均值和标准差。
+    如果 :attr:`affine` 为 ``True`` ， :math:`\gamma` 和 :math:`\beta` 是大小为 `C` 的可学习参数向量（其中 `C` 是输入大小）。
+    标准差是通过有偏估计器 (biased estimator) 计算的，相当于 `torch.var(input, unbiased=False)` 。
+
+    默认情况下，该层在训练和评估模式下都使用从输入数据计算的实例统计信息。
+
+    如果 :attr:`track_running_stats` 为 ``True`` ，在训练期间，该层会不断计算均值和方差的估计值，
+    然后在评估期间将其用于归一化 (normalization) 。运行期间 :attr:`momentum` 为 0.1 。
+
+    .. note::
+        参数 :attr:`momentum` 与优化器 (optimizer) 中使用的参数和传统的动量 (momentum) 概念都不同。
+        在数学上，这里运行统计的更新规则是 :math:`\hat{x}_\text{new} = (1 - \text{momentum}) \times \hat{x} + \text{momentum} \times x_t` ，
+        其中 :math:`\hat{x}` 是估计的统计量，:math:`x_t` 是新的观察值。
+
+    .. note::
+        尽管 :class:`InstanceNorm2d` 与 :class:`LayerNorm` 非常相似，但有一些细微的区别。 
+        :class:`InstanceNorm2d` 应用RGB图像等通道数据的每个通道，但 :class:`LayerNorm` 
+        通常应用于整个样本，并且经常应用于 NLP 任务。此外， :class:`LayerNorm` 应用逐元素仿射变换，
+        而 :class:`InstanceNorm2d` 通常不应用仿射变换。
+
+    参数：
+        - **num_features** (int): 来自大小为 :math:`(N, C, H, W)` 的预期输入的 :math:`C` 
+        - **eps** (float): 为数值稳定性而添加到分母的值。默认：1e-5
+        - **momentum** (float): 用于计算 running_mean 和 running_var 。默认：0.1
+        - **affine** (bool): 如果为 ``True`` ，该模块具有可学习的仿射参数 (learnable affine parameters) ，初始化方式与批量标准化 (batch normalization) 相同。默认： ``False``
+        - **track_running_stats** (bool): 如果为 ``True`` ，该模块记录运行均值和方差，
+            如果为 ``True`` ，该模块不记录运行均值和方差，并且始终在训练和评估模式下都使用批处理该类统计信息。默认： ``False``
+        
+    形状：
+        - **Input** : :math:`(N, C, H, W)`
+        - **Output** : :math:`(N, C, H, W)` （与输入相同）
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> # 没有可学习的参数
+        >>> m = flow.nn.InstanceNorm1d(100)
+        >>> # 有可学习的参数
+        >>> m = flow.nn.InstanceNorm1d(100, affine=True)
+        >>> x = flow.randn(20, 100, 40)
+        >>> output = m(x)
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.InstanceNorm3d,
+    r"""InstanceNorm3d(num_features, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+
+    此接口与 PyTorch 一致。可以在 https://pytorch.org/docs/stable/generated/torch.nn.InstanceNorm1d.html 参考相关文档。
+
+    将实例归一化 (Instance Normalization) 应用于 5D 输入（具有可选附加通道维度的小批量 3D 输入），行为如论文
+    `Instance Normalization: The Missing Ingredient for Fast Stylization
+    <https://arxiv.org/abs/1607.08022>`__ 所述。
+
+    公式为：
+
+    .. math::
+
+        y = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \beta
+
+    逐维度小批量单独计算均值和标准差。
+    如果 :attr:`affine` 为 ``True`` ， :math:`\gamma` 和 :math:`\beta` 是大小为 `C` 的可学习参数向量（其中 `C` 是输入大小）。
+    标准差是通过有偏估计器 (biased estimator) 计算的，相当于 `torch.var(input, unbiased=False)` 。
+
+    默认情况下，该层在训练和评估模式下都使用从输入数据计算的实例统计信息。
+
+    如果 :attr:`track_running_stats` 为 ``True`` ，在训练期间，该层会不断计算均值和方差的估计值，
+    然后在评估期间将其用于归一化 (normalization) 。运行期间 :attr:`momentum` 为 0.1 。
+
+    .. note::
+        参数 :attr:`momentum` 与优化器 (optimizer) 中使用的参数和传统的动量 (momentum) 概念都不同。
+        在数学上，这里运行统计的更新规则是 :math:`\hat{x}_\text{new} = (1 - \text{momentum}) \times \hat{x} + \text{momentum} \times x_t` ，
+        其中 :math:`\hat{x}` 是估计的统计量，:math:`x_t` 是新的观察值。
+
+    .. note::
+        尽管 :class:`InstanceNorm3d` 与 :class:`LayerNorm` 非常相似，但有一些细微的区别。 
+        :class:`InstanceNorm3d` 应用于具有RGB颜色的3D模型等通道数据的每个通道，但 :class:`LayerNorm` 
+        通常应用于整个样本，并且经常应用于 NLP 任务。此外， :class:`LayerNorm` 应用逐元素仿射变换，
+        而 :class:`InstanceNorm3d` 通常不应用仿射变换。
+
+    参数：
+        - **num_features** (int): 来自大小为 :math:`(N, C, D, H, W)` 的预期输入的 :math:`C` 
+        - **eps** (float): 为数值稳定性而添加到分母的值。默认：1e-5
+        - **momentum** (float): 用于计算 running_mean 和 running_var 。默认：0.1
+        - **affine** (bool): 如果为 ``True`` ，该模块具有可学习的仿射参数 (learnable affine parameters) ，初始化方式与批量标准化 (batch normalization) 相同。默认： ``False``
+        - **track_running_stats** (bool): 如果为 ``True`` ，该模块记录运行均值和方差，
+            如果为 ``True`` ，该模块不记录运行均值和方差，并且始终在训练和评估模式下都使用批处理该类统计信息。默认： ``False``
+        
+    形状：
+        - **Input** : :math:`(N, C, D, H, W)`
+        - **Output** : :math:`(N, C, D, H, W)` （与输入相同）
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> # 没有可学习的参数
+        >>> m = flow.nn.InstanceNorm1d(100)
+        >>> # 有可学习的参数
+        >>> m = flow.nn.InstanceNorm1d(100, affine=True)
+        >>> x = flow.randn(20, 100, 40)
+        >>> output = m(x)
+
+    """
+)
