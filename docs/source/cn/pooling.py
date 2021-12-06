@@ -77,7 +77,7 @@ reset_docstr(
     oneflow.nn.AdaptiveAvgPool2d,
     r"""AdaptiveAvgPool2d(output_size)
     
-    在由多个平面组成的的输入信号上应用 2D 自适应平均池化。
+    在由多个平面组成的的信号 `input` 上应用 2D 自适应平均池化。
 
     对于任何大小的输入，输出大小都是 H x W 。
     输出的数量等于输入平面的数量。
@@ -158,7 +158,7 @@ reset_docstr(
     oneflow.nn.AvgPool1d,
     r"""AvgPool1d(kernel_size, stride=None, padding=0, ceil_mode=False, count_include_pad=True)
 
-    在由多个平面组成的输入信号上执行 1D 平均池化。
+    在由多个平面组成的信号 `input` 上执行 1D 平均池化。
     在最简单的情况下，输出值是输入大小为 :math:`(N, C, H, W)` 的层。
     输出 :math:`(N, C, H_{out}, W_{out})` 和 `kernel_size` ， :math:`k` 可以被精确地描述为：
     
@@ -199,7 +199,7 @@ reset_docstr(
     oneflow.nn.AvgPool2d,
     r"""AvgPool2d(kernel_size, stride=None, padding=0, ceil_mode=False, count_include_pad=True, divisor_override=0)
     
-    在由多个平面组成的输入信号上执行 2D 平均池化。
+    在由多个平面组成的信号 `input` 上执行 2D 平均池化。
 
     在最简单的情况下，输出值是输入大小为 :math:`(N, C, H, W)` 的层。
     输出 :math:`(N, C, H_{out}, W_{out})` 和 `kernel_size` ， :math:`(kH, kW)` 可以被精确地描述为：
@@ -234,7 +234,7 @@ reset_docstr(
     oneflow.nn.AvgPool3d,
     r"""AvgPool3d(kernel_size, stride=None, padding=0, ceil_mode=False, count_include_pad=True, divisor_override=0)
 
-    在由多个平面组成的输入信号上执行 3D 平均池化。
+    在由多个平面组成的信号 `input` 上执行 3D 平均池化。
     在最简单的情况下，输出值是输入大小为 :math:`(N, C, D, H, W)` 的层。
     输出 :math:`(N, C, D_{out}, H_{out}, W_{out})` 和 `kernel_size` ， :math:`(kD, kH, kW)` 可以被精确地描述为：
     
