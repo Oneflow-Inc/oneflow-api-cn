@@ -124,6 +124,7 @@ reset_docstr(
     r"""ne(inout, other) -> Tensor
 
     计算 element-wise 元素不相等性。
+    
     第二个参数 :attr:`other` 可以是一个数字或张量，其形状可以用第一个参数 :attr:`input` 广播。
 
     参数：
