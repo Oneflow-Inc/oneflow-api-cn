@@ -178,8 +178,10 @@ reset_docstr(
             其中 `inf` 指的是 `float('inf')` 、 NumPy 的 `inf` 对象或任何等效对象。
 
         - **dim** (int, 2-tuple of ints, 2-list of ints, 可选): 如果 :attr:`dim` 是一个 int ，向量范数将在指定的维度上计算。
-            如果 :attr:`dim` 是一个整数的二元组，矩阵范数将在指定的维度上计算。如果 :attr:`dim` 为 None ，
-            则输入张量是二维张量时计算矩阵范数，输入张量为一维时计算向量范数。默认值：``None``
+            
+            如果 :attr:`dim` 是一个整数的二元组，矩阵范数将在指定的维度上计算。
+            
+            如果 :attr:`dim` 为 None ，则输入张量是二维张量时计算矩阵范数，输入张量为一维时计算向量范数。默认值：``None``
 
         - **keepdim** (bool, 可选): 如果设定为 True ，则减少的维度将作为大小为 1 的维度保留在结果中。默认值：``False``
 
