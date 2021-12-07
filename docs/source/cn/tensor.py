@@ -43,7 +43,7 @@ reset_docstr(
     将输入张量扩展到与 :attr:`other` 相同的大小。
     ``self.expand_as(other)`` 等价于 ``self.expand(other.size())`` 。
 
-    更多有关 ``expand`` 的细节请参考 :meth:`~Tensor.expand`
+    更多有关 ``expand`` 的细节请参考 :meth:`~Tensor.expand`。
 
     参数：
         - **other** (:class:`oneflow.Tensor`): 返回张量与 :attr:`other` 大小相同。
