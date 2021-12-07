@@ -202,7 +202,7 @@ reset_docstr(
 reset_docstr(
     oneflow.Tensor.int, 
     r"""
-    `Tensor.int()` 等价于 `Tensor.to(flow.int32)` 。 参见： :mod:`oneflow.to` 。
+    `Tensor.int()` 等价于 `Tensor.to(flow.int32)` 。 参见 :mod:`oneflow.to` 。
 
     参数：
         - **input** (Tensor): 输入张量
