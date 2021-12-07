@@ -168,7 +168,7 @@ reset_docstr(
     oneflow.gather,
     r"""gather(dim, index, sparse_grad=False)
 
-    沿由 :attr:`dim` 指定的维度收集值。
+    沿 :attr:`dim` 指定的维度收集值。
 
     对 3-D tensor ，输出被定义为::
 
@@ -224,6 +224,7 @@ reset_docstr(
     oneflow.Tensor.item,
     r"""
     将 tensor 的值作为标准 Python 数字返回。仅适用于只有一个元素的 tensor 。
+    
     其他情况请参考 :mod:`oneflow.tolist` 。
 
     这个操作不可导。
