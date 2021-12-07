@@ -146,7 +146,7 @@ reset_docstr(
     oneflow.Tensor.float,
     r"""float(input)
     
-    `Tensor.float()` 等价于 `Tensor.to(flow.float32)` 。 参见： :mod:`oneflow.to` 。
+    `Tensor.float()` 等价于 `Tensor.to(flow.float32)` 。 参见 :mod:`oneflow.to` 。
 
     参数：
         - **input** (Tensor): 输入张量
