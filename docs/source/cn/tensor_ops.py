@@ -246,10 +246,10 @@ reset_docstr(
 reset_docstr(
     oneflow.Tensor.reciprocal,
     r"""reciprocal(x) -> Tensor
-    计算 :attr:`x` 的倒数，如果 :attr:`x` 为0，倒数将被设置为0。
+    计算 :attr:`x` 的倒数，如果 :attr:`x` 为0，倒数将被设置为 0。
 
     参数：
-        **x** (Tensor): 输入张量。
+        **x** (Tensor): 输入张量
 
     返回类型：
         oneflow.tensor
