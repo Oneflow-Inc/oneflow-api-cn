@@ -387,10 +387,10 @@ reset_docstr(
         - **in_channels** (int): 输入图像的通道数
         - **out_channels** (int): 卷积产生的通道数
         - **kernel_size** (int 或者 tuple): 卷积核的大小
-        - **stride** (int or tuple, 可选的): 卷积的步幅 (stride) 。默认： 1
+        - **stride** (int 或者 tuple, 可选的): 卷积的步幅 (stride) 。默认： 1
         - **padding** (int, tuple 或者 str, 可选的): 添加到输入两侧的填充值。默认： 0
         - **padding_mode** (string, 可选的): 默认： ``'zeros'``
-        - **dilation** (int or tuple, 可选的): 核心的元素之间的间距。默认： 1
+        - **dilation** (int 或者 tuple, 可选的): 核心的元素之间的间距。默认： 1
         - **groups** (int, 可选的): 从输入通道到输出通道的 `blocked connections` 数。默认：1
         - **bias** (bool, 可选的): 如果为 ``True`` ，则向输出添加可学习的偏差。默认：``True``
 
@@ -475,10 +475,10 @@ reset_docstr(
         - **in_channels** (int): 输入图像的通道数
         - **out_channels** (int): 卷积产生的通道数
         - **kernel_size** (int 或者 tuple): 卷积核的大小
-        - **stride** (int or tuple, 可选的): 卷积的步幅 (stride) 。默认： 1
+        - **stride** (int 或者 tuple, 可选的): 卷积的步幅 (stride) 。默认： 1
         - **padding** (int, tuple 或者 str, 可选的): 添加到输入两侧的填充值。默认： 0
         - **padding_mode** (string, 可选的): 默认： ``'zeros'``
-        - **dilation** (int or tuple, 可选的): 核心的元素之间的间距。默认： 1
+        - **dilation** (int 或者 tuple, 可选的): 核心的元素之间的间距。默认： 1
         - **groups** (int, 可选的): 从输入通道到输出通道的 `blocked connections` 数。默认：1
         - **bias** (bool, 可选的): 如果为 ``True`` ，则向输出添加可学习的偏差。默认：``True``
     
@@ -579,7 +579,7 @@ reset_docstr(
                         \times (\text{kernel_size} - 1) + \text{output_padding} + 1
 
     Attributes:
-        weight (Tensor): 形状为 :math:`(\\text{in\_channels}, \frac{\text{out\_channels}}{\text{groups}},`
+        weight (Tensor): 形状为 :math:`(\text{in\_channels}, \frac{\text{out\_channels}}{\text{groups}},`
                          :math:`\text{kernel\\_size})` 的模块可学习权重。
                          这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
                          :math:`k = \frac{groups}{C_\text{out} * \text{kernel\_size}}`
@@ -640,6 +640,7 @@ reset_docstr(
 
 
     示例：
+    
     .. code-block:: python
 
         >>> import oneflow as flow
@@ -733,6 +734,7 @@ reset_docstr(
 
 
     示例：
+    
     .. code-block:: python
 
         >>> import oneflow as flow
