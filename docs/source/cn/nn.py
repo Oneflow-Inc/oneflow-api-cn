@@ -147,7 +147,7 @@ reset_docstr(
     用 0 填充输入张量边界。用户可以通过设置参数 :attr:`paddings` 来设置填充量。
 
     参数：
-        - **padding** (int 或 tuple): 填充的大小。如果是 `int`，则在所有边界中使用相同的填充。如果一个 2-`tuple` ，则(:math:`\mathrm{padding_{left}}`, :math:`\mathrm{padding_{right}}`, :math:`\mathrm{padding_{top}}`, :math:`\mathrm{padding_{bottom}}`)
+        - **padding** (int 或 tuple): 填充的大小。如果是 `int`，则在所有边界中使用相同的填充。如果是 4-`tuple` ，则(:math:`\mathrm{padding_{left}}`, :math:`\mathrm{padding_{right}}`, :math:`\mathrm{padding_{top}}`, :math:`\mathrm{padding_{bottom}}`)
 
     形状：
         - **Input** : :math:`(N, C, H_{in}, W_{in})`
