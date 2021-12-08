@@ -28,7 +28,7 @@ reset_docstr(
     oneflow.zeros_like,
     r"""zeros_like(x) -> Tensor
 
-    返回一个元素全部为值为 0 的标量，形状和 `x` 相同的 Tensor。
+    返回一个元素全部为值为 0 的标量，形状和 `x` 相同的 tensor。
     flow.zeros_like(x) 等价于 flow.zeros(x.shape, dtype=x.dtype)
 
     参数：
@@ -54,12 +54,12 @@ reset_docstr(
     返回一个填充了未初始化数据的张量。 张量的形状由变量参数 ``size`` 定义。
 
     参数：
-        - **size** (int... 或 oneflow.Size):  定义输出张量的形状。可以是可变数量的参数或集合，如列表或元组或 oneflow.Size。
+        - **size** (int... 或 oneflow.Size):  定义输出张量的形状。可以是可变数量的参数或集合，如列表或元组或 oneflow.Size
         - **dtype** (flow.dtype, 可选的): 返回张量的数据类型。默认：flow.float32
         - **device** (torch.device, 可选的): 返回的本地张量的所需设备。默认使用当前设备
-        - **placement** (flow.placement, 可选的): 设置返回张量的 placement 属性。如果为None，则构造 local tensor 。
-        - **sbp** (flow.sbp 或 List[flow.sbp], 可选的): 返回的consistent tensor的所需 sbp。
-        - **requires_grad** (bool, 可选的): 用 autograd 记录对返回张量的操作，默认为 False。
+        - **placement** (flow.placement, 可选的): 设置返回张量的 placement 属性。如果为None，则构造 local tensor
+        - **sbp** (flow.sbp 或 List[flow.sbp], 可选的): 返回的consistent tensor的所需 sbp
+        - **requires_grad** (bool, 可选的): 用 autograd 记录对返回张量的操作，默认为 False
 
     示例：
 
@@ -82,13 +82,13 @@ reset_docstr(
     oneflow.ones,
     r"""ones(*size, dtype=None, device=None, placement=None, sbp=None, requires_grad=False,) -> Tensor
     
-    返回一个元素全部为标量 1 ，形状由参数 :attr:`size` 决定的 tensor 。
+    返回一个元素全部为标量 1 ，形状由参数 :attr:`size` 决定的 tensor。
 
     参数：
         - **size** (一个整数或包含整数的元组)): 决定输出张量的形状，可以是数字变量或集合例如列表或元组
         - **dtype** (flow.dtype, 可选): 返回张量的数据类型
         - **device** (flow.device, 可选): 返回的本地张量的所需设备。默认使用当前设备
-        - **placement** (flow.placement, 可选): 设置返回张量的 placement 属性。如果为None，则构造 local tensor 
+        - **placement** (flow.placement, 可选): 设置返回张量的 placement 属性。如果为 None，则构造 local tensor 
         - **sbp** (flow.sbp.sbp 或包含 flow.sbp.sbp 的元组, 可选): 返回的consistent tensor的所需 sbp 描述符。如果为 None ，则返回的张量是使用参数 `device` 的本地张量
         - **requires_grad** (bool, 可选): 用 autograd 记录对返回张量的操作，默认为 False
 
@@ -120,7 +120,7 @@ reset_docstr(
     放回一个 :attr:`size` 大小的张量，其元素全部为 1 。默认情况下，返回张量的 `dtype` 和 `device` 和输入张量的相同。
 
     参数：
-        - **size** (一个整数或包含整数的元组)): 决定输出张量的形状，可以是数字变量或集合例如列表或元组
+        - **size** (一个整数或包含整数的元组): 决定输出张量的形状，可以是数字变量或集合例如列表或元组
         - **dtype** (flow.dtype, 可选): 返回张量的数据类型。
         - **device** (flow.device, 可选): 返回的本地张量的所需设备。默认使用当前设备
         - **placement** (flow.placement, 可选): 设置返回张量的 placement 属性。如果为None，则构造 local tensor 。
@@ -147,14 +147,16 @@ reset_docstr(
 
     返回 :attr:`input` 的矩阵范数或向量范数。
 
-    此函数可以计算八种不同类型的矩阵范数之一，或无限数量的向量范数之一，
-    具体取决于减少维度的数量和 :attr:`ord` 参数的值。
+    此函数可以计算八种不同类型的矩阵范数之一，或无限数量的向量范数之一。具体取决于减少维度的数量和 :attr:`ord` 参数的值。
 
     参数：
         - **input** (Tensor): 输入张量。如果 :attr:`dim` 是 None，则输入必须是一维或二维的，除非 :attr:`ord` 也是 None。
+            
             如果 :attr:`dim` 和 :attr:`ord` 都是 None ，则将返回扁平化为 1-D 的输入二范数。它的数据类型必须是浮点数或复数类型。
-            对于复杂输入，范数是根据每个元素的绝对值计算的。如果输入是复数并且既没有指定 :attr:`dtype` 也没有指定 :attr:`out`，
-            返回的数据类型将是相应的浮点类型（例如如果 :attr:`input` 是 complexfloat ，则为float ）
+            对于复杂输入，范数是根据每个元素的绝对值计算的。
+            
+            如果输入是复数并且既没有指定 :attr:`dtype` 也没有指定 :attr:`out` ，
+            返回的数据类型将是相应的浮点类型（例如如果 :attr:`input` 是 complexfloat，则为 float）
 
         - **ord** (int, inf, -inf, 'fro', 'nuc', 可选): 范数的顺序。默认为 `'None'` 。
             可以计算以下范数：
@@ -177,7 +179,7 @@ reset_docstr(
 
             其中 `inf` 指的是 `float('inf')` 、 NumPy 的 `inf` 对象或任何等效对象。
 
-        - **dim** (int, 2-tuple of ints, 2-list of ints, 可选): 如果 :attr:`dim` 是一个 int ，向量范数将在指定的维度上计算。
+        - **dim** (int, 2-tuple of ints, 2-list of ints, 可选): 如果 :attr:`dim` 是一个 int，向量范数将在指定的维度上计算。
             
             如果 :attr:`dim` 是一个整数的二元组，矩阵范数将在指定的维度上计算。
             
