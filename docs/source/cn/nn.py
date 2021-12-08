@@ -210,10 +210,7 @@ reset_docstr(
     用 :func:`torch.nn.functional.pad()` 来进行 `N` 维填充。
 
     参数:
-        - **padding** (int, list, tuple): 填充的大小。如果数据类型为 `int` 则在所有边界中使用相同的填充。如果是 6-`tuple` ，
-            则 (:math:`\text{padding_left}`, :math:`\text{padding_right}`,
-            :math:`\text{padding_top}`, :math:`\text{padding_bottom}`,
-            :math:`\text{padding_front}`, :math:`\text{padding_back}`)
+        - **padding** (int, list, tuple): 填充的大小。如果数据类型为 `int` 则在所有边界中使用相同的填充。如果是 6-`tuple` ，则 ( :math:`\text{padding_left}` , :math:`\text{padding_right}` , :math:`\text{padding_top}` , :math:`\text{padding_bottom}` , :math:`\text{padding_front}` , :math:`\text{padding_back}` )
         - **value** (int, float): 用于填充的常量值。默认为 0
 
     形状：
