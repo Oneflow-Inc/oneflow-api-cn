@@ -14,7 +14,6 @@ from .random import *
 from .tensor import *
 from .trigonometric_ops import *
 from .pooling import *
-from .sort_ops import *
 from .chunk import *
 from .arange import *
 from .expand import *
