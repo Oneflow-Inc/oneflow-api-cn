@@ -229,7 +229,7 @@ limitations under the License.</p>
 <dl class="py function">
 <dt id="oneflow.adaptive_avg_pool1d">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">adaptive_avg_pool1d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.adaptive_avg_pool1d" title="Permalink to this definition">¶</a></dt>
-<dd><p>在由多个平面组成的的信号 <cite>input</cite> 上应用 1D 自适应平均池化。</p>
+<dd><p>在由多个平面组成的信号 <cite>input</cite> 上应用 1D 自适应平均池化。</p>
 <p>参考： <a class="reference internal" href="nn.html#oneflow.nn.AdaptiveAvgPool1d" title="oneflow.nn.AdaptiveAvgPool1d"><code class="xref py py-mod docutils literal notranslate"><span class="pre">oneflow.nn.AdaptiveAvgPool1d</span></code></a></p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
@@ -242,7 +242,7 @@ limitations under the License.</p>
 <dl class="py function">
 <dt id="oneflow.adaptive_avg_pool2d">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">adaptive_avg_pool2d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.adaptive_avg_pool2d" title="Permalink to this definition">¶</a></dt>
-<dd><p>在由多个平面组成的的信号 <cite>input</cite> 上应用 2D 自适应平均池化。</p>
+<dd><p>在由多个平面组成的信号 <cite>input</cite> 上应用 2D 自适应平均池化。</p>
 <p>参考： <a class="reference internal" href="nn.html#oneflow.nn.AdaptiveAvgPool2d" title="oneflow.nn.AdaptiveAvgPool2d"><code class="xref py py-mod docutils literal notranslate"><span class="pre">oneflow.nn.AdaptiveAvgPool2d</span></code></a></p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
@@ -255,7 +255,7 @@ limitations under the License.</p>
 <dl class="py function">
 <dt id="oneflow.adaptive_avg_pool3d">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">adaptive_avg_pool3d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.adaptive_avg_pool3d" title="Permalink to this definition">¶</a></dt>
-<dd><p>在由多个平面组成的的信号 <cite>input</cite> 上应用 3D 自适应平均池化。</p>
+<dd><p>在由多个平面组成的信号 <cite>input</cite> 上应用 3D 自适应平均池化。</p>
 <p>参考： <a class="reference internal" href="nn.html#oneflow.nn.AdaptiveAvgPool3d" title="oneflow.nn.AdaptiveAvgPool3d"><code class="xref py py-mod docutils literal notranslate"><span class="pre">oneflow.nn.AdaptiveAvgPool3d</span></code></a></p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
@@ -590,37 +590,8 @@ limitations under the License.</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.argsort">
-<code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">argsort</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descending</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.argsort" title="Permalink to this definition">¶</a></dt>
-<dd><p>在指定维度对 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 进行排序并返回排序后的张量的 <cite>index</cite> 。</p>
-<dl class="simple">
-<dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>input</strong> (oneflow.tensor): 输入张量</p></li>
-<li><p><strong>dim</strong> (int, 可选): 要进行排序的维度，默认为最大维度(-1)。</p></li>
-<li><p><strong>descending</strong> (bool, 可选): 排序顺序（升序或降序，<cite>False</cite> 为降序）。</p></li>
-</ul>
-</dd>
-<dt>返回类型：</dt><dd><p>oneflow.tensor: 排序后的张量的 <cite>index</cite></p>
-</dd>
-</dl>
-<p>示例：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span>
-<span class="go">tensor([[1, 3, 4, 2, 0],</span>
-<span class="go">        [0, 4, 3, 2, 1]], dtype=oneflow.int32)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">descending</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span>
-<span class="go">tensor([[0, 2, 4, 3, 1],</span>
-<span class="go">        [1, 2, 3, 4, 0]], dtype=oneflow.int32)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span>
-<span class="go">tensor([[1, 0, 1, 0, 1],</span>
-<span class="go">        [0, 1, 0, 1, 0]], dtype=oneflow.int32)</span>
-</pre></div>
-</div>
-</dd></dl>
+<code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">argsort</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descending</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.argsort" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 <dl class="py function">
 <dt id="oneflow.argwhere">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">argwhere</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">flow.int32</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.argwhere" title="Permalink to this definition">¶</a></dt>
@@ -1233,12 +1204,12 @@ limitations under the License.</p>
 <dd><p>返回一个填充了未初始化数据的张量。 张量的形状由变量参数 <code class="docutils literal notranslate"><span class="pre">size</span></code> 定义。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>size</strong> (int… 或 oneflow.Size):  定义输出张量的形状。可以是可变数量的参数或集合，如列表或元组或 oneflow.Size。</p></li>
+<li><p><strong>size</strong> (int… 或 oneflow.Size):  定义输出张量的形状。可以是可变数量的参数或集合，如列表或元组或 oneflow.Size</p></li>
 <li><p><strong>dtype</strong> (flow.dtype, 可选的): 返回张量的数据类型。默认：flow.float32</p></li>
 <li><p><strong>device</strong> (torch.device, 可选的): 返回的本地张量的所需设备。默认使用当前设备</p></li>
-<li><p><strong>placement</strong> (flow.placement, 可选的): 设置返回张量的 placement 属性。如果为None，则构造 local tensor 。</p></li>
-<li><p><strong>sbp</strong> (flow.sbp 或 List[flow.sbp], 可选的): 返回的consistent tensor的所需 sbp。</p></li>
-<li><p><strong>requires_grad</strong> (bool, 可选的): 用 autograd 记录对返回张量的操作，默认为 False。</p></li>
+<li><p><strong>placement</strong> (flow.placement, 可选的): 设置返回张量的 placement 属性。如果为None，则构造 local tensor</p></li>
+<li><p><strong>sbp</strong> (flow.sbp 或 List[flow.sbp], 可选的): 返回的consistent tensor的所需 sbp</p></li>
+<li><p><strong>requires_grad</strong> (bool, 可选的): 用 autograd 记录对返回张量的操作，默认为 False</p></li>
 </ul>
 </dd>
 </dl>
@@ -1647,33 +1618,31 @@ Tensor <code class="xref py py-attr docutils literal notranslate"><span class="p
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.gather">
-<code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">gather</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sparse_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.gather" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gathers values along an axis specified by <cite>dim</cite>.</p>
-<p>For a 3-D tensor the output is specified by:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">input</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span>  <span class="c1"># if dim == 0</span>
-<span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">input</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]][</span><span class="n">k</span><span class="p">]</span>  <span class="c1"># if dim == 1</span>
-<span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">input</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]]</span>  <span class="c1"># if dim == 2</span>
+<code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">gather</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sparse_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.gather" title="Permalink to this definition">¶</a></dt>
+<dd><p>沿 <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code> 指定的维度收集值。</p>
+<p>对 3-D tensor ，输出被定义为:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">input</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span>  <span class="c1"># 如果 dim == 0</span>
+<span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">input</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]][</span><span class="n">k</span><span class="p">]</span>  <span class="c1"># 如果 dim == 1</span>
+<span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">input</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]]</span>  <span class="c1"># 如果 dim == 2</span>
 </pre></div>
 </div>
-<p><code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">index</span></code> must have the same number of dimensions.
-It is also required that <code class="docutils literal notranslate"><span class="pre">index.size(d)</span> <span class="pre">&lt;=</span> <span class="pre">input.size(d)</span></code> for all
-dimensions <code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">!=</span> <span class="pre">dim</span></code>.  <code class="xref py py-attr docutils literal notranslate"><span class="pre">out</span></code> will have the same shape as <code class="xref py py-attr docutils literal notranslate"><span class="pre">index</span></code>.
-Note that <code class="docutils literal notranslate"><span class="pre">input</span></code> and <code class="docutils literal notranslate"><span class="pre">index</span></code> do not broadcast against each other.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – the source tensor</p></li>
-<li><p><strong>dim</strong> (<em>int</em>) – the axis along which to index</p></li>
-<li><p><strong>index</strong> (<em>LongTensor</em>) – the indices of elements to gather</p></li>
+<p><code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 和 <code class="xref py py-attr docutils literal notranslate"><span class="pre">index</span></code> 的维度数必须相同。对于所有 <code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">!=</span> <span class="pre">dim</span></code> 的维度 d ，
+必须有 <code class="docutils literal notranslate"><span class="pre">index.size(d)</span> <span class="pre">&lt;=</span> <span class="pre">input.size(d)</span></code> ， <code class="xref py py-attr docutils literal notranslate"><span class="pre">out</span></code> 的形状和 <code class="xref py py-attr docutils literal notranslate"><span class="pre">index</span></code> 的形状相同。
+请注意， <code class="docutils literal notranslate"><span class="pre">input</span></code> 和 <code class="docutils literal notranslate"><span class="pre">index</span></code> 不会相互广播。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>input</strong> (Tensor): 源张量</p></li>
+<li><p><strong>dim</strong> (int): 索引的维度</p></li>
+<li><p><strong>index</strong> (LongTensor): 要收集的元素的索引</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="nb">input</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">int</span><span class="p">))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">index</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">oneflow.Size([3, 4, 3, 5])</span>
 </pre></div>
@@ -1681,7 +1650,7 @@ Note that <code class="docutils literal notranslate"><span class="pre">input</sp
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.gather_nd">
-<code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">gather_nd</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.gather_nd" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">gather_nd</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.gather_nd" title="Permalink to this definition">¶</a></dt>
 <dd><p>This operator is a high-dimensional extension of <cite>gather</cite>, <cite>index</cite> is a K-dimensional
 tensor, which is regarded as a index of input Tensor <cite>input</cite>.</p>
 <p>Each element defines a slice of <cite>input</cite>:</p>
@@ -2381,7 +2350,7 @@ object will be consistent with placement =
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.neg">
-<code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">neg</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.neg" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">neg</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.neg" title="Permalink to this definition">¶</a></dt>
 <dd><p>negative(input) -&gt; Tensor</p>
 <p>返回 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 的负值。</p>
 <dl class="simple">
@@ -2530,13 +2499,13 @@ object will be consistent with placement =
 <dl class="py function">
 <dt id="oneflow.ones">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">ones</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sbp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.ones" title="Permalink to this definition">¶</a></dt>
-<dd><p>返回一个元素全部为标量 1 ，形状由参数 <code class="xref py py-attr docutils literal notranslate"><span class="pre">size</span></code> 决定的 tensor 。</p>
+<dd><p>返回一个元素全部为标量 1 ，形状由参数 <code class="xref py py-attr docutils literal notranslate"><span class="pre">size</span></code> 决定的 tensor。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>size</strong> (一个整数或包含整数的元组)): 决定输出张量的形状，可以是数字变量或集合例如列表或元组</p></li>
 <li><p><strong>dtype</strong> (flow.dtype, 可选): 返回张量的数据类型</p></li>
 <li><p><strong>device</strong> (flow.device, 可选): 返回的本地张量的所需设备。默认使用当前设备</p></li>
-<li><p><strong>placement</strong> (flow.placement, 可选): 设置返回张量的 placement 属性。如果为None，则构造 local tensor</p></li>
+<li><p><strong>placement</strong> (flow.placement, 可选): 设置返回张量的 placement 属性。如果为 None，则构造 local tensor</p></li>
 <li><p><strong>sbp</strong> (flow.sbp.sbp 或包含 flow.sbp.sbp 的元组, 可选): 返回的consistent tensor的所需 sbp 描述符。如果为 None ，则返回的张量是使用参数 <cite>device</cite> 的本地张量</p></li>
 <li><p><strong>requires_grad</strong> (bool, 可选): 用 autograd 记录对返回张量的操作，默认为 False</p></li>
 </ul>
@@ -2786,7 +2755,7 @@ flow.ones_like(x) 等价于 flow.ones(x.shape, dtype=x.dtype)</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">generator</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randperm</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">generator</span><span class="o">=</span><span class="n">generator</span><span class="p">)</span> <span class="c1"># 构造 local tensor</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
-<span class="go">tensor([2, 4, 3, 0, 1], dtype=oneflow.int32)</span>
+<span class="go">tensor([2, 4, 3, 0, 1], dtype=oneflow.int64)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">is_consistent</span>
 <span class="go">False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">placement</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">,</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">]})</span>
@@ -3652,42 +3621,8 @@ tensor (as opposed to a zero-tensor).</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.to">
-<code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">to</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.to" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="simple">
-<dt>执行张量 dtype 和 device 转换。</dt><dd><p>flow.dtype 和 flow.device 由 <cite>input.to(*args, **kwargs)</cite> 的参数推导而来。</p>
-</dd>
-</dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>如果 tensor <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 的 <code class="xref py py-class docutils literal notranslate"><span class="pre">flow.dtype</span></code> 已经与参数一致，则返回 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 。
-否则创建一个符合条件的 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 备份。</p>
-</div>
-<dl class="simple">
-<dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>input</strong> (oneflow.tensor): 输入张量</p></li>
-</ul>
-</dd>
-<dt>返回类型：</dt><dd><p>oneflow.tensor</p>
-</dd>
-</dl>
-<p>示例：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
-<span class="go">tensor([[[[1, 1, 1, 1],</span>
-<span class="go">          [1, 1, 1, 1],</span>
-<span class="go">          [1, 1, 1, 1]],</span>
-
-<span class="go">         [[1, 1, 1, 1],</span>
-<span class="go">          [1, 1, 1, 1],</span>
-<span class="go">          [1, 1, 1, 1]]]], dtype=oneflow.int8)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cuda0</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda:0'</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">cuda0</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
+<code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">to</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.to" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 <dl class="py function">
 <dt id="oneflow.transpose">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">transpose</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim1</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.transpose" title="Permalink to this definition">¶</a></dt>
@@ -3852,6 +3787,7 @@ flow.nonzero(condition, as_tuple=True) 。</p>
 </dl>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="o">-</span><span class="mf">0.4620</span><span class="p">,</span> <span class="mf">0.3139</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.3898</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7197</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0478</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1657</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">condition</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
@@ -3893,7 +3829,7 @@ flow.nonzero(condition, as_tuple=True) 。</p>
 <dl class="py function">
 <dt id="oneflow.zeros_like">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">zeros_like</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.zeros_like" title="Permalink to this definition">¶</a></dt>
-<dd><p>返回一个元素全部为值为 0 的标量，形状和 <cite>x</cite> 相同的 Tensor。
+<dd><p>返回一个元素全部为值为 0 的标量，形状和 <cite>x</cite> 相同的 tensor。
 flow.zeros_like(x) 等价于 flow.zeros(x.shape, dtype=x.dtype)</p>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入的形状将决定输出的形状</p>

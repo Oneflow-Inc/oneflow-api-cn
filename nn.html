@@ -159,22 +159,22 @@ See the License for the specific language governing permissions and
 limitations under the License.</p>
 <dl class="py class">
 <dt id="oneflow.nn.AdaptiveAvgPool1d">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">AdaptiveAvgPool1d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.AdaptiveAvgPool1d" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies a 1D adaptive average pooling over an input signal composed of several input planes.</p>
-<p>The output size is H, for any input size.
-The number of output features is equal to the number of input planes.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>output_size</strong> – the target output size H</p>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">AdaptiveAvgPool1d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.AdaptiveAvgPool1d" title="Permalink to this definition">¶</a></dt>
+<dd><p>在由多个平面组成的输入信号 <cite>input</cite> 上应用 1D 自适应平均池化。</p>
+<p>对于任何大小的输入，输出大小都是 H。</p>
+<p>输出的数量等于输入平面的数量。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>output_size</strong> (Int64List[1]): 目标输出大小 H（单个整数）</p></li>
+</ul>
 </dd>
 </dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">AdaptiveAvgPool1d</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 <span class="go">oneflow.Size([1, 64, 5])</span>
@@ -184,36 +184,33 @@ The number of output features is equal to the number of input planes.</p>
 <dl class="py class">
 <dt id="oneflow.nn.AdaptiveAvgPool2d">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">AdaptiveAvgPool2d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.AdaptiveAvgPool2d" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies a 2D adaptive average pooling over an input signal composed of several input planes.</p>
-<p>The output is of size H x W, for any input size.
-The number of output features is equal to the number of input planes.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>output_size</strong> – the target output size of the image of the form H x W.
-Can be a tuple (H, W) or a single H for a square image H x H.
-H and W can be either a <code class="docutils literal notranslate"><span class="pre">int</span></code>, or <code class="docutils literal notranslate"><span class="pre">None</span></code> which means the size will
-be the same as that of the input.</p>
+<dd><p>在由多个平面组成的的信号 <cite>input</cite> 上应用 2D 自适应平均池化。</p>
+<p>对于任何大小的输入，输出大小都是 H x W 。</p>
+<p>输出的数量等于输入平面的数量。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>output_size</strong> (Int64List[2]): 目标输出大小（单个整数 H 或包含两个整数的元组 (H, W) ）。 H 和 W 可以是 <code class="docutils literal notranslate"><span class="pre">int</span></code> 也可以是 <code class="docutils literal notranslate"><span class="pre">None</span></code> ，如果为 <code class="docutils literal notranslate"><span class="pre">None</span></code> 则大小将和输入大小一致。</p></li>
+</ul>
 </dd>
 </dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">AdaptiveAvgPool2d</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 <span class="go">oneflow.Size([1, 64, 5, 7])</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">AdaptiveAvgPool2d</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 <span class="go">oneflow.Size([1, 64, 7, 7])</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">AdaptiveAvgPool2d</span><span class="p">((</span><span class="bp">None</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 <span class="go">oneflow.Size([1, 64, 10, 7])</span>
@@ -223,36 +220,33 @@ be the same as that of the input.</p>
 <dl class="py class">
 <dt id="oneflow.nn.AdaptiveAvgPool3d">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">AdaptiveAvgPool3d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.AdaptiveAvgPool3d" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies a 3D adaptive average pooling over an input signal composed of several input planes.</p>
-<p>The output is of size D x H x W, for any input size.
-The number of output features is equal to the number of input planes.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>output_size</strong> – the target output size of the form D x H x W.
-Can be a tuple (D, H, W) or a single number D for a cube D x D x D.
-D, H and W can be either a <code class="docutils literal notranslate"><span class="pre">int</span></code>, or <code class="docutils literal notranslate"><span class="pre">None</span></code> which means the size will
-be the same as that of the input.</p>
+<dd><p>在由多个平面组成的信号 <cite>input</cite> 上应用 3D 自适应平均池化。</p>
+<p>对于任何大小的输入，输出大小都是 D x H x W 。</p>
+<p>输出的数量等于输入平面的数量。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>output_size</strong> (Int64List[3]): 目标输出大小（单个整数 D 则为 D x D x D 或包含三个整数的元组 (D, H, W) ）。 H 、 W 和 D 可以是 <code class="docutils literal notranslate"><span class="pre">int</span></code> 也可以是 <code class="docutils literal notranslate"><span class="pre">None</span></code> ，如果为 <code class="docutils literal notranslate"><span class="pre">None</span></code> 则大小将和输入大小一致。</p></li>
+</ul>
 </dd>
 </dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">AdaptiveAvgPool3d</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 <span class="go">oneflow.Size([1, 64, 5, 7, 9])</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">AdaptiveAvgPool3d</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 <span class="go">oneflow.Size([1, 64, 7, 7, 7])</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">AdaptiveAvgPool3d</span><span class="p">((</span><span class="mi">7</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 <span class="go">oneflow.Size([1, 64, 7, 9, 8])</span>
@@ -261,38 +255,34 @@ be the same as that of the input.</p>
 </dd></dl>
 <dl class="py class">
 <dt id="oneflow.nn.AvgPool1d">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">AvgPool1d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ceil_mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count_include_pad</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.AvgPool1d" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies a 1D average pooling over an input signal composed of several input planes.
-In the simplest case, the output value of the layer with input size <span class="math notranslate nohighlight">\((N, C, H, W)\)</span>,
-output <span class="math notranslate nohighlight">\((N, C, H_{out}, W_{out})\)</span> and <cite>kernel_size</cite> <span class="math notranslate nohighlight">\(k\)</span>
-can be precisely described as:</p>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">AvgPool1d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ceil_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count_include_pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.AvgPool1d" title="Permalink to this definition">¶</a></dt>
+<dd><p>在由多个平面组成的信号 <cite>input</cite> 上执行 1D 平均池化。
+在最简单的情况下，输出值是输入大小为 <span class="math notranslate nohighlight">\((N, C, H, W)\)</span> 的层。
+输出 <span class="math notranslate nohighlight">\((N, C, H_{out}, W_{out})\)</span> 和 <cite>kernel_size</cite> ， <span class="math notranslate nohighlight">\(k\)</span> 可以被精确地描述为：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\begin{split}out(N_i, C_j, l)  = \\frac{1}{k} \\sum_{m=0}^{k-1}
-                       input(N_i, C_j, stride[0] \\times h + m, stride*l + m)\end{split}\]</div></div>
-<p>If padding is non-zero, then the input is implicitly zero-padded on both sides for padding number of points.
-The parameters kernel_size, stride, padding can each be an int or a one-element tuple.</p>
+\[out(N_i, C_j, l)  = \frac{1}{k} \sum_{m=0}^{k-1}
+                    input(N_i, C_j, stride[0] \times h + m, stride*l + m)\]</div></div>
+<p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">padding</span></code> 非零，则输入在两侧隐式填充 0 以填充点数。</p>
+<p>参数 <code class="xref py py-attr docutils literal notranslate"><span class="pre">kernel_size</span></code> 、 <code class="xref py py-attr docutils literal notranslate"><span class="pre">stride</span></code> 、 <code class="xref py py-attr docutils literal notranslate"><span class="pre">padding</span></code> 可以为 int 或者单元素元组。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>When ceil_mode=True, sliding windows are allowed to go off-bounds if they start within the left padding or the
-input. Sliding windows that would start in the right padded region are ignored.</p>
+<p>当 <code class="xref py py-attr docutils literal notranslate"><span class="pre">ceil_mode</span></code> 为 True 时，如果滑动窗口在 left padding 或输入内开始，则允许滑动窗口出界。忽略在右侧填充区域开始的滑动窗口。</p>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>kernel_size</strong> – the size of the window.</p></li>
-<li><p><strong>strides</strong> – the stride of the window. Default value is kernel_size.</p></li>
-<li><p><strong>padding</strong> – implicit zero padding to be added on both sides.</p></li>
-<li><p><strong>ceil_mode</strong> – when True, will use ceil instead of floor to compute the output shape.</p></li>
-<li><p><strong>count_include_pad</strong> – when True, will include the zero-padding in the averaging calculation.</p></li>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>kernel_size</strong> (Union[int, Tuple[int, int]]): 窗口的大小</p></li>
+<li><p><strong>strides</strong> (Union[int, Tuple[int, int]], 可选): 窗口的 stride 。默认值为 None</p></li>
+<li><p><strong>padding</strong> (Union[int, Tuple[int, int]]): 如果非 0 ，在两侧添加隐式填充 0 。默认为 0</p></li>
+<li><p><strong>ceil_mode</strong> (bool): 如果为 True ，将使用 ceil 而不是 floor 来计算输出形状。默认为 False</p></li>
+<li><p><strong>count_include_pad</strong> (bool): 如果为 True ，将在平均计算中填充 0 ，默认为 True</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="n">m</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">AvgPool1d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">y</span><span class="o">.</span><span class="n">shape</span>
 <span class="n">oneflow</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
@@ -309,30 +299,27 @@ strings are acceptable.</p>
 </dd></dl>
 <dl class="py class">
 <dt id="oneflow.nn.AvgPool2d">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">AvgPool2d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ceil_mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count_include_pad</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">divisor_override</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.AvgPool2d" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs the 2d-average pooling on the input.</p>
-<p>In the simplest case, the output value of the layer with input size <span class="math notranslate nohighlight">\((N, C, H, W)\)</span>,
-output <span class="math notranslate nohighlight">\((N, C, H_{out}, W_{out})\)</span> and <cite>kernel_size</cite> <span class="math notranslate nohighlight">\((kH, kW)\)</span>
-can be precisely described as:</p>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">AvgPool2d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ceil_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count_include_pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">divisor_override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.AvgPool2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>在由多个平面组成的信号 <cite>input</cite> 上执行 2D 平均池化。</p>
+<p>在最简单的情况下，输出值是输入大小为 <span class="math notranslate nohighlight">\((N, C, H, W)\)</span> 的层。</p>
+<p>输出 <span class="math notranslate nohighlight">\((N, C, H_{out}, W_{out})\)</span> 和 <cite>kernel_size</cite> ， <span class="math notranslate nohighlight">\((kH, kW)\)</span> 可以被精确地描述为：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[out(N_i, C_j, h, w)  = \frac{1}{kH * kW} \sum_{m=0}^{kH-1} \sum_{n=0}^{kW-1}
                        input(N_i, C_j, stride[0] \times h + m, stride[1] \times w + n)\]</div></div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>kernel_size</strong> (<em>Union</em><em>[</em><em>int</em><em>, </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em><em>]</em>) – An int or list of ints that has length 1, 2. The size of the window for each dimension of the input Tensor.</p></li>
-<li><p><strong>strides</strong> (<em>Union</em><em>[</em><em>int</em><em>, </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em><em>]</em>) – An int or list of ints that has length 1, 2. The stride of the sliding window for each dimension of the input Tensor.</p></li>
-<li><p><strong>padding</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – An int or list of ints that has length 1, 2. Implicit zero padding to be added on both sides.</p></li>
-<li><p><strong>ceil_mode</strong> (<em>bool</em><em>, </em><em>default to False</em>) – When True, will use ceil instead of floor to compute the output shape.</p></li>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>kernel_size</strong> (Union[int, Tuple[int, int]]): 整数或长度为 1 或 2 的整数列表。输入张量的每个维度的窗口大小</p></li>
+<li><p><strong>strides</strong> (Union[int, Tuple[int, int]]): 整数或长度为 1 或 2 的整数列表。输入张量的每个维度的滑动窗口的 stride 。默认为 None</p></li>
+<li><p><strong>padding</strong> (Tuple[int, int]): 整数或长度为 1 或 2 的整数列表。在两侧添加隐式填充 0 。默认为 0</p></li>
+<li><p><strong>ceil_mode</strong> (bool, default to False): 如果为 True 。将使用 ceil 而不是 floor 来计算输出形状。默认为 False</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="n">m</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">AvgPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">y</span><span class="o">.</span><span class="n">shape</span>
 <span class="n">oneflow</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
@@ -349,52 +336,45 @@ strings are acceptable.</p>
 </dd></dl>
 <dl class="py class">
 <dt id="oneflow.nn.AvgPool3d">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">AvgPool3d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ceil_mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count_include_pad</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">divisor_override</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.AvgPool3d" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies a 3D average pooling over an input signal composed of several input planes.
-In the simplest case, the output value of the layer with input size <span class="math notranslate nohighlight">\((N, C, D, H, W)\)</span>,
-output <span class="math notranslate nohighlight">\((N, C, D_{out}, H_{out}, W_{out})\)</span> and <cite>kernel_size</cite> <span class="math notranslate nohighlight">\((kD, kH, kW)\)</span>
-can be precisely described as:</p>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">AvgPool3d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ceil_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count_include_pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">divisor_override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.AvgPool3d" title="Permalink to this definition">¶</a></dt>
+<dd><p>在由多个平面组成的信号 <cite>input</cite> 上执行 3D 平均池化。在最简单的情况下，输出值是输入大小为 <span class="math notranslate nohighlight">\((N, C, D, H, W)\)</span> 的层。</p>
+<p>输出 <span class="math notranslate nohighlight">\((N, C, D_{out}, H_{out}, W_{out})\)</span> 和 <cite>kernel_size</cite> ， <span class="math notranslate nohighlight">\((kD, kH, kW)\)</span> 可以被精确地描述为：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\begin{split}out(N_i, C_j, d, h, w)  = \\frac{1}{kD * kH * kW } \\sum_{k=0}^{kD-1} \\sum_{m=0}^{kH-1} \\sum_{n=0}^{kW-1}
-                       input(N_i, C_j, stride[0] \\times d + k, stride[1] \\times h + m, stride[2] \\times w + n)\end{split}\]</div></div>
-<p>If padding is non-zero, then the input is implicitly zero-padded on all three sides for padding number of points.</p>
+\[out(N_i, C_j, d, h, w)  = \frac{1}{kD * kH * kW } \sum_{k=0}^{kD-1} \sum_{m=0}^{kH-1} \sum_{n=0}^{kW-1}
+                       input(N_i, C_j, stride[0] \times d + k, stride[1] \times h + m, stride[2] \times w + n)\]</div></div>
+<p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">padding</span></code> 非零，则输入在三侧隐式填充 0 以填充点数。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>When ceil_mode=True, sliding windows are allowed to go off-bounds if they start within the left padding or the
-input. Sliding windows that would start in the right padded region are ignored.</p>
+<p>当 <code class="xref py py-attr docutils literal notranslate"><span class="pre">ceil_mode</span></code> 为 True 时，如果滑动窗口在 left padding 或输入内开始，则允许滑动窗口出界。忽略在右侧填充区域开始的滑动窗口。</p>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>kernel_size</strong> – the size of the window.</p></li>
-<li><p><strong>strides</strong> – the stride of the window. Default value is kernel_size.</p></li>
-<li><p><strong>padding</strong> – implicit zero padding to be added on all three sides.</p></li>
-<li><p><strong>ceil_mode</strong> – when True, will use ceil instead of floor to compute the output shape.</p></li>
-<li><p><strong>count_include_pad</strong> – when True, will include the zero-padding in the averaging calculation.</p></li>
-<li><p><strong>divisor_override</strong> – if specified, it will be used as divisor, otherwise kernel_size will be used.</p></li>
+<dl>
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>kernel_size</strong> (Union[int, Tuple[int, int, int]]): 窗口的大小</p></li>
+<li><p><strong>strides</strong> (Union[int, Tuple[int, int, int]], 可选): 窗口的 stride 。默认值为 None</p></li>
+<li><p><strong>padding</strong> (Union[int, Tuple[int, int, int]]):  如果非 0 ，在三侧添加隐式填充 0 。默认为 0</p></li>
+<li><p><strong>ceil_mode</strong> (bool): 如果为 True ，将使用 ceil 而不是 floor 来计算输出形状。默认为 False</p></li>
+<li><p><strong>count_include_pad</strong> (bool): 如果为 True ，将在平均计算中填充 0 ，默认为 True</p></li>
+<li><p><strong>divisor_override</strong> (int): 如果设定了 attr:<cite>divisor_override</cite> ，它将用作除数，否则 attr:<cite>kernel_size</cite> 将作为除数。默认为 0</p></li>
 </ul>
 </dd>
-</dl>
-<dl>
-<dt>Shape:</dt><dd><ul>
+<dt>形状：</dt><dd><ul>
 <li><p>Input: <span class="math notranslate nohighlight">\((N, C, D_{in}, H_{in}, W_{in})\)</span></p></li>
-<li><p>Output: <span class="math notranslate nohighlight">\((N, C, D_{out}, H_{out}, W_{out})\)</span>, where</p>
+<li><p>Output: <span class="math notranslate nohighlight">\((N, C, D_{out}, H_{out}, W_{out})\)</span></p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\begin{split}D_{out} = \\left\\lfloor\\frac{D_{in} + 2 \\times \\text{padding}[0] - \\text{kernel_size}[0]}{\\text{stride}[0]} + 1\\right\\rfloor\end{split}\]</div></div>
+\[D_{out} = \left\lfloor\frac{D_{in} + 2 \times \text{padding}[0] - \text{kernel_size}[0]}{\text{stride}[0]} + 1\right\rfloor\]</div></div>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\begin{split}H_{out} = \\left\\lfloor\\frac{H_{in} + 2 \\times \\text{padding}[1] - \\text{kernel_size}[1]}{\\text{stride}[1]} + 1\\right\\rfloor\end{split}\]</div></div>
+\[H_{out} = \left\lfloor\frac{H_{in} + 2 \times \text{padding}[1] - \text{kernel_size}[1]}{\text{stride}[1]} + 1\right\rfloor\]</div></div>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\begin{split}W_{out} = \\left\\lfloor\\frac{W_{in} + 2 \\times \\text{padding}[2] - \\text{kernel_size}[2]}{\\text{stride}[2]} + 1\\right\\rfloor\end{split}\]</div></div>
+\[W_{out} = \left\lfloor\frac{W_{in} + 2 \times \text{padding}[2] - \text{kernel_size}[2]}{\text{stride}[2]} + 1\right\rfloor\]</div></div>
 </li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="n">m</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">AvgPool3d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">padding</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">y</span><span class="o">.</span><span class="n">shape</span>
 <span class="n">oneflow</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">19</span><span class="p">])</span>
