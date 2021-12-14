@@ -166,7 +166,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.gather,
-    r"""gather(dim, index, sparse_grad=False)
+    r"""gather(input, dim, index, sparse_grad=False) -> Tensor
 
     沿 :attr:`dim` 指定的维度收集值。
 
