@@ -145,3 +145,43 @@ reset_docstr(
     
     """,
 )
+
+reset_docstr(
+    oneflow.nn.Softmax,
+    r"""Softmax(dim = None) -> Tensor
+    
+    将 Softmax 函数应用于 n 维输入 tensor 并重新缩放 tensor，以便n 维输出 tensor
+    的元素位于 [0,1] 范围内并且和为 1。
+
+    Softmax 的公式为：
+
+    .. math::
+        \text{Softmax}(x_{i}) = \frac{\exp(x_i)}{\sum_j \exp(x_j)}
+
+    当输入张量是稀疏张量时，则未被指定的值将被视为 ``-inf`` 。
+
+    形状：
+        - **Input** : :math:`(*)` 其中 `*` 表示任意数量的附加维度
+        - **Output** : :math:`(*)` ，与输入的形状相同
+
+    返回类型：
+        oneflow.tensor: 与输入具有相同维度和形状的张量，其值在 [0, 1] 范围内
+
+    参数：
+        **dim** (int): 要进行 Softmax 计算的维度（因此沿 :attr:`dim` 的每个切片总和为 1）。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> m = flow.nn.Softmax(dim = 2)
+        >>> x = flow.tensor([[[-0.46716809,  0.40112534,  0.61984003], [-1.31244969, -0.42528763,  1.47953856]]], dtype=flow.float32)
+        >>> out = m(x)
+        >>> out
+        tensor([[[0.1575, 0.3754, 0.4671],
+                 [0.0507, 0.1230, 0.8263]]], dtype=oneflow.float32)
+    
+    """
+)
