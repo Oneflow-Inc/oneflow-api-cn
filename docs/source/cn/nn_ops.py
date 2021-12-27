@@ -829,10 +829,10 @@ reset_docstr(
         >>> import oneflow as flow
 
         >>> # 没有可学习的参数
-        >>> m = flow.nn.InstanceNorm1d(100)
+        >>> m = flow.nn.InstanceNorm3d(100)
         >>> # 有可学习的参数
-        >>> m = flow.nn.InstanceNorm1d(100, affine=True)
-        >>> x = flow.randn(20, 100, 40)
+        >>> m = flow.nn.InstanceNorm3d(100, affine=True)
+        >>> x = flow.randn(20, 100, 35, 45, 10)
         >>> output = m(x)
 
     """
