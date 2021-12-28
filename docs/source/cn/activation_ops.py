@@ -66,9 +66,10 @@ reset_docstr(
     .. code-block:: python
 
         >>> import oneflow as flow
-
-        >>> input = flow.tensor([0.81733328, 0.43621480, 0.10351428], dtype=flow.float32)
-        >>> out = flow.nn.Sigmoid(input)
+        
+        >>> x = flow.tensor([0.81733328, 0.43621480, 0.10351428], dtype=flow.float32)
+        >>> m = flow.nn.Sigmoid()
+        >>> out = m(x)
         >>> out
         tensor([0.6937, 0.6074, 0.5259], dtype=oneflow.float32)
 
