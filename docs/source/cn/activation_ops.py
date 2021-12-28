@@ -54,6 +54,28 @@ reset_docstr(
 )
 
 reset_docstr(
+    oneflow.nn.Sigmoid,
+    r"""
+    sigmoid(input) -> Tensor
+
+    应用以下 element-wise 公式： 
+    :math:`\text{Sigmoid}(x) = \frac{1}{1 + \exp(-x)}`
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> input = flow.tensor([0.81733328, 0.43621480, 0.10351428], dtype=flow.float32)
+        >>> out = flow.nn.Sigmoid(input)
+        >>> out
+        tensor([0.6937, 0.6074, 0.5259], dtype=oneflow.float32)
+
+    """,
+)
+
+reset_docstr(
     oneflow.silu,
     r"""
     silu(x) -> Tensor
