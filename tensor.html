@@ -355,44 +355,8 @@ The documentation is referenced from: <a class="reference external" href="https:
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.chunk">
-<code class="sig-name descname"><span class="pre">chunk</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.Tensor.chunk" title="Permalink to this definition">¶</a></dt>
-<dd><p>将张量 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 拆分为特定数量的块。
-每个块都是输入张量的一个视图。
-最后一个块会小于其他的块如果在指定的维度 <a class="reference internal" href="#oneflow.Tensor.dim" title="oneflow.Tensor.dim"><code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code></a> 上 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 的大小不能被 <code class="xref py py-attr docutils literal notranslate"><span class="pre">chunks</span></code> 整除。</p>
-<dl class="simple">
-<dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>input</strong> (oneflow.tensor): 要拆分的张量</p></li>
-<li><p><strong>chunks</strong> (int): 要返回的块数。</p></li>
-<li><p><strong>dim</strong> (int): 拆分张量的维度。</p></li>
-</ul>
-</dd>
-<dt>返回类型：</dt><dd><p>包含 oneflow.tensor 的 List。</p>
-</dd>
-</dl>
-<p>示例：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">of_out</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">of_out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">chunks</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">of_out_shape</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">chunks</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="n">of_out_shape</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">of_out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">of_out_shape</span>
-<span class="go">[(5, 3, 2, 9), (5, 3, 2, 9), (5, 3, 2, 9)]</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">of_out</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">of_out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">chunks</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">of_out_shape</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">chunks</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="n">of_out_shape</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">of_out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">of_out_shape</span>
-<span class="go">[(5, 3, 6, 2), (5, 3, 6, 2), (5, 3, 6, 2), (5, 3, 6, 3)]</span>
-</pre></div>
-</div>
+<code class="sig-name descname"><span class="pre">chunk</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.chunk" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="oneflow.html#oneflow.chunk" title="oneflow.chunk"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.chunk()</span></code></a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.clamp">
@@ -1551,34 +1515,8 @@ the elements of <code class="xref py py-attr docutils literal notranslate"><span
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.split">
-<code class="sig-name descname"><span class="pre">split</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_size_or_sections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.Tensor.split" title="Permalink to this definition">¶</a></dt>
-<dd><p>将张量分成块。</p>
-<p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">split_size_or_sections</span></code> 为一个整数，则 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 会被分成等大的块。
-如果给定维度 <a class="reference internal" href="#oneflow.Tensor.dim" title="oneflow.Tensor.dim"><code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code></a> 上的 tensor 大小不能被 split_size 整除，则最后一块的大小会小于其它块。</p>
-<p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">split_size_or_sections</span></code> 是一个列表，
-那么 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 将根据 <code class="xref py py-attr docutils literal notranslate"><span class="pre">split_size_or_sections</span></code> 被拆分为 <code class="xref py py-attr docutils literal notranslate"><span class="pre">len(split_size_or_sections)</span></code> 个大小为 <a class="reference internal" href="#oneflow.Tensor.dim" title="oneflow.Tensor.dim"><code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code></a> 的块。</p>
-<dl class="simple">
-<dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>x</strong> (Tensor): 要拆分的张量</p></li>
-<li><p><strong>split_size_or_sections</strong> (Union[int, List[int]]): 单个块的大小或包含每个块大小的列表</p></li>
-<li><p><strong>dim</strong> (int): 拆分张量所沿的维度。</p></li>
-</ul>
-</dd>
-</dl>
-<p>示例：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="go">(tensor([[0, 1],</span>
-<span class="go">        [2, 3]], dtype=oneflow.int64), tensor([[4, 5],</span>
-<span class="go">        [6, 7]], dtype=oneflow.int64), tensor([[8, 9]], dtype=oneflow.int64))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="go">(tensor([[0, 1]], dtype=oneflow.int64), tensor([[2, 3],</span>
-<span class="go">        [4, 5],</span>
-<span class="go">        [6, 7],</span>
-<span class="go">        [8, 9]], dtype=oneflow.int64))</span>
-</pre></div>
-</div>
+<code class="sig-name descname"><span class="pre">split</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split_size_or_sections</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.split" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="oneflow.html#oneflow.split" title="oneflow.split"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.split()</span></code></a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.sqrt">
@@ -1864,7 +1802,7 @@ the indices are the indices of the elements in the original input tensor.</p>
 <span class="go">        [9., 4., 3.]], dtype=oneflow.float32)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">indices</span>
 <span class="go">tensor([[2, 3, 1],</span>
-<span class="go">        [1, 2, 3]], dtype=oneflow.int32)</span>
+<span class="go">        [1, 2, 3]], dtype=oneflow.int64)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">values</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">oneflow.Size([2, 3])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">indices</span><span class="o">.</span><span class="n">shape</span>
@@ -1875,7 +1813,7 @@ the indices are the indices of the elements in the original input tensor.</p>
 <span class="go">        [1., 2.]], dtype=oneflow.float32)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">indices</span>
 <span class="go">tensor([[0, 4],</span>
-<span class="go">        [0, 4]], dtype=oneflow.int32)</span>
+<span class="go">        [0, 4]], dtype=oneflow.int64)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">values</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">oneflow.Size([2, 2])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">indices</span><span class="o">.</span><span class="n">shape</span>

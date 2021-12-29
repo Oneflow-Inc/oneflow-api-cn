@@ -213,17 +213,17 @@ After the call <code class="docutils literal notranslate"><span class="pre">tens
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># We have 1 process groups, 2 ranks.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span> <span class="o">+</span> <span class="n">flow</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">get_local_rank</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># input on rank0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span> <span class="o">+</span> <span class="n">flow</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">get_local_rank</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># tensor on rank0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span> 
 <span class="go">tensor([[1, 2],</span>
 <span class="go">        [3, 4]], device='cuda:0', dtype=oneflow.int64)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># input on rank1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># tensor on rank1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span> 
 <span class="go">tensor([[2, 3],</span>
 <span class="go">        [4, 5]], device='cuda:1', dtype=oneflow.int64)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">all_reduce</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">all_reduce</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 <span class="go">array([[3, 5],</span>
 <span class="go">       [7, 9]])</span>
 </pre></div>
