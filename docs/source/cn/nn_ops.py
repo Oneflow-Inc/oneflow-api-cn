@@ -140,7 +140,7 @@ reset_docstr(
     返回类型：
         oneflow.Tensor: 量化和反量化操作后的输入张量
 
-    For example:
+    示例：
 
     .. code-block:: python
 
@@ -178,8 +178,8 @@ reset_docstr(
     将 tensor 指定连续范围的维度展平。用于：nn.Sequential 。
 
     参数：
-        - **start_dim** (int): first dim to flatten (default = 1).
-        - **end_dim** (int): last dim to flatten (default = -1).
+        - **start_dim** (int): 展平开始的维度（默认为 1）
+        - **end_dim** (int): 展平结束的维度（默认为 -1）
     
     示例：
 
@@ -212,11 +212,11 @@ reset_docstr(
         y = \frac{x - \mathrm{E}[x]}{\sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \beta
 
     逐维度小批量计算均值和标准差，其中 :math:`\gamma` 和 :math:`\beta`  是大小为 `C` （ `C` 是输入大小）
-    的可学习参数向量。默认情况下， :math:`\gamma` 的元素被设置为 1 ，并且 :math:`\beta` 被设置为 0 。通过
-    有偏估计器 (biased estimator) 计算标准差，相当于 `torch.var(input, unbiased=False)` 。
+    的可学习参数向量。默认情况下， :math:`\gamma` 的元素被设置为 1 ，并且 :math:`\beta` 被设置为 0 。通过有偏估计器 
+    (biased estimator) 计算标准差，相当于 `torch.var(input, unbiased=False)` 。
 
     默认情况下，该层在训练期间不断估计计算的均值和方差，然后在评估期间用于归一化（normalization）。
-    运行估计期间， :attr:`momentum` 为 0.1 。
+    运行估计期间， :attr:`momentum` 为 0.1。
 
     如果将 :attr:`track_running_stats` 设置为 ``False`` ，则该层不会继续进行估计，
     而是在评估期间也使用批处理统计信息。
@@ -229,15 +229,11 @@ reset_docstr(
     因为 Batch Normalization 是在维度 `C` 上完成的，并在 `(N, L)` 切片上计算统计数据，所以学术上普遍称之为 Temporal Batch Normalization 。
 
     参数：
-        - **num_features** : 来自大小为 :math:`(N, C, L)` 的预期输入的 :math:`C` 或者
-            来自大小为 :math:`(N, L)` 的输入的 :math:`L` 
+        - **num_features** : 来自大小为 :math:`(N, C, L)` 的预期输入的 :math:`C` 或者来自大小为 :math:`(N, L)` 的输入的 :math:`L` 
         - **eps** : 为数值稳定性而添加到分母的值。默认： 1e-5
-        - **momentum** : 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。
-            可以设置为 ``None`` 以计算累积移动平均。默认： 0.1
+        - **momentum** : 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。可以设置为 ``None`` 以计算累积移动平均。默认： 0.1
         - **affine** (bool, 可选): 如果为 ``True`` ，则该模块具有可学习的仿射参数。默认： ``True``
-        - **track_running_stats** (bool, 可选): 如果为 ``True`` ，则此模块跟踪运行均值和方差，
-            。如果为 ``False`` ，此模块不跟踪此类统计信息，同时初始化统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 
-            为 ``None`` 。当这些缓冲区为 ``None`` 时， 此模块在训练和评估模式中始终使用 batch statistics 。默认： ``True`` 
+        - **track_running_stats** (bool, 可选): 如果为 ``True`` ，则此模块跟踪运行均值和方差。如果为 ``False`` ，此模块不跟踪此类统计信息，同时初始化统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 为 ``None`` 。当这些缓冲区为 ``None`` 时， 此模块在训练和评估模式中始终使用 batch statistics 。默认： ``True`` 
 
     形状：
         - **Input** : :math:`(N, C)` 或 :math:`(N, C, L)`
@@ -273,8 +269,8 @@ reset_docstr(
         y = \frac{x - \mathrm{E}[x]}{\sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \beta
 
     逐维度小批量计算均值和标准差，其中 :math:`\gamma` 和 :math:`\beta`  是大小为 `C` （ `C` 是输入大小）
-    的可学习参数向量。默认情况下， :math:`\gamma` 的元素被设置为 1 ，并且 :math:`\beta` 被设置为 0 。通过
-    有偏估计器 (biased estimator) 计算标准差，相当于 `torch.var(input, unbiased=False)` 。
+    的可学习参数向量。默认情况下， :math:`\gamma` 的元素被设置为 1 ，并且 :math:`\beta` 被设置为 0 。通过有偏估计器 
+    (biased estimator) 计算标准差，相当于 `torch.var(input, unbiased=False)` 。
 
     默认情况下，该层在训练期间不断估计计算的均值和方差，然后在评估期间用于归一化（normalization）。
     运行估计期间， :attr:`momentum` 为 0.1 。
@@ -292,12 +288,9 @@ reset_docstr(
     参数：
         - **num_features** : 来自大小为 :math:`(N, C, H, W)` 的预期输入的 :math:`C` 
         - **eps** : 为数值稳定性而添加到分母的值。默认： 1e-5
-        - **momentum** : 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。
-            可以设置为 ``None`` 以计算累积移动平均。默认： 0.1
+        - **momentum** : 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。可以设置为 ``None`` 以计算累积移动平均。默认： 0.1
         - **affine** (bool, 可选): 如果为 ``True`` ，则该模块具有可学习的仿射参数。默认： ``True``
-        - **track_running_stats** (bool, 可选): 如果为 ``True`` ，则此模块跟踪运行均值和方差，
-            。如果为 ``False`` ，此模块不跟踪此类统计信息，同时初始化统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 
-            为 ``None`` 。当这些缓冲区为 ``None`` 时， 此模块在训练和评估模式中始终使用 batch statistics 。默认： ``True`` 
+        - **track_running_stats** (bool, 可选): 如果为 ``True`` ，则此模块跟踪运行均值和方差，如果为 ``False`` ，此模块不跟踪此类统计信息，同时初始化统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 为 ``None`` 。当这些缓冲区为 ``None`` 时， 此模块在训练和评估模式中始终使用 batch statistics 。默认： ``True`` 
 
     形状：
         - Input: :math:`(N, C, H, W)`
@@ -326,15 +319,15 @@ reset_docstr(
 
         out = ReLU(BatchNorm(input) + addend)
 
-    The formula of Batch Normalization is: 
+    Batch Normalization 的公式为：
 
     .. math::
 
         y = \frac{x - \mathrm{E}[x]}{\sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \beta
 
     逐维度小批量计算均值和标准差，其中 :math:`\gamma` 和 :math:`\beta`  是大小为 `C` （ `C` 是输入大小）
-    的可学习参数向量。默认情况下， :math:`\gamma` 的元素被设置为 1 ，并且 :math:`\beta` 被设置为 0 。通过
-    有偏估计器 (biased estimator) 计算标准差，相当于 `torch.var(input, unbiased=False)` 。
+    的可学习参数向量。默认情况下， :math:`\gamma` 的元素被设置为 1 ，并且 :math:`\beta` 被设置为 0 。通过有偏估计器 
+    (biased estimator) 计算标准差，相当于 `torch.var(input, unbiased=False)` 。
 
     默认情况下，该层在训练期间不断估计计算的均值和方差，然后在评估期间用于归一化（normalization）。
     运行估计期间， :attr:`momentum` 为 0.1 。
@@ -352,12 +345,9 @@ reset_docstr(
     参数：
         - **num_features** : 来自大小为 :math:`(N, C, D, H, W)` 的预期输入的 :math:`C` 
         - **eps** : 为数值稳定性而添加到分母的值。默认： 1e-5
-        - **momentum** : 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。
-            可以设置为 ``None`` 以计算累积移动平均。默认： 0.1
+        - **momentum** : 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。可以设置为 ``None`` 以计算累积移动平均。默认： 0.1
         - **affine** (bool, 可选): 如果为 ``True`` ，则该模块具有可学习的仿射参数。默认： ``True``
-        - **track_running_stats** (bool, 可选): 如果为 ``True`` ，则此模块跟踪运行均值和方差，
-            。如果为 ``False`` ，此模块不跟踪此类统计信息，同时初始化统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 
-            为 ``None`` 。当这些缓冲区为 ``None`` 时， 此模块在训练和评估模式中始终使用 batch statistics 。默认： ``True`` 
+        - **track_running_stats** (bool, 可选): 如果为 ``True`` ，则此模块跟踪运行均值和方差。如果为 ``False`` ，此模块不跟踪此类统计信息，同时初始化统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 为 ``None`` 。当这些缓冲区为 ``None`` 时， 此模块在训练和评估模式中始终使用 batch statistics 。默认： ``True`` 
 
     形状：
         - Input: :math:`(N, C, D, H, W)`
@@ -455,7 +445,7 @@ reset_docstr(
     此接口与 PyTorch 对其，可参考以下文档：
     https://pytorch.org/docs/stable/generated/torch.nn.GroupNorm.html
 
-    对小批量输入应用组归一化 (Group Normalization) 的行为按论文 <https://arxiv.org/abs/1803.08494>`__ 中所述
+    对小批量输入应用组归一化 (Group Normalization) 的行为按论文 <https://arxiv.org/abs/1803.08494>`__ 中所述。
 
     公式为：
 
@@ -476,11 +466,10 @@ reset_docstr(
         - **num_groups** (int): 将通道分成的组数
         - **num_channels** (int): 输入中预期的通道数
         - **eps** (float, 可选): 为数值稳定性而添加到分母的值。默认：1e-5
-        - **affine** (bool, 可选): 如果为 ``True`` ，该模块具有可学习逐通道仿射变换参数，
-            并初始化为 1 （对于权重）和 0（对于偏差）。默认： ``True`` 
+        - **affine** (bool, 可选): 如果为 ``True`` ，该模块具有可学习逐通道仿射变换参数，并初始化为 1 （对于权重）和 0（对于偏差）。默认： ``True`` 
 
     形状：
-        - Input: :math:`(N, C, *)` 其中 :math:`C=\\text{num_channels}`
+        - Input: :math:`(N, C, *)` 其中 :math:`C=\text{num_channels}`
         - Output: :math:`(N, C, *)` （与输入形状相同）
 
     示例：
@@ -598,7 +587,7 @@ reset_docstr(
     参数：
         - **min_val** (float): 线性区域范围的最小值。默认：-1
         - **max_val** (float): 线性区域范围的最大值。默认：1
-        - **inplace** (bool): 是否执行 in-place 操作。默认： ``False`` 
+        - **inplace** (bool): 是否执行 in-place 操作。默认： `False`
 
     关键词参数： :attr:`min_value` 和 :attr:`max_value` 已被弃用，由 :attr:`min_val` 和 :attr:`max_val` 替代。
 
@@ -687,8 +676,7 @@ reset_docstr(
         - **eps** (float): 为数值稳定性而添加到分母的值。默认：1e-5
         - **momentum** (float): 用于计算 running_mean 和 running_var 。默认：0.1
         - **affine** (bool): 如果为 ``True`` ，该模块具有可学习的仿射参数 (learnable affine parameters) ，初始化方式与批量标准化 (batch normalization) 相同。默认： ``False``
-        - **track_running_stats** (bool): 如果为 ``True`` ，该模块记录运行均值和方差，
-            如果为 ``True`` ，该模块不记录运行均值和方差，并且始终在训练和评估模式下都使用批处理该类统计信息。默认： ``False``
+        - **track_running_stats** (bool): 如果为 ``True`` ，该模块记录运行均值和方差，如果为 ``True`` ，该模块不记录运行均值和方差，并且始终在训练和评估模式下都使用批处理该类统计信息。默认： ``False``
 
     形状：
         - **Input** : :math:`(N, C, L)`
@@ -751,8 +739,7 @@ reset_docstr(
         - **eps** (float): 为数值稳定性而添加到分母的值。默认：1e-5
         - **momentum** (float): 用于计算 running_mean 和 running_var 。默认：0.1
         - **affine** (bool): 如果为 ``True`` ，该模块具有可学习的仿射参数 (learnable affine parameters) ，初始化方式与批量标准化 (batch normalization) 相同。默认： ``False``
-        - **track_running_stats** (bool): 如果为 ``True`` ，该模块记录运行均值和方差，
-            如果为 ``True`` ，该模块不记录运行均值和方差，并且始终在训练和评估模式下都使用批处理该类统计信息。默认： ``False``
+        - **track_running_stats** (bool): 如果为 ``True`` ，该模块记录运行均值和方差，如果为 ``True`` ，该模块不记录运行均值和方差，并且始终在训练和评估模式下都使用批处理该类统计信息。默认： ``False``
         
     形状：
         - **Input** : :math:`(N, C, H, W)`
@@ -815,8 +802,7 @@ reset_docstr(
         - **eps** (float): 为数值稳定性而添加到分母的值。默认：1e-5
         - **momentum** (float): 用于计算 running_mean 和 running_var 。默认：0.1
         - **affine** (bool): 如果为 ``True`` ，该模块具有可学习的仿射参数 (learnable affine parameters) ，初始化方式与批量标准化 (batch normalization) 相同。默认： ``False``
-        - **track_running_stats** (bool): 如果为 ``True`` ，该模块记录运行均值和方差，
-            如果为 ``True`` ，该模块不记录运行均值和方差，并且始终在训练和评估模式下都使用批处理该类统计信息。默认： ``False``
+        - **track_running_stats** (bool): 如果为 ``True`` ，该模块记录运行均值和方差，如果为 ``True`` ，该模块不记录运行均值和方差，并且始终在训练和评估模式下都使用批处理该类统计信息。默认： ``False``
         
     形状：
         - **Input** : :math:`(N, C, D, H, W)`
