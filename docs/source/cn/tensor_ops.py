@@ -75,6 +75,200 @@ reset_docstr(
     """
 )
 
+reset_docstr(
+    oneflow.Tensor.cpu,
+    r"""
+    返回此对象在 CPU 内存中的副本。
+    
+    如果此对象已在 CPU 内存中且位于正确的设备上，则不会执行复制，而是返回原始对象。
+
+    示例:
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.tensor([1, 2, 3, 4, 5], device=flow.device("cuda"))
+        >>> output = input.cpu()
+        >>> output.device
+        device(type='cpu', index=0)
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.cuda,
+    r"""cuda(device=None)
+
+    返回此对象在 CUDA 内存中的副本。
+
+    如果此对象已在 CUDA 内存中且位于正确的设备上，则不会执行复制，而是返回原始对象。
+
+    参数：
+        - **device**  (flow.device): 目标 GPU 设备。默认为当前 CUDA 设备。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.Tensor([1, 2, 3, 4, 5])
+        >>> output = input.cuda()
+        >>> output.device
+        device(type='cuda', index=0)
+
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.double,
+    r"""
+    
+    `Tensor.double()` 等价于 `Tensor.to(flow.float64)` 。 参见 :mod:`oneflow.to` 。
+    
+    参数：
+        - **input**  (Tensor): 输入张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.randint(0, 5, (3,3))
+        >>> input = input.double()
+        >>> input.dtype
+        oneflow.float64
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.float,
+    r"""float(input)
+    
+    `Tensor.float()` 等价于 `Tensor.to(flow.float32)` 。 参见 :mod:`oneflow.to` 。
+
+    参数：
+        - **input** (Tensor): 输入张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.randint(0, 5, (3,3))
+        >>> input = input.float()
+        >>> input.dtype
+        oneflow.float32
+    """
+)
+
+reset_docstr(
+    oneflow.gather,
+    r"""gather(dim, index, sparse_grad=False)
+
+    沿 :attr:`dim` 指定的维度收集值。
+
+    对 3-D tensor ，输出被定义为::
+
+        out[i][j][k] = input[index[i][j][k]][j][k]  # 如果 dim == 0
+        out[i][j][k] = input[i][index[i][j][k]][k]  # 如果 dim == 1
+        out[i][j][k] = input[i][j][index[i][j][k]]  # 如果 dim == 2
+
+    :attr:`input` 和 :attr:`index` 的维度数必须相同。对于所有 ``d != dim`` 的维度 d ，
+    必须有 ``index.size(d) <= input.size(d)`` ， :attr:`out` 的形状和 :attr:`index` 的形状相同。
+    请注意， ``input`` 和 ``index`` 不会相互广播。
+
+    参数：
+        - **input** (Tensor): 源张量
+        - **dim** (int): 索引的维度
+        - **index** (LongTensor): 要收集的元素的索引
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> input = flow.randn(3, 4, 3, 5, dtype=flow.float32)
+        >>> index = flow.randint(0, 3, (3, 4, 3, 5))
+        >>> output = flow.gather(input, 1, index)
+        >>> output.shape
+        oneflow.Size([3, 4, 3, 5])
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.int, 
+    r"""
+    `Tensor.int()` 等价于 `Tensor.to(flow.int32)` 。 参见 :mod:`oneflow.to` 。
+
+    参数：
+        - **input** (Tensor): 输入张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.randn(1, 2, 3, dtype=flow.float32)
+        >>> input = input.int()
+        >>> input.dtype
+        oneflow.int32
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.item,
+    r"""
+    将 tensor 的值作为标准 Python 数字返回。仅适用于只有一个元素的 tensor 。
+    
+    其他情况请参考 :mod:`oneflow.tolist` 。
+
+    这个操作不可导。
+
+    参数：
+        - **input** (Tensor): 输入张量
+
+    示例：
+
+    .. code-block:: python
+
+
+        >>> import oneflow as flow
+        >>> x = flow.tensor([1.0])
+        >>> x.item()
+        1.0
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.reciprocal,
+    r"""reciprocal(x) -> Tensor
+    计算 :attr:`x` 的倒数，如果 :attr:`x` 为0，倒数将被设置为 0。
+
+    参数：
+        **x** (Tensor): 输入张量
+
+    返回类型：
+        oneflow.tensor
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> x = flow.tensor([[1, 2, 3], [4, 5, 6]], dtype=flow.float32)
+        >>> out = flow.reciprocal(x)
+        >>> out
+        tensor([[1.0000, 0.5000, 0.3333],
+                [0.2500, 0.2000, 0.1667]], dtype=oneflow.float32)
+    """,
+)
+
 
 reset_docstr(
     oneflow.Tensor.add,
@@ -313,7 +507,7 @@ reset_docstr(
 reset_docstr(
     oneflow.Tensor.rsqrt,
     r"""rsqrt(input) -> Tensor
-        
+
         返回一个新的张量，它的元素是 :attr:`input` 的每个元素的平方根的倒数。
 
         .. math::
@@ -327,18 +521,18 @@ reset_docstr(
         .. code-block:: python
 
             >>> import oneflow as flow
-            
+
             >>> a = flow.tensor([1.0, 2.0, 3.0], dtype=flow.float32)
             >>> out = flow.rsqrt(a)
             >>> out
             tensor([1.0000, 0.7071, 0.5774], dtype=oneflow.float32)
-    """,    
+    """,
 )
 
 reset_docstr(
     oneflow.Tensor.sort,
     r"""sort(input, dim=-1, descending=False) -> tuple(values, indices)
-    
+
     按值升序沿给定维度 :attr:`dim` 对张量 :attr:`input` 的元素进行排序。
 
     参数：
@@ -378,14 +572,14 @@ reset_docstr(
         >>> indices
         tensor([[0, 0, 1, 1, 0],
                 [1, 1, 0, 0, 1]], dtype=oneflow.int32)
- 
+
     """
 )
 
 reset_docstr(
     oneflow.Tensor.split,
     r"""split(x, split_size_or_sections, dim=0) -> Tensor
-    
+
     将张量分成块。
 
     如果 :attr:`split_size_or_sections` 为一个整数，则 :attr:`x` 会被分成等大的块。
@@ -434,7 +628,7 @@ reset_docstr(
         .. code-block:: python
 
             >>> import oneflow as flow
-            
+
             >>> input = flow.tensor([1.0, 2.0, 3.0], dtype=flow.float32)
             >>> output = flow.sqrt(input)
             >>> output
@@ -453,7 +647,7 @@ reset_docstr(
 
     参数：
         **x** (Tensor): 输入张量
-    
+
     返回类型：
         oneflow.tensor
 
@@ -462,7 +656,7 @@ reset_docstr(
     .. code-block:: python
 
         >>> import oneflow as flow
-            
+
         >>> input = flow.tensor([1.0, 2.0, 3.0], dtype=flow.float32)
         >>> output = flow.square(input)
         >>> output
@@ -474,7 +668,7 @@ reset_docstr(
 reset_docstr(
     oneflow.Tensor.sub,
     r"""sub(input, other) -> Tensor
-    
+
     计算 `input` 和 `other` 的差，支持 element-wise、标量和广播形式的减法。
 
     公式为：
@@ -488,13 +682,13 @@ reset_docstr(
 
     返回类型：   
         oneflow.tensor
-    
+
     示例：
 
     .. code-block:: python
 
         >>> import oneflow as flow
-        
+
         # element-wise 减法
         >>> input = flow.randn(2, 3, dtype=flow.float32)
         >>> other = flow.randn(2, 3, dtype=flow.float32)
@@ -522,14 +716,14 @@ reset_docstr(
 reset_docstr(
     oneflow.Tensor.tile,
     r"""tile(input, reps) -> Tensor
-    
-    
+
+
     此接口与 PyTorch 一致。
     文档参考自：
     https://pytorch.org/docs/stable/generated/torch.tile.html
 
 
-    
+
     通过重复 :attr:`input` 的元素构造一个新张量。 :attr:`reps` 参数指定每个维度的重复次数。
 
     如果 :attr:`reps` 的长度小于 :attr:`input` 的维度，则在 :attr:`reps` 前添加 1 。直到 :attr:`reps` 的长度
@@ -552,7 +746,7 @@ reset_docstr(
     .. code-block:: python
 
         >>> import oneflow as flow
-        
+
         >>> input = flow.tensor([1, 2], dtype=flow.int32)
         >>> out = input.tile(reps=(2,))
         >>> out
@@ -568,7 +762,7 @@ reset_docstr(
 reset_docstr(
     oneflow.Tensor.to,
     r"""to(input, *args, **kwargs) -> Tensor
-    
+
     执行张量 dtype 和 device 转换。
         flow.dtype 和 flow.device 由 `input.to(*args, **kwargs)` 的参数推导而来。
 
@@ -600,7 +794,7 @@ reset_docstr(
                   [1, 1, 1, 1]]]], dtype=oneflow.int8)
         >>> cuda0 = flow.device('cuda:0')
         >>> output = input.to(device=cuda0)
-        
+
     """
 )
 
@@ -681,10 +875,10 @@ reset_docstr(
 reset_docstr(
     oneflow.Tensor.view,
     r"""view(input, *shape) -> Tensor
-    
+
     此接口与 PyTorch 一致。 文档参考自：https://pytorch.org/docs/stable/generated/torch.Tensor.view.html
 
-    
+
     返回一个新的 tensor ，其数据与 :attr:`input` 相同，但形状 :attr:`shape` 不同。
 
     返回的 tensor 与 :attr:`input` 共享相同的数据并且必须具有相同数量的元素，但是形状可以不同。
@@ -695,7 +889,7 @@ reset_docstr(
 
       \text{stride}[i] = \text{stride}[i+1] \times \text{size}[i+1]
 
-    
+
     否则将无法以视图查看  为形状 :attr:`shape` 且不复制 :attr:`input` （例如通过 :meth:`contiguous`）。
     当不清楚是否可以执行 :meth:`view` 时，建议使用 :meth:`reshape` ，因为 :meth:`reshape` 在兼容的时候返回
     :attr:`input` 的视图，不兼容的时候复制 :attr:`input` （相当于调用 :meth:`contiguous` ）。
@@ -712,7 +906,7 @@ reset_docstr(
     .. code-block:: python
 
         >>> import oneflow as flow
-        
+
         >>> input = flow.tensor([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]], dtype=flow.float32)
 
         >>> y = input.view(2, 2, 2, -1).shape
@@ -724,23 +918,23 @@ reset_docstr(
 )
 
 reset_docstr(
-    oneflow.Tensor.where, 
+    oneflow.Tensor.where,
     r"""where(condition, x=None, y=None) -> Tensor
-    
+
     返回一个 tensor 其元素为从 :attr:`x` 或 :attr:`y` 中依据 :attr:`condition` 的真实值选择的元素，
     如果 :attr:`condition` 中的元素大于 0 ，则取 :attr:`x` 中的元素，否则取 :attr:`y` 的元素。
 
     .. note::
         如果 :attr:`x` 为 None 并且 :attr:`y` 为 None ，则 flow.where(condition) 等同于 
         flow.nonzero(condition, as_tuple=True) 。
-        
+
         :attr:`condition` 、 :attr:`x` 、 :attr:`y` 必须可互相广播。
 
     参数：
         - **condition** (IntTensor): 如果不为 0 则 yield x ，否则 yield y
         - **x** (Tensor 或 Scalar): 当 :attr:`condition` 为 True 时，如果 :attr:`x` 为标量则为值，如果 :attr:`x` 不为标量则为在索引处选择的值
         - **y** (Tensor 或 Scalar): 当 :attr:`condition` 为 False 时，如果 :attr:`x` 为标量则为值，如果 :attr:`x` 不为标量则为在索引处选择的值
-    
+
     返回类型：
         oneflow.tensor: 与 :attr:`condition` 、 :attr:`x` 、 :attr:`y` 广播形状相同的 tensor 。
 
@@ -777,7 +971,7 @@ reset_docstr(
     .. code-block:: python
 
         >>> import oneflow as flow
-        
+
         >>> input = flow.randn(1, 2, 3, dtype = flow.float32)
         >>> target = flow.randint(0, 4, (5, 6))
         >>> input = input.type_as(target)
@@ -790,7 +984,7 @@ reset_docstr(
 reset_docstr(
     oneflow.Tensor.topk,
     r"""topk(k, dim=None, largest=True, sorted=True) -> Tesnor
-    
+
     查找指定维度上最大或最小的 :attr:`k` 个值和其索引。
 
     参数：
@@ -835,3 +1029,4 @@ reset_docstr(
 
     """
 )
+
