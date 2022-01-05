@@ -232,7 +232,7 @@ reset_docstr(
     按小批量逐维度求平均值和标准差， :math:`\gamma` 和 :math:`\beta` 是大小为 `C` 的可学习参数向量（ `C` 是输入的大小）。
     默认情况下，:math:`\gamma` 的元素均为 1 而 :math:`\beta` 的元素均为 0 。标准差的计算等价于 `torch.var(input, unbiased=False)` 。
 
-    此外，默认情况下，在训练期间，该层不选估计计算的均值和方差，然后评估时将其归一化。运行估计默认 :attr:`momentum` 为 0.1 。
+    此外，默认情况下，在训练期间，该层不断估计计算的均值和方差，然后评估时将其归一化。运行估计默认 :attr:`momentum` 为 0.1 。
 
     如果 :attr:`track_running_stats` 被设置为 ``False`` ，则该层不会继续进行估计，并且在评估时也使用批处理统计信息。
 
@@ -282,7 +282,7 @@ reset_docstr(
     按小批量逐维度求平均值和标准差， :math:`\gamma` 和 :math:`\beta` 是大小为 `C` 的可学习参数向量（ `C` 是输入的大小）。
     默认情况下，:math:`\gamma` 的元素均为 1 而 :math:`\beta` 的元素均为 0 。标准差的计算等价于 `torch.var(input, unbiased=False)` 。
 
-    此外，默认情况下，在训练期间，该层不选估计计算的均值和方差，然后评估时将其归一化。运行估计默认 :attr:`momentum` 为 0.1 。
+    此外，默认情况下，在训练期间，该层不断估计计算的均值和方差，然后评估时将其归一化。运行估计默认 :attr:`momentum` 为 0.1 。
 
     如果 :attr:`track_running_stats` 被设置为 ``False`` ，则该层不会继续进行估计，并且在评估时也使用批处理统计信息。
 
@@ -331,7 +331,7 @@ reset_docstr(
     按小批量逐维度求平均值和标准差， :math:`\gamma` 和 :math:`\beta` 是大小为 `C` 的可学习参数向量（ `C` 是输入的大小）。
     默认情况下，:math:`\gamma` 的元素均为 1 而 :math:`\beta` 的元素均为 0 。标准差的计算等价于 `torch.var(input, unbiased=False)` 。
 
-    此外，默认情况下，在训练期间，该层不选估计计算的均值和方差，然后评估时将其归一化。运行估计默认 :attr:`momentum` 为 0.1 。
+    此外，默认情况下，在训练期间，该层不断估计计算的均值和方差，然后评估时将其归一化。运行估计默认 :attr:`momentum` 为 0.1 。
 
     如果 :attr:`track_running_stats` 被设置为 ``False`` ，则该层不会继续进行估计，并且在评估时也使用批处理统计信息。
 
