@@ -1008,7 +1008,7 @@ reset_docstr(
                 [9., 4., 3.]], dtype=oneflow.float32)
         >>> indices
         tensor([[2, 3, 1],
-                [1, 2, 3]], dtype=oneflow.int32)
+                [1, 2, 3]], dtype=oneflow.int64)
         >>> values.shape
         oneflow.Size([2, 3])
         >>> indices.shape
