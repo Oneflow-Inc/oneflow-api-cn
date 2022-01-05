@@ -203,7 +203,6 @@ reset_docstr(
     .. code-block:: python
 
         >>> import oneflow as flow
-                
         >>> input = flow.tensor([1, 2], dtype=flow.int32)
         >>> out = input.tile(reps=(2,))
         >>> out
