@@ -9,7 +9,7 @@ reset_docstr(
     参数：
         - **sampler** (Sampler or Iterable): 原采样器。可以是任何可迭代对象。 
         - **batch_size** (int): mini-batch的大小 
-        - **drop_last** (bool): 如果为 ``True``，采样器会在最后一个batch小于``batch_size``时将其丢弃。
+        - **drop_last** (bool): 如果为 ``True`` ，采样器会在最后一个batch小于 ``batch_size`` 时将其丢弃。
     示例：
         >>> list(BatchSampler(SequentialSampler(range(10)), batch_size=3, drop_last=False))
         [[0, 1, 2], [3, 4, 5], [6, 7, 8], [9]]
@@ -72,3 +72,5 @@ reset_docstr(
                  batch的样本将被丢弃。遗憾的是，OneFlow通常无法检测这类情况。
     """,
 )
+
+
