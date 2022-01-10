@@ -175,3 +175,72 @@ reset_docstr(
     
 )
 
+reset_docstr(
+    oneflow.optim.Adagrad,
+    r"""实现Adagrad优化器。
+
+        公式是: 
+
+        .. math:: 
+
+            & S_{t} = S_{t-1} + grad \odot grad 
+            
+            & decay\_lr = \frac{learning\_rate}{(1 + (train\_step - 1) * lr\_decay)}
+
+            & X_{t} = X_{t-1} - \frac{decay\_lr}{\sqrt{S_{t} + \epsilon}} \odot grad
+
+        参数:
+            - **params** (Union[Iterator[Parameter], List[Dict]]): 可迭代的参数 用于优化或字典定义。
+            - **parameter** (groups)
+            - **lr** (float, 可选的): 学习率. 默认为 0.001。
+            - **lr_decay** (float, 可选的): 学习率的衰减因子. 默认为 0.0。
+            - **weight_decay** (float, 可选的): 重量衰变. 默认为 0。
+            - **initial_accumulator_value** (float, 可选的): S 的初值. 默认为 0.0。
+            - **eps** (float, 可选的): 在分母上加的一个小常数值用于提高数值的稳定性. 默认为 1e-10。
+        
+        例如: 
+
+        示例 1: 
+
+        .. code-block:: python
+
+            # 假设 net 是一个自定义模型. 
+            adagrad = flow.optim.Adagrad(net.parameters(), lr=1e-3)
+
+            for epoch in range(epochs):
+                # 读取数据, 计算损失等等. 
+                # ...
+                loss.backward()
+                adagrad.step()
+                adagrad.zero_grad()
+
+        示例 2: 
+
+        .. code-block:: python 
+
+            # 假设 net 是一个自定义模型. 
+            adagrad = flow.optim.Adagrad(
+                [
+                    {
+                        "params": net.parameters(),
+                        "lr": learning_rate,
+                        "clip_grad_max_norm": 0.5,
+                        "clip_grad_norm_type": 2.0,
+                    }
+                ],
+            )
+
+            for epoch in range(epochs):
+                # 读取数据, 计算损失等等. 
+                # ...
+                loss.backward()
+                adagrad.clip_grad()
+                adagrad.step()
+                adagrad.zero_grad()
+
+        如果想使用 clip_grad, 可以参考这个例子。 
+
+        关于 `clip_grad_max_norm` 和 `clip_grad_norm_type` 更多的细节, 可以参考 :func:`oneflow.nn.utils.clip_grad_norm_`.  
+        
+    """
+)
