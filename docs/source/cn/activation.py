@@ -115,6 +115,7 @@ reset_docstr(
     更多信息请参考 :class:`~oneflow.nn.Tanh` 。
     """,
 )
+
 reset_docstr(
     oneflow.relu,
     r"""relu(input, inplace) -> Tensor
