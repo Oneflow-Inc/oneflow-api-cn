@@ -169,9 +169,9 @@ reset_docstr(
         
         >>> input = flow.randn(33, 16, 30, dtype=flow.float32)
         >>> filters = flow.randn(20, 16, 5, dtype=flow.float32)
-        >>> out = nn.functional.conv1d(input, filters,stride=[1], padding=[0], dilation=[1])
-
-    """,    
+        >>> out = nn.functional.conv1d(input, filters,stride=[1], padding=[0], dilation=[1], channel_pos="channels_first")
+        
+    """    
     
 )
 
