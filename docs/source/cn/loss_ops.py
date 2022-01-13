@@ -37,6 +37,140 @@ reset_docstr(
 )
 
 reset_docstr(
+    oneflow.nn.BCELoss,
+    r"""BCELoss(weight=None, reduction='mean') -> Tensor
+
+    计算二值交叉熵损失 (binary cross-entropy loss)。
+
+    公式为：
+
+    如果 :attr:`reduction` = "none" ：
+
+    .. math::
+
+        out = -(Target_i*log(Input_i) + (1-Target_i)*log(1-Input_i))
+
+    如果 :attr:`reduction` = "mean":
+
+    .. math::
+
+        out = -\frac{1}{n}\sum_{i=1}^n(Target_i*log(Input_i) + (1-Target_i)*log(1-Input_i))
+
+    如果 :attr:`reduction` = "sum":
+
+    .. math::
+
+        out = -\sum_{i=1}^n(Target_i*log(Input_i) + (1-Target_i)*log(1-Input_i))
+
+    参数：
+        - **weight** (oneflow.Tensor, 可选的): 手动重新调整损失的权重。默认为 ``None`` ，对应的权重值为 1
+        - **reduction** (str, 可选的): reduce 的方式，可以是 "none" 、 "mean" 、 "sum" 中的一种。默认为 "mean" 
+
+    Attention:
+        输入值必须在区间 (0, 1) 内。否则此损失函数可能返回 `nan` 值。
+
+    返回类型：
+        oneflow.tensor
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> input = flow.tensor([[1.2, 0.2, -0.3], [0.7, 0.6, -2]], dtype=flow.float32)
+        >>> target = flow.tensor([[0, 1, 0], [1, 0, 1]], dtype=flow.float32)
+        >>> weight = flow.tensor([[2, 2, 2], [2, 2, 2]], dtype=flow.float32)
+        >>> activation = flow.nn.Sigmoid()
+        >>> sigmoid_input = activation(input)
+        >>> m = flow.nn.BCELoss(weight, reduction="none")
+        >>> out = m(sigmoid_input, target)
+        >>> out
+        tensor([[2.9266, 1.1963, 1.1087],
+                [0.8064, 2.0750, 4.2539]], dtype=oneflow.float32)
+        >>> m_sum = flow.nn.BCELoss(weight, reduction="sum")
+        >>> out = m_sum(sigmoid_input, target)
+        >>> out
+        tensor(12.3668, dtype=oneflow.float32)
+        >>> m_mean = flow.nn.BCELoss(weight, reduction="mean")
+        >>> out = m_mean(sigmoid_input, target)
+        >>> out
+        tensor(2.0611, dtype=oneflow.float32)
+        >>> m_none = flow.nn.BCELoss()
+        >>> out = m_none(sigmoid_input, target)
+        >>> out
+        tensor(1.0306, dtype=oneflow.float32)
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.BCEWithLogitsLoss,
+    r"""BCEWithLogitsLoss(weight=None, reduction='mean', pos_weight=None) -> Tensor
+    
+    此运算将 `Sigmoid` 和 `BCELoss` 组合在一起。为了数据的稳定性，我们用了一些数学技巧，而不是将 `Sigmoid` 作用于 `BCELoss` 层。
+
+    公式为：
+
+    如果 :attr:`reduction` = ``"none"``:
+
+    .. math::
+
+        out = -weight*[Pos\_weight*y*log\sigma({x}) + (1-y)*log(1-\sigma(x))]
+
+    如果 :attr:`reduction` = ``"mean"``:
+
+    .. math::
+
+        out = -\frac{weight}{n}\sum_{i=1}^n[Pos\_weight*y*log\sigma({x}) + (1-y)*log(1-\sigma(x))]
+
+    如果 :attr:`reduction` = ``"sum"``:
+
+    .. math::
+
+        out = -weight*\sum_{i=1}^n[Pos\_weight*y*log\sigma({x}) + (1-y)*log(1-\sigma(x))]
+
+    参数：
+        - **weight** (Tensor, 可选的): 手动重新调整损失的权重。默认为 ``None``
+        - **reduction** (str, 可选的): reduce 的方式，可以是 ``"none"`` 、 ``"mean"`` 、 ``"sum"`` 中的一种。默认为 "mean" 。如果为 ``'none'`` 则不进行 reduce 。如果为 ``'mean'`` ，输出的值的和除以元素数。如果为 ``'sum'`` ，输出将被求和。默认为 ``"mean"``
+        - **pos_weight** (Tensor, 可选的): 手动重新调整正例的权重。
+
+    形状：
+        - **Input** : :math:`(N,*)` 其中 `*` 的意思是，可以增加任意维度
+        - **Target** : :math:`(N,*)` 与输入形状一样
+        - **Output** : 标量。如果 :attr:`reduction` 为 ``"none"`` ，则 :math:`(N,*)` 和输入形状一样
+        
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.tensor([[1.2, 0.2, -0.3], [0.7, 0.6, -2], [0.7, 0.6, -2]], dtype=flow.float32)
+        >>> target = flow.tensor([[0, 1, 0], [1, 0, 1], [1, 0, 1]], dtype=flow.float32)
+        >>> weight = flow.tensor([[2, 2, 2], [2, 2, 2], [2, 2, 2]], dtype=flow.float32)
+        >>> pos_weight = flow.tensor([1.2, 1.3, 1.4], dtype=flow.float32)
+
+        >>> m = flow.nn.BCEWithLogitsLoss(weight=weight, pos_weight=pos_weight, reduction="none")
+        >>> out = m(input, target)
+        >>> out
+        tensor([[2.9266, 1.5552, 1.1087],
+                [0.9676, 2.0750, 5.9554],
+                [0.9676, 2.0750, 5.9554]], dtype=oneflow.float32)
+
+        >>> m = flow.nn.BCEWithLogitsLoss(weight=weight, pos_weight=pos_weight, reduction="mean")
+        >>> out = m(input, target)
+        >>> out
+        tensor(2.6207, dtype=oneflow.float32)
+
+        >>> m = flow.nn.BCEWithLogitsLoss(weight=weight, pos_weight=pos_weight, reduction="sum")
+        >>> out = m(input, target)
+        >>> out
+        tensor(23.5865, dtype=oneflow.float32)
+
+    """
+)
+
+reset_docstr(
     oneflow.tile,
     r"""tile(input, reps) -> Tensor
     
@@ -69,7 +203,6 @@ reset_docstr(
     .. code-block:: python
 
         >>> import oneflow as flow
-        
         >>> input = flow.tensor([1, 2], dtype=flow.int32)
         >>> out = input.tile(reps=(2,))
         >>> out
@@ -79,6 +212,197 @@ reset_docstr(
         >>> out = input.tile(reps=(3, 4))
         >>> out.size()
         oneflow.Size([5, 6, 4])
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.BatchNorm1d,
+    r"""BatchNorm1d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+
+    
+    在 2D 或 3D 输入（具有可选附加通道维度的小批量 1D 输入）上应用批归一化 (Batch Normalization) 。行为与论文 `Batch Normalization: Accelerating Deep Network Training by Reducing
+    Internal Covariate Shift <https://arxiv.org/abs/1502.03167>`__ 一致。
+
+
+    .. math::
+
+        y = \frac{x - \mathrm{E}[x]}{\sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \beta
+
+    按小批量逐维度求平均值和标准差， :math:`\gamma` 和 :math:`\beta` 是大小为 `C` 的可学习参数向量（ `C` 是输入的大小）。
+    默认情况下，:math:`\gamma` 的元素均为 1 而 :math:`\beta` 的元素均为 0 。标准差的计算等价于 `torch.var(input, unbiased=False)` 。
+
+    此外，默认情况下，在训练期间，该层不断估计计算的均值和方差，然后评估时将其归一化。运行估计默认 :attr:`momentum` 为 0.1 。
+
+    如果 :attr:`track_running_stats` 被设置为 ``False`` ，则该层不会继续进行估计，并且在评估时也使用批处理统计信息。
+
+    .. note::
+        :attr:`momentum` 参数不同于优化器 (optimizer) 类中使用的参数或传统的动量概念。数学上，这里的更新规则是：
+        :math:`\hat{x}_\text{new} = (1 - \text{momentum}) \times \hat{x} + \text{momentum} \times x_t` ，其中 :math:`\hat{x}` 是估计的统计量， :math:`x_t` 是新的观察值。
+
+    因为批归一化 (Batch Normalization) 是在 `C` 维度上完成的，计算 `(N, L)` 切片的统计数据，所以常称其为 Temporal Batch Normalization 。
+    
+    参数：
+        - **num_features** : :math:`C` 来自于大小为 :math:`(N, C, L)` 的预期输入或 :math:`L` 来自大小为 :math:`(N, L)` 的输入
+        - **eps** : 为数值稳定性而为分母加的值。默认为：1e-5
+        - **momentum** : 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。设定为 ``None`` 则计算移动平均 (Moving average) ，默认：0.1
+        - **affine** : 如果为 ``True`` ，该模块具有可学习的仿射参数。默认为 ``True`` 
+        - **track_running_stats** : 当设置为 ``True`` 时，该模块跟踪运行均值和方差，当设置为 ``False`` 时，此模块不会跟踪此类统计信息，
+            并将统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 初始化为 ``None`` 。当这些缓冲区为“无”时，此模块在训练和评估模式中始终使用批处理统计信息。默认值： ``True``
+    
+    形状：
+        - **Input** : :math:`(N, C)` 或 :math:`(N, C, L)`
+        - **Output** : :math:`(N, C)` 或 :math:`(N, C, L)` （与输入形状相同）
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> x = flow.randn(20, 100)
+        >>> m = flow.nn.BatchNorm1d(100)
+        >>> y = m(x)
+
+    
+    """
+)
+
+reset_docstr(
+    oneflow.nn.BatchNorm2d,
+    r"""BatchNorm2d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+
+    在 4D 输入（具有可选附加通道维度的小批量 2D 输入）上应用批归一化 (Batch Normalization) 。行为与论文 `Batch Normalization: Accelerating Deep Network Training by Reducing
+    Internal Covariate Shift <https://arxiv.org/abs/1502.03167>`__ 一致。
+
+    .. math::
+
+        y = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \beta
+
+    按小批量逐维度求平均值和标准差， :math:`\gamma` 和 :math:`\beta` 是大小为 `C` 的可学习参数向量（ `C` 是输入的大小）。
+    默认情况下，:math:`\gamma` 的元素均为 1 而 :math:`\beta` 的元素均为 0 。标准差的计算等价于 `torch.var(input, unbiased=False)` 。
+
+    此外，默认情况下，在训练期间，该层不断估计计算的均值和方差，然后评估时将其归一化。运行估计默认 :attr:`momentum` 为 0.1 。
+
+    如果 :attr:`track_running_stats` 被设置为 ``False`` ，则该层不会继续进行估计，并且在评估时也使用批处理统计信息。
+
+    .. note::
+        :attr:`momentum` 参数不同于优化器 (optimizer) 类中使用的参数或传统的动量概念。数学上，这里的更新规则是：
+        :math:`\hat{x}_\text{new} = (1 - \text{momentum}) \times \hat{x} + \text{momentum} \times x_t` ，其中 :math:`\hat{x}` 是估计的统计量， :math:`x_t` 是新的观察值。
+
+    因为批归一化 (Batch Normalization) 是在 `C` 维度上完成的，计算 `(N, H, W)` 切片的统计数据，所以常称其为 Spatial Batch Normalization 。
+
+    参数：
+        - **num_features** : :math:`C` 来自于大小为 :math:`(N, C, H, W)` 的预期输入
+        - **eps** : 为数值稳定性而为分母加的值。默认为：1e-5
+        - **momentum** : 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。设定为 ``None`` 则计算移动平均 (Moving average) ，默认：0.1
+        - **affine** : 如果为 ``True`` ，该模块具有可学习的仿射参数。默认为 ``True`` 
+        - **track_running_stats** : 当设置为 ``True`` 时，该模块跟踪运行均值和方差，当设置为 ``False`` 时，此模块不会跟踪此类统计信息，
+            并将统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 初始化为 ``None`` 。当这些缓冲区为“无”时，此模块在训练和评估模式中始终使用批处理统计信息。默认值： ``True``
+
+    形状：
+        - **Input** : :math:`(N, C, H, W)` 
+        - **Output** : :math:`(N, C, H, W)` （与输入形状相同）
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> x = flow.randn(4, 2, 8, 3)
+        >>> m = flow.nn.BatchNorm2d(num_features=2, eps=1e-5, momentum=0.1)
+        >>> y = m(x)
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.BatchNorm3d,
+    r"""BatchNorm3d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+
+    在 5D 输入（具有可选附加通道维度的小批量 3D 输入）上应用批归一化 (Batch Normalization) 。行为与论文 `Batch Normalization: Accelerating Deep Network Training by Reducing
+    Internal Covariate Shift <https://arxiv.org/abs/1502.03167>`__ 一致。
+
+    .. math::
+
+        y = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \beta
+
+    按小批量逐维度求平均值和标准差， :math:`\gamma` 和 :math:`\beta` 是大小为 `C` 的可学习参数向量（ `C` 是输入的大小）。
+    默认情况下，:math:`\gamma` 的元素均为 1 而 :math:`\beta` 的元素均为 0 。标准差的计算等价于 `torch.var(input, unbiased=False)` 。
+
+    此外，默认情况下，在训练期间，该层不断估计计算的均值和方差，然后评估时将其归一化。运行估计默认 :attr:`momentum` 为 0.1 。
+
+    如果 :attr:`track_running_stats` 被设置为 ``False`` ，则该层不会继续进行估计，并且在评估时也使用批处理统计信息。
+
+    .. note::
+        :attr:`momentum` 参数不同于优化器 (optimizer) 类中使用的参数或传统的动量概念。数学上，这里的更新规则是：
+        :math:`\hat{x}_\text{new} = (1 - \text{momentum}) \times \hat{x} + \text{momentum} \times x_t` ，其中 :math:`\hat{x}` 是估计的统计量， :math:`x_t` 是新的观察值。
+    
+    因为批归一化 (Batch Normalization) 是在 `C` 维度上完成的，计算 `(N, H, W)` 切片的统计数据，所以常称其为 Spatial Batch Normalization 。
+
+    参数：
+        - **num_features** : :math:`C` 来自于大小为 :math:`(N, C, D, H, W)` 的预期输入
+        - **eps** : 为数值稳定性而为分母加的值。默认为：1e-5
+        - **momentum** : 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。设定为 ``None`` 则计算移动平均 (Moving average) ，默认：0.1
+        - **affine** : 如果为 ``True`` ，该模块具有可学习的仿射参数。默认为 ``True`` 
+        - **track_running_stats** : 当设置为 ``True`` 时，该模块跟踪运行均值和方差，当设置为 ``False`` 时，此模块不会跟踪此类统计信息，
+            并将统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 初始化为 ``None`` 。当这些缓冲区为“无”时，此模块在训练和评估模式中始终使用批处理统计信息。默认值： ``True``
+    
+    形状：
+        - **Input** : :math:`(N, C, D, H, W)` 
+        - **Output** : :math:`(N, C, D, H, W)` （与输入形状相同）
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> x = flow.randn(3, 2, 5, 8, 4)
+        >>> m = flow.nn.BatchNorm3d(num_features=2, eps=1e-5, momentum=0.1)
+        >>> y = m(x)
+        >>> y.size()
+        oneflow.Size([3, 2, 5, 8, 4])
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.CELU,
+    r"""CELU(alpha=1.0, inplace=False)
+
+    应用逐元素方程：
+
+    .. math::
+
+        \text{CELU}(x, \alpha) = \begin{cases}
+				x & \text{ if } x \ge 0  \\
+                \alpha*(exp(\frac{x}{\alpha})-1) & \text{ otherwise } \\
+    		    \end{cases}
+
+    参数：
+        - **alpha** (float): CELU 公式中的 :math:`\alpha` 。默认值：1.0
+        - **inplace** (bool): 是否执行 place 操作。默认： ``False``
+
+    形状：
+        - **Input** : :math:`(N,*)` 其中 `*` 的意思是，可以增加任意维度
+        - **Output** : :math:`(N, *)`, 与输入相同
+
+    示例：
+
+    .. code-block:: python
+
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.tensor([-0.5, 0, 0.5], dtype=flow.float32)
+        >>> celu = flow.nn.CELU(alpha=0.5)
+
+        >>> out = celu(input)
+        >>> out
+        tensor([-0.3161,  0.0000,  0.5000], dtype=oneflow.float32)
+
     """
 )
 
