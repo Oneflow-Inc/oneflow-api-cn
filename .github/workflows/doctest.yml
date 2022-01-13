@@ -25,7 +25,7 @@ jobs:
       - name: Fix permissions
         run: |
           set -x
-          docker run --rm -v $PWD:/p -w /p busybox chown -R $(id -u):$(id -g) .
+          docker run --rm -v $PWD:/p -w /p busybox rm -rf *
       - name: Remove container
         timeout-minutes: 45
         run: |
