@@ -1037,46 +1037,7 @@ limitations under the License.</p>
 <dl class="py function">
 <dt id="oneflow.clip">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">clip</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.clip" title="Permalink to this definition">¶</a></dt>
-<dd><p>clamp(input, min = None, max = None) -&gt; Tensor</p>
-<p>返回新的结果 tensor，结果 tensor 中将 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 中元素限制在范围 <cite>[</cite> <a class="reference internal" href="#oneflow.min" title="oneflow.min"><code class="xref py py-attr docutils literal notranslate"><span class="pre">min</span></code></a>, <a class="reference internal" href="#oneflow.max" title="oneflow.max"><code class="xref py py-attr docutils literal notranslate"><span class="pre">max</span></code></a> <cite>]</cite> 中。</p>
-<p>公式为：</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\begin{split}y_i = \begin{cases}
-    \text{min} &amp; \text{if } x_i &lt; \text{min} \\
-    x_i &amp; \text{if } \text{min} \leq x_i \leq \text{max} \\
-    \text{max} &amp; \text{if } x_i &gt; \text{max}
-\end{cases}\end{split}\]</div></div>
-<p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 的类型是 <cite>FloatTensor</cite> 或 <cite>FloatTensor</cite>，参数 <a class="reference internal" href="#oneflow.min" title="oneflow.min"><code class="xref py py-attr docutils literal notranslate"><span class="pre">min</span></code></a>
-和 <a class="reference internal" href="#oneflow.max" title="oneflow.max"><code class="xref py py-attr docutils literal notranslate"><span class="pre">max</span></code></a> 必须为实数， 如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 为其它类型的 tensor，参数
-<a class="reference internal" href="#oneflow.min" title="oneflow.min"><code class="xref py py-attr docutils literal notranslate"><span class="pre">min</span></code></a> 和 <a class="reference internal" href="#oneflow.max" title="oneflow.max"><code class="xref py py-attr docutils literal notranslate"><span class="pre">max</span></code></a> 必须为 <cite>integer</cite>。</p>
-<dl class="simple">
-<dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>input</strong> (Tensor): 输入张量</p></li>
-<li><p><strong>min</strong> (Number): 要限制到的范围的下限，默认为None</p></li>
-<li><p><strong>max</strong> (Number): 要限制到的范围的上限，默认为None</p></li>
-</ul>
-</dd>
-<dt>返回类型：</dt><dd><p>oneflow.tensor</p>
-</dd>
-</dl>
-<p>示例：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span>
-<span class="go">tensor([ 0.2000,  0.5000, -0.5000, -0.3000], dtype=oneflow.float32)</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span>
-<span class="go">tensor([ 0.2000,  0.5000, -1.5000, -0.3000], dtype=oneflow.float32)</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span>
-<span class="go">tensor([ 0.2000,  0.6000, -0.5000, -0.3000], dtype=oneflow.float32)</span>
-</pre></div>
-</div>
+<dd><p>Alias for <a class="reference internal" href="#oneflow.clamp" title="oneflow.clamp"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.clamp()</span></code></a>.</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.cos">
@@ -3606,7 +3567,6 @@ tensor (as opposed to a zero-tensor).</p>
 </dl>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">reps</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span>
@@ -3787,7 +3747,6 @@ flow.nonzero(condition, as_tuple=True) 。</p>
 </dl>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="o">-</span><span class="mf">0.4620</span><span class="p">,</span> <span class="mf">0.3139</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.3898</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7197</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0478</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1657</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">condition</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>

@@ -322,9 +322,12 @@ will do the computaion graph generation and optimization at the first call.</p>
 <dd><p>Open or close debug mode of the graph.</p>
 <p>If in debug mode, logs of computation graph building infos or warnings will be
 printed. Otherwise, only errors will be printed.</p>
-<p>Use <code class="docutils literal notranslate"><span class="pre">v_level</span></code> to choose verbose debug info level, default level is 0, max level is 1.
-<code class="docutils literal notranslate"><span class="pre">v_level</span></code> 0 will print warning and graph creating stages. <code class="docutils literal notranslate"><span class="pre">v_level</span></code> 1 will additionally
-print graph build info of each module.</p>
+<p>Each nn.Module inside a nn.Graph also has a debug() method to enable debug mode.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">v_level</span></code> to choose verbose debug info level, default level is 0, max level is 3.
+<code class="docutils literal notranslate"><span class="pre">v_level</span></code> 0 will print warning and graph building stages. <code class="docutils literal notranslate"><span class="pre">v_level</span></code> 1 will additionally
+print graph build info of each nn.Module. <code class="docutils literal notranslate"><span class="pre">v_level</span></code> 2 will additionally print graph build
+info of each operation. <code class="docutils literal notranslate"><span class="pre">v_level</span></code> 3 will additionally print more detailed info of each
+operation.</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">ranks</span></code> to choose which rank to print the debug information.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">CustomGraph</span><span class="p">()</span>
 <span class="n">g</span><span class="o">.</span><span class="n">debug</span><span class="p">()</span>  <span class="c1"># Open debug mode</span>
@@ -334,7 +337,7 @@ print graph build info of each module.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>v_level</strong> (<em>int</em>) – choose verbose debug info level, default v_level is 0, max v_level is 1.</p></li>
+<li><p><strong>v_level</strong> (<em>int</em>) – choose verbose debug info level, default v_level is 0, max v_level is 3.</p></li>
 <li><p><strong>ranks</strong> (<em>int</em><em> or </em><em>list</em><em>(</em><em>int</em><em>)</em>) – choose ranks to print the debug information. Default rank <code class="docutils literal notranslate"><span class="pre">0</span></code>.
 You can choose any valid rank. Ranks equals <code class="docutils literal notranslate"><span class="pre">-1</span></code> means debug on all ranks.</p></li>
 <li><p><strong>mode</strong> (<em>bool</em>) – whether to set debug mode (<code class="docutils literal notranslate"><span class="pre">True</span></code>) or not (<code class="docutils literal notranslate"><span class="pre">False</span></code>). Default: <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>

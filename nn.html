@@ -391,44 +391,38 @@ strings are acceptable.</p>
 </dd></dl>
 <dl class="py class">
 <dt id="oneflow.nn.BCELoss">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">BCELoss</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.Tensor</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.BCELoss" title="Permalink to this definition">¶</a></dt>
-<dd><p>This operator computes the binary cross entropy loss.</p>
-<p>The equation is:</p>
-<p>if reduction = “none”:</p>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">BCELoss</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.BCELoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>计算二值交叉熵损失 (binary cross-entropy loss)。</p>
+<p>公式为：</p>
+<p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> = “none” ：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[out = -(Target_i*log(Input_i) + (1-Target_i)*log(1-Input_i))\]</div></div>
-<p>if reduction = “mean”:</p>
+<p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> = “mean”:</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[out = -\frac{1}{n}\sum_{i=1}^n(Target_i*log(Input_i) + (1-Target_i)*log(1-Input_i))\]</div></div>
-<p>if reduction = “sum”:</p>
+<p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> = “sum”:</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[out = -\sum_{i=1}^n(Target_i*log(Input_i) + (1-Target_i)*log(1-Input_i))\]</div></div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>weight</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>oneflow.Tensor</em></a><em>, </em><em>optional</em>) – The manual rescaling weight to the loss. Default to None, whose corresponding weight value is 1.</p></li>
-<li><p><strong>reduction</strong> (<em>str</em><em>, </em><em>optional</em>) – The reduce type, it can be one of “none”, “mean”, “sum”. Defaults to “mean”.</p></li>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>weight</strong> (oneflow.Tensor, 可选的): 手动重新调整损失的权重。默认为 <code class="docutils literal notranslate"><span class="pre">None</span></code> ，对应的权重值为 1</p></li>
+<li><p><strong>reduction</strong> (str, 可选的): reduce 的方式，可以是 “none” 、 “mean” 、 “sum” 中的一种。默认为 “mean”</p></li>
 </ul>
 </dd>
 </dl>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
-<p>The input value must be in the range of (0, 1). Or the loss function may return <cite>nan</cite> value.</p>
+<p>输入值必须在区间 (0, 1) 内。否则此损失函数可能返回 <cite>nan</cite> 值。</p>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The result Tensor.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor">oneflow.Tensor</a></p>
+<dl class="simple">
+<dt>返回类型：</dt><dd><p>oneflow.tensor</p>
 </dd>
 </dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">target</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">weight</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">target</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">weight</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">activation</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sigmoid_input</span> <span class="o">=</span> <span class="n">activation</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">BCELoss</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s2">"none"</span><span class="p">)</span>
@@ -453,43 +447,35 @@ strings are acceptable.</p>
 </dd></dl>
 <dl class="py class">
 <dt id="oneflow.nn.BCEWithLogitsLoss">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">BCEWithLogitsLoss</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.Tensor</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_weight</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.Tensor</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.BCEWithLogitsLoss" title="Permalink to this definition">¶</a></dt>
-<dd><p>This operator combines the <cite>Sigmoid</cite> and <cite>BCELoss</cite> together. For numerical stability,
-we apply some math tricks instead of using <cite>Sigmoid</cite> layer with <cite>BCELoss</cite>.</p>
-<p>The equation is:</p>
-<p>if <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> = <code class="docutils literal notranslate"><span class="pre">"none"</span></code>:</p>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">BCEWithLogitsLoss</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.BCEWithLogitsLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>此运算将 <cite>Sigmoid</cite> 和 <cite>BCELoss</cite> 组合在一起。为了数据的稳定性，我们用了一些数学技巧，而不是将 <cite>Sigmoid</cite> 作用于 <cite>BCELoss</cite> 层。</p>
+<p>公式为：</p>
+<p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> = <code class="docutils literal notranslate"><span class="pre">"none"</span></code>:</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[out = -weight*[Pos\_weight*y*log\sigma({x}) + (1-y)*log(1-\sigma(x))]\]</div></div>
-<p>if <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> = <code class="docutils literal notranslate"><span class="pre">"mean"</span></code>:</p>
+<p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> = <code class="docutils literal notranslate"><span class="pre">"mean"</span></code>:</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[out = -\frac{weight}{n}\sum_{i=1}^n[Pos\_weight*y*log\sigma({x}) + (1-y)*log(1-\sigma(x))]\]</div></div>
-<p>if <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> = <code class="docutils literal notranslate"><span class="pre">"sum"</span></code>:</p>
+<p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> = <code class="docutils literal notranslate"><span class="pre">"sum"</span></code>:</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[out = -weight*\sum_{i=1}^n[Pos\_weight*y*log\sigma({x}) + (1-y)*log(1-\sigma(x))]\]</div></div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>weight</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em>, </em><em>optional</em>) – The manual rescaling weight to the loss. Default: <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
-<li><p><strong>size_average</strong> (<em>bool</em><em>, </em><em>optional</em>) – Deprecated (see <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code>). Default: <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
-<li><p><strong>reduce</strong> (<em>bool</em><em>, </em><em>optional</em>) – Deprecated (see <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code>). Default: <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
-<li><p><strong>reduction</strong> (<em>str</em><em>, </em><em>optional</em>) – The reduce type, it can be one of <code class="docutils literal notranslate"><span class="pre">"none"</span></code>, <code class="docutils literal notranslate"><span class="pre">"mean"</span></code>, <code class="docutils literal notranslate"><span class="pre">"sum"</span></code>.
-<code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction will be applied, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided
-by the number of elements in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be summed. Default: <code class="docutils literal notranslate"><span class="pre">"mean"</span></code></p></li>
-<li><p><strong>pos_weight</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em>, </em><em>optional</em>) – The manual rescaling weight to the positive examples.
-Default: <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
-</ul>
-</dd>
-</dl>
 <dl class="simple">
-<dt>Shape:</dt><dd><ul class="simple">
-<li><p>Input: <span class="math notranslate nohighlight">\((N,*)\)</span> where <cite>*</cite> means, any number of additional dimensions</p></li>
-<li><p>Target: <span class="math notranslate nohighlight">\((N,*)\)</span>, same shape as the input</p></li>
-<li><p>Output: scalar. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> is <code class="docutils literal notranslate"><span class="pre">"none"</span></code>, then <span class="math notranslate nohighlight">\((N,*)\)</span>, same shape as input.</p></li>
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>weight</strong> (Tensor, 可选的): 手动重新调整损失的权重。默认为 <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><strong>reduction</strong> (str, 可选的): reduce 的方式，可以是 <code class="docutils literal notranslate"><span class="pre">"none"</span></code> 、 <code class="docutils literal notranslate"><span class="pre">"mean"</span></code> 、 <code class="docutils literal notranslate"><span class="pre">"sum"</span></code> 中的一种。默认为 “mean” 。如果为 <code class="docutils literal notranslate"><span class="pre">'none'</span></code> 则不进行 reduce 。如果为 <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> ，输出的值的和除以元素数。如果为 <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> ，输出将被求和。默认为 <code class="docutils literal notranslate"><span class="pre">"mean"</span></code></p></li>
+<li><p><strong>pos_weight</strong> (Tensor, 可选的): 手动重新调整正例的权重。</p></li>
+</ul>
+</dd>
+<dt>形状：</dt><dd><ul class="simple">
+<li><p><strong>Input</strong> : <span class="math notranslate nohighlight">\((N,*)\)</span> 其中 <cite>*</cite> 的意思是，可以增加任意维度</p></li>
+<li><p><strong>Target</strong> : <span class="math notranslate nohighlight">\((N,*)\)</span> 与输入形状一样</p></li>
+<li><p><strong>Output</strong> : 标量。如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> 为 <code class="docutils literal notranslate"><span class="pre">"none"</span></code> ，则 <span class="math notranslate nohighlight">\((N,*)\)</span> 和输入形状一样</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">target</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">weight</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
@@ -517,68 +503,43 @@ Default: <code class="docutils literal notranslate"><span class="pre">None</span
 <dl class="py class">
 <dt id="oneflow.nn.BatchNorm1d">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">BatchNorm1d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">affine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_running_stats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.BatchNorm1d" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies Batch Normalization over a 2D or 3D input (a mini-batch of 1D
-inputs with optional additional channel dimension) as described in the paper
-<a class="reference external" href="https://arxiv.org/abs/1502.03167">Batch Normalization: Accelerating Deep Network Training by Reducing
-Internal Covariate Shift</a> .</p>
+<dd><p>在 2D 或 3D 输入（具有可选附加通道维度的小批量 1D 输入）上应用批归一化 (Batch Normalization) 。行为与论文 <a class="reference external" href="https://arxiv.org/abs/1502.03167">Batch Normalization: Accelerating Deep Network Training by Reducing
+Internal Covariate Shift</a> 一致。</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[y = \frac{x - \mathrm{E}[x]}{\sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \beta\]</div></div>
-<p>The mean and standard-deviation are calculated per-dimension over
-the mini-batches and <span class="math notranslate nohighlight">\(\gamma\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> are learnable parameter vectors
-of size <cite>C</cite> (where <cite>C</cite> is the input size). By default, the elements of <span class="math notranslate nohighlight">\(\gamma\)</span> are set
-to 1 and the elements of <span class="math notranslate nohighlight">\(\beta\)</span> are set to 0. The standard-deviation is calculated
-via the biased estimator, equivalent to <cite>torch.var(input, unbiased=False)</cite>.</p>
-<p>Also by default, during training this layer keeps running estimates of its
-computed mean and variance, which are then used for normalization during
-evaluation. The running estimates are kept with a default <code class="xref py py-attr docutils literal notranslate"><span class="pre">momentum</span></code>
-of 0.1.</p>
-<p>If <code class="xref py py-attr docutils literal notranslate"><span class="pre">track_running_stats</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, this layer then does not
-keep running estimates, and batch statistics are instead used during
-evaluation time as well.</p>
+<p>按小批量逐维度求平均值和标准差， <span class="math notranslate nohighlight">\(\gamma\)</span> 和 <span class="math notranslate nohighlight">\(\beta\)</span> 是大小为 <cite>C</cite> 的可学习参数向量（ <cite>C</cite> 是输入的大小）。
+默认情况下，<span class="math notranslate nohighlight">\(\gamma\)</span> 的元素均为 1 而 <span class="math notranslate nohighlight">\(\beta\)</span> 的元素均为 0 。标准差的计算等价于 <cite>torch.var(input, unbiased=False)</cite> 。</p>
+<p>此外，默认情况下，在训练期间，该层不断估计计算的均值和方差，然后评估时将其归一化。运行估计默认 <code class="xref py py-attr docutils literal notranslate"><span class="pre">momentum</span></code> 为 0.1 。</p>
+<p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">track_running_stats</span></code> 被设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code> ，则该层不会继续进行估计，并且在评估时也使用批处理统计信息。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This <code class="xref py py-attr docutils literal notranslate"><span class="pre">momentum</span></code> argument is different from one used in optimizer
-classes and the conventional notion of momentum. Mathematically, the
-update rule for running statistics here is
-<span class="math notranslate nohighlight">\(\hat{x}_\text{new} = (1 - \text{momentum}) \times \hat{x} + \text{momentum} \times x_t\)</span>,
-where <span class="math notranslate nohighlight">\(\hat{x}\)</span> is the estimated statistic and <span class="math notranslate nohighlight">\(x_t\)</span> is the
-new observed value.</p>
+<p><code class="xref py py-attr docutils literal notranslate"><span class="pre">momentum</span></code> 参数不同于优化器 (optimizer) 类中使用的参数或传统的动量概念。数学上，这里的更新规则是：
+<span class="math notranslate nohighlight">\(\hat{x}_\text{new} = (1 - \text{momentum}) \times \hat{x} + \text{momentum} \times x_t\)</span> ，其中 <span class="math notranslate nohighlight">\(\hat{x}\)</span> 是估计的统计量， <span class="math notranslate nohighlight">\(x_t\)</span> 是新的观察值。</p>
 </div>
-<p>Because the Batch Normalization is done over the <cite>C</cite> dimension, computing statistics
-on <cite>(N, L)</cite> slices, it’s common terminology to call this Temporal Batch Normalization.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>num_features</strong> – <span class="math notranslate nohighlight">\(C\)</span> from an expected input of size
-<span class="math notranslate nohighlight">\((N, C, L)\)</span> or <span class="math notranslate nohighlight">\(L\)</span> from input of size <span class="math notranslate nohighlight">\((N, L)\)</span></p></li>
-<li><p><strong>eps</strong> – a value added to the denominator for numerical stability.
-Default: 1e-5</p></li>
-<li><p><strong>momentum</strong> – the value used for the running_mean and running_var
-computation. Can be set to <code class="docutils literal notranslate"><span class="pre">None</span></code> for cumulative moving average
-(i.e. simple average). Default: 0.1</p></li>
-<li><p><strong>affine</strong> – a boolean value that when set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, this module has
-learnable affine parameters. Default: <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
-<li><p><strong>track_running_stats</strong> – a boolean value that when set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, this
-module tracks the running mean and variance, and when set to <code class="docutils literal notranslate"><span class="pre">False</span></code>,
-this module does not track such statistics, and initializes statistics
-buffers <code class="xref py py-attr docutils literal notranslate"><span class="pre">running_mean</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">running_var</span></code> as <code class="docutils literal notranslate"><span class="pre">None</span></code>.
-When these buffers are <code class="docutils literal notranslate"><span class="pre">None</span></code>, this module always uses batch statistics.
-in both training and eval modes. Default: <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<p>因为批归一化 (Batch Normalization) 是在 <cite>C</cite> 维度上完成的，计算 <cite>(N, L)</cite> 切片的统计数据，所以常称其为 Temporal Batch Normalization 。</p>
+<dl>
+<dt>参数：</dt><dd><ul>
+<li><p><strong>num_features</strong> : <span class="math notranslate nohighlight">\(C\)</span> 来自于大小为 <span class="math notranslate nohighlight">\((N, C, L)\)</span> 的预期输入或 <span class="math notranslate nohighlight">\(L\)</span> 来自大小为 <span class="math notranslate nohighlight">\((N, L)\)</span> 的输入</p></li>
+<li><p><strong>eps</strong> : 为数值稳定性而为分母加的值。默认为：1e-5</p></li>
+<li><p><strong>momentum</strong> : 用于 <code class="xref py py-attr docutils literal notranslate"><span class="pre">running_mean</span></code> 和 <code class="xref py py-attr docutils literal notranslate"><span class="pre">running_var</span></code> 计算的值。设定为 <code class="docutils literal notranslate"><span class="pre">None</span></code> 则计算移动平均 (Moving average) ，默认：0.1</p></li>
+<li><p><strong>affine</strong> : 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code> ，该模块具有可学习的仿射参数。默认为 <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><dl>
+<dt><strong>track_running_stats</strong><span class="classifier">当设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 时，该模块跟踪运行均值和方差，当设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code> 时，此模块不会跟踪此类统计信息，</span></dt><dd><p>并将统计缓冲区 <code class="xref py py-attr docutils literal notranslate"><span class="pre">running_mean</span></code> 和 <code class="xref py py-attr docutils literal notranslate"><span class="pre">running_var</span></code> 初始化为 <code class="docutils literal notranslate"><span class="pre">None</span></code> 。当这些缓冲区为“无”时，此模块在训练和评估模式中始终使用批处理统计信息。默认值： <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>形状：</dt><dd><ul class="simple">
+<li><p><strong>Input</strong> : <span class="math notranslate nohighlight">\((N, C)\)</span> 或 <span class="math notranslate nohighlight">\((N, C, L)\)</span></p></li>
+<li><p><strong>Output</strong> : <span class="math notranslate nohighlight">\((N, C)\)</span> 或 <span class="math notranslate nohighlight">\((N, C, L)\)</span> （与输入形状相同）</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="simple">
-<dt>Shape:</dt><dd><ul class="simple">
-<li><p>Input: <span class="math notranslate nohighlight">\((N, C)\)</span> or <span class="math notranslate nohighlight">\((N, C, L)\)</span></p></li>
-<li><p>Output: <span class="math notranslate nohighlight">\((N, C)\)</span> or <span class="math notranslate nohighlight">\((N, C, L)\)</span> (same shape as input)</p></li>
-</ul>
-</dd>
-</dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
@@ -587,68 +548,43 @@ in both training and eval modes. Default: <code class="docutils literal notransl
 <dl class="py class">
 <dt id="oneflow.nn.BatchNorm2d">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">BatchNorm2d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">affine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_running_stats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.BatchNorm2d" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies Batch Normalization over a 4D input (a mini-batch of 2D inputs
-with additional channel dimension) as described in the paper
-<a class="reference external" href="https://arxiv.org/abs/1502.03167">Batch Normalization: Accelerating Deep Network Training by Reducing
-Internal Covariate Shift</a> .</p>
+<dd><p>在 4D 输入（具有可选附加通道维度的小批量 2D 输入）上应用批归一化 (Batch Normalization) 。行为与论文 <a class="reference external" href="https://arxiv.org/abs/1502.03167">Batch Normalization: Accelerating Deep Network Training by Reducing
+Internal Covariate Shift</a> 一致。</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[y = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \beta\]</div></div>
-<p>The mean and standard-deviation are calculated per-dimension over
-the mini-batches and <span class="math notranslate nohighlight">\(\gamma\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> are learnable parameter vectors
-of size <cite>C</cite> (where <cite>C</cite> is the input size). By default, the elements of <span class="math notranslate nohighlight">\(\gamma\)</span> are set
-to 1 and the elements of <span class="math notranslate nohighlight">\(\beta\)</span> are set to 0. The standard-deviation is calculated
-via the biased estimator, equivalent to <cite>torch.var(input, unbiased=False)</cite>.</p>
-<p>Also by default, during training this layer keeps running estimates of its
-computed mean and variance, which are then used for normalization during
-evaluation. The running estimates are kept with a default <code class="xref py py-attr docutils literal notranslate"><span class="pre">momentum</span></code>
-of 0.1.</p>
-<p>If <code class="xref py py-attr docutils literal notranslate"><span class="pre">track_running_stats</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, this layer then does not
-keep running estimates, and batch statistics are instead used during
-evaluation time as well.</p>
+<p>按小批量逐维度求平均值和标准差， <span class="math notranslate nohighlight">\(\gamma\)</span> 和 <span class="math notranslate nohighlight">\(\beta\)</span> 是大小为 <cite>C</cite> 的可学习参数向量（ <cite>C</cite> 是输入的大小）。
+默认情况下，<span class="math notranslate nohighlight">\(\gamma\)</span> 的元素均为 1 而 <span class="math notranslate nohighlight">\(\beta\)</span> 的元素均为 0 。标准差的计算等价于 <cite>torch.var(input, unbiased=False)</cite> 。</p>
+<p>此外，默认情况下，在训练期间，该层不断估计计算的均值和方差，然后评估时将其归一化。运行估计默认 <code class="xref py py-attr docutils literal notranslate"><span class="pre">momentum</span></code> 为 0.1 。</p>
+<p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">track_running_stats</span></code> 被设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code> ，则该层不会继续进行估计，并且在评估时也使用批处理统计信息。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This <code class="xref py py-attr docutils literal notranslate"><span class="pre">momentum</span></code> argument is different from one used in optimizer
-classes and the conventional notion of momentum. Mathematically, the
-update rule for running statistics here is
-<span class="math notranslate nohighlight">\(\hat{x}_\text{new} = (1 - \text{momentum}) \times \hat{x} + \text{momentum} \times x_t\)</span>,
-where <span class="math notranslate nohighlight">\(\hat{x}\)</span> is the estimated statistic and <span class="math notranslate nohighlight">\(x_t\)</span> is the
-new observed value.</p>
+<p><code class="xref py py-attr docutils literal notranslate"><span class="pre">momentum</span></code> 参数不同于优化器 (optimizer) 类中使用的参数或传统的动量概念。数学上，这里的更新规则是：
+<span class="math notranslate nohighlight">\(\hat{x}_\text{new} = (1 - \text{momentum}) \times \hat{x} + \text{momentum} \times x_t\)</span> ，其中 <span class="math notranslate nohighlight">\(\hat{x}\)</span> 是估计的统计量， <span class="math notranslate nohighlight">\(x_t\)</span> 是新的观察值。</p>
 </div>
-<p>Because the Batch Normalization is done over the <cite>C</cite> dimension, computing statistics
-on <cite>(N, H, W)</cite> slices, it’s common terminology to call this Spatial Batch Normalization.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>num_features</strong> – <span class="math notranslate nohighlight">\(C\)</span> from an expected input of size
-<span class="math notranslate nohighlight">\((N, C, H, W)\)</span></p></li>
-<li><p><strong>eps</strong> – a value added to the denominator for numerical stability.
-Default: 1e-5</p></li>
-<li><p><strong>momentum</strong> – the value used for the running_mean and running_var
-computation. Can be set to <code class="docutils literal notranslate"><span class="pre">None</span></code> for cumulative moving average
-(i.e. simple average). Default: 0.1</p></li>
-<li><p><strong>affine</strong> – a boolean value that when set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, this module has
-learnable affine parameters. Default: <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
-<li><p><strong>track_running_stats</strong> – a boolean value that when set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, this
-module tracks the running mean and variance, and when set to <code class="docutils literal notranslate"><span class="pre">False</span></code>,
-this module does not track such statistics, and initializes statistics
-buffers <code class="xref py py-attr docutils literal notranslate"><span class="pre">running_mean</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">running_var</span></code> as <code class="docutils literal notranslate"><span class="pre">None</span></code>.
-When these buffers are <code class="docutils literal notranslate"><span class="pre">None</span></code>, this module always uses batch statistics.
-in both training and eval modes. Default: <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<p>因为批归一化 (Batch Normalization) 是在 <cite>C</cite> 维度上完成的，计算 <cite>(N, H, W)</cite> 切片的统计数据，所以常称其为 Spatial Batch Normalization 。</p>
+<dl>
+<dt>参数：</dt><dd><ul>
+<li><p><strong>num_features</strong> : <span class="math notranslate nohighlight">\(C\)</span> 来自于大小为 <span class="math notranslate nohighlight">\((N, C, H, W)\)</span> 的预期输入</p></li>
+<li><p><strong>eps</strong> : 为数值稳定性而为分母加的值。默认为：1e-5</p></li>
+<li><p><strong>momentum</strong> : 用于 <code class="xref py py-attr docutils literal notranslate"><span class="pre">running_mean</span></code> 和 <code class="xref py py-attr docutils literal notranslate"><span class="pre">running_var</span></code> 计算的值。设定为 <code class="docutils literal notranslate"><span class="pre">None</span></code> 则计算移动平均 (Moving average) ，默认：0.1</p></li>
+<li><p><strong>affine</strong> : 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code> ，该模块具有可学习的仿射参数。默认为 <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><dl>
+<dt><strong>track_running_stats</strong><span class="classifier">当设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 时，该模块跟踪运行均值和方差，当设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code> 时，此模块不会跟踪此类统计信息，</span></dt><dd><p>并将统计缓冲区 <code class="xref py py-attr docutils literal notranslate"><span class="pre">running_mean</span></code> 和 <code class="xref py py-attr docutils literal notranslate"><span class="pre">running_var</span></code> 初始化为 <code class="docutils literal notranslate"><span class="pre">None</span></code> 。当这些缓冲区为“无”时，此模块在训练和评估模式中始终使用批处理统计信息。默认值： <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>形状：</dt><dd><ul class="simple">
+<li><p><strong>Input</strong> : <span class="math notranslate nohighlight">\((N, C, H, W)\)</span></p></li>
+<li><p><strong>Output</strong> : <span class="math notranslate nohighlight">\((N, C, H, W)\)</span> （与输入形状相同）</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="simple">
-<dt>Shape:</dt><dd><ul class="simple">
-<li><p>Input: <span class="math notranslate nohighlight">\((N, C, H, W)\)</span></p></li>
-<li><p>Output: <span class="math notranslate nohighlight">\((N, C, H, W)\)</span> (same shape as input)</p></li>
-</ul>
-</dd>
-</dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="n">num_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
@@ -657,68 +593,43 @@ in both training and eval modes. Default: <code class="docutils literal notransl
 <dl class="py class">
 <dt id="oneflow.nn.BatchNorm3d">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">BatchNorm3d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">affine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_running_stats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.BatchNorm3d" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies Batch Normalization over a 5D input (a mini-batch of 3D inputs
-with additional channel dimension) as described in the paper
-<a class="reference external" href="https://arxiv.org/abs/1502.03167">Batch Normalization: Accelerating Deep Network Training by Reducing
-Internal Covariate Shift</a> .</p>
+<dd><p>在 5D 输入（具有可选附加通道维度的小批量 3D 输入）上应用批归一化 (Batch Normalization) 。行为与论文 <a class="reference external" href="https://arxiv.org/abs/1502.03167">Batch Normalization: Accelerating Deep Network Training by Reducing
+Internal Covariate Shift</a> 一致。</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[y = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \beta\]</div></div>
-<p>The mean and standard-deviation are calculated per-dimension over
-the mini-batches and <span class="math notranslate nohighlight">\(\gamma\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> are learnable parameter vectors
-of size <cite>C</cite> (where <cite>C</cite> is the input size). By default, the elements of <span class="math notranslate nohighlight">\(\gamma\)</span> are set
-to 1 and the elements of <span class="math notranslate nohighlight">\(\beta\)</span> are set to 0. The standard-deviation is calculated
-via the biased estimator, equivalent to <cite>torch.var(input, unbiased=False)</cite>.</p>
-<p>Also by default, during training this layer keeps running estimates of its
-computed mean and variance, which are then used for normalization during
-evaluation. The running estimates are kept with a default <code class="xref py py-attr docutils literal notranslate"><span class="pre">momentum</span></code>
-of 0.1.</p>
-<p>If <code class="xref py py-attr docutils literal notranslate"><span class="pre">track_running_stats</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, this layer then does not
-keep running estimates, and batch statistics are instead used during
-evaluation time as well.</p>
+<p>按小批量逐维度求平均值和标准差， <span class="math notranslate nohighlight">\(\gamma\)</span> 和 <span class="math notranslate nohighlight">\(\beta\)</span> 是大小为 <cite>C</cite> 的可学习参数向量（ <cite>C</cite> 是输入的大小）。
+默认情况下，<span class="math notranslate nohighlight">\(\gamma\)</span> 的元素均为 1 而 <span class="math notranslate nohighlight">\(\beta\)</span> 的元素均为 0 。标准差的计算等价于 <cite>torch.var(input, unbiased=False)</cite> 。</p>
+<p>此外，默认情况下，在训练期间，该层不断估计计算的均值和方差，然后评估时将其归一化。运行估计默认 <code class="xref py py-attr docutils literal notranslate"><span class="pre">momentum</span></code> 为 0.1 。</p>
+<p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">track_running_stats</span></code> 被设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code> ，则该层不会继续进行估计，并且在评估时也使用批处理统计信息。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This <code class="xref py py-attr docutils literal notranslate"><span class="pre">momentum</span></code> argument is different from one used in optimizer
-classes and the conventional notion of momentum. Mathematically, the
-update rule for running statistics here is
-<span class="math notranslate nohighlight">\(\hat{x}_\text{new} = (1 - \text{momentum}) \times \hat{x} + \text{momentum} \times     x_t\)</span>,
-where <span class="math notranslate nohighlight">\(\hat{x}\)</span> is the estimated statistic and <span class="math notranslate nohighlight">\(x_t\)</span> is the
-new observed value.</p>
+<p><code class="xref py py-attr docutils literal notranslate"><span class="pre">momentum</span></code> 参数不同于优化器 (optimizer) 类中使用的参数或传统的动量概念。数学上，这里的更新规则是：
+<span class="math notranslate nohighlight">\(\hat{x}_\text{new} = (1 - \text{momentum}) \times \hat{x} + \text{momentum} \times x_t\)</span> ，其中 <span class="math notranslate nohighlight">\(\hat{x}\)</span> 是估计的统计量， <span class="math notranslate nohighlight">\(x_t\)</span> 是新的观察值。</p>
 </div>
-<p>Because the Batch Normalization is done over the <cite>C</cite> dimension, computing statistics
-on <cite>(N, D, H, W)</cite> slices, it’s common terminology to call this Spatial Batch Normalization.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>num_features</strong> – <span class="math notranslate nohighlight">\(C\)</span> from an expected input of size
-<span class="math notranslate nohighlight">\((N, C, D, H, W)\)</span></p></li>
-<li><p><strong>eps</strong> – a value added to the denominator for numerical stability.
-Default: 1e-5</p></li>
-<li><p><strong>momentum</strong> – the value used for the running_mean and running_var
-computation. Can be set to <code class="docutils literal notranslate"><span class="pre">None</span></code> for cumulative moving average
-(i.e. simple average). Default: 0.1</p></li>
-<li><p><strong>affine</strong> – a boolean value that when set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, this module has
-learnable affine parameters. Default: <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
-<li><p><strong>track_running_stats</strong> – a boolean value that when set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, this
-module tracks the running mean and variance, and when set to <code class="docutils literal notranslate"><span class="pre">False</span></code>,
-this module does not track such statistics, and initializes statistics
-buffers <code class="xref py py-attr docutils literal notranslate"><span class="pre">running_mean</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">running_var</span></code> as <code class="docutils literal notranslate"><span class="pre">None</span></code>.
-When these buffers are <code class="docutils literal notranslate"><span class="pre">None</span></code>, this module always uses batch statistics.
-in both training and eval modes. Default: <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<p>因为批归一化 (Batch Normalization) 是在 <cite>C</cite> 维度上完成的，计算 <cite>(N, H, W)</cite> 切片的统计数据，所以常称其为 Spatial Batch Normalization 。</p>
+<dl>
+<dt>参数：</dt><dd><ul>
+<li><p><strong>num_features</strong> : <span class="math notranslate nohighlight">\(C\)</span> 来自于大小为 <span class="math notranslate nohighlight">\((N, C, D, H, W)\)</span> 的预期输入</p></li>
+<li><p><strong>eps</strong> : 为数值稳定性而为分母加的值。默认为：1e-5</p></li>
+<li><p><strong>momentum</strong> : 用于 <code class="xref py py-attr docutils literal notranslate"><span class="pre">running_mean</span></code> 和 <code class="xref py py-attr docutils literal notranslate"><span class="pre">running_var</span></code> 计算的值。设定为 <code class="docutils literal notranslate"><span class="pre">None</span></code> 则计算移动平均 (Moving average) ，默认：0.1</p></li>
+<li><p><strong>affine</strong> : 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code> ，该模块具有可学习的仿射参数。默认为 <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><dl>
+<dt><strong>track_running_stats</strong><span class="classifier">当设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 时，该模块跟踪运行均值和方差，当设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code> 时，此模块不会跟踪此类统计信息，</span></dt><dd><p>并将统计缓冲区 <code class="xref py py-attr docutils literal notranslate"><span class="pre">running_mean</span></code> 和 <code class="xref py py-attr docutils literal notranslate"><span class="pre">running_var</span></code> 初始化为 <code class="docutils literal notranslate"><span class="pre">None</span></code> 。当这些缓冲区为“无”时，此模块在训练和评估模式中始终使用批处理统计信息。默认值： <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>形状：</dt><dd><ul class="simple">
+<li><p><strong>Input</strong> : <span class="math notranslate nohighlight">\((N, C, D, H, W)\)</span></p></li>
+<li><p><strong>Output</strong> : <span class="math notranslate nohighlight">\((N, C, D, H, W)\)</span> （与输入形状相同）</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="simple">
-<dt>Shape:</dt><dd><ul class="simple">
-<li><p>Input: <span class="math notranslate nohighlight">\((N, C, D, H, W)\)</span></p></li>
-<li><p>Output: <span class="math notranslate nohighlight">\((N, C, D, H, W)\)</span> (same shape as input)</p></li>
-</ul>
-</dd>
-</dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm3d</span><span class="p">(</span><span class="n">num_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
@@ -728,35 +639,29 @@ in both training and eval modes. Default: <code class="docutils literal notransl
 </dd></dl>
 <dl class="py class">
 <dt id="oneflow.nn.CELU">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">CELU</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.CELU" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies the element-wise function:</p>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">CELU</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.CELU" title="Permalink to this definition">¶</a></dt>
+<dd><p>应用逐元素方程：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}\text{CELU}(x, \alpha) = \begin{cases}
                         x &amp; \text{ if } x \ge 0  \\
         \alpha*(exp(\frac{x}{\alpha})-1) &amp; \text{ otherwise } \\
             \end{cases}\end{split}\]</div></div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>alpha</strong> – the <span class="math notranslate nohighlight">\(\alpha\)</span> value for the CELU formulation. Default: 1.0</p></li>
-<li><p><strong>inplace</strong> – can optionally do the operation in-place. Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
-</ul>
-</dd>
-</dl>
 <dl class="simple">
-<dt>Shape:</dt><dd><ul class="simple">
-<li><p>Input: <span class="math notranslate nohighlight">\((N, *)\)</span> where <cite>*</cite> means, any number of additional
-dimensions</p></li>
-<li><p>Output: <span class="math notranslate nohighlight">\((N, *)\)</span>, same shape as the input</p></li>
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>alpha</strong> (float): CELU 公式中的 <span class="math notranslate nohighlight">\(\alpha\)</span> 。默认值：1.0</p></li>
+<li><p><strong>inplace</strong> (bool): 是否执行 place 操作。默认： <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+</dd>
+<dt>形状：</dt><dd><ul class="simple">
+<li><p><strong>Input</strong> : <span class="math notranslate nohighlight">\((N,*)\)</span> 其中 <cite>*</cite> 的意思是，可以增加任意维度</p></li>
+<li><p><strong>Output</strong> : <span class="math notranslate nohighlight">\((N, *)\)</span>, 与输入相同</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">celu</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">CELU</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">celu</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
@@ -2964,14 +2869,14 @@ and zeros (for biases). Default: <code class="docutils literal notranslate"><spa
 <span class="go">         [-0.999947  ,  0.999947  ]],</span>
 
 <span class="go">        [[-0.99995965,  0.9999595 ],</span>
-<span class="go">         [ 0.999988  , -0.999988  ]]],</span>
+<span class="go">         [ 0.99998784, -0.99998784]]],</span>
 
 
 <span class="go">       [[[-0.9998348 ,  0.99983466],</span>
 <span class="go">         [ 0.9999914 , -0.9999914 ]],</span>
 
 <span class="go">        [[ 0.9999785 , -0.9999785 ],</span>
-<span class="go">         [ 0.9999645 , -0.9999645 ]]]], dtype=float32)</span>
+<span class="go">         [ 0.9999646 , -0.9999646 ]]]], dtype=float32)</span>
 </pre></div>
 </div>
 <dl class="py attribute">
@@ -3820,7 +3725,7 @@ be applied, <code class="docutils literal notranslate"><span class="pre">'mean'<
 <dd></dd></dl>
 <dl class="py class">
 <dt id="oneflow.nn.PReLU">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">PReLU</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.25</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.PReLU" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">PReLU</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.PReLU" title="Permalink to this definition">¶</a></dt>
 <dd><p>Applies the element-wise function:</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[PReLU(x) = \max(0,x) + a * \min(0,x)\]</div></div>
@@ -3868,6 +3773,14 @@ dimensions</p></li>
 <span class="go">   [ 3.   4. ]]]]</span>
 </pre></div>
 </div>
+<dl class="py method">
+<dt id="oneflow.nn.PReLU.extra_repr">
+<code class="sig-name descname"><span class="pre">extra_repr</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">str</span><a class="headerlink" href="#oneflow.nn.PReLU.extra_repr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the extra representation of the module</p>
+<p>To print customized extra information, you should re-implement
+this method in your own modules. Both single-line and multi-line
+strings are acceptable.</p>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt id="oneflow.nn.Parameter">
