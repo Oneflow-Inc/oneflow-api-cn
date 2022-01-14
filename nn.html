@@ -4156,9 +4156,16 @@ dimensions</p></li>
 <dl class="py class">
 <dt id="oneflow.nn.Sigmoid">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">Sigmoid</span></code><a class="headerlink" href="#oneflow.nn.Sigmoid" title="Permalink to this definition">¶</a></dt>
-<dd><p>sigmoid(input) -&gt; Tensor</p>
-<p>应用以下 element-wise 公式：
-<span class="math notranslate nohighlight">\(\text{Sigmoid}(x) = \frac{1}{1 + \exp(-x)}\)</span></p>
+<dd><p>应用逐元素函数：</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{Sigmoid}(x) = \sigma(x) = \frac{1}{1 + \exp(-x)}\]</div></div>
+<dl class="simple">
+<dt>图型：</dt><dd><ul class="simple">
+<li><p>Input: <span class="math notranslate nohighlight">\((N, *)\)</span> 其中 <cite>*</cite> 表示任意数量的附加维度</p></li>
+<li><p>Output: <span class="math notranslate nohighlight">\((N, *)\)</span> 与输入相同的形状</p></li>
+</ul>
+</dd>
+</dl>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
