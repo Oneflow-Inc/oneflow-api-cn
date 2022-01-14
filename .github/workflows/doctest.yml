@@ -25,7 +25,7 @@ jobs:
       - name: Fix permissions
         run: |
           set -x
-          docker run --rm -v $PWD:/p -w /p busybox chown -R $(id -u):$(id -g) .
+          docker run --rm -v $PWD:/p -w /p busybox rm -rf *
       - name: Remove container
         timeout-minutes: 45
         run: |
@@ -38,6 +38,8 @@ jobs:
           all_but_latest: true
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+        with:
+          submodules: false
       # Runs a set of commands using the runners shell
       - name: Start container
         timeout-minutes: 45
@@ -53,11 +55,11 @@ jobs:
             --name ${TEST_CONTAINER_NAME} \
             ${{ env.TEST_IMG_TAG }} \
             sleep 3600
-      - name: Install docreset
+      - name: Install doc test requirements
         timeout-minutes: 45
         run: |
           docker exec ${TEST_CONTAINER_NAME} python3 -m pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
-          docker exec ${{ env.TEST_CONTAINER_NAME }} python3 -m pip install -f https://staging.oneflow.info/branch/master/cu102 oneflow
+          docker exec ${{ env.TEST_CONTAINER_NAME }} python3 -m pip install -f https://staging.oneflow.info/branch/master/cu102 --pre oneflow
           docker exec ${{ env.TEST_CONTAINER_NAME }} python3 -m pip install -r dev-requirements.txt --user
           docker exec ${{ env.TEST_CONTAINER_NAME }} bash ci/install.sh
       - name: DocTest
