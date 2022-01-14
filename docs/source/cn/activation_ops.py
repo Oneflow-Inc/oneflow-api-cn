@@ -54,6 +54,29 @@ reset_docstr(
 )
 
 reset_docstr(
+    oneflow.nn.Sigmoid,
+    r"""
+    sigmoid(input) -> Tensor
+
+    应用以下 element-wise 公式： 
+    :math:`\text{Sigmoid}(x) = \frac{1}{1 + \exp(-x)}`
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> x = flow.tensor([0.81733328, 0.43621480, 0.10351428], dtype=flow.float32)
+        >>> m = flow.nn.Sigmoid()
+        >>> out = m(x)
+        >>> out
+        tensor([0.6937, 0.6074, 0.5259], dtype=oneflow.float32)
+
+    """,
+)
+
+reset_docstr(
     oneflow.silu,
     r"""
     silu(x) -> Tensor
@@ -147,7 +170,33 @@ reset_docstr(
 )
 
 reset_docstr(
-    oneflow.nn.Softmax,
+    oneflow.nn.Sigmoid,
+    r"""应用逐元素函数：
+    
+    .. math::
+        
+        \text{Sigmoid}(x) = \sigma(x) = \frac{1}{1 + \exp(-x)}
+
+    图型：
+        - Input: :math:`(N, *)` 其中 `*` 表示任意数量的附加维度
+        - Output: :math:`(N, *)` 与输入相同的形状
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> x = flow.tensor([0.81733328, 0.43621480, 0.10351428], dtype=flow.float32)
+        >>> m = flow.nn.Sigmoid()
+        >>> out = m(x)
+        >>> out
+        tensor([0.6937, 0.6074, 0.5259], dtype=oneflow.float32)
+        """
+)
+
+
+reset_docstr(
+  oneflow.nn.Softmax,
     r"""Softmax(dim = None) -> Tensor
     
     将 Softmax 函数应用于 n 维输入 tensor 并重新缩放 tensor，以便n 维输出 tensor
@@ -169,13 +218,8 @@ reset_docstr(
 
     参数：
         **dim** (int): 要进行 Softmax 计算的维度（因此沿 :attr:`dim` 的每个切片总和为 1）。
-
-    示例：
-
-    .. code-block:: python
-
-        >>> import oneflow as flow
         
+    示例：
         >>> m = flow.nn.Softmax(dim = 2)
         >>> x = flow.tensor([[[-0.46716809,  0.40112534,  0.61984003], [-1.31244969, -0.42528763,  1.47953856]]], dtype=flow.float32)
         >>> out = m(x)
@@ -185,3 +229,4 @@ reset_docstr(
     
     """
 )
+
