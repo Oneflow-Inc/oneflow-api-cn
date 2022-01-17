@@ -268,6 +268,7 @@ reset_docstr(
     """,
 )
 
+
 reset_docstr(
     oneflow.Tensor.add,
     r"""add(input, other) -> Tensor
@@ -1027,5 +1028,3 @@ reset_docstr(
 
     """
 )
-
-
