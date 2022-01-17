@@ -168,4 +168,29 @@ reset_docstr(
     """,
 )
 
+reset_docstr(
+    oneflow.nn.Sigmoid,
+    r"""应用逐元素函数：
+    
+    .. math::
+        
+        \text{Sigmoid}(x) = \sigma(x) = \frac{1}{1 + \exp(-x)}
+
+    图型：
+        - Input: :math:`(N, *)` 其中 `*` 表示任意数量的附加维度
+        - Output: :math:`(N, *)` 与输入相同的形状
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> x = flow.tensor([0.81733328, 0.43621480, 0.10351428], dtype=flow.float32)
+        >>> m = flow.nn.Sigmoid()
+        >>> out = m(x)
+        >>> out
+        tensor([0.6937, 0.6074, 0.5259], dtype=oneflow.float32)
+        """
+)
 
