@@ -28,3 +28,4 @@ from .narrow import *
 from .autograd_mode import *
 from .reshape import *
 from .nn import *
+from .norm import *
