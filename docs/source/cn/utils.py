@@ -211,7 +211,7 @@ reset_docstr(
     每个样本都将通过索引张量的第一个维度来提取。
 
     Args:
-        - ***tensors** (tensor): 第一维度大小相同的张量
+        - **tensors** (tensor): 第一维度大小相同的张量
     """
 )
 
