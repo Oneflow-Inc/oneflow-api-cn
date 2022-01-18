@@ -56,7 +56,7 @@ reset_docstr(
         - **batch_sampler** (Sampler or Iterable, 可选): 类似 :attr:`sampler`, 但每次返回一个 batch 索引。与 :attr:`batch_size`, :attr:`shuffle` , :attr:`sampler`,和 :attr:`drop_last` 互斥
         - **num_workers** (int, 可选): 被用于加载数据的子线程数量 (默认： ``0``). ``0`` 意味着所有数据都将在主进程加载
         - **collate_fn** (callable, 可选): 将一个样本列表合并成 mini-batch 张量。在从 map-style 数据集中使用批加载时被调用
-        - **drop_last** (bool, 可选): 设置为 ``True`` 以在数据集大小无法被batch大小整除时将最后一个不完整batch丢弃。当为 ``False`` 时，如果数据集大小无法被 batch 大小整除，最后一个 batch 将相对较小 (默认： ``False``)
+        - **drop_last** (bool, 可选): 设置为 ``True`` 以在数据集大小无法被 batch 大小整除时将最后一个不完整 batch 丢弃。当为 ``False`` 时，如果数据集大小无法被 batch 大小整除，最后一个 batch 将相对较小 (默认： ``False``)
         - **timeout** (numeric, 可选): 若为正数，该参数为从 worker 处收集 batch 的 timeout 值。应总为非负值 (默认： ``0``)
         - **worker_init_fn** (callable, 可选): 如果不是 ``None``, 该参数将在 seeding 之后和加载数据前，与 worker id (an int in ``[0, num_workers - 1]``)一起在每个 worker 的子进程被调用，以作为输入 (默认： ``None``)
         - **prefetch_factor** (int, 可选, 键word-only arg): 在每个 worker 之前就被加载的样本数量 ``2``意味着将会有 2 * num_workers 个样本在所有 worker 之前被预提取。(default: ``2``)
@@ -68,13 +68,11 @@ reset_docstr(
     .. warning:: ``len(dataloader)`` 启动法将基于采样器的长度。
                  当 :attr:`dataset` 为 :class:`~flow.utils.data.IterableDataset` 时,
                  它将返回一个基于 ``len(dataset) / batch_size`` 的估算值，并将根据 :attr:`drop_last` 进行适当取整，
-                 不考虑多线程加载配置。it instead returns an estimate based on ``len(dataset) / batch_size``, with proper
-                 rounding depending on :attr:`drop_last`, regardless of multi-process loading
-                 configurations.这是 OneFlow 能做出的最理想估算，因为OneFlow相信 user :attr:`dataset` 代码能够正确的处理多线程加载
+                 不考虑多线程加载配置。这是 OneFlow 能做出的最理想估算，因为 OneFlow 相信 user :attr:`dataset` 代码能够正确的处理多线程加载
                  来避免重复数据。 
 
-                 但是，如果多个worker的数据分片有不完全的末尾batch，此类估算仍有可能为不准确的，因为
-                 (1) 一个原本完整的batch可能被分割为多个，且(2) 当 :attr:`drop_last` 被设定时，原本能合成一个以上
+                 但是，如果多个 worker 的数据分片有不完全的末尾 batch ，此类估算仍有可能为不准确的，因为
+                 (1) 一个原本完整的 batch 可能被分割为多个，且(2) 当 :attr:`drop_last` 被设定时，原本能合成一个以上
                  batch 的样本将被丢弃。遗憾的是， OneFlow 通常无法检测这类情况。
     """,
 )
@@ -99,9 +97,9 @@ reset_docstr(
 
     所有子类都应替换 :meth:`__iter__` ，一个用于返回本数据集中迭代器的参数。
 
-    当一个子类和 :class:`~flow.utils.data.DataLoader` 同时使用时，数据集中的每个内容都将从 :class:`~flow.utils.data.DataLoader` 中的迭代器中生成。当 :attr:`num_workers > 0` 时，每个worker进程都将拥有一个数据集对象的不同拷贝，所以通常偏好将每个拷贝独立配置以避免worker返回重复数据。
+    当一个子类和 :class:`~flow.utils.data.DataLoader` 同时使用时，数据集中的每个内容都将从 :class:`~flow.utils.data.DataLoader` 中的迭代器中生成。当 :attr:`num_workers > 0` 时，每个 worker 进程都将拥有一个数据集对象的不同拷贝，所以通常偏好将每个拷贝独立配置以避免 worker 返回重复数据。
 
-    样例1：在 :meth:`__iter__` 中将负荷分配给所有worker：
+    样例1：在 :meth:`__iter__` 中将负荷分配给所有 worker：
     
     .. code-block:: python
 
@@ -118,14 +116,14 @@ reset_docstr(
         ...         iter_end = self.end
         ...         return iter(range(iter_start, iter_end))
         ...
-        >>> # 应提供数据为range(3,7)的数据集，i.e., [3, 4, 5, 6].
+        >>> # 应提供数据为 range(3,7) 的数据集，i.e., [3, 4, 5, 6].
         >>> ds = MyIterableDataset(start=3, end=7)
 
         >>> # 单线程加载
         >>> print(list(flow.utils.data.DataLoader(ds, num_workers=0)))
         [tensor([3], dtype=oneflow.int64), tensor([4], dtype=oneflow.int64), tensor([5], dtype=oneflow.int64), tensor([6], dtype=oneflow.int64)]
 
-    样例2：使用 :attr:`worker_init_fn` 将负荷分配给所有worker：
+    样例2：使用 :attr:`worker_init_fn` 将负荷分配给所有 worker：
 
     .. code-block:: python
 
@@ -140,7 +138,7 @@ reset_docstr(
         ...     def __iter__(self):
         ...         return iter(range(self.start, self.end))
         ...
-        >>> # 应提供数据为range(3,7)的数据集，i.e., [3, 4, 5, 6].
+        >>> # 应提供数据为 range(3,7) 的数据集，i.e., [3, 4, 5, 6].
         >>> ds = MyIterableDataset(start=3, end=7)
 
         >>> # 单线程加载
@@ -210,7 +208,7 @@ reset_docstr(
 
     每个样本都将通过索引张量的第一个维度来提取。
 
-    Args:
+    参数：
         - **tensors** (tensor): 第一维度大小相同的张量
     """
 )
