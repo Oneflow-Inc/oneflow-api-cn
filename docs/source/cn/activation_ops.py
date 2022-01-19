@@ -194,4 +194,3 @@ reset_docstr(
         tensor([0.6937, 0.6074, 0.5259], dtype=oneflow.float32)
         """
 )
-
