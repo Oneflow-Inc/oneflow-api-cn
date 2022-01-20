@@ -110,9 +110,9 @@ reset_docstr(
         >>> index = flow.tensor([[1], [6], [4]], dtype=flow.int)
         >>> update = flow.tensor([10.2, 5.1, 12.7], dtype=flow.float32)
         >>> out = flow.scatter_nd(index, update, [8])
-        >>> out
-        tensor([ 0.0000, 10.2000,  0.0000,  0.0000, 12.7000,  0.0000,  5.1000,  0.0000],
-               dtype=oneflow.float32)
+        >>> out # doctest: +NORMALIZE_WHITESPACE
+        tensor([ 0.0000, 10.2000,  0.0000,  0.0000, 12.7000,  0.0000,  5.1000,  0.0000], 
+            dtype=oneflow.float32)
 
     """
 )
