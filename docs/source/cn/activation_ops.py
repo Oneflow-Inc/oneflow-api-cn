@@ -194,7 +194,6 @@ reset_docstr(
         """
 )
 
-
 reset_docstr(
   oneflow.nn.Softmax,
     r"""Softmax(dim = None) -> Tensor
@@ -229,4 +228,3 @@ reset_docstr(
     
     """
 )
-
