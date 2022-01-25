@@ -738,7 +738,7 @@ reset_docstr(
     r"""加载一个被 oneflow.save() 保存的对象。
 
     参数：
-        - **path** (str): The directory containing the object
+        - **path** (str): 对象所在的路径
         - **consistent_src_rank** (int, optional): 加载相容 (consistent) 张量的需要的秩 (rank)。被指定时，只有秩与 consistent_src_rank相等的进程才会真正读取 `path` 中的文件，并且被加载对象中的张量会与  placement = `flow.placement('cuda', [consistent_src_rank])` 一致。
 
     返回类型：
@@ -925,3 +925,4 @@ reset_docstr(
     更多细节参考 :class:`~oneflow.nn.Softplus` 。
     """,
 )
+
