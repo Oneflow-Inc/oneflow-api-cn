@@ -732,3 +732,197 @@ reset_docstr(
 
     """,
 )
+
+reset_docstr(
+    oneflow.load,
+    r"""加载一个被 oneflow.save() 保存的对象。
+
+    参数：
+        - **path** (str): The directory containing the object
+        - **consistent_src_rank** (int, optional): 加载相容 (consistent) 张量的需要的秩 (rank)。被指定时，只有秩与 consistent_src_rank相等的进程才会真正读取 `path` 中的文件，并且被加载对象中的张量会与  placement = `flow.placement('cuda', [consistent_src_rank])` 一致。
+
+    返回类型：
+        加载好的对象
+    """
+)
+
+reset_docstr(
+    oneflow.numel,
+    r"""
+    numel(input) -> int
+
+    返回 :attr:`input` 张量中的元素总数量。
+
+    参数：
+        - **input** (oneflow.Tensor): 输入张量
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> a = flow.randn(1, 2, 3, 4, 5)
+        >>> flow.numel(a)
+        120
+        >>> a = flow.zeros(4,4)
+        >>> flow.numel(a)
+        16
+    """
+)
+
+reset_docstr(
+    oneflow.gather_nd,
+    r"""
+    oneflow.gather_nd(input, index) -> Tensor
+    
+    该算子为 `gather` 的高维扩展， `index` 是一个k维张量，以作为输入张量 `input` 的索引。
+    每个元素将定义一个 `input` 的切片：
+
+    .. math::
+
+        output[i_{0},i_{1},...,i_{K-2}] = input[index(i_{0},i_{1},...,i_{K-2})]
+
+
+    参数：
+        - **input**: 输入张量
+        - **index**: 切片索引
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        >>> input = flow.tensor(np.array([[1, 2,3], [4, 5,6],[7,8,9]]), dtype=flow.float)
+        >>> index_1 = flow.tensor(np.array([[0], [2]]), dtype=flow.int)
+        >>> out_1 = flow.gather_nd(input,index_1)
+        >>> print(out_1.shape)
+        oneflow.Size([2, 3])
+        >>> out_1
+        tensor([[1., 2., 3.],
+                [7., 8., 9.]], dtype=oneflow.float32)
+        >>> index_2 = flow.tensor(np.array([[0,2], [2,1]]), dtype=flow.int)
+        >>> out_2 = flow.gather_nd(input,index_2)
+        >>> out_2
+        tensor([3., 8.], dtype=oneflow.float32)
+
+    """,
+)
+
+reset_docstr(
+    oneflow.grad_enable,
+    r"""
+    启用梯度计算的上下文管理。
+
+    启用梯度计算，如果其被 no_grad 禁用。
+
+    这个上下文管理在本地线程上；不会影响其他线程的计算。
+
+    同时可以作为一种修饰模式。（请确保使用括号实例化）
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> x = flow.ones(2, 3, requires_grad=True)
+        >>> with flow.no_grad():
+        ...     with flow.grad_enable():
+        ...         y = x * x
+        >>> y.requires_grad
+        True
+        >>> @flow.grad_enable()
+        ... def no_grad_func(x):
+        ...     return x * x
+        >>> with flow.no_grad():
+        ...     y = no_grad_func(x)
+        >>> y.requires_grad
+        True
+    """
+)
+
+reset_docstr(
+    oneflow.inference_mode,
+    r"""
+    用于启用或禁用 inference mode 的上下文管理。
+
+    Inference mode 是一个新的上下文管理，类似于 no_grad ，可以在你确定你的运算将与 autograd 没有关联时被使用。在此模式下运行的代码将获得更好的性能，因为禁用了路径追踪和版本计数堆。
+
+    这个上下文管理在本地线程上；不会影响其他线程的计算。
+
+    同时可以作为一种修饰模式。（请确保使用括号实例化）
+
+    参数：
+        - **mode** (bool): 标记启用或禁用 inference mode (默认：True)
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> x = flow.ones(2, 3, requires_grad=True)
+        >>> with flow.inference_mode():
+        ...     y = x * x
+        >>> y.requires_grad
+        False
+        >>> @flow.inference_mode()
+        ... def no_grad_func(x):
+        ...     return x * x
+        >>> y = no_grad_func(x)
+        >>> y.requires_grad
+        False
+    """
+)
+
+reset_docstr(
+    oneflow.save,
+    r"""保存一个对象到一个路径。
+
+    参数：
+        - **obj**: 被保存的对象
+        - **path** (str): 对象被保存的路径
+        - **consistent_dst_rank** (int, 可选): 用于保存一致张量的地点秩。被指定时，对于所有张量，只有秩 == consistent_src_rank 的进程被保存，而其他的进程不会进行任何磁盘存取。
+    """
+)
+
+reset_docstr(
+    oneflow.tensor_scatter_nd_update,
+    r"""
+    该算子通过对输入张量应用碎片化更新创造一个新的张量。
+
+    该算子与 :meth:`scatter_nd` 十分类似，除了更新被分散到已存在的张量（而不是一个零张量）。
+
+    参数：
+        - **tensor**: 被分散化的张量
+        - **indices**: ``update`` 的索引。它的类型应该为 `flow.int` 
+        - **update**: 更新的张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> tensor = flow.arange(8)
+        >>> indices = flow.tensor([[1], [3], [5]])
+        >>> updates = flow.tensor([-1, -2, -3])
+        >>> flow.tensor_scatter_nd_update(tensor, indices, updates)
+        tensor([ 0, -1,  2, -2,  4, -3,  6,  7], dtype=oneflow.int64)
+
+    """
+)
+
+reset_docstr(
+    oneflow.is_grad_enabled,
+    r"""
+    返回 True ，如果 grad 模式目前被启用。
+    """
+)
+
+reset_docstr(
+    oneflow.softplus,
+        r"""
+    softplus(x: Tensor) -> Tensor 
+
+    应用此 element-wise 公式：
+
+    .. math::
+        \text{Softplus}(x) = \frac{1}{\beta} * \log(1 + \exp(\beta * x))    
+    
+    更多细节参考 :class:`~oneflow.nn.Softplus` 。
+    """,
+)
