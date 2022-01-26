@@ -148,34 +148,28 @@
 <dl class="py function">
 <dt id="oneflow.nn.functional.conv1d">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">conv1d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.conv1d" title="Permalink to this definition">¶</a></dt>
-<dd><p>The documentation is referenced from: <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.conv1d.html?highlight=conv1d">https://pytorch.org/docs/stable/generated/torch.nn.functional.conv1d.html?highlight=conv1d</a></p>
-<p>Applies a 1D convolution over an input signal composed of several input
-planes.</p>
-<p>See <a class="reference internal" href="nn.html#oneflow.nn.Conv1d" title="oneflow.nn.Conv1d"><code class="xref py py-class docutils literal notranslate"><span class="pre">Conv1d</span></code></a> for details and output shape.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> – quantized input tensor of shape <span class="math notranslate nohighlight">\((\text{minibatch} , \text{in_channels} , iW)\)</span></p></li>
-<li><p><strong>weight</strong> – quantized filters of shape <span class="math notranslate nohighlight">\((\text{out_channels} , \frac{\text{in_channels}}{\text{groups}} , iW)\)</span></p></li>
-<li><p><strong>bias</strong> – <strong>non-quantized</strong> bias tensor of shape <span class="math notranslate nohighlight">\((\text{out_channels})\)</span>. The tensor type must be <cite>flow.float</cite>.</p></li>
-<li><p><strong>stride</strong> – the stride of the convolving kernel. Can be a single number or a
-tuple <cite>(sW,)</cite>. Default: 1</p></li>
-<li><p><strong>padding</strong> – implicit paddings on both sides of the input. Can be a
-single number or a tuple <cite>(padW,)</cite>. Default: 0</p></li>
-<li><p><strong>dilation</strong> – the spacing between kernel elements. Can be a single number or
-a tuple <cite>(dW,)</cite>. Default: 1</p></li>
-<li><p><strong>groups</strong> – split input into groups, <span class="math notranslate nohighlight">\(\text{in_channels}\)</span> should be divisible by the
-number of groups. Default: 1</p></li>
+<dd><p>文档引用自: <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.conv1d.html?highlight=conv1d">https://pytorch.org/docs/stable/generated/torch.nn.functional.conv1d.html?highlight=conv1d</a></p>
+<p>对由多个输入平面组成的输入信号应用一维卷积。</p>
+<p>请参阅: <a class="reference internal" href="nn.html#oneflow.nn.Conv1d" title="oneflow.nn.Conv1d"><code class="xref py py-class docutils literal notranslate"><span class="pre">Conv1d</span></code></a> 获取有关详细信息和输出形状。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>input</strong>: 形状的量化输入张量: <span class="math notranslate nohighlight">\((\text{minibatch} , \text{in_channels} , iW)\)</span></p></li>
+<li><p><strong>weight</strong>: 形状的量化滤波器: <span class="math notranslate nohighlight">\((\text{out_channels} , \frac{\text{in_channels}}{\text{groups}} , iW)\)</span></p></li>
+<li><p><strong>bias</strong>: 非量化的形状的偏置张量: <span class="math notranslate nohighlight">\((\text{out_channels})\)</span> 。张量类型必须为 <cite>flow.float</cite> 。</p></li>
+<li><p><strong>stride</strong>: 卷积核的步长。可以是单个数字或元组 <cite>(sW,)</cite> 。 默认值: 1</p></li>
+<li><p><strong>padding</strong>: 输入两侧的隐式填充。可以是单个数字或元组 <cite>(padW,)</cite> 。 默认值: 0</p></li>
+<li><p><strong>dilation</strong>: 内核元素之间的间距。可以是单个数字或元组 <cite>(dW,)</cite> 。 默认值: 1</p></li>
+<li><p><strong>groups</strong>: 将输入分成组: <span class="math notranslate nohighlight">\(\text{in_channels}\)</span> 应该可以被组数整除。默认值: 1</p></li>
 </ul>
 </dd>
 </dl>
-<p>For examples:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">33</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">filters</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">_C</span><span class="o">.</span><span class="n">conv1d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span><span class="n">stride</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">padding</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dilation</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">channel_pos</span><span class="o">=</span><span class="s2">"channels_first"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">33</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filters</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">conv1d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span><span class="n">stride</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">padding</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dilation</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">channel_pos</span><span class="o">=</span><span class="s2">"channels_first"</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -355,35 +349,34 @@ several input planes.</p>
 details.</p>
 </dd></dl>
 <dl class="py function">
-<dt id="oneflow.nn.functional.l2_normalize">
-<code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">l2_normalize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1e-12</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.l2_normalize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use L2 norm to normalizes along dimension <cite>dim</cite></p>
-<p>The equation is:</p>
+<dt id="oneflow.nn.functional.normalize">
+<code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">normalize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1e-12</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.normalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs <span class="math notranslate nohighlight">\(L_p\)</span> normalization of inputs over specified dimension</p>
+<p>For a tensor <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> of sizes <span class="math notranslate nohighlight">\((n_0, ..., n_{dim}, ..., n_k)\)</span>, each
+<span class="math notranslate nohighlight">\(n_{dim}\)</span> -element vector <span class="math notranslate nohighlight">\(v\)</span> along dimension <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code> is transformed as:</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
-\[out = \frac{x}{max(\sqrt{\Sigma{x^2}}, \epsilon)}\]</div></div>
+\[v = \frac{v}{\max(\lVert v \rVert_p, \epsilon)}.\]</div></div>
+<p>With the default arguments it uses the Euclidean norm over vectors along dimension <span class="math notranslate nohighlight">\(1\)</span> for normalization.</p>
+<p>But note that the gradient calculation of the input tensor has different results on different frameworks
+when <cite>input.shape[dim] = 1</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>oneflow.Tensor</em></a>) – Input Tensor</p></li>
-<li><p><strong>dim</strong> (<em>int</em>) – The axis on which to apply L2 normalization. Defaults to 0.</p></li>
-<li><p><strong>epsilon</strong> (<em>float</em>) – The epsilon value is used to avoid division by zero. Defaults to 1e-12.</p></li>
+<li><p><strong>input</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>oneflow.Tensor</em></a>) – input tensor of any shape</p></li>
+<li><p><strong>p</strong> (<em>float</em>) – the exponent value in the norm formulation. Default: 2</p></li>
+<li><p><strong>dim</strong> (<em>int</em>) – the dimension to reduce. Default: 1</p></li>
+<li><p><strong>eps</strong> (<em>float</em>) – small value to avoid division by zero. Default: 1e-12</p></li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The normalized Tensor</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor">oneflow.Tensor</a></p>
 </dd>
 </dl>
 <p>For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">l2_normalize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span>
 <span class="go">tensor([[0.3162, 0.4472],</span>
 <span class="go">        [0.9487, 0.8944]], dtype=oneflow.float32)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">l2_normalize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span>
 <span class="go">tensor([[0.4472, 0.8944],</span>
 <span class="go">        [0.6000, 0.8000]], dtype=oneflow.float32)</span>
@@ -767,20 +760,20 @@ Default: <code class="docutils literal notranslate"><span class="pre">'constant'
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.functional.dropout">
-<code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">dropout</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generator</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Generator</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.dropout" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">dropout</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generator</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Generator</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">addend</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.dropout" title="Permalink to this definition">¶</a></dt>
 <dd><p>The documentation is referenced from:
 <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.dropout.html">https://pytorch.org/docs/stable/generated/torch.nn.functional.dropout.html</a></p>
 <p>During training, randomly zeroes some of the elements of the input
 tensor with probability <code class="xref py py-attr docutils literal notranslate"><span class="pre">p</span></code> using samples from a Bernoulli
 distribution.</p>
-<p>Description of Parameter misalignment:</p>
-<p>Parameter generator : oneflow.nn.functional.dropout have it but torch.nn.functional.dropout do not.</p>
-<p>Parameter training : torch.nn.functional.dropout have it but oneflow.nn.functional.dropout do not.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>p</strong> – (float)probability of an element to be zeroed. Default: 0.5</p></li>
-<li><p><strong>generator</strong> (<em>Generator</em><em>, </em><em>optional</em>) – a pseudorandom number generator for sampling</p></li>
+<li><p><strong>x</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – A Tensor which will be applyed dropout.</p></li>
+<li><p><strong>p</strong> (<em>float</em>) – probability of an element to be zeroed. Default: 0.5</p></li>
+<li><p><strong>training</strong> (<em>bool</em>) – If is True it will apply dropout. Default: True</p></li>
+<li><p><strong>generator</strong> (<em>Generator</em><em>, </em><em>optional</em>) – A pseudorandom number generator for sampling</p></li>
+<li><p><strong>addend</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em>, </em><em>optional</em>) – A Tensor add in result after dropout, it can be used in model’s residual connection structure. Default: None</p></li>
 </ul>
 </dd>
 </dl>
@@ -792,6 +785,7 @@ distribution.</p>
 </dd>
 </dl>
 <p>For example:</p>
+<p>Example 1:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
@@ -816,6 +810,27 @@ distribution.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">generator</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Generator</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">generator</span><span class="o">=</span><span class="n">generator</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Example 2:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+<span class="gp">... </span>   <span class="p">[</span>
+<span class="gp">... </span>       <span class="p">[</span><span class="o">-</span><span class="mf">0.7797</span><span class="p">,</span> <span class="mf">0.2264</span><span class="p">,</span> <span class="mf">0.2458</span><span class="p">,</span> <span class="mf">0.4163</span><span class="p">],</span>
+<span class="gp">... </span>       <span class="p">[</span><span class="mf">0.4299</span><span class="p">,</span> <span class="mf">0.3626</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4892</span><span class="p">,</span> <span class="mf">0.4141</span><span class="p">],</span>
+<span class="gp">... </span>       <span class="p">[</span><span class="o">-</span><span class="mf">1.4115</span><span class="p">,</span> <span class="mf">1.2183</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5503</span><span class="p">,</span> <span class="mf">0.6520</span><span class="p">],</span>
+<span class="gp">... </span>   <span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">addend</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">addend</span><span class="o">=</span><span class="n">addend</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> 
+<span class="go">tensor([[ 0.2203,  1.2264,  1.2458,  1.4163],</span>
+<span class="go">        [ 1.4299,  1.3626,  0.5108,  1.4141],</span>
+<span class="go">        [-0.4115,  2.2183,  0.4497,  1.6520]], dtype=oneflow.float32)</span>
 </pre></div>
 </div>
 <p>See <a class="reference internal" href="nn.html#oneflow.nn.Dropout" title="oneflow.nn.Dropout"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dropout</span></code></a> for details.</p>

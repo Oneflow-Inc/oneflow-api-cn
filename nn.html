@@ -1711,11 +1711,14 @@ detectors”.</p>
 <p>Furthermore, the outputs are scaled by a factor of <span class="math notranslate nohighlight">\(\frac{1}{1-p}\)</span> during
 training. This means that during evaluation the module simply computes an
 identity function.</p>
+<p>Additionally, we can pass an extra Tensor <cite>addend</cite> which shape is consistent with input Tensor.
+The <cite>addend</cite> Tensor will be add in result after dropout, it is very useful in model’s residual connection structure.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p</strong> – probability of an element to be zeroed. Default: 0.5</p></li>
 <li><p><strong>inplace</strong> – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, will do this operation in-place. Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>generator</strong> – A pseudorandom number generator for sampling</p></li>
 </ul>
 </dd>
 </dl>
@@ -1727,6 +1730,7 @@ identity function.</p>
 </dd>
 </dl>
 <p>For example:</p>
+<p>example 1:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
@@ -1744,6 +1748,27 @@ identity function.</p>
 <span class="go">tensor([[-0.7797,  0.2264,  0.2458,  0.4163],</span>
 <span class="go">        [ 0.4299,  0.3626, -0.4892,  0.4141],</span>
 <span class="go">        [-1.4115,  1.2183, -0.5503,  0.6520]], dtype=oneflow.float32)</span>
+</pre></div>
+</div>
+<p>example 2:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+<span class="gp">... </span>   <span class="p">[</span>
+<span class="gp">... </span>       <span class="p">[</span><span class="o">-</span><span class="mf">0.7797</span><span class="p">,</span> <span class="mf">0.2264</span><span class="p">,</span> <span class="mf">0.2458</span><span class="p">,</span> <span class="mf">0.4163</span><span class="p">],</span>
+<span class="gp">... </span>       <span class="p">[</span><span class="mf">0.4299</span><span class="p">,</span> <span class="mf">0.3626</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4892</span><span class="p">,</span> <span class="mf">0.4141</span><span class="p">],</span>
+<span class="gp">... </span>       <span class="p">[</span><span class="o">-</span><span class="mf">1.4115</span><span class="p">,</span> <span class="mf">1.2183</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5503</span><span class="p">,</span> <span class="mf">0.6520</span><span class="p">],</span>
+<span class="gp">... </span>   <span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">addend</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">addend</span><span class="o">=</span><span class="n">addend</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> 
+<span class="go">tensor([[ 0.2203,  1.2264,  1.2458,  1.4163],</span>
+<span class="go">        [ 1.4299,  1.3626,  0.5108,  1.4141],</span>
+<span class="go">        [-0.4115,  2.2183,  0.4497,  1.6520]], dtype=oneflow.float32)</span>
 </pre></div>
 </div>
 <dl class="py attribute">
@@ -2828,7 +2853,7 @@ l_n = y_n \cdot \left( \log y_n - x_n \right)\]</div></div>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[[[</span><span class="o">-</span><span class="mf">0.16046895</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.03667831</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.34974465</span><span class="p">,</span> <span class="mf">0.26505867</span><span class="p">]],[[</span><span class="o">-</span><span class="mf">1.24111986</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.53806001</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.72426331</span><span class="p">,</span> <span class="mf">0.43572459</span><span class="p">]],],[[[</span><span class="o">-</span><span class="mf">0.77390957</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.42610624</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.16398858</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.35760343</span><span class="p">]],[[</span><span class="mf">1.07541728</span><span class="p">,</span> <span class="mf">0.11008703</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.26361224</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.48663723</span><span class="p">]]]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> 
 <span class="go">tensor([[[[ 1.0000, -1.0000],</span>
 <span class="go">          [-0.9999,  0.9999]],</span>
 
@@ -4650,7 +4675,7 @@ The documentation is referenced from:
 <dd></dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.utils.clip_grad_norm_">
-<code class="sig-prename descclassname"><span class="pre">oneflow.nn.utils.</span></code><code class="sig-name descname"><span class="pre">clip_grad_norm_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.Tensor</span><span class="p"><span class="pre">,</span> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_norm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_if_nonfinite</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> → <span class="pre">oneflow._oneflow_internal.Tensor</span><a class="headerlink" href="#oneflow.nn.utils.clip_grad_norm_" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">oneflow.nn.utils.</span></code><code class="sig-name descname"><span class="pre">clip_grad_norm_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.Tensor</span><span class="p"><span class="pre">,</span> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_norm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_if_nonfinite</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> → <span class="pre">oneflow._oneflow_internal.Tensor</span><a class="headerlink" href="#oneflow.nn.utils.clip_grad_norm_" title="Permalink to this definition">¶</a></dt>
 <dd><p>clip_grad_norm_(parameters, max_norm, norm_type=2.0, error_if_nonfinite=True) → oneflow._oneflow_internal.Tensor</p>
 <p>裁剪可迭代参数的梯度范数。
 范数是在所有梯度上一起计算的，就好像它们被连接成一个向量一样。</p>

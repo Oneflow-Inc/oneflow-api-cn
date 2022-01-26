@@ -160,33 +160,34 @@ limitations under the License.</p>
 <dl class="py class">
 <dt id="oneflow.utils.data.BatchSampler">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.data.</span></code><code class="sig-name descname"><span class="pre">BatchSampler</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampler</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow.utils.data.sampler.Sampler</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_last</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.data.BatchSampler" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wraps another sampler to yield a mini-batch of indices.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>sampler</strong> (<a class="reference internal" href="#oneflow.utils.data.Sampler" title="oneflow.utils.data.Sampler"><em>Sampler</em></a><em> or </em><em>Iterable</em>) – Base sampler. Can be any iterable object</p></li>
-<li><p><strong>batch_size</strong> (<em>int</em>) – Size of mini-batch.</p></li>
-<li><p><strong>drop_last</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the sampler will drop the last batch if
-its size would be less than <code class="docutils literal notranslate"><span class="pre">batch_size</span></code></p></li>
+<dd><p>将另一个采样器包装为 mini-batch 索引。</p>
+<dl>
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>sampler</strong> (Sampler or Iterable): 原采样器。可以是任何可迭代对象。</p></li>
+<li><p><strong>batch_size</strong> (int): mini-batch 的大小</p></li>
+<li><p><strong>drop_last</strong> (bool): 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code> ，采样器会在最后一个 batch 小于 <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> 时将其丢弃。</p></li>
 </ul>
 </dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">BatchSampler</span><span class="p">(</span><span class="n">SequentialSampler</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)),</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">drop_last</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<dt>样例：</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">oneflow.utils.data</span> <span class="k">import</span> <span class="n">BatchSampler</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">oneflow.utils.data</span> <span class="k">import</span> <span class="n">SequentialSampler</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">BatchSampler</span><span class="p">(</span><span class="n">SequentialSampler</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)),</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">drop_last</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 <span class="go">[[0, 1, 2], [3, 4, 5], [6, 7, 8], [9]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">BatchSampler</span><span class="p">(</span><span class="n">SequentialSampler</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)),</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">drop_last</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 <span class="go">[[0, 1, 2], [3, 4, 5], [6, 7, 8]]</span>
 </pre></div>
 </div>
+</dd>
+</dl>
 </dd></dl>
 <dl class="py class">
 <dt id="oneflow.utils.data.ConcatDataset">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.data.</span></code><code class="sig-name descname"><span class="pre">ConcatDataset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datasets</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow.utils.data.dataset.Dataset</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.data.ConcatDataset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dataset as a concatenation of multiple datasets.</p>
-<p>This class is useful to assemble different existing datasets.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>datasets</strong> (<em>sequence</em>) – List of datasets to be concatenated</p>
+<dd><p>一个由多个数据集串接而成的数据集。这个类可用于聚集不同的已有数据集。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>datasets</strong> (sequence): 被串接的数据集列表</p></li>
+</ul>
 </dd>
 </dl>
 <dl class="py method">
@@ -205,69 +206,41 @@ its size would be less than <code class="docutils literal notranslate"><span cla
 <dl class="py class">
 <dt id="oneflow.utils.data.DataLoader">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.data.</span></code><code class="sig-name descname"><span class="pre">DataLoader</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">dataset:</span> <span class="pre">oneflow.utils.data.dataset.Dataset[T_co],</span> <span class="pre">batch_size:</span> <span class="pre">Optional[int]</span> <span class="pre">=</span> <span class="pre">1,</span> <span class="pre">shuffle:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">sampler:</span> <span class="pre">Optional[oneflow.utils.data.sampler.Sampler[int]]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">batch_sampler:</span> <span class="pre">Optional[oneflow.utils.data.sampler.Sampler[Sequence[int]]]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">num_workers:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0,</span> <span class="pre">collate_fn:</span> <span class="pre">Optional[Callable[[List[T]],</span> <span class="pre">Any]]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">drop_last:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">timeout:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0,</span> <span class="pre">worker_init_fn:</span> <span class="pre">Optional[Callable[[int],</span> <span class="pre">None]]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">multiprocessing_context=None,</span> <span class="pre">generator=&lt;oneflow._oneflow_internal.Generator</span> <span class="pre">object&gt;,</span> <span class="pre">*,</span> <span class="pre">prefetch_factor:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">2,</span> <span class="pre">persistent_workers:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.data.DataLoader" title="Permalink to this definition">¶</a></dt>
-<dd><p>Data loader. Combines a dataset and a sampler, and provides an iterable over
-the given dataset.</p>
-<p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code> supports both map-style and
-iterable-style datasets with single- or multi-process loading, customizing
-loading order and optional automatic batching (collation) and memory pinning.</p>
-<p>See <code class="xref py py-mod docutils literal notranslate"><span class="pre">flow.utils.data</span></code> documentation page for more details.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataset</strong> (<a class="reference internal" href="#oneflow.utils.data.Dataset" title="oneflow.utils.data.Dataset"><em>Dataset</em></a>) – dataset from which to load the data.</p></li>
-<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – how many samples per batch to load
-(default: <code class="docutils literal notranslate"><span class="pre">1</span></code>).</p></li>
-<li><p><strong>shuffle</strong> (<em>bool</em><em>, </em><em>optional</em>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to have the data reshuffled
-at every epoch (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p></li>
-<li><p><strong>sampler</strong> (<a class="reference internal" href="#oneflow.utils.data.Sampler" title="oneflow.utils.data.Sampler"><em>Sampler</em></a><em> or </em><em>Iterable</em><em>, </em><em>optional</em>) – defines the strategy to draw
-samples from the dataset. Can be any <code class="docutils literal notranslate"><span class="pre">Iterable</span></code> with <code class="docutils literal notranslate"><span class="pre">__len__</span></code>
-implemented. If specified, <code class="xref py py-attr docutils literal notranslate"><span class="pre">shuffle</span></code> must not be specified.</p></li>
-<li><p><strong>batch_sampler</strong> (<a class="reference internal" href="#oneflow.utils.data.Sampler" title="oneflow.utils.data.Sampler"><em>Sampler</em></a><em> or </em><em>Iterable</em><em>, </em><em>optional</em>) – like <a class="reference internal" href="#oneflow.utils.data.DataLoader.sampler" title="oneflow.utils.data.DataLoader.sampler"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sampler</span></code></a>, but
-returns a batch of indices at a time. Mutually exclusive with
-<a class="reference internal" href="#oneflow.utils.data.DataLoader.batch_size" title="oneflow.utils.data.DataLoader.batch_size"><code class="xref py py-attr docutils literal notranslate"><span class="pre">batch_size</span></code></a>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">shuffle</span></code>, <a class="reference internal" href="#oneflow.utils.data.DataLoader.sampler" title="oneflow.utils.data.DataLoader.sampler"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sampler</span></code></a>,
-and <a class="reference internal" href="#oneflow.utils.data.DataLoader.drop_last" title="oneflow.utils.data.DataLoader.drop_last"><code class="xref py py-attr docutils literal notranslate"><span class="pre">drop_last</span></code></a>.</p></li>
-<li><p><strong>num_workers</strong> (<em>int</em><em>, </em><em>optional</em>) – how many subprocesses to use for data
-loading (default: <code class="docutils literal notranslate"><span class="pre">0</span></code>). <code class="docutils literal notranslate"><span class="pre">0</span></code> means that the data will be loaded in the main process.</p></li>
-<li><p><strong>collate_fn</strong> (<em>callable</em><em>, </em><em>optional</em>) – merges a list of samples to form a
-mini-batch of Tensor(s).  Used when using batched loading from a
-map-style dataset.</p></li>
-<li><p><strong>drop_last</strong> (<em>bool</em><em>, </em><em>optional</em>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to drop the last incomplete batch,
-if the dataset size is not divisible by the batch size. If <code class="docutils literal notranslate"><span class="pre">False</span></code> and
-the size of dataset is not divisible by the batch size, then the last batch
-will be smaller. (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
-<li><p><strong>timeout</strong> (<em>numeric</em><em>, </em><em>optional</em>) – if positive, the timeout value for collecting a batch
-from workers. Should always be non-negative. (default: <code class="docutils literal notranslate"><span class="pre">0</span></code>)</p></li>
-<li><p><strong>worker_init_fn</strong> (<em>callable</em><em>, </em><em>optional</em>) – If not <code class="docutils literal notranslate"><span class="pre">None</span></code>, this will be called on each
-worker subprocess with the worker id (an int in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">num_workers</span> <span class="pre">-</span> <span class="pre">1]</span></code>) as
-input, after seeding and before data loading. (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</p></li>
-<li><p><strong>prefetch_factor</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>keyword-only arg</em>) – Number of samples loaded
-in advance by each worker. <code class="docutils literal notranslate"><span class="pre">2</span></code> means there will be a total of
-2 * num_workers samples prefetched across all workers. (default: <code class="docutils literal notranslate"><span class="pre">2</span></code>)</p></li>
-<li><p><strong>persistent_workers</strong> (<em>bool</em><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the data loader will not shutdown
-the worker processes after a dataset has been consumed once. This allows to
-maintain the workers <cite>Dataset</cite> instances alive. (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+<dd><p>数据加载器。结合一个数据集和采样器，并为数据集提供一个可迭代对象。
+数据加载器同时支持 map-style 和 iterable-style 数据集的单/多线程加载，且可以自定义加载顺序和可选的自动处理和内存锁定。
+查看 <code class="xref py py-mod docutils literal notranslate"><span class="pre">flow.utils.data</span></code> 文档页面以获取更多信息。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>dataset</strong> (Dataset): 用于提取并加载数据的数据集</p></li>
+<li><p><strong>batch_size</strong> (int, 可选): 每个 batch 加载的样本数量 (默认： <code class="docutils literal notranslate"><span class="pre">1</span></code>)</p></li>
+<li><p><strong>shuffle</strong> (bool, 可选): 设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 使得数据在每个时刻重新打乱 (默认： <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+<li><p><strong>sampler</strong> (Sampler or Iterable, 可选): 定义从数据库中抽取样本的策略。可以是任何采用了 <code class="docutils literal notranslate"><span class="pre">__len__</span></code> 的 <code class="docutils literal notranslate"><span class="pre">Iterable</span></code>。如果该参数已被指定，则 <code class="xref py py-attr docutils literal notranslate"><span class="pre">shuffle</span></code> 无法被指定</p></li>
+<li><p><strong>batch_sampler</strong> (Sampler or Iterable, 可选): 类似 <a class="reference internal" href="#oneflow.utils.data.DataLoader.sampler" title="oneflow.utils.data.DataLoader.sampler"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sampler</span></code></a>, 但每次返回一个 batch 索引。与 <a class="reference internal" href="#oneflow.utils.data.DataLoader.batch_size" title="oneflow.utils.data.DataLoader.batch_size"><code class="xref py py-attr docutils literal notranslate"><span class="pre">batch_size</span></code></a>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">shuffle</span></code> , <a class="reference internal" href="#oneflow.utils.data.DataLoader.sampler" title="oneflow.utils.data.DataLoader.sampler"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sampler</span></code></a>,和 <a class="reference internal" href="#oneflow.utils.data.DataLoader.drop_last" title="oneflow.utils.data.DataLoader.drop_last"><code class="xref py py-attr docutils literal notranslate"><span class="pre">drop_last</span></code></a> 互斥</p></li>
+<li><p><strong>num_workers</strong> (int, 可选): 被用于加载数据的子线程数量 (默认： <code class="docutils literal notranslate"><span class="pre">0</span></code>). <code class="docutils literal notranslate"><span class="pre">0</span></code> 意味着所有数据都将在主进程加载</p></li>
+<li><p><strong>collate_fn</strong> (callable, 可选): 将一个样本列表合并成 mini-batch 张量。在从 map-style 数据集中使用批加载时被调用</p></li>
+<li><p><strong>drop_last</strong> (bool, 可选): 设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 以在数据集大小无法被 batch 大小整除时将最后一个不完整 batch 丢弃。当为 <code class="docutils literal notranslate"><span class="pre">False</span></code> 时，如果数据集大小无法被 batch 大小整除，最后一个 batch 将相对较小 (默认： <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+<li><p><strong>timeout</strong> (numeric, 可选): 若为正数，该参数为从 worker 处收集 batch 的 timeout 值。应总为非负值 (默认： <code class="docutils literal notranslate"><span class="pre">0</span></code>)</p></li>
+<li><p><strong>worker_init_fn</strong> (callable, 可选): 如果不是 <code class="docutils literal notranslate"><span class="pre">None</span></code>, 该参数将在 seeding 之后和加载数据前，与 worker id (an int in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">num_workers</span> <span class="pre">-</span> <span class="pre">1]</span></code>)一起在每个 worker 的子进程被调用，以作为输入 (默认： <code class="docutils literal notranslate"><span class="pre">None</span></code>)</p></li>
+<li><p><strong>prefetch_factor</strong> (int, 可选, 键word-only arg): 在每个 worker 之前就被加载的样本数量 <code class="docutils literal notranslate"><span class="pre">2``意味着将会有</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">num_workers</span> <span class="pre">个样本在所有</span> <span class="pre">worker</span> <span class="pre">之前被预提取。(default:</span> <span class="pre">``2</span></code>)</p></li>
+<li><p><strong>persistent_workers</strong> (bool, 可选): 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code>, 数据加载器将不会在数据集被加载后关闭 worker 进程。这将允许 <cite>Dataset</cite> worker 进程保持活跃 (默认： <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
 </ul>
 </dd>
 </dl>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>If the <code class="docutils literal notranslate"><span class="pre">spawn</span></code> start method is used, <code class="xref py py-attr docutils literal notranslate"><span class="pre">worker_init_fn</span></code>
-cannot be an unpicklable object, e.g., a lambda function.</p>
+<p>如果 <code class="docutils literal notranslate"><span class="pre">spawn</span></code> 启动方法被使用, <code class="xref py py-attr docutils literal notranslate"><span class="pre">worker_init_fn</span></code>
+不能为 unpicklable 对象, e.g., lambda 函数。</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><code class="docutils literal notranslate"><span class="pre">len(dataloader)</span></code> heuristic is based on the length of the sampler used.
-When <a class="reference internal" href="#oneflow.utils.data.DataLoader.dataset" title="oneflow.utils.data.DataLoader.dataset"><code class="xref py py-attr docutils literal notranslate"><span class="pre">dataset</span></code></a> is an <code class="xref py py-class docutils literal notranslate"><span class="pre">IterableDataset</span></code>,
-it instead returns an estimate based on <code class="docutils literal notranslate"><span class="pre">len(dataset)</span> <span class="pre">/</span> <span class="pre">batch_size</span></code>, with proper
-rounding depending on <a class="reference internal" href="#oneflow.utils.data.DataLoader.drop_last" title="oneflow.utils.data.DataLoader.drop_last"><code class="xref py py-attr docutils literal notranslate"><span class="pre">drop_last</span></code></a>, regardless of multi-process loading
-configurations. This represents the best guess OneFlow can make because OneFlow
-trusts user <a class="reference internal" href="#oneflow.utils.data.DataLoader.dataset" title="oneflow.utils.data.DataLoader.dataset"><code class="xref py py-attr docutils literal notranslate"><span class="pre">dataset</span></code></a> code in correctly handling multi-process
-loading to avoid duplicate data.</p>
-<p>However, if sharding results in multiple workers having incomplete last batches,
-this estimate can still be inaccurate, because (1) an otherwise complete batch can
-be broken into multiple ones and (2) more than one batch worth of samples can be
-dropped when <a class="reference internal" href="#oneflow.utils.data.DataLoader.drop_last" title="oneflow.utils.data.DataLoader.drop_last"><code class="xref py py-attr docutils literal notranslate"><span class="pre">drop_last</span></code></a> is set. Unfortunately, OneFlow can not detect such
-cases in general.</p>
+<p><code class="docutils literal notranslate"><span class="pre">len(dataloader)</span></code> 启动法将基于采样器的长度。
+当 <a class="reference internal" href="#oneflow.utils.data.DataLoader.dataset" title="oneflow.utils.data.DataLoader.dataset"><code class="xref py py-attr docutils literal notranslate"><span class="pre">dataset</span></code></a> 为 <code class="xref py py-class docutils literal notranslate"><span class="pre">IterableDataset</span></code> 时,
+它将返回一个基于 <code class="docutils literal notranslate"><span class="pre">len(dataset)</span> <span class="pre">/</span> <span class="pre">batch_size</span></code> 的估算值，并将根据 <a class="reference internal" href="#oneflow.utils.data.DataLoader.drop_last" title="oneflow.utils.data.DataLoader.drop_last"><code class="xref py py-attr docutils literal notranslate"><span class="pre">drop_last</span></code></a> 进行适当取整，
+不考虑多线程加载配置。这是 OneFlow 能做出的最理想估算，因为 OneFlow 相信 user <a class="reference internal" href="#oneflow.utils.data.DataLoader.dataset" title="oneflow.utils.data.DataLoader.dataset"><code class="xref py py-attr docutils literal notranslate"><span class="pre">dataset</span></code></a> 代码能够正确的处理多线程加载
+来避免重复数据。</p>
+<p>但是，如果多个 worker 的数据分片有不完全的末尾 batch ，此类估算仍有可能为不准确的，因为
+(1) 一个原本完整的 batch 可能被分割为多个，且(2) 当 <a class="reference internal" href="#oneflow.utils.data.DataLoader.drop_last" title="oneflow.utils.data.DataLoader.drop_last"><code class="xref py py-attr docutils literal notranslate"><span class="pre">drop_last</span></code></a> 被设定时，原本能合成一个以上
+batch 的样本将被丢弃。遗憾的是， OneFlow 通常无法检测这类情况。</p>
 </div>
 <dl class="py attribute">
 <dt id="oneflow.utils.data.DataLoader.batch_size">
@@ -305,72 +278,61 @@ cases in general.</p>
 <dl class="py class">
 <dt id="oneflow.utils.data.Dataset">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.data.</span></code><code class="sig-name descname"><span class="pre">Dataset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.data.Dataset" title="Permalink to this definition">¶</a></dt>
-<dd><p>An abstract class representing a <a class="reference internal" href="#oneflow.utils.data.Dataset" title="oneflow.utils.data.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a>.</p>
-<p>All datasets that represent a map from keys to data samples should subclass
-it. All subclasses should overwrite <code class="xref py py-meth docutils literal notranslate"><span class="pre">__getitem__()</span></code>, supporting fetching a
-data sample for a given key. Subclasses could also optionally overwrite
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">__len__()</span></code>, which is expected to return the size of the dataset by many
-<code class="xref py py-class docutils literal notranslate"><span class="pre">Sampler</span></code> implementations and the default options
-of <code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code>.</p>
+<dd><p>一个代表 <a class="reference internal" href="#oneflow.utils.data.Dataset" title="oneflow.utils.data.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> 的抽象类。</p>
+<p>所有能将键映射为数据样本的数据集都应作为该类的子类。所有子类都应替换 <code class="xref py py-meth docutils literal notranslate"><span class="pre">__getitem__()</span></code> 以支持使用指定键提取数据样本。子集也能可选性的替换 <code class="xref py py-meth docutils literal notranslate"><span class="pre">__len__()</span></code> ，一个在许多 <code class="xref py py-class docutils literal notranslate"><span class="pre">Sampler</span></code> 实现和 <code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code> 的默认选项中返回数据集大小的参数。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code> by default constructs a index
-sampler that yields integral indices.  To make it work with a map-style
-dataset with non-integral indices/keys, a custom sampler must be provided.</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code> 在默认情况下会构建一个生成整型索引的索引采样器。
+若要处理由非整型的索引/键映射成的数据集，则需要提供一个自定义采样器。</p>
 </div>
 </dd></dl>
 <dl class="py class">
 <dt id="oneflow.utils.data.IterableDataset">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.data.</span></code><code class="sig-name descname"><span class="pre">IterableDataset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.data.IterableDataset" title="Permalink to this definition">¶</a></dt>
-<dd><p>An iterable Dataset.</p>
-<p>All datasets that represent an iterable of data samples should subclass it.
-Such form of datasets is particularly useful when data come from a stream.</p>
-<p>All subclasses should overwrite <code class="xref py py-meth docutils literal notranslate"><span class="pre">__iter__()</span></code>, which would return an
-iterator of samples in this dataset.</p>
-<p>When a subclass is used with <code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code>, each
-item in the dataset will be yielded from the <code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code>
-iterator. When <code class="xref py py-attr docutils literal notranslate"><span class="pre">num_workers</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, each worker process will have a
-different copy of the dataset object, so it is often desired to configure
-each copy independently to avoid having duplicate data returned from the
-workers.</p>
-<p>Example 1: splitting workload across all workers in <code class="xref py py-meth docutils literal notranslate"><span class="pre">__iter__()</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MyIterableDataset</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">IterableDataset</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+<dd><p>一个可迭代数据集。</p>
+<p>所有包含可迭代的数据样本的数据集都应作为此类的子类。此类数据集在数据来源为数据流时尤其有用。</p>
+<p>所有子类都应替换 <code class="xref py py-meth docutils literal notranslate"><span class="pre">__iter__()</span></code> ，一个用于返回本数据集中迭代器的参数。</p>
+<p>当一个子类和 <code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code> 同时使用时，数据集中的每个内容都将从 <code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code> 中的迭代器中生成。当 <code class="xref py py-attr docutils literal notranslate"><span class="pre">num_workers</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> 时，每个 worker 进程都将拥有一个数据集对象的不同拷贝，所以通常偏好将每个拷贝独立配置以避免 worker 返回重复数据。</p>
+<p>样例1：在 <code class="xref py py-meth docutils literal notranslate"><span class="pre">__iter__()</span></code> 中将负荷分配给所有 worker：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MyIterableDataset</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">IterableDataset</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="nb">super</span><span class="p">(</span><span class="n">MyIterableDataset</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 <span class="gp">... </span>        <span class="k">assert</span> <span class="n">end</span> <span class="o">&gt;</span> <span class="n">start</span><span class="p">,</span> <span class="s2">"this example code only works with end &gt;= start"</span>
 <span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="n">start</span>
 <span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="n">end</span>
 <span class="gp">...</span>
-<span class="gp">... </span>    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="n">iter_start</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span>
 <span class="gp">... </span>        <span class="n">iter_end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span>
 <span class="gp">... </span>        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">iter_start</span><span class="p">,</span> <span class="n">iter_end</span><span class="p">))</span>
 <span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># should give same set of data as range(3, 7), i.e., [3, 4, 5, 6].</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 应提供数据为 range(3,7) 的数据集，i.e., [3, 4, 5, 6].</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span> <span class="o">=</span> <span class="n">MyIterableDataset</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Single-process loading</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span>
-<span class="go">[3, 4, 5, 6]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 单线程加载</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span>
+<span class="go">[tensor([3], dtype=oneflow.int64), tensor([4], dtype=oneflow.int64), tensor([5], dtype=oneflow.int64), tensor([6], dtype=oneflow.int64)]</span>
 </pre></div>
 </div>
-<p>Example 2: splitting workload across all workers using <code class="xref py py-attr docutils literal notranslate"><span class="pre">worker_init_fn</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MyIterableDataset</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">IterableDataset</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+<p>样例2：使用 <code class="xref py py-attr docutils literal notranslate"><span class="pre">worker_init_fn</span></code> 将负荷分配给所有 worker：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MyIterableDataset</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">IterableDataset</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="nb">super</span><span class="p">(</span><span class="n">MyIterableDataset</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 <span class="gp">... </span>        <span class="k">assert</span> <span class="n">end</span> <span class="o">&gt;</span> <span class="n">start</span><span class="p">,</span> <span class="s2">"this example code only works with end &gt;= start"</span>
 <span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="n">start</span>
 <span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="n">end</span>
 <span class="gp">...</span>
-<span class="gp">... </span>    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">))</span>
 <span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># should give same set of data as range(3, 7), i.e., [3, 4, 5, 6].</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 应提供数据为 range(3,7) 的数据集，i.e., [3, 4, 5, 6].</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span> <span class="o">=</span> <span class="n">MyIterableDataset</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Single-process loading</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span>
-<span class="go">[3, 4, 5, 6]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 单线程加载</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span>
+<span class="go">[tensor([3], dtype=oneflow.int64), tensor([4], dtype=oneflow.int64), tensor([5], dtype=oneflow.int64), tensor([6], dtype=oneflow.int64)]</span>
 </pre></div>
 </div>
 <dl class="py attribute">
@@ -397,16 +359,13 @@ workers.</p>
 <dl class="py class">
 <dt id="oneflow.utils.data.RandomSampler">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.data.</span></code><code class="sig-name descname"><span class="pre">RandomSampler</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_source</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Sized</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replacement</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.data.RandomSampler" title="Permalink to this definition">¶</a></dt>
-<dd><p>Samples elements randomly. If without replacement, then sample from a shuffled dataset.
-If with replacement, then user can specify <a class="reference internal" href="#oneflow.utils.data.RandomSampler.num_samples" title="oneflow.utils.data.RandomSampler.num_samples"><code class="xref py py-attr docutils literal notranslate"><span class="pre">num_samples</span></code></a> to draw.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_source</strong> (<a class="reference internal" href="#oneflow.utils.data.Dataset" title="oneflow.utils.data.Dataset"><em>Dataset</em></a>) – dataset to sample from</p></li>
-<li><p><strong>replacement</strong> (<em>bool</em>) – samples are drawn on-demand with replacement if <code class="docutils literal notranslate"><span class="pre">True</span></code>, default=``False``</p></li>
-<li><p><strong>num_samples</strong> (<em>int</em>) – number of samples to draw, default=`len(dataset)`. This argument
-is supposed to be specified only when <cite>replacement</cite> is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
-<li><p><strong>generator</strong> (<em>Generator</em>) – Generator used in sampling.</p></li>
+<dd><p>将元素随机采样。如果没有替换，则直接采样一个完整的打乱的数据集。如果有替换，则用户可以指定抽取的数量。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>data_source</strong> (Dataset): 用于采样的数据集</p></li>
+<li><p><strong>replacement</strong> (bool): 为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 时，样本将根据指定方式被抽取，默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>num_samples</strong> (int): 抽取的数量，默认为 <cite>len(dataset)</cite> 。该参数只有在 <cite>replacement</cite> 为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 时需要被指定</p></li>
+<li><p><strong>generator</strong> (Generator): 采样中被使用的生成器。</p></li>
 </ul>
 </dd>
 </dl>
@@ -426,24 +385,21 @@ is supposed to be specified only when <cite>replacement</cite> is <code class="d
 <dl class="py class">
 <dt id="oneflow.utils.data.Sampler">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.data.</span></code><code class="sig-name descname"><span class="pre">Sampler</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_source</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sized</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.data.Sampler" title="Permalink to this definition">¶</a></dt>
-<dd><p>Base class for all Samplers.</p>
-<p>Every Sampler subclass has to provide an <code class="xref py py-meth docutils literal notranslate"><span class="pre">__iter__()</span></code> method, providing a
-way to iterate over indices of dataset elements, and a <code class="xref py py-meth docutils literal notranslate"><span class="pre">__len__()</span></code> method
-that returns the length of the returned iterators.</p>
+<dd><p>所有采样器的基本类。</p>
+<p>所有采样器子类都需要提供一个用于迭代数据集元素的 <code class="xref py py-meth docutils literal notranslate"><span class="pre">__iter__()</span></code> 方法，和一个返回迭代器长度的 <code class="xref py py-meth docutils literal notranslate"><span class="pre">__len__()</span></code> 方法。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code class="xref py py-meth docutils literal notranslate"><span class="pre">__len__()</span></code> method isn’t strictly required by
-<code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code>, but is expected in any
-calculation involving the length of a <code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code>.</p>
+<p><code class="xref py py-meth docutils literal notranslate"><span class="pre">__len__()</span></code> 方法并不严格的在 <code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code> 中被要求，但是在任何有关计算 <code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code> 的长度的情况下都是必须的。</p>
 </div>
 </dd></dl>
 <dl class="py class">
 <dt id="oneflow.utils.data.SequentialSampler">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.data.</span></code><code class="sig-name descname"><span class="pre">SequentialSampler</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_source</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.data.SequentialSampler" title="Permalink to this definition">¶</a></dt>
-<dd><p>Samples elements sequentially, always in the same order.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data_source</strong> (<a class="reference internal" href="#oneflow.utils.data.Dataset" title="oneflow.utils.data.Dataset"><em>Dataset</em></a>) – dataset to sample from</p>
+<dd><p>依次采样元素，总是以相同的顺序。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>data_source</strong> (Dataset): 用于采样的数据集</p></li>
+</ul>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -454,12 +410,11 @@ calculation involving the length of a <code class="xref py py-class docutils lit
 <dl class="py class">
 <dt id="oneflow.utils.data.Subset">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.data.</span></code><code class="sig-name descname"><span class="pre">Subset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow.utils.data.dataset.Dataset</span><span class="p"><span class="pre">[</span></span><span class="pre">T_co</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.data.Subset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Subset of a dataset at specified indices.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataset</strong> (<a class="reference internal" href="#oneflow.utils.data.Dataset" title="oneflow.utils.data.Dataset"><em>Dataset</em></a>) – The whole Dataset</p></li>
-<li><p><strong>indices</strong> (<em>sequence</em>) – Indices in the whole set selected for subset</p></li>
+<dd><p>一个由数据集的指定索引形成的子集。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>dataset</strong> (Dataset): 整个数据集</p></li>
+<li><p><strong>indices</strong> (sequence): 被选入子集的索引</p></li>
 </ul>
 </dd>
 </dl>
@@ -475,12 +430,11 @@ calculation involving the length of a <code class="xref py py-class docutils lit
 <dl class="py class">
 <dt id="oneflow.utils.data.SubsetRandomSampler">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.data.</span></code><code class="sig-name descname"><span class="pre">SubsetRandomSampler</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.data.SubsetRandomSampler" title="Permalink to this definition">¶</a></dt>
-<dd><p>Samples elements randomly from a given list of indices, without replacement.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>indices</strong> (<em>sequence</em>) – a sequence of indices</p></li>
-<li><p><strong>generator</strong> (<em>Generator</em>) – Generator used in sampling.</p></li>
+<dd><p>根据给定的索引列表随机采样元素，没有替换机制。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>indices</strong> (sequence): 一个索引的序列</p></li>
+<li><p><strong>generator</strong> (Generator): 用于采样的生成器</p></li>
 </ul>
 </dd>
 </dl>
@@ -492,11 +446,12 @@ calculation involving the length of a <code class="xref py py-class docutils lit
 <dl class="py class">
 <dt id="oneflow.utils.data.TensorDataset">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.data.</span></code><code class="sig-name descname"><span class="pre">TensorDataset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">tensors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow._oneflow_internal.Tensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.data.TensorDataset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dataset wrapping tensors.</p>
-<p>Each sample will be retrieved by indexing tensors along the first dimension.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>*tensors</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – tensors that have the same size of the first dimension.</p>
+<dd><p>包装张量的数据集。</p>
+<p>每个样本都将通过索引张量的第一个维度来提取。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>tensors</strong> (tensor): 第一维度大小相同的张量</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -594,1000 +549,6 @@ will yield the same ordering.</p>
 </dd>
 </dl>
 </dd></dl>
-</dd></dl>
-<span class="target" id="module-oneflow.utils.vision.datasets"></span><p>Copyright 2020 The OneFlow Authors. All rights reserved.</p>
-<p>Licensed under the Apache License, Version 2.0 (the “License”);
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at</p>
-<blockquote>
-<div><p><a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
-</div></blockquote>
-<p>Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an “AS IS” BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.</p>
-<dl class="py class">
-<dt id="oneflow.utils.vision.datasets.CIFAR10">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.datasets.</span></code><code class="sig-name descname"><span class="pre">CIFAR10</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_transform</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_url</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.datasets.CIFAR10" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR10</a> Dataset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>root</strong> (<em>string</em>) – Root directory of dataset where directory
-<code class="docutils literal notranslate"><span class="pre">cifar-10-batches-py</span></code> exists or will be saved to if download is set to True.</p></li>
-<li><p><strong>train</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, creates dataset from training set, otherwise
-creates from test set.</p></li>
-<li><p><strong>transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that takes in an PIL image
-and returns a transformed version. E.g, <code class="docutils literal notranslate"><span class="pre">transforms.RandomCrop</span></code></p></li>
-<li><p><strong>target_transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that takes in the
-target and transforms it.</p></li>
-<li><p><strong>download</strong> (<em>bool</em><em>, </em><em>optional</em>) – If true, downloads the dataset from the internet and
-puts it in root directory. If dataset is already downloaded, it is not
-downloaded again.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.CIFAR10.base_folder">
-<code class="sig-name descname"><span class="pre">base_folder</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'cifar-10-batches-py'</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.CIFAR10.base_folder" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.datasets.CIFAR10.download">
-<code class="sig-name descname"><span class="pre">download</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#oneflow.utils.vision.datasets.CIFAR10.download" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.datasets.CIFAR10.extra_repr">
-<code class="sig-name descname"><span class="pre">extra_repr</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">str</span><a class="headerlink" href="#oneflow.utils.vision.datasets.CIFAR10.extra_repr" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.CIFAR10.filename">
-<code class="sig-name descname"><span class="pre">filename</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'cifar-10-python.tar.gz'</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.CIFAR10.filename" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.CIFAR10.meta">
-<code class="sig-name descname"><span class="pre">meta</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'filename':</span> <span class="pre">'batches.meta',</span> <span class="pre">'key':</span> <span class="pre">'label_names',</span> <span class="pre">'md5':</span> <span class="pre">'5ff9c542aee3614f3951f8cda6e48888'}</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.CIFAR10.meta" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.CIFAR10.test_list">
-<code class="sig-name descname"><span class="pre">test_list</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[['test_batch',</span> <span class="pre">'40351d587109b95175f43aff81a1287e']]</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.CIFAR10.test_list" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.CIFAR10.tgz_md5">
-<code class="sig-name descname"><span class="pre">tgz_md5</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'c58f30108f718f92721af3b95e74349a'</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.CIFAR10.tgz_md5" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.CIFAR10.train_list">
-<code class="sig-name descname"><span class="pre">train_list</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[['data_batch_1',</span> <span class="pre">'c99cafc152244af753f735de768cd75f'],</span> <span class="pre">['data_batch_2',</span> <span class="pre">'d4bba439e000b95fd0a9bffe97cbabec'],</span> <span class="pre">['data_batch_3',</span> <span class="pre">'54ebc095f3ab1f0389bbae665268c751'],</span> <span class="pre">['data_batch_4',</span> <span class="pre">'634d18415352ddfa80567beed471001a'],</span> <span class="pre">['data_batch_5',</span> <span class="pre">'482c414d41f54cd18b22e5b47cb7c3cb']]</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.CIFAR10.train_list" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.CIFAR10.url">
-<code class="sig-name descname"><span class="pre">url</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz'</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.CIFAR10.url" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.datasets.CIFAR100">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.datasets.</span></code><code class="sig-name descname"><span class="pre">CIFAR100</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_transform</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_url</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.datasets.CIFAR100" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR100</a> Dataset.</p>
-<p>This is a subclass of the <cite>CIFAR10</cite> Dataset.</p>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.CIFAR100.base_folder">
-<code class="sig-name descname"><span class="pre">base_folder</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'cifar-100-python'</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.CIFAR100.base_folder" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.CIFAR100.data">
-<code class="sig-name descname"><span class="pre">data</span></code><em class="property"><span class="pre">:</span> <span class="pre">Any</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.CIFAR100.data" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.CIFAR100.filename">
-<code class="sig-name descname"><span class="pre">filename</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'cifar-100-python.tar.gz'</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.CIFAR100.filename" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.CIFAR100.meta">
-<code class="sig-name descname"><span class="pre">meta</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'filename':</span> <span class="pre">'meta',</span> <span class="pre">'key':</span> <span class="pre">'fine_label_names',</span> <span class="pre">'md5':</span> <span class="pre">'7973b15100ade9c7d40fb424638fde48'}</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.CIFAR100.meta" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.CIFAR100.test_list">
-<code class="sig-name descname"><span class="pre">test_list</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[['test',</span> <span class="pre">'f0ef6b0ae62326f3e7ffdfab6717acfc']]</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.CIFAR100.test_list" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.CIFAR100.tgz_md5">
-<code class="sig-name descname"><span class="pre">tgz_md5</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'eb9058c3a382ffc7106e4002c42a8d85'</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.CIFAR100.tgz_md5" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.CIFAR100.train_list">
-<code class="sig-name descname"><span class="pre">train_list</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[['train',</span> <span class="pre">'16019d7e3df5f24257cddd939b257f8d']]</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.CIFAR100.train_list" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.CIFAR100.url">
-<code class="sig-name descname"><span class="pre">url</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz'</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.CIFAR100.url" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.datasets.CocoCaptions">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.datasets.</span></code><code class="sig-name descname"><span class="pre">CocoCaptions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annFile</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_transform</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transforms</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.datasets.CocoCaptions" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cocodataset.org/#captions-2015">MS Coco Captions</a> Dataset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>root</strong> (<em>string</em>) – Root directory where images are downloaded to.</p></li>
-<li><p><strong>annFile</strong> (<em>string</em>) – Path to json annotation file.</p></li>
-<li><p><strong>transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that  takes in an PIL image
-and returns a transformed version. E.g, <code class="docutils literal notranslate"><span class="pre">transforms.ToTensor</span></code></p></li>
-<li><p><strong>target_transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that takes in the
-target and transforms it.</p></li>
-<li><p><strong>transforms</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that takes input sample and its target as entry
-and returns a transformed version.</p></li>
-</ul>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow.utils.vision.datasets</span> <span class="kn">as</span> <span class="nn">dset</span>
-<span class="kn">import</span> <span class="nn">oneflow.utils.vision.transforms</span> <span class="kn">as</span> <span class="nn">transforms</span>
-<span class="n">cap</span> <span class="o">=</span> <span class="n">dset</span><span class="o">.</span><span class="n">CocoCaptions</span><span class="p">(</span><span class="n">root</span> <span class="o">=</span> <span class="s1">'dir where images are'</span><span class="p">,</span>
-                        <span class="n">annFile</span> <span class="o">=</span> <span class="s1">'json annotation file'</span><span class="p">,</span>
-                        <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">())</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">'Number of samples: '</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">cap</span><span class="p">))</span>
-<span class="n">img</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">cap</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># load 4th sample</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">"Image Size: "</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
-<span class="k">print</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Number</span> <span class="n">of</span> <span class="n">samples</span><span class="p">:</span> <span class="mi">82783</span>
-<span class="n">Image</span> <span class="n">Size</span><span class="p">:</span> <span class="p">(</span><span class="mi">3</span><span class="n">L</span><span class="p">,</span> <span class="mi">427</span><span class="n">L</span><span class="p">,</span> <span class="mi">640</span><span class="n">L</span><span class="p">)</span>
-<span class="p">[</span><span class="sa">u</span><span class="s1">'A plane emitting smoke stream flying over a mountain.'</span><span class="p">,</span>
-<span class="sa">u</span><span class="s1">'A plane darts across a bright blue sky behind a mountain covered in snow'</span><span class="p">,</span>
-<span class="sa">u</span><span class="s1">'A plane leaves a contrail above the snowy mountain top.'</span><span class="p">,</span>
-<span class="sa">u</span><span class="s1">'A mountain that has a plane flying overheard in the distance.'</span><span class="p">,</span>
-<span class="sa">u</span><span class="s1">'A mountain view with a plume of smoke in the background'</span><span class="p">]</span>
-</pre></div>
-</div>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.datasets.CocoDetection">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.datasets.</span></code><code class="sig-name descname"><span class="pre">CocoDetection</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annFile</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_transform</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transforms</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.datasets.CocoDetection" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cocodataset.org/#detection-2016">MS Coco Detection</a> Dataset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>root</strong> (<em>string</em>) – Root directory where images are downloaded to.</p></li>
-<li><p><strong>annFile</strong> (<em>string</em>) – Path to json annotation file.</p></li>
-<li><p><strong>transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that  takes in an PIL image
-and returns a transformed version. E.g, <code class="docutils literal notranslate"><span class="pre">transforms.ToTensor</span></code></p></li>
-<li><p><strong>target_transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that takes in the
-target and transforms it.</p></li>
-<li><p><strong>transforms</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that takes input sample and its target as entry
-and returns a transformed version.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.datasets.DatasetFolder">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.datasets.</span></code><code class="sig-name descname"><span class="pre">DatasetFolder</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loader</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extensions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">…</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_transform</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_valid_file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.datasets.DatasetFolder" title="Permalink to this definition">¶</a></dt>
-<dd><p>A generic data loader.
-This default directory structure can be customized by overriding the
-<a class="reference internal" href="#oneflow.utils.vision.datasets.DatasetFolder.find_classes" title="oneflow.utils.vision.datasets.DatasetFolder.find_classes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_classes()</span></code></a> method.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>root</strong> (<em>string</em>) – Root directory path.</p></li>
-<li><p><strong>loader</strong> (<em>callable</em>) – A function to load a sample given its path.</p></li>
-<li><p><strong>extensions</strong> (<em>tuple</em><em>[</em><em>string</em><em>]</em>) – A list of allowed extensions.
-both extensions and is_valid_file should not be passed.</p></li>
-<li><p><strong>transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that takes in
-a sample and returns a transformed version.
-E.g, <code class="docutils literal notranslate"><span class="pre">transforms.RandomCrop</span></code> for images.</p></li>
-<li><p><strong>target_transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that takes
-in the target and transforms it.</p></li>
-<li><p><strong>is_valid_file</strong> – A function that takes path of a file
-and check if the file is a valid file (used to check of corrupt files)
-both extensions and is_valid_file should not be passed.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.datasets.DatasetFolder.find_classes">
-<code class="sig-name descname"><span class="pre">find_classes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#oneflow.utils.vision.datasets.DatasetFolder.find_classes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find the class folders in a dataset structured as follows:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>directory/
-├── class_x
-│   ├── xxx.ext
-│   ├── xxy.ext
-│   └── ...
-│       └── xxz.ext
-└── class_y
-    ├── <span class="m">123</span>.ext
-    ├── nsdf3.ext
-    └── ...
-    └── asd932_.ext
-</pre></div>
-</div>
-<p>This method can be overridden to only consider
-a subset of classes, or to adapt to a different dataset directory structure.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>directory</strong> (<em>str</em>) – Root directory path, corresponding to <code class="docutils literal notranslate"><span class="pre">self.root</span></code></p>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>FileNotFoundError</strong> – If <code class="docutils literal notranslate"><span class="pre">dir</span></code> has no class folders.</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>List of all classes and dictionary mapping each class to an index.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>(Tuple[List[str], Dict[str, int]])</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.datasets.DatasetFolder.make_dataset">
-<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">make_dataset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_to_idx</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extensions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">…</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_valid_file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> → <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#oneflow.utils.vision.datasets.DatasetFolder.make_dataset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generates a list of samples of a form (path_to_sample, class).
-This can be overridden to e.g. read files from a compressed zip file instead of from the disk.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>directory</strong> (<em>str</em>) – root dataset directory, corresponding to <code class="docutils literal notranslate"><span class="pre">self.root</span></code>.</p></li>
-<li><p><strong>class_to_idx</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em>) – Dictionary mapping class name to class index.</p></li>
-<li><p><strong>extensions</strong> (<em>optional</em>) – A list of allowed extensions.
-Either extensions or is_valid_file should be passed. Defaults to None.</p></li>
-<li><p><strong>is_valid_file</strong> (<em>optional</em>) – A function that takes path of a file
-and checks if the file is a valid file
-(used to check of corrupt files) both extensions and
-is_valid_file should not be passed. Defaults to None.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>ValueError</strong> – In case <code class="docutils literal notranslate"><span class="pre">class_to_idx</span></code> is empty.</p></li>
-<li><p><strong>ValueError</strong> – In case <code class="docutils literal notranslate"><span class="pre">extensions</span></code> and <code class="docutils literal notranslate"><span class="pre">is_valid_file</span></code> are None or both are not None.</p></li>
-<li><p><strong>FileNotFoundError</strong> – In case no valid file was found for any class.</p></li>
-</ul>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>samples of a form (path_to_sample, class)</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>List[Tuple[str, int]]</p>
-</dd>
-</dl>
-</dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.datasets.FashionMNIST">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.datasets.</span></code><code class="sig-name descname"><span class="pre">FashionMNIST</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_transform</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_url</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.datasets.FashionMNIST" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://github.com/zalandoresearch/fashion-mnist">Fashion-MNIST</a> Dataset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>root</strong> (<em>string</em>) – Root directory of dataset where <code class="docutils literal notranslate"><span class="pre">FashionMNIST/processed/training.pt</span></code>
-and  <code class="docutils literal notranslate"><span class="pre">FashionMNIST/processed/test.pt</span></code> exist.</p></li>
-<li><p><strong>train</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, creates dataset from <code class="docutils literal notranslate"><span class="pre">training.pt</span></code>,
-otherwise from <code class="docutils literal notranslate"><span class="pre">test.pt</span></code>.</p></li>
-<li><p><strong>download</strong> (<em>bool</em><em>, </em><em>optional</em>) – If true, downloads the dataset from the internet and
-puts it in root directory. If dataset is already downloaded, it is not
-downloaded again.</p></li>
-<li><p><strong>transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that  takes in an PIL image
-and returns a transformed version. E.g, <code class="docutils literal notranslate"><span class="pre">transforms.RandomCrop</span></code></p></li>
-<li><p><strong>target_transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that takes in the
-target and transforms it.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.FashionMNIST.classes">
-<code class="sig-name descname"><span class="pre">classes</span></code><em class="property"> <span class="pre">=</span> <span class="pre">['T-shirt/top',</span> <span class="pre">'Trouser',</span> <span class="pre">'Pullover',</span> <span class="pre">'Dress',</span> <span class="pre">'Coat',</span> <span class="pre">'Sandal',</span> <span class="pre">'Shirt',</span> <span class="pre">'Sneaker',</span> <span class="pre">'Bag',</span> <span class="pre">'Ankle</span> <span class="pre">boot']</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.FashionMNIST.classes" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.FashionMNIST.mirrors">
-<code class="sig-name descname"><span class="pre">mirrors</span></code><em class="property"> <span class="pre">=</span> <span class="pre">['http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/']</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.FashionMNIST.mirrors" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.FashionMNIST.resources">
-<code class="sig-name descname"><span class="pre">resources</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[('train-images-idx3-ubyte.gz',</span> <span class="pre">'8d4fb7e6c68d591d4c3dfef9ec88bf0d'),</span> <span class="pre">('train-labels-idx1-ubyte.gz',</span> <span class="pre">'25c81989df183df01b3e8a0aad5dffbe'),</span> <span class="pre">('t10k-images-idx3-ubyte.gz',</span> <span class="pre">'bef4ecab320f06d8554ea6380940ec79'),</span> <span class="pre">('t10k-labels-idx1-ubyte.gz',</span> <span class="pre">'bb300cfdad3c16e7a12a480ee83cd310')]</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.FashionMNIST.resources" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.datasets.ImageFolder">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.datasets.</span></code><code class="sig-name descname"><span class="pre">ImageFolder</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">root:</span> <span class="pre">str,</span> <span class="pre">transform:</span> <span class="pre">Optional[Callable]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">target_transform:</span> <span class="pre">Optional[Callable]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">loader:</span> <span class="pre">Callable[[str],</span> <span class="pre">Any]</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">default_loader&gt;,</span> <span class="pre">is_valid_file:</span> <span class="pre">Optional[Callable[[str],</span> <span class="pre">bool]]</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.datasets.ImageFolder" title="Permalink to this definition">¶</a></dt>
-<dd><p>A generic data loader where the images are arranged in this way by default:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>root/dog/xxx.png
-root/dog/xxy.png
-root/dog/<span class="o">[</span>...<span class="o">]</span>/xxz.png
-root/cat/123.png
-root/cat/nsdf3.png
-root/cat/<span class="o">[</span>...<span class="o">]</span>/asd932_.png
-</pre></div>
-</div>
-<p>This class inherits from <code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetFolder</span></code> so
-the same methods can be overridden to customize the dataset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>root</strong> (<em>string</em>) – Root directory path.</p></li>
-<li><p><strong>transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that  takes in an PIL image
-and returns a transformed version. E.g, <code class="docutils literal notranslate"><span class="pre">transforms.RandomCrop</span></code></p></li>
-<li><p><strong>target_transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that takes in the
-target and transforms it.</p></li>
-<li><p><strong>loader</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function to load an image given its path.</p></li>
-<li><p><strong>is_valid_file</strong> – A function that takes path of an Image file
-and check if the file is a valid file (used to check of corrupt files)</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.datasets.ImageNet">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.datasets.</span></code><code class="sig-name descname"><span class="pre">ImageNet</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'train'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.datasets.ImageNet" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="http://image-net.org/">ImageNet</a> 2012 Classification Dataset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>root</strong> (<em>string</em>) – Root directory of the ImageNet Dataset.</p></li>
-<li><p><strong>split</strong> (<em>string</em><em>, </em><em>optional</em>) – The dataset split, supports <code class="docutils literal notranslate"><span class="pre">train</span></code>, or <code class="docutils literal notranslate"><span class="pre">val</span></code>.</p></li>
-<li><p><strong>transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that  takes in an PIL image
-and returns a transformed version. E.g, <code class="docutils literal notranslate"><span class="pre">transforms.RandomCrop</span></code></p></li>
-<li><p><strong>target_transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that takes in the
-target and transforms it.</p></li>
-<li><p><strong>loader</strong> – A function to load an image given its path.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.datasets.ImageNet.extra_repr">
-<code class="sig-name descname"><span class="pre">extra_repr</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">str</span><a class="headerlink" href="#oneflow.utils.vision.datasets.ImageNet.extra_repr" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.datasets.ImageNet.parse_archives">
-<code class="sig-name descname"><span class="pre">parse_archives</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#oneflow.utils.vision.datasets.ImageNet.parse_archives" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.datasets.ImageNet.split_folder">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">split_folder</span></code><a class="headerlink" href="#oneflow.utils.vision.datasets.ImageNet.split_folder" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.datasets.MNIST">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.datasets.</span></code><code class="sig-name descname"><span class="pre">MNIST</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_transform</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_url</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.datasets.MNIST" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="http://yann.lecun.com/exdb/mnist/">MNIST</a> Dataset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>root</strong> (<em>string</em>) – Root directory of dataset where <code class="docutils literal notranslate"><span class="pre">MNIST/processed/training.pt</span></code>
-and  <code class="docutils literal notranslate"><span class="pre">MNIST/processed/test.pt</span></code> exist.</p></li>
-<li><p><strong>train</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, creates dataset from <code class="docutils literal notranslate"><span class="pre">training.pt</span></code>,
-otherwise from <code class="docutils literal notranslate"><span class="pre">test.pt</span></code>.</p></li>
-<li><p><strong>download</strong> (<em>bool</em><em>, </em><em>optional</em>) – If true, downloads the dataset from the internet and
-puts it in root directory. If dataset is already downloaded, it is not
-downloaded again.</p></li>
-<li><p><strong>transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that  takes in an PIL image
-and returns a transformed version. E.g, <code class="docutils literal notranslate"><span class="pre">transforms.RandomCrop</span></code></p></li>
-<li><p><strong>target_transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that takes in the
-target and transforms it.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.datasets.MNIST.class_to_idx">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">class_to_idx</span></code><a class="headerlink" href="#oneflow.utils.vision.datasets.MNIST.class_to_idx" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.MNIST.classes">
-<code class="sig-name descname"><span class="pre">classes</span></code><em class="property"> <span class="pre">=</span> <span class="pre">['0</span> <span class="pre">-</span> <span class="pre">zero',</span> <span class="pre">'1</span> <span class="pre">-</span> <span class="pre">one',</span> <span class="pre">'2</span> <span class="pre">-</span> <span class="pre">two',</span> <span class="pre">'3</span> <span class="pre">-</span> <span class="pre">three',</span> <span class="pre">'4</span> <span class="pre">-</span> <span class="pre">four',</span> <span class="pre">'5</span> <span class="pre">-</span> <span class="pre">five',</span> <span class="pre">'6</span> <span class="pre">-</span> <span class="pre">six',</span> <span class="pre">'7</span> <span class="pre">-</span> <span class="pre">seven',</span> <span class="pre">'8</span> <span class="pre">-</span> <span class="pre">eight',</span> <span class="pre">'9</span> <span class="pre">-</span> <span class="pre">nine']</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.MNIST.classes" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.datasets.MNIST.download">
-<code class="sig-name descname"><span class="pre">download</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#oneflow.utils.vision.datasets.MNIST.download" title="Permalink to this definition">¶</a></dt>
-<dd><p>Download the MNIST data if it doesn’t exist already.</p>
-</dd></dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.datasets.MNIST.extra_repr">
-<code class="sig-name descname"><span class="pre">extra_repr</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">str</span><a class="headerlink" href="#oneflow.utils.vision.datasets.MNIST.extra_repr" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.MNIST.mirrors">
-<code class="sig-name descname"><span class="pre">mirrors</span></code><em class="property"> <span class="pre">=</span> <span class="pre">['http://yann.lecun.com/exdb/mnist/',</span> <span class="pre">'https://ossci-datasets.s3.amazonaws.com/mnist/']</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.MNIST.mirrors" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.datasets.MNIST.processed_folder">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">processed_folder</span></code><a class="headerlink" href="#oneflow.utils.vision.datasets.MNIST.processed_folder" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.datasets.MNIST.raw_folder">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">raw_folder</span></code><a class="headerlink" href="#oneflow.utils.vision.datasets.MNIST.raw_folder" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.MNIST.resources">
-<code class="sig-name descname"><span class="pre">resources</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[('train-images-idx3-ubyte.gz',</span> <span class="pre">'f68b3c2dcbeaaa9fbdd348bbdeb94873'),</span> <span class="pre">('train-labels-idx1-ubyte.gz',</span> <span class="pre">'d53e105ee54ea40749a09fcbcd1e9432'),</span> <span class="pre">('t10k-images-idx3-ubyte.gz',</span> <span class="pre">'9fb629c4189551a2d022fa330f9573f3'),</span> <span class="pre">('t10k-labels-idx1-ubyte.gz',</span> <span class="pre">'ec29112dd5afa0611ce80d1b7f02629c')]</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.MNIST.resources" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.datasets.MNIST.test_data">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">test_data</span></code><a class="headerlink" href="#oneflow.utils.vision.datasets.MNIST.test_data" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.MNIST.test_file">
-<code class="sig-name descname"><span class="pre">test_file</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'test.pt'</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.MNIST.test_file" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.datasets.MNIST.test_labels">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">test_labels</span></code><a class="headerlink" href="#oneflow.utils.vision.datasets.MNIST.test_labels" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.datasets.MNIST.train_data">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">train_data</span></code><a class="headerlink" href="#oneflow.utils.vision.datasets.MNIST.train_data" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.datasets.MNIST.train_labels">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">train_labels</span></code><a class="headerlink" href="#oneflow.utils.vision.datasets.MNIST.train_labels" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.datasets.MNIST.training_file">
-<code class="sig-name descname"><span class="pre">training_file</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'training.pt'</span></em><a class="headerlink" href="#oneflow.utils.vision.datasets.MNIST.training_file" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.datasets.VOCDetection">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.datasets.</span></code><code class="sig-name descname"><span class="pre">VOCDetection</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'2012'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_set</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'train'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_transform</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transforms</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.datasets.VOCDetection" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="http://host.robots.ox.ac.uk/pascal/VOC/">Pascal VOC</a> Detection Dataset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>root</strong> (<em>string</em>) – Root directory of the VOC Dataset.</p></li>
-<li><p><strong>year</strong> (<em>string</em><em>, </em><em>optional</em>) – The dataset year, supports years <code class="docutils literal notranslate"><span class="pre">"2007"</span></code> to <code class="docutils literal notranslate"><span class="pre">"2012"</span></code>.</p></li>
-<li><p><strong>image_set</strong> (<em>string</em><em>, </em><em>optional</em>) – Select the image_set to use, <code class="docutils literal notranslate"><span class="pre">"train"</span></code>, <code class="docutils literal notranslate"><span class="pre">"trainval"</span></code> or <code class="docutils literal notranslate"><span class="pre">"val"</span></code>. If
-<code class="docutils literal notranslate"><span class="pre">year=="2007"</span></code>, can also be <code class="docutils literal notranslate"><span class="pre">"test"</span></code>.</p></li>
-<li><p><strong>download</strong> (<em>bool</em><em>, </em><em>optional</em>) – If true, downloads the dataset from the internet and
-puts it in root directory. If dataset is already downloaded, it is not
-downloaded again.
-(default: alphabetic indexing of VOC’s 20 classes).</p></li>
-<li><p><strong>transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that  takes in an PIL image
-and returns a transformed version. E.g, <code class="docutils literal notranslate"><span class="pre">transforms.RandomCrop</span></code></p></li>
-<li><p><strong>target_transform</strong> (<em>callable</em><em>, </em><em>required</em>) – A function/transform that takes in the
-target and transforms it.</p></li>
-<li><p><strong>transforms</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that takes input sample and its target as entry
-and returns a transformed version.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.datasets.VOCDetection.annotations">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">annotations</span></code><a class="headerlink" href="#oneflow.utils.vision.datasets.VOCDetection.annotations" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.datasets.VOCDetection.parse_voc_xml">
-<code class="sig-name descname"><span class="pre">parse_voc_xml</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">xml.etree.ElementTree.Element</span></span></em><span class="sig-paren">)</span> → <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#oneflow.utils.vision.datasets.VOCDetection.parse_voc_xml" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.datasets.VOCSegmentation">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.datasets.</span></code><code class="sig-name descname"><span class="pre">VOCSegmentation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'2012'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_set</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'train'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_transform</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transforms</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.datasets.VOCSegmentation" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="http://host.robots.ox.ac.uk/pascal/VOC/">Pascal VOC</a> Segmentation Dataset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>root</strong> (<em>string</em>) – Root directory of the VOC Dataset.</p></li>
-<li><p><strong>year</strong> (<em>string</em><em>, </em><em>optional</em>) – The dataset year, supports years <code class="docutils literal notranslate"><span class="pre">"2007"</span></code> to <code class="docutils literal notranslate"><span class="pre">"2012"</span></code>.</p></li>
-<li><p><strong>image_set</strong> (<em>string</em><em>, </em><em>optional</em>) – Select the image_set to use, <code class="docutils literal notranslate"><span class="pre">"train"</span></code>, <code class="docutils literal notranslate"><span class="pre">"trainval"</span></code> or <code class="docutils literal notranslate"><span class="pre">"val"</span></code>. If
-<code class="docutils literal notranslate"><span class="pre">year=="2007"</span></code>, can also be <code class="docutils literal notranslate"><span class="pre">"test"</span></code>.</p></li>
-<li><p><strong>download</strong> (<em>bool</em><em>, </em><em>optional</em>) – If true, downloads the dataset from the internet and
-puts it in root directory. If dataset is already downloaded, it is not
-downloaded again.</p></li>
-<li><p><strong>transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that  takes in an PIL image
-and returns a transformed version. E.g, <code class="docutils literal notranslate"><span class="pre">transforms.RandomCrop</span></code></p></li>
-<li><p><strong>target_transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that takes in the
-target and transforms it.</p></li>
-<li><p><strong>transforms</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that takes input sample and its target as entry
-and returns a transformed version.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.datasets.VOCSegmentation.masks">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">masks</span></code><a class="headerlink" href="#oneflow.utils.vision.datasets.VOCSegmentation.masks" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-</dd></dl>
-<span class="target" id="module-oneflow.utils.vision.transforms"></span><p>Copyright 2020 The OneFlow Authors. All rights reserved.</p>
-<p>Licensed under the Apache License, Version 2.0 (the “License”);
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at</p>
-<blockquote>
-<div><p><a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
-</div></blockquote>
-<p>Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an “AS IS” BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.</p>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.CenterCrop">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">CenterCrop</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.CenterCrop" title="Permalink to this definition">¶</a></dt>
-<dd><p>Crops the given image at the center.
-If the image is oneflow Tensor, it is expected
-to have […, H, W] shape, where … means an arbitrary number of leading dimensions.
-If image size is smaller than output size along any edge, image is padded with 0 and then center cropped.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>size</strong> (<em>sequence</em><em> or </em><em>int</em>) – Desired output size of the crop. If size is an
-int instead of sequence like (h, w), a square crop (size, size) is
-made. If provided a sequence of length 1, it will be interpreted as (size[0], size[0]).</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.Compose">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">Compose</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transforms</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.Compose" title="Permalink to this definition">¶</a></dt>
-<dd><p>Composes several transforms together.
-Please, see the note below.
-:param transforms: list of transforms to compose.
-:type transforms: list of <code class="docutils literal notranslate"><span class="pre">Transform</span></code> objects</p>
-<p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">transforms</span><span class="o">.</span><span class="n">CenterCrop</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">])</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In order to script the transformations, please use <code class="docutils literal notranslate"><span class="pre">flow.nn.Sequential</span></code> as below.
-&gt;&gt;&gt; transforms = flow.nn.Sequential(
-&gt;&gt;&gt;     transforms.CenterCrop(10),
-&gt;&gt;&gt;     transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
-&gt;&gt;&gt; )
-Make sure to use only scriptable transformations, i.e. that work with <code class="docutils literal notranslate"><span class="pre">flow.Tensor</span></code>, does not require
-<cite>lambda</cite> functions or <code class="docutils literal notranslate"><span class="pre">PIL.Image</span></code>.</p>
-</div>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.ConvertImageDtype">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">ConvertImageDtype</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow._oneflow_internal.dtype</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.ConvertImageDtype" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert a tensor image to the given <code class="docutils literal notranslate"><span class="pre">dtype</span></code> and scale the values accordingly
-This function does not support PIL Image.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>dtype</strong> (<em>flow.dtype</em>) – Desired data type of the output</p>
-</dd>
-</dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>When converting from a smaller to a larger integer <code class="docutils literal notranslate"><span class="pre">dtype</span></code> the maximum values are <strong>not</strong> mapped exactly.
-If converted back and forth, this mismatch has no effect.</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><strong>RuntimeError</strong> – When trying to cast <code class="xref py py-class docutils literal notranslate"><span class="pre">flow.float32</span></code> to <code class="xref py py-class docutils literal notranslate"><span class="pre">flow.int32</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">flow.int64</span></code> as
-    well as for trying to cast <code class="xref py py-class docutils literal notranslate"><span class="pre">flow.float64</span></code> to <code class="xref py py-class docutils literal notranslate"><span class="pre">flow.int64</span></code>. These conversions might lead to
-    overflow errors since the floating point <code class="docutils literal notranslate"><span class="pre">dtype</span></code> cannot store consecutive integers over the whole range
-    of the integer <code class="docutils literal notranslate"><span class="pre">dtype</span></code>.</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.FiveCrop">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">FiveCrop</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.FiveCrop" title="Permalink to this definition">¶</a></dt>
-<dd><p>Crop the given image into four corners and the central crop.
-If the image is flow Tensor, it is expected
-to have […, H, W] shape, where … means an arbitrary number of leading
-dimensions</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This transform returns a tuple of images and there may be a mismatch in the number of
-inputs and targets your Dataset returns. See below for an example of how to deal with
-this.</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>size</strong> (<em>sequence</em><em> or </em><em>int</em>) – Desired output size of the crop. If size is an <code class="docutils literal notranslate"><span class="pre">int</span></code>
-instead of sequence like (h, w), a square crop of size (size, size) is made.
-If provided a sequence of length 1, it will be interpreted as (size[0], size[0]).</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">transform</span> <span class="o">=</span> <span class="n">Compose</span><span class="p">([</span>
-<span class="gp">&gt;&gt;&gt; </span>   <span class="n">FiveCrop</span><span class="p">(</span><span class="n">size</span><span class="p">),</span> <span class="c1"># this is a list of PIL Images</span>
-<span class="gp">&gt;&gt;&gt; </span>   <span class="n">Lambda</span><span class="p">(</span><span class="k">lambda</span> <span class="n">crops</span><span class="p">:</span> <span class="n">flow</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">ToTensor</span><span class="p">()(</span><span class="n">crop</span><span class="p">)</span> <span class="k">for</span> <span class="n">crop</span> <span class="ow">in</span> <span class="n">crops</span><span class="p">]))</span> <span class="c1"># returns a 4D tensor</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1">#In your test loop you can do the following:</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">batch</span> <span class="c1"># input is a 5d tensor, target is 2d</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bs</span><span class="p">,</span> <span class="n">ncrops</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span> <span class="c1"># fuse batch size and ncrops</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">result_avg</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">bs</span><span class="p">,</span> <span class="n">ncrops</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># avg over crops</span>
-</pre></div>
-</div>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.InterpolationMode">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">InterpolationMode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.InterpolationMode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interpolation modes</p>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.transforms.InterpolationMode.BICUBIC">
-<code class="sig-name descname"><span class="pre">BICUBIC</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'bicubic'</span></em><a class="headerlink" href="#oneflow.utils.vision.transforms.InterpolationMode.BICUBIC" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.transforms.InterpolationMode.BILINEAR">
-<code class="sig-name descname"><span class="pre">BILINEAR</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'bilinear'</span></em><a class="headerlink" href="#oneflow.utils.vision.transforms.InterpolationMode.BILINEAR" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.transforms.InterpolationMode.BOX">
-<code class="sig-name descname"><span class="pre">BOX</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'box'</span></em><a class="headerlink" href="#oneflow.utils.vision.transforms.InterpolationMode.BOX" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.transforms.InterpolationMode.HAMMING">
-<code class="sig-name descname"><span class="pre">HAMMING</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'hamming'</span></em><a class="headerlink" href="#oneflow.utils.vision.transforms.InterpolationMode.HAMMING" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.transforms.InterpolationMode.LANCZOS">
-<code class="sig-name descname"><span class="pre">LANCZOS</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'lanczos'</span></em><a class="headerlink" href="#oneflow.utils.vision.transforms.InterpolationMode.LANCZOS" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py attribute">
-<dt id="oneflow.utils.vision.transforms.InterpolationMode.NEAREST">
-<code class="sig-name descname"><span class="pre">NEAREST</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'nearest'</span></em><a class="headerlink" href="#oneflow.utils.vision.transforms.InterpolationMode.NEAREST" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.Lambda">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">Lambda</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambd</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.Lambda" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply a user-defined lambda as a transform.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>lambd</strong> (<em>function</em>) – Lambda/function to be used for transform.</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.Normalize">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">Normalize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.Normalize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Normalize a tensor image with mean and standard deviation.
-This transform does not support PIL Image.
-Given mean: <code class="docutils literal notranslate"><span class="pre">(mean[1],...,mean[n])</span></code> and std: <code class="docutils literal notranslate"><span class="pre">(std[1],..,std[n])</span></code> for <code class="docutils literal notranslate"><span class="pre">n</span></code>
-channels, this transform will normalize each channel of the input
-<code class="docutils literal notranslate"><span class="pre">flow.*Tensor</span></code> i.e.,
-<code class="docutils literal notranslate"><span class="pre">output[channel]</span> <span class="pre">=</span> <span class="pre">(input[channel]</span> <span class="pre">-</span> <span class="pre">mean[channel])</span> <span class="pre">/</span> <span class="pre">std[channel]</span></code></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This transform acts out of place, i.e., it does not mutate the input tensor.</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>mean</strong> (<em>sequence</em>) – Sequence of means for each channel.</p></li>
-<li><p><strong>std</strong> (<em>sequence</em>) – Sequence of standard deviations for each channel.</p></li>
-<li><p><strong>inplace</strong> (<em>bool</em><em>,</em><em>optional</em>) – Bool to make this operation in-place.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.PILToTensor">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">PILToTensor</span></code><a class="headerlink" href="#oneflow.utils.vision.transforms.PILToTensor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert a <code class="docutils literal notranslate"><span class="pre">PIL</span> <span class="pre">Image</span></code> to a tensor of the same type</p>
-<p>Converts a PIL Image (H x W x C) to a Tensor of shape (C x H x W).</p>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.Pad">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">Pad</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">padding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'constant'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.Pad" title="Permalink to this definition">¶</a></dt>
-<dd><p>Pad the given image on all sides with the given “pad” value.
-If the image is oneflow Tensor, it is expected
-to have […, H, W] shape, where … means at most 2 leading dimensions for mode reflect and symmetric,
-at most 3 leading dimensions for mode edge,
-and an arbitrary number of leading dimensions for mode constant</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>padding</strong> (<em>int</em><em> or </em><em>sequence</em>) – Padding on each border. If a single int is provided this
-is used to pad all borders. If sequence of length 2 is provided this is the padding
-on left/right and top/bottom respectively. If a sequence of length 4 is provided
-this is the padding for the left, top, right and bottom borders respectively.</p></li>
-<li><p><strong>fill</strong> (<em>number</em><em> or </em><em>str</em><em> or </em><em>tuple</em>) – Pixel fill value for constant fill. Default is 0. If a tuple of
-length 3, it is used to fill R, G, B channels respectively.
-This value is only used when the padding_mode is constant.
-Only number is supported for oneflow Tensor.
-Only int or str or tuple value is supported for PIL Image.</p></li>
-<li><p><strong>padding_mode</strong> (<em>str</em>) – <p>Type of padding. Should be: constant, edge, reflect or symmetric.
-Default is constant.</p>
-<ul>
-<li><p>constant: pads with a constant value, this value is specified with fill</p></li>
-<li><p>edge: pads with the last value at the edge of the image.
-If input a 5D oneflow Tensor, the last 3 dimensions will be padded instead of the last 2</p></li>
-<li><p>reflect: pads with reflection of image without repeating the last value on the edge.
-For example, padding [1, 2, 3, 4] with 2 elements on both sides in reflect mode
-will result in [3, 2, 1, 2, 3, 4, 3, 2]</p></li>
-<li><p>symmetric: pads with reflection of image repeating the last value on the edge.
-For example, padding [1, 2, 3, 4] with 2 elements on both sides in symmetric mode
-will result in [2, 1, 1, 2, 3, 4, 4, 3]</p></li>
-</ul>
-</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.RandomApply">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">RandomApply</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transforms</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.RandomApply" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply randomly a list of transformations with a given probability.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In order to script the transformation, please use <code class="docutils literal notranslate"><span class="pre">flow.nn.ModuleList</span></code> as input instead of list/tuple of
-transforms as shown below:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">transforms</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">RandomApply</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">transforms</span><span class="o">.</span><span class="n">ColorJitter</span><span class="p">(),</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">]),</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Make sure to use only scriptable transformations, i.e. that work with <code class="docutils literal notranslate"><span class="pre">flow.Tensor</span></code>, does not require
-<cite>lambda</cite> functions or <code class="docutils literal notranslate"><span class="pre">PIL.Image</span></code>.</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>transforms</strong> (<em>sequence</em><em> or </em><a class="reference internal" href="module.html#oneflow.nn.Module" title="oneflow.nn.Module"><em>Module</em></a>) – list of transformations</p></li>
-<li><p><strong>p</strong> (<em>float</em>) – probability</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.RandomChoice">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">RandomChoice</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transforms</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.RandomChoice" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply single transformation randomly picked from a list.</p>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.RandomCrop">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">RandomCrop</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_if_needed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'constant'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.RandomCrop" title="Permalink to this definition">¶</a></dt>
-<dd><p>Crop the given image at a random location.
-If the image is oneflow Tensor, it is expected
-to have […, H, W] shape, where … means an arbitrary number of leading dimensions,
-but if non-constant padding is used, the input is expected to have at most 2 leading dimensions</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>size</strong> (<em>sequence</em><em> or </em><em>int</em>) – Desired output size of the crop. If size is an
-int instead of sequence like (h, w), a square crop (size, size) is
-made. If provided a sequence of length 1, it will be interpreted as (size[0], size[0]).</p></li>
-<li><p><strong>padding</strong> (<em>int</em><em> or </em><em>sequence</em><em>, </em><em>optional</em>) – Optional padding on each border
-of the image. Default is None. If a single int is provided this
-is used to pad all borders. If sequence of length 2 is provided this is the padding
-on left/right and top/bottom respectively. If a sequence of length 4 is provided
-this is the padding for the left, top, right and bottom borders respectively.</p></li>
-<li><p><strong>pad_if_needed</strong> (<em>boolean</em>) – It will pad the image if smaller than the
-desired size to avoid raising an exception. Since cropping is done
-after padding, the padding seems to be done at a random offset.</p></li>
-<li><p><strong>fill</strong> (<em>number</em><em> or </em><em>str</em><em> or </em><em>tuple</em>) – Pixel fill value for constant fill. Default is 0. If a tuple of
-length 3, it is used to fill R, G, B channels respectively.
-This value is only used when the padding_mode is constant.
-Only number is supported for flow Tensor.
-Only int or str or tuple value is supported for PIL Image.</p></li>
-<li><p><strong>padding_mode</strong> (<em>str</em>) – <p>Type of padding. Should be: constant, edge, reflect or symmetric.
-Default is constant.</p>
-<ul>
-<li><p>constant: pads with a constant value, this value is specified with fill</p></li>
-<li><p>edge: pads with the last value at the edge of the image.
-If input a 5D flow Tensor, the last 3 dimensions will be padded instead of the last 2</p></li>
-<li><p>reflect: pads with reflection of image without repeating the last value on the edge.
-For example, padding [1, 2, 3, 4] with 2 elements on both sides in reflect mode
-will result in [3, 2, 1, 2, 3, 4, 3, 2]</p></li>
-<li><p>symmetric: pads with reflection of image repeating the last value on the edge.
-For example, padding [1, 2, 3, 4] with 2 elements on both sides in symmetric mode
-will result in [2, 1, 1, 2, 3, 4, 4, 3]</p></li>
-</ul>
-</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.transforms.RandomCrop.get_params">
-<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">get_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow._oneflow_internal.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> → <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#oneflow.utils.vision.transforms.RandomCrop.get_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get parameters for <code class="docutils literal notranslate"><span class="pre">crop</span></code> for a random crop.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>img</strong> (<em>PIL Image</em><em> or </em><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – Image to be cropped.</p></li>
-<li><p><strong>output_size</strong> (<em>tuple</em>) – Expected output size of the crop.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>params (i, j, h, w) to be passed to <code class="docutils literal notranslate"><span class="pre">crop</span></code> for random crop.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>tuple</p>
-</dd>
-</dl>
-</dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.RandomHorizontalFlip">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">RandomHorizontalFlip</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.RandomHorizontalFlip" title="Permalink to this definition">¶</a></dt>
-<dd><p>Horizontally flip the given image randomly with a given probability.
-If the image is flow Tensor, it is expected
-to have […, H, W] shape, where … means an arbitrary number of leading
-dimensions</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>p</strong> (<em>float</em>) – probability of the image being flipped. Default value is 0.5</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.RandomOrder">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">RandomOrder</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transforms</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.RandomOrder" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply a list of transformations in a random order.</p>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.RandomResizedCrop">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">RandomResizedCrop</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">size</span></em>, <em class="sig-param"><span class="pre">scale=(0.08</span></em>, <em class="sig-param"><span class="pre">1.0)</span></em>, <em class="sig-param"><span class="pre">ratio=(0.75</span></em>, <em class="sig-param"><span class="pre">1.3333333333333333)</span></em>, <em class="sig-param"><span class="pre">interpolation=&lt;InterpolationMode.BILINEAR:</span> <span class="pre">'bilinear'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.RandomResizedCrop" title="Permalink to this definition">¶</a></dt>
-<dd><p>Crop a random portion of image and resize it to a given size.</p>
-<p>If the image is flow Tensor, it is expected
-to have […, H, W] shape, where … means an arbitrary number of leading dimensions</p>
-<p>A crop of the original image is made: the crop has a random area (H * W)
-and a random aspect ratio. This crop is finally resized to the given
-size. This is popularly used to train the Inception networks.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>size</strong> (<em>int</em><em> or </em><em>sequence</em>) – expected output size of the crop, for each edge. If size is an
-int instead of sequence like (h, w), a square output size <code class="docutils literal notranslate"><span class="pre">(size,</span> <span class="pre">size)</span></code> is
-made. If provided a sequence of length 1, it will be interpreted as (size[0], size[0]).</p></li>
-<li><p><strong>scale</strong> (<em>tuple of float</em>) – Specifies the lower and upper bounds for the random area of the crop,
-before resizing. The scale is defined with respect to the area of the original image.</p></li>
-<li><p><strong>ratio</strong> (<em>tuple of float</em>) – lower and upper bounds for the random aspect ratio of the crop, before
-resizing.</p></li>
-<li><p><strong>interpolation</strong> (<a class="reference internal" href="#oneflow.utils.vision.transforms.InterpolationMode" title="oneflow.utils.vision.transforms.InterpolationMode"><em>InterpolationMode</em></a>) – Desired interpolation enum defined by
-<code class="xref py py-class docutils literal notranslate"><span class="pre">flow.utils.vision.transforms.InterpolationMode</span></code>. Default is <code class="docutils literal notranslate"><span class="pre">InterpolationMode.BILINEAR</span></code>.
-If input is Tensor, only <code class="docutils literal notranslate"><span class="pre">InterpolationMode.NEAREST</span></code>, <code class="docutils literal notranslate"><span class="pre">InterpolationMode.BILINEAR</span></code> and
-<code class="docutils literal notranslate"><span class="pre">InterpolationMode.BICUBIC</span></code> are supported.
-For backward compatibility integer values (e.g. <code class="docutils literal notranslate"><span class="pre">PIL.Image.NEAREST</span></code>) are still acceptable.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt id="oneflow.utils.vision.transforms.RandomResizedCrop.get_params">
-<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">get_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow._oneflow_internal.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> → <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#oneflow.utils.vision.transforms.RandomResizedCrop.get_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get parameters for <code class="docutils literal notranslate"><span class="pre">crop</span></code> for a random sized crop.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>img</strong> (<em>PIL Image</em><em> or </em><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – Input image.</p></li>
-<li><p><strong>scale</strong> (<em>list</em>) – range of scale of the origin size cropped</p></li>
-<li><p><strong>ratio</strong> (<em>list</em>) – range of aspect ratio of the origin aspect ratio cropped</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>params (i, j, h, w) to be passed to <code class="docutils literal notranslate"><span class="pre">crop</span></code> for a random
-sized crop.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>tuple</p>
-</dd>
-</dl>
-</dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.RandomSizedCrop">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">RandomSizedCrop</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.RandomSizedCrop" title="Permalink to this definition">¶</a></dt>
-<dd><p>Note: This transform is deprecated in favor of RandomResizedCrop.</p>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.RandomTransforms">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">RandomTransforms</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transforms</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.RandomTransforms" title="Permalink to this definition">¶</a></dt>
-<dd><p>Base class for a list of transformations with randomness</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>transforms</strong> (<em>sequence</em>) – list of transformations</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.RandomVerticalFlip">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">RandomVerticalFlip</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.RandomVerticalFlip" title="Permalink to this definition">¶</a></dt>
-<dd><p>Vertically flip the given image randomly with a given probability.
-If the image is flow Tensor, it is expected
-to have […, H, W] shape, where … means an arbitrary number of leading
-dimensions</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>p</strong> (<em>float</em>) – probability of the image being flipped. Default value is 0.5</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.Resize">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">Resize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">size</span></em>, <em class="sig-param"><span class="pre">interpolation=&lt;InterpolationMode.BILINEAR:</span> <span class="pre">'bilinear'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.Resize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Resize the input image to the given size.
-If the image is oneflow Tensor, it is expected
-to have […, H, W] shape, where … means an arbitrary number of leading dimensions</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>size</strong> (<em>sequence</em><em> or </em><em>int</em>) – Desired output size. If size is a sequence like
-(h, w), output size will be matched to this. If size is an int,
-smaller edge of the image will be matched to this number.
-i.e, if height &gt; width, then image will be rescaled to
-(size * height / width, size).</p></li>
-<li><p><strong>interpolation</strong> (<a class="reference internal" href="#oneflow.utils.vision.transforms.InterpolationMode" title="oneflow.utils.vision.transforms.InterpolationMode"><em>InterpolationMode</em></a>) – Desired interpolation enum defined by
-<code class="xref py py-class docutils literal notranslate"><span class="pre">flow.utils.vision.transforms.InterpolationMode</span></code>. Default is <code class="docutils literal notranslate"><span class="pre">InterpolationMode.BILINEAR</span></code>.
-If input is Tensor, only <code class="docutils literal notranslate"><span class="pre">InterpolationMode.NEAREST</span></code>, <code class="docutils literal notranslate"><span class="pre">InterpolationMode.BILINEAR</span></code> and
-<code class="docutils literal notranslate"><span class="pre">InterpolationMode.BICUBIC</span></code> are supported.
-For backward compatibility integer values (e.g. <code class="docutils literal notranslate"><span class="pre">PIL.Image.NEAREST</span></code>) are still acceptable.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.Scale">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">Scale</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.Scale" title="Permalink to this definition">¶</a></dt>
-<dd><p>Note: This transform is deprecated in favor of Resize.</p>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.TenCrop">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">TenCrop</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertical_flip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.TenCrop" title="Permalink to this definition">¶</a></dt>
-<dd><p>Crop the given image into four corners and the central crop plus the flipped version of
-these (horizontal flipping is used by default).
-If the image is flow Tensor, it is expected
-to have […, H, W] shape, where … means an arbitrary number of leading
-dimensions</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This transform returns a tuple of images and there may be a mismatch in the number of
-inputs and targets your Dataset returns. See below for an example of how to deal with
-this.</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>size</strong> (<em>sequence</em><em> or </em><em>int</em>) – Desired output size of the crop. If size is an
-int instead of sequence like (h, w), a square crop (size, size) is
-made. If provided a sequence of length 1, it will be interpreted as (size[0], size[0]).</p></li>
-<li><p><strong>vertical_flip</strong> (<em>bool</em>) – Use vertical flipping instead of horizontal</p></li>
-</ul>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">transform</span> <span class="o">=</span> <span class="n">Compose</span><span class="p">([</span>
-<span class="gp">&gt;&gt;&gt; </span>   <span class="n">TenCrop</span><span class="p">(</span><span class="n">size</span><span class="p">),</span> <span class="c1"># this is a list of PIL Images</span>
-<span class="gp">&gt;&gt;&gt; </span>   <span class="n">Lambda</span><span class="p">(</span><span class="k">lambda</span> <span class="n">crops</span><span class="p">:</span> <span class="n">flow</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">ToTensor</span><span class="p">()(</span><span class="n">crop</span><span class="p">)</span> <span class="k">for</span> <span class="n">crop</span> <span class="ow">in</span> <span class="n">crops</span><span class="p">]))</span> <span class="c1"># returns a 4D tensor</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1">#In your test loop you can do the following:</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">batch</span> <span class="c1"># input is a 5d tensor, target is 2d</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bs</span><span class="p">,</span> <span class="n">ncrops</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span> <span class="c1"># fuse batch size and ncrops</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">result_avg</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">bs</span><span class="p">,</span> <span class="n">ncrops</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># avg over crops</span>
-</pre></div>
-</div>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.ToPILImage">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">ToPILImage</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.vision.transforms.ToPILImage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert a tensor or an ndarray to PIL Image.</p>
-<p>Converts a flow.Tensor of shape C x H x W or a numpy ndarray of shape
-H x W x C to a PIL Image while preserving the value range.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mode</strong> (<a class="reference external" href="https://pillow.readthedocs.io/en/latest/handbook/concepts.html#concept-modes">PIL.Image mode</a>) – color space and pixel depth of input data (optional).
-If <code class="docutils literal notranslate"><span class="pre">mode</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code> (default) there are some assumptions made about the input data:
-- If the input has 4 channels, the <code class="docutils literal notranslate"><span class="pre">mode</span></code> is assumed to be <code class="docutils literal notranslate"><span class="pre">RGBA</span></code>.
-- If the input has 3 channels, the <code class="docutils literal notranslate"><span class="pre">mode</span></code> is assumed to be <code class="docutils literal notranslate"><span class="pre">RGB</span></code>.
-- If the input has 2 channels, the <code class="docutils literal notranslate"><span class="pre">mode</span></code> is assumed to be <code class="docutils literal notranslate"><span class="pre">LA</span></code>.
-- If the input has 1 channel, the <code class="docutils literal notranslate"><span class="pre">mode</span></code> is determined by the data type (i.e <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>,
-<code class="docutils literal notranslate"><span class="pre">short</span></code>).</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py class">
-<dt id="oneflow.utils.vision.transforms.ToTensor">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.vision.transforms.</span></code><code class="sig-name descname"><span class="pre">ToTensor</span></code><a class="headerlink" href="#oneflow.utils.vision.transforms.ToTensor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert a <code class="docutils literal notranslate"><span class="pre">PIL</span> <span class="pre">Image</span></code> or <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> to tensor.</p>
-<p>Converts a PIL Image or numpy.ndarray (H x W x C) in the range
-[0, 255] to a flow.FloatTensor of shape (C x H x W) in the range [0.0, 1.0]
-if the PIL Image belongs to one of the modes (L, LA, P, I, F, RGB, YCbCr, RGBA, CMYK, 1)
-or if the numpy.ndarray has dtype = np.uint8
-In the other cases, tensors are returned without scaling.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Because the input image is scaled to [0.0, 1.0], this transformation should not be used when
-transforming target image masks.</p>
-</div>
 </dd></dl>
 </div>
 </div>
