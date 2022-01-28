@@ -54,7 +54,7 @@ reset_docstr(
         >>> input2 = flow.tensor([1, 1, 4], dtype=flow.float32)
 
         >>> out = flow.ge(input1, input2)
-        >>> out
+        >>> out # doctest: +NORMALIZE_WHITESPACE
         tensor([1, 1, 0], dtype=oneflow.int8)
 
     """,
