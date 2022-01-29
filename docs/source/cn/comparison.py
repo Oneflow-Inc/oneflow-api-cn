@@ -55,7 +55,7 @@ reset_docstr(
 
         >>> out = flow.ge(input1, input2)
         >>> out
-        tensor([1, 1, 0], dtype=oneflow.int8)
+        tensor([ True,  True, False], dtype=oneflow.bool)
 
     """,
 )
