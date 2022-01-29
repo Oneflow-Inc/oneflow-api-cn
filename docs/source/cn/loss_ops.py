@@ -203,14 +203,17 @@ reset_docstr(
     .. code-block:: python
 
         >>> import oneflow as flow
-        >>> input = flow.tensor([1, 2], dtype=flow.int32)
-        >>> out = input.tile(reps=(2,))
-        >>> out
-        tensor([1, 2, 1, 2], dtype=oneflow.int32)
+        >>> import numpy as np
 
-        >>> input = flow.randn(5, 2, 1)
-        >>> out = input.tile(reps=(3, 4))
-        >>> out.size()
+        >>> np_arr = np.random.randn(5, 3, 6, 9).astype(np.float32)
+        >>> input = flow.Tensor(np_arr)
+        >>> out = input.tile(2,1,2,1)
+        >>> out.shape
+        oneflow.Size([10, 3, 12, 9])
+        >>> x = np.random.randn(5, 2, 1)
+        >>> input = flow.Tensor(x)
+        >>> out = input.tile(3,4)
+        >>> out.shape
         oneflow.Size([5, 6, 4])
 
     """

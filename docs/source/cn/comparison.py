@@ -54,8 +54,8 @@ reset_docstr(
         >>> input2 = flow.tensor([1, 1, 4], dtype=flow.float32)
 
         >>> out = flow.ge(input1, input2)
-        >>> out # doctest: +NORMALIZE_WHITESPACE
-        tensor([1, 1, 0], dtype=oneflow.int8)
+        >>> out 
+        tensor([ True,  True, False], dtype=oneflow.bool)
 
     """,
 )
@@ -84,7 +84,7 @@ reset_docstr(
 
         >>> y = flow.eq(input, other)
         >>> y
-        tensor([1, 1, 1, 0], dtype=oneflow.int8)
+        tensor([ True,  True,  True, False], dtype=oneflow.bool)
 
 
     """
@@ -114,7 +114,7 @@ reset_docstr(
 
         >>> out = flow.lt(input1, input2)
         >>> out
-        tensor([0, 0, 1], dtype=oneflow.int8)
+        tensor([False, False,  True], dtype=oneflow.bool)
     
     """
 )
@@ -145,7 +145,7 @@ reset_docstr(
 
         >>> y = flow.ne(input, other)
         >>> y
-        tensor([0, 0, 0, 1], dtype=oneflow.int8)
+        tensor([False, False, False,  True], dtype=oneflow.bool)
 
     """
 )
