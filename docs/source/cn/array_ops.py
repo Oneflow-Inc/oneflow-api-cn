@@ -739,7 +739,7 @@ reset_docstr(
 
     参数：
         - **path** (str): 对象所在的路径
-        - **consistent_src_rank** (int, optional): 加载相容 (consistent) 张量的需要的秩 (rank)。被指定时，只有秩与 consistent_src_rank相等的进程才会真正读取 `path` 中的文件，并且被加载对象中的张量会与  placement = `flow.placement('cuda', [consistent_src_rank])` 一致。
+        - **consistent_src_rank** (int, optional): 加载全局 (consistent) 张量的需要的秩 (rank)。被指定时，只有秩与 consistent_src_rank相等的进程才会真正读取 `path` 中的文件，并且被加载对象中的张量会与  placement = `flow.placement('cuda', [consistent_src_rank])` 全局。
 
     返回类型：
         加载好的对象
@@ -773,10 +773,11 @@ reset_docstr(
     oneflow.gather_nd,
     r"""
     oneflow.gather_nd(input, index) -> Tensor
-    
-    该算子为 `gather` 的高维扩展， `index` 是一个k维张量，以作为输入张量 `input` 的索引。
-    每个元素将定义一个 `input` 的切片：
+    此接口与TensorFlow一致。文档参考自：
+    https://www.tensorflow.org/api_docs/python/tf/gather_nd
 
+
+    该算子将来自 `input` 的切片汇聚成一个新的张量，由 `index` 定义新张量的形状。
     .. math::
 
         output[i_{0},i_{1},...,i_{K-2}] = input[index(i_{0},i_{1},...,i_{K-2})]
@@ -810,11 +811,11 @@ reset_docstr(
 reset_docstr(
     oneflow.grad_enable,
     r"""
-    启用梯度计算的上下文管理。
+    启用梯度计算的上下文管理模式。
 
-    启用梯度计算，如果其被 no_grad 禁用。
+    如果其被 no_grad 禁用，则在调用时启用梯度计算。
 
-    这个上下文管理在本地线程上；不会影响其他线程的计算。
+    此上下文管理模式位于本地线程；不会影响其他线程的计算。
 
     同时可以作为一种修饰模式。（请确保使用括号实例化）
 
@@ -842,9 +843,9 @@ reset_docstr(
     r"""
     用于启用或禁用 inference mode 的上下文管理。
 
-    Inference mode 是一个新的上下文管理，类似于 no_grad ，可以在你确定你的运算将与 autograd 没有关联时被使用。在此模式下运行的代码将获得更好的性能，因为禁用了路径追踪和版本计数堆。
+    Inference mode 是一个新的上下文管理模式，类似于 no_grad ，可以在你确定你的运算将与 autograd 没有关联时，可以使用这个模式。因为禁用了路径追踪和版本计数堆，在此模式下运行的代码将获得更好的性能。
 
-    这个上下文管理在本地线程上；不会影响其他线程的计算。
+    此上下文管理模式位于本地线程；不会影响其他线程的计算。
 
     同时可以作为一种修饰模式。（请确保使用括号实例化）
 
@@ -875,16 +876,16 @@ reset_docstr(
     参数：
         - **obj**: 被保存的对象
         - **path** (str): 对象被保存的路径
-        - **consistent_dst_rank** (int, 可选): 用于保存一致张量的地点秩。被指定时，对于所有张量，只有秩 == consistent_src_rank 的进程被保存，而其他的进程不会进行任何磁盘存取。
+        - **consistent_dst_rank** (int, 可选): 用于保存全局张量的地点秩。被指定时，对于所有张量，只有秩 == consistent_src_rank 的进程被保存，而其他的进程不会进行任何磁盘存取。
     """
 )
 
 reset_docstr(
     oneflow.tensor_scatter_nd_update,
     r"""
-    该算子通过对输入张量应用碎片化更新创造一个新的张量。
+    该算子通过对输入张量应用碎片化更新，创造一个新的张量。
 
-    该算子与 :meth:`scatter_nd` 十分类似，除了更新被分散到已存在的张量（而不是一个零张量）。
+    除了会更新被分散到已存在的张量（而不是一个零张量）以外，该算子与 :meth:`scatter_nd` 十分类似。
 
     参数：
         - **tensor**: 被分散化的张量
@@ -908,7 +909,7 @@ reset_docstr(
 reset_docstr(
     oneflow.is_grad_enabled,
     r"""
-    返回 True ，如果 grad 模式目前被启用。
+    如果 grad 模式目前被启用，则返回 True
     """
 )
 

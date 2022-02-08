@@ -1501,10 +1501,10 @@ reset_docstr(
     如果 :attr:`unbiased` 为 ``False`` ，则标准差将通过有差估算器计算。否则，贝塞尔校正将被使用。
 
     参数：
-        input (Tensor): 输入张量
-        dim (int or tuple of python:ints): 维度或者被减少的多个维度
-        unbiased (bool): 是否使用无差估计
-        keepdim (bool): 输出张量是否保留 `dim` 
+        - **input** (Tensor): 输入张量
+        - **dim** (int or tuple of python:ints): 维度或者被减少的多个维度
+        - **unbiased** (bool): 是否使用无差估计
+        - **keepdim** (bool): 输出张量是否保留 `dim` 
 
     示例：
 
@@ -1519,3 +1519,4 @@ reset_docstr(
 
     """,
 )
+
