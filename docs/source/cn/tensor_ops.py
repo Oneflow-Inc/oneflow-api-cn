@@ -318,7 +318,7 @@ reset_docstr(
 )
 
 reset_docstr(
-    oneflow.Tensor.cosh,
+    oneflow.cosh,
     r"""cosh(x) -> Tensor
 
     返回一个包含 :attr:`x` 中元素的双曲余弦值的新 tensor。
@@ -447,14 +447,14 @@ reset_docstr(
 
         >>> out = flow.le(input1, input2)
         >>> out
-        tensor([1, 0, 1], dtype=oneflow.int8)
+        tensor([ True, False,  True], dtype=oneflow.bool)
 
     
     """
 )
 
 reset_docstr(
-    oneflow.Tensor.log,
+    oneflow.log,
     r"""log(x) -> Tensor
 
     返回一个新 tensor 包含 :attr:`x` 中元素的自然对数。
@@ -504,7 +504,7 @@ reset_docstr(
 )
 
 reset_docstr(
-    oneflow.Tensor.rsqrt,
+    oneflow.rsqrt,
     r"""rsqrt(input) -> Tensor
 
         返回一个新的张量，它的元素是 :attr:`input` 的每个元素的平方根的倒数。
@@ -612,7 +612,7 @@ reset_docstr(
 )
 
 reset_docstr(
-    oneflow.Tensor.sqrt,
+    oneflow.sqrt,
     r"""返回一个元素为 :attr:`input` 元素平方根的新 tensor 。
         公式为：
 
@@ -636,7 +636,7 @@ reset_docstr(
 )
 
 reset_docstr(
-    oneflow.Tensor.square,
+    oneflow.square,
     r"""square(x)  -> Tensor
 
     返回一个新的张量，其元素为 :attr:`x` 中元素的的平方。
@@ -710,91 +710,6 @@ reset_docstr(
         oneflow.Size([2, 3])
 
     """,
-)
-
-reset_docstr(
-    oneflow.Tensor.tile,
-    r"""tile(input, reps) -> Tensor
-
-
-    此接口与 PyTorch 一致。
-    文档参考自：
-    https://pytorch.org/docs/stable/generated/torch.tile.html
-
-
-
-    通过重复 :attr:`input` 的元素构造一个新张量。 :attr:`reps` 参数指定每个维度的重复次数。
-
-    如果 :attr:`reps` 的长度小于 :attr:`input` 的维度，则在 :attr:`reps` 前添加 1 。直到 :attr:`reps` 的长度
-    等于 :attr:`input` 的维度。例如： :attr:`input` 的形状为  (8, 6, 4, 2)  ，而 :attr:`reps` 为 (2, 2) ，
-    则 :attr:`reps` 被认为是 (1, 1, 2, 2) 。
-
-    类似地，如果 :attr:`input` 的维度少于 :attr:`reps` 指定的维度，则 :attr:`input` 被视为在维度 0 处未压缩，
-    直到它的维度与 :attr:`reps` 指定的一样多。例如，如果 :attr:`input` 的形状为 (4, 2) 而 ``reps`` 为 (3, 3, 2, 2)，
-    则视 :attr:`input` 形状为 (1, 1, 4, 2)。
-
-    .. note::
-        这个函数类似于 NumPy 的 tile 函数。
-
-    参数：
-        - **input** (oneflow.tensor): 要重复元素的张量
-        - **reps** (元组): 每个维度要重复的次数
-
-    示例：
-
-    .. code-block:: python
-
-        >>> import oneflow as flow
-
-        >>> input = flow.tensor([1, 2], dtype=flow.int32)
-        >>> out = input.tile(reps=(2,))
-        >>> out
-        tensor([1, 2, 1, 2], dtype=oneflow.int32)
-
-        >>> input = flow.randn(5, 2, 1)
-        >>> out = input.tile(reps=(3, 4))
-        >>> out.size()
-        oneflow.Size([5, 6, 4])
-    """
-)
-
-reset_docstr(
-    oneflow.Tensor.to,
-    r"""to(input, *args, **kwargs) -> Tensor
-
-    执行张量 dtype 和 device 转换。
-        flow.dtype 和 flow.device 由 `input.to(*args, **kwargs)` 的参数推导而来。
-
-    .. note::
-        如果 tensor :attr:`input` 的 :class:`flow.dtype` 已经与参数一致，则返回 :attr:`input` 。
-        否则创建一个符合条件的 :attr:`input` 备份。
-
-    参数：
-        - **input** (oneflow.tensor): 输入张量
-
-    返回类型：
-        oneflow.tensor
-
-    示例：
-
-    .. code-block:: python
-
-        >>> import oneflow as flow
-
-        >>> input = flow.randint(1, 9, size=(1, 2, 3, 4))
-        >>> output = input.to(dtype=flow.float32)
-        >>> flow.eq(input, output)
-        tensor([[[[1, 1, 1, 1],
-                  [1, 1, 1, 1],
-                  [1, 1, 1, 1]],
-        <BLANKLINE>  
-                 [[1, 1, 1, 1],
-                  [1, 1, 1, 1],
-                  [1, 1, 1, 1]]]], dtype=oneflow.int8)
-        >>> cuda0 = flow.device('cuda:0')
-        >>> output = input.to(device=cuda0)
-
-    """
 )
 
 reset_docstr(
@@ -1030,4 +945,3 @@ reset_docstr(
 
 
 )
-

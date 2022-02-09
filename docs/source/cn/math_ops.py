@@ -1229,7 +1229,6 @@ reset_docstr(
         oneflow.tensor
 
     示例：
-    .. code-block:: python
     
         >>> import oneflow as flow
         >>> input = flow.tensor([[1,2,4],[5,11,9.1]], dtype=flow.float64)
@@ -1491,3 +1490,33 @@ reset_docstr(
         
     """,
 )
+
+reset_docstr(
+    oneflow.std,
+    r"""
+    返回 :attr:`input` 张量在 :attr:`dim` 维度每行的标准差。如果 :attr:`dim` 是一个维度列表，则减少 (reduce) 所有的维度。
+
+    如果 keepdim 为真，输出张量与输入张量大小相同，除了在 :attr:`dim` 维度的大小变为1。否则， :attr:`dim` 将被压缩，导致输出张量拥有 1 (或者 len(dim)) 个更少的维度。
+
+    如果 :attr:`unbiased` 为 ``False`` ，则标准差将通过有差估算器计算。否则，贝塞尔校正将被使用。
+
+    参数：
+        - **input** (Tensor): 输入张量
+        - **dim** (int or tuple of python:ints): 维度或者被减少的多个维度
+        - **unbiased** (bool): 是否使用无差估计
+        - **keepdim** (bool): 输出张量是否保留 `dim` 
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> input = flow.tensor([1.0,2.0,3.0])
+        >>> output = flow.std(input, dim=0)
+        >>> output
+        tensor(1., dtype=oneflow.float32)
+
+    """,
+)
+
