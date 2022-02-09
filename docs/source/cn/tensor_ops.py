@@ -166,7 +166,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.gather,
-    r"""gather(dim, index, sparse_grad=False)
+    r"""gather(input, dim, index, sparse_grad=False) -> Tensor
 
     沿 :attr:`dim` 指定的维度收集值。
 
@@ -318,7 +318,7 @@ reset_docstr(
 )
 
 reset_docstr(
-    oneflow.Tensor.cosh,
+    oneflow.cosh,
     r"""cosh(x) -> Tensor
 
     返回一个包含 :attr:`x` 中元素的双曲余弦值的新 tensor。
@@ -454,7 +454,7 @@ reset_docstr(
 )
 
 reset_docstr(
-    oneflow.Tensor.log,
+    oneflow.log,
     r"""log(x) -> Tensor
 
     返回一个新 tensor 包含 :attr:`x` 中元素的自然对数。
@@ -504,7 +504,7 @@ reset_docstr(
 )
 
 reset_docstr(
-    oneflow.Tensor.rsqrt,
+    oneflow.rsqrt,
     r"""rsqrt(input) -> Tensor
 
         返回一个新的张量，它的元素是 :attr:`input` 的每个元素的平方根的倒数。
@@ -612,7 +612,7 @@ reset_docstr(
 )
 
 reset_docstr(
-    oneflow.Tensor.sqrt,
+    oneflow.sqrt,
     r"""返回一个元素为 :attr:`input` 元素平方根的新 tensor 。
         公式为：
 
@@ -636,7 +636,7 @@ reset_docstr(
 )
 
 reset_docstr(
-    oneflow.Tensor.square,
+    oneflow.square,
     r"""square(x)  -> Tensor
 
     返回一个新的张量，其元素为 :attr:`x` 中元素的的平方。
@@ -945,4 +945,3 @@ reset_docstr(
 
 
 )
-
