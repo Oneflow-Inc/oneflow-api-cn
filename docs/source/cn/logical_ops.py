@@ -27,7 +27,7 @@ reset_docstr(
 
         >>> out = flow.logical_and(input1, input2)
         >>> out
-        tensor([1, 0, 0], dtype=oneflow.int8)
+        tensor([ True, False, False], dtype=oneflow.bool)
 
     """
 )
@@ -57,7 +57,7 @@ reset_docstr(
 
         >>> out = flow.logical_or(input1, input2)
         >>> out
-        tensor([1, 0, 1], dtype=oneflow.int8)
+        tensor([ True, False,  True], dtype=oneflow.bool)
 
     """
 )
@@ -86,7 +86,7 @@ reset_docstr(
         >>> input2 = flow.tensor([1, 0, 0], dtype=flow.float32)
         >>> out = flow.logical_xor(input1, input2)
         >>> out
-        tensor([0, 0, 1], dtype=oneflow.int8)
+        tensor([False, False,  True], dtype=oneflow.bool)
 
     """
 )
