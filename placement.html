@@ -155,16 +155,16 @@
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">,</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p</span>
-<span class="go">oneflow.placement(device_type="cuda", machine_device_ids={0 : [0, 1, 2, 3]}, hierarchy=(4,))</span>
+<span class="go">oneflow.placement(device_type="cuda", device_ids={0 : [0, 1, 2, 3]}, hierarchy=(4,))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">,</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)},</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p</span>
-<span class="go">oneflow.placement(device_type="cuda", machine_device_ids={0 : [0, 1, 2, 3]}, hierarchy=(2, 2))</span>
+<span class="go">oneflow.placement(device_type="cuda", device_ids={0 : [0, 1, 2, 3]}, hierarchy=(2, 2))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">,</span> <span class="p">{</span><span class="mi">0</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]},</span> <span class="p">(</span><span class="mi">4</span><span class="p">,))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p</span>
-<span class="go">oneflow.placement(device_type="cpu", machine_device_ids={0 : [0, 1], 1 : [2, 3]}, hierarchy=(4,))</span>
+<span class="go">oneflow.placement(device_type="cpu", device_ids={0 : [0, 1], 1 : [2, 3]}, hierarchy=(4,))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">,</span> <span class="p">{</span><span class="mi">0</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]},</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p</span>
-<span class="go">oneflow.placement(device_type="cpu", machine_device_ids={0 : [0, 1, 2, 3]}, hierarchy=(2, 2))</span>
+<span class="go">oneflow.placement(device_type="cpu", device_ids={0 : [0, 1, 2, 3]}, hierarchy=(2, 2))</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -181,8 +181,8 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># world_size = 4, node_size = 1</span>
 <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
-<span class="n">p</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">all_device_placement</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">)</span> <span class="c1"># oneflow.placement(device_type="cuda", machine_device_ids={0 : [0, 1, 2, 3]}, hierarchy=(4,))</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">all_device_placement</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">)</span> <span class="c1"># oneflow.placement(device_type="cpu", machine_device_ids={0 : [0, 1, 2, 3]}, hierarchy=(4,))</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">all_device_placement</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">)</span> <span class="c1"># oneflow.placement(device_type="cuda", device_ids={0 : [0, 1, 2, 3]}, hierarchy=(4,))</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">all_device_placement</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">)</span> <span class="c1"># oneflow.placement(device_type="cpu", device_ids={0 : [0, 1, 2, 3]}, hierarchy=(4,))</span>
 </pre></div>
 </div>
 </dd></dl>

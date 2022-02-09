@@ -200,7 +200,7 @@
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.Graph.build">
-<code class="sig-name descname"><span class="pre">build</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Graph.build" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">build</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Graph.build" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <code class="docutils literal notranslate"><span class="pre">build()</span></code> method must be overridden to define neural network
 computaion logic.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">build()</span></code> method of nn.Graph is very similar to the <code class="docutils literal notranslate"><span class="pre">forward()</span></code>
@@ -224,17 +224,16 @@ training or evaluation logic if needed.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">linear_graph</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># The build() method is called implicitly</span>
 </pre></div>
 </div>
-<p>Note that <code class="docutils literal notranslate"><span class="pre">build()</span></code> method’s inputs and outputs only accept positional
-arguements at the moment, each argument must be one of these types:</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">build()</span></code> method’s inputs and outputs support list/tuple/dict,
+but the item in them must be one of these types:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Tensor</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">list</span></code> of <code class="docutils literal notranslate"><span class="pre">Tensor</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.Graph.add_optimizer">
-<code class="sig-name descname"><span class="pre">add_optimizer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow.nn.optimizer.optimizer.Optimizer</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr_sch</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow.nn.optimizer.lr_scheduler.LrScheduler</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Graph.add_optimizer" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">add_optimizer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow.nn.optimizer.optimizer.Optimizer</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr_sch</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow.nn.optimizer.lr_scheduler.LRScheduler</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Graph.add_optimizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add an optimizer, an learning rate scheduler to the graph.</p>
 <p>To do training with nn.Graph, you should do 2 more things:</p>
 <ol class="arabic simple">
@@ -292,7 +291,7 @@ or <code class="docutils literal notranslate"><span class="pre">Tensor.mean()</s
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.Graph.__call__">
-<code class="sig-name descname"><span class="pre">__call__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Graph.__call__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__call__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Graph.__call__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call nn.Graph subclass instance to run your customized graph.</p>
 <p>Call your customized graph after the instantiation:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">CustomGraph</span><span class="p">()</span>
