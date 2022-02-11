@@ -69,11 +69,11 @@ reset_docstr(
         >>> y = flow.empty(4, 5)  # 构造空 local tensor
         >>> y.shape
         oneflow.Size([4, 5])
-        >>> y.is_consistent
+        >>> y.is_global
         False
         >>> placement = flow.placement("cpu", {0: [0]})
         >>> y = flow.empty(4, 5, placement=placement, sbp=flow.sbp.broadcast)  # 构造空 consistent tensor
-        >>> y.is_consistent
+        >>> y.is_global
         True
 
     """)
@@ -106,7 +106,7 @@ reset_docstr(
                 [1., 1., 1.]], dtype=oneflow.float32)
         >>> placement = flow.placement("cpu", {0: [0]})
         >>> y = flow.ones(4, 5, placement=placement, sbp=flow.sbp.broadcast) # 构造 consistent tensor
-        >>> y.is_consistent
+        >>> y.is_global
         True
 
 
