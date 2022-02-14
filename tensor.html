@@ -705,7 +705,7 @@ The documentation is referenced from: <a class="reference external" href="https:
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.is_consistent">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">is_consistent</span></code><a class="headerlink" href="#oneflow.Tensor.is_consistent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">is_consistent</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.is_consistent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.is_contiguous">
@@ -934,7 +934,7 @@ The documentation is referenced from: <a class="reference external" href="https:
 <li><p><strong>dtype</strong> (flow.dtype, 可选): 返回张量的数据类型。</p></li>
 <li><p><strong>device</strong> (flow.device, 可选): 返回的本地张量的所需设备。默认使用当前设备</p></li>
 <li><p><strong>placement</strong> (flow.placement, 可选): 设置返回张量的 placement 属性。如果为None，则构造 local tensor 。</p></li>
-<li><p><strong>sbp</strong> (flow.sbp.sbp 或包含 flow.sbp.sbp 的元组, 可选): 返回的consistent tensor的所需 sbp 描述符。如果为 None ，则返回的张量是使用参数 <cite>device</cite> 的本地张量。</p></li>
+<li><p><strong>sbp</strong> (flow.sbp.sbp 或包含 flow.sbp.sbp 的元组, 可选): 返回的global tensor的所需 sbp 描述符。如果为 None ，则返回的张量是使用参数 <cite>device</cite> 的本地张量。</p></li>
 <li><p><strong>requires_grad</strong> (bool, 可选): 用 autograd 记录对返回张量的操作，默认为 False。</p></li>
 </ul>
 </dd>
@@ -1483,32 +1483,12 @@ Otherwise, the returned tensor is a copy of <code class="docutils literal notran
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.to_consistent">
-<code class="sig-name descname"><span class="pre">to_consistent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">placement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sbp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_sbp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.Tensor.to_consistent" title="Permalink to this definition">¶</a></dt>
-<dd><p>将 local tensor 转换为 consistent tensor 或者将 consistent tensor 转化为
-具有不同 sbp 或 placement 的另一个 consistent tensor 。</p>
-<dl class="simple">
-<dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>input</strong> (Tensor): 输入张量</p></li>
-<li><p><strong>placement</strong> (flow.placement, 可选): 设置返回张量的 placement 属性。如果为None，则 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 必须为  consistent tensor ，输出的 placement 将被设置为 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 的 placement 。默认： None</p></li>
-<li><p><strong>sbp</strong> (flow.sbp.sbp or tuple of flow.sbp.sbp, 可选): 返回的 consistent tensor 的 sbp 属性。如果为 None ，输入张量必须是 consistent tensor 的并使用它自己的 sbp 。默认：None</p></li>
-</ul>
-</dd>
-</dl>
-<p>示例：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">placement</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">,</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">)})</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output_tensor</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">to_consistent</span><span class="p">(</span><span class="n">placement</span><span class="p">,</span> <span class="p">[</span><span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">0</span><span class="p">)])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output_tensor</span><span class="o">.</span><span class="n">is_consistent</span>
-<span class="go">True</span>
-</pre></div>
-</div>
-</dd></dl>
+<code class="sig-name descname"><span class="pre">to_consistent</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.to_consistent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.to_local">
 <code class="sig-name descname"><span class="pre">to_local</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.to_local" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the local tensor of a consistent tensor.</p>
+<dd><p>Returns the local tensor of a global tensor.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>input</strong> (<a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – the input tensor.</p>
@@ -1520,8 +1500,8 @@ Otherwise, the returned tensor is a copy of <code class="docutils literal notran
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np_arr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">placement</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">,</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">)})</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">consistent_tensor</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">to_consistent</span><span class="p">(</span><span class="n">placement</span><span class="p">,</span> <span class="p">[</span><span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">0</span><span class="p">)])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">consistent_tensor</span><span class="o">.</span><span class="n">to_local</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">global_tensor</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="p">,</span> <span class="p">[</span><span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">0</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">global_tensor</span><span class="o">.</span><span class="n">to_local</span><span class="p">()</span>
 <span class="go">tensor([0.5000, 0.6000, 0.7000], dtype=oneflow.float32)</span>
 </pre></div>
 </div>

@@ -148,8 +148,8 @@
 <dl class="py class">
 <dt id="oneflow.nn.Graph">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">Graph</span></code><a class="headerlink" href="#oneflow.nn.Graph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Base class for training or evaluating a neural network in graph mode.</p>
-<p>To use graph mode for model training or evaluation in OneFlow, you should:</p>
+<dd><p>Base class for training or evaluating a neural network in static graph mode.</p>
+<p>To use static graph mode for model training or evaluation in OneFlow, you should:</p>
 <ol class="arabic simple">
 <li><p>Define your customized graph as a subclass of <code class="docutils literal notranslate"><span class="pre">nn.Graph</span></code>.</p></li>
 <li><p>Add <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code> in your subclass’s <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>.</p></li>
@@ -183,7 +183,10 @@
 <span class="go">oneflow.Size([4, 8])</span>
 </pre></div>
 </div>
-<p>Note that Graph cannot be nested at the moment.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>nn.Graph cannot be nested at the moment.</p>
+</div>
 <dl class="py method">
 <dt id="oneflow.nn.Graph.__init__">
 <code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Graph.__init__" title="Permalink to this definition">¶</a></dt>
@@ -224,12 +227,34 @@ training or evaluation logic if needed.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">linear_graph</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># The build() method is called implicitly</span>
 </pre></div>
 </div>
-<p>Note that <code class="docutils literal notranslate"><span class="pre">build()</span></code> method’s inputs and outputs support list/tuple/dict,
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">build()</span></code> method’s inputs and outputs support list/tuple/dict,
 but the item in them must be one of these types:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Tensor</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="oneflow.nn.Graph.__call__">
+<code class="sig-name descname"><span class="pre">__call__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Graph.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call nn.Graph subclass instance to run your customized graph.</p>
+<p>Call your customized graph after the instantiation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">CustomGraph</span><span class="p">()</span>
+<span class="n">out_tensors</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">input_tensors</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The inputs of <code class="docutils literal notranslate"><span class="pre">__call__</span></code> method must match the inputs of <code class="docutils literal notranslate"><span class="pre">build()</span></code>
+method. And the <code class="docutils literal notranslate"><span class="pre">__call__</span></code> method will return outputs matching the
+outputs of <code class="docutils literal notranslate"><span class="pre">build()</span></code> method.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The first call takes longer than later calls, because nn.Graph
+will do the computaion graph generation and optimization at the first call.</p>
+<p>Donot override this function.</p>
+</div>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.Graph.add_optimizer">
@@ -288,22 +313,6 @@ or <code class="docutils literal notranslate"><span class="pre">Tensor.mean()</s
 <dt id="oneflow.nn.Graph.set_grad_scaler">
 <code class="sig-name descname"><span class="pre">set_grad_scaler</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grad_scaler</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow.amp.grad_scaler.GradScaler</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Graph.set_grad_scaler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the GradScaler for gradient and loss scaling.</p>
-</dd></dl>
-<dl class="py method">
-<dt id="oneflow.nn.Graph.__call__">
-<code class="sig-name descname"><span class="pre">__call__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Graph.__call__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Call nn.Graph subclass instance to run your customized graph.</p>
-<p>Call your customized graph after the instantiation:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">CustomGraph</span><span class="p">()</span>
-<span class="n">out_tensors</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">input_tensors</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>The inputs of <code class="docutils literal notranslate"><span class="pre">__call__</span></code> method must match the inputs of <code class="docutils literal notranslate"><span class="pre">build()</span></code>
-method. And the <code class="docutils literal notranslate"><span class="pre">__call__</span></code> method will return outputs matching the
-outputs of <code class="docutils literal notranslate"><span class="pre">build()</span></code> method.</p>
-<p>Note that the first call takes longer than later calls, because nn.Graph
-will do the computaion graph generation and optimization at the first call.</p>
-<p>Donot override this function.</p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.Graph.name">
