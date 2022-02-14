@@ -711,39 +711,33 @@ reset_docstr(
 
     """,
 )
-
 reset_docstr(
-    oneflow.Tensor.to_consistent,
-    r"""to_consistent(placement=None, sbp=None, grad_sbp=None) -> Tensor
-
-    将 local tensor 转换为 consistent tensor 或者将 consistent tensor 转化为
-    具有不同 sbp 或 placement 的另一个 consistent tensor 。
+    oneflow.Tensor.to_global,
+    r"""to_global(placement=None, sbp=None, grad_sbp=None) -> Tensor
+    将 local tensor 转换为 global tensor 或者将 global tensor 转化为
+    具有不同 sbp 或 placement 的另一个 global tensor 。
 
     参数：
         - **input** (Tensor): 输入张量
-        - **placement** (flow.placement, 可选): 设置返回张量的 placement 属性。如果为None，则 :attr:`input` 必须为  consistent tensor ，输出的 placement 将被设置为 :attr:`input` 的 placement 。默认： None
-        - **sbp** (flow.sbp.sbp or tuple of flow.sbp.sbp, 可选): 返回的 consistent tensor 的 sbp 属性。如果为 None ，输入张量必须是 consistent tensor 的并使用它自己的 sbp 。默认：None
-
+        - **placement** (flow.placement, 可选): 设置返回张量的 placement 属性。如果为None，则 :attr:`input` 必须为  global tensor ，输出的 placement 将被设置为 :attr:`input` 的 placement 。默认： None
+        - **sbp** (flow.sbp.sbp or tuple of flow.sbp.sbp, 可选): 返回的 global tensor 的 sbp 属性。如果为 None ，输入张量必须是 global tensor 的并使用它自己的 sbp 。默认：None
     示例：
-
     .. code-block:: python
-
         >>> import oneflow as flow
-
         >>> input = flow.tensor([0.5, 0.6, 0.7], dtype=flow.float32)
         >>> placement = flow.placement("cpu", {0:range(1)})
-        >>> output_tensor = input.to_consistent(placement, [flow.sbp.split(0)])
-        >>> output_tensor.is_consistent
+        >>> output_tensor = input.to_global(placement, [flow.sbp.split(0)])
+        >>> output_tensor.is_global
         True
-
     """
 )
+
 
 reset_docstr(
     oneflow.to_local,
     r"""to_local(input) -> Tensor
 
-    返回 consistent tensor :attr:`input` 的 local tensor 。
+    返回 global tensor :attr:`input` 的 local tensor 。
 
 
     参数：
@@ -757,8 +751,8 @@ reset_docstr(
 
         >>> input = flow.tensor([0.5, 0.6, 0.7], dtype=flow.float32)
         >>> placement = flow.placement("cpu", {0:range(1)})
-        >>> consistent_tensor = input.to_consistent(placement, [flow.sbp.split(0)])
-        >>> consistent_tensor.to_local()
+        >>> global_tensor = input.to_global(placement, [flow.sbp.split(0)])
+        >>> global_tensor.to_local()
         tensor([0.5000, 0.6000, 0.7000], dtype=oneflow.float32)
     """
 )
