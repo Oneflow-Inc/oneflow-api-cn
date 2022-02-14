@@ -716,6 +716,7 @@ reset_docstr(
     r"""to_global(placement=None, sbp=None, grad_sbp=None) -> Tensor
     将 local tensor 转换为 global tensor 或者将 global tensor 转化为
     具有不同 sbp 或 placement 的另一个 global tensor 。
+
     参数：
         - **input** (Tensor): 输入张量
         - **placement** (flow.placement, 可选): 设置返回张量的 placement 属性。如果为None，则 :attr:`input` 必须为  global tensor ，输出的 placement 将被设置为 :attr:`input` 的 placement 。默认： None
