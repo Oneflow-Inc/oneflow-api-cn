@@ -739,7 +739,7 @@ reset_docstr(
 
     参数：
         - **path** (str): 对象所在的路径
-        - **consistent_src_rank** (int, optional): 加载全局 (consistent) 张量的需要的秩 (rank)。被指定时，只有秩与 consistent_src_rank相等的进程才会真正读取 `path` 中的文件，并且被加载对象中的张量会与  placement = `flow.placement('cuda', [consistent_src_rank])` 全局。
+        - **global_src_rank** (int, optional): 加载全局 (global) 张量的需要的秩 (rank)。被指定时，只有秩与 global_src_rank相等的进程才会真正读取 `path` 中的文件，并且被加载对象中的张量会与  placement = `flow.placement('cuda', [global_src_rank])` 全局。
 
     返回类型：
         加载好的对象
@@ -876,7 +876,7 @@ reset_docstr(
     参数：
         - **obj**: 被保存的对象
         - **path** (str): 对象被保存的路径
-        - **consistent_dst_rank** (int, 可选): 用于保存全局张量的地点秩。被指定时，对于所有张量，只有秩 == consistent_src_rank 的进程被保存，而其他的进程不会进行任何磁盘存取。
+        - **global_dst_rank** (int, 可选): 用于保存全局张量的地点秩。被指定时，对于所有张量，只有秩 == global_src_rank 的进程被保存，而其他的进程不会进行任何磁盘存取。
     """
 )
 
