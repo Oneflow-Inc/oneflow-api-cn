@@ -31,12 +31,12 @@ reset_docstr(
         >>> x = flow.rand(3,3) # 构造 local tensor
         >>> x.shape
         oneflow.Size([3, 3])
-        >>> x.is_consistent
+        >>> x.is_global
         False
         >>> placement = flow.placement("cpu", {0: [0]})
         >>> sbp = flow.sbp.broadcast
-        >>> x = flow.rand(3, 3, placement=placement, sbp=sbp) # 构造 consistent tensor
-        >>> x.is_consistent
+        >>> x = flow.rand(3, 3, placement=placement, sbp=sbp) # 构造 global tensor
+        >>> x.is_global
         True
 
     """
@@ -76,12 +76,12 @@ reset_docstr(
         >>> x = flow.randn(3,3) # 构造 local tensor
         >>> x.shape
         oneflow.Size([3, 3])
-        >>> x.is_consistent
+        >>> x.is_global
         False
         >>> placement = flow.placement("cpu", {0:[0]})
         >>> sbp = flow.sbp.broadcast
-        >>> x = flow.randn(3,3,placement=placement,sbp=sbp) # 构造 consistent tensor
-        >>> x.is_consistent
+        >>> x = flow.randn(3,3,placement=placement,sbp=sbp) # 构造 global tensor
+        >>> x.is_global
         True
 
     """
@@ -125,11 +125,11 @@ reset_docstr(
         tensor([[2, 2, 3],
                 [4, 3, 4],
                 [2, 4, 2]], dtype=oneflow.int64)
-        >>> y.is_consistent
+        >>> y.is_global
         False
         >>> placement = flow.placement("cpu", {0: [0]})
-        >>> y = flow.randint(0, 5, (3,3), generator=generator, placement=placement, sbp=flow.sbp.broadcast) # 构造 consistent tensor
-        >>> y.is_consistent
+        >>> y = flow.randint(0, 5, (3,3), generator=generator, placement=placement, sbp=flow.sbp.broadcast) # 构造 global tensor
+        >>> y.is_global
         True
 
     """
@@ -168,11 +168,11 @@ reset_docstr(
         >>> y = flow.randperm(5, generator=generator) # 构造 local tensor
         >>> y
         tensor([2, 4, 3, 0, 1], dtype=oneflow.int64)
-        >>> y.is_consistent
+        >>> y.is_global
         False
         >>> placement = flow.placement("cpu", {0: [0]})
-        >>> y = flow.randperm(5, generator=generator, placement=placement, sbp=flow.sbp.broadcast) # 构造 consistent tensor
-        >>> y.is_consistent
+        >>> y = flow.randperm(5, generator=generator, placement=placement, sbp=flow.sbp.broadcast) # 构造 global tensor
+        >>> y.is_global
         True
 
     """
