@@ -35,7 +35,7 @@ reset_docstr(
         False
         >>> placement = flow.placement("cpu", {0: [0]})
         >>> sbp = flow.sbp.broadcast
-        >>> x = flow.rand(3, 3, placement=placement, sbp=sbp) # 构造 consistent tensor
+        >>> x = flow.rand(3, 3, placement=placement, sbp=sbp) # 构造 global tensor
         >>> x.is_global
         True
 
@@ -80,7 +80,7 @@ reset_docstr(
         False
         >>> placement = flow.placement("cpu", {0:[0]})
         >>> sbp = flow.sbp.broadcast
-        >>> x = flow.randn(3,3,placement=placement,sbp=sbp) # 构造 consistent tensor
+        >>> x = flow.randn(3,3,placement=placement,sbp=sbp) # 构造 global tensor
         >>> x.is_global
         True
 
@@ -128,7 +128,7 @@ reset_docstr(
         >>> y.is_global
         False
         >>> placement = flow.placement("cpu", {0: [0]})
-        >>> y = flow.randint(0, 5, (3,3), generator=generator, placement=placement, sbp=flow.sbp.broadcast) # 构造 consistent tensor
+        >>> y = flow.randint(0, 5, (3,3), generator=generator, placement=placement, sbp=flow.sbp.broadcast) # 构造 global tensor
         >>> y.is_global
         True
 
@@ -171,7 +171,7 @@ reset_docstr(
         >>> y.is_global
         False
         >>> placement = flow.placement("cpu", {0: [0]})
-        >>> y = flow.randperm(5, generator=generator, placement=placement, sbp=flow.sbp.broadcast) # 构造 consistent tensor
+        >>> y = flow.randperm(5, generator=generator, placement=placement, sbp=flow.sbp.broadcast) # 构造 global tensor
         >>> y.is_global
         True
 

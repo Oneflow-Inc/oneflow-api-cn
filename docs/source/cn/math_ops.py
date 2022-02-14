@@ -1358,7 +1358,7 @@ reset_docstr(
         tensor([[5., 5., 5.],
                 [5., 5., 5.]], dtype=oneflow.float32)
         >>> placement = flow.placement("cpu", {0: [0]})
-        >>> y = flow.full((2,3),5.0, placement=placement, sbp=flow.sbp.broadcast)  # 构造 consistent tensor
+        >>> y = flow.full((2,3),5.0, placement=placement, sbp=flow.sbp.broadcast)  # 构造 global tensor
         >>> y.is_global # doctest: +NORMALIZE_WHITESPACE
         True
 
