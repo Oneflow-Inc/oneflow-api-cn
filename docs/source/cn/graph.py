@@ -200,7 +200,7 @@ reset_docstr(
 
         参数：
             - **v_level** (int): 选择详细调试信息级别，默认 v_level 为 0，最大 v_level 为 3。
-            - **ranks** (int or list(int)): 选择排名以打印调试信息， 默认等级为 ``0`` 。你可以选择任何有效的等级。Ranks 等于 ``-1`` 则表示在所有等级上调试。
+            - **ranks** (int or list(int)): 选择排名以打印调试信息， 默认rank为 ``0`` 。你可以选择任何有效的ranks。Ranks 等于 ``-1`` 则表示在所有等级上调试。
             - **mode** (bool): 是否设置调试模式 (``True``) 或者 (``False``)。 默认值： ``True``。
         """
 )
