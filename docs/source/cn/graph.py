@@ -63,15 +63,13 @@ reset_docstr(
 
 reset_docstr(
     oneflow.nn.Graph.build,
-    r""" 必须重写 ``build()`` 来定义神经网络计算逻辑。
+    r"""必须重写 ``build()`` 来定义神经网络计算逻辑。
 
-        nn.Graph 中的 ``build()`` 与 nn.Module 中的 ``forward()`` 非常相似。
-        它是用来描述计算逻辑的一个神经网络。
+        nn.Graph 中的 ``build()`` 与 nn.Module 中的 ``forward()`` 非常相似。它是用来描述神经网络的计算逻辑。
 
         当第一次调用 Graph 对象时，会隐式调用 ``build()`` 函数来构建计算图。
 
-        确保在第一次调用 Graph 之前先调用模块中的 ``train()`` 和 ``eval()`` 函数，
-        以使模块在需要时执行正确的训练或评估逻辑。
+        确保在第一次调用 Graph 之前先调用模块中的 ``train()`` 或 ``eval()`` 函数，以使 Graph 执行正确的训练或测试模式。
 
         .. code-block:: python
 
@@ -87,12 +85,11 @@ reset_docstr(
             >>> x = flow.randn(4, 3)
             >>> y = linear_graph(x) # 隐式调用 build() 函数
 
-        请注意， ``build()`` 函数的输入和输出目前只接受位置参数，每个参数必须是以下
-        类型之一：
+        请注意:
+            ``build()`` 函数的输入和输出目前支持列表/元组/字典，但必须是以下类型之一：
 
-        * ``Tensor``
-        * ``Tensor`` 中的 ``list`` 
-        * ``None``
+            * ``Tensor``
+            * ``None``
 
         """
 )
@@ -108,12 +105,12 @@ reset_docstr(
 
         请注意，计算图将自动执行这些方法： 
 
-        * 如果设置为梯度裁剪，则调用优化器的 ``clip_grad()`` 函数。
+        * 如果优化器设置为梯度裁剪，则调用 ``clip_grad()`` 函数。
         * 优化器的 ``step()`` 函数。
         * 优化器的 ``zero_grad()`` 函数。
         * 学习率调整器 ``step()`` 函数。
 
-        另请注意，暂时只允许标量张量在 ``nn.Graph.build()``  中调用 ``backward()`` 。 
+        另请注意，在 ``nn.Graph.build()``  中暂时只允许 ``backward()`` 调用标量张量。 
         所以你可以调用 ``Tensor.sum()`` 或 ``Tensor.mean()`` 将损失张量变为标量张量。
 
         .. code-block:: python
@@ -143,8 +140,8 @@ reset_docstr(
             ...     loss = linear_graph(x, y)
 
         参数：
-            - **optim** (oneflow.optim.Optimizer): 优化器
-            - **lr_sch**: 学习率调整器，请查阅 oneflow.optim.lr_scheduler
+            - **optim** (oneflow.optim.Optimizer) - 优化器
+            - **lr_sch** - 学习率调整器，参见 oneflow.optim.lr_scheduler
         """
 )
 
@@ -168,10 +165,11 @@ reset_docstr(
         ``__call__`` 函数的输入必须与 ``build()`` 函数的输入相匹配。
         ``__call__`` 函数将会返回与 ``build()`` 函数输出相匹配的输出。
 
-        请注意，第一次调用会以后的调用花费更长的时间，因为 nn.Graph 将在第一次调用时会
-        进行计算图的生成和优化。
+        请注意:
+            第一次调用会比之后的调用花费时间更长，因为 nn.Graph 在第一次调用时会进行计算图的生成和优化。
 
-        请不要覆盖此函数。
+            请不要覆盖此函数。
+
         """
 )
 
@@ -183,14 +181,11 @@ reset_docstr(
 
         如果处于 debug 模式中，将打印计算图构建信息或警告日志。 否则，只会打印错误。
 
-        在 nn.Graph 中的 nn.Module 也有 debug() 函数使得 debug 模式得以运行。
+        在 nn.Graph 中的每个 nn.Module 也有 debug() 函数使得 debug 模式得以运行。
 
-        使用 ``v_level`` 函数来选择详细调试信息级别，默认级别为 0，最大级别为 3。
-        ``v_level`` 0 将打印警告和图形构建阶段。 ``v_level`` 1 将另外打印每个 
-        nn.Module 的图形构建信息。 ``v_level`` 2 将另外打印每个操作的图形构建信息。
-        ``v_level`` 3 将另外打印每个操作的更详细信息。
+        使用 ``v_level`` 函数来选择详细的 debug 信息级别，默认级别为 0，最大级别为 3。``v_level`` 0 将打印警告和图形构建过程。 ``v_level`` 1 将另外打印每个 nn.Module 的图形构建信息。 ``v_level`` 2 将另外打印每个操作的图形构建信息。``v_level`` 3 将另外打印每个操作的更详细信息。
         
-        使用 ``ranks`` 函数来选择要打印调试信息的等级。
+        使用 ``ranks`` 函数来选择要打印 debug 信息的rank。
 
         .. code-block:: python
 
@@ -199,9 +194,9 @@ reset_docstr(
             out_tensors = g(input_tensors)  # 将在第一次调用时打印调试日志。
 
         参数：
-            - **v_level** (int): 选择详细调试信息级别，默认 v_level 为 0，最大 v_level 为 3。
-            - **ranks** (int or list(int)): 选择排名以打印调试信息， 默认rank为 ``0`` 。你可以选择任何有效的ranks。Ranks 等于 ``-1`` 则表示在所有等级上调试。
-            - **mode** (bool): 是否设置调试模式 (``True``) 或者 (``False``)。 默认值： ``True``。
+            - **v_level** (int)- 选择详细的 debug 信息级别，默认 v_level 为 0，最大 v_level 为 3。
+            - **ranks** (int or list(int))- 选择 ranks 以打印 debug 信息， 默认rank为 ``0`` 。你可以选择任何有效的rank。Ranks 等于 ``-1`` 则表示在所有 ranks 上调试。
+            - **mode** (bool)- 设置调试模式运行 (``True``) 或者停止 (``False``)。 默认值： ``True``。
         """
 )
 
