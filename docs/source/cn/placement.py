@@ -29,7 +29,6 @@ oneflow.placement.__doc__ =  r"""
 
     oneflow.placement 可以通过以下几种方式构造：
 
-    .. code-block:: python
         >>> import oneflow as flow
         
         >>> p = flow.placement("cuda", ranks=[0, 1, 2, 3])
