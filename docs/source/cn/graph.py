@@ -218,3 +218,44 @@ reset_docstr(
 
         """
 )
+
+reset_docstr(
+    oneflow.nn.Graph.name,
+    r"""为该 Graph 自动生成的名称。
+        """)
+
+reset_docstr(
+    oneflow.nn.Graph.training,
+    r"""如果 Graph 有优化器则处于训练模式。
+        """
+)
+
+reset_docstr(
+    oneflow.nn.Graph.state_dict,
+    r"""返回包含 Graph 所有属性的字典。
+
+        包含 Graph 中模块/优化器/学习率调整器的状态。
+
+        模块属性字典的键与它们在 Graph 中的名称相对应。
+        模块的属性字典的值与它们的 nn.Module 的属性字典相对应。
+
+        其他键值和张量是优化器/学习率调整器等的状态。
+
+        返回:
+            dict: 一个包含 Graph 所有属性的字典。 
+
+        """
+)
+
+reset_docstr(
+    oneflow.nn.Graph.load_state_dict,
+    r"""用 :attr:`state_dict`复制模块的属性和其他 Graph 的属性到这个 Graph 中。如果 :attr:`strict` 的值是 ``True``， 那么 :attr:`state_dict` 的键值必须和返回的键值通过该模块的 :meth:`nn.Graph.state_dict` 函数精确匹配。
+
+        参数:
+            - **state_dict** (dict)- 一个包含模块所有属性和其他 Graph 属性的字典。
+            - **strict** (bool, optional)- 是否严格执行使 :attr:`state_dict` 中的键值与在 Graph 中 :meth:`nn.Graph.state_dict` 函数返回的键值相匹配。默认值是 ``True``.
+
+        请注意:
+            nn.Graph 的属性字典只能在第一次调用 Graph 前被加载。
+        """
+)
