@@ -4019,7 +4019,6 @@ dimensions</p></li>
 </dl>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.81733328</span><span class="p">,</span> <span class="mf">0.43621480</span><span class="p">,</span> <span class="mf">0.10351428</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -4130,44 +4129,30 @@ The value must be non-negative. Default: 1.0</p></li>
 </dd></dl>
 <dl class="py class">
 <dt id="oneflow.nn.Softmax">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">Softmax</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Softmax" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies the Softmax function to an n-dimensional input Tensor
-rescaling them so that the elements of the n-dimensional output Tensor
-lie in the range [0,1] and sum to 1.</p>
-<p>Softmax is defined as:</p>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">Softmax</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.Softmax" title="Permalink to this definition">¶</a></dt>
+<dd><p>将 Softmax 函数应用于 n 维输入 tensor 并重新缩放 tensor，以便n 维输出 tensor
+的元素位于 [0,1] 范围内并且和为 1。</p>
+<p>Softmax 的公式为：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\text{Softmax}(x_{i}) = \frac{\exp(x_i)}{\sum_j \exp(x_j)}\]</div></div>
-<p>When the input Tensor is a sparse tensor then the unspecifed
-values are treated as <code class="docutils literal notranslate"><span class="pre">-inf</span></code>.</p>
+<p>当输入张量是稀疏张量时，则未被指定的值将被视为 <code class="docutils literal notranslate"><span class="pre">-inf</span></code> 。</p>
 <dl class="simple">
-<dt>Shape:</dt><dd><ul class="simple">
-<li><p>Input: <span class="math notranslate nohighlight">\((*)\)</span> where <cite>*</cite> means, any number of additional
-dimensions</p></li>
-<li><p>Output: <span class="math notranslate nohighlight">\((*)\)</span>, same shape as the input</p></li>
+<dt>形状：</dt><dd><ul class="simple">
+<li><p><strong>Input</strong> : <span class="math notranslate nohighlight">\((*)\)</span> 其中 <cite>*</cite> 表示任意数量的附加维度</p></li>
+<li><p><strong>Output</strong> : <span class="math notranslate nohighlight">\((*)\)</span> ，与输入的形状相同</p></li>
 </ul>
 </dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>a Tensor of the same dimension and shape as the input with
-values in the range [0, 1]</p>
+<dt>返回类型：</dt><dd><p>oneflow.tensor: 与输入具有相同维度和形状的张量，其值在 [0, 1] 范围内</p>
 </dd>
-<dt class="field-even">Parameters</dt>
-<dd class="field-even"><p><strong>dim</strong> (<em>int</em>) – A dimension along which Softmax will be computed (so every slice
-along dim will sum to 1).</p>
+<dt>参数：</dt><dd><p><strong>dim</strong> (int): 要进行 Softmax 计算的维度（因此沿 <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code> 的每个切片总和为 1）。</p>
 </dd>
 </dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Softmax</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span>
-<span class="gp">... </span>   <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
-<span class="gp">... </span>       <span class="p">[[[</span><span class="o">-</span><span class="mf">0.46716809</span><span class="p">,</span>  <span class="mf">0.40112534</span><span class="p">,</span>  <span class="mf">0.61984003</span><span class="p">],</span>
-<span class="gp">... </span>       <span class="p">[</span><span class="o">-</span><span class="mf">1.31244969</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.42528763</span><span class="p">,</span>  <span class="mf">1.47953856</span><span class="p">]]]</span>
-<span class="gp">... </span>   <span class="p">)</span>
-<span class="gp">... </span><span class="p">)</span>
+<p>示例：</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Softmax</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[[</span><span class="o">-</span><span class="mf">0.46716809</span><span class="p">,</span>  <span class="mf">0.40112534</span><span class="p">,</span>  <span class="mf">0.61984003</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.31244969</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.42528763</span><span class="p">,</span>  <span class="mf">1.47953856</span><span class="p">]]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span>
 <span class="go">tensor([[[0.1575, 0.3754, 0.4671],</span>
