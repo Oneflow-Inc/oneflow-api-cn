@@ -236,6 +236,7 @@ reset_docstr(
 
     .. code-block:: python
 
+
         >>> import oneflow as flow
         >>> x = flow.tensor([1.0])
         >>> x.item()
@@ -502,6 +503,7 @@ reset_docstr(
         oneflow.int64
     """
 )
+
 
 reset_docstr(
     oneflow.rsqrt,

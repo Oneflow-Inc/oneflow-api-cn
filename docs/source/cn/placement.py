@@ -22,13 +22,15 @@ reset_docstr(
     """
 )
 
-oneflow.placement.__doc__ =  r"""
+reset_docstr(
+    oneflow.placement,
+    r"""
     oneflow.placement 是一个对象，用于指代一个 oneflow.Tensor 被分配或即将被分配到的设备组。oneflow.placement 包含一个设备类型 ('cpu' 或者 'cuda') 和对应的设备序列。
 
     oneflow.Tensor 的 placement 可以通过 Tensor.placement 访问。
 
     oneflow.placement 可以通过以下几种方式构造：
-    
+
     .. code-block:: python
     
         >>> import oneflow as flow
@@ -41,3 +43,4 @@ oneflow.placement.__doc__ =  r"""
         oneflow.placement(type="cuda", ranks=[[0, 1], [2, 3]])
 
 """
+)
