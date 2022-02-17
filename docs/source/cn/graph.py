@@ -243,13 +243,16 @@ reset_docstr(
 
         返回:
             dict: 一个包含 Graph 所有属性的字典。 
+        
+        返回类型：
+            dict
 
         """
 )
 
 reset_docstr(
     oneflow.nn.Graph.load_state_dict,
-    r"""用 :attr:`state_dict`复制模块的属性和其他 Graph 的属性到这个 Graph 中。如果 :attr:`strict` 的值是 ``True``， 那么 :attr:`state_dict` 的键值必须和返回的键值通过该模块的 :meth:`nn.Graph.state_dict` 函数精确匹配。
+    r"""用 :attr:`state_dict` 复制模块的属性和其他 Graph 的属性到这个 Graph 中。如果 :attr:`strict` 的值是 ``True``， 那么 :attr:`state_dict` 的键值必须和返回的键值通过该模块的 :meth:`nn.Graph.state_dict` 函数精确匹配。
 
         参数:
             - **state_dict** (dict)- 一个包含模块所有属性和其他 Graph 属性的字典。
