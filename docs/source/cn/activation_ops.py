@@ -219,6 +219,9 @@ reset_docstr(
         **dim** (int): 要进行 Softmax 计算的维度（因此沿 :attr:`dim` 的每个切片总和为 1）。
         
     示例：
+    
+        >>> import oneflow as flow
+        
         >>> m = flow.nn.Softmax(dim = 2)
         >>> x = flow.tensor([[[-0.46716809,  0.40112534,  0.61984003], [-1.31244969, -0.42528763,  1.47953856]]], dtype=flow.float32)
         >>> out = m(x)
