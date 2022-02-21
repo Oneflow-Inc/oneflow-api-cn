@@ -30,4 +30,5 @@ from .reshape import *
 from .nn import *
 from .utils import *
 from .norm import *
+from .graph import *
 from .placement import *

@@ -713,6 +713,7 @@ reset_docstr(
 
     """,
 )
+
 reset_docstr(
     oneflow.Tensor.to_global,
     r"""to_global(placement=None, sbp=None, grad_sbp=None) -> Tensor
@@ -733,7 +734,6 @@ reset_docstr(
         True
     """
 )
-
 
 reset_docstr(
     oneflow.to_local,
