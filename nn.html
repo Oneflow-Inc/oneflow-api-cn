@@ -4527,10 +4527,10 @@ The documentation is referenced from:
 范数是在所有梯度上一起计算的，就好像它们被连接成一个向量一样。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>parameters</strong> (Iterable[Tensor] 或 Tensor): 一个可迭代的张量或一个将梯度归一化的单个张量</p></li>
-<li><p><strong>max_norm</strong> (float 或 int): 梯度的最大范数</p></li>
-<li><p><strong>norm_type</strong> (float 或 int): 使用的 p-norm 的类型。对于无穷范数，可以是  <code class="docutils literal notranslate"><span class="pre">'inf'</span></code>。</p></li>
-<li><p><strong>error_if_nonfinite</strong> (bool): 当为 True 时，如果来自 :attr:<code class="docutils literal notranslate"><span class="pre">parameters</span></code> 的梯度的总范数为 <code class="docutils literal notranslate"><span class="pre">nan</span></code> 、 <code class="docutils literal notranslate"><span class="pre">inf</span></code> 或 <code class="docutils literal notranslate"><span class="pre">-inf</span></code> 会出现 error 。默认：True</p></li>
+<li><p><strong>parameters</strong> (Iterable[Tensor] 或 Tensor) - 一个可迭代的张量或一个将梯度归一化的单个张量</p></li>
+<li><p><strong>max_norm</strong> (float 或 int) - 梯度的最大范数</p></li>
+<li><p><strong>norm_type</strong> (float 或 int) - 使用的 p-norm 的类型。对于无穷范数，可以是  <code class="docutils literal notranslate"><span class="pre">'inf'</span></code>。</p></li>
+<li><p><strong>error_if_nonfinite</strong> (bool) - 当为 True 时，如果来自 :attr:<code class="docutils literal notranslate"><span class="pre">parameters</span></code> 的梯度的总范数为 <code class="docutils literal notranslate"><span class="pre">nan</span></code> 、 <code class="docutils literal notranslate"><span class="pre">inf</span></code> 或 <code class="docutils literal notranslate"><span class="pre">-inf</span></code> 会出现 error 。默认：True</p></li>
 </ul>
 </dd>
 <dt>返回类型：</dt><dd><p>裁剪梯度范数后的参数。
