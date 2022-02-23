@@ -10,7 +10,8 @@ Base class for running neural networks in Graph Mode.
             add_optimizer,
             set_grad_scaler,
             name,
-            training,
+            state_dict,
+            load_state_dict,
             debug,
             __repr__,
     :member-order: bysource

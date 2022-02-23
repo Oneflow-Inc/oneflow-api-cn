@@ -236,6 +236,7 @@ reset_docstr(
 
     .. code-block:: python
 
+
         >>> import oneflow as flow
         >>> x = flow.tensor([1.0])
         >>> x.item()
@@ -503,6 +504,7 @@ reset_docstr(
     """
 )
 
+
 reset_docstr(
     oneflow.rsqrt,
     r"""rsqrt(input) -> Tensor
@@ -711,6 +713,7 @@ reset_docstr(
 
     """,
 )
+
 reset_docstr(
     oneflow.Tensor.to_global,
     r"""to_global(placement=None, sbp=None, grad_sbp=None) -> Tensor
@@ -731,7 +734,6 @@ reset_docstr(
         True
     """
 )
-
 
 reset_docstr(
     oneflow.to_local,
