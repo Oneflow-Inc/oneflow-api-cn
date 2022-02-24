@@ -1,5 +1,9 @@
-OneFlow API Reference
+OneFlow API 文档
 ===================================
+
+**注意：** 此页面为 Oneflow 的中文版API文档，英文版文档的链接请移步 `此处 <https://oneflow.readthedocs.io/en/master/index.html>`_ 。
+
+
 .. toctree::
     :maxdepth: 1
 
@@ -12,24 +16,27 @@ OneFlow API Reference
     :caption: OneFlow Python API
 
     oneflow
-    tensor
     nn
     functional
-    module
-    graph
-    linalg
-    image
-    optim
-    utils
+    tensor
+    autograd
     cuda
     distributed
+    linalg
+    nn.init
+    optim
+    module
+    graph
+    image
+    utils
+    env
     comm
     placement
     sbp
 
 
 
-Indices and tables
+索引和表格
 ==================
 
 * :ref:`genindex`
