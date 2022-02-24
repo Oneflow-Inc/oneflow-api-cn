@@ -1,8 +1,7 @@
 OneFlow API 文档
 ===================================
 
-**注意：** 此页面为 OneFlow 的中文版 API 文档，目前中文版只同步了 OneFlow master 版本，英文版文档的链接请移步 `此处 <https://oneflow.readthedocs.io/en/master/index.html>`_ 。
-
+**注意：** 此页面为 OneFlow 的中文版 API 文档，英文版文档的链接请移步 `此处 <https://oneflow.readthedocs.io/en/master/index.html>`_ 。
 
 .. toctree::
     :maxdepth: 1
