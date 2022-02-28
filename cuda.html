@@ -2,7 +2,7 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="oneflow.distributed" href="distributed.html" /><link rel="prev" title="oneflow.utils" href="utils.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="oneflow.distributed" href="distributed.html" /><link rel="prev" title="oneflow.autograd" href="autograd.html" />
 
     <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
         <title>oneflow.cuda - OneFlow documentation</title>
@@ -113,17 +113,19 @@
 <p class="caption"><span class="caption-text">OneFlow Python API</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="oneflow.html">oneflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tensor.html">oneflow.Tensor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nn.html">oneflow.nn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functional.html">oneflow.nn.functional</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module.html">oneflow.nn.Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graph.html">oneflow.nn.Graph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linalg.html">oneflow.linalg</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image.html">oneflow.nn.image</a></li>
-<li class="toctree-l1"><a class="reference internal" href="optim.html">oneflow.optim</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utils.html">oneflow.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tensor.html">oneflow.Tensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autograd.html">oneflow.autograd</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">oneflow.cuda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="distributed.html">oneflow.distributed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linalg.html">oneflow.linalg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nn.init.html">oneflow.nn.init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optim.html">oneflow.optim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module.html">oneflow.nn.Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph.html">oneflow.nn.Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">oneflow.nn.image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">oneflow.utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comm.html">oneflow.comm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="placement.html">oneflow.placement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sbp.html">oneflow.sbp.sbp</a></li>
@@ -158,6 +160,46 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</p>
 <dl class="py function">
+<dt id="oneflow.cuda.BoolTensor">
+<code class="sig-prename descclassname"><span class="pre">oneflow.cuda.</span></code><code class="sig-name descname"><span class="pre">BoolTensor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.cuda.BoolTensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a Tensor with the dtype of bool and it has the same parameters as <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.Tensor()</span></code></a>.</p>
+</dd></dl>
+<dl class="py function">
+<dt id="oneflow.cuda.ByteTensor">
+<code class="sig-prename descclassname"><span class="pre">oneflow.cuda.</span></code><code class="sig-name descname"><span class="pre">ByteTensor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.cuda.ByteTensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a Tensor with the dtype of uint8 and it has the same parameters as <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.Tensor()</span></code></a>.</p>
+</dd></dl>
+<dl class="py function">
+<dt id="oneflow.cuda.CharTensor">
+<code class="sig-prename descclassname"><span class="pre">oneflow.cuda.</span></code><code class="sig-name descname"><span class="pre">CharTensor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.cuda.CharTensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a Tensor with the dtype of int8 and it has the same parameters as <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.Tensor()</span></code></a>.</p>
+</dd></dl>
+<dl class="py function">
+<dt id="oneflow.cuda.DoubleTensor">
+<code class="sig-prename descclassname"><span class="pre">oneflow.cuda.</span></code><code class="sig-name descname"><span class="pre">DoubleTensor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.cuda.DoubleTensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a Tensor with the dtype of float64 and it has the same parameters as <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.Tensor()</span></code></a>.</p>
+</dd></dl>
+<dl class="py function">
+<dt id="oneflow.cuda.FloatTensor">
+<code class="sig-prename descclassname"><span class="pre">oneflow.cuda.</span></code><code class="sig-name descname"><span class="pre">FloatTensor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.cuda.FloatTensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a Tensor with the dtype of float32 and it has the same parameters as <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.Tensor()</span></code></a>.</p>
+</dd></dl>
+<dl class="py function">
+<dt id="oneflow.cuda.HalfTensor">
+<code class="sig-prename descclassname"><span class="pre">oneflow.cuda.</span></code><code class="sig-name descname"><span class="pre">HalfTensor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.cuda.HalfTensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a Tensor with the dtype of float16 and it has the same parameters as <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.Tensor()</span></code></a>.</p>
+</dd></dl>
+<dl class="py function">
+<dt id="oneflow.cuda.IntTensor">
+<code class="sig-prename descclassname"><span class="pre">oneflow.cuda.</span></code><code class="sig-name descname"><span class="pre">IntTensor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.cuda.IntTensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a Tensor with the dtype of int32 and it has the same parameters as <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.Tensor()</span></code></a>.</p>
+</dd></dl>
+<dl class="py function">
+<dt id="oneflow.cuda.LongTensor">
+<code class="sig-prename descclassname"><span class="pre">oneflow.cuda.</span></code><code class="sig-name descname"><span class="pre">LongTensor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.cuda.LongTensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a Tensor with the dtype of int64 and it has the same parameters as <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.Tensor()</span></code></a>.</p>
+</dd></dl>
+<dl class="py function">
 <dt id="oneflow.cuda.device_count">
 <code class="sig-prename descclassname"><span class="pre">oneflow.cuda.</span></code><code class="sig-name descname"><span class="pre">device_count</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">int</span><a class="headerlink" href="#oneflow.cuda.device_count" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the number of GPUs available..</p>
@@ -183,14 +225,14 @@ limitations under the License.</p>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="utils.html">
+          <a class="prev-page" href="autograd.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">oneflow.utils</div>
+                <div class="title">oneflow.autograd</div>
                 
               </div>
             </a>

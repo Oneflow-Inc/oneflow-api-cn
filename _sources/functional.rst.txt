@@ -22,6 +22,7 @@ Functional operations for neural networks
 .. autofunction:: pad
 .. autofunction:: prelu
 .. autofunction:: logsigmoid 
+.. autofunction:: log_softmax
 .. autofunction:: gelu
 .. autofunction:: glu
 .. autofunction:: softsign
@@ -30,7 +31,8 @@ Functional operations for neural networks
 .. autofunction:: tanh 
 .. autofunction:: silu
 .. autofunction:: mish
-.. autofunction:: one_hot 
+.. autofunction:: one_hot
+.. autofunction:: triplet_margin_loss
 .. autofunction:: dropout 
 .. autofunction:: upsample
 .. autofunction:: affine_grid
