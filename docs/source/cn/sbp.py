@@ -2,8 +2,8 @@ import oneflow
 from docreset import reset_docstr
 
 reset_docstr(
-oneflow.sbp.sbp,
-r"""
+    oneflow.sbp.sbp,
+    r"""
     sbp的中文文档
     A sbp is an object representing the distribution type of a oneflow.Tensor around the device group,
     which represents the mapping relationship between the logical Tensor and the physical Tensor.
