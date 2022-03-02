@@ -7,8 +7,9 @@ reset_docstr(
     sbp的中文文档
     A sbp is an object representing the distribution type of a oneflow.Tensor around the device group,
     which represents the mapping relationship between the logical Tensor and the physical Tensor.
+    一个 sbp 是一个表示 `oneflow.Tensor` 在物理设备集群中的分布式数据类型的对象，表示逻辑张量与物理张量之间的映射关系。
     
-    sbp includes three types:
+    `sbp` 有三种类型：
     
     1. split: 
         Indicates that the physical Tensors are obtained by splitting the logical Tensor.
