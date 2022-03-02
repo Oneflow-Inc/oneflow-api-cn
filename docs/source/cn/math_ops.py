@@ -3,7 +3,7 @@ from docreset import reset_docstr
 
 reset_docstr(
     oneflow.add,
-    r"""add(input, other) -> Tensor
+    r"""add(:attr:`input`, :attr:`other`) -> oneflow.tensor
     
     计算 `input` 和 `other` 的和。支持 element-wise、标量和广播形式的加法。
 
@@ -13,8 +13,8 @@ reset_docstr(
         out = input + other
 
     参数：
-        - **input** (Tensor): 输入张量
-        - **other** (Tensor): 输入张量
+        - **input** (Tensor) - 输入张量
+        - **other** (Tensor) - 其余输入张量
 
     返回类型：
         oneflow.tensor
