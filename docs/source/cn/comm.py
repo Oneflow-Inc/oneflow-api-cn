@@ -35,3 +35,44 @@ reset_docstr(
 
     """,
 )
+
+reset_docstr(
+    oneflow.comm.all_gather,
+    r"""
+    将整个进程组的张量收集到一个列表中。
+
+    参数：
+        - tensor_list (list[Tensor]): 输出列表。它应该包含收集到的正确尺寸的张量用于输出。
+        - tensor (Tensor): 从当前进程广播的张量。
+
+    样例：
+
+    .. code-block:: python
+
+        >>> # 我们有一个进程组，包含两个 rank。
+        >>> import oneflow as flow
+
+        >>> input = flow.tensor([[1, 2], [3, 4]], device="cuda") + flow.env.get_local_rank()
+        >>> # rank0 的输入
+        >>> input # doctest: +ONLY_CHECK_RANK_0
+        tensor([[1, 2],
+                [3, 4]], device='cuda:0', dtype=oneflow.int64)
+        >>> # rank1 的输入
+        >>> input # doctest: +ONLY_CHECK_RANK_1
+        tensor([[2, 3],
+                [4, 5]], device='cuda:1', dtype=oneflow.int64)
+        >>> tensor_list = [flow.zeros(2, 2, dtype=flow.int64) for _ in range(2)]
+        >>> flow.comm.all_gather(tensor_list, input)
+        >>> # rank0 的结果
+        >>> tensor_list # doctest: +ONLY_CHECK_RANK_0
+        [tensor([[1, 2],
+                [3, 4]], device='cuda:0', dtype=oneflow.int64), tensor([[2, 3],
+                [4, 5]], device='cuda:0', dtype=oneflow.int64)]
+        >>> # rank1 的结果
+        >>> tensor_list # doctest: +ONLY_CHECK_RANK_1
+        [tensor([[1, 2],
+                [3, 4]], device='cuda:1', dtype=oneflow.int64), tensor([[2, 3],
+                [4, 5]], device='cuda:1', dtype=oneflow.int64)]
+
+    """,
+)
