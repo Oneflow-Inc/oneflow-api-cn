@@ -32,3 +32,4 @@ from .utils import *
 from .norm import *
 from .graph import *
 from .placement import *
+from .adagrad import *
