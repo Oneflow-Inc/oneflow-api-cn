@@ -31,6 +31,5 @@ from .nn import *
 from .utils import *
 from .norm import *
 from .graph import *
-from .placement import *
 from .adagrad import *
 from .sbp import *
