@@ -162,26 +162,24 @@ limitations under the License.</p>
 <dl class="py class">
 <dt id="oneflow.optim.Adagrad">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.optim.</span></code><code class="sig-name descname"><span class="pre">Adagrad</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.nn.Parameter</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr_decay</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_decay</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_accumulator_value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1e-10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.Adagrad" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implements Adagrad Optimizer.</p>
-<p>The formula is:</p>
+<dd><p>实现 Adagrad 优化器。</p>
+<p>公式是:</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}&amp; S_{t} = S_{t-1} + grad \odot grad\\&amp; decay\_lr = \frac{learning\_rate}{(1 + (train\_step - 1) * lr\_decay)}\\&amp; X_{t} = X_{t-1} - \frac{decay\_lr}{\sqrt{S_{t} + \epsilon}} \odot grad\end{aligned}\end{align} \]</div></div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>params</strong> (<em>Union</em><em>[</em><em>Iterator</em><em>[</em><a class="reference internal" href="nn.html#oneflow.nn.Parameter" title="oneflow.nn.Parameter"><em>Parameter</em></a><em>]</em><em>, </em><em>List</em><em>[</em><em>Dict</em><em>]</em><em>]</em>) – iterable of parameters to optimize or dicts defining</p></li>
-<li><p><strong>groups</strong> (<em>parameter</em>) – </p></li>
-<li><p><strong>lr</strong> (<em>float</em><em>, </em><em>optional</em>) – The learning rate. Defaults to 0.001.</p></li>
-<li><p><strong>lr_decay</strong> (<em>float</em><em>, </em><em>optional</em>) – The decay factor of learning rate. Defaults to 0.0.</p></li>
-<li><p><strong>weight_decay</strong> (<em>float</em><em>, </em><em>optional</em>) – The weight decay. Defaults to 0.</p></li>
-<li><p><strong>initial_accumulator_value</strong> (<em>float</em><em>, </em><em>optional</em>) – The initial value of S. Defaults to 0.0.</p></li>
-<li><p><strong>eps</strong> (<em>float</em><em>, </em><em>optional</em>) – A small constant terms added to the denominator to improve numerical stability. Defaults to 1e-10.</p></li>
+<dl class="simple">
+<dt>参数:</dt><dd><ul class="simple">
+<li><p><strong>params</strong> (Union[Iterator[Parameter], List[Dict]])- 用来优化或 dicts 定义的可迭代参数。</p></li>
+<li><p><strong>lr</strong> (float, optional)- 学习率，默认为 0.001。</p></li>
+<li><p><strong>lr_decay</strong> (float, optional)- 学习率的衰减因子，默认为 0.0。</p></li>
+<li><p><strong>weight_decay</strong> (float, optional)- 权重衰减， 默认为 0。</p></li>
+<li><p><strong>initial_accumulator_value</strong> (float, optional)- S 的初始值，默认为 0.0。</p></li>
+<li><p><strong>eps</strong> (float, optional)- 一个为提高数值稳定性而添加到分母的小常数项，默认为 1e-10。</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
-<p>Example 1:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume net is a custom model.</span>
+<p>例如:</p>
+<p>例1:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 假设 net 是一个自定义模型。</span>
 <span class="n">adagrad</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adagrad</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
@@ -192,8 +190,8 @@ limitations under the License.</p>
     <span class="n">adagrad</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Example 2:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume net is a custom model.</span>
+<p>例2:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 假设 net 是一个自定义模型。</span>
 <span class="n">adagrad</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adagrad</span><span class="p">(</span>
     <span class="p">[</span>
         <span class="p">{</span>
@@ -206,7 +204,7 @@ limitations under the License.</p>
 <span class="p">)</span>
 
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-    <span class="c1"># Read data, Compute the loss and so on.</span>
+    <span class="c1"># 读取数据，计算损失等等。</span>
     <span class="c1"># ...</span>
     <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
     <span class="n">adagrad</span><span class="o">.</span><span class="n">clip_grad</span><span class="p">()</span>
@@ -214,16 +212,16 @@ limitations under the License.</p>
     <span class="n">adagrad</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>If you want to use clip_grad, you can refer this example.</p>
-<p>For more details of <cite>clip_grad_max_norm</cite> and <cite>clip_grad_norm_type</cite>, you can refer to <a class="reference internal" href="nn.html#oneflow.nn.utils.clip_grad_norm_" title="oneflow.nn.utils.clip_grad_norm_"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.nn.utils.clip_grad_norm_()</span></code></a>.</p>
+<p>如果你想要使用 clip_grad 函数，你可以参考这个例子。</p>
+<p>关于 <cite>clip_grad_max_norm</cite> 和 <cite>clip_grad_norm_type</cite> 的更多细节, 你可以参考 <a class="reference internal" href="nn.html#oneflow.nn.utils.clip_grad_norm_" title="oneflow.nn.utils.clip_grad_norm_"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.nn.utils.clip_grad_norm_()</span></code></a> 。</p>
 <dl class="py method">
 <dt id="oneflow.optim.Adagrad.step">
 <code class="sig-name descname"><span class="pre">step</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">closure</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.Adagrad.step" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs a single optimization step.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>closure</strong> (<em>callable</em><em>, </em><em>optional</em>) – A closure that reevaluates the model
-and returns the loss.</p>
+<dd><p>执行单个优化步骤。</p>
+<dl class="simple">
+<dt>参数:</dt><dd><ul class="simple">
+<li><p><strong>closure</strong> (callable, optional)- 重新评估模型并返回损失的闭包。</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
