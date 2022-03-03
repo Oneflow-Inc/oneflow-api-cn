@@ -4,18 +4,11 @@ from docreset import reset_docstr
 reset_docstr(
     oneflow.sbp.sbp,
     r"""
-    sbp的中文文档
-    A sbp is an object representing the distribution type of a oneflow.Tensor around the device group,
-    which represents the mapping relationship between the logical Tensor and the physical Tensor.
-    一个 sbp 是一个表示 `oneflow.Tensor` 在物理设备集群中的分布式数据类型的对象，表示逻辑张量与物理张量之间的映射关系。
+    一个 sbp 是一个表示 `oneflow.Tensor` 在物理设备集群中的分布式数据类型的对象，表示全局视角下的 Tensor 与物理设备上的 Tensor 之间的映射关系。
     
     `sbp` 有三种类型：
     
-    1. split: 
-        Indicates that the physical Tensors are obtained by splitting the logical Tensor.
-        Split will contain a parameter Axis, which represents the dimension to be split.
-        If all the physical Tensors are spliced according to the dimensions of Split,
-        the logical Tensor can be restored.
+    1. `split` 表示物理设备上的Tensor 是将全局视角下的 Tensor 切分得到的。切分时需要指定切分的维度。物理设备上的 Tensor 如果根据切分的维度被拼接，可以还原得到全局视角的 Tensor 。
     
     2. broadcast: 
         Indicates that the physical Tensors are copies of the logical Tensor, which are
