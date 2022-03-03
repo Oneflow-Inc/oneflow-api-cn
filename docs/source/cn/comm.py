@@ -35,3 +35,35 @@ reset_docstr(
 
     """,
 )
+
+reset_docstr(
+    oneflow.comm.all_reduce,
+    """
+    将所有机器上的 tensor 按照 element-wise 的方式相加，结果返回给所有进程。
+
+    参数：
+        - **tensor** (Tensor): 输入张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> # We have 1 process groups, 2 ranks.
+        >>> import oneflow as flow
+
+        >>> tensor = flow.tensor([[1, 2], [3, 4]], device="cuda") + flow.env.get_local_rank()
+        >>> # tensor on rank0
+        >>> tensor # doctest: +ONLY_CHECK_RANK_0
+        tensor([[1, 2],
+                [3, 4]], device='cuda:0', dtype=oneflow.int64)
+        >>> # tensor on rank1
+        >>> tensor # doctest: +ONLY_CHECK_RANK_1
+        tensor([[2, 3],
+                [4, 5]], device='cuda:1', dtype=oneflow.int64)
+        >>> flow.comm.all_reduce(tensor)
+        >>> tensor.numpy()
+        array([[3, 5],
+               [7, 9]], dtype=int64)
+
+    """
+)
