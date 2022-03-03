@@ -5,7 +5,7 @@ reset_docstr(
     oneflow.add,
     r"""add(input, other) -> oneflow.Tensor
     
-    计算 `input` 和 `other` 的和。支持按元素、标量和广播形式的加法。
+    计算 `input` 和 `other` 的和。支持 element-wise 、标量和广播形式的加法。
 
     公式为：
 
