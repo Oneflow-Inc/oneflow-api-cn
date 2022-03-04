@@ -33,4 +33,4 @@ from .norm import *
 from .graph import *
 from .placement import *
 from .adagrad import *
-from .linalg import *
+from .env import *
