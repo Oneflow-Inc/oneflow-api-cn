@@ -49,27 +49,27 @@ reset_docstr(
 
     .. code-block:: python
 
-        >>> # 我们有一个进程组，包含两个 rank。
-        >>> import oneflow as flow
+        # 我们有一个进程组，包含两个 rank。
+        > import oneflow as flow
 
-        >>> input = flow.tensor([[1, 2], [3, 4]], device="cuda") + flow.env.get_local_rank()
-        >>> # rank0 的输入 +ONLY_CHECK_RANK_0
-        >>> input
+        > input = flow.tensor([[1, 2], [3, 4]], device="cuda") + flow.env.get_local_rank()
+        # rank0 的输入
+        > input
         tensor([[1, 2],
                 [3, 4]], device='cuda:0', dtype=oneflow.int64)
-        >>> # rank1 的输入 +ONLY_CHECK_RANK_1
-        >>> input
+        # rank1 的输入
+        > input
         tensor([[2, 3],
                 [4, 5]], device='cuda:1', dtype=oneflow.int64)
-        >>> tensor_list = [flow.zeros(2, 2, dtype=flow.int64) for _ in range(2)]
-        >>> flow.comm.all_gather(tensor_list, input)
-        >>> # rank0 的结果 +ONLY_CHECK_RANK_0
-        >>> tensor_list
+        > tensor_list = [flow.zeros(2, 2, dtype=flow.int64) for _ in range(2)]
+        > flow.comm.all_gather(tensor_list, input)
+        # rank0 的结果
+        > tensor_list
         [tensor([[1, 2],
                 [3, 4]], device='cuda:0', dtype=oneflow.int64), tensor([[2, 3],
                 [4, 5]], device='cuda:0', dtype=oneflow.int64)]
-        >>> # rank1 的结果 +ONLY_CHECK_RANK_1
-        >>> tensor_list
+        # rank1 的结果
+        > tensor_list
         [tensor([[1, 2],
                 [3, 4]], device='cuda:1', dtype=oneflow.int64), tensor([[2, 3],
                 [4, 5]], device='cuda:1', dtype=oneflow.int64)]
