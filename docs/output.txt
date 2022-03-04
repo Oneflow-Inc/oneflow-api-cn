@@ -1,0 +1,5510 @@
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.add(x, y)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    x = 5
+Expecting nothing
+ok
+Trying:
+    y = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.add(x, y)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    x = flow.randn(1, 1, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.add(x, y)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    other = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.sub(input,other)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    input = 5
+Expecting nothing
+ok
+Trying:
+    other = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.sub(input,other)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    input = flow.randn(1, 1, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    other = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.sub(input,other)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([-1, 2, -3, 4], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    flow.abs(x)
+Expecting:
+    tensor([1., 2., 3., 4.], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    other = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.div(input,other)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    input = 5
+Expecting nothing
+ok
+Trying:
+    other = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.div(input,other)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    input = flow.randn(1, 1, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    other = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.div(input,other)
+Expecting nothing
+ok
+Trying:
+    out.shape 
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    other = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.mul(input,other)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    input = 5
+Expecting nothing
+ok
+Trying:
+    other = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.mul(input,other)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    input = flow.randn(1, 1, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    other = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.mul(input,other)
+Expecting nothing
+ok
+Trying:
+    out.shape 
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([[1, 2, 3], [4, 5, 6]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.reciprocal(x)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([[1.0000, 0.5000, 0.3333],
+            [0.2500, 0.2000, 0.1667]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([-0.5,  0.8, 1.0,  -0.8], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.asin(input)
+Expecting nothing
+ok
+Trying:
+    output.shape
+Expecting:
+    oneflow.Size([4])
+ok
+Trying:
+    output
+Expecting:
+    tensor([-0.5236,  0.9273,  1.5708, -0.9273], dtype=oneflow.float32)
+ok
+Trying:
+    input1 = flow.tensor([[0.8, 1.0], [-0.6, -1.0]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output1 = input1.asin()
+Expecting nothing
+ok
+Trying:
+    output1.shape
+Expecting:
+    oneflow.Size([2, 2])
+ok
+Trying:
+    output1
+Expecting:
+    tensor([[ 0.9273,  1.5708],
+            [-0.6435, -1.5708]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([2, 3, 4], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.asinh(input)
+Expecting nothing
+ok
+Trying:
+    output.shape
+Expecting:
+    oneflow.Size([3])
+ok
+Trying:
+    output
+Expecting:
+    tensor([1.4436, 1.8184, 2.0947], dtype=oneflow.float32)
+ok
+Trying:
+    input1 = flow.tensor([[-1, 0, -0.4], [5, 7, 0.8]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output1 = input1.asinh()
+Expecting nothing
+ok
+Trying:
+    output1.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    output1
+Expecting:
+    tensor([[-0.8814,  0.0000, -0.3900],
+            [ 2.3124,  2.6441,  0.7327]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([0.5, 0.6, 0.7], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.atan(input)
+Expecting nothing
+ok
+Trying:
+    output.shape
+Expecting:
+    oneflow.Size([3])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([0.1, -2, 3.4], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.ceil(x)
+Expecting nothing
+ok
+Trying:
+    y.shape
+Expecting:
+    oneflow.Size([3])
+ok
+Trying:
+    y
+Expecting:
+    tensor([ 1., -2.,  4.], dtype=oneflow.float32)
+ok
+Trying:
+    x = flow.tensor([[2.5, 4.6, 0.6],[7.8, 8.3, 9.2]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = x.ceil()
+Expecting nothing
+ok
+Trying:
+    y.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    y
+Expecting:
+    tensor([[ 3.,  5.,  1.],
+            [ 8.,  9., 10.]], dtype=oneflow.float32)
+ok
+Trying:
+    x = flow.tensor([[[2.2, 4.4, 6.5],[7.1, 8.2, 9.3]],[[10.6,11.2,12.2],[13.5,14.8,15.9]]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.ceil(x)
+Expecting nothing
+ok
+Trying:
+    y.shape
+Expecting:
+    oneflow.Size([2, 2, 3])
+ok
+Trying:
+    y
+Expecting:
+    tensor([[[ 3.,  5.,  7.],
+             [ 8.,  9., 10.]],
+    <BLANKLINE>
+            [[11., 12., 13.],
+             [14., 15., 16.]]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([1.3, 1.5, 2.7], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.log1p(x)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([0.8329, 0.9163, 1.3083], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([1, 2, 3], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.exp(x)
+Expecting nothing
+ok
+Trying:
+    y
+Expecting:
+    tensor([ 2.7183,  7.3891, 20.0855], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([0.5, 0.6, 0.7], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.acos(input)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([1.0472, 0.9273, 0.7954], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x1 = flow.tensor([2, 3, 4], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out1 = flow.acosh(x1)
+Expecting nothing
+ok
+Trying:
+    out1
+Expecting:
+    tensor([1.3170, 1.7627, 2.0634], dtype=oneflow.float32)
+ok
+Trying:
+    x2 = flow.tensor([1.5, 2.6, 3.7], dtype=flow.float32, device=flow.device('cuda'))
+Expecting nothing
+ok
+Trying:
+    out2 = flow.acosh(x2)
+Expecting nothing
+ok
+Trying:
+    out2
+Expecting:
+    tensor([0.9624, 1.6094, 1.9827], device='cuda:0', dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([0.5, 0.6, 0.7], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.atanh(input)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([0.5493, 0.6931, 0.8673], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x1 = flow.tensor([-2, 0, 2], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out1 = flow.sign(x1)
+Expecting nothing
+ok
+Trying:
+    out1
+Expecting:
+    tensor([-1.,  0.,  1.], dtype=oneflow.float32)
+ok
+Trying:
+    x2 = flow.tensor([-3.2, -4.5, 5.8], dtype=flow.float32, device=flow.device('cuda'))
+Expecting nothing
+ok
+Trying:
+    out2 = flow.sign(x2)
+Expecting nothing
+ok
+Trying:
+    out2
+Expecting:
+    tensor([-1., -1.,  1.], device='cuda:0', dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x1 = flow.tensor([1, 2, 3], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    x2 = flow.tensor([1.53123589,0.54242598,0.15117185], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    x3 = flow.tensor([1,0,-1], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    flow.sinh(x1)
+Expecting:
+    tensor([ 1.1752,  3.6269, 10.0179], dtype=oneflow.float32)
+ok
+Trying:
+    flow.sinh(x2)
+Expecting:
+    tensor([2.2038, 0.5694, 0.1517], dtype=oneflow.float32)
+ok
+Trying:
+    flow.sinh(x3)
+Expecting:
+    tensor([ 1.1752,  0.0000, -1.1752], dtype=oneflow.float32)
+ok
+Trying:
+    import math as m
+Expecting nothing
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([-1/4*m.pi, 0, 1/4*m.pi], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.tan(input)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([-1.,  0.,  1.], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([0.2, 0.6, -1.5, -0.3], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.clamp(input, min=-0.5, max=0.5)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([ 0.2000,  0.5000, -0.5000, -0.3000], dtype=oneflow.float32)
+ok
+Trying:
+    input = flow.tensor([0.2, 0.6, -1.5, -0.3], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.clamp(input, min=None, max=0.5)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([ 0.2000,  0.5000, -1.5000, -0.3000], dtype=oneflow.float32)
+ok
+Trying:
+    input = flow.tensor([0.2, 0.6, -1.5, -0.3], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.clamp(input, min=-0.5, max=None)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([ 0.2000,  0.6000, -0.5000, -0.3000], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([1.4309,  1.2706, -0.8562,  0.9796], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.cos(input)
+Expecting nothing
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([ 0.1632,  1.1835, -0.6979, -0.7325], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.cosh(input)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([1.0133, 1.7860, 1.2536, 1.2805], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([0, -1., 10.], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.erf(x)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([3])
+ok
+Trying:
+    out
+Expecting:
+    tensor([ 0.0000, -0.8427,  1.0000], dtype=oneflow.float32)
+ok
+Trying:
+    x = flow.tensor([[0, -1., 10.], [5, 7, 0.8]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.erf(x)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    out
+Expecting:
+    tensor([[ 0.0000, -0.8427,  1.0000],
+            [ 1.0000,  1.0000,  0.7421]], dtype=oneflow.float32)
+ok
+Trying:
+    x = flow.tensor([[0, -1., 10.], [5, 7, 0.8], [2, 3, 4]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = x.erf()
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([3, 3])
+ok
+Trying:
+    out
+Expecting:
+    tensor([[ 0.0000, -0.8427,  1.0000],
+            [ 1.0000,  1.0000,  0.7421],
+            [ 0.9953,  1.0000,  1.0000]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([0, -1., 10.], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.erfc(x)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([1.0000e+00, 1.8427e+00, 2.8026e-45], dtype=oneflow.float32)
+ok
+Trying:
+    x = flow.tensor([[0, -1., 10.], [5, 7, 0.8]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.erfc(x)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([[1.0000e+00, 1.8427e+00, 2.8026e-45],
+            [1.5375e-12, 4.1838e-23, 2.5790e-01]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([0, -1., 10.], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.erf(x)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([3])
+ok
+Trying:
+    out
+Expecting:
+    tensor([ 0.0000, -0.8427,  1.0000], dtype=oneflow.float32)
+ok
+Trying:
+    x = flow.tensor([[0, -1., 10.], [5, 7, 0.8]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.erf(x)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    out
+Expecting:
+    tensor([[ 0.0000, -0.8427,  1.0000],
+            [ 1.0000,  1.0000,  0.7421]], dtype=oneflow.float32)
+ok
+Trying:
+    x = flow.tensor([[0, -1., 10.], [5, 7, 0.8], [2, 3, 4]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = x.erf()
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([3, 3])
+ok
+Trying:
+    out
+Expecting:
+    tensor([[ 0.0000, -0.8427,  1.0000],
+            [ 1.0000,  1.0000,  0.7421],
+            [ 0.9953,  1.0000,  1.0000]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    flow.fmod(flow.tensor([-3., -2, -1, 1, 2, 3], dtype=flow.float32), 2.)
+Expecting:
+    tensor([-1., -0., -1.,  1.,  0.,  1.], dtype=oneflow.float32)
+ok
+Trying:
+    flow.fmod(flow.tensor([1, 2, 3, 4, 5.], dtype=flow.float32), 1.5)
+Expecting:
+    tensor([1.0000, 0.5000, 0.0000, 1.0000, 0.5000], dtype=oneflow.float32)
+ok
+Trying:
+    flow.fmod(flow.tensor([1, 2, 3, 4., -5]), flow.tensor([4, 2, 1, 3., 1]))
+Expecting:
+    tensor([1., 0., 0., 1., -0.], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow  
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(2, 3, 4, 5, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.log(input)
+Expecting nothing
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor((1, 2, -1), dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.tensor((3, 0, 4), dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    flow.minimum(x, y)
+Expecting:
+    tensor([ 1.,  0., -1.], dtype=oneflow.float32)
+ok
+Trying:
+    x = flow.tensor((1,), dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.tensor((3, 0, 4), dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    flow.minimum(x, y)
+Expecting:
+    tensor([1., 0., 1.], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor((1, 2, -1), dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.tensor((3, 0, 4), dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    flow.maximum(x, y)
+Expecting:
+    tensor([3., 2., 4.], dtype=oneflow.float32)
+ok
+Trying:
+    x = flow.tensor((1,), dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.tensor((3, 0, 4), dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    flow.maximum(x, y)
+Expecting:
+    tensor([3., 1., 4.], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.pow(x, 2)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([ 1.,  4.,  9., 16., 25., 36.], dtype=oneflow.float32)
+ok
+Trying:
+    x = flow.tensor([1.0, 2.0, 3.0, 4.0], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.tensor([1.0, 2.0, 3.0, 4.0], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.pow(x, y)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([  1.,   4.,  27., 256.], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    a = flow.tensor([1.0, 2.0, 3.0], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.rsqrt(a)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([1.0000, 0.7071, 0.5774], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([1.0, 2.0, 3.0], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.square(input)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([1., 4., 9.], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input1 = flow.randn(2, 6, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    input2 = flow.randn(6, 5, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    of_out = flow.matmul(input1, input2)
+Expecting nothing
+ok
+Trying:
+    of_out.shape
+Expecting:
+    oneflow.Size([2, 5])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x1 = flow.tensor([1.49999, 1.500001, 2.7], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out1 = flow.round(x1)
+Expecting nothing
+ok
+Trying:
+    out1
+Expecting:
+    tensor([1., 2., 3.], dtype=oneflow.float32)
+ok
+Trying:
+    x2 = flow.tensor([2.499999, 7.5000001, 5.3, 6.8], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out2 = flow.round(x2)
+Expecting nothing
+ok
+Trying:
+    out2
+Expecting:
+    tensor([2., 8., 5., 7.], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[1,2,4],[5,11,9.1]], dtype=flow.float64)
+Expecting nothing
+ok
+Trying:
+    mat1 = flow.tensor([[7.3,1.9,7.3],[10.2,1,5.5]], dtype=flow.float64)
+Expecting nothing
+ok
+Trying:
+    mat2 = flow.tensor([[7.3,1.9,7.3],[10.2,1,5.5],[3.7,2.2,8.1]], dtype=flow.float64)
+Expecting nothing
+ok
+Trying:
+    output = flow.addmm(input, mat1, mat2)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([[100.6800,  33.8300, 126.8700],
+            [110.0100,  43.4800, 133.6100]], dtype=oneflow.float64)
+ok
+Trying:
+    output.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    input2 = flow.tensor([1.7], dtype=flow.float64)
+Expecting nothing
+ok
+Trying:
+    mat1 = flow.tensor([[1,2],[5,9.1],[7.7,1.4]], dtype=flow.float64)
+Expecting nothing
+ok
+Trying:
+    mat2 = flow.tensor([[1,2,3.7],[5,9.1,6.8]], dtype=flow.float64)
+Expecting nothing
+ok
+Trying:
+    output2 = flow.addmm(input2, mat1, mat2, alpha=1, beta=2)
+Expecting nothing
+ok
+Trying:
+    output2
+Expecting:
+    tensor([[14.4000, 23.6000, 20.7000],
+            [53.9000, 96.2100, 83.7800],
+            [18.1000, 31.5400, 41.4100]], dtype=oneflow.float64)
+ok
+Trying:
+    output2.shape
+Expecting:
+    oneflow.Size([3, 3])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[1, 3, 8, 7, 2],
+               [1, 9, 4, 3, 2]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.argmax(input)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor(6, dtype=oneflow.int64)
+ok
+Trying:
+    output = flow.argmax(input, dim=1)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([2, 1], dtype=oneflow.int64)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([-0.5,  1.5, 0,  0.8], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.floor(input)
+Expecting nothing
+ok
+Trying:
+    output.shape
+Expecting:
+    oneflow.Size([4])
+ok
+Trying:
+    output
+Expecting:
+    tensor([-1.,  1.,  0.,  0.], dtype=oneflow.float32)
+ok
+Trying:
+    input1 = flow.tensor([[0.8, 1.0], [-0.6, 2.5]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output1 = input1.floor()
+Expecting nothing
+ok
+Trying:
+    output1.shape
+Expecting:
+    oneflow.Size([2, 2])
+ok
+Trying:
+    output1
+Expecting:
+    tensor([[ 0.,  1.],
+            [-1.,  2.]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    y = flow.full((5,),5) 
+Expecting nothing
+ok
+Trying:
+    y
+Expecting:
+    tensor([5, 5, 5, 5, 5], dtype=oneflow.int64)
+ok
+Trying:
+    y = flow.full((2,3),5.0) # 构造 local tensor
+Expecting nothing
+ok
+Trying:
+    y
+Expecting:
+    tensor([[5., 5., 5.],
+            [5., 5., 5.]], dtype=oneflow.float32)
+ok
+Trying:
+    placement = flow.placement("cpu", {0: [0]})
+Expecting nothing
+ok
+Trying:
+    y = flow.full((2,3),5.0, placement=placement, sbp=flow.sbp.broadcast)  # 构造 global tensor
+Expecting nothing
+ok
+Trying:
+    y.is_global # doctest: +NORMALIZE_WHITESPACE
+Expecting:
+    True
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([-0.5, 0, 0.5], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    gelu = flow.nn.GELU()
+Expecting nothing
+ok
+Trying:
+    out = gelu(input)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([-0.1543,  0.0000,  0.3457], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    targets1 = flow.tensor([3, 1], dtype=flow.int32)
+Expecting nothing
+ok
+Trying:
+    predictions1 = flow.tensor([[0.0, 1.0, 2.0, 3.0], [3.0, 2.0, 1.0, 0.0],], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out1 = flow.in_top_k(targets1, predictions1, k=1)
+Expecting nothing
+ok
+Trying:
+    out1
+Expecting:
+    tensor([1, 0], dtype=oneflow.int8)
+ok
+Trying:
+    out2 = flow.in_top_k(targets1, predictions1, k=2)
+Expecting nothing
+ok
+Trying:
+    out2
+Expecting:
+    tensor([1, 1], dtype=oneflow.int8)
+ok
+Trying:
+    targets2 = flow.tensor([3, 1], dtype=flow.int32, device=flow.device('cuda'))
+Expecting nothing
+ok
+Trying:
+    predictions2 = flow.tensor([[0.0, 1.0, 2.0, 3.0], [3.0, 2.0, 1.0, 0.0],], dtype=flow.float32, device=flow.device('cuda'))
+Expecting nothing
+ok
+Trying:
+    out3 = flow.in_top_k(targets2, predictions2, k=1)
+Expecting nothing
+ok
+Trying:
+    out3
+Expecting:
+    tensor([1, 0], device='cuda:0', dtype=oneflow.int8)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([1.0, 2.0, 3.0], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.sqrt(input)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([1.0000, 1.4142, 1.7321], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[-0.8166, -1.3802, -0.3560]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.var(input, 1, True)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([0.2631], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([1.0,2.0,3.0])
+Expecting nothing
+ok
+Trying:
+    output = flow.std(input, dim=0)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor(1., dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    relu = flow.nn.ReLU()
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([1, -2, 3], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    relu(x)
+Expecting:
+    tensor([1., 0., 3.], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    m = flow.nn.Hardtanh()
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([0.2, 0.3, 3.0, 4.0], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = m(x)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([0.2000, 0.3000, 1.0000, 1.0000], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([1, 2, 3], dtype=flow.float32)       
+Expecting nothing
+ok
+Trying:
+    out = flow.mish(input)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([0.8651, 1.9440, 2.9865], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([1, -2, 3], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.relu(input)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([1., 0., 3.], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    import oneflow.nn as nn
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(33, 16, 30, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    filters = flow.randn(20, 16, 5, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = nn.functional.conv1d(input, filters,stride=[1], padding=[0], dilation=[1], channel_pos="channels_first")
+Expecting nothing
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.ones((3,5))*2
+Expecting nothing
+ok
+Trying:
+    index = flow.tensor([[0,1,2],[0,1,4]], dtype=flow.int32)
+Expecting nothing
+ok
+Trying:
+    src = flow.tensor([[0.,10.,20.,30.,40.],[50.,60.,70.,80.,90.]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.scatter(input, 1, index, src)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([[ 0., 10., 20.,  2.,  2.],
+            [50., 60.,  2.,  2., 70.],
+            [ 2.,  2.,  2.,  2.,  2.]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.ones((3,5))*2
+Expecting nothing
+ok
+Trying:
+    index = flow.tensor([[0,1,2],[0,1,4]], dtype=flow.int32)
+Expecting nothing
+ok
+Trying:
+    src = flow.tensor([[0,10,20,30,40],[50,60,70,80,90]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.scatter_add(input, 1, index, src)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([[ 2., 12., 22.,  2.,  2.],
+            [52., 62.,  2.,  2., 72.],
+            [ 2.,  2.,  2.,  2.,  2.]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    index = flow.tensor([[1], [6], [4]], dtype=flow.int)
+Expecting nothing
+ok
+Trying:
+    update = flow.tensor([10.2, 5.1, 12.7], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.scatter_nd(index, update, [8])
+Expecting nothing
+ok
+Trying:
+    out # doctest: +NORMALIZE_WHITESPACE
+Expecting:
+    tensor([ 0.0000, 10.2000,  0.0000,  0.0000, 12.7000,  0.0000,  5.1000,  0.0000], 
+        dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([1, 2, 3], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.nn.functional.selu(input)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([1.0507, 2.1014, 3.1521], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([0.81733328, 0.43621480, 0.10351428], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.nn.functional.sigmoid(input)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([0.6937, 0.6074, 0.5259], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([0.81733328, 0.43621480, 0.10351428], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    m = flow.nn.Sigmoid()
+Expecting nothing
+ok
+Trying:
+    out = m(x)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([0.6937, 0.6074, 0.5259], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([1, 2, 3], dtype=flow.float32)       
+Expecting nothing
+ok
+Trying:
+    out = flow.silu(input)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([0.7311, 1.7616, 2.8577], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    m = flow.nn.Softmax(dim = 2)
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([[[-0.46716809,  0.40112534,  0.61984003], [-1.31244969, -0.42528763,  1.47953856]]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = m(x)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([[[0.1575, 0.3754, 0.4671],
+             [0.0507, 0.1230, 0.8263]]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([1, 2, 3], dtype=flow.float32) 
+Expecting nothing
+ok
+Trying:
+    out = flow.nn.functional.softsign(input)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([0.5000, 0.6667, 0.7500], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([0.81733328, 0.43621480, 0.10351428], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    m = flow.nn.Sigmoid()
+Expecting nothing
+ok
+Trying:
+    out = m(x)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([0.6937, 0.6074, 0.5259], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    m = flow.nn.Softmax(dim = 2)
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([[[-0.46716809,  0.40112534,  0.61984003], [-1.31244969, -0.42528763,  1.47953856]]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = m(x)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([[[0.1575, 0.3754, 0.4671],
+             [0.0507, 0.1230, 0.8263]]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x1 = flow.tensor([-0.5461,  0.1347, -2.7266, -0.2746], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y1 = flow.sin(x1)
+Expecting nothing
+ok
+Trying:
+    y1
+Expecting:
+    tensor([-0.5194,  0.1343, -0.4032, -0.2712], dtype=oneflow.float32)
+ok
+Trying:
+    x2 = flow.tensor([-1.4, 2.6, 3.7], dtype=flow.float32, device=flow.device('cuda'))
+Expecting nothing
+ok
+Trying:
+    y2 = flow.sin(x2)
+Expecting nothing
+ok
+Trying:
+    y2
+Expecting:
+    tensor([-0.9854,  0.5155, -0.5298], device='cuda:0', dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(3, 6, 9, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    tup_list = [[None, None, None], [0, 5, 2], [0, 6, 3]]
+Expecting nothing
+ok
+Trying:
+    y = flow.slice(input, slice_tup_list=tup_list)
+Expecting nothing
+ok
+Trying:
+    y.shape
+Expecting:
+    oneflow.Size([3, 3, 2])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([1, 1, 1, 1, 1], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    update = flow.tensor([2, 3, 4], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.slice_update(input, update, slice_tup_list=[[1, 4, 1]])
+Expecting nothing
+ok
+Trying:
+    y.numpy()
+Expecting:
+    array([1., 2., 3., 4., 1.], dtype=float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[1, 3, 8, 7, 2], [1, 9, 4, 3, 2]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    (values, indices) = flow.sort(input)
+Expecting nothing
+ok
+Trying:
+    values
+Expecting:
+    tensor([[1., 2., 3., 7., 8.],
+            [1., 2., 3., 4., 9.]], dtype=oneflow.float32)
+ok
+Trying:
+    indices
+Expecting:
+    tensor([[0, 4, 1, 3, 2],
+            [0, 4, 3, 2, 1]], dtype=oneflow.int32)
+ok
+Trying:
+    (values, indices) = flow.sort(input, descending=True)
+Expecting nothing
+ok
+Trying:
+    values
+Expecting:
+    tensor([[8., 7., 3., 2., 1.],
+            [9., 4., 3., 2., 1.]], dtype=oneflow.float32)
+ok
+Trying:
+    indices
+Expecting:
+    tensor([[2, 3, 1, 4, 0],
+            [1, 2, 3, 4, 0]], dtype=oneflow.int32)
+ok
+Trying:
+    (values, indices) = flow.sort(input, dim=0)
+Expecting nothing
+ok
+Trying:
+    values
+Expecting:
+    tensor([[1., 3., 4., 3., 2.],
+            [1., 9., 8., 7., 2.]], dtype=oneflow.float32)
+ok
+Trying:
+    indices
+Expecting:
+    tensor([[0, 0, 1, 1, 0],
+            [1, 1, 0, 0, 1]], dtype=oneflow.int32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor(
+        [
+           [1.0, 2.0, 3.0],
+           [4.0, 5.0, 6.0],
+           [7.0, 8.0, 9.0],
+        ], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    flow.diag(input)
+Expecting:
+    tensor([1., 5., 9.], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.ones(3, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    flow.tril(x)
+Expecting:
+    tensor([[1., 0., 0.],
+            [1., 1., 0.],
+            [1., 1., 1.]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.ones(3, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    flow.triu(x)
+Expecting:
+    tensor([[1., 1., 1.],
+            [0., 1., 1.],
+            [0., 0., 1.]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow 
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([[1, 2, 3], [4, 5, 6]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    indices = flow.tensor([1, 0], dtype=flow.int64)
+Expecting nothing
+ok
+Trying:
+    out = flow.batch_gather(x, indices)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([[4., 5., 6.],
+            [1., 2., 3.]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow 
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([[[1, 2, 3], [4, 5, 6]], [[1, 2, 3], [4, 5, 6]]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    indices = flow.tensor([[1, 0], [0, 1]], dtype=flow.int64)
+Expecting nothing
+ok
+Trying:
+    out = flow.batch_gather(x, indices)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([[[4., 5., 6.],
+             [1., 2., 3.]],
+    <BLANKLINE>         
+            [[1., 2., 3.],
+             [4., 5., 6.]]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[0, 1, 0], [2, 0, 2]], dtype=flow.int32)
+Expecting nothing
+ok
+Trying:
+    output = flow.argwhere(input)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([[0, 1],
+            [1, 0],
+            [1, 2]], dtype=oneflow.int32)
+ok
+Trying:
+    import oneflow as flow 
+Expecting nothing
+ok
+Trying:
+    x = flow.randn(3, 1, 1)
+Expecting nothing
+ok
+Trying:
+    like_tensor = flow.randn(3, 4, 5)
+Expecting nothing
+ok
+Trying:
+    broadcast_tensor = flow.broadcast_like(x, like_tensor, broadcast_axes=[1, 2]) 
+Expecting nothing
+ok
+Trying:
+    broadcast_tensor.shape
+Expecting:
+    oneflow.Size([3, 4, 5])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input1 = flow.randn(2, 6, 5, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    input2 = flow.randn(2, 6, 5, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    input3 = flow.randn(2, 6, 5, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.cat([input1, input2, input3], dim=1)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 18, 5, 3])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    out = flow.eye(3, 3)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([[1., 0., 0.],
+            [0., 1., 0.],
+            [0., 0., 1.]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.Tensor(32, 1, 5, 5)
+Expecting nothing
+ok
+Trying:
+    output = input.flatten(start_dim=1)
+Expecting nothing
+ok
+Trying:
+    output.shape
+Expecting:
+    oneflow.Size([32, 25])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.arange(0, 8, dtype=flow.float32).reshape(2, 2, -1)
+Expecting nothing
+ok
+Trying:
+    input.shape
+Expecting:
+    oneflow.Size([2, 2, 2])
+ok
+Trying:
+    out = flow.flip(input, [0, 1])
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([[[6., 7.],
+             [4., 5.]],
+    <BLANKLINE>
+            [[2., 3.],
+             [0., 1.]]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    fill_value = 8.7654321 # random value e.g. -1e9 3.1415
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[[-0.13169311,  0.97277078,  1.23305363,  1.56752789],
+                          [-1.51954275,  1.87629473, -0.53301206,  0.53006478],
+                          [-1.38244183, -2.63448052,  1.30845795, -0.67144869]],
+                         [[ 0.41502161,  0.14452418,  0.38968   , -1.76905653],
+                          [ 0.34675095, -0.7050969 , -0.7647731 , -0.73233418],
+                          [-1.90089858,  0.01262963,  0.74693893,  0.57132389]]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    mask = flow.gt(input, 0)
+Expecting nothing
+ok
+Trying:
+    output = flow.masked_fill(input, mask, fill_value)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([[[-0.1317,  8.7654,  8.7654,  8.7654],
+             [-1.5195,  8.7654, -0.5330,  8.7654],
+             [-1.3824, -2.6345,  8.7654, -0.6714]],
+    <BLANKLINE>
+            [[ 8.7654,  8.7654,  8.7654, -1.7691],
+             [ 8.7654, -0.7051, -0.7648, -0.7323],
+             [-1.9009,  8.7654,  8.7654,  8.7654]]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[-0.4620, 0.3139], [0.3898, -0.7197], [0.0478, -0.1657]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    mask = input.gt(0.05)
+Expecting nothing
+ok
+Trying:
+    out = flow.masked_select(input, mask)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([0.3139, 0.3898], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    flow.nonzero(flow.tensor([1, 1, 1, 0, 1]))
+Expecting:
+    tensor([[0],
+            [1],
+            [2],
+            [4]], dtype=oneflow.int32)
+ok
+Trying:
+    flow.nonzero(flow.tensor([[0.6, 0.0, 0.0, 0.0],
+                                [0.0, 0.4, 0.0, 0.0],
+                                [0.0, 0.0, 1.2, 0.0],
+                                [0.0, 0.0, 0.0,-0.4]]))
+Expecting:
+    tensor([[0, 0],
+            [1, 1],
+            [2, 2],
+            [3, 3]], dtype=oneflow.int32)
+ok
+Trying:
+    flow.nonzero(flow.tensor([1, 1, 1, 0, 1]), as_tuple=True)
+Expecting:
+    (tensor([0, 1, 2, 4], dtype=oneflow.int32),)
+ok
+Trying:
+    flow.nonzero(flow.tensor([[0.6, 0.0, 0.0, 0.0],
+                                [0.0, 0.4, 0.0, 0.0],
+                                [0.0, 0.0, 1.2, 0.0],
+                                [0.0, 0.0, 0.0,-0.4]]), as_tuple=True)
+Expecting:
+    (tensor([0, 1, 2, 3], dtype=oneflow.int32), tensor([0, 1, 2, 3], dtype=oneflow.int32))
+ok
+Trying:
+    flow.nonzero(flow.tensor(5), as_tuple=True)
+Expecting:
+    (tensor([0], dtype=oneflow.int32),)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor(
+       [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]], dtype=flow.float32
+    )
+Expecting nothing
+ok
+Trying:
+    y = flow.reshape(input, shape=[2, 2, 2, -1]).shape
+Expecting nothing
+ok
+Trying:
+    y
+Expecting:
+    oneflow.Size([2, 2, 2, 2])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.reshape(input, shape=[2, 2, 2, -1]).shape
+Expecting nothing
+ok
+Trying:
+    y
+Expecting:
+    oneflow.Size([2, 2, 2, 2])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[[[1, 1, 1]]]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    input.shape
+Expecting:
+    oneflow.Size([1, 1, 1, 3])
+ok
+Trying:
+    out = flow.squeeze(input, dim=[1, 2]).shape
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    oneflow.Size([1, 3])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x1 = flow.rand(1, 3, 5)
+Expecting nothing
+ok
+Trying:
+    x2 = flow.rand(1, 3, 5)
+Expecting nothing
+ok
+Trying:
+    y = flow.stack([x1, x2], dim = -1)
+Expecting nothing
+ok
+Trying:
+    y.shape
+Expecting:
+    oneflow.Size([1, 3, 5, 2])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    a = flow.arange(10).view(5, 2)
+Expecting nothing
+ok
+Trying:
+    flow.split(a, 2)
+Expecting:
+    (tensor([[0, 1],
+            [2, 3]], dtype=oneflow.int64), tensor([[4, 5],
+            [6, 7]], dtype=oneflow.int64), tensor([[8, 9]], dtype=oneflow.int64))
+ok
+Trying:
+    flow.split(a, [1, 4])
+Expecting:
+    (tensor([[0, 1]], dtype=oneflow.int64), tensor([[2, 3],
+            [4, 5],
+            [6, 7],
+            [8, 9]], dtype=oneflow.int64))
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.randn(2, 3, 4)
+Expecting nothing
+ok
+Trying:
+    y = x.unsqueeze(2)
+Expecting nothing
+ok
+Trying:
+    y.shape
+Expecting:
+    oneflow.Size([2, 3, 1, 4])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([[-0.4620, 0.3139], [0.3898, -0.7197], [0.0478, -0.1657]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.ones(3, 2, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    condition = flow.tensor([[0, 1], [1, 0], [1, 0]], dtype=flow.int32)
+Expecting nothing
+ok
+Trying:
+    out = condition.where(x, y)
+Expecting nothing
+ok
+Trying:
+    out #doctest: +ELLIPSIS
+Expecting:
+    tensor([[1.0000, 0.3139],
+            ...
+            [0.0478, 1.0000]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[4, 3, 1, 0, 2],
+               [5, 9, 7, 6, 8]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.argmin(input)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor(3, dtype=oneflow.int64)
+ok
+Trying:
+    output = flow.argmin(input, dim=1)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([3, 0], dtype=oneflow.int64)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    a = flow.randn(1, 2, 3, 4, 5)
+Expecting nothing
+ok
+Trying:
+    flow.numel(a)
+Expecting:
+    120
+ok
+Trying:
+    a = flow.zeros(4,4)
+Expecting nothing
+ok
+Trying:
+    flow.numel(a)
+Expecting:
+    16
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[1, 2,3], [4, 5,6],[7,8,9]], dtype=flow.float)
+Expecting nothing
+ok
+Trying:
+    index_1 = flow.tensor([[0], [2]], dtype=flow.int)
+Expecting nothing
+ok
+Trying:
+    out_1 = flow.gather_nd(input,index_1)
+Expecting nothing
+ok
+Trying:
+    print(out_1.shape)
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    out_1
+Expecting:
+    tensor([[1., 2., 3.],
+            [7., 8., 9.]], dtype=oneflow.float32)
+ok
+Trying:
+    index_2 = flow.tensor([[0,2], [2,1]], dtype=flow.int)
+Expecting nothing
+ok
+Trying:
+    out_2 = flow.gather_nd(input,index_2)
+Expecting nothing
+ok
+Trying:
+    out_2
+Expecting:
+    tensor([3., 8.], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.ones(2, 3, requires_grad=True)
+Expecting nothing
+ok
+Trying:
+    with flow.no_grad():
+        with flow.grad_enable():
+            y = x * x
+Expecting nothing
+ok
+Trying:
+    y.requires_grad
+Expecting:
+    True
+ok
+Trying:
+    @flow.grad_enable()
+    def no_grad_func(x):
+        return x * x
+Expecting nothing
+ok
+Trying:
+    with flow.no_grad():
+        y = no_grad_func(x)
+Expecting nothing
+ok
+Trying:
+    y.requires_grad
+Expecting:
+    True
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.ones(2, 3, requires_grad=True)
+Expecting nothing
+ok
+Trying:
+    with flow.inference_mode():
+        y = x * x
+Expecting nothing
+ok
+Trying:
+    y.requires_grad
+Expecting:
+    False
+ok
+Trying:
+    @flow.inference_mode()
+    def no_grad_func(x):
+        return x * x
+Expecting nothing
+ok
+Trying:
+    y = no_grad_func(x)
+Expecting nothing
+ok
+Trying:
+    y.requires_grad
+Expecting:
+    False
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    tensor = flow.arange(8)
+Expecting nothing
+ok
+Trying:
+    indices = flow.tensor([[1], [3], [5]])
+Expecting nothing
+ok
+Trying:
+    updates = flow.tensor([-1, -2, -3])
+Expecting nothing
+ok
+Trying:
+    flow.tensor_scatter_nd_update(tensor, indices, updates)
+Expecting:
+    tensor([ 0, -1,  2, -2,  4, -3,  6,  7], dtype=oneflow.int64)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(2, 3, 4, 5, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.cast(input, flow.int8)
+Expecting nothing
+ok
+Trying:
+    output.shape
+Expecting:
+    oneflow.Size([2, 3, 4, 5])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(2, 6, 5, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.transpose(input, 0, 1).shape
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    oneflow.Size([6, 2, 5, 3])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[1, 2], [3, 4]], device="cuda") + flow.env.get_local_rank()
+Expecting nothing
+ok
+Trying:
+    input
+Expecting:
+    tensor([[1, 2],
+            [3, 4]], device='cuda:0', dtype=oneflow.int64)
+ok
+Trying:
+    input
+Expecting:
+    tensor([[2, 3],
+            [4, 5]], device='cuda:1', dtype=oneflow.int64)
+**********************************************************************
+File "/home/wangchenhao/miniconda3/envs/oneflow/lib/python3.7/site-packages/docreset-0.0.1-py3.7-linux-x86_64.egg/docreset/__init__.py", line 21, in docreset
+Failed example:
+    input
+Expected:
+    tensor([[2, 3],
+            [4, 5]], device='cuda:1', dtype=oneflow.int64)
+Got:
+    tensor([[1, 2],
+            [3, 4]], device='cuda:0', dtype=oneflow.int64)
+Trying:
+    tensor_list = [flow.zeros(2, 2, dtype=flow.int64) for _ in range(2)]
+Expecting nothing
+ok
+Trying:
+    flow.comm.all_gather(tensor_list, input)
+Expecting nothing
+**********************************************************************
+File "/home/wangchenhao/miniconda3/envs/oneflow/lib/python3.7/site-packages/docreset-0.0.1-py3.7-linux-x86_64.egg/docreset/__init__.py", line 25, in docreset
+Failed example:
+    flow.comm.all_gather(tensor_list, input)
+Exception raised:
+    Traceback (most recent call last):
+      File "/home/wangchenhao/miniconda3/envs/oneflow/lib/python3.7/doctest.py", line 1337, in __run
+        compileflags, 1), test.globs)
+      File "<doctest docreset[5]>", line 1, in <module>
+        flow.comm.all_gather(tensor_list, input)
+      File "/home/wangchenhao/miniconda3/envs/oneflow/lib/python3.7/site-packages/oneflow/comm/comm_ops.py", line 105, in all_gather
+        assert len(tensor_list) == flow.env.get_world_size()
+    AssertionError
+Trying:
+    tensor_list
+Expecting:
+    [tensor([[1, 2],
+            [3, 4]], device='cuda:0', dtype=oneflow.int64), tensor([[2, 3],
+            [4, 5]], device='cuda:0', dtype=oneflow.int64)]
+**********************************************************************
+File "/home/wangchenhao/miniconda3/envs/oneflow/lib/python3.7/site-packages/docreset-0.0.1-py3.7-linux-x86_64.egg/docreset/__init__.py", line 27, in docreset
+Failed example:
+    tensor_list
+Expected:
+    [tensor([[1, 2],
+            [3, 4]], device='cuda:0', dtype=oneflow.int64), tensor([[2, 3],
+            [4, 5]], device='cuda:0', dtype=oneflow.int64)]
+Got:
+    [tensor([[0, 0],
+            [0, 0]], dtype=oneflow.int64), tensor([[0, 0],
+            [0, 0]], dtype=oneflow.int64)]
+Trying:
+    tensor_list
+Expecting:
+    [tensor([[1, 2],
+            [3, 4]], device='cuda:1', dtype=oneflow.int64), tensor([[2, 3],
+            [4, 5]], device='cuda:1', dtype=oneflow.int64)]
+**********************************************************************
+File "/home/wangchenhao/miniconda3/envs/oneflow/lib/python3.7/site-packages/docreset-0.0.1-py3.7-linux-x86_64.egg/docreset/__init__.py", line 32, in docreset
+Failed example:
+    tensor_list
+Expected:
+    [tensor([[1, 2],
+            [3, 4]], device='cuda:1', dtype=oneflow.int64), tensor([[2, 3],
+            [4, 5]], device='cuda:1', dtype=oneflow.int64)]
+Got:
+    [tensor([[0, 0],
+            [0, 0]], dtype=oneflow.int64), tensor([[0, 0],
+            [0, 0]], dtype=oneflow.int64)]
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input1 = flow.randn(2, 6, 5, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    input2 = flow.randn(2, 6, 5, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.gt(input1, input2).shape
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    oneflow.Size([2, 6, 5, 3])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input1 = flow.tensor([1, 2, 3], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    input2 = flow.tensor([1, 1, 4], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.ge(input1, input2)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([ True,  True, False], dtype=oneflow.bool)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([2, 3, 4, 5], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    other = flow.tensor([2, 3, 4, 1], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.eq(input, other)
+Expecting nothing
+ok
+Trying:
+    y
+Expecting:
+    tensor([ True,  True,  True, False], dtype=oneflow.bool)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input1 = flow.tensor([1, 2, 3], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    input2 = flow.tensor([1, 2, 4], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.lt(input1, input2)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([False, False,  True], dtype=oneflow.bool)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([2, 3, 4, 5], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    other = flow.tensor([2, 3, 4, 1], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.ne(input, other)
+Expecting nothing
+ok
+Trying:
+    y
+Expecting:
+    tensor([False, False, False,  True], dtype=oneflow.bool)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.randn(5, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.ones_like(x)
+Expecting nothing
+ok
+Trying:
+    y
+Expecting:
+    tensor([1., 1., 1., 1., 1.], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.randn(5, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.zeros_like(x)
+Expecting nothing
+ok
+Trying:
+    y
+Expecting:
+    tensor([0., 0., 0., 0., 0.], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    y = flow.empty(4, 5)  # 构造空 local tensor
+Expecting nothing
+ok
+Trying:
+    y.shape
+Expecting:
+    oneflow.Size([4, 5])
+ok
+Trying:
+    y.is_global
+Expecting:
+    False
+ok
+Trying:
+    placement = flow.placement("cpu", {0: [0]})
+Expecting nothing
+ok
+Trying:
+    y = flow.empty(4, 5, placement=placement, sbp=flow.sbp.broadcast)  # 构造空 global tensor
+Expecting nothing
+ok
+Trying:
+    y.is_global
+Expecting:
+    True
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    y = flow.ones(5)
+Expecting nothing
+ok
+Trying:
+    y
+Expecting:
+    tensor([1., 1., 1., 1., 1.], dtype=oneflow.float32)
+ok
+Trying:
+    y = flow.ones(2,3) # 构造 local tensor
+Expecting nothing
+ok
+Trying:
+    y
+Expecting:
+    tensor([[1., 1., 1.],
+            [1., 1., 1.]], dtype=oneflow.float32)
+ok
+Trying:
+    placement = flow.placement("cpu", {0: [0]})
+Expecting nothing
+ok
+Trying:
+    y = flow.ones(4, 5, placement=placement, sbp=flow.sbp.broadcast) # 构造 global tensor
+Expecting nothing
+ok
+Trying:
+    y.is_global
+Expecting:
+    True
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.ones((1, 2, 3), dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = x.new_ones((2, 2), dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y
+Expecting:
+    tensor([[1., 1.],
+            [1., 1.]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    from oneflow import linalg as LA
+Expecting nothing
+ok
+Trying:
+    a = flow.arange(9, dtype=flow.float32) - 4
+Expecting nothing
+ok
+Trying:
+    a
+Expecting:
+    tensor([-4., -3., -2., -1.,  0.,  1.,  2.,  3.,  4.], dtype=oneflow.float32)
+ok
+Trying:
+    b = a.reshape(3, 3)
+Expecting nothing
+ok
+Trying:
+    b
+Expecting:
+    tensor([[-4., -3., -2.],
+            [-1.,  0.,  1.],
+            [ 2.,  3.,  4.]], dtype=oneflow.float32)
+ok
+Trying:
+    LA.norm(a)
+Expecting:
+    tensor(7.7460, dtype=oneflow.float32)
+ok
+Trying:
+    LA.norm(b)
+Expecting:
+    tensor(7.7460, dtype=oneflow.float32)
+ok
+Trying:
+    LA.norm(b, 'fro')
+Expecting:
+    tensor(7.7460, dtype=oneflow.float32)
+ok
+Trying:
+    LA.norm(a, float('inf'))
+Expecting:
+    tensor(4., dtype=oneflow.float32)
+ok
+Trying:
+    LA.norm(b, float('inf'))
+Expecting:
+    tensor(9., dtype=oneflow.float32)
+ok
+Trying:
+    LA.norm(a, -float('inf'))
+Expecting:
+    tensor(0., dtype=oneflow.float32)
+ok
+Trying:
+    LA.norm(b, -float('inf'))
+Expecting:
+    tensor(2., dtype=oneflow.float32)
+ok
+Trying:
+    LA.norm(a, 1)
+Expecting:
+    tensor(20., dtype=oneflow.float32)
+ok
+Trying:
+    LA.norm(b, 1)
+Expecting:
+    tensor(7., dtype=oneflow.float32)
+ok
+Trying:
+    LA.norm(a, -1)
+Expecting:
+    tensor(0., dtype=oneflow.float32)
+ok
+Trying:
+    LA.norm(b, -1)
+Expecting:
+    tensor(6., dtype=oneflow.float32)
+ok
+Trying:
+    LA.norm(a, 2)
+Expecting:
+    tensor(7.7460, dtype=oneflow.float32)
+ok
+Trying:
+    LA.norm(a, -2)
+Expecting:
+    tensor(0., dtype=oneflow.float32)
+ok
+Trying:
+    LA.norm(a, 3)
+Expecting:
+    tensor(5.8480, dtype=oneflow.float32)
+ok
+Trying:
+    LA.norm(a, -3)
+Expecting:
+    tensor(0., dtype=oneflow.float32)
+ok
+Trying:
+    c = flow.tensor([[1., 2., 3.],
+                      [-1, 1, 4]])
+Expecting nothing
+ok
+Trying:
+    LA.norm(c, dim=0)
+Expecting:
+    tensor([1.4142, 2.2361, 5.0000], dtype=oneflow.float32)
+ok
+Trying:
+    LA.norm(c, dim=1, keepdim = True)
+Expecting:
+    tensor([[3.7417],
+            [4.2426]], dtype=oneflow.float32)
+ok
+Trying:
+    LA.norm(c, ord=1, dim=1)
+Expecting:
+    tensor([6., 6.], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    y = flow.zeros(5)
+Expecting nothing
+ok
+Trying:
+    y
+Expecting:
+    tensor([0., 0., 0., 0., 0.], dtype=oneflow.float32)
+ok
+Trying:
+    y = flow.zeros(2,3)
+Expecting nothing
+ok
+Trying:
+    y
+Expecting:
+    tensor([[0., 0., 0.],
+            [0., 0., 0.]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([[1.0, 1.0, 1.0], [1.0, 1.0, 1.0], [1.0, 1.0, 1.0]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.bernoulli(x)
+Expecting nothing
+ok
+Trying:
+    y
+Expecting:
+    tensor([[1., 1., 1.],
+            [1., 1., 1.],
+            [1., 1., 1.]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([1,2,3])
+Expecting nothing
+ok
+Trying:
+    x
+Expecting:
+    tensor([1, 2, 3], dtype=oneflow.int64)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x1 = flow.tensor([1,2,3], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y1 = flow.tensor([3,2,1], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    x2 = flow.tensor([1.53123589,0.54242598,0.15117185], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y2 = flow.tensor([-0.21906378,0.09467151,-0.75562878], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    x3 = flow.tensor([1,0,-1], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y3 = flow.tensor([0,1,0], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    flow.atan2(x1,y1)
+Expecting:
+    tensor([0.3218, 0.7854, 1.2490], dtype=oneflow.float32)
+ok
+Trying:
+    flow.atan2(x2,y2)
+Expecting:
+    tensor([1.7129, 1.3980, 2.9441], dtype=oneflow.float32)
+ok
+Trying:
+    flow.atan2(x3,y3)
+Expecting:
+    tensor([ 1.5708,  0.0000, -1.5708], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    import oneflow.nn as nn
+Expecting nothing
+ok
+Trying:
+    m = nn.AdaptiveAvgPool1d(5)
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(1, 64, 8)
+Expecting nothing
+ok
+Trying:
+    output = m(input)
+Expecting nothing
+ok
+Trying:
+    output.size()
+Expecting:
+    oneflow.Size([1, 64, 5])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    import oneflow.nn as nn
+Expecting nothing
+ok
+Trying:
+    m = nn.AdaptiveAvgPool2d((5,7))
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(1, 64, 8, 9)
+Expecting nothing
+ok
+Trying:
+    output = m(input)
+Expecting nothing
+ok
+Trying:
+    output.size()
+Expecting:
+    oneflow.Size([1, 64, 5, 7])
+ok
+Trying:
+    m = nn.AdaptiveAvgPool2d(7)
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(1, 64, 10, 9)
+Expecting nothing
+ok
+Trying:
+    output = m(input)
+Expecting nothing
+ok
+Trying:
+    output.size()
+Expecting:
+    oneflow.Size([1, 64, 7, 7])
+ok
+Trying:
+    m = nn.AdaptiveAvgPool2d((None, 7))
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(1, 64, 10, 9)
+Expecting nothing
+ok
+Trying:
+    output = m(input)
+Expecting nothing
+ok
+Trying:
+    output.size()
+Expecting:
+    oneflow.Size([1, 64, 10, 7])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    import oneflow.nn as nn
+Expecting nothing
+ok
+Trying:
+    m = nn.AdaptiveAvgPool3d((5,7,9))
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(1, 64, 8, 9, 10)
+Expecting nothing
+ok
+Trying:
+    output = m(input)
+Expecting nothing
+ok
+Trying:
+    output.size()
+Expecting:
+    oneflow.Size([1, 64, 5, 7, 9])
+ok
+Trying:
+    m = nn.AdaptiveAvgPool3d(7)
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(1, 64, 10, 9, 8)
+Expecting nothing
+ok
+Trying:
+    output = m(input)
+Expecting nothing
+ok
+Trying:
+    output.size()
+Expecting:
+    oneflow.Size([1, 64, 7, 7, 7])
+ok
+Trying:
+    m = nn.AdaptiveAvgPool3d((7, None, None))
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(1, 64, 10, 9, 8)
+Expecting nothing
+ok
+Trying:
+    output = m(input)
+Expecting nothing
+ok
+Trying:
+    output.size()
+Expecting:
+    oneflow.Size([1, 64, 7, 9, 8])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(5, 3, 6, 9, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    of_out = []
+Expecting nothing
+ok
+Trying:
+    of_out = flow.chunk(input, chunks=3, dim=2)
+Expecting nothing
+ok
+Trying:
+    chunks = 3
+Expecting nothing
+ok
+Trying:
+    of_out_shape = []
+Expecting nothing
+ok
+Trying:
+    for i in range(0, chunks):
+        of_out_shape.append(of_out[i].numpy().shape)
+Expecting nothing
+ok
+Trying:
+    of_out_shape
+Expecting:
+    [(5, 3, 2, 9), (5, 3, 2, 9), (5, 3, 2, 9)]
+ok
+Trying:
+    input = flow.randn(5, 3, 6, 9, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    of_out = []
+Expecting nothing
+ok
+Trying:
+    of_out = flow.chunk(input, chunks=4, dim=3)
+Expecting nothing
+ok
+Trying:
+    chunks = 4
+Expecting nothing
+ok
+Trying:
+    of_out_shape = []
+Expecting nothing
+ok
+Trying:
+    for i in range(0, chunks):
+        of_out_shape.append(of_out[i].numpy().shape)
+Expecting nothing
+ok
+Trying:
+    of_out_shape
+Expecting:
+    [(5, 3, 6, 2), (5, 3, 6, 2), (5, 3, 6, 2), (5, 3, 6, 3)]
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    y = flow.arange(0, 5)
+Expecting nothing
+ok
+Trying:
+    y
+Expecting:
+    tensor([0, 1, 2, 3, 4], dtype=oneflow.int64)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[[[0, 1]], [[2, 3]], [[4, 5]]]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    input.shape
+Expecting:
+    oneflow.Size([1, 3, 1, 2])
+ok
+Trying:
+    out = input.expand(1, 3, 2, 2)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([1, 3, 2, 2])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[1,2,3],[4,5,6]], dtype=flow.int32)
+Expecting nothing
+ok
+Trying:
+    input 
+Expecting:
+    tensor([[1, 2, 3],
+            [4, 5, 6]], dtype=oneflow.int32)
+ok
+Trying:
+    index = flow.tensor([0,1], dtype=flow.int32)
+Expecting nothing
+ok
+Trying:
+    output = flow.index_select(input, 1, index)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([[1, 2],
+            [4, 5]], dtype=oneflow.int32)
+ok
+Trying:
+    output = input.index_select(1, index)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([[1, 2],
+            [4, 5]], dtype=oneflow.int32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([1, 2, 3, 4, 5], dtype=flow.int)
+Expecting nothing
+ok
+Trying:
+    output = flow.is_floating_point(input)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    False
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    flow.is_nonzero(flow.tensor([0.]))
+Expecting:
+    False
+ok
+Trying:
+    flow.is_nonzero(flow.tensor([1.5]))
+Expecting:
+    True
+ok
+Trying:
+    flow.is_nonzero(flow.tensor([3]))
+Expecting:
+    True
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([1.0, -1.0, 2.3], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.negative(input)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([-1.0000,  1.0000, -2.3000], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([1, 2, 3, 4, 5], device=flow.device("cuda"))
+Expecting nothing
+ok
+Trying:
+    output = input.cpu()
+Expecting nothing
+ok
+Trying:
+    output.device
+Expecting:
+    device(type='cpu', index=0)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.Tensor([1, 2, 3, 4, 5])
+Expecting nothing
+ok
+Trying:
+    output = input.cuda()
+Expecting nothing
+ok
+Trying:
+    output.device
+Expecting:
+    device(type='cuda', index=0)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.randint(0, 5, (3,3))
+Expecting nothing
+ok
+Trying:
+    input = input.double()
+Expecting nothing
+ok
+Trying:
+    input.dtype
+Expecting:
+    oneflow.float64
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.randint(0, 5, (3,3))
+Expecting nothing
+ok
+Trying:
+    input = input.float()
+Expecting nothing
+ok
+Trying:
+    input.dtype
+Expecting:
+    oneflow.float32
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(3, 4, 3, 5, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    index = flow.randint(0, 3, (3, 4, 3, 5))
+Expecting nothing
+ok
+Trying:
+    output = flow.gather(input, 1, index)
+Expecting nothing
+ok
+Trying:
+    output.shape
+Expecting:
+    oneflow.Size([3, 4, 3, 5])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(1, 2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    input = input.int()
+Expecting nothing
+ok
+Trying:
+    input.dtype
+Expecting:
+    oneflow.int32
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([1.0])
+Expecting nothing
+ok
+Trying:
+    x.item()
+Expecting:
+    1.0
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([[1, 2, 3], [4, 5, 6]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.reciprocal(x)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([[1.0000, 0.5000, 0.3333],
+            [0.2500, 0.2000, 0.1667]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.add(x, y)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    x = 5
+Expecting nothing
+ok
+Trying:
+    y = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.add(x, y)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    x = flow.randn(1, 1, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.add(x, y)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([ 0.1632,  1.1835, -0.6979, -0.7325], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.cosh(input)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([1.0133, 1.7860, 1.2536, 1.2805], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([1.4309,  1.2706, -0.8562,  0.9796], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.cos(input)
+Expecting nothing
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    other = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.div(input,other)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    input = 5
+Expecting nothing
+ok
+Trying:
+    other = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.div(input,other)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    input = flow.randn(1, 1, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    other = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.div(input,other)
+Expecting nothing
+ok
+Trying:
+    out.shape 
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input1 = flow.tensor([1, 2, 3], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    input2 = flow.tensor([1, 1, 4], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.le(input1, input2)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([ True, False,  True], dtype=oneflow.bool)
+ok
+Trying:
+    import oneflow as flow  
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(2, 3, 4, 5, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.log(input)
+Expecting nothing
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(1, 2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    input = input.long()
+Expecting nothing
+ok
+Trying:
+    input.dtype
+Expecting:
+    oneflow.int64
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    a = flow.tensor([1.0, 2.0, 3.0], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.rsqrt(a)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([1.0000, 0.7071, 0.5774], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[1, 3, 8, 7, 2], [1, 9, 4, 3, 2]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    (values, indices) = flow.sort(input)
+Expecting nothing
+ok
+Trying:
+    values
+Expecting:
+    tensor([[1., 2., 3., 7., 8.],
+            [1., 2., 3., 4., 9.]], dtype=oneflow.float32)
+ok
+Trying:
+    indices
+Expecting:
+    tensor([[0, 4, 1, 3, 2],
+            [0, 4, 3, 2, 1]], dtype=oneflow.int32)
+ok
+Trying:
+    (values, indices) = flow.sort(input, descending=True)
+Expecting nothing
+ok
+Trying:
+    values
+Expecting:
+    tensor([[8., 7., 3., 2., 1.],
+            [9., 4., 3., 2., 1.]], dtype=oneflow.float32)
+ok
+Trying:
+    indices
+Expecting:
+    tensor([[2, 3, 1, 4, 0],
+            [1, 2, 3, 4, 0]], dtype=oneflow.int32)
+ok
+Trying:
+    (values, indices) = flow.sort(input, dim=0)
+Expecting nothing
+ok
+Trying:
+    values
+Expecting:
+    tensor([[1., 3., 4., 3., 2.],
+            [1., 9., 8., 7., 2.]], dtype=oneflow.float32)
+ok
+Trying:
+    indices
+Expecting:
+    tensor([[0, 0, 1, 1, 0],
+            [1, 1, 0, 0, 1]], dtype=oneflow.int32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    a = flow.arange(10).view(5, 2)
+Expecting nothing
+ok
+Trying:
+    flow.split(a, 2)
+Expecting:
+    (tensor([[0, 1],
+            [2, 3]], dtype=oneflow.int64), tensor([[4, 5],
+            [6, 7]], dtype=oneflow.int64), tensor([[8, 9]], dtype=oneflow.int64))
+ok
+Trying:
+    flow.split(a, [1, 4])
+Expecting:
+    (tensor([[0, 1]], dtype=oneflow.int64), tensor([[2, 3],
+            [4, 5],
+            [6, 7],
+            [8, 9]], dtype=oneflow.int64))
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([1.0, 2.0, 3.0], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.sqrt(input)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([1.0000, 1.4142, 1.7321], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([1.0, 2.0, 3.0], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    output = flow.square(input)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([1., 4., 9.], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    other = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.sub(input,other)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    input = 5
+Expecting nothing
+ok
+Trying:
+    other = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.sub(input,other)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    input = flow.randn(1, 1, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    other = flow.randn(2, 3, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.sub(input,other)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([0.5, 0.6, 0.7], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    placement = flow.placement("cpu", {0:range(1)})
+Expecting nothing
+ok
+Trying:
+    output_tensor = input.to_global(placement, [flow.sbp.split(0)])
+Expecting nothing
+ok
+Trying:
+    output_tensor.is_global
+Expecting:
+    True
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([0.5, 0.6, 0.7], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    placement = flow.placement("cpu", {0:range(1)})
+Expecting nothing
+ok
+Trying:
+    global_tensor = input.to_global(placement, [flow.sbp.split(0)])
+Expecting nothing
+ok
+Trying:
+    global_tensor.to_local()
+Expecting:
+    tensor([0.5000, 0.6000, 0.7000], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[1,2,3], [4,5,6]])
+Expecting nothing
+ok
+Trying:
+    input.tolist()
+Expecting:
+    [[1, 2, 3], [4, 5, 6]]
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = input.view(2, 2, 2, -1).shape
+Expecting nothing
+ok
+Trying:
+    y
+Expecting:
+    oneflow.Size([2, 2, 2, 2])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([[-0.4620, 0.3139], [0.3898, -0.7197], [0.0478, -0.1657]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    y = flow.ones(3, 2, dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    condition = flow.tensor([[0, 1], [1, 0], [1, 0]], dtype=flow.int32)
+Expecting nothing
+ok
+Trying:
+    out = condition.where(x, y)
+Expecting nothing
+ok
+Trying:
+    out #doctest: +ELLIPSIS
+Expecting:
+    tensor([[1.0000, 0.3139],
+            ...
+            [0.0478, 1.0000]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(1, 2, 3, dtype = flow.float32)
+Expecting nothing
+ok
+Trying:
+    target = flow.randint(0, 4, (5, 6))
+Expecting nothing
+ok
+Trying:
+    input = input.type_as(target)
+Expecting nothing
+ok
+Trying:
+    input.dtype
+Expecting:
+    oneflow.int64
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([[1, 3, 8, 7, 2], [1, 9, 4, 3, 2]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    (values, indices) = flow.topk(flow.Tensor(x), k=3, dim=1)
+Expecting nothing
+ok
+Trying:
+    values
+Expecting:
+    tensor([[8., 7., 3.],
+            [9., 4., 3.]], dtype=oneflow.float32)
+ok
+Trying:
+    indices
+Expecting:
+    tensor([[2, 3, 1],
+            [1, 2, 3]], dtype=oneflow.int64)
+ok
+Trying:
+    values.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    indices.shape
+Expecting:
+    oneflow.Size([2, 3])
+ok
+Trying:
+    (values, indices) = flow.topk(flow.Tensor(x), k=2, dim=1, largest=False)
+Expecting nothing
+ok
+Trying:
+    values
+Expecting:
+    tensor([[1., 2.],
+            [1., 2.]], dtype=oneflow.float32)
+ok
+Trying:
+    indices
+Expecting:
+    tensor([[0, 4],
+            [0, 4]], dtype=oneflow.int64)
+ok
+Trying:
+    values.shape
+Expecting:
+    oneflow.Size([2, 2])
+ok
+Trying:
+    indices.shape
+Expecting:
+    oneflow.Size([2, 2])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input1 = flow.tensor([1, 0, 1], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    input2 = flow.tensor([1, 1, 0], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.logical_and(input1, input2)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([ True, False, False], dtype=oneflow.bool)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input1 = flow.tensor([1, 0, 1], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    input2 = flow.tensor([1, 0, 0], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.logical_or(input1, input2)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([ True, False,  True], dtype=oneflow.bool)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input1 = flow.tensor([1, 0, 1], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    input2 = flow.tensor([1, 0, 0], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    out = flow.logical_xor(input1, input2)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([False, False,  True], dtype=oneflow.bool)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.Tensor([[4, 1, 5], [2, 6, 3]])
+Expecting nothing
+ok
+Trying:
+    flow.max(input)
+Expecting:
+    tensor(6., dtype=oneflow.float32)
+ok
+Trying:
+    (values, indices) = flow.max(input, dim=1)
+Expecting nothing
+ok
+Trying:
+    values
+Expecting:
+    tensor([5., 6.], dtype=oneflow.float32)
+ok
+Trying:
+    indices
+Expecting:
+    tensor([2, 1], dtype=oneflow.int64)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.Tensor([[1, 2, 3], [4, 5, 6]])
+Expecting nothing
+ok
+Trying:
+    flow.mean(input)
+Expecting:
+    tensor(3.5000, dtype=oneflow.float32)
+ok
+Trying:
+    flow.mean(input, dim=0)
+Expecting:
+    tensor([2.5000, 3.5000, 4.5000], dtype=oneflow.float32)
+ok
+Trying:
+    flow.mean(input, dim=1)
+Expecting:
+    tensor([2., 5.], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.Tensor([[4, 1, 5], [2, 6, 3]])
+Expecting nothing
+ok
+Trying:
+    flow.min(input)
+Expecting:
+    tensor(1., dtype=oneflow.float32)
+ok
+Trying:
+    (values, indices) = flow.min(input, dim=1)
+Expecting nothing
+ok
+Trying:
+    values
+Expecting:
+    tensor([1., 2.], dtype=oneflow.float32)
+ok
+Trying:
+    indices
+Expecting:
+    tensor([1, 0], dtype=oneflow.int64)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.Tensor([[1, 2, 3], [4, 5, 6]])
+Expecting nothing
+ok
+Trying:
+    flow.prod(input)
+Expecting:
+    tensor(720., dtype=oneflow.float32)
+ok
+Trying:
+    flow.prod(input, dim=0)
+Expecting:
+    tensor([ 4., 10., 18.], dtype=oneflow.float32)
+ok
+Trying:
+    flow.prod(input, dim=1)
+Expecting:
+    tensor([  6., 120.], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.Tensor([[1, 2, 3], [4, 5, 6]])
+Expecting nothing
+ok
+Trying:
+    flow.sum(input)
+Expecting:
+    tensor(21., dtype=oneflow.float32)
+ok
+Trying:
+    flow.sum(input, dim=0)
+Expecting:
+    tensor([5., 7., 9.], dtype=oneflow.float32)
+ok
+Trying:
+    flow.sum(input, dim=1)
+Expecting:
+    tensor([ 6., 15.], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input1 = flow.tensor([1, 2, 3], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    input2 = flow.tensor([4, 5, 6], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    of_x, of_y = flow.meshgrid(input1, input2)
+Expecting nothing
+ok
+Trying:
+    of_x
+Expecting:
+    tensor([[1., 1., 1.],
+            [2., 2., 2.],
+            [3., 3., 3.]], dtype=oneflow.float32)
+ok
+Trying:
+    of_y
+Expecting:
+    tensor([[4., 5., 6.],
+            [4., 5., 6.],
+            [4., 5., 6.]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.rand(3,3) # 构造 local tensor
+Expecting nothing
+ok
+Trying:
+    x.shape
+Expecting:
+    oneflow.Size([3, 3])
+ok
+Trying:
+    x.is_global
+Expecting:
+    False
+ok
+Trying:
+    placement = flow.placement("cpu", {0: [0]})
+Expecting nothing
+ok
+Trying:
+    sbp = flow.sbp.broadcast
+Expecting nothing
+ok
+Trying:
+    x = flow.rand(3, 3, placement=placement, sbp=sbp) # 构造 global tensor
+Expecting nothing
+ok
+Trying:
+    x.is_global
+Expecting:
+    True
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.randn(3,3) # 构造 local tensor
+Expecting nothing
+ok
+Trying:
+    x.shape
+Expecting:
+    oneflow.Size([3, 3])
+ok
+Trying:
+    x.is_global
+Expecting:
+    False
+ok
+Trying:
+    placement = flow.placement("cpu", {0:[0]})
+Expecting nothing
+ok
+Trying:
+    sbp = flow.sbp.broadcast
+Expecting nothing
+ok
+Trying:
+    x = flow.randn(3,3,placement=placement,sbp=sbp) # 构造 global tensor
+Expecting nothing
+ok
+Trying:
+    x.is_global
+Expecting:
+    True
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    generator = flow.Generator()
+Expecting nothing
+ok
+Trying:
+    generator.manual_seed(0)
+Expecting nothing
+ok
+Trying:
+    y = flow.randint(0, 5, (3,3), generator=generator) # 构造 local tensor
+Expecting nothing
+ok
+Trying:
+    y
+Expecting:
+    tensor([[2, 2, 3],
+            [4, 3, 4],
+            [2, 4, 2]], dtype=oneflow.int64)
+ok
+Trying:
+    y.is_global
+Expecting:
+    False
+ok
+Trying:
+    placement = flow.placement("cpu", {0: [0]})
+Expecting nothing
+ok
+Trying:
+    y = flow.randint(0, 5, (3,3), generator=generator, placement=placement, sbp=flow.sbp.broadcast) # 构造 global tensor
+Expecting nothing
+ok
+Trying:
+    y.is_global
+Expecting:
+    True
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    generator = flow.Generator()
+Expecting nothing
+ok
+Trying:
+    generator.manual_seed(0)
+Expecting nothing
+ok
+Trying:
+    y = flow.randperm(5, generator=generator) # 构造 local tensor
+Expecting nothing
+ok
+Trying:
+    y
+Expecting:
+    tensor([2, 4, 3, 0, 1], dtype=oneflow.int64)
+ok
+Trying:
+    y.is_global
+Expecting:
+    False
+ok
+Trying:
+    placement = flow.placement("cpu", {0: [0]})
+Expecting nothing
+ok
+Trying:
+    y = flow.randperm(5, generator=generator, placement=placement, sbp=flow.sbp.broadcast) # 构造 global tensor
+Expecting nothing
+ok
+Trying:
+    y.is_global
+Expecting:
+    True
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[[[0, 1]],
+                          [[2, 3]],
+                          [[4, 5]]]], dtype=flow.int32)
+Expecting nothing
+ok
+Trying:
+    out = input.repeat(1, 1, 2, 2)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([[[[0, 1, 0, 1],
+              [0, 1, 0, 1]],
+    <BLANKLINE>
+             [[2, 3, 2, 3],
+              [2, 3, 2, 3]],
+    <BLANKLINE>
+             [[4, 5, 4, 5],
+              [4, 5, 4, 5]]]], dtype=oneflow.int32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[1.2, 0.2, -0.3], [0.7, 0.6, -2]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    target = flow.tensor([[0, 1, 0], [1, 0, 1]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    weight = flow.tensor([[2, 2, 2], [2, 2, 2]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    activation = flow.nn.Sigmoid()
+Expecting nothing
+ok
+Trying:
+    sigmoid_input = activation(input)
+Expecting nothing
+ok
+Trying:
+    m = flow.nn.BCELoss(weight, reduction="none")
+Expecting nothing
+ok
+Trying:
+    out = m(sigmoid_input, target)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([[2.9266, 1.1963, 1.1087],
+            [0.8064, 2.0750, 4.2539]], dtype=oneflow.float32)
+ok
+Trying:
+    m_sum = flow.nn.BCELoss(weight, reduction="sum")
+Expecting nothing
+ok
+Trying:
+    out = m_sum(sigmoid_input, target)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor(12.3668, dtype=oneflow.float32)
+ok
+Trying:
+    m_mean = flow.nn.BCELoss(weight, reduction="mean")
+Expecting nothing
+ok
+Trying:
+    out = m_mean(sigmoid_input, target)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor(2.0611, dtype=oneflow.float32)
+ok
+Trying:
+    m_none = flow.nn.BCELoss()
+Expecting nothing
+ok
+Trying:
+    out = m_none(sigmoid_input, target)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor(1.0306, dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[1.2, 0.2, -0.3], [0.7, 0.6, -2], [0.7, 0.6, -2]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    target = flow.tensor([[0, 1, 0], [1, 0, 1], [1, 0, 1]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    weight = flow.tensor([[2, 2, 2], [2, 2, 2], [2, 2, 2]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    pos_weight = flow.tensor([1.2, 1.3, 1.4], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    m = flow.nn.BCEWithLogitsLoss(weight=weight, pos_weight=pos_weight, reduction="none")
+Expecting nothing
+ok
+Trying:
+    out = m(input, target)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([[2.9266, 1.5552, 1.1087],
+            [0.9676, 2.0750, 5.9554],
+            [0.9676, 2.0750, 5.9554]], dtype=oneflow.float32)
+ok
+Trying:
+    m = flow.nn.BCEWithLogitsLoss(weight=weight, pos_weight=pos_weight, reduction="mean")
+Expecting nothing
+ok
+Trying:
+    out = m(input, target)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor(2.6207, dtype=oneflow.float32)
+ok
+Trying:
+    m = flow.nn.BCEWithLogitsLoss(weight=weight, pos_weight=pos_weight, reduction="sum")
+Expecting nothing
+ok
+Trying:
+    out = m(input, target)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor(23.5865, dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    import numpy as np
+Expecting nothing
+ok
+Trying:
+    np_arr = np.random.randn(5, 3, 6, 9).astype(np.float32)
+Expecting nothing
+ok
+Trying:
+    input = flow.Tensor(np_arr)
+Expecting nothing
+ok
+Trying:
+    out = input.tile(2,1,2,1)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([10, 3, 12, 9])
+ok
+Trying:
+    x = np.random.randn(5, 2, 1)
+Expecting nothing
+ok
+Trying:
+    input = flow.Tensor(x)
+Expecting nothing
+ok
+Trying:
+    out = input.tile(3,4)
+Expecting nothing
+ok
+Trying:
+    out.shape
+Expecting:
+    oneflow.Size([5, 6, 4])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.randn(20, 100)
+Expecting nothing
+ok
+Trying:
+    m = flow.nn.BatchNorm1d(100)
+Expecting nothing
+ok
+Trying:
+    y = m(x)
+Expecting nothing
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.randn(4, 2, 8, 3)
+Expecting nothing
+ok
+Trying:
+    m = flow.nn.BatchNorm2d(num_features=2, eps=1e-5, momentum=0.1)
+Expecting nothing
+ok
+Trying:
+    y = m(x)
+Expecting nothing
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.randn(3, 2, 5, 8, 4)
+Expecting nothing
+ok
+Trying:
+    m = flow.nn.BatchNorm3d(num_features=2, eps=1e-5, momentum=0.1)
+Expecting nothing
+ok
+Trying:
+    y = m(x)
+Expecting nothing
+ok
+Trying:
+    y.size()
+Expecting:
+    oneflow.Size([3, 2, 5, 8, 4])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([-0.5, 0, 0.5], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    celu = flow.nn.CELU(alpha=0.5)
+Expecting nothing
+ok
+Trying:
+    out = celu(input)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([-0.3161,  0.0000,  0.5000], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([-0.9021705, 0.08798598, 1.04686249], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    target = flow.tensor([1.22386942, -0.89729659, 0.01615712], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    m = flow.nn.KLDivLoss(reduction="none", log_target=False)
+Expecting nothing
+ok
+Trying:
+    out = m(input, target)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([ 1.3514,  0.0000, -0.0836], dtype=oneflow.float32)
+ok
+Trying:
+    m = flow.nn.KLDivLoss(reduction="mean", log_target=False)
+Expecting nothing
+ok
+Trying:
+    out = m(input, target)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor(0.4226, dtype=oneflow.float32)
+ok
+Trying:
+    m = flow.nn.KLDivLoss(reduction="sum", log_target=True)
+Expecting nothing
+ok
+Trying:
+    out = m(input, target)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor(5.7801, dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor([[1, 1, 1], [2, 2, 2], [7, 7, 7]], dtype = flow.float32)
+Expecting nothing
+ok
+Trying:
+    target = flow.tensor([[4, 4, 4], [4, 4, 4], [4, 4, 4]], dtype = flow.float32)
+Expecting nothing
+ok
+Trying:
+    m = flow.nn.L1Loss(reduction="none")
+Expecting nothing
+ok
+Trying:
+    out = m(input, target)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([[3., 3., 3.],
+            [2., 2., 2.],
+            [3., 3., 3.]], dtype=oneflow.float32)
+ok
+Trying:
+    m_mean = flow.nn.L1Loss(reduction="mean")
+Expecting nothing
+ok
+Trying:
+    out = m_mean(input, target)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor(2.6667, dtype=oneflow.float32)
+ok
+Trying:
+    m_mean = flow.nn.L1Loss(reduction="sum")
+Expecting nothing
+ok
+Trying:
+    out = m_mean(input, target)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor(24., dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([[[[-0.16046895, -1.03667831], [-0.34974465, 0.26505867]],[[-1.24111986, -0.53806001], [1.72426331, 0.43572459]],],[[[-0.77390957, -0.42610624], [0.16398858, -1.35760343]],[[1.07541728, 0.11008703], [0.26361224, -0.48663723]]]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    m = flow.nn.LayerNorm(2)
+Expecting nothing
+ok
+Trying:
+    m(x) # doctest: +NORMALIZE_WHITESPACE
+Expecting:
+    tensor([[[[ 1.0000, -1.0000],
+              [-0.9999,  0.9999]],
+    <BLANKLINE>
+             [[-1.0000,  1.0000],
+              [ 1.0000, -1.0000]]],
+    <BLANKLINE>
+    <BLANKLINE>
+            [[[-0.9998,  0.9998],
+              [ 1.0000, -1.0000]],
+    <BLANKLINE>
+             [[ 1.0000, -1.0000],
+              [ 1.0000, -1.0000]]]], dtype=oneflow.float32,
+           grad_fn=<broadcast_add_backward>)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+Expecting nothing
+ok
+Trying:
+    flow.narrow(x, 0, 0, 2)
+Expecting:
+    tensor([[1, 2, 3],
+            [4, 5, 6]], dtype=oneflow.int64)
+ok
+Trying:
+    flow.narrow(x, 1, 1, 2)
+Expecting:
+    tensor([[2, 3],
+            [5, 6],
+            [8, 9]], dtype=oneflow.int64)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.ones(2, 3, requires_grad=True)
+Expecting nothing
+ok
+Trying:
+    with flow.no_grad():
+        y = x * x
+Expecting nothing
+ok
+Trying:
+    y.requires_grad
+Expecting:
+    False
+ok
+Trying:
+    @flow.no_grad()
+    def no_grad_func(x):
+        return x * x
+Expecting nothing
+ok
+Trying:
+    y = no_grad_func(x)
+Expecting nothing
+ok
+Trying:
+    y.requires_grad
+Expecting:
+    False
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    log_probs = flow.tensor(
+       [
+           [[-1.1031, -0.7998, -1.5200], [-0.9808, -1.1363, -1.1908]],
+           [[-1.2258, -1.0665, -1.0153], [-1.1135, -1.2331, -0.9671]],
+           [[-1.3348, -0.6611, -1.5118], [-0.9823, -1.2355, -1.0941]],
+           [[-1.3850, -1.3273, -0.7247], [-0.8235, -1.4783, -1.0994]],
+           [[-0.9049, -0.8867, -1.6962], [-1.4938, -1.3630, -0.6547]],
+       ], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    targets = flow.tensor([[1, 2, 2], [1, 2, 2]], dtype=flow.int32)
+Expecting nothing
+ok
+Trying:
+    input_lengths = flow.tensor([5, 5], dtype=flow.int32)
+Expecting nothing
+ok
+Trying:
+    target_lengths = flow.tensor([3, 3], dtype=flow.int32)
+Expecting nothing
+ok
+Trying:
+    loss_mean = flow.nn.CTCLoss()
+Expecting nothing
+ok
+Trying:
+    out = loss_mean(log_probs, targets, input_lengths, target_lengths)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor(1.1376, dtype=oneflow.float32)
+ok
+Trying:
+    loss_sum = flow.nn.CTCLoss(blank=0, reduction="sum")
+Expecting nothing
+ok
+Trying:
+    out = loss_sum(log_probs, targets, input_lengths, target_lengths)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor(6.8257, dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x = flow.tensor([[-0.7027179, 0.0230609], [-0.02721931, -0.16056311], [-0.4565852, -0.64471215]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    label = flow.tensor([0, 1, 1], dtype=flow.int32)
+Expecting nothing
+ok
+Trying:
+    loss_func = flow.nn.CombinedMarginLoss(0.3, 0.5, 0.4)
+Expecting nothing
+ok
+Trying:
+    out = loss_func(x, label)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([[-0.0423,  0.0231],
+            [-0.0272,  0.1237],
+            [-0.4566, -0.0204]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.arange(8, dtype=flow.float32).reshape(2,2,2)
+Expecting nothing
+ok
+Trying:
+    m = flow.nn.ConstantPad1d(padding=[1, 2], value=9.9999)
+Expecting nothing
+ok
+Trying:
+    output = m(input)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([[[9.9999, 0.0000, 1.0000, 9.9999, 9.9999],
+             [9.9999, 2.0000, 3.0000, 9.9999, 9.9999]],
+    <BLANKLINE>
+            [[9.9999, 4.0000, 5.0000, 9.9999, 9.9999],
+             [9.9999, 6.0000, 7.0000, 9.9999, 9.9999]]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    m1 = flow.nn.ZeroPad2d(2)
+Expecting nothing
+ok
+Trying:
+    m2 = flow.nn.ZeroPad2d((1,2,2,0))
+Expecting nothing
+ok
+Trying:
+    input = flow.arange(18, dtype=flow.float32).reshape((1, 2, 3, 3))
+Expecting nothing
+ok
+Trying:
+    output = m1(input)
+Expecting nothing
+ok
+Trying:
+    output.shape
+Expecting:
+    oneflow.Size([1, 2, 7, 7])
+ok
+Trying:
+    output
+Expecting:
+    tensor([[[[ 0.,  0.,  0.,  0.,  0.,  0.,  0.],
+              [ 0.,  0.,  0.,  0.,  0.,  0.,  0.],
+              [ 0.,  0.,  0.,  1.,  2.,  0.,  0.],
+              [ 0.,  0.,  3.,  4.,  5.,  0.,  0.],
+              [ 0.,  0.,  6.,  7.,  8.,  0.,  0.],
+              [ 0.,  0.,  0.,  0.,  0.,  0.,  0.],
+              [ 0.,  0.,  0.,  0.,  0.,  0.,  0.]],
+    <BLANKLINE>
+             [[ 0.,  0.,  0.,  0.,  0.,  0.,  0.],
+              [ 0.,  0.,  0.,  0.,  0.,  0.,  0.],
+              [ 0.,  0.,  9., 10., 11.,  0.,  0.],
+              [ 0.,  0., 12., 13., 14.,  0.,  0.],
+              [ 0.,  0., 15., 16., 17.,  0.,  0.],
+              [ 0.,  0.,  0.,  0.,  0.,  0.,  0.],
+              [ 0.,  0.,  0.,  0.,  0.,  0.,  0.]]]], dtype=oneflow.float32)
+ok
+Trying:
+    output = m2(input)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([[[[ 0.,  0.,  0.,  0.,  0.,  0.],
+              [ 0.,  0.,  0.,  0.,  0.,  0.],
+              [ 0.,  0.,  1.,  2.,  0.,  0.],
+              [ 0.,  3.,  4.,  5.,  0.,  0.],
+              [ 0.,  6.,  7.,  8.,  0.,  0.]],
+    <BLANKLINE>
+             [[ 0.,  0.,  0.,  0.,  0.,  0.],
+              [ 0.,  0.,  0.,  0.,  0.,  0.],
+              [ 0.,  9., 10., 11.,  0.,  0.],
+              [ 0., 12., 13., 14.,  0.,  0.],
+              [ 0., 15., 16., 17.,  0.,  0.]]]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.arange(8, dtype=flow.int32).reshape(1,1,2,2,2)
+Expecting nothing
+ok
+Trying:
+    m = flow.nn.ConstantPad3d(padding=1, value=9)
+Expecting nothing
+ok
+Trying:
+    output = m(input)
+Expecting nothing
+ok
+Trying:
+    output
+Expecting:
+    tensor([[[[[9, 9, 9, 9],
+               [9, 9, 9, 9],
+               [9, 9, 9, 9],
+               [9, 9, 9, 9]],
+    <BLANKLINE>
+              [[9, 9, 9, 9],
+               [9, 0, 1, 9],
+               [9, 2, 3, 9],
+               [9, 9, 9, 9]],
+    <BLANKLINE>
+              [[9, 9, 9, 9],
+               [9, 4, 5, 9],
+               [9, 6, 7, 9],
+               [9, 9, 9, 9]],
+    <BLANKLINE>
+              [[9, 9, 9, 9],
+               [9, 9, 9, 9],
+               [9, 9, 9, 9],
+               [9, 9, 9, 9]]]]], dtype=oneflow.int32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    import oneflow.nn as nn
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(20, 16, 50)
+Expecting nothing
+ok
+Trying:
+    m = nn.Conv1d(16, 33, 3, stride=2)
+Expecting nothing
+ok
+Trying:
+    output = m(input)
+Expecting nothing
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    import oneflow.nn as nn
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(20, 16, 50, 100)
+Expecting nothing
+ok
+Trying:
+    m = nn.Conv2d(16, 33, (3, 5), stride=(2, 1), padding=(4, 2), dilation=(3, 1))
+Expecting nothing
+ok
+Trying:
+    output = m(input)
+Expecting nothing
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    import oneflow.nn as nn
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(1, 2, 5, 5, 5)
+Expecting nothing
+ok
+Trying:
+    m = nn.Conv3d(2, 4, kernel_size=3, stride=1)
+Expecting nothing
+ok
+Trying:
+    output = m(input)
+Expecting nothing
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    import oneflow.nn as nn
+Expecting nothing
+ok
+Trying:
+    m = nn.ConvTranspose2d(16, 33, 3, stride=2)
+Expecting nothing
+ok
+Trying:
+    m = nn.ConvTranspose2d(16, 33, (3, 5), stride=(2, 1), padding=(4, 2))
+Expecting nothing
+ok
+Trying:
+    m = m.to("cuda")
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(20, 16, 50, 100, device=flow.device("cuda"))
+Expecting nothing
+ok
+Trying:
+    output = m(input)
+Expecting nothing
+ok
+Trying:
+    output.size()
+Expecting:
+    oneflow.Size([20, 33, 93, 100])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    import oneflow.nn as nn
+Expecting nothing
+ok
+Trying:
+    m = nn.ConvTranspose3d(16, 33, 3, stride=2) 
+Expecting nothing
+ok
+Trying:
+    m = nn.ConvTranspose3d(16, 33, (3, 5, 2), stride=(2, 1, 1), padding=(0, 4, 2)) 
+Expecting nothing
+ok
+Trying:
+    input = flow.randn(20, 16, 10, 50, 100)
+Expecting nothing
+ok
+Trying:
+    output = m(input)
+Expecting nothing
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    input = flow.tensor(
+       [[-0.1664078, -1.7256707, -0.14690138],
+           [-0.21474946, 0.53737473, 0.99684894],
+           [-1.135804, -0.50371903, 0.7645404]], dtype=flow.float32)
+Expecting nothing
+ok
+Trying:
+    target = flow.tensor([0, 1, 2], dtype=flow.int32)
+Expecting nothing
+ok
+Trying:
+    out = flow.nn.CrossEntropyLoss(reduction="none")(input, target)
+Expecting nothing
+ok
+Trying:
+    out
+Expecting:
+    tensor([0.8020, 1.1167, 0.3583], dtype=oneflow.float32)
+ok
+Trying:
+    out_sum = flow.nn.CrossEntropyLoss(reduction="sum")(input, target)
+Expecting nothing
+ok
+Trying:
+    out_sum
+Expecting:
+    tensor(2.2769, dtype=oneflow.float32)
+ok
+Trying:
+    out_mean = flow.nn.CrossEntropyLoss(reduction="mean")(input, target)
+Expecting nothing
+ok
+Trying:
+    out_mean
+Expecting:
+    tensor(0.7590, dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow
+Expecting nothing
+ok
+Trying:
+    from oneflow.utils.data import BatchSampler
+Expecting nothing
+ok
+Trying:
+    from oneflow.utils.data import SequentialSampler
+Expecting nothing
+ok
+Trying:
+    list(BatchSampler(SequentialSampler(range(10)), batch_size=3, drop_last=False))
+Expecting:
+    [[0, 1, 2], [3, 4, 5], [6, 7, 8], [9]]
+ok
+Trying:
+    list(BatchSampler(SequentialSampler(range(10)), batch_size=3, drop_last=True))
+Expecting:
+    [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    class MyIterableDataset(flow.utils.data.IterableDataset):
+        def __init__(self, start, end):
+            super(MyIterableDataset).__init__()
+            assert end > start, "this example code only works with end >= start"
+            self.start = start
+            self.end = end
+
+        def __iter__(self):
+            iter_start = self.start
+            iter_end = self.end
+            return iter(range(iter_start, iter_end))
+Expecting nothing
+ok
+Trying:
+    ds = MyIterableDataset(start=3, end=7)
+Expecting nothing
+ok
+Trying:
+    print(list(flow.utils.data.DataLoader(ds, num_workers=0)))
+Expecting:
+    [tensor([3], dtype=oneflow.int64), tensor([4], dtype=oneflow.int64), tensor([5], dtype=oneflow.int64), tensor([6], dtype=oneflow.int64)]
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    class MyIterableDataset(flow.utils.data.IterableDataset):
+        def __init__(self, start, end):
+            super(MyIterableDataset).__init__()
+            assert end > start, "this example code only works with end >= start"
+            self.start = start
+            self.end = end
+
+        def __iter__(self):
+            return iter(range(self.start, self.end))
+Expecting nothing
+ok
+Trying:
+    ds = MyIterableDataset(start=3, end=7)
+Expecting nothing
+ok
+Trying:
+    print(list(flow.utils.data.DataLoader(ds, num_workers=0)))
+Expecting:
+    [tensor([3], dtype=oneflow.int64), tensor([4], dtype=oneflow.int64), tensor([5], dtype=oneflow.int64), tensor([6], dtype=oneflow.int64)]
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    m = flow.nn.utils.weight_norm(flow.nn.Linear(20, 40))
+Expecting nothing
+ok
+Trying:
+    flow.nn.utils.remove_weight_norm(m)
+Expecting:
+    Linear(in_features=20, out_features=40, bias=True)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    m = flow.nn.utils.weight_norm(flow.nn.Linear(20, 40), name='weight')
+Expecting nothing
+ok
+Trying:
+    m
+Expecting:
+    Linear(in_features=20, out_features=40, bias=True)
+ok
+Trying:
+    m.weight_g.size()
+Expecting:
+    oneflow.Size([40, 1])
+ok
+Trying:
+    m.weight_v.size()
+Expecting:
+    oneflow.Size([40, 20])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    x1 = flow.tensor([[2, 3, 4], [1.5, 2.6, 3.7]], dtype=flow.float32, requires_grad=True)
+Expecting nothing
+ok
+Trying:
+    m1 = flow.nn.ReLU()
+Expecting nothing
+ok
+Trying:
+    out1 = m1(x1)
+Expecting nothing
+ok
+Trying:
+    out1 = out1.sum()
+Expecting nothing
+ok
+Trying:
+    out1.backward()
+Expecting nothing
+ok
+Trying:
+    norm1 = flow.nn.utils.clip_grad_norm_(x1, 0.6, 1.0)
+Expecting nothing
+ok
+Trying:
+    norm1
+Expecting:
+    tensor(6., dtype=oneflow.float32)
+ok
+Trying:
+    x1.grad
+Expecting:
+    tensor([[0.1000, 0.1000, 0.1000],
+            [0.1000, 0.1000, 0.1000]], dtype=oneflow.float32)
+ok
+Trying:
+    x2 = flow.tensor([[-2, -3, -4], [2.5, 0, 3.2]], dtype=flow.float32, requires_grad=True)
+Expecting nothing
+ok
+Trying:
+    out2 = flow.atan(x2)
+Expecting nothing
+ok
+Trying:
+    out2 = out2.sum()
+Expecting nothing
+ok
+Trying:
+    out2.backward()
+Expecting nothing
+ok
+Trying:
+    norm2 = flow.nn.utils.clip_grad_norm_(x2, 0.5)
+Expecting nothing
+ok
+Trying:
+    norm2
+Expecting:
+    tensor(1.0394, dtype=oneflow.float32)
+ok
+Trying:
+    x2.grad
+Expecting:
+    tensor([[0.0962, 0.0481, 0.0283],
+            [0.0663, 0.4810, 0.0428]], dtype=oneflow.float32)
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    class LinearGraph(flow.nn.Graph):
+       def __init__(self):
+           super().__init__()
+           # 向 Graph 中添加一个模块。
+           self.linear = flow.nn.Linear(3, 8, False)
+       def build(self, x):
+           # 使用该模块构建 Graph 的计算逻辑。
+           return self.linear(x)
+Expecting nothing
+ok
+Trying:
+    linear_graph = LinearGraph()
+Expecting nothing
+ok
+Trying:
+    x = flow.randn(4, 3)
+Expecting nothing
+ok
+Trying:
+    linear_graph(x).shape
+Expecting:
+    oneflow.Size([4, 8])
+ok
+Trying:
+    linear_graph(x).shape
+Expecting:
+    oneflow.Size([4, 8])
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    class SubclassGraph(flow.nn.Graph):
+        def __init__(self):
+            super().__init__() # 必须定义此函数
+            # 然后定义 Graph 的属性
+        def build(self):
+            pass
+Expecting nothing
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    class MyGraph(flow.nn.Graph):
+        def __init__(self):
+            super().__init__()
+            self.linear = flow.nn.Linear(3, 8, False)
+        def build(self, x):
+            return self.linear(x)
+Expecting nothing
+ok
+Trying:
+    linear_graph = MyGraph()
+Expecting nothing
+ok
+Trying:
+    x = flow.randn(4, 3)
+Expecting nothing
+ok
+Trying:
+    y = linear_graph(x) # 隐式调用 build() 函数
+Expecting nothing
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    loss_fn = flow.nn.MSELoss(reduction="sum")
+Expecting nothing
+ok
+Trying:
+    model = flow.nn.Sequential(flow.nn.Linear(3, 1), flow.nn.Flatten(0, 1))
+Expecting nothing
+ok
+Trying:
+    optimizer = flow.optim.SGD(model.parameters(), lr=1e-6)
+Expecting nothing
+ok
+Trying:
+    class LinearTrainGraph(flow.nn.Graph):
+        def __init__(self):
+            super().__init__()
+            self.model = model
+            self.loss_fn = loss_fn
+            # 添加一个优化器。
+            self.add_optimizer(optimizer)
+        def build(self, x, y):
+            y_pred = self.model(x)
+            loss = self.loss_fn(y_pred, y)
+            # 调用 loss tensor 中的 backward() 函数, loss tensor 必须是一个标量张量。
+            loss.backward()
+            return loss
+Expecting nothing
+ok
+Trying:
+    linear_graph = LinearTrainGraph()
+Expecting nothing
+ok
+Trying:
+    x = flow.randn(10, 3)
+Expecting nothing
+ok
+Trying:
+    y = flow.randn(10)
+Expecting nothing
+ok
+Trying:
+    for t in range(3):
+        loss = linear_graph(x, y)
+Expecting nothing
+ok
+Trying:
+    import oneflow as flow
+Expecting nothing
+ok
+Trying:
+    p = flow.placement("cuda", ranks=[0, 1, 2, 3])
+Expecting nothing
+ok
+Trying:
+    p
+Expecting:
+    oneflow.placement(type="cuda", ranks=[0, 1, 2, 3])
+ok
+Trying:
+    p = flow.placement("cuda", ranks=[[0, 1], [2, 3]])
+Expecting nothing
+ok
+Trying:
+    p
+Expecting:
+    oneflow.placement(type="cuda", ranks=[[0, 1], [2, 3]])
+ok
