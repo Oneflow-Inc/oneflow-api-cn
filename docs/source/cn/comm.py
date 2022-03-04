@@ -48,20 +48,22 @@ reset_docstr(
 
     .. code-block:: python
 
-        >>> # We have 1 process groups, 2 ranks.
-        >>> import oneflow as flow
+        # 我们有一个进程组，两个 rank 。
+        > import oneflow as flow
 
-        >>> tensor = flow.tensor([[1, 2], [3, 4]], device="cuda") + flow.env.get_local_rank()
-        >>> # tensor on rank0
-        >>> tensor # doctest: +ONLY_CHECK_RANK_0
+        > tensor = flow.tensor([[1, 2], [3, 4]], device="cuda") + flow.env.get_local_rank()
+        # rank0 上的 tensor
+        > tensor
         tensor([[1, 2],
                 [3, 4]], device='cuda:0', dtype=oneflow.int64)
-        >>> # tensor on rank1
-        >>> tensor # doctest: +ONLY_CHECK_RANK_1
+
+        # rank1 上的 tensor
+        > tensor
         tensor([[2, 3],
                 [4, 5]], device='cuda:1', dtype=oneflow.int64)
-        >>> flow.comm.all_reduce(tensor)
-        >>> tensor.numpy()
+
+        > flow.comm.all_reduce(tensor)
+        > tensor.numpy()
         array([[3, 5],
                [7, 9]], dtype=int64)
 
