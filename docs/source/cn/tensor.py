@@ -36,6 +36,22 @@ reset_docstr(
 )
 
 reset_docstr(
+    oneflow.Tensor.atan2,
+    r"""
+    参考 :func:`oneflow.atan2`
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.expand,
+    r"""
+    Tensor.expand() -> Tensor
+
+    参考 :func:`oneflow.expand`
+    """
+)
+
+reset_docstr(
     oneflow.Tensor.expand_as,
     r"""
     expand_as(other) -> Tensor
@@ -47,5 +63,105 @@ reset_docstr(
 
     参数：
         - **other** (:class:`oneflow.Tensor`): 返回张量与 :attr:`other` 大小相同。
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.flatten,
+    r"""
+    参考 :func:`oneflow.flatten`
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.floor,
+    r"""
+    参考 :func:`oneflow.floor`
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.flip,
+    r"""
+    参考 :func:`oneflow.flip`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.in_top_k,
+    r"""
+    Tensor.in_top_k(targets, predictions, k) -> Tensor
+
+    参考 :func:`oneflow.in_top_k`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.index_select,
+    r"""
+    Tensor.index_select(dim, index) -> Tensor
+
+    参考 :func:`oneflow.index_select`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.numel,
+    r"""
+    参考 :func:`oneflow.numel`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.new_ones,
+    r"""
+    Tensor.new_ones() -> Tensor
+
+    参考 :func:`oneflow.new_ones`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.to_global,
+    r"""
+    Tensor.to_global() -> Tensor
+
+    参考 :func:`oneflow.to_global`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.transpose,
+    r"""
+    参考 :func:`oneflow.transpose`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.logical_not,
+    r"""
+    logical_not() -> Tensor
+    参考 :func:`oneflow.logical_not`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.std,
+    r"""
+    参考 :func:`oneflow.std`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.var,
+    r"""
+    参考 :func:`oneflow.var`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.squeeze,
+    r"""
+    参考 :func:`oneflow.squeeze`
     """,
 )
