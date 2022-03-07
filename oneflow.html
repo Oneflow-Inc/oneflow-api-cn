@@ -126,6 +126,7 @@
 <li class="toctree-l1"><a class="reference internal" href="graph.html">oneflow.nn.Graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">oneflow.nn.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils.html">oneflow.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="env.html">oneflow.env</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comm.html">oneflow.comm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="placement.html">oneflow.placement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sbp.html">oneflow.sbp.sbp</a></li>
@@ -2143,15 +2144,15 @@ one-dimensional long tensor on the CPU.</p></li>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">predictions1</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out1</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">in_top_k</span><span class="p">(</span><span class="n">targets1</span><span class="p">,</span> <span class="n">predictions1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out1</span>
-<span class="go">tensor([1, 0], dtype=oneflow.int8)</span>
+<span class="go">tensor([ True, False], dtype=oneflow.bool)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out2</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">in_top_k</span><span class="p">(</span><span class="n">targets1</span><span class="p">,</span> <span class="n">predictions1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out2</span>
-<span class="go">tensor([1, 1], dtype=oneflow.int8)</span>
+<span class="go">tensor([True, True], dtype=oneflow.bool)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">targets2</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda'</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">predictions2</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda'</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out3</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">in_top_k</span><span class="p">(</span><span class="n">targets2</span><span class="p">,</span> <span class="n">predictions2</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out3</span>
-<span class="go">tensor([1, 0], device='cuda:0', dtype=oneflow.int8)</span>
+<span class="go">tensor([ True, False], device='cuda:0', dtype=oneflow.bool)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -2468,13 +2469,12 @@ Zeros are treated as False and nonzeros are treated as True.
 </dd>
 </dl>
 <p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span>
-<span class="go">tensor([0, 1, 0], dtype=oneflow.int8)</span>
+<span class="go">tensor([False,  True, False], dtype=oneflow.bool)</span>
 </pre></div>
 </div>
 </dd></dl>
