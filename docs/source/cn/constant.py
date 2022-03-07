@@ -276,3 +276,129 @@ reset_docstr(
 
     """
 )
+
+reset_docstr(
+    oneflow.linalg.matrix_norm,
+    r"""linalg.matrix_norm(input, ord='fro', dim=(-2, -1), keepdim=False, *, dtype=None, out=None) -> Tensor
+    计算一个矩阵的范数。
+
+    支持 float, double, cfloat 和 cdouble 的输入属性。
+
+    该函数同时支持矩阵的 batch 。将通过由二元组的 :attr:`dim` 参数指定的维度计算范数，而其他的维度将被当作 batch 维度。输出矩阵将有相同的 batch 维度。
+
+    :attr:`ord` 定义了被计算出的矩阵范数。支持下列类型的范数：
+    
+    ======================   ========================================================
+    :attr:`ord`              矩阵范数
+    ======================   ========================================================
+    `'fro'` (默认)           Frobenius 范数
+    `'nuc'`                  -- 暂未支持 --
+    `inf`                    `max(sum(abs(x), dim=1))`
+    `-inf`                   `min(sum(abs(x), dim=1))`
+    `1`                      `max(sum(abs(x), dim=0))`
+    `-1`                     `min(sum(abs(x), dim=0))`
+    `2`                      -- 暂未支持 --
+    `-2`                     -- 暂未支持 --
+    ======================   ========================================================
+
+    此处 `inf` 指代 `float('inf')`, NumPy 的 `inf` 对象， 或者任意等价的对象。
+
+    参数：
+        - **input** (Tensor): 拥有两个或更多维度的张量。默认情况下，其形状被解释为 `(*, m, n)` ，其中 `*` 是零个或更多 batch 维度，但这个解释方法可以通过 :attr:`dim` 控制。
+        - **ord** (int, inf, -inf, 'fro', 'nuc', 可选): 范数的类型。默认： `'fro'`
+        - **dim** (Tuple[int, int], 可选): 用于计算范数的维度。默认： `(-2, -1)`
+        - **keepdim** (bool, 可选): 如果设置为 `True` ，被减少的维度将以大小为一的维度保留。默认： `False`
+
+    返回值：
+        一个真实值的张量。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> from oneflow import linalg as LA
+        >>> import numpy as np
+        >>> a = flow.tensor(np.arange(9, dtype=np.float32)).reshape(3,3)
+        >>> a
+        tensor([[0., 1., 2.],
+                [3., 4., 5.],
+                [6., 7., 8.]], dtype=oneflow.float32)
+        >>> LA.matrix_norm(a)
+        tensor(14.2829, dtype=oneflow.float32)
+        >>> LA.matrix_norm(a, ord=-1)
+        tensor(9., dtype=oneflow.float32)
+        >>> b = a.expand(2, -1, -1)
+        >>> b
+        tensor([[[0., 1., 2.],
+                 [3., 4., 5.],
+                 [6., 7., 8.]],
+        <BLANKLINE>
+                [[0., 1., 2.],
+                 [3., 4., 5.],
+                 [6., 7., 8.]]], dtype=oneflow.float32)
+        >>> LA.matrix_norm(b, dim=(0, 2))
+        tensor([ 3.1623, 10.0000, 17.2627], dtype=oneflow.float32)
+    
+    """,
+)
+
+reset_docstr(
+    oneflow.linalg.vector_norm,
+    r"""
+    计算一个矢量范数。
+
+    支持 float 和 double 的输入类型。
+
+    这个函数不总是将多维张量 :attr:`input` 作为矢量的 batch ，而是：
+
+    - 如果 :attr:`dim` \ `= None`, :attr:`input` 将在计算范数前被扁平化。
+    - 如果 :attr:`dim` 是一个 `int` 或者 `tuple`, 范数将在这些维度上计算，而其他维度将被当作 batch 维度。
+
+    此行为是为了与 :func:`flow.linalg.norm` 保持一致。
+
+    :attr:`ord` 定义了被计算出的矩阵范数。支持下列类型的范数：
+
+    ======================   ========================================================
+    :attr:`ord`              矢量范数
+    ======================   ========================================================
+    `2` (默认)               `2`-norm (见下)
+    `inf`                    `max(abs(x))`
+    `-inf`                   `min(abs(x))`
+    `0`                      `sum(x != 0)`
+    其他 `int` 或 `float`     `sum(abs(x)^{ord})^{(1 / ord)}`
+    ======================   ========================================================
+
+    此处 `inf` 指代 `float('inf')`, NumPy 的 `inf` 对象， 或者任意等价的对象。
+
+    参数：
+        - **input** (Tensor): 输入张量，默认情况下会被扁平化，但是此行为可以用 :attr:`dim` 控制。
+        - **ord** (int, float, inf, -inf, 'fro', 'nuc', 可选): 范数的类型。默认： `2`
+        - **dim** (int, Tuple[int], 可选): 用于计算范数的维度。关于 :attr:`dim`\ `= None` 时的行为见之前段落。默认： `None`
+        - **keepdim** (bool, 可选): 如果设置为 `True` ，被减少的维度将以大小为一的维度保留。默认： `False`
+
+    返回值：
+        一个真实值的张量。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> from oneflow import linalg as LA
+        >>> import numpy as np
+        >>> a = flow.tensor(np.arange(9, dtype=np.float32) - 4)
+        >>> a
+        tensor([-4., -3., -2., -1.,  0.,  1.,  2.,  3.,  4.], dtype=oneflow.float32)
+        >>> b = a.reshape(3, 3)
+        >>> b
+        tensor([[-4., -3., -2.],
+                [-1.,  0.,  1.],
+                [ 2.,  3.,  4.]], dtype=oneflow.float32)
+        >>> LA.vector_norm(a, ord=3.5)
+        tensor(5.4345, dtype=oneflow.float32)
+        >>> LA.vector_norm(b, ord=3.5)
+        tensor(5.4345, dtype=oneflow.float32)
+
+    """
+)
