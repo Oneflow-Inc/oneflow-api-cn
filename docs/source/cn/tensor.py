@@ -165,3 +165,354 @@ reset_docstr(
     参考 :func:`oneflow.squeeze`
     """,
 )
+
+reset_docstr(
+    oneflow.Tensor.matmul,
+    r"""
+    参考 :func:`oneflow.matmul`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.narrow,
+    r"""
+    参考 :func:`oneflow.narrow`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.unsqueeze,
+    r"""
+    参考 :func:`oneflow.unsqueeze`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.permute,
+    r"""
+    参考 :func:`oneflow.permute`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.abs,
+    r"""
+    参考 :func:`oneflow.abs`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.acos,
+    r"""
+    参考 :func:`oneflow.acos`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.arccos,
+    r"""
+    参考 :func:`oneflow.arccos`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.acosh,
+    r"""
+    参考 :func:`oneflow.acosh`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.arccosh,
+    r"""
+    参考 :func:`oneflow.arccosh`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.arctanh,
+    r"""
+    参考 :func:`oneflow.arctanh`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.argmax,
+    r"""
+    参考 :func:`oneflow.argmax`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.argmin,
+    r"""
+    参考 :func:`oneflow.argmin`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.argwhere,
+    r"""
+    参考 :func:`oneflow.argwhere`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.atanh,
+    r"""
+    参考 :func:`oneflow.atanh`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.bmm,
+    r"""
+    参考 :func:`oneflow.bmm`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.chunk,
+    r"""
+    参考 :func:`oneflow.chunk`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.split,
+    r"""
+    参考 :func:`oneflow.split`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.swapaxes,
+    r"""
+    参考 :func:`oneflow.swapaxes`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.cast,
+    r"""
+    参考 :func:`oneflow.cast`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.diag,
+    r"""
+    参考 :func:`oneflow.diag`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.exp,
+    r"""
+    参考 :func:`oneflow.exp`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.erf,
+    r"""
+    Tensor.erf() -> Tensor
+
+    参考 :func:`oneflow.erf`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.erfc,
+    r"""
+    Tensor.erfc() -> Tensor
+
+    参考 :func:`oneflow.erfc`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.erfinv,
+    r"""
+    参考 :func:`oneflow.erfinv`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.eq,
+    r"""
+    参考 :func:`oneflow.eq`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.lt,
+    r"""
+    参考 :func:`oneflow.lt`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.le,
+    r"""
+    参考 :func:`oneflow.le`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.ne,
+    r"""
+    参考 :func:`oneflow.ne`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.fill_,
+    r"""
+    Tensor.fill_(value) → Tensor
+
+    用指定的值填充自张量。
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.ge,
+    r"""
+    参考 :func:`oneflow.ge`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.gelu,
+    r"""
+    参考 :func:`oneflow.gelu`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.gt,
+    r"""
+    参考 :func:`oneflow.gt`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.log1p,
+    r"""
+    参考 :func:`oneflow.log1p`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.mish,
+    r"""
+    参考 :func:`oneflow.mish`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.mul,
+    r"""Tensor.mul(value) -> Tensor
+    参考 :func:`oneflow.mul`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.negative,
+    r"""
+    参考 :func:`oneflow.negative`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.pow,
+    r"""
+    参考 :func:`oneflow.pow`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.relu,
+    r"""
+    参考 :func:`oneflow.relu`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.roll,
+    r"""
+    参考 :func:`oneflow.roll`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.round,
+    r"""
+    参考 :func:`oneflow.round`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.reciprocal,
+    r"""
+    参考 :func:`oneflow.reciprocal`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.asin,
+    r"""
+    参考 :func:`oneflow.asin`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.arcsin,
+    r"""
+    参考 :func:`oneflow.arcsin`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.arcsinh,
+    r"""
+    参考 :func:`oneflow.arcsinh`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.sin,
+    r"""
+    sin() -> Tensor
+
+    参考 :func:`oneflow.sin`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.cos,
+    r"""
+    参考 :func:`oneflow.cos`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.atan,
+    r"""
+    参考 :func:`oneflow.atan`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.arctan,
+    r"""
+    参考 :func:`oneflow.arctan`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.selu,
+    r"""
+    参考 :func:`oneflow.selu`
+    """,
+)
