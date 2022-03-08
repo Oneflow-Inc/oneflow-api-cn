@@ -516,3 +516,304 @@ reset_docstr(
     参考 :func:`oneflow.selu`
     """,
 )
+
+reset_docstr(
+    oneflow.Tensor.sigmoid,
+    r"""
+    参考 :func:`oneflow.sigmoid`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.sign,
+    r"""
+    参考 :func:`oneflow.sign`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.silu,
+    r"""
+    参考 :func:`oneflow.silu`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.sinh,
+    r"""
+    参考 :func:`oneflow.sinh`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.softmax,
+    r"""
+    参考 :func:`oneflow.softmax`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.softplus,
+    r"""
+    参考 :func:`oneflow.softplus`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.softsign,
+    r"""
+    参考 :func:`oneflow.softsign`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.tan,
+    r"""
+    参考 :func:`oneflow.tan`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.tanh,
+    r"""
+    参考 :func:`oneflow.tanh`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.tril,
+    r"""
+    参考 :func:`oneflow.tril`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.triu,
+    r"""
+    参考 :func:`oneflow.triu`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.gather,
+    r"""
+    oneflow.Tensor.gather(dim, index) -> Tensor
+
+    参考 :func:`oneflow.gather`
+
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.clamp,
+    r"""
+    参考 :func:`oneflow.clamp`.
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.repeat,
+    r"""
+    Tensor.repeat(*size) -> Tensor
+
+    参考 :func:`oneflow.repeat`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.t,
+    r"""
+    Tensor.t() → Tensor
+
+    参考 :func:`oneflow.t`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.tile,
+    r"""
+    Tensor.tile(*dims) -> Tensor
+
+    参考 :func:`oneflow.tile`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.fmod,
+    r"""
+    Tensor.fmod(other) -> Tensor
+
+    参考 :func:`oneflow.fmod`
+
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.logical_and,
+    r"""
+    logical_and() -> Tensor
+
+    参考 :func:`oneflow.logical_and`
+
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.logical_or,
+    r"""
+
+    logical_or() -> Tensor
+
+    参考 :func:`oneflow.logical_or`
+
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.logical_xor,
+    r"""
+    logical_xor() -> Tensor
+
+    参考 :func:`oneflow.logical_xor`
+
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.masked_fill,
+    r"""
+    参考 :func:`oneflow.masked_fill`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.masked_select,
+    r"""
+    参考 :func:`oneflow.masked_select`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.sub,
+    r"""
+    参考 :func:`oneflow.sub`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.div,
+    r"""
+    参考 :func:`oneflow.div`
+
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.ceil,
+    r"""
+    参考 :func:`oneflow.ceil`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.expm1,
+    r"""
+    参考 :func:`oneflow.expm1`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.topk,
+    r"""
+    参考 :func:`oneflow.topk`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.nms,
+    r"""
+    参考 :func:`oneflow.nms`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.nonzero,
+    r"""
+    nonzero(input, as_tuple=False) -> Tensor
+
+    参考 :func:`oneflow.nonzero`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.max,
+    r"""
+    input.max(dim, index) -> Tensor
+
+    参考 :func:`oneflow.max`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.min,
+    r"""
+    input.min(dim, index) -> Tensor
+
+    参考 :func:`oneflow.min`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.sum,
+    r"""
+    input.sum(dim, index) -> Tensor
+
+    参考 :func:`oneflow.sum`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.mean,
+    r"""
+    input.mean(dim, index) -> Tensor
+
+    参考 :func:`oneflow.mean`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.prod,
+    r"""
+    input.prod(dim, index) -> Tensor
+
+    参考 :func:`oneflow.prod`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.reshape,
+    r"""
+    参考 :func:`oneflow.reshape`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.sort,
+    r"""
+    参考 :func:`oneflow.sort`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.is_floating_point,
+    r"""
+    参考 :func:`oneflow.is_floating_point`
+    """,
+)
+
+reset_docstr(
+    oneflow.Tensor.where,
+    r"""
+    参考 :func:`oneflow.where`
+    """,
+)
