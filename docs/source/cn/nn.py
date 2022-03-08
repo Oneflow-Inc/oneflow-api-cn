@@ -1,6 +1,21 @@
 import oneflow
 from docreset import reset_docstr
 
+## oneflow.nn.AdaptiveAvgPool1d(output_size: Union[int, Tuple[int]])
+## oneflow.nn.AdaptiveAvgPool2d(output_size)
+## oneflow.nn.AdaptiveAvgPool3d(output_size)
+## oneflow.nn.AvgPool1d(kernel_size: Union[int, Tuple[int, int]], stride: Optional[Union[int, Tuple[int, int]]] = None, padding: Union[int, Tuple[int, int]] = 0, ceil_mode: bool = False, count_include_pad: bool = True)
+## oneflow.nn.AvgPool2d(kernel_size: Union[int, Tuple[int, int]], stride: Optional[Union[int, Tuple[int, int]]] = None, padding: Union[int, Tuple[int, int]] = 0, ceil_mode: bool = False, count_include_pad: bool = True, divisor_override: int = 0)
+## oneflow.nn.AvgPool3d(kernel_size: Union[int, Tuple[int, int, int]], stride: Optional[Union[int, Tuple[int, int, int]]] = None, padding: Union[int, Tuple[int, int, int]] = 0, ceil_mode: bool = False, count_include_pad: bool = True, divisor_override: int = 0)
+## oneflow.nn.BCELoss(weight: Optional[oneflow._oneflow_internal.Tensor] = None, reduction: str = 'mean')
+## oneflow.nn.BCEWithLogitsLoss(weight: Optional[oneflow._oneflow_internal.Tensor] = None, reduction: str = 'mean', pos_weight: Optional[oneflow._oneflow_internal.Tensor] = None)
+## oneflow.nn.BatchNorm1d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+## oneflow.nn.BatchNorm2d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+## oneflow.nn.BatchNorm3d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+## oneflow.nn.CELU(alpha: float = 1.0, inplace: bool = False)
+#### oneflow.nn.COCOReader
+
+
 reset_docstr(
     oneflow.nn.CTCLoss,
     r"""CTCLoss(blank=0, reduction='mean', zero_infinity=False)
@@ -62,6 +77,8 @@ reset_docstr(
 
     """
 )
+
+#### oneflow.nn.CoinFlip
 
 reset_docstr(
     oneflow.nn.CombinedMarginLoss,
@@ -753,6 +770,9 @@ reset_docstr(
         https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md
     """
 )
+
+#### oneflow.nn.CropMirrorNormalize
+
 reset_docstr(
     oneflow.nn.CrossEntropyLoss,
     r"""CrossEntropyLoss(weight=None, ignore_index=100, reduction='mean')
@@ -806,3 +826,1326 @@ reset_docstr(
 
     """)
 
+## oneflow.nn.Dropout(p: float = 0.5, inplace: bool = False, generator=None)
+## oneflow.nn.ELU(alpha: float = 1.0, inplace: bool = False)
+
+reset_docstr(
+    oneflow.nn.LeakyReLU,
+    r"""LeakyReLU(negative_slope: float = 0.01, inplace: bool = False)
+    
+    逐元素应用公式：
+
+    .. math::
+        \\text{LeakyRELU}(x) = \\begin{cases}
+            x, & \\text{ if } x \\geq 0 \\\\
+            \\text{negative_slope} \\times x, & \\text{ otherwise }
+        \\end{cases}
+
+    参数：
+        negative_slope: 控制负斜率的角度。默认值为 1e-2
+        inplace: 可以选择就地执行操作。默认值为 ``False``
+
+    形状：
+        - Input: :math:`(N, *)` ，其中 `*` 表示任意数量的附加维度
+        - Output: :math:`(N, *)` ，与输入的形状相同
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+        
+        >>> m = flow.nn.LeakyReLU(0.1)
+        >>> arr = np.array([0.2, 0.3, 3.0, 4.0])
+        >>> x = flow.Tensor(arr)
+        >>> out = m(x)
+        >>> out
+        tensor([0.2000, 0.3000, 3.0000, 4.0000], dtype=oneflow.float32)
+    """
+)
+
+reset_docstr(
+    oneflow.nn.Linear,
+    r"""Linear(in_features: int, out_features: int, bias: bool = True)
+    
+    对输入数据应用线性变换： :math:`y = xA^T + b`
+
+    参数：
+        - in_features: 每一个输入样本的尺寸
+        - out_features: 每一个输出样本的尺寸
+        - bias: 若设置为 ``False`` ，则该层不会学习附加偏差。默认值为 ``True``
+
+    形状：
+        - Input: :math:`(N, *, H_{in})` ，其中 `*` 表示任意数量的附加维度，且 :math:`H_{in} = {in\\_features}`
+        - Output: :math:`(N, *, H_{out})` ，其中除了最后一个维度之外的所有维度都与输入的形状相同，且 :math:`H_{out} = {out\\_features}`
+
+    属性：
+        - :attr:`weight`: 形状为 :math:`({out\\_features}, {in\\_features})` 的模块的可学习参数。这些值通过 :math:`\\mathcal{U}(-\\sqrt{k}, \\sqrt{k})` 初始化，其中 :math:`(k = 1 / {in\\_features})`
+        - :attr:`bias`: 形状为 :math:`({out\\_features})` 的模块的可学习参数。如果 :attr:`bias` 设置为 ``True`` ，则这些值通过 :math:`\\mathcal{U}(-\\sqrt{k}, \\sqrt{k})` 初始化，其中 :math:`(k = 1 / {in\\_features})`
+
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+        
+
+        >>> m = flow.nn.Linear(20, 30, False)
+        >>> input = flow.Tensor(np.random.randn(128, 20))
+        >>> output = m(input)
+        >>> output.size()
+        oneflow.Size([128, 30])
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.LogSigmoid,
+    r"""逐元素应用公式：
+
+    .. math::
+        \\text{LogSigmoid}(x) = \\log\\left(\\frac{ 1 }{ 1 + \\exp(-x)}\\right)
+
+    形状：
+        - Input: :math:`(N, *)` ，其中 `*` 表示任意数量的附加维度
+        - Output: :math:`(N, *)` ，与输入的形状相同
+
+    示例：
+
+    .. code-block:: python
+
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+        
+        >>> x = np.array([-0.5, 0, 0.5]).astype(np.float32)
+        >>> input = flow.Tensor(x)
+        >>> logsigmoid = flow.nn.LogSigmoid()
+
+        >>> out = logsigmoid(input)
+        >>> out
+        tensor([-0.9741, -0.6931, -0.4741], dtype=oneflow.float32)
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.LogSoftmax,
+    r"""LogSoftmax(dim: Optional[int] = None)
+    
+    对一个 n 维输入张量应用 LogSoftmax 公式
+    LogSoftmax 公式可以被简化为：
+
+    .. math::
+        \text{LogSoftmax}(x_{i}) = \log\left(\frac{\exp(x_i) }{ \sum_j \exp(x_j)} \right) = x_i - \log({ \sum_j \exp(x_j)})
+
+    参数：
+        dim (int): 将沿其计算 LogSoftmax 的维度
+
+    形状：
+        - Input: :math:`(N, *)` ，其中 `*` 表示任意数量的附加维度
+        - Output: :math:`(N, *)` ，与输入的形状相同
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+        
+        >>> m = flow.nn.LogSoftmax(dim=1)
+        >>> x = flow.Tensor(
+        ...    np.array(
+        ...        [[ 0.4296, -1.1957,  2.5463],
+        ...        [ 1.2552, -1.5747,  0.6923]]
+        ...    )
+        ... )
+        >>> out = m(x)
+        >>> out
+        tensor([[-2.2513, -3.8766, -0.1346],
+                [-0.4877, -3.3176, -1.0506]], dtype=oneflow.float32)
+    """
+)
+
+reset_docstr(
+    oneflow.nn.MarginRankingLoss,
+    r"""MarginRankingLoss(margin: float = 0.0, reduction: str = 'mean')
+    
+    创造一个标准来衡量损失，给定输入 :math:`x1`, :math:`x2` ，两个 1D mini-batch `Tensors` ，以及一个带标签的 1D mini-batch tensor :math:`y` （包含 1 或 -1 ）
+
+    如果 :math:`y = 1` 则假定第一个输入的 rank 比第二个输入更高， :math:`y = -1` 时反之亦然
+
+    小批量中每个样本的损失函数为：
+
+    .. math::
+        \\text{loss}(x1, x2, y) = \\max(0, -y * (x1 - x2) + \\text{margin})
+
+    参数：
+        margin (float, optional): 默认值为 :math:`0`
+        reduction (string, optional): 指定对输出应用的 reduction ：
+            ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行 reduction ；
+            ``'mean'`` ：输出的和将会除以输出中的元素数量；
+            ``'sum'`` ：输出将被求和。默认值为 ``'mean'``
+
+    形状：
+        - `x1` : :math:`(N, D)` ，其中 `N` 是批量大小， `D` 是样本大小
+        - `x2` : :math:`(N, D)` ，其中 `N` 是批量大小， `D` 是样本大小
+        - Target: :math:`(N)`
+        - Output: 如果 :attr:`reduction` 设置为 ``'none'`` ，那么输出为 :math:`(N)` ，否则为标量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        >>> x1 = flow.tensor(np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), dtype=flow.float32)
+        >>> x2 = flow.tensor(np.array([[2, 2, 2], [2, 2, 2], [2, 2, 2]]), dtype=flow.float32)
+        >>> target = flow.tensor(np.array([[1, -1, 1],[-1, 1, -1], [1, 1, 1]]), dtype=flow.float32)
+        >>> m = flow.nn.MarginRankingLoss(margin =1.0, reduction="none")
+        >>> out = m(x1, x2, target)
+        >>> out
+        tensor([[2., 1., 0.],
+                [3., 0., 5.],
+                [0., 0., 0.]], dtype=oneflow.float32)
+
+        >>> m = flow.nn.MarginRankingLoss(margin = 0.3, reduction="sum")
+        >>> out = m(x1, x2, target)
+        >>> out
+        tensor(8.2000, dtype=oneflow.float32)
+
+        >>> m = flow.nn.MarginRankingLoss(margin = 10, reduction="mean")
+        >>> out = m(x1, x2, target)
+        >>> out
+        tensor(8.3333, dtype=oneflow.float32)
+
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.MaxPool1d,
+    r"""MaxPool1d(kernel_size: Union[int, Tuple[int]], stride: Optional[Union[int, Tuple[int]]] = None, padding: Union[int, Tuple[int]] = 0, dilation: Union[int, Tuple[int]] = 1, return_indices: bool = False, ceil_mode: bool = False)
+    
+    此接口与 PyTorch 一致。可在 https://pytorch.org/docs/stable/generated/torch.nn.MaxPool1d.html#torch.nn.MaxPool1d 找到相关文档
+
+    在一个由多个输入平面组成的输入信号上应用 1D max pooling
+
+    在最简单的情况下，若输入为 :math:`(N, C, L)` 且输出为 :math:`(N, C, L_{out})` ，则该层的输出值可以被准确描述为：
+
+    .. math::
+        out(N_i, C_j, k) = \max_{m=0, \ldots, \text{kernel\_size} - 1}
+                input(N_i, C_j, stride \times k + m)
+
+    如果 :attr:`padding` 非负，则在输入的两侧使用最小值隐式填充，以填充点数。 :attr:`dilation` 是滑动窗口中元素之间的跨步。这很难描述，但这个 `链接`_ 以可视化的方式说明了 :attr:`dilation` 在做什么
+
+    Note:
+        若 ceil_mode 设置为 True 且滑动窗口从左侧填充区域或输入中开始，则允许滑动窗口越界。从右侧填充区域开始的滑动窗口将被忽略
+
+    参数：
+        kernel_size: 滑动窗口的大小，必须为正
+        stride: 滑动窗口的步长，必须为正。默认值为 :attr:`kernel_size`
+        padding: Implicit negative infinity padding to be added on both sides, must be >= 0 and <= kernel_size / 2.
+        dilation: 滑动窗口中元素之间的跨步，必须为正
+        return_indices: 若设置为 ``True`` 则返回 argmax 以及最大值，在后续的 :class:`torch.nn.MaxUnpool1d` 中用到
+        ceil_mode: 若设置为 ``True`` 则使用 `ceil` 而非 `floor` 来计算输出形状。这确保了输入张量中的每个元素都被滑动窗口覆盖
+
+    形状：
+        - Input: :math:`(N, C, L_{in})`
+        - Output: :math:`(N, C, L_{out})` ，其中
+
+          .. math::
+              L_{out} = \left\lfloor \frac{L_{in} + 2 \times \text{padding} - \text{dilation}
+                    \times (\text{kernel_size} - 1) - 1}{\text{stride}} + 1\right\rfloor
+
+    示例： 
+
+    .. code-block:: python 
+
+        import oneflow as flow 
+        import numpy as np
+
+        of_maxpool1d = flow.nn.MaxPool1d(kernel_size=3, padding=1, stride=1)
+        x = flow.Tensor(np.random.randn(1, 4, 4))
+        y = of_maxpool1d(x)
+        y.shape 
+        oneflow.Size([1, 4, 4])
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.MaxPool2d,
+    r"""MaxPool2d(kernel_size: Union[int, Tuple[int, int]], stride: Optional[Union[int, Tuple[int, int]]] = None, padding: Union[int, Tuple[int, int]] = 0, dilation: Union[int, Tuple[int, int]] = 1, return_indices: bool = False, ceil_mode: bool = False)
+    
+    此接口与 PyTorch 一致。可在 https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html#torch.nn.MaxPool2d 找到相关文档
+    
+    在一个由多个输入平面组成的输入信号上应用 2D max pooling
+
+    在最简单的情况下，若输入为 :math:`(N, C, H, W)` ，输出为 :math:`(N, C, H_{out}, W_{out})` 且 :attr:`kernel_size` 为 :math:`(kH, kW)` ，则该层的输出值可以被准确描述为：
+
+    .. math::
+        \begin{aligned}
+            out(N_i, C_j, h, w) ={} & \max_{m=0, \ldots, kH-1} \max_{n=0, \ldots, kW-1} \\
+                                    & \text{input}(N_i, C_j, \text{stride[0]} \times h + m,
+                                                   \text{stride[1]} \times w + n)
+        \end{aligned}
+
+    如果 :attr:`padding` 非负，则在输入的两侧使用最小值隐式填充，以填充点数。 :attr:`dilation` 控制了核点之间的空间
+    这很难描述，但这个 `链接`_ 以可视化的方式说明了 :attr:`dilation` 在做什么
+
+    Note:
+        若 ceil_mode 设置为 True 且滑动窗口从左侧填充区域或输入中开始，则允许滑动窗口越界。从右侧填充区域开始的滑动窗口将被忽略
+
+    参数 :attr:`kernel_size`, :attr:`stride`, :attr:`padding`, :attr:`dilation` 可以是：
+        - a single ``int`` -- 在这种情况下，高度和宽度维度使用相同的值
+        - a ``tuple`` of two ints -- 在这种情况下，第一个整数用于高度维度，第二个整数用于宽度维度
+
+    参数：
+        kernel_size: 窗口的最大尺寸
+        stride: 窗口的滑动步长。默认值为 :attr:`kernel_size`
+        padding: 要加在两侧的隐式最小填充值
+        dilation: 控制窗口中元素步幅的参数
+        return_indices: 若设置为 ``True`` ，则返回最大索引和输出，在后续的 :class:`torch.nn.MaxUnpool2d` 中用到
+        ceil_mode: 若设置为 ``True`` 则使用 `ceil` 而非 `floor` 来计算输出形状
+
+    形状：
+        - Input: :math:`(N, C, H_{in}, W_{in})`
+        - Output: :math:`(N, C, H_{out}, W_{out})` ，其中
+
+          .. math::
+              H_{out} = \left\lfloor\frac{H_{in} + 2 * \text{padding[0]} - \text{dilation[0]}
+                    \times (\text{kernel_size[0]} - 1) - 1}{\text{stride[0]}} + 1\right\rfloor
+          .. math::
+              W_{out} = \left\lfloor\frac{W_{in} + 2 * \text{padding[1]} - \text{dilation[1]}
+                    \times (\text{kernel_size[1]} - 1) - 1}{\text{stride[1]}} + 1\right\rfloor
+
+    示例：
+
+    .. code-block:: python
+
+        import oneflow as flow 
+        import numpy as np
+
+        m = flow.nn.MaxPool2d(kernel_size=3, padding=1, stride=1)
+        x = flow.Tensor(np.random.randn(1, 4, 4, 4))
+        y = m(x)
+        y.shape 
+        oneflow.Size([1, 4, 4, 4])
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.MaxPool3d,
+    r"""MaxPool3d(kernel_size: Union[int, Tuple[int, int, int]], stride: Optional[Union[int, Tuple[int, int, int]]] = None, padding: Union[int, Tuple[int, int, int]] = 0, dilation: Union[int, Tuple[int, int, int]] = 1, return_indices: bool = False, ceil_mode: bool = False)
+    
+    此接口与 PyTorch 一致。可在 https://pytorch.org/docs/stable/generated/torch.nn.MaxPool3d.html#torch.nn.MaxPool3d 找到相关文档
+
+    在一个由多个输入平面组成的输入信号上应用 3D max pooling
+
+    在最简单的情况下，若输入为 :math:`(N, C, D, H, W)` ，输出为 :math:`(N, C, D_{out}, H_{out}, W_{out})` 且 :attr:`kernel_size` 为 :math:`(kD, kH, kW)` ，则该层的输出值可以被准确描述为：
+
+    .. math::
+        \begin{aligned}
+            \text{out}(N_i, C_j, d, h, w) ={} & \max_{k=0, \ldots, kD-1} \max_{m=0, \ldots, kH-1} \max_{n=0, \ldots, kW-1} \\
+                                              & \text{input}(N_i, C_j, \text{stride[0]} \times d + k,
+                                                             \text{stride[1]} \times h + m, \text{stride[2]} \times w + n)
+        \end{aligned}
+
+    如果 :attr:`padding` 非负，则在输入的两侧使用最小值隐式填充，以填充点数。 :attr:`dilation` 控制了核点之间的空间
+    这很难描述，但这个 `链接`_ 以可视化的方式说明了 :attr:`dilation` 在做什么
+
+    Note:
+        若 ceil_mode 设置为 True 且滑动窗口从左侧填充区域或输入中开始，则允许滑动窗口越界。从右侧填充区域开始的滑动窗口将被忽略
+
+    参数 :attr:`kernel_size`, :attr:`stride`, :attr:`padding`, :attr:`dilation` 可以是：
+        - a single ``int`` -- 在这种情况下，深度、高度和宽度维度使用相同的值
+        - a ``tuple`` of three ints -- 在这种情况下，第一个整数用于深度维度，第二个整数用于高度维度，第三个整数用于宽度维度
+
+    参数：
+        kernel_size: 窗口的最大尺寸
+        stride: 窗口的滑动步长。默认值为 :attr:`kernel_size`
+        padding: implicit minimum value padding to be added on all three sides
+        dilation: 控制窗口中元素步幅的参数
+        return_indices: 若设置为 ``True`` ，则返回最大索引和输出，在后续的 :class:`torch.nn.MaxUnpool3d` 中用到
+        ceil_mode: 若设置为 ``True`` 则使用 `ceil` 而非 `floor` 来计算输出形状
+
+    形状：
+        - Input: :math:`(N, C, D_{in}, H_{in}, W_{in})`
+        - Output: :math:`(N, C, D_{out}, H_{out}, W_{out})` ，其中
+
+          .. math::
+              D_{out} = \left\lfloor\frac{D_{in} + 2 \times \text{padding}[0] - \text{dilation}[0] \times
+                (\text{kernel_size}[0] - 1) - 1}{\text{stride}[0]} + 1\right\rfloor
+
+          .. math::
+              H_{out} = \left\lfloor\frac{H_{in} + 2 \times \text{padding}[1] - \text{dilation}[1] \times
+                (\text{kernel_size}[1] - 1) - 1}{\text{stride}[1]} + 1\right\rfloor
+
+          .. math::
+              W_{out} = \left\lfloor\frac{W_{in} + 2 \times \text{padding}[2] - \text{dilation}[2] \times
+                (\text{kernel_size}[2] - 1) - 1}{\text{stride}[2]} + 1\right\rfloor
+
+    示例：
+
+    .. code-block:: python
+
+        import oneflow as flow 
+        import numpy as np 
+
+        of_maxpool3d = flow.nn.MaxPool3d(kernel_size=3, padding=1, stride=1)
+        x = flow.Tensor(np.random.randn(1, 4, 4, 4, 4))
+        y = of_maxpool3d(x)
+        y.shape 
+        oneflow.Size([1, 4, 4, 4, 4])
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.MinMaxObserver,
+    r"""MinMaxObserver(quantization_formula: str = 'google', quantization_bit: int = 8, quantization_scheme: str = 'symmetric', per_layer_quantization: bool = True)
+    
+    计算张量的量化参数
+
+    首先计算输入张量的最大值和最小值：
+
+    .. math::
+
+        & max\\_value = max(input)
+
+        & min\\_value = min(input)
+
+    然后用以下等式计算 scale 和 zero_point ：
+
+        if quantization_scheme == "symmetric":
+
+        .. math::
+
+            & denom = 2^{quantization\\_to\\_bit - 1} - 1
+
+            & scale = max(|max\\_value|,|min\\_value|) / denom
+
+            & zero\\_point = 0
+
+        elif quantization_scheme == "affine":
+
+        .. math::
+
+            & denom = 2^{quantization\\_to\\_bit} - 1
+
+            & scale = (max\\_value - min\\_value) / denom
+
+            & zero\\_point = -min\\_value / scale
+
+    如果 per_layer_quantization 设置为 False ，则 scale 和 zero_point 的形状为 (input.shape[0],)
+
+    参数：
+        quantization_bit (int): 量化输入为 uintX / intX ， X 可以在范围 [2, 8] 中，默认为 8
+        quantization_scheme (str): 支持 "symmetric" 或 "affine" ， 量化为有符号/无符号整数。 默认为 "symmetric"
+        quantization_formula (str): 支持 "google" or "cambricon"
+        per_layer_quantization (bool): 若设置为 True ，则表示 per-layer ，否则为 per-channel 。默认值为 True
+
+    返回值：
+        Tuple[oneflow.Tensor, oneflow.Tensor]: 输入张量的 scale 和 zero_point
+
+    示例：
+
+    .. code-block:: python
+        
+        >>> import numpy as np
+        >>> import oneflow as flow
+
+        >>> weight = (np.random.random((2, 3, 4, 5)) - 0.5).astype(np.float32)
+        
+        >>> input_tensor = flow.tensor(
+        ...    weight, dtype=flow.float32
+        ... )
+        
+        >>> quantization_bit = 8
+        >>> quantization_scheme = "symmetric"
+        >>> quantization_formula = "google"
+        >>> per_layer_quantization = True
+
+        >>> min_max_observer = flow.nn.MinMaxObserver(quantization_formula=quantization_formula, quantization_bit=quantization_bit,
+        ... quantization_scheme=quantization_scheme, per_layer_quantization=per_layer_quantization)
+
+        >>> scale, zero_point = min_max_observer(
+        ...    input_tensor, )
+
+    """
+)
+
+#### oneflow.nn.ModuleDict
+#### oneflow.nn.ModuleList
+
+
+reset_docstr(
+    oneflow.nn.MovingAverageMinMaxObserver,
+    r"""MovingAverageMinMaxObserver(training: bool = False, quantization_formula: str = 'google', stop_update_after_iters: int = 0, quantization_bit: int = 8, quantization_scheme: str = 'symmetric', momentum: float = 0)
+    
+    根据输入张量的最小值和最大值的移动平均计算量化参数
+
+    首先计算输入张量的 moving\\_max 和 moving\\_min ：
+
+        if quantization_scheme == "symmetric":
+
+        .. math::
+
+            & moving\\_max = moving\\_max * momentum + |max(input)| * (1 - momentum)
+
+            & moving\\_min = moving\\_max
+
+        elif quantization_scheme == "affine":
+
+        .. math::
+
+            & moving\\_max = moving\\_max * momentum + max(input) * (1 - momentum)
+
+            & moving\\_min = moving\\_min * momentum + min(input) * (1 - momentum)
+
+    The moving average of min and max values are initialized as the first batch of input `Blob`'s min and max.
+
+    然后用以下等式计算 scale 和 zero_point ：
+
+        if quantization_scheme == "symmetric":
+
+        .. math::
+
+            & denom = 2^{quantization\\_to\\_bit - 1} - 1
+
+            & scale = moving\\_max / denom
+
+            & zero\\_point = 0
+
+        elif quantization_scheme == "affine":
+
+        .. math::
+
+            & denom = 2^{quantization\\_to\\_bit} - 1
+
+            & scale = (moving\\_max - moving\\_min) / denom
+
+            & zero\\_point = -moving\\_min / scale
+
+    Note:
+        ``current_train_step`` 可以直接被赋值给一个优化器（例如 SGD ）
+
+    参数：
+        training (bool): 模式是否处于训练状态，默认为 False
+        quantization_bit (int): 量化输入为 uintX / intX ， X 可以在范围 [2, 8] 中，默认为 8
+        quantization_scheme (str): 支持 "symmetric" 或 "affine" ， 量化为有符号/无符号整数。 默认为 "symmetric"
+        quantization_formula (str): 支持 "google" or "cambricon"
+        momentum (float): 指数移动平均运算的平滑参数，默认为 0.95
+
+    返回值：
+        Tuple[oneflow.Tensor, oneflow.Tensor]: 输入张量的 scale 和 zero_point
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+
+        >>> weight = (np.random.random((2, 3, 4, 5)) - 0.5).astype(np.float32)
+        
+        >>> input_tensor = flow.tensor(
+        ...    weight, dtype=flow.float32
+        ... )
+
+        >>> current_train_step_tensor = flow.tensor(
+        ...   np.zeros((1,)).astype(np.float32),
+        ...    dtype=flow.int64,
+        ... )
+        
+        >>> momentum = 0.95
+        >>> quantization_bit = 8
+        >>> quantization_scheme = "symmetric"
+        >>> quantization_formula = "google"
+
+        >>> moving_average_min_max_observer = flow.nn.MovingAverageMinMaxObserver(training=True, quantization_formula=quantization_formula, 
+        ...                                                                       stop_update_after_iters=1, quantization_bit=quantization_bit,
+        ...                                                                       quantization_scheme=quantization_scheme, momentum=momentum,
+        ...                                                                       )
+
+        >>> (scale, zero_point) = moving_average_min_max_observer(
+        ...    input_tensor,
+        ...    current_train_step_tensor,
+        ... )
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.OFRecordBytesDecoder,
+    r"""OFRecordBytesDecoder(blob_name: str, name: Optional[str] = None)
+    
+    此运算符将张量读取为字节，输出取决于下游任务，可能需要进一步的解码过程，比如 cv2.imdecode() 用于图像和解码，以及 decode("utf-8") 用于字符
+    
+    参数：
+        blob_name: 目标特征的名称
+
+        name: 图中此分量的名称
+
+        input: 可能由 OFRecordReader 提供的张量
+
+    返回值：
+        按字节编码后的张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+
+        >>> def example():
+        ...      batch_size = 16
+        ...      record_reader = flow.nn.OFRecordReader(
+        ...         "dataset/",
+        ...         batch_size=batch_size,
+        ...         part_name_suffix_length=5,
+        ...      )
+        ...      val_record = record_reader()
+
+        ...      bytesdecoder_img = flow.nn.OFRecordBytesDecoder("encoded")
+
+        ...      image_bytes_batch = bytesdecoder_img(val_record)
+
+        ...      image_bytes = image_bytes_batch.numpy()[0]
+        ...      return image_bytes
+        ... example()  # doctest: +SKIP
+        array([255 216 255 ...  79 255 217], dtype=uint8)
+
+
+
+    """
+)
+
+#### oneflow.nn.OFRecordImageDecoder
+#### oneflow.nn.OFRecordImageDecoderRandomCrop
+#### oneflow.nn.OFRecordRawDecoder
+#### oneflow.nn.OFRecordReader
+
+reset_docstr(
+    oneflow.nn.PReLU,
+    r"""PReLU(num_parameters: int = 1, init: float = 0.25, device=None, dtype=None)
+    
+    逐元素应用公式：
+
+    .. math::
+        PReLU(x) = \\max(0,x) + a * \\min(0,x)
+
+    这里 :math:`a` 是一个可学习的参数。当不带参数调用时， `nn.PReLU()` 在所有输入通道中使用单个参数 :math:`a` 。
+    如果调用 `nn.PReLU(nChannels)` ，为每个通道使用单独的 :math:`a`
+
+    .. note::
+        为了获得良好的性能，在学习 :math:`a` 时不应使用权重衰减
+
+    .. note::
+        通道维度是输入的第二维度。当输入维度不足 2 时，就不存在通道维度且通道数为 1
+
+    参数：
+        num_parameters (int): 需要学习的 :math:`a` 的数量
+            尽管它将一个 int 数值作为输入，但只有两类值是合法的： 1 或输入的通道数。默认值为 1
+        init (float): :math:`a` 的初始值。默认为 0.25
+
+    形状：
+        - Input: :math:`(N, *)` where `*` means, any number of additional
+          dimensions
+        - Output: :math:`(N, *)`, same shape as the input
+
+    属性：
+        - weight (Tensor): 形状 (:attr:`num_parameters`) 的可学习权重
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+        
+        >>> m = flow.nn.PReLU()
+        >>> input = flow.tensor(np.asarray([[[[1, -2], [3, 4]]]]), dtype=flow.float32)
+        >>> print(m(input).numpy())
+        [[[[ 1.  -0.5]
+           [ 3.   4. ]]]]
+
+    """
+)
+
+#### oneflow.nn.Parameter
+#### oneflow.nn.ParameterDict
+#### oneflow.nn.ParameterList
+#### oneflow.nn.PixelShuffle
+
+reset_docstr(
+    oneflow.nn.Quantization,
+    r"""
+    
+    在推理时模拟量化操作
+
+    输出将被计算为：
+
+        if quantization_scheme == "symmetric":
+
+        .. math::
+
+            & quant\\_max = 2^{quantization\\_to\\_bit - 1} - 1
+
+            & quant\\_min = -quant\\_max
+
+            & clamp(round(x / scale), quant\\_min, quant\\_max)
+
+        elif quantization_scheme == "affine":
+
+        .. math::
+
+            & quant\\_max = 2^{quantization\\_to\\_bit} - 1
+
+            & quant\\_min = 0
+
+            & (clamp(round(x / scale + zero\\_point), quant\\_min, quant\\_max) - zero\\_point)
+
+    示例：
+        quantization_bit (int): 量化输入为 uintX / intX ， X 可以在范围 [2, 8] 中，默认为 8
+        quantization_scheme (str): 支持 "symmetric" 或 "affine" ， 量化为有符号/无符号整数。 默认为 "symmetric"
+        quantization_formula (str): 支持 "google" or "cambricon"
+
+    返回值：
+        oneflow.Tensor: 经过量化操作后的输入张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+
+        >>> weight = (np.random.random((2, 3, 4, 5)) - 0.5).astype(np.float32)
+        
+        >>> input_tensor = flow.tensor(
+        ...    weight, dtype=flow.float32
+        ... )
+        
+        >>> quantization_bit = 8
+        >>> quantization_scheme = "symmetric"
+        >>> quantization_formula = "google"
+        >>> per_layer_quantization = True
+
+        >>> min_max_observer = flow.nn.MinMaxObserver(quantization_formula=quantization_formula, quantization_bit=quantization_bit,
+        ... quantization_scheme=quantization_scheme, per_layer_quantization=per_layer_quantization)
+        >>> quantization = flow.nn.Quantization(quantization_formula=quantization_formula, quantization_bit=quantization_bit, 
+        ... quantization_scheme=quantization_scheme)
+
+        >>> scale, zero_point = min_max_observer(
+        ...    input_tensor,
+        ... )
+
+        >>> output_tensor = quantization(
+        ...    input_tensor,
+        ...    scale,
+        ...    zero_point,
+        ... )
+
+    """
+)
+
+## oneflow.nn.ReLU
+
+
+reset_docstr(
+    oneflow.nn.ReLU6,
+    r"""
+    
+    逐元素应用公式：
+
+    .. math::
+
+        \\text{Relu6}(x) = \\begin{cases}
+            6 & \\text{ if } x > 6 \\\\
+            0 & \\text{ if } x < 0 \\\\
+            x & \\text{ otherwise } \\\\
+        \\end{cases}
+
+    参数：
+        inplace: 可以选择就地执行操作。默认值为 ``False``
+
+    形状：
+        - Input: :math:`(N, *)` ，其中 `*` 表示任意数量的附加维度
+        - Output: :math:`(N, *)` ，与输入的形状相同
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+        
+        >>> x = np.array([-0.5, 0, 0.5]).astype(np.float32)
+        >>> input = flow.Tensor(x)
+        >>> relu6 = flow.nn.ReLU6()
+
+        >>> out = relu6(input)
+        >>> out
+        tensor([0.0000, 0.0000, 0.5000], dtype=oneflow.float32)
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.ReflectionPad2d,
+    r"""
+    此接口与 PyTorch 一致。可在 https://pytorch.org/docs/stable/generated/torch.nn.MaxPool1d.html#torch.nn.MaxPool1d 找到相关文档
+
+    The interface is consistent with PyTorch.
+    The documentation is referenced from:
+    https://pytorch.org/docs/stable/generated/torch.nn.ReflectionPad2d.html
+
+
+    This operator pads the input tensor using the reflection of the input boundary.
+
+    示例：
+        padding (Union[int,tuple]): The size or bundary of padding, if is `int` uses the same padding in all dimension; if 4-dims `tuple`, uses :math:`(\\text{padding}_{\\text{left}}, \\text{padding}_{\\text{right}}, \\text{padding}_{\\text{top}}, \\text{padding}_{\\text{bottom}} )`
+
+    返回值：
+        Tensor: Returns a new tensor which is result of the reflection padding of the input tensor.
+
+    形状：
+        - Input: :math:`(N, C, H_{\\text{in}}, W_{\\text{in}})`
+        - Output: :math:`(N, C, H_{\\text{out}}, W_{\\text{out}})` where
+
+          :math:`H_{\\text{out}} = H_{\\text{in}} + \\text{padding}_{\\text{top}} + \\text{padding}_{\\text{bottom}}`
+
+          :math:`W_{\\text{out}} = W_{\\text{in}} + \\text{padding}_{\\text{left}} + \\text{padding}_{\\text{right}}`
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        >>> input = flow.tensor(np.arange(18).reshape((1, 2, 3, 3)).astype(np.float32))
+        >>> m = flow.nn.ReflectionPad2d((2, 2, 1, 1))
+        >>> out = m(input)
+        >>> out
+        tensor([[[[ 5.,  4.,  3.,  4.,  5.,  4.,  3.],
+                  [ 2.,  1.,  0.,  1.,  2.,  1.,  0.],
+                  [ 5.,  4.,  3.,  4.,  5.,  4.,  3.],
+                  [ 8.,  7.,  6.,  7.,  8.,  7.,  6.],
+                  [ 5.,  4.,  3.,  4.,  5.,  4.,  3.]],
+        <BLANKLINE>
+                 [[14., 13., 12., 13., 14., 13., 12.],
+                  [11., 10.,  9., 10., 11., 10.,  9.],
+                  [14., 13., 12., 13., 14., 13., 12.],
+                  [17., 16., 15., 16., 17., 16., 15.],
+                  [14., 13., 12., 13., 14., 13., 12.]]]], dtype=oneflow.float32)
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.ReplicationPad2d,
+    r"""
+    
+    此接口与 PyTorch 一致。可在 https://pytorch.org/docs/stable/generated/torch.nn.MaxPool1d.html#torch.nn.MaxPool1d 找到相关文档
+
+The interface is consistent with PyTorch.
+    The documentation is referenced from:
+    https://pytorch.org/docs/stable/generated/torch.nn.ReplicationPad2d.html?highlight=replicationpad2d#torch.nn.ReplicationPad2d
+
+    Pads the input tensor using the replication of the input boundary.
+
+    示例：
+        padding (Union[int, tuple, list]):  the size of the padding. If is `int`, uses the same padding in all boundaries. If a 4-`tuple`, uses (:math:`\\mathrm{padding_{left}}`, :math:`\\mathrm{padding_{right}}`, :math:`\\mathrm{padding_{top}}`, :math:`\\mathrm{padding_{bottom}}`)
+
+    形状：
+        - Input: :math:`(N, C, H_{in}, W_{in})`
+        - Output: :math:`(N, C, H_{out}, W_{out})` where
+
+            :math:`H_{out} = H_{in} + \\mathrm{padding_{top}} + \\mathrm{padding_{bottom}}`
+
+            :math:`W_{out} = W_{in} + \\mathrm{padding_{left}} + \\mathrm{padding_{right}}`
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        >>> m = flow.nn.ReplicationPad2d((2, 2, 1, 1))
+        >>> input = flow.tensor(np.arange(18).reshape((1, 2, 3, 3)).astype(np.float32))
+        >>> input_int = flow.tensor(np.arange(18).reshape((1, 2, 3, 3)).astype(np.int32))
+        >>> output = m(input)
+        >>> output.shape
+        oneflow.Size([1, 2, 5, 7])
+        >>> output
+        tensor([[[[ 0.,  0.,  0.,  1.,  2.,  2.,  2.],
+                  [ 0.,  0.,  0.,  1.,  2.,  2.,  2.],
+                  [ 3.,  3.,  3.,  4.,  5.,  5.,  5.],
+                  [ 6.,  6.,  6.,  7.,  8.,  8.,  8.],
+                  [ 6.,  6.,  6.,  7.,  8.,  8.,  8.]],
+        <BLANKLINE>
+                 [[ 9.,  9.,  9., 10., 11., 11., 11.],
+                  [ 9.,  9.,  9., 10., 11., 11., 11.],
+                  [12., 12., 12., 13., 14., 14., 14.],
+                  [15., 15., 15., 16., 17., 17., 17.],
+                  [15., 15., 15., 16., 17., 17., 17.]]]], dtype=oneflow.float32)
+
+    """
+)
+
+## oneflow.nn.SELU
+
+reset_docstr(
+    oneflow.nn.Sequential,
+    r"""A sequential container.
+    Modules will be added to it in the order they are passed in the constructor.
+    Alternatively, an ordered dict of modules can also be passed in.
+
+    To make it easier to understand, here is a small example:
+
+    .. code-block:: python
+
+        >>> import oneflow.nn as nn
+        >>> from collections import OrderedDict
+        >>> nn.Sequential(nn.Conv2d(1,20,5), nn.ReLU(), nn.Conv2d(20,64,5), nn.ReLU()) #doctest: +ELLIPSIS
+        Sequential(
+          (0): Conv2d(1, 20, kernel_size=(5, 5), stride=(1, 1))
+          (1): ReLU()
+          (2): Conv2d(20, 64, kernel_size=(5, 5), stride=(1, 1))
+          (3): ReLU()
+        )
+        >>> nn.Sequential(OrderedDict([
+        ...    ('conv1', nn.Conv2d(1,20,5)),
+        ...    ('relu1', nn.ReLU()),
+        ...    ('conv2', nn.Conv2d(20,64,5)),
+        ...    ('relu2', nn.ReLU())
+        ... ])) #doctest: +ELLIPSIS
+        Sequential(
+          (conv1): Conv2d(1, 20, kernel_size=(5, 5), stride=(1, 1))
+          (relu1): ReLU()
+          (conv2): Conv2d(20, 64, kernel_size=(5, 5), stride=(1, 1))
+          (relu2): ReLU()
+        )
+
+    """
+)
+
+## oneflow.nn.SiLU
+## oneflow.nn.Sigmoid
+
+reset_docstr(
+    oneflow.nn.SmoothL1Loss,
+    r"""Creates a criterion that uses a squared term if the absolute
+    element-wise error falls below beta and an L1 term otherwise.
+
+    此接口与 PyTorch 一致。可在 https://pytorch.org/docs/stable/generated/torch.nn.MaxPool1d.html#torch.nn.MaxPool1d 找到相关文档
+
+    The interface is consistent with PyTorch.
+    The documentation is referenced from:
+    https://pytorch.org/docs/stable/generated/torch.nn.SmoothL1Loss.html
+
+    It is less sensitive to outliers than :class:`torch.nn.MSELoss` and in some cases
+    prevents exploding gradients (e.g. see the paper `Fast R-CNN <https://openaccess.thecvf.com/content_iccv_2015/papers/Girshick_Fast_R-CNN_ICCV_2015_paper.pdf>`__ by Ross Girshick)..
+
+    For a batch of size :math:`N`, the unreduced loss can be described as:
+
+    .. math::
+        \\ell(x, y) = L = \\{l_1, ..., l_N\\}^T
+
+    with
+
+    .. math::
+        l_n = \\begin{cases}
+        0.5 (x_n - y_n)^2 / beta, & \\text{if } |x_n - y_n| < beta \\\\
+        |x_n - y_n| - 0.5 * beta, & \\text{otherwise }
+        \\end{cases}
+
+    If `reduction` is not `none`, then:
+
+    .. math::
+        \\ell(x, y) =
+        \\begin{cases}
+            \\operatorname{mean}(L), &  \\text{if reduction} = \\text{`mean';}\\\\
+            \\operatorname{sum}(L),  &  \\text{if reduction} = \\text{`sum'.}
+        \\end{cases}
+
+    .. note::
+        Smooth L1 loss can be seen as exactly :class:`L1Loss`, but with the :math:`|x - y| < beta`
+        portion replaced with a quadratic function such that its slope is 1 at :math:`|x - y| = beta`.
+        The quadratic segment smooths the L1 loss near :math:`|x - y| = 0`.
+
+    .. note::
+        Smooth L1 loss is closely related to :class:`HuberLoss`, being
+        equivalent to :math:`huber(x, y) / beta` (note that Smooth L1's beta hyper-parameter is
+        also known as delta for Huber). This leads to the following differences:
+
+        * As beta -> 0, Smooth L1 loss converges to :class:`L1Loss`, while :class:`HuberLoss`
+          converges to a constant 0 loss.
+        * As beta -> :math:`+\\infty`, Smooth L1 loss converges to a constant 0 loss, while
+          :class:`HuberLoss` converges to :class:`MSELoss`.
+        * For Smooth L1 loss, as beta varies, the L1 segment of the loss has a constant slope of 1.
+          For :class:`HuberLoss`, the slope of the L1 segment is beta.
+
+    示例：
+        size_average (bool, optional): Deprecated (see :attr:`reduction`). By default,
+            the losses are averaged over each loss element in the batch. Note that for
+            some losses, there are multiple elements per sample. If the field :attr:`size_average`
+            is set to ``False``, the losses are instead summed for each minibatch. Ignored
+            when :attr:`reduce` is ``False``. Default: ``True``
+        reduce (bool, optional): Deprecated (see :attr:`reduction`). By default, the
+            losses are averaged or summed over observations for each minibatch depending
+            on :attr:`size_average`. When :attr:`reduce` is ``False``, returns a loss per
+            batch element instead and ignores :attr:`size_average`. Default: ``True``
+        reduction (string, optional): Specifies the reduction to apply to the output:
+            ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'``: no reduction will be applied,
+            ``'mean'``: the sum of the output will be divided by the number of
+            elements in the output, ``'sum'``: the output will be summed. Note: :attr:`size_average`
+            and :attr:`reduce` are in the process of being deprecated, and in the meantime,
+            specifying either of those two args will override :attr:`reduction`. Default: ``'mean'``
+        beta (float, optional): Specifies the threshold at which to change between L1 and L2 loss.
+            The value must be non-negative. Default: 1.0
+
+    形状：
+        - Input: :math:`(N, *)` where :math:`*` means any number of additional dimensions
+        - Target: :math:`(N, *)`; same shape as the input
+        - Output: scalar. If :attr:`reduction` is ``'none'``, then :math:`(N, *)`; same shape as the input
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        
+        >>> x = flow.tensor(np.array([0.1, 0.4, 0.3, 0.5, 0.9]).astype(np.float32), dtype=flow.float32)
+        >>> y = flow.tensor(np.array([0.3, 0.9, 2.5, 0.4, 0.3]).astype(np.float32), dtype=flow.float32)
+        >>> m = flow.nn.SmoothL1Loss(reduction="none")
+        >>> out = m(x, y)
+        >>> out
+        tensor([0.0200, 0.1250, 1.7000, 0.0050, 0.1800], dtype=oneflow.float32)
+
+        >>> m = flow.nn.SmoothL1Loss(reduction="mean")
+        >>> out = m(x, y)
+        >>> out
+        tensor(0.4060, dtype=oneflow.float32)
+
+        >>> m = flow.nn.SmoothL1Loss(reduction="sum")
+        >>> out = m(x, y)
+        >>> out
+        tensor(2.0300, dtype=oneflow.float32)
+    """
+)
+
+## oneflow.nn.Softmax
+## oneflow.nn.Softplus
+## oneflow.nn.Softsign
+
+reset_docstr(
+    oneflow.nn.Tanh,
+    r"""This operator computes the hyperbolic tangent value of Tensor.
+
+    The equation is:
+
+    .. math::
+
+        out = \\frac{e^x-e^{-x}}{e^x+e^{-x}}
+
+    示例：
+        input (oneflow.Tensor): A Tensor
+
+    返回值：
+        oneflow.Tensor: The result Tensor
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+        
+        >>> x = np.array([-1, 0, 1]).astype(np.float32)
+        >>> input = flow.Tensor(x)
+        >>> tanh = flow.nn.Tanh()
+        >>> out = tanh(input)
+        >>> out
+        tensor([-0.7616,  0.0000,  0.7616], dtype=oneflow.float32)
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.TripletMarginLoss,
+    r"""
+    
+    在给定输入张量 :math:`x1`, :math:`x2`, :math:`x3` 和值大于 :math:`0` 的边距的情况下，创建一个测量三元组损失的标准。这用于测量样本之间的相对相似性。 三元组由 `a`, `p` and `n` 组成（即分别为锚点、正例和负例）。所有输入张量的形状应为 :math:`(N, D)`
+
+    V. Balntas, E. Riba 等人的`《Learning local feature descriptors with triplets and shallow convolutional neural networks》<http://www.bmva.org/bmvc/2016/papers/paper119/index.html>`__详细描述了距离交换。
+
+    小批量中每一个样本的损失函数是：
+
+    .. math::
+        L(a, p, n) = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
+
+
+    其中
+
+    .. math::
+        d(x_i, y_i) = \left\lVert {\bf x}_i - {\bf y}_i \right\rVert_p
+
+    参数：
+        margin (float, optional): 默认值为 :math:`1`
+        p (float, optional): The norm degree for pairwise distance. Default: :math:`2.0`.
+        swap (bool, optional): The distance swap is described in detail in the paper
+            `Learning shallow convolutional feature descriptors with triplet losses` by
+            V. Balntas, E. Riba et al. Default: ``False``.
+        reduction (string, optional): Specifies the reduction to apply to the output:
+            ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'``: no reduction will be applied,
+            ``'mean'``: the sum of the output will be divided by the number of
+            elements in the output, ``'sum'``: the output will be summed. Note: :attr:`size_average`
+            and :attr:`reduce` are in the process of being deprecated, and in the meantime,
+            specifying either of those two args will override :attr:`reduction`. Default: ``'mean'``
+
+    形状：
+        - Input: :math:`(N, D)` ，其中 :math:`D` 是向量维度
+        - Output: 若 :attr:`reduction` 设置为 ``'none'`` 则输出为形状为 :math:`(N)` 的张量，否则是一个标量
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        >>> triplet_loss = flow.nn.TripletMarginLoss(margin=1.0, p=2)
+        >>> anchor = np.array([[1, -1, 1],[-1, 1, -1], [1, 1, 1]])
+        >>> positive = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+        >>> negative = np.array([[2, 2, 2], [2, 2, 2], [2, 2, 2]])
+        >>> output = triplet_loss(flow.Tensor(anchor), flow.Tensor(positive), flow.Tensor(negative))
+        >>> output
+        tensor(6.2971, dtype=oneflow.float32)
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.Upsample,
+    r"""
+    
+    此接口与 PyTorch 一致。可在 https://pytorch.org/docs/1.9.0/_modules/torch/nn/modules/upsampling.html#Upsample 找到相关文档
+
+    对给定的多通道 1D（时间）、2D（空间）或 3D（体积）数据进行上采样
+
+    假设输入数据的形式为 小批量 x 通道 x [可选深度] x [可选高度] x 宽度。 因此，对于空间输入，我们期待一个 4D 张量；对于体积输入，我们期待一个 5D 张量
+
+    可用于上采样的算法分别是 3D、4D 和 5D 输入张量的最近邻和线性、双线性、双三次和三线性算法
+
+    可以给出 :attr:`scale_factor` 或目标输出大小来计算输出大小。（你不能同时给出，因为它是模棱两可的）
+
+    参数：
+        size (int or Tuple[int] or Tuple[int, int] or Tuple[int, int, int], optional): 输出空间大小
+        scale_factor (float or Tuple[float] or Tuple[float, float] or Tuple[float, float, float], optional): 空间大小的乘数。若是 tuple 则需要匹配输入大小
+        mode (str, optional): 上采样算法： ``'nearest'``,``'linear'``, ``'bilinear'``, ``'bicubic'`` 和 ``'trilinear'`` 。默认值为： ``'nearest'``
+        align_corners (bool, optional): 若设置为 ``True`` ，则如果为 True，则输入和输出张量的角像素对齐，从而保留这些像素的值。这仅在模式为 ``'linear'``, ``'bilinear'``, 或 ``'trilinear'`` 时有效。默认值为 False
+
+    形状：
+        - Input: :math:`(N, C, W_{in})`, :math:`(N, C, H_{in}, W_{in})` 或 :math:`(N, C, D_{in}, H_{in}, W_{in})`
+        - Output: :math:`(N, C, W_{out})`, :math:`(N, C, H_{out}, W_{out})`
+          or :math:`(N, C, D_{out}, H_{out}, W_{out})` ，其中
+
+    .. math::
+        D_{out} = \\left\\lfloor D_{in} \\times \\text{scale_factor} \\right\\rfloor
+
+    .. math::
+        H_{out} = \\left\\lfloor H_{in} \\times \\text{scale_factor} \\right\\rfloor
+
+    .. math::
+        W_{out} = \\left\\lfloor W_{in} \\times \\text{scale_factor} \\right\\rfloor
+
+    .. warning::
+        若 ``align_corners = True`` ，线性插值模式（线性、双线性、双三次和三线性）不会按比例对齐输出和输入像素，因此输出值可能取决于输入大小。这是 0.3.1 版本之前这些模式的默认行为。 0.3.1 版本之后的默认行为是 ``align_corners = False`` 。有关其如何影响输出的具体示例，请参见下文。
+
+    .. note::
+        如果需要下采样或者一般性的调整大小，应该使用 :func:`~nn.functional.interpolate`
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+
+        >>> input = flow.tensor(np.arange(1, 5).reshape((1, 1, 2, 2)), dtype=flow.float32)
+        >>> input = input.to("cuda")
+        >>> m = flow.nn.Upsample(scale_factor=2.0, mode="nearest")
+        >>> output = m(input)
+        >>> output #doctest: +ELLIPSIS
+        tensor([[[[1., 1., 2., 2.],
+                  ...
+                  [3., 3., 4., 4.]]]], device='cuda:0', dtype=oneflow.float32)
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.UpsamplingBilinear2d,
+    r"""
+    
+    对由多个输入通道组成的输入信号应用 2D bilinear upsampling
+    
+    若要指定比例，需要 :attr:`size` 或 :attr:`scale_factor` 作为它的构造函数参数
+
+    若给定 :attr:`size` ，则它也是图像 `(h, w)` 的大小
+
+    参数：
+        size (int or Tuple[int, int], optional): 输出空间大小
+        scale_factor (float or Tuple[float, float], optional): 空间大小的乘数
+
+    .. warning::
+        对这个类的维护已经停止，请使用 :func:`~nn.functional.interpolate` 。它等同于 ``nn.functional.interpolate(..., mode='bilinear', align_corners=True)``
+
+    形状：
+        - Input: :math:`(N, C, H_{in}, W_{in})`
+        - Output: :math:`(N, C, H_{out}, W_{out})` ，其中
+
+    .. math::
+        H_{out} = \\left\\lfloor H_{in} \\times \\text{scale_factor} \\right\\rfloor
+
+    .. math::
+        W_{out} = \\left\\lfloor W_{in} \\times \\text{scale_factor} \\right\\rfloor
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+        
+        >>> input = flow.tensor(np.arange(1, 5).reshape((1, 1, 2, 2)), dtype=flow.float32)
+        >>> input = input.to("cuda")
+        >>> m = flow.nn.UpsamplingBilinear2d(scale_factor=2.0)
+        >>> output = m(input)
+        >>> output #doctest: +ELLIPSIS
+        tensor([[[[1.0000, 1.3333, 1.6667, 2.0000],
+                  ...
+                  [3.0000, 3.3333, 3.6667, 4.0000]]]], device='cuda:0',
+               dtype=oneflow.float32)
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.UpsamplingNearest2d,
+    r"""
+    
+    对由多个输入通道组成的输入信号应用 2D nearest neighbor upsampling
+
+    若要指定比例，需要 :attr:`size` 或 :attr:`scale_factor` 作为它的构造函数参数
+
+    若给定 :attr:`size` ，则它也是图像 `(h, w)` 的大小
+
+    参数：
+        size (int or Tuple[int, int], optional): 输出空间大小
+        scale_factor (float or Tuple[float, float], optional): 空间大小的乘数
+
+    .. warning::
+        对这个类的维护已经停止，请使用 :func:`~nn.functional.interpolate`.
+
+    形状：
+        - Input: :math:`(N, C, H_{in}, W_{in})`
+        - Output: :math:`(N, C, H_{out}, W_{out})` ，其中
+
+    .. math::
+          H_{out} = \\left\\lfloor H_{in} \\times \\text{scale_factor} \\right\\rfloor
+
+    .. math::
+          W_{out} = \\left\\lfloor W_{in} \\times \\text{scale_factor} \\right\\rfloor
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+        
+        >>> input = flow.tensor(np.arange(1, 5).reshape((1, 1, 2, 2)), dtype=flow.float32)
+        >>> input = input.to("cuda")
+        >>> m = flow.nn.UpsamplingNearest2d(scale_factor=2.0)
+        >>> output = m(input)
+        >>> output #doctest: +ELLIPSIS
+        tensor([[[[1., 1., 2., 2.],
+                  ...
+                  [3., 3., 4., 4.]]]], device='cuda:0', dtype=oneflow.float32)
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.ZeroPad2d,
+    r"""
+    
+    此接口与 PyTorch 一致。可在 https://pytorch.org/docs/stable/generated/torch.nn.ZeroPad2d.html 找到相关文档
+
+    用零填充输入张量边界。用户可以通过设置参数 `paddings` 来设置填充量。
+
+    参数：
+        padding (Union[int, tuple]):  填充量的大小。如果是 `int` 类型，则在所有边界中使用相同的填充。如果是 4-`tuple` 则使用 (:math:`\\mathrm{padding_{left}}`, :math:`\\mathrm{padding_{right}}`, :math:`\\mathrm{padding_{top}}`, :math:`\\mathrm{padding_{bottom}}`)
+
+    形状：
+        - Input: :math:`(N, C, H_{in}, W_{in})`
+        - Output: :math:`(N, C, H_{out}, W_{out})` ，其中
+
+            :math:`H_{out} = H_{in} + \\mathrm{padding_{top}} + \\mathrm{padding_{bottom}}`
+
+            :math:`W_{out} = W_{in} + \\mathrm{padding_{left}} + \\mathrm{padding_{right}}`
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        >>> m1 = flow.nn.ZeroPad2d(2)
+        >>> m2 = flow.nn.ZeroPad2d((1,2,2,0))
+        >>> input = flow.tensor(np.arange(18).reshape((1, 2, 3, 3)).astype(np.float32))
+        >>> output = m1(input)
+        >>> output.shape
+        oneflow.Size([1, 2, 7, 7])
+        >>> output
+        tensor([[[[ 0.,  0.,  0.,  0.,  0.,  0.,  0.],
+                  [ 0.,  0.,  0.,  0.,  0.,  0.,  0.],
+                  [ 0.,  0.,  0.,  1.,  2.,  0.,  0.],
+                  [ 0.,  0.,  3.,  4.,  5.,  0.,  0.],
+                  [ 0.,  0.,  6.,  7.,  8.,  0.,  0.],
+                  [ 0.,  0.,  0.,  0.,  0.,  0.,  0.],
+                  [ 0.,  0.,  0.,  0.,  0.,  0.,  0.]],
+        <BLANKLINE>
+                 [[ 0.,  0.,  0.,  0.,  0.,  0.,  0.],
+                  [ 0.,  0.,  0.,  0.,  0.,  0.,  0.],
+                  [ 0.,  0.,  9., 10., 11.,  0.,  0.],
+                  [ 0.,  0., 12., 13., 14.,  0.,  0.],
+                  [ 0.,  0., 15., 16., 17.,  0.,  0.],
+                  [ 0.,  0.,  0.,  0.,  0.,  0.,  0.],
+                  [ 0.,  0.,  0.,  0.,  0.,  0.,  0.]]]], dtype=oneflow.float32)
+        >>> output = m2(input)
+        >>> output
+        tensor([[[[ 0.,  0.,  0.,  0.,  0.,  0.],
+                  [ 0.,  0.,  0.,  0.,  0.,  0.],
+                  [ 0.,  0.,  1.,  2.,  0.,  0.],
+                  [ 0.,  3.,  4.,  5.,  0.,  0.],
+                  [ 0.,  6.,  7.,  8.,  0.,  0.]],
+        <BLANKLINE>
+                 [[ 0.,  0.,  0.,  0.,  0.,  0.],
+                  [ 0.,  0.,  0.,  0.,  0.,  0.],
+                  [ 0.,  9., 10., 11.,  0.,  0.],
+                  [ 0., 12., 13., 14.,  0.,  0.],
+                  [ 0., 15., 16., 17.,  0.,  0.]]]], dtype=oneflow.float32)
+    """
+)
+
+#### oneflow.nn.parallel.DistributedDataParallel
+## oneflow.nn.utils.clip_grad_norm_
+## oneflow.nn.utils.weight_norm
+## oneflow.nn.utils.remove_weight_norm
