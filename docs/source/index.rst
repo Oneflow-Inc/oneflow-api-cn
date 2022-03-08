@@ -28,6 +28,7 @@ OneFlow API Reference
     graph
     image
     utils
+    env
     comm
     placement
     sbp
