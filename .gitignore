@@ -7,5 +7,4 @@ _generate/
 *.so
 *.py[cod]
 *.egg-info
-*env*
 log/
