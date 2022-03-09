@@ -1740,24 +1740,20 @@ reset_docstr(
 
 reset_docstr(
     oneflow.nn.SmoothL1Loss,
-    r"""Creates a criterion that uses a squared term if the absolute
-    element-wise error falls below beta and an L1 term otherwise.
+    r"""
+    
+    如果逐元素的绝对误差低于 beta ，则创建一个使用平方项的标准，否则创建一个使用 L1 项的标准。
 
-    此接口与 PyTorch 一致。可在 https://pytorch.org/docs/stable/generated/torch.nn.MaxPool1d.html#torch.nn.MaxPool1d 找到相关文档
+    此接口与 PyTorch 一致。可在 https://pytorch.org/docs/stable/generated/torch.nn.SmoothL1Loss.html 找到相关文档
+    
+    与 :class:`torch.nn.MSELoss` 相比，它对异常值不太敏感，并在某些场景下可以防止梯度爆炸。比如 Ross Girshick 的论文`Fast R-CNN <https://openaccess.thecvf.com/content_iccv_2015/papers/Girshick_Fast_R-CNN_ICCV_2015_paper.pdf>`__ 。
 
-    The interface is consistent with PyTorch.
-    The documentation is referenced from:
-    https://pytorch.org/docs/stable/generated/torch.nn.SmoothL1Loss.html
-
-    It is less sensitive to outliers than :class:`torch.nn.MSELoss` and in some cases
-    prevents exploding gradients (e.g. see the paper `Fast R-CNN <https://openaccess.thecvf.com/content_iccv_2015/papers/Girshick_Fast_R-CNN_ICCV_2015_paper.pdf>`__ by Ross Girshick)..
-
-    For a batch of size :math:`N`, the unreduced loss can be described as:
+    对于大小为 :math:`N` 的批次，未减少的损失可以描述为：
 
     .. math::
         \\ell(x, y) = L = \\{l_1, ..., l_N\\}^T
 
-    with
+    其中：
 
     .. math::
         l_n = \\begin{cases}
@@ -1765,7 +1761,7 @@ reset_docstr(
         |x_n - y_n| - 0.5 * beta, & \\text{otherwise }
         \\end{cases}
 
-    If `reduction` is not `none`, then:
+    如果 `reduction` 为设置为 `none` ，那么：
 
     .. math::
         \\ell(x, y) =
@@ -1791,7 +1787,7 @@ reset_docstr(
         * For Smooth L1 loss, as beta varies, the L1 segment of the loss has a constant slope of 1.
           For :class:`HuberLoss`, the slope of the L1 segment is beta.
 
-    示例：
+    参数：
         size_average (bool, optional): Deprecated (see :attr:`reduction`). By default,
             the losses are averaged over each loss element in the batch. Note that for
             some losses, there are multiple elements per sample. If the field :attr:`size_average`
@@ -1811,9 +1807,9 @@ reset_docstr(
             The value must be non-negative. Default: 1.0
 
     形状：
-        - Input: :math:`(N, *)` where :math:`*` means any number of additional dimensions
-        - Target: :math:`(N, *)`; same shape as the input
-        - Output: scalar. If :attr:`reduction` is ``'none'``, then :math:`(N, *)`; same shape as the input
+        - Input: :math:`(N, *)` ，其中 `*` 表示任意数量的附加维度
+        - Target: :math:`(N, *)` ，与输入的形状相同
+        - Output: 若 :attr:`reduction` 设置为 ``'none'`` 则输出为形状为 :math:`(N)` 的张量，否则是一个标量
 
     示例：
 
@@ -1847,19 +1843,21 @@ reset_docstr(
 
 reset_docstr(
     oneflow.nn.Tanh,
-    r"""This operator computes the hyperbolic tangent value of Tensor.
+    r"""
+    
+    此算子计算张量的双曲正切值
 
-    The equation is:
+    等式为：
 
     .. math::
 
         out = \\frac{e^x-e^{-x}}{e^x+e^{-x}}
 
-    示例：
-        input (oneflow.Tensor): A Tensor
+    参数：
+        input (oneflow.Tensor): 张量
 
     返回值：
-        oneflow.Tensor: The result Tensor
+        oneflow.Tensor: 运算结果
 
     示例：
 
@@ -1899,16 +1897,12 @@ reset_docstr(
 
     参数：
         margin (float, optional): 默认值为 :math:`1`
-        p (float, optional): The norm degree for pairwise distance. Default: :math:`2.0`.
-        swap (bool, optional): The distance swap is described in detail in the paper
-            `Learning shallow convolutional feature descriptors with triplet losses` by
-            V. Balntas, E. Riba et al. Default: ``False``.
-        reduction (string, optional): Specifies the reduction to apply to the output:
-            ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'``: no reduction will be applied,
-            ``'mean'``: the sum of the output will be divided by the number of
-            elements in the output, ``'sum'``: the output will be summed. Note: :attr:`size_average`
-            and :attr:`reduce` are in the process of being deprecated, and in the meantime,
-            specifying either of those two args will override :attr:`reduction`. Default: ``'mean'``
+        p (float, optional): 成对距离的范数，默认值为 :math:`2.0`
+        swap (bool, optional): 默认值为 ``False``.
+        reduction (string, optional): 指定对输出应用的 reduction ：
+            ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行 reduction ；
+            ``'mean'`` ：输出的和将会除以输出中的元素数量；
+            ``'sum'`` ：输出将被求和。默认值为 ``'mean'`` 。注意： :attr:`size_average` 和 :attr:`reduce` 正逐渐被弃用，指定这二者的任何一个都将覆盖 :attr:`reduction` 。默认值为 ``'mean'``
 
     形状：
         - Input: :math:`(N, D)` ，其中 :math:`D` 是向量维度
@@ -2022,7 +2016,7 @@ reset_docstr(
 
         >>> import numpy as np
         >>> import oneflow as flow
-        
+    
         >>> input = flow.tensor(np.arange(1, 5).reshape((1, 1, 2, 2)), dtype=flow.float32)
         >>> input = input.to("cuda")
         >>> m = flow.nn.UpsamplingBilinear2d(scale_factor=2.0)
@@ -2030,9 +2024,7 @@ reset_docstr(
         >>> output #doctest: +ELLIPSIS
         tensor([[[[1.0000, 1.3333, 1.6667, 2.0000],
                   ...
-                  [3.0000, 3.3333, 3.6667, 4.0000]]]], device='cuda:0',
-               dtype=oneflow.float32)
-
+                  [3.0000, 3.3333, 3.6667, 4.0000]]]], device='cuda:0', dtype=oneflow.float32)
     """
 )
 
