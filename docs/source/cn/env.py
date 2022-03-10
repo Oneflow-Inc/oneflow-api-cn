@@ -32,14 +32,3 @@ reset_docstr(
     
     """
 )
-
-reset_docstr(
-    oneflow.env.is_multi_client,
-    r"""
-    返回当前是否处于多用户模式。
-
-    返回值：
-        如果当前处于多用户模式则为真，否则为假。
-    
-    """
-)
