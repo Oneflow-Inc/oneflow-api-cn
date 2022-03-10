@@ -1354,11 +1354,11 @@ reset_docstr(
     """
 )
 
-add_docstr(
+reset_docstr(
     oneflow.Tensor.erfinv_,
-    """
+    r"""
     :func:`oneflow.erfinv` 的原版本。
-    """,
+    """
 )
 
 reset_docstr(
