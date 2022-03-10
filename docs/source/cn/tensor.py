@@ -846,22 +846,22 @@ reset_docstr(
 
         >>> x = flow.arange(1., 8)
         >>> x
-        tensor([ 1.,  2.,  3.,  4.,  5.,  6.,  7.])
+        tensor([1, 2, 3, 4, 5, 6, 7], dtype=oneflow.int64)
         >>> x.unfold(0, 2, 1)
-        tensor([[ 1.,  2.],
-                [ 2.,  3.],
-                [ 3.,  4.],
-                [ 4.,  5.],
-                [ 5.,  6.],
-                [ 6.,  7.]])
+        tensor([[1, 2],
+                [2, 3],
+                [3, 4],
+                [4, 5],
+                [5, 6],
+                [6, 7]], dtype=oneflow.int64)
         >>> x.unfold(0, 2, 2)
-        tensor([[ 1.,  2.],
-                [ 3.,  4.],
-                [ 5.,  6.]])
+        tensor([[1, 2],
+                [3, 4],
+                [5, 6]], dtype=oneflow.int64)
     """
 )
 
-rest_docstr(
+reset_docstr(
     oneflow.Tensor.argsort,
     r"""这个算子将输入的张量按指定的 dim 进行排序，并返回排序后的张量索引。
 
@@ -1193,7 +1193,7 @@ reset_docstr(
 reset_docstr(
     oneflow.Tensor.T,
     r"""
-    这个张量的维度是否是反过来的。
+    是否是此张量所有维度转置后的张量。（Is this Tensor with its dimensions reversed. 翻译为问句吗）
 
     如果 `n` 是 `x` 的维数，`x.T` 等同于 `x.permute(n-1, n-2, ..., 0)` 。
     """
@@ -1245,3 +1245,154 @@ reset_docstr(
         (2, 2, 2, 2)
     """
 )
+
+reset_docstr(
+    oneflow.Tensor.type_as,
+    r"""返回这个张量，并将其转换为给定张量的类型。
+        如果张量已经是正确的类型，这就是一个无用功。
+
+    参数:
+        - **input**  (Tensor) - 输入张量。
+        - **target** (Tensor) - 具有所需类型的张量。
+
+    例如:
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+
+        >>> input = flow.tensor(np.random.randn(1, 2, 3), dtype=flow.float32)
+        >>> target = flow.tensor(np.random.randn(4, 5, 6), dtype = flow.int32)
+        >>> input = input.type_as(target)
+        >>> input.dtype
+        oneflow.int32
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.int,
+    r"""`Tensor.int()` 和 `Tensor.to(flow.int32)` 是等同的，参考 to() 函数。
+    
+    参数:
+        - **input**  (Tensor) - 输入张量。
+
+    例如:
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+
+        >>> input = flow.tensor(np.random.randn(1, 2, 3), dtype=flow.float32)
+        >>> input = input.int()
+        >>> input.dtype
+        oneflow.int32
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.long,
+    r"""`Tensor.long()` 和 `Tensor.to(flow.int64)` 是等同的， 参考 to() 函数。
+
+    参数:
+        - **input**  (Tensor) - 输入张量。
+
+    例如:
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+
+        >>> input = flow.tensor(np.random.randn(1, 2, 3), dtype=flow.float32)
+        >>> input = input.long()
+        >>> input.dtype
+        oneflow.int64
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.float,
+    r"""`Tensor.float()` 和 `Tensor.to(flow.float32)` 是等同的， 查阅 to() 函数。
+
+    参数:
+        - **input**  (Tensor) - 输入张量。
+
+    例如:
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+
+        >>> input = flow.tensor(np.random.randn(1, 2, 3), dtype=flow.int)
+        >>> input = input.float()
+        >>> input.dtype
+        oneflow.float32
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.double,
+    r"""`Tensor.double()` 和 `Tensor.to(flow.float64)` 是等同的，查阅 to() 函数。
+
+    参数:
+        - **input**  (Tensor) - 输入张量。
+
+    例如:
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+
+        >>> input = flow.tensor(np.random.randn(1, 2, 3), dtype=flow.int)
+        >>> input = input.double()
+        >>> input.dtype
+        oneflow.float64
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.item,
+    r"""将这个张量的值作为一个标准的 Python 数字返回，这只对有一个元素的张量有效。
+    对于其他情况，参考 tolist() 函数。
+
+    这个运算是不可微分的。
+
+    参数:
+        - **input**  (Tensor) - 输入张量。
+
+    例如:
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> x = flow.tensor([1.0])
+        >>> x.item()
+        1.0
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.tolist,
+    r"""将张量作为一个（嵌套的）列表返回。对于标量，会返回一个标准的Python数字。
+    就像使用 `item()` 一样。如果有必要，张量会自动先移到 CPU 上。
+
+    这个运算是不可微分的。
+
+    参数:
+        - **input**  (Tensor) - 输入张量。
+
+    例如:
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> input = flow.tensor([[1,2,3], [4,5,6]])
+        >>> input.tolist()
+        [[1, 2, 3], [4, 5, 6]]
+    """
+)
+
