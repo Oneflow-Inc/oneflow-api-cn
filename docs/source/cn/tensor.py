@@ -868,7 +868,7 @@ reset_docstr(
     参数:
         - **input** (oneflow.Tensor) - 输入张量。
         - **dim** (int, optional) - 要排序的维度。默认为最后一个维度（-1）。
-        - **descending (bool, optional) - 控制排序的顺序（升序或降序）。
+        - **descending (bool, optional)** - 控制排序的顺序（升序或降序）。
 
     返回:
         - **oneflow.Tensor** - 排序后的张量索引。
@@ -990,7 +990,7 @@ reset_docstr(
     r"""
     Tensor.nelement() → int
 
-    numel()的别名
+    numel() 的别名。
     """
 )
 
@@ -1352,6 +1352,13 @@ reset_docstr(
         >>> input.dtype
         oneflow.float64
     """
+)
+
+add_docstr(
+    oneflow.Tensor.erfinv_,
+    """
+    :func:`oneflow.erfinv` 的原版本。
+    """,
 )
 
 reset_docstr(
