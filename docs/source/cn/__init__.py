@@ -34,3 +34,5 @@ from .graph import *
 from .placement import *
 from .adagrad import *
 from .env import *
+from .cuda import *
+from .image import *
