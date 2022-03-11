@@ -11,9 +11,11 @@ reset_docstr(
     1. split 
         表示物理设备上的 Tensor 是将全局视角下的 Tensor 切分得到的。切分时需要指定切分的维度。物理设备上的 Tensor 如果根据切分的维度被拼接，可以还原得到全局视角的 Tensor 。
     
-    2. :attr:`broadcast` 表示物理设备上的 Tensor 是全局视角下的 Tensor 完全相同的拷贝。
+    2. broadcast 
+        表示物理设备上的 Tensor 是全局视角下的 Tensor 完全相同的拷贝。
     
-    3. :attr:`partial_sum` 表示全局视角下的 Tensor 与物理设备上的 Tensor 的形状相同，但是物理设备上的值，只是全局视角下 Tensor 的一部分。返回的全局视角下的 Tensor 是通过把物理设备上的 Tensor 按照对应的位置（按元素）相加得到的。
+    3. partial_sum 
+        表示全局视角下的 Tensor 与物理设备上的 Tensor 的形状相同，但是物理设备上的值，只是全局视角下 Tensor 的一部分。返回的全局视角下的 Tensor 是通过把物理设备上的 Tensor 按照对应的位置（按元素）相加得到的。
     
     一个 sbp 可以以多种方式被构造：
     
