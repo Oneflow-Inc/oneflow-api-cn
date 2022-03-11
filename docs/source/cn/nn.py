@@ -1992,9 +1992,10 @@ reset_docstr(
         >>> input = input.to("cuda")
         >>> m = flow.nn.UpsamplingBilinear2d(scale_factor=2.0)
         >>> output = m(input)
-        >>> output #doctest: +ELLIPSIS
+        >>> output
         tensor([[[[1.0000, 1.3333, 1.6667, 2.0000],
-                  ...
+                  [1.6667, 2.0000, 2.3333, 2.6667],
+                  [2.3333, 2.6667, 3.0000, 3.3333],
                   [3.0000, 3.3333, 3.6667, 4.0000]]]], device='cuda:0', dtype=oneflow.float32)
     """
 )
