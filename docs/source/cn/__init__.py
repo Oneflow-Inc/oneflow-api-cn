@@ -34,3 +34,4 @@ from .graph import *
 from .placement import *
 from .adagrad import *
 from .sbp import *
+from .env import *

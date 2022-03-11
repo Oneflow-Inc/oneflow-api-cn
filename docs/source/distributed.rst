@@ -3,8 +3,7 @@ oneflow.distributed
 
 .. currentmodule:: oneflow.distributed
 
-run commands below to see more about usage.
-
+运行以下命令来了解更多用法。
 ::
 
     python3 -m oneflow.distributed.launch -h
