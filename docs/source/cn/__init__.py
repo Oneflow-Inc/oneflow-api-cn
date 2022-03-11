@@ -35,3 +35,5 @@ from .placement import *
 from .adagrad import *
 from .sbp import *
 from .env import *
+from .cuda import *
+from .image import *
