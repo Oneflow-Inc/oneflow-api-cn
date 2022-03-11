@@ -8,7 +8,8 @@ reset_docstr(
     
     sbp 有三种类型：
     
-    1. :attr:`split` 表示物理设备上的 Tensor 是将全局视角下的 Tensor 切分得到的。切分时需要指定切分的维度。物理设备上的 Tensor 如果根据切分的维度被拼接，可以还原得到全局视角的 Tensor 。
+    1. split 
+        表示物理设备上的 Tensor 是将全局视角下的 Tensor 切分得到的。切分时需要指定切分的维度。物理设备上的 Tensor 如果根据切分的维度被拼接，可以还原得到全局视角的 Tensor 。
     
     2. :attr:`broadcast` 表示物理设备上的 Tensor 是全局视角下的 Tensor 完全相同的拷贝。
     
