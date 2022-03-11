@@ -929,7 +929,7 @@ reset_docstr(
     r"""
     Tensor.dim() → int
 
-    返回self张量的维数。
+    返回 self 张量的维数。
     """
 )
 
@@ -967,21 +967,21 @@ reset_docstr(
     oneflow.Tensor.mul_,
     r"""Tensor.mul_(value) -> Tensor
 
-    :func:`oneflow.Tensor.mul` 的原版本。
+    :func:`oneflow.Tensor.mul` 的 Inplace 版本。
     """
 )
 
 reset_docstr(
     oneflow.Tensor.div_,
     r"""Tensor.div_(value) -> Tensor
-    :func:`oneflow.Tensor.div` 的原版本。
+    :func:`oneflow.Tensor.div` 的 Inplace 版本。
     """
 )
 
 reset_docstr(
     oneflow.Tensor.sub_,
     r"""Tensor.sub_(value) -> Tensor
-    :func:`oneflow.Tensor.sub` 的原版本。
+    :func:`oneflow.Tensor.sub` 的 Inplace 版本。
     """
 )
 
@@ -997,7 +997,7 @@ reset_docstr(
 reset_docstr(
     oneflow.Tensor.floor_,
     r"""
-    :func:`oneflow.floor` 的原版本。
+    :func:`oneflow.floor` 的 Inplace 版本。
 
     """
 )
@@ -1023,7 +1023,7 @@ reset_docstr(
 reset_docstr(
     oneflow.Tensor.add_,
     r"""
-    :func:`oneflow.Tensor.add` 的原版本。
+    :func:`oneflow.Tensor.add` 的 Inplace 版本。
     """
 )
 
@@ -1133,7 +1133,7 @@ reset_docstr(
 reset_docstr(
     oneflow.Tensor.clamp_,
     r"""
-    :func:`oneflow.Tensor.clamp` 的原版本。
+    :func:`oneflow.Tensor.clamp` 的 Inplace 版本。
     """
 )
 
@@ -1357,7 +1357,7 @@ reset_docstr(
 reset_docstr(
     oneflow.Tensor.erfinv_,
     r"""
-    :func:`oneflow.erfinv` 的原版本。
+    :func:`oneflow.erfinv` 的 Inplace 版本。
     """
 )
 
