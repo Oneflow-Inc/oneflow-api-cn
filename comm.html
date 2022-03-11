@@ -204,31 +204,32 @@ correctly-sized tensors to be used for output of the collective.</p></li>
 <dl class="py function">
 <dt id="oneflow.comm.all_reduce">
 <code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">all_reduce</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.all_reduce" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reduces the tensor data across all machines in such a way that all get
-the final result.
-After the call <code class="docutils literal notranslate"><span class="pre">tensor</span></code> is going to be bitwise identical in all processes.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>tensor</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – the input tensor</p>
+<dd><p>将所有机器上的 tensor 做 reduce 操作，结果返回给所有进程。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>tensor</strong> (Tensor): 输入张量</p></li>
+</ul>
 </dd>
 </dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># We have 1 process groups, 2 ranks.</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 我们有一个进程组，两个 rank 。</span>
+<span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span> <span class="o">+</span> <span class="n">flow</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">get_local_rank</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># tensor on rank0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span> 
-<span class="go">tensor([[1, 2],</span>
-<span class="go">        [3, 4]], device='cuda:0', dtype=oneflow.int64)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># tensor on rank1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span> 
-<span class="go">tensor([[2, 3],</span>
-<span class="go">        [4, 5]], device='cuda:1', dtype=oneflow.int64)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">all_reduce</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-<span class="go">array([[3, 5],</span>
-<span class="go">       [7, 9]], dtype=int64)</span>
+<span class="o">&gt;</span> <span class="n">tensor</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span> <span class="o">+</span> <span class="n">flow</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">get_local_rank</span><span class="p">()</span>
+<span class="c1"># rank0 上的 tensor</span>
+<span class="o">&gt;</span> <span class="n">tensor</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda:0'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">oneflow</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+
+<span class="c1"># rank1 上的 tensor</span>
+<span class="o">&gt;</span> <span class="n">tensor</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda:1'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">oneflow</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+
+<span class="o">&gt;</span> <span class="n">flow</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">all_reduce</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">tensor</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">int64</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
