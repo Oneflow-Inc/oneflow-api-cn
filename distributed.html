@@ -150,48 +150,40 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">oneflow</span><span class="o">.</span><span class="n">distributed</span><span class="o">.</span><span class="n">launch</span> <span class="o">-</span><span class="n">h</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">launch</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">nnodes</span> <span class="n">NNODES</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">node_rank</span> <span class="n">NODE_RANK</span><span class="p">]</span>
-             <span class="p">[</span><span class="o">--</span><span class="n">nproc_per_node</span> <span class="n">NPROC_PER_NODE</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">master_addr</span> <span class="n">MASTER_ADDR</span><span class="p">]</span>
-             <span class="p">[</span><span class="o">--</span><span class="n">master_port</span> <span class="n">MASTER_PORT</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">m</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">no_python</span><span class="p">]</span>
-             <span class="p">[</span><span class="o">--</span><span class="n">redirect_stdout_and_stderr</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">logdir</span> <span class="n">LOGDIR</span><span class="p">]</span>
-             <span class="n">training_script</span> <span class="o">...</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>usage: launch.py [-h] [--nnodes NNODES] [--node_rank NODE_RANK]
+             [--nproc_per_node NPROC_PER_NODE] [--master_addr MASTER_ADDR]
+             [--master_port MASTER_PORT] [-m] [--no_python]
+             [--redirect_stdout_and_stderr] [--logdir LOGDIR]
+             training_script ...
 
-<span class="n">OneFlow</span> <span class="n">distributed</span> <span class="n">training</span> <span class="n">launch</span> <span class="n">helper</span> <span class="n">utility</span> <span class="n">that</span> <span class="n">will</span> <span class="n">spawn</span> <span class="n">up</span> <span class="n">multiple</span>
-<span class="n">distributed</span> <span class="n">processes</span>
+OneFlow 分布式训练启动协助功能，将启动多个分布式进程。
 
-<span class="n">positional</span> <span class="n">arguments</span><span class="p">:</span>
-<span class="n">training_script</span>       <span class="n">The</span> <span class="n">full</span> <span class="n">path</span> <span class="n">to</span> <span class="n">the</span> <span class="n">single</span> <span class="n">GPU</span> <span class="n">training</span> <span class="n">program</span><span class="o">/</span><span class="n">script</span> <span class="n">to</span> <span class="n">be</span>
-                        <span class="n">launched</span> <span class="ow">in</span> <span class="n">parallel</span><span class="p">,</span> <span class="n">followed</span> <span class="n">by</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">arguments</span> <span class="k">for</span> <span class="n">the</span>
-                        <span class="n">training</span> <span class="n">script</span>
-<span class="n">training_script_args</span>
+位置参数：
+training_script       和进程同时启动的单 GPU 训练程序/脚本的完整路径，跟随着训练脚本的所有参数。
+training_script_args
 
-<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
-<span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
-<span class="o">--</span><span class="n">nnodes</span> <span class="n">NNODES</span>       <span class="n">The</span> <span class="n">number</span> <span class="n">of</span> <span class="n">nodes</span> <span class="n">to</span> <span class="n">use</span> <span class="k">for</span> <span class="n">distributed</span> <span class="n">training</span>
-<span class="o">--</span><span class="n">node_rank</span> <span class="n">NODE_RANK</span>
-                        <span class="n">The</span> <span class="n">rank</span> <span class="n">of</span> <span class="n">the</span> <span class="n">node</span> <span class="k">for</span> <span class="n">multi</span><span class="o">-</span><span class="n">node</span> <span class="n">distributed</span> <span class="n">training</span>
-<span class="o">--</span><span class="n">nproc_per_node</span> <span class="n">NPROC_PER_NODE</span>
-                        <span class="n">The</span> <span class="n">number</span> <span class="n">of</span> <span class="n">processes</span> <span class="n">to</span> <span class="n">launch</span> <span class="n">on</span> <span class="n">each</span> <span class="n">node</span><span class="p">,</span> <span class="k">for</span> <span class="n">GPU</span>
-                        <span class="n">training</span><span class="p">,</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">recommended</span> <span class="n">to</span> <span class="n">be</span> <span class="nb">set</span> <span class="n">to</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">GPUs</span> <span class="ow">in</span>
-                        <span class="n">your</span> <span class="n">system</span> <span class="n">so</span> <span class="n">that</span> <span class="n">each</span> <span class="n">process</span> <span class="n">can</span> <span class="n">be</span> <span class="n">bound</span> <span class="n">to</span> <span class="n">a</span> <span class="n">single</span> <span class="n">GPU</span><span class="o">.</span>
-<span class="o">--</span><span class="n">master_addr</span> <span class="n">MASTER_ADDR</span>
-                        <span class="n">Master</span> <span class="n">node</span> <span class="p">(</span><span class="n">rank</span> <span class="mi">0</span><span class="p">)</span><span class="s1">'s address, should be either the IP address</span>
-                        <span class="ow">or</span> <span class="n">the</span> <span class="n">hostname</span> <span class="n">of</span> <span class="n">node</span> <span class="mi">0</span><span class="p">,</span> <span class="k">for</span> <span class="n">single</span> <span class="n">node</span> <span class="n">multi</span><span class="o">-</span><span class="n">proc</span> <span class="n">training</span><span class="p">,</span>
-                        <span class="n">the</span> <span class="o">--</span><span class="n">master_addr</span> <span class="n">can</span> <span class="n">simply</span> <span class="n">be</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span>
-<span class="o">--</span><span class="n">master_port</span> <span class="n">MASTER_PORT</span>
-                        <span class="n">Master</span> <span class="n">node</span> <span class="p">(</span><span class="n">rank</span> <span class="mi">0</span><span class="p">)</span><span class="s1">'s free port that needs to be used for</span>
-                        <span class="n">communication</span> <span class="n">during</span> <span class="n">distributed</span> <span class="n">training</span>
-<span class="o">-</span><span class="n">m</span><span class="p">,</span> <span class="o">--</span><span class="n">module</span>          <span class="n">Changes</span> <span class="n">each</span> <span class="n">process</span> <span class="n">to</span> <span class="n">interpret</span> <span class="n">the</span> <span class="n">launch</span> <span class="n">script</span> <span class="k">as</span> <span class="n">a</span> <span class="n">python</span>
-                        <span class="n">module</span><span class="p">,</span> <span class="n">executing</span> <span class="k">with</span> <span class="n">the</span> <span class="n">same</span> <span class="n">behavior</span> <span class="k">as</span><span class="s1">'python -m'</span><span class="o">.</span>
-<span class="o">--</span><span class="n">no_python</span>           <span class="n">Do</span> <span class="ow">not</span> <span class="n">prepend</span> <span class="n">the</span> <span class="n">training</span> <span class="n">script</span> <span class="k">with</span> <span class="s2">"python"</span> <span class="o">-</span> <span class="n">just</span> <span class="n">exec</span> <span class="n">it</span>
-                        <span class="n">directly</span><span class="o">.</span> <span class="n">Useful</span> <span class="n">when</span> <span class="n">the</span> <span class="n">script</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">a</span> <span class="n">Python</span> <span class="n">script</span><span class="o">.</span>
-<span class="o">--</span><span class="n">redirect_stdout_and_stderr</span>
-                        <span class="n">write</span> <span class="n">the</span> <span class="n">stdout</span> <span class="ow">and</span> <span class="n">stderr</span> <span class="n">to</span> <span class="n">files</span> <span class="s1">'stdout'</span> <span class="ow">and</span> <span class="s1">'stderr'</span><span class="o">.</span> <span class="n">Only</span>
-                        <span class="n">available</span> <span class="n">when</span> <span class="n">logdir</span> <span class="ow">is</span> <span class="nb">set</span>
-<span class="o">--</span><span class="n">logdir</span> <span class="n">LOGDIR</span>       <span class="n">Relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">write</span> <span class="n">subprocess</span> <span class="n">logs</span> <span class="n">to</span><span class="o">.</span> <span class="n">Passing</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">relative</span>
-                        <span class="n">path</span> <span class="n">will</span> <span class="n">create</span> <span class="n">a</span> <span class="n">directory</span> <span class="k">if</span> <span class="n">needed</span><span class="o">.</span> <span class="n">Note</span> <span class="n">that</span> <span class="n">successive</span>
-                        <span class="n">runs</span> <span class="k">with</span> <span class="n">the</span> <span class="n">same</span> <span class="n">path</span> <span class="n">to</span> <span class="n">write</span> <span class="n">logs</span> <span class="n">to</span> <span class="n">will</span> <span class="n">overwrite</span> <span class="n">existing</span>
-                        <span class="n">logs</span><span class="p">,</span> <span class="n">so</span> <span class="n">be</span> <span class="n">sure</span> <span class="n">to</span> <span class="n">save</span> <span class="n">logs</span> <span class="k">as</span> <span class="n">needed</span><span class="o">.</span>
+optional arguments:
+-h, --help            展现此帮助页面并退出。
+--nnodes NNODES       用于分布式训练的节点数量。
+--node_rank NODE_RANK
+                        multi-mode 分布式训练中节点的 rank 。
+--nproc_per_node NPROC_PER_NODE
+                        每个节点上启动的进程数量，对于 GPU 训练，推荐将此参数设置为 GPU 数量，
+                        这样每个进程都能绑定一个单独的 GPU 。
+--master_addr MASTER_ADDR
+                        主节点 (rank 0) 的地址，应为主节点的 IP 地址和主机地址其中之一。
+                        对于单节点多进程训练， --master_addr 可直接设为 127.0.0.1。
+--master_port MASTER_PORT
+                        主节点 (rank 0) 的空余 port ，将被用于分布式训练中各节点的联系。
+-m, --module
+                        使每个进程将脚本解释为 python 模组，和使用 'python -m' 运行脚本有相同效果。
+--no_python
+                        不对训练脚本前置 "python" ，而是直接运行。在脚本不是 Python 脚本时有用。
+--redirect_stdout_and_stderr
+                        对文件 'stdout' 和 'stderr' 输出 stdout 和 stderr 。只有在 logdir 被设定后可用。
+--logdir LOGDIR
+                        子进程输出 log 文件的相对位置。如果需要，将根据相对位置创建新路径。
+                        需注意，连续使用相同的路径运行多次程序会覆盖之前的 log ，所以记得在需要时保存 log 。
 </pre></div>
 </div>
 </div>
