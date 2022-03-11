@@ -39,7 +39,7 @@ reset_docstr(
 reset_docstr(
     oneflow.comm.all_reduce,
     """
-    将所有机器上的 tensor 按照 element-wise 的方式相加，结果返回给所有进程。
+    将所有机器上的 tensor 做 reduce 操作，结果返回给所有进程。
 
     参数：
         - **tensor** (Tensor): 输入张量
