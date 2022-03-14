@@ -151,36 +151,26 @@
 <dl class="py class">
 <dt id="oneflow.sbp.sbp">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.sbp.</span></code><code class="sig-name descname"><span class="pre">sbp</span></code><a class="headerlink" href="#oneflow.sbp.sbp" title="Permalink to this definition">¶</a></dt>
-<dd><p>A sbp is an object representing the distribution type of a oneflow.Tensor around the device group,
-which represents the mapping relationship between the logical Tensor and the physical Tensor.</p>
-<p>sbp includes three types:</p>
+<dd><p>一个 sbp 是一个表示全局视角下的 Tensor 与物理设备上的 Tensor 之间的映射关系的对象。</p>
+<p>sbp 有三种类型：</p>
 <ol class="arabic simple">
 <li><dl class="simple">
-<dt>split:</dt><dd><p>Indicates that the physical Tensors are obtained by splitting the logical Tensor.
-Split will contain a parameter Axis, which represents the dimension to be split.
-If all the physical Tensors are spliced according to the dimensions of Split,
-the logical Tensor can be restored.</p>
+<dt>split</dt><dd><p>表示物理设备上的 Tensor 是将全局视角下的 Tensor 切分得到的。切分时需要指定切分的维度。物理设备上的 Tensor 如果根据切分的维度被拼接，可以还原得到全局视角的 Tensor 。</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>broadcast:</dt><dd><p>Indicates that the physical Tensors are copies of the logical Tensor, which are
-exactly the same.</p>
+<dt>broadcast</dt><dd><p>表示物理设备上的 Tensor 是全局视角下的 Tensor 完全相同的拷贝。</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>partial_sum:</dt><dd><p>Indicates that the physical Tensors have the same shape as the logical Tensor,
-but the value of the element at each corresponding position is a part of the
-value of the element at the corresponding position of the logical Tensor. The
-logical Tensor can be returned by adding all the physical Tensors according to
-the corresponding positions (element-wise).</p>
+<dt>partial_sum</dt><dd><p>表示全局视角下的 Tensor 与物理设备上的 Tensor 的形状相同，但是物理设备上的值，只是全局视角下 Tensor 的一部分。返回的全局视角下的 Tensor 是通过把物理设备上的 Tensor 按照对应的位置（按元素）相加得到的。</p>
 </dd>
 </dl>
 </li>
 </ol>
-<p>A oneflow.Tensor’s sbp can be accessed via the Tensor.sbp property.</p>
-<p>A sbp can be constructed in several ways:</p>
+<p>一个 sbp 可以以多种方式被构造：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
