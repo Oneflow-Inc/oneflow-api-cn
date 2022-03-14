@@ -1042,29 +1042,6 @@ reset_docstr(
 )
 
 reset_docstr(
-    oneflow.Tensor.to_local,
-    r"""返回一个全局张量的局部张量。
-
-
-    参数:
-        - **input** (Tensor) - 输入张量。
-
-    例如:
-
-    .. code-block:: python
-
-        >>> import oneflow as flow
-        >>> import numpy as np
-        >>> np_arr = np.array([0.5, 0.6, 0.7]).astype(np.float32)
-        >>> input = flow.tensor(np_arr, dtype=flow.float32)
-        >>> placement = flow.placement("cpu", ranks=[0])
-        >>> global_tensor = input.to_global(placement, [flow.sbp.split(0)])
-        >>> global_tensor.to_local()
-        tensor([0.5000, 0.6000, 0.7000], dtype=oneflow.float32)
-    """
-)
-
-reset_docstr(
     oneflow.Tensor.uniform_,
     r"""
     Tensor.uniform_(from=0, to=1) → Tensor
@@ -1152,121 +1129,11 @@ reset_docstr(
 )
 
 reset_docstr(
-    oneflow.Tensor.cpu,
-    r"""返回此对象在 CPU 内存中的副本。
-    如果这个对象已经在 CPU 内存中并且在正确的设备上，那么就不进行复制，而是返回原始对象。
-
-    例如:
-
-    .. code-block:: python
-
-        >>> import oneflow as flow
-
-        >>> input = flow.tensor([1, 2, 3, 4, 5], device=flow.device("cuda"))
-        >>> output = input.cpu()
-        >>> output.device
-        device(type='cpu', index=0)
-    """
-)
-
-reset_docstr(
-    oneflow.Tensor.cuda,
-    r"""返回此对象在 CUDA 内存中的副本。
-    如果这个对象已经在 CUDA 内存中并且在正确的设备上，那么就不进行复制，而是返回原始对象。
-
-    参数:
-        - **device**  (flow.device) - 目标 GPU 设备。默认为当前的 CUDA 设备。
-
-    例如:
-
-    .. code-block:: python
-
-        >>> import oneflow as flow
-
-        >>> input = flow.Tensor([1, 2, 3, 4, 5])
-        >>> output = input.cuda()
-        >>> output.device
-        device(type='cuda', index=0)
-    """
-)
-
-reset_docstr(
     oneflow.Tensor.T,
     r"""
     是否是此张量所有维度转置后的张量。（Is this Tensor with its dimensions reversed. 翻译为问句吗）
 
     如果 `n` 是 `x` 的维数，`x.T` 等同于 `x.permute(n-1, n-2, ..., 0)` 。
-    """
-)
-
-reset_docstr(
-    oneflow.Tensor.view,
-    r"""
-    该接口与PyTorch一致。
-    该文件引用自： https://pytorch.org/docs/stable/generated/torch.Tensor.view.html
-
-    返回一个新的张量，其数据与 :attr:`self` 张量相同，但属于不同的 :attr:`shape`。
-
-    返回的张量共享相同的数据，并且必须有相同数量的元素，但可能有不同的大小。
-    对于要查看的张量，新的视图的大小必须与它的原始大小和跨度兼容，
-    也就是说，每个新的视图维度必须是原始维度的子空间，
-    或者只跨过在原始维度 :math:`d, d+1, \\dots, d+k`之间，
-    且满足以下类似于毗连的条件 :math:`\\forall i = d, \\dots, d+k-1` 。
-
-    .. math::
-
-      \\text{stride}[i] = \\text{stride}[i+1] \\times \\text{size}[i+1]
-
-    否则，它将不可能将 :attr:`self` 张量在不复制它时视为 :attr:`shape`。
-    （例如，通过 :meth:`contiguous` ）。
-    当不清楚一个 :meth:`view` 是否可以被执行时，建议使用 :meth:`reshape` ，
-    如果形状兼容将返回一个 view 。如果形状是兼容将返回一个 view 并复制（等同于调用 :meth:`contiguous` ）。
-
-    参数:
-        - **input** - 一个张量。
-        - **shape** - flow.Size 或 int...
-    返回:
-        一个和 `input` 有相同类型的张量。
-
-    例如:
-
-    .. code-block:: python
-
-        >>> import numpy as np
-        >>> import oneflow as flow
-
-        >>> x = np.array(
-        ...    [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
-        ... ).astype(np.float32)
-        >>> input = flow.Tensor(x)
-
-        >>> y = input.view(2, 2, 2, -1).numpy().shape
-        >>> y
-        (2, 2, 2, 2)
-    """
-)
-
-reset_docstr(
-    oneflow.Tensor.type_as,
-    r"""返回这个张量，并将其转换为给定张量的类型。
-        如果张量已经是正确的类型，这就是一个无用功。
-
-    参数:
-        - **input**  (Tensor) - 输入张量。
-        - **target** (Tensor) - 具有所需类型的张量。
-
-    例如:
-
-    .. code-block:: python
-
-        >>> import oneflow as flow
-        >>> import numpy as np
-
-        >>> input = flow.tensor(np.random.randn(1, 2, 3), dtype=flow.float32)
-        >>> target = flow.tensor(np.random.randn(4, 5, 6), dtype = flow.int32)
-        >>> input = input.type_as(target)
-        >>> input.dtype
-        oneflow.int32
     """
 )
 
@@ -1375,24 +1242,4 @@ reset_docstr(
     """
 )
 
-reset_docstr(
-    oneflow.Tensor.tolist,
-    r"""将张量作为一个（嵌套的）列表返回。对于标量，会返回一个标准的Python数字。
-    就像使用 `item()` 一样。如果有必要，张量会自动先移到 CPU 上。
-
-    这个运算是不可微分的。
-
-    参数:
-        - **input**  (Tensor) - 输入张量。
-
-    例如:
-
-    .. code-block:: python
-
-        >>> import oneflow as flow
-        >>> input = flow.tensor([[1,2,3], [4,5,6]])
-        >>> input.tolist()
-        [[1, 2, 3], [4, 5, 6]]
-    """
-)
 
