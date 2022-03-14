@@ -824,7 +824,7 @@ reset_docstr(
     该接口与PyTorch一致。
     该文件的参考来源是: https://pytorch.org/docs/stable/generated/torch.Tensor.unfold.html#torch.Tensor.unfold.
 
-    返回一个原始张量的视图，其中包含所有在维度 `dimension` 中来自 `self` 张量大小 `size` 的片段。（Returns a view of the original tensor which contains all slices of `size` size from `self` tensor in the dimension `dimension`. ）
+    返回一个原始张量的视图，其中包含在维度 `dimension` 中来自 `self` 张量大小 `size` 的所有片段。
 
     两片段之间的步长由 `step` 给出。
 
@@ -868,7 +868,7 @@ reset_docstr(
     参数:
         - **input** (oneflow.Tensor) - 输入张量。
         - **dim** (int, optional) - 要排序的维度。默认为最后一个维度（-1）。
-        - **descending (bool, optional) - 控制排序的顺序（升序或降序）。
+        - **descending (bool, optional)** - 控制排序的顺序（升序或降序）。
 
     返回:
         - **oneflow.Tensor** - 排序后的张量索引。
@@ -911,7 +911,7 @@ reset_docstr(
     这个函数在 leaves 中累积梯度 - 你可能需要在调用它之前将 .grad 的属性归零或将它们设置为 None。关于累积梯度的内存结构的细节，参阅默认梯度结构。
 
     注意:
-        如果你在用户指定的 CUDA 流上下文中运行任何前向操作、创建梯度或后向调用，参阅后向传递的流语义。If you run any forward ops, create gradient, and/or call backward in a user-specified CUDA stream context, see Stream semantics of backward passes.
+        如果你在用户指定的 CUDA 流上下文中运行任何前向操作、创建梯度或后向调用，参阅后向传递的流语义。
     注意:
         当提供了输入，并且给定的输入不是 leaf 时，当前的实现将调用它的 grad_fn（尽管严格来说不需要获得这个梯度）。这是一个实现的细节，用户不应该依赖它。更多细节见 https://github.com/pytorch/pytorch/pull/60521#issuecomment-867061780 。
 
@@ -929,7 +929,7 @@ reset_docstr(
     r"""
     Tensor.dim() → int
 
-    返回self张量的维数。
+    返回 self 张量的维数。
     """
 )
 
@@ -967,21 +967,21 @@ reset_docstr(
     oneflow.Tensor.mul_,
     r"""Tensor.mul_(value) -> Tensor
 
-    :func:`oneflow.Tensor.mul` 的原版本。
+    :func:`oneflow.Tensor.mul` 的 Inplace 版本。
     """
 )
 
 reset_docstr(
     oneflow.Tensor.div_,
     r"""Tensor.div_(value) -> Tensor
-    :func:`oneflow.Tensor.div` 的原版本。
+    :func:`oneflow.Tensor.div` 的 Inplace 版本。
     """
 )
 
 reset_docstr(
     oneflow.Tensor.sub_,
     r"""Tensor.sub_(value) -> Tensor
-    :func:`oneflow.Tensor.sub` 的原版本。
+    :func:`oneflow.Tensor.sub` 的 Inplace 版本。
     """
 )
 
@@ -990,14 +990,14 @@ reset_docstr(
     r"""
     Tensor.nelement() → int
 
-    numel()的别名
+    numel() 的别名。
     """
 )
 
 reset_docstr(
     oneflow.Tensor.floor_,
     r"""
-    :func:`oneflow.floor` 的原版本。
+    :func:`oneflow.floor` 的 Inplace 版本。
 
     """
 )
@@ -1023,7 +1023,7 @@ reset_docstr(
 reset_docstr(
     oneflow.Tensor.add_,
     r"""
-    :func:`oneflow.Tensor.add` 的原版本。
+    :func:`oneflow.Tensor.add` 的 Inplace 版本。
     """
 )
 
@@ -1063,11 +1063,11 @@ reset_docstr(
 
     将 src 中的元素复制到 self 张量中，并返回 self 。
 
-    src 张量必须可以与 self 张量一起广播。它可能是不同的数据类型，或者停留在不同的设备上。
+    src 张量必须可以与 self 张量一起广播。它可以是不同的数据类型，或者位于不同的设备上。
 
     参数:
 
-        - **src** (Tensor) - the source tensor to copy from（？缺少部分）
+        - **src** (Tensor) - 要复制的源张量
 
         - **non_blocking** (bool) - 如果为 True ，并且是在 CPU 和 GPU 之间的拷贝，那么相对于主机来说，拷贝可能会异步发生。对于其他情况，这个参数没有影响。
     """
@@ -1110,7 +1110,7 @@ reset_docstr(
 reset_docstr(
     oneflow.Tensor.clamp_,
     r"""
-    :func:`oneflow.Tensor.clamp` 的原版本。
+    :func:`oneflow.Tensor.clamp` 的 Inplace 版本。
     """
 )
 
@@ -1218,6 +1218,13 @@ reset_docstr(
         >>> input = input.double()
         >>> input.dtype
         oneflow.float64
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.erfinv_,
+    r"""
+    :func:`oneflow.erfinv` 的 Inplace 版本。
     """
 )
 

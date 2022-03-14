@@ -16,39 +16,31 @@ oneflow.distributed
                  [--redirect_stdout_and_stderr] [--logdir LOGDIR]
                  training_script ...
 
-    OneFlow distributed training launch helper utility that will spawn up multiple
-    distributed processes
+    OneFlow 分布式训练启动协助功能，将启动多个分布式进程。
 
-    positional arguments:
-    training_script       The full path to the single GPU training program/script to be
-                            launched in parallel, followed by all the arguments for the
-                            training script
+    位置参数：
+    training_script       和进程同时启动的单 GPU 训练程序/脚本的完整路径，跟随着训练脚本的所有参数。
     training_script_args
 
     optional arguments:
-    -h, --help            show this help message and exit
-    --nnodes NNODES       The number of nodes to use for distributed training
+    -h, --help            展现此帮助页面并退出。
+    --nnodes NNODES       用于分布式训练的节点数量。
     --node_rank NODE_RANK
-                            The rank of the node for multi-node distributed training
+                            multi-mode 分布式训练中节点的 rank 。
     --nproc_per_node NPROC_PER_NODE
-                            The number of processes to launch on each node, for GPU
-                            training, this is recommended to be set to the number of GPUs in
-                            your system so that each process can be bound to a single GPU.
+                            每个节点上启动的进程数量，对于 GPU 训练，推荐将此参数设置为 GPU 数量，
+                            这样每个进程都能绑定一个单独的 GPU 。
     --master_addr MASTER_ADDR
-                            Master node (rank 0)'s address, should be either the IP address
-                            or the hostname of node 0, for single node multi-proc training,
-                            the --master_addr can simply be 127.0.0.1
+                            主节点 (rank 0) 的地址，应为主节点的 IP 地址和主机地址其中之一。
+                            对于单节点多进程训练， --master_addr 可直接设为 127.0.0.1。
     --master_port MASTER_PORT
-                            Master node (rank 0)'s free port that needs to be used for
-                            communication during distributed training
-    -m, --module          Changes each process to interpret the launch script as a python
-                            module, executing with the same behavior as'python -m'.
-    --no_python           Do not prepend the training script with "python" - just exec it
-                            directly. Useful when the script is not a Python script.
+                            主节点 (rank 0) 的空余 port ，将被用于分布式训练中各节点的联系。
+    -m, --module            
+                            使每个进程将脚本解释为 python 模组，和使用 'python -m' 运行脚本有相同效果。
+    --no_python             
+                            不对训练脚本前置 "python" ，而是直接运行。在脚本不是 Python 脚本时有用。
     --redirect_stdout_and_stderr
-                            write the stdout and stderr to files 'stdout' and 'stderr'. Only
-                            available when logdir is set
-    --logdir LOGDIR       Relative path to write subprocess logs to. Passing in a relative
-                            path will create a directory if needed. Note that successive
-                            runs with the same path to write logs to will overwrite existing
-                            logs, so be sure to save logs as needed.
+                            对文件 'stdout' 和 'stderr' 输出 stdout 和 stderr 。只有在 logdir 被设定后可用。
+    --logdir LOGDIR         
+                            子进程输出 log 文件的相对位置。如果需要，将根据相对位置创建新路径。
+                            需注意，连续使用相同的路径运行多次程序会覆盖之前的 log ，所以记得在需要时保存 log 。
