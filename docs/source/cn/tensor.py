@@ -1131,7 +1131,7 @@ reset_docstr(
 reset_docstr(
     oneflow.Tensor.T,
     r"""
-    是否是此张量所有维度转置后的张量。
+    此张量所有维度转置后的张量。
 
     如果 `n` 是 `x` 的维数，`x.T` 等同于 `x.permute(n-1, n-2, ..., 0)` 。
     """
