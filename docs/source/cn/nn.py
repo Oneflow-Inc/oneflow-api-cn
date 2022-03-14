@@ -29,7 +29,7 @@ reset_docstr(
     
     参数：
         - **blank** (int, 可选的): 空白标签。默认值为 :math:`0`。
-        - **reduction** (string, 可选的): 指定应用于输出的降维：``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行降维；``'mean'`` ：输出的和将会除以输出中的元素数量；``'sum'`` ：输出将被求和。默认值为： ``'mean'``。
+        - **reduction** (string, 可选的): 指定应用于输出的 reduction：``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行 reduction；``'mean'`` ：输出的和将会除以输出中的元素数量；``'sum'`` ：输出将被求和。默认值为： ``'mean'``。
         - **zero_infinity** (bool, 可选的): 是否设定无限损失和相关梯度归零。默认值为： ``False``。
             无限损失主要发生在 :attr:`input` 太短而无法与 :attr:`target` 对齐时。
 
@@ -797,7 +797,7 @@ reset_docstr(
     此类也可用于更高维度的输入，例如 2D 图像（见下文）。
 
     参数：
-        - **reduction** (string, 可选的): 指定应用于输出的降维（可以是 ``'none'`` 、 ``'mean'`` 、 ``'sum'`` ，默认值为 ``'mean'`` ）：
+        - **reduction** (string, 可选的): 指定应用于输出的 reduction（可以是 ``'none'`` 、 ``'mean'`` 、 ``'sum'`` ，默认值为 ``'mean'`` ）：
             - ``'none'`` :不进行简化；
             - ``'mean'`` :取输出的加权平均值；
             - ``'sum'`` :取输出的和。
@@ -984,7 +984,7 @@ reset_docstr(
 
     参数：
         - **margin** (float, optional): 默认值为 :math:`0`。
-        - **reduction** (string, optional): 指定对输出应用的降维：``'none'`` | ``'mean'`` | ``'sum'``。``'none'`` ：不进行降维；``'mean'`` ：输出的和将会除以输出中的元素数量；``'sum'`` ：输出将被求和。默认值为 ``'mean'``。
+        - **reduction** (string, optional): 指定对输出应用的 reduction：``'none'`` | ``'mean'`` | ``'sum'``。``'none'`` ：不进行 reduction；``'mean'`` ：输出的和将会除以输出中的元素数量；``'sum'`` ：输出将被求和。默认值为 ``'mean'``。
 
     形状：
         - `x1` : :math:`(N, D)` ，其中 `N` 是批量大小， `D` 是样本大小。
@@ -1772,7 +1772,7 @@ reset_docstr(
     参数：
         - **size_average** (bool, optional): 已弃用（参考 :attr:`reduction`）。默认情况下，损失是批次中每个损失元素的平均值。请注意，对于某些损失，每个样本有多个元素。若 :attr:`size_average` 设置为  ``False``，则每个小批量的损失相加。当 :attr:`reduce` 设置为 ``False`` 时忽略。默认值为 ``True``。
         - **reduce** (bool, optional): 已弃用（参考 :attr:`reduction`）。根据 :attr:`size_average` 对每个小批量的损失进行平均或汇总。如果 :attr:`reduce` 设置为 ``False``，则返回每个批元素的损失，并忽略 :attr:`size_average`。默认值为 ``True``。
-        - **reduction** (string, optional): 指定应用于输出的降维：``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行降维；``'mean'`` ：输出的和将会除以输出中的元素数量；``'sum'`` ：输出将被求和。注意： :attr:`size_average` 和 :attr:`reduce` 正逐渐被弃用，指定这二者的任何一个都将覆盖 :attr:`reduction`。默认值为 ``'mean'``。
+        - **reduction** (string, optional): 指定应用于输出的 reduction：``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行 reduction；``'mean'`` ：输出的和将会除以输出中的元素数量；``'sum'`` ：输出将被求和。注意： :attr:`size_average` 和 :attr:`reduce` 正逐渐被弃用，指定这二者的任何一个都将覆盖 :attr:`reduction`。默认值为 ``'mean'``。
         - **beta** (float, optional): 指定在 L1 和 L2 损失之间更改的阈值。该值必须为非负。默认值为 1.0。
 
     形状：
