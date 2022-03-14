@@ -120,7 +120,7 @@ reset_docstr(
     oneflow.nn.ConstantPad1d,
     r"""ConstantPad1d(padding, value=0)
 
-    用常数值填充输入 tensor 边界。此接口与 PyTorch 一致，参考：https://pytorch.org/docs/stable/generated/torch.nn.ConstantPad1d.html?highlight=constantpad1d#torch.nn.ConstantPad1d。
+    用常数值填充输入 tensor 边界。此接口与 PyTorch 一致，参考：https://pytorch.org/docs/stable/generated/torch.nn.ConstantPad1d.html。
 
     用 :func:`torch.nn.functional.pad()` 来进行 `N` 维填充。
 
@@ -130,7 +130,7 @@ reset_docstr(
 
     形状：
         - **Input** : :math:`(N, C, W_{in})`
-        - **Output** : :math:`(N, C, W_{out})` 其中
+        - **Output** : :math:`(N, C, W_{out})` ，其中
 
           :math:`W_{out} = W_{in} + \text{padding\_left} + \text{padding\_right}`
 
@@ -158,7 +158,7 @@ reset_docstr(
     r"""ConstantPad2d(padding, value=0)
     
     此接口与 PyTorch 一致。文档可以参考：
-    https://pytorch.org/docs/stable/generated/torch.nn.ZeroPad2d.html
+    https://pytorch.org/docs/stable/generated/torch.nn.ConstantPad2d.html
 
     用 0 填充输入张量边界。用户可以通过设置参数 :attr:`paddings` 来设置填充量。
 
@@ -167,11 +167,11 @@ reset_docstr(
 
     形状：
         - **Input** : :math:`(N, C, H_{in}, W_{in})`
-        - **Output** : :math:`(N, C, H_{out}, W_{out})` 其中
+        - **Output** : :math:`(N, C, H_{out}, W_{out})` ，其中
 
-            :math:`H_{out} = H_{in} + \mathrm{padding_{top}} + \mathrm{padding_{bottom}}`
+            :math:`H_{out} = H_{in} + \text{padding\_top} + \text{padding\_bottom}`
 
-            :math:`W_{out} = W_{in} + \mathrm{padding_{left}} + \mathrm{padding_{right}}`
+            :math:`W_{out} = W_{in} + \text{padding\_left} + \text{padding\_right}`
 
     示例：
 
@@ -221,7 +221,7 @@ reset_docstr(
     oneflow.nn.ConstantPad3d,
     r"""ConstantPad3d(padding, value=0)
 
-    用常数值填充输入 tensor 边界。此接口与 PyTorch 一致，参考：https://pytorch.org/docs/stable/generated/torch.nn.ConstantPad1d.html?highlight=constantpad1d#torch.nn.ConstantPad1d。
+    用常数值填充输入 tensor 边界。此接口与 PyTorch 一致，参考：https://pytorch.org/docs/stable/generated/torch.nn.ConstantPad3d.html。
 
     用 :func:`torch.nn.functional.pad()` 来进行 `N` 维填充。
 
@@ -231,7 +231,7 @@ reset_docstr(
 
     形状：
         - Input: :math:`(N, C, D_{in}, H_{in}, W_{in})`
-        - Output: :math:`(N, C, D_{out}, H_{out}, W_{out})` 其中
+        - Output: :math:`(N, C, D_{out}, H_{out}, W_{out})` ，其中
 
           :math:`D_{out} = D_{in} + \text{padding_front} + \text{padding_back}`
 
@@ -240,7 +240,7 @@ reset_docstr(
           :math:`W_{out} = W_{in} + \text{padding_left} + \text{padding_right}`
 
     示例：
-        .. code-block:: python
+    .. code-block:: python
 
         >>> import oneflow as flow
 
@@ -315,7 +315,7 @@ reset_docstr(
 
     形状：
         - **Input** : :math:`(N, C_{in}, L_{in})`
-        - **Output** : :math:`(N, C_{out}, L_{out})` 其中
+        - **Output** : :math:`(N, C_{out}, L_{out})` ，其中
 
           .. math::
               L_{out} = \left\lfloor\frac{L_{in} + 2 \times \text{padding} - \text{dilation}
@@ -412,7 +412,7 @@ reset_docstr(
 
     形状：
         - **Input** : :math:`(N, C_{in}, H_{in}, W_{in})`
-        - **Output** : :math:`(N, C_{out}, H_{out}, W_{out})` 其中
+        - **Output** : :math:`(N, C_{out}, H_{out}, W_{out})` ，其中
 
           .. math::
               H_{out} = \left\lfloor\frac{H_{in}  + 2 \times \text{padding}[0] - \text{dilation}[0]
@@ -500,7 +500,7 @@ reset_docstr(
     
     形状：
         - **Input** : :math:`(N, C_{in}, D_{in}, H_{in}, W_{in})`
-        - **Output** : :math:`(N, C_{out}, D_{out}, H_{out}, W_{out})` 其中
+        - **Output** : :math:`(N, C_{out}, D_{out}, H_{out}, W_{out})` ，其中
 
           .. math::
               D_{out} = \left\lfloor\frac{D_{in} + 2 \times \text{padding}[0] - \text{dilation}[0]
@@ -588,7 +588,7 @@ reset_docstr(
 
     形状：
         - **Input** : :math:`(N, C_{in}, L_{in})`
-        - **Output** : :math:`(N, C_{out}, L_{out})` 其中
+        - **Output** : :math:`(N, C_{out}, L_{out})` ，其中
 
           .. math::
               L_{out} = (L_{in} - 1) \times \text{stride} - 2 \times \text{padding} + \text{dilation}
@@ -633,7 +633,7 @@ reset_docstr(
 
     形状：
         - **Input** : :math:`(N, C_{in}, H_{in}, W_{in})`
-        - **Output** : :math:`(N, C_{out}, H_{out}, W_{out})` 其中
+        - **Output** : :math:`(N, C_{out}, H_{out}, W_{out})` ，其中
 
         .. math::
               H_{out} = (H_{in} - 1) \times \text{stride}[0] - 2 \times \text{padding}[0] + \text{dilation}[0] 
@@ -726,7 +726,7 @@ reset_docstr(
 
     形状：
         - **Input** : :math:`(N, C_{in}, D_{in}, H_{in}, W_{in})`
-        - **Output** : :math:`(N, C_{out}, D_{out}, H_{out}, W_{out})` 其中
+        - **Output** : :math:`(N, C_{out}, D_{out}, H_{out}, W_{out})` ，其中
 
         .. math::
               D_{out} = (D_{in} - 1) \times \text{stride}[0] - 2 \times \text{padding}[0] + \text{dilation}[0]
