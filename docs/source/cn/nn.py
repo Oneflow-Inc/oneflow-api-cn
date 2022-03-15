@@ -24,7 +24,7 @@ reset_docstr(
     
     此接口与 PyTorch 一致。可在 https://pytorch.org/docs/stable/generated/torch.nn.CTCLoss.html#torch.nn.CTCLoss 找到相关文档。
 
-    计算连续且未分段的时间序列和 :attr:`target` 序列之间的损失。CTCLoss 对 :attr:`input` 与 :attr:`target` 可能对齐的概率求和，产生一个损失值，该值相对于每个 :attr:`input` 节点是可导的。
+    计算连续且未分段的时间序列和 :attr:`target` 序列之间的损失。CTCLoss 对 :attr:`input` 与 :attr:`target` 可能对齐的概率求和，产生一个相对于每个 :attr:`input` 节点可微的损失值。
     :attr:`input` 与 :attr:`target` 的对齐被假定为“多对一”，这限制了 :attr:`target` 序列的长度，即 :attr:`target` :math:`\leq` :attr:`input`。
     
     参数：
