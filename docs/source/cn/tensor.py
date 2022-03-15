@@ -371,7 +371,7 @@ reset_docstr(
     r"""
     Tensor.fill_(value) → Tensor
 
-    用指定的值填充自、self张量。
+    用指定的值填充 self 张量。
     """
 )
 
@@ -1131,7 +1131,7 @@ reset_docstr(
 reset_docstr(
     oneflow.Tensor.T,
     r"""
-    是否是此张量所有维度转置后的张量。（Is this Tensor with its dimensions reversed. 翻译为问句吗）
+    此张量所有维度转置后的张量。
 
     如果 `n` 是 `x` 的维数，`x.T` 等同于 `x.permute(n-1, n-2, ..., 0)` 。
     """
