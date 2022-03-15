@@ -1097,7 +1097,7 @@ reset_docstr(
         若 ceil_mode 设置为 True 且滑动窗口从左侧填充区域或输入中开始，则允许滑动窗口越界。从右侧填充区域开始的滑动窗口将被忽略。
 
     参数 :attr:`kernel_size`, :attr:`stride`, :attr:`padding`, :attr:`dilation` 可以是：
-        - a single ``int`` -- 在这种情况下，高度和宽度维度使用相同的值。
+        - 一个单独的 ``int`` -- 在这种情况下，高度和宽度维度使用相同的值。
         - 一个由两个 int 组成的 ``tuple`` -- 在这种情况下，第一个整数用于高度维度，第二个整数用于宽度维度。
 
     参数：
@@ -1165,7 +1165,7 @@ reset_docstr(
     参数：
         - **kernel_size**: 窗口的最大尺寸。
         - **stride**: 窗口的滑动步长。默认值为 :attr:`kernel_size`。
-        - **padding**: implicit minimum value padding to be added on all three sides。
+        - **padding**: 在三个边上都用隐式的最小值填充。
         - **dilation**: 控制窗口中元素步幅的参数。
         - **return_indices**: 若设置为 ``True`` ，则返回最大索引和输出，在后续的 :class:`torch.nn.MaxUnpool3d` 中用到。
         - **ceil_mode**: 若设置为 ``True`` 则使用 `ceil` 而非 `floor` 来计算输出形状。
