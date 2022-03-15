@@ -29,8 +29,8 @@ reset_docstr(
     
     参数：
         - **blank** (int, 可选的): 空白标签。默认值为 :math:`0`。
-        - **reduction** (string, 可选的): 指定应用于输出的 reduction：``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行 reduction；``'mean'`` ：输出的和将会除以输出中的元素数量；``'sum'`` ：输出将被求和。默认值为： ``'mean'``。
-        - **zero_infinity** (bool, 可选的): 是否设定无限损失和相关梯度归零。默认值为： ``False``。
+        - **reduction** (string, 可选的): 指定应用于输出的 reduction：``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行 reduction；``'mean'`` ：输出损失将除以目标长度，然后取该批次的平均值。默认值为： ``'mean'``。
+        - **zero_infinity** (bool, 可选的): 是否将无限损失和相关梯度归零。默认值为： ``False``。
             无限损失主要发生在 :attr:`input` 太短而无法与 :attr:`target` 对齐时。
 
     形状：
@@ -1044,7 +1044,7 @@ reset_docstr(
     参数：
         - **kernel_size**: 滑动窗口的大小，必须为正。
         - **stride**: 滑动窗口的步长，必须为正。默认值为 :attr:`kernel_size`。
-        - **padding**: Implicit negative infinity padding to be added on both sides, must be >= 0 and <= kernel_size / 2。
+        - **padding**: 两侧都用隐式的负无穷大填充，该值必须非负且不大于 kernel_size / 2。
         - **dilation**: 滑动窗口中元素之间的跨步，必须为正。
         - **return_indices**: 若设置为 ``True`` 则返回 argmax 以及最大值，在后续的 :class:`torch.nn.MaxUnpool1d` 中用到。
         - **ceil_mode**: 若设置为 ``True`` 则使用 `ceil` 而非 `floor` 来计算输出形状。这确保了输入张量中的每个元素都被滑动窗口覆盖。
@@ -1206,7 +1206,7 @@ reset_docstr(
     oneflow.nn.MinMaxObserver,
     """MinMaxObserver(quantization_formula: str = 'google', quantization_bit: int = 8, quantization_scheme: str = 'symmetric', per_layer_quantization: bool = True)
     
-    计算张量的量化参数。
+    计算输入张量的量化参数。
 
     首先计算输入张量的最大值和最小值：
 
