@@ -1030,7 +1030,7 @@ reset_docstr(
 
     在一个由多个输入平面组成的输入信号上应用 1D max pooling。
 
-    在最简单的情况下，若输入为 :math:`(N, C, L)` 且输出为 :math:`(N, C, L_{out})` ，则该层的输出值可以被准确描述为：
+    在最简单的情况下，若输入大小为 :math:`(N, C, L)` 和输出大小为 :math:`(N, C, L_{out})` ，则该层的输出值可以被准确描述为：
 
     .. math::
         out(N_i, C_j, k) = \max_{m=0, \ldots, \text{kernel\_size} - 1}
@@ -1098,7 +1098,7 @@ reset_docstr(
 
     参数 :attr:`kernel_size`, :attr:`stride`, :attr:`padding`, :attr:`dilation` 可以是：
         - a single ``int`` -- 在这种情况下，高度和宽度维度使用相同的值。
-        - a ``tuple`` of two ints -- 在这种情况下，第一个整数用于高度维度，第二个整数用于宽度维度。
+        - 一个由两个 int 组成的 ``tuple`` -- 在这种情况下，第一个整数用于高度维度，第二个整数用于宽度维度。
 
     参数：
         - **kernel_size**: 窗口的最大尺寸。
@@ -1218,7 +1218,7 @@ reset_docstr(
 
     然后用以下等式计算 scale 和 zero_point ：
 
-        if quantization_scheme == "symmetric":
+        如果 quantization_scheme == "symmetric":
 
         .. math::
 
@@ -1228,7 +1228,7 @@ reset_docstr(
 
             & zero\\_point = 0
 
-        elif quantization_scheme == "affine":
+        如果 quantization_scheme == "affine":
 
         .. math::
 
@@ -1241,8 +1241,8 @@ reset_docstr(
     如果 per_layer_quantization 设置为 False ，则 scale 和 zero_point 的形状为 (input.shape[0],)。
 
     参数：
-        - **quantization_bit** (int): 量化输入为 uintX / intX ， X 可以在范围 [2, 8] 中，默认值为 8。
-        - **quantization_scheme** (str): 支持 "symmetric" 或 "affine" ， 量化为有符号/无符号整数。 默认值为 "symmetric"。
+        - **quantization_bit** (int): 量化输入为 uintX / intX ， X 的值在 [2, 8] 中，默认值为 8。
+        - **quantization_scheme** (str):  "symmetric" 或 "affine" ， 量化为有符号/无符号整数。 默认值为 "symmetric"。
         - **quantization_formula** (str): 支持 "google" or "cambricon"。
         - **per_layer_quantization** (bool): 若设置为 True ，则表示 per-layer ，否则为 per-channel。默认值为 True。
 
@@ -1329,12 +1329,12 @@ reset_docstr(
             & zero\\_point = -moving\\_min / scale
 
     Note:
-        ``current_train_step`` 可以直接被赋值给一个优化器（例如 SGD ）
+        ``current_train_step`` 可以直接被赋值给一个优化器（例如 SGD）
 
     参数：
         - **training** (bool): 模式是否处于训练状态，默认值为 False。
-        - **quantization_bit** (int): 量化输入为 uintX / intX ， X 可以在范围 [2, 8] 中，默认值为 8。
-        - **quantization_scheme** (str): 支持 "symmetric" 或 "affine" ， 量化为有符号/无符号整数。 默认值为 "symmetric"。
+        - **quantization_bit** (int): 量化输入为 uintX / intX ， X 的值在 [2, 8] 中，默认值为 8。
+        - **quantization_scheme** (str):  "symmetric" 或 "affine" ， 量化为有符号/无符号整数。 默认值为 "symmetric"。
         - **quantization_formula** (str): 支持 "google" or "cambricon"。
         - **momentum** (float): 指数移动平均运算的平滑参数，默认值为 0.95。
 
