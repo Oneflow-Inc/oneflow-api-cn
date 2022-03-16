@@ -2,15 +2,19 @@ import oneflow
 from docreset import reset_docstr
 
 reset_docstr(
-    oneflow.optim.Adam,
-    """实现 Adam 优化器。
+    oneflow.optim.AdamW,
+    """实现 AdamW 优化器。
 
-    它在 `Adam: A Method for Stochastic Optimization`_ 中被提出。
-    L2 penalty 的实现遵循了 `Decoupled Weight Decay Regularization`_ 中提出的变化。
+    原始的的 Adam 算法是在 `Adam: A Method for Stochastic Optimization`_ 中被提出。
+    AdamW 的变式在 `Decoupled Weight Decay Regularization`_ 中被提出。
 
-    该算法可以根据梯度的第一时刻估计值和第二时刻估计值动态地调整每个参数的学习率。
+    Adam-weight-decay 算法的优化器。
 
-    参数更新的方程是：
+    (更多详情参考 `Adam-weight-decay <https://www.fast.ai/2018/07/02/adam-weight-decay/>`_ )。
+
+    所以我们使用 Adam-weight-decay 算法来解决以下问题。
+
+    参数更新的方程是。
 
     .. math::
 
@@ -18,7 +22,7 @@ reset_docstr(
 
         & S_t = \\beta_2*S_{t-1} + (1-\\beta_2)*{grad} \\odot {grad}
 
-        & \\hat{g} = learning\\_rate*\\frac{{V_t}}{\\sqrt{{S_t}}+\\epsilon}
+        & \\hat{g} = learning\\_rate*(\\frac{{V_t}}{\\sqrt{{S_t}}+\\epsilon}+\\lambda*param_{old})
 
         & param_{new} = param_{old} - \\hat{g}
 
@@ -27,7 +31,7 @@ reset_docstr(
         - **lr** (float, optional) - 学习率（默认值：1e-3）。 
         - **betas** (Tuple[float, float], optional) - 用于计算梯度及其平方的运行平均数的系数（默认值：(0.9, 0.999))
         - **eps** (float, optional) - 添加到分母中以提高数值稳定性的项（默认值：1e-8）。
-        - **weight_decay** (float, optional) - 权重衰减 (L2 penalty) (默认值: 0)
+        - **weight_decay** (float, optional) - 权重衰减 (L2 penalty) (在等式中为 λ, 默认值: 0)
         - **amsgrad** (bool, optional) - 是否使用该算法的 AMSGrad 变体(默认值: False) 。
         - **do_bias_correction** (bool, optional) - 是否做偏差校正（默认值：True）。
 
@@ -43,22 +47,22 @@ reset_docstr(
 
     .. code-block:: python 
 
-        # 假设 net 是一个自定义模型。 
-        adam = flow.optim.Adam(net.parameters(), lr=1e-3)
+        # 假设 net 是一个自定义模型。
+        adamw = flow.optim.AdamW(net.parameters(), lr=1e-3)
 
         for epoch in range(epochs):
             # 读取数据，计算损失，等等。
             # ...
             loss.backward()
-            adam.step()
-            adam.zero_grad()
+            adamw.step()
+            adamw.zero_grad()
 
-    例2: 
+    Example 2: 
 
     .. code-block:: python 
 
         # 假设 net 是一个自定义模型。
-        adam = flow.optim.Adam(
+        adamw = flow.optim.AdamW(
             [
                 {
                     "params": net.parameters(),
@@ -73,23 +77,13 @@ reset_docstr(
             # 读取数据，计算损失，等等。
             # ...
             loss.backward()
-            adam.clip_grad()
-            adam.step()
-            adam.zero_grad()
+            adamw.clip_grad()
+            adamw.step()
+            adamw.zero_grad()
 
     如果你想使用 clip_grad 函数，你可以参考这个示例。
 
     关于 `clip_grad_max_norm` 和 `clip_grad_norm_type` 函数的更多细节，你可以参考 :func:`oneflow.nn.utils.clip_grad_norm` 。
 
-    
     """
-)
-
-reset_docstr(
-    oneflow.optim.Adam.step,
-    """执行一个优化步骤。
-
-        参数:
-            - **closure** (callable, optional) - 一个对模型进行重新评估并返回损失的闭包。
-        """
 )
