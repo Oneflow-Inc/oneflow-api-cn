@@ -76,8 +76,8 @@ reset_docstr(
     对一个列表中的张量进行 reduce 操作，并将其分散到一个进程组中的所有进程。
 
     参数：
-        **output** (Tensor): 输出张量
-        **input_list** (list[Tensor]): reduce 并分散的张量的列表
+        - **output** (Tensor): 输出张量
+        - **input_list** (list[Tensor]): reduce 并分散的张量的列表
     """
 )
 
