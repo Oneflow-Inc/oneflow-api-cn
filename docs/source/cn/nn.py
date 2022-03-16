@@ -293,7 +293,7 @@ reset_docstr(
     * :attr:`padding` 控制应用于输入的填充量。可以是 `string` {{'valid', 'same'}}
       或一个给出在两侧的隐式填充量的整数元组。
 
-    * :attr:`dilation` 控制核心点 (kernel points) 之间的间距，也称为 `à trous algorithm`。`link`_ 中有 :attr:`dilation` 的可视化展示。
+    * :attr:`dilation` 控制核心点 (kernel points) 之间的间距，也称为 `à trous algorithm`。这个 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__ 中有 :attr:`dilation` 的可视化展示。
 
     Note:
         ``padding='valid'`` 等同于无填充。 ``padding='same'`` 填充输入，使输出具有与输入相同的形状。
@@ -371,8 +371,7 @@ reset_docstr(
 
     * :attr:`padding` 控制在输入每个维度两侧隐式填充 :attr:`padding` 个点。
 
-    * :attr:`dilation` 控制核心点 (kernel points) 之间的间距，也称为 `à trous algorithm`。此操作很难描述，
-      但是 `link`_ 很好的将 :attr:`dilation` 的作用可视化。
+    * :attr:`dilation` 控制核心点 (kernel points) 之间的间距，也称为 `à trous algorithm`。这个 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__ 中有 :attr:`dilation` 的可视化展示。
 
     * :attr:`groups` 控制输入和输出之间的连接。 :attr:`in_channels` 和 :attr:`out_channels` 都必须能被 :attr:`groups` 整除。
       例如，
@@ -470,8 +469,7 @@ reset_docstr(
     * :attr:`padding` 控制应用于输入的填充量。可以是 `string` {{'valid', 'same'}}
       或一个给出在两侧的隐式填充量的整数元组。
 
-    * :attr:`dilation` 控制核心点 (kernel points) 之间的间距，也称为 `à trous algorithm`。此操作很难描述，
-      但是 `link`_ 很好的将 :attr:`dilation` 的作用可视化。
+    * :attr:`dilation` 控制核心点 (kernel points) 之间的间距，也称为 `à trous algorithm`。这个 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__ 中有 :attr:`dilation` 的可视化展示。
 
     参数 :attr:`kernel_size` 、 :attr:`stride` 、 :attr:`padding` 、 :attr:`dilation` 可以是：
 
@@ -554,8 +552,7 @@ reset_docstr(
 
     * :attr:`output_padding`  控制添加到输出形状一侧的大小。更多信息请参考 ``note``。
 
-    * :attr:`dilation` 控制核心点 (kernel points) 之间的间距，也称为 `à trous algorithm`。此操作很难描述，
-      但是 `link`_ 很好的将 :attr:`dilation` 的作用可视化。
+    * :attr:`dilation` 控制核心点 (kernel points) 之间的间距，也称为 `à trous algorithm`。这个 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__ 中有 :attr:`dilation` 的可视化展示。
 
     Note:
         :attr:`padding` 参数有效地将 ``dilation * (kernel_size - 1) - padding`` 个 0 填充到输入的两侧。
@@ -693,8 +690,7 @@ reset_docstr(
 
     * :attr:`output_padding`  控制添加到输出形状一侧的大小。更多信息请参考 ``note``。
 
-    * :attr:`dilation` 控制核心点 (kernel points) 之间的间距，也称为 `à trous algorithm`。此操作很难描述，
-      但是 `link`_ 很好的将 :attr:`dilation` 的作用可视化。
+    * :attr:`dilation` 控制核心点 (kernel points) 之间的间距，也称为 `à trous algorithm`。这个 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__ 中有 :attr:`dilation` 的可视化展示。
 
     参数 :attr:`kernel_size` 、 :attr:`stride` 、 :attr:`padding` 、 :attr:`output_padding` 可以是以下形式：
 
@@ -1031,7 +1027,7 @@ reset_docstr(
         out(N_i, C_j, k) = \max_{m=0, \ldots, \text{kernel\_size} - 1}
                 input(N_i, C_j, stride \times k + m)
 
-    若 :attr:`padding` 非负，则在输入的两侧使用最小值隐式填充，以填充点数。 :attr:`dilation` 是滑动窗口中元素之间的跨步。 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__  有一个池化参数的可视化展示。
+    若 :attr:`padding` 非负，则在输入的两侧使用最小值隐式填充，以填充点数。 :attr:`dilation` 是滑动窗口中元素之间的跨步。这个 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__ 中有 :attr:`dilation` 的可视化展示。
 
     Note:
         当 ceil_mode = True 且滑动窗口从左侧填充区域或输入中开始，则允许其越界。从右侧填充区域开始的滑动窗口将被忽略。
@@ -1076,7 +1072,7 @@ reset_docstr(
     
     在一个由多个输入平面组成的输入信号上应用 2D max pooling。
 
-    在最简单的情况下，若输入为 :math:`(N, C, H, W)` ，输出为 :math:`(N, C, H_{out}, W_{out})` 且 :attr:`kernel_size` 为 :math:`(kH, kW)` ，则该层的输出值可以被准确描述为：
+    在最简单的情况下，若输入大小为 :math:`(N, C, H, W)` ，输出大小为 :math:`(N, C, H_{out}, W_{out})` 且 :attr:`kernel_size` 为 :math:`(kH, kW)` ，则该层的输出值可以被准确描述为：
 
     .. math::
         \begin{aligned}
@@ -1085,8 +1081,7 @@ reset_docstr(
                                                    \text{stride[1]} \times w + n)
         \end{aligned}
 
-    若 :attr:`padding` 非负，则在输入的两侧使用最小值隐式填充，以填充点数。 :attr:`dilation` 控制了核点之间的空间。
-    这很难描述，但这个 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__ 以可视化的方式说明了 :attr:`dilation` 在做什么。
+    若 :attr:`padding` 非负，则在输入的两侧使用最小值隐式填充，以填充点数。 :attr:`dilation` 控制了核点之间的空间。这个 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__ 中有 :attr:`dilation` 的可视化展示。
 
     Note:
         若 ceil_mode == True 且滑动窗口从左侧填充区域或输入中开始，则允许滑动窗口越界。从右侧填充区域开始的滑动窗口将被忽略。
@@ -1138,7 +1133,7 @@ reset_docstr(
 
     在一个由多个输入平面组成的输入信号上应用 3D max pooling。
 
-    在最简单的情况下，若输入为 :math:`(N, C, D, H, W)` ，输出为 :math:`(N, C, D_{out}, H_{out}, W_{out})` 且 :attr:`kernel_size` 为 :math:`(kD, kH, kW)` ，则该层的输出值可以被准确描述为：
+    在最简单的情况下，若输入大小为 :math:`(N, C, D, H, W)` ，输出大小为 :math:`(N, C, D_{out}, H_{out}, W_{out})` 且 :attr:`kernel_size` 为 :math:`(kD, kH, kW)` ，则该层的输出值可以被准确描述为：
 
     .. math::
         \begin{aligned}
@@ -1147,8 +1142,7 @@ reset_docstr(
                                                              \text{stride[1]} \times h + m, \text{stride[2]} \times w + n)
         \end{aligned}
 
-    若 :attr:`padding` 非负，则在输入的两侧使用最小值隐式填充，以填充点数。 :attr:`dilation` 控制了核点之间的空间。
-    这很难描述，但这个 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__ 以可视化的方式说明了 :attr:`dilation` 在做什么。
+    若 :attr:`padding` 非负，则在输入的两侧使用最小值隐式填充，以填充点数。 :attr:`dilation` 控制了核点之间的空间。这个 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__ 中有 :attr:`dilation` 的可视化展示。
 
     Note:
         若 ceil_mode == True 且滑动窗口从左侧填充区域或输入中开始，则允许滑动窗口越界。从右侧填充区域开始的滑动窗口将被忽略。
