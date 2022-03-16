@@ -285,7 +285,7 @@ reset_docstr(
         \sum_{k = 0}^{C_{in} - 1} \text{weight}(C_{\text{out}_j}, k)
         \star \text{input}(N_i, k)
 
-    其中 :math:`\star` 为有效的 `cross-correlation`_ 运算符， :math:`N` 是批量大小， :math:`C` 表示通道数， 
+    其中 :math:`\star` 为有效的 `cross-correlation`_ 算子， :math:`N` 是批量大小， :math:`C` 表示通道数， 
     :math:`L` 是信号序列的长度。
 
     * :attr:`stride` 是控制互相关 (cross-correlation) 的步幅 (stride) 的单个数字或单元素元组。
@@ -363,7 +363,7 @@ reset_docstr(
         \text{out}(N_i, C_{\text{out}_j}) = \text{bias}(C_{\text{out}_j}) +
         \sum_{k = 0}^{C_{\text{in}} - 1} \text{weight}(C_{\text{out}_j}, k) \star \text{input}(N_i, k)
 
-    其中 :math:`\star` 为有效的 2D `cross-correlation`_ 运算符， :math:`N` 是批量大小， :math:`C` 表示通道数，
+    其中 :math:`\star` 为有效的 2D `cross-correlation`_ 算子， :math:`N` 是批量大小， :math:`C` 表示通道数，
     :math:`H` 是以像素为单位的输入平面的高度，和 :math:`W` 是以像素为单位的宽度。
 
 
@@ -462,7 +462,7 @@ reset_docstr(
         out(N_i, C_{out_j}) = bias(C_{out_j}) +
                                 \sum_{k = 0}^{C_{in} - 1} weight(C_{out_j}, k) \star input(N_i, k)
 
-    其中 :math:`\star` 为有效的 3D `cross-correlation`_ 运算符。
+    其中 :math:`\star` 为有效的 3D `cross-correlation`_ 算子。
 
     * :attr:`stride` 是控制互相关 (cross-correlation) 的步幅 (stride) 的单个数字或单元素元组。
 
@@ -562,7 +562,7 @@ reset_docstr(
             请注意，:attr:`output_padding` 仅用于查找输出形状，但实际上并未填充输出。
 
     Note:
-        在某些情况下，将 CUDA 后端与 CuDNN 一起使用时，此运算符可能会选择非确定性算法来提高性能。
+        在某些情况下，将 CUDA 后端与 CuDNN 一起使用时，此算子可能会选择非确定性算法来提高性能。
             若此操作有不确定性，您可以尝试通过设置 ``torch.backends.cudnn.deterministic =
             True`` 来使操作具有确定性（可能以性能为代价）。
             背景请参阅有关随机性 (randomness)  的 note。
@@ -1449,10 +1449,10 @@ reset_docstr(
     oneflow.nn.OFRecordBytesDecoder,
     r"""OFRecordBytesDecoder(blob_name: str, name: Optional[str] = None)
     
-    此运算符将张量读取为字节，输出取决于下游任务，可能需要进一步的解码过程，比如 cv2.imdecode() 用于图像和解码，以及 decode("utf-8") 用于字符。
+    此算子将张量读取为字节，输出取决于下游任务，可能需要进一步的解码过程，比如 cv2.imdecode() 用于图像和解码，以及 decode("utf-8") 用于字符。
     
     参数：
-        - **blob_name**: 目标特征的名称。
+        - **blob_name**: OFRecord 目标特征的名称。
         - **name**: 图中此分量的名称。
         - **input**: 可能由 OFRecordReader 提供的张量。
 
