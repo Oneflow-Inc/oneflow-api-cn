@@ -38,7 +38,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.comm.all_reduce,
-    """
+    r"""
     将所有机器上的 tensor 做 reduce 操作，结果返回给所有进程。
 
     参数：
@@ -66,6 +66,92 @@ reset_docstr(
         > tensor.numpy()
         array([[3, 5],
                [7, 9]], dtype=int64)
+
+    """
+)
+
+reset_docstr(
+    oneflow.comm.reduce_scatter,
+    r"""
+    对一个列表中的张量进行 reduce 操作，并将其分散到一个进程组中的所有进程。
+
+    参数：
+        **output** (Tensor): 输出张量
+        **input_list** (list[Tensor]): reduce 并分散的张量的列表
+    """
+)
+
+reset_docstr(
+    oneflow.comm.scatter,
+    r"""
+    将一列张量分散到一个进程组中的所有进程，
+
+    每个进程将接收到正好一个张量，并将数据储存在 ``tensor`` 参数中。
+
+
+    参数：
+        - **tensor** (Tensor): 输出张量
+        - **scatter_list** (list[Tensor]): 被分散的张量列表（默认为 None ，需要指定源 rank）
+        - **src** (int): 源数据的 rank (默认为0)
+    """
+)
+
+reset_docstr(
+    oneflow.comm.reduce,
+    r"""
+    对所有机器的张量数据做 reduce 操作。
+
+    只有拥有 rank ``dst`` 的进程将接收到 reduce 后的结果。
+
+    参数：
+        - **tensor** (Tensor): 输入和输出的张量集合。参数使用 in-place 操作。
+        - **dst** (int): 终点 rank
+
+    """
+
+)
+
+reset_docstr(
+    oneflow.comm.broadcast,
+    r"""
+    将张量广播到所有进程组中。
+    ``tensor`` 在位于组内的所有进程中必须拥有相同的元素数量。
+
+    参数：
+        - **tensor** (Tensor): 如果 ``src`` 为当前张量的 rank ，则为被发送的张量，否则为接收的张量。
+        - **src** (int): 源数据的 rank
+
+    .. code-block:: python
+
+        > # 我们有一个进程组，两个 rank 。
+        > import oneflow as flow
+        > tensor = flow.tensor([[1, 2], [3, 4]], device="cuda") + flow.env.get_local_rank()
+        > # rank0 的输入
+        > tensor 
+        tensor([[1, 2],
+                [3, 4]], device='cuda:0', dtype=oneflow.int64)
+        > # rank1 的输入
+        > tensor 
+        tensor([[2, 3],
+                [4, 5]], device='cuda:1', dtype=oneflow.int64)
+        > flow.comm.broadcast(tensor, 0)
+        > # rank0 的结果
+        > tensor 
+        tensor([[1, 2],
+                [3, 4]], device='cuda:0', dtype=oneflow.int64)
+
+    """
+)
+
+reset_docstr(
+    oneflow.comm.gather,
+    r"""
+    将单个线程上的一列张量聚集。
+
+    参数：
+        - **tensor** (Tensor): 输入张量
+        - **gather_list** (list[Tensor], 可选): 一列大小适当的张量，用于储存聚集后的张量（默认为 None ，需要指定终点 rank ）
+        - **dst** (int, 可选): 终点 rank (默认为 0)
 
     """
 )
