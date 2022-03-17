@@ -3,12 +3,12 @@ from docreset import reset_docstr
 
 reset_docstr(
     oneflow.optim.Adam,
-    """实现 Adam 优化器。
+    """实现 Adam 优化算法。
 
     它在 `Adam: A Method for Stochastic Optimization`_ 中被提出。
     L2 penalty 的实现遵循了 `Decoupled Weight Decay Regularization`_ 中提出的变化。
 
-    该算法可以根据梯度的第一时刻估计值和第二时刻估计值动态地调整每个参数的学习率。
+    该算法可以根据梯度的一阶矩估计和二阶矩估计动态地调整每个参数的学习率。
 
     参数更新的方程是：
 
@@ -23,7 +23,7 @@ reset_docstr(
         & param_{new} = param_{old} - \\hat{g}
 
     参数:
-        - **params** (iterable) - 用来优化或 dicts 定义的可迭代参数组。
+        - **params** (iterable) - 待优化参数构成的 iterable 或定义了参数组的 dict。
         - **lr** (float, optional) - 学习率（默认值：1e-3）。 
         - **betas** (Tuple[float, float], optional) - 用于计算梯度及其平方的运行平均数的系数（默认值：(0.9, 0.999))
         - **eps** (float, optional) - 添加到分母中以提高数值稳定性的项（默认值：1e-8）。
