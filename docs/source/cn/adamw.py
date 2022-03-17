@@ -3,7 +3,7 @@ from docreset import reset_docstr
 
 reset_docstr(
     oneflow.optim.AdamW,
-    """实现 AdamW 优化器。
+    """实现 AdamW 优化算法。
 
     原始的的 Adam 算法是在 `Adam: A Method for Stochastic Optimization`_ 中被提出。
     AdamW 的变式在 `Decoupled Weight Decay Regularization`_ 中被提出。
@@ -27,7 +27,7 @@ reset_docstr(
         & param_{new} = param_{old} - \\hat{g}
 
     参数:
-        - **params** (iterable) - 用来优化或 dicts 定义的可迭代参数组。
+        - **params** (iterable) - 待优化参数构成的 iterable 或定义了参数组的 dict。
         - **lr** (float, optional) - 学习率（默认值：1e-3）。 
         - **betas** (Tuple[float, float], optional) - 用于计算梯度及其平方的运行平均数的系数（默认值：(0.9, 0.999))
         - **eps** (float, optional) - 添加到分母中以提高数值稳定性的项（默认值：1e-8）。
