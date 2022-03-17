@@ -25,10 +25,10 @@ reset_docstr(
     参数:
         - **params** (iterable) - 待优化参数构成的 iterable 或定义了参数组的 dict。
         - **lr** (float, optional) - 学习率（默认值：1e-3）。 
-        - **betas** (Tuple[float, float], optional) - 用于计算梯度及其平方的运行平均数的系数（默认值：(0.9, 0.999))
+        - **betas** (Tuple[float, float], optional) - 用于计算梯度及其平方的移动平均的系数（默认值：(0.9, 0.999))
         - **eps** (float, optional) - 添加到分母中以提高数值稳定性的项（默认值：1e-8）。
         - **weight_decay** (float, optional) - 权重衰减 (L2 penalty) (默认值: 0)
-        - **amsgrad** (bool, optional) - 是否使用该算法的 AMSGrad 变体(默认值: False) 。
+        - **amsgrad** (bool, optional) - 是否使用该算法的 AMSGrad 变体（默认值: False) 。
         - **do_bias_correction** (bool, optional) - 是否做偏差校正（默认值：True）。
 
     .. _Adam\\: A Method for Stochastic Optimization:
