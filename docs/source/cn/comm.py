@@ -48,24 +48,64 @@ reset_docstr(
 
     .. code-block:: python
 
-        # 我们有一个进程组，两个 rank 。
+        > # We have 1 process groups, 2 ranks.
         > import oneflow as flow
 
         > tensor = flow.tensor([[1, 2], [3, 4]], device="cuda") + flow.env.get_local_rank()
-        # rank0 上的 tensor
+        > # tensor on rank0
         > tensor
         tensor([[1, 2],
                 [3, 4]], device='cuda:0', dtype=oneflow.int64)
-
-        # rank1 上的 tensor
+        > # tensor on rank1
         > tensor
         tensor([[2, 3],
                 [4, 5]], device='cuda:1', dtype=oneflow.int64)
-
         > flow.comm.all_reduce(tensor)
         > tensor.numpy()
         array([[3, 5],
                [7, 9]], dtype=int64)
 
     """
+)
+
+reset_docstr(
+    oneflow.comm.all_gather,
+    r"""all_gather(tensor_list, tensor)
+    
+    将整个进程组的张量收集到一个列表中。
+
+    参数：
+        - **tensor_list** (list[Tensor]) - 输出列表。它应该包含正确大小的张量，用于集体的输出。
+        - **tensor** (Tensor) - 从当前进程广播的张量。
+
+    样例：
+
+    .. code-block:: python
+
+        > # We have 1 process groups, 2 ranks.
+        > import oneflow as flow
+
+        > input = flow.tensor([[1, 2], [3, 4]], device="cuda") + flow.env.get_local_rank()
+        > # input on rank0
+        > input
+        tensor([[1, 2],
+                [3, 4]], device='cuda:0', dtype=oneflow.int64)
+        > # input on rank1
+        > input
+        tensor([[2, 3],
+                [4, 5]], device='cuda:1', dtype=oneflow.int64)
+        > tensor_list = [flow.zeros(2, 2, dtype=flow.int64) for _ in range(2)]
+        > flow.comm.all_gather(tensor_list, input)
+        > # result on rank0
+        > tensor_list
+        [tensor([[1, 2],
+                [3, 4]], device='cuda:0', dtype=oneflow.int64), tensor([[2, 3],
+                [4, 5]], device='cuda:0', dtype=oneflow.int64)]
+        > # result on rank1
+        > tensor_list
+        [tensor([[1, 2],
+                [3, 4]], device='cuda:1', dtype=oneflow.int64), tensor([[2, 3],
+                [4, 5]], device='cuda:1', dtype=oneflow.int64)]
+
+    """,
 )
