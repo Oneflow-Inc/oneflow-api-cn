@@ -28,9 +28,9 @@ reset_docstr(
     假定 :attr:`input` 与 :attr:`target` 的对齐为“多对一”，这限制了 :attr:`target` 序列的长度，即 :attr:`target` :math:`\leq` :attr:`input`。
     
     参数：
-        - **blank** (int, 可选的): 空白标签。默认值为 :math:`0`。
-        - **reduction** (string, 可选的): 指定应用于输出的 reduction：``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行 reduction；``'mean'`` ：输出损失将除以目标长度，然后取该批次的平均值。默认值为： ``'mean'``。
-        - **zero_infinity** (bool, 可选的): 是否将无限损失和相关梯度归零。默认值为： ``False``。
+        - **blank** (int, 可选的) - 空白标签。默认值为 :math:`0`。
+        - **reduction** (string, 可选的) - 指定应用于输出的 reduction：``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行 reduction；``'mean'`` ：输出损失将除以目标长度，然后取该批次的平均值。默认值为： ``'mean'``。
+        - **zero_infinity** (bool, 可选的) - 是否将无限损失和相关梯度归零。默认值为： ``False``。
             无限损失主要发生在 :attr:`inputs` 太短而无法与 :attr:`target` 对齐时。
 
     形状：
@@ -89,11 +89,11 @@ reset_docstr(
     我们将它们组合在一起以加快速度。
 
     参数：
-        - **input** (oneflow.Tensor): 输入张量。
-        - **label** (oneflow.Tensor): 数据类型为整数的标签。
-        - **m1** (float): 损失参数 m1。
-        - **m2** (float): 损失参数 m2。
-        - **m3** (float): 损失参数 m3。
+        - **input** (oneflow.Tensor) - 输入张量。
+        - **label** (oneflow.Tensor) - 数据类型为整数的标签。
+        - **m1** (float) - 损失参数 m1。
+        - **m2** (float) - 损失参数 m2。
+        - **m3** (float) - 损失参数 m3。
 
     返回类型：
         oneflow.tensor
@@ -125,8 +125,8 @@ reset_docstr(
     用 :func:`torch.nn.functional.pad()` 来进行 `N` 维填充。
 
     参数:
-        - **padding** (int, list, tuple): 填充的大小。若数据类型为 `int` 则在两个边界中使用相同的填充。若是 2-`tuple` ，则 (:math:`\text{padding_left}`, :math:`\text{padding_right}`)。
-        - **value** (int, float): 用于填充的常量值。默认值为 0。
+        - **padding** (int, list, tuple) - 填充的大小。若数据类型为 `int` 则在两个边界中使用相同的填充。若是 2-`tuple` ，则 (:math:`\text{padding_left}`, :math:`\text{padding_right}`)。
+        - **value** (int, float) - 用于填充的常量值。默认值为 0。
 
     形状：
         - **Input** : :math:`(N, C, W_{in})`
@@ -162,7 +162,7 @@ reset_docstr(
     用 0 填充输入张量边界。用户可以通过设置参数 :attr:`paddings` 来设置填充量。
 
     参数：
-        - **padding** (int 或 tuple): 填充的大小。若是 `int`，则在所有边界中使用相同的填充。若是 4-`tuple` ，则(:math:`\mathrm{padding_{left}}`, :math:`\mathrm{padding_{right}}`, :math:`\mathrm{padding_{top}}`, :math:`\mathrm{padding_{bottom}}`)。
+        - **padding** (int 或 tuple) - 填充的大小。若是 `int`，则在所有边界中使用相同的填充。若是 4-`tuple` ，则(:math:`\mathrm{padding_{left}}`, :math:`\mathrm{padding_{right}}`, :math:`\mathrm{padding_{top}}`, :math:`\mathrm{padding_{bottom}}`)。
 
     形状：
         - **Input** : :math:`(N, C, H_{in}, W_{in})`
@@ -225,8 +225,8 @@ reset_docstr(
     用 :func:`torch.nn.functional.pad()` 来进行 `N` 维填充。
 
     参数:
-        - **padding** (int, list, tuple): 填充的大小。若数据类型为 `int` 则在所有边界中使用相同的填充。若是 6-`tuple` ，则 ( :math:`\text{padding_left}` , :math:`\text{padding_right}` , :math:`\text{padding_top}` , :math:`\text{padding_bottom}` , :math:`\text{padding_front}` , :math:`\text{padding_back}` )。
-        - **value** (int, float): 用于填充的常量值。默认值为 0。
+        - **padding** (int, list, tuple) - 填充的大小。若数据类型为 `int` 则在所有边界中使用相同的填充。若是 6-`tuple` ，则 ( :math:`\text{padding_left}` , :math:`\text{padding_right}` , :math:`\text{padding_top}` , :math:`\text{padding_bottom}` , :math:`\text{padding_front}` , :math:`\text{padding_back}` )。
+        - **value** (int, float) - 用于填充的常量值。默认值为 0。
 
     形状：
         - Input: :math:`(N, C, D_{in}, H_{in}, W_{in})`
@@ -300,15 +300,15 @@ reset_docstr(
         但是在这种情况下，不支持除了 1 以外的任何步幅 (stride) 值。
 
     参数：
-        - **in_channels** (int): 输入图像的通道数。
-        - **out_channels** (int): 卷积产生的通道数。
-        - **kernel_size** (int 或者 tuple): 卷积核的大小。
-        - **stride** (int 或者 tuple, 可选的): 卷积的步幅 (stride)。默认值为： 1。
-        - **padding** (int, tuple 或者 str, 可选的): 添加到输入两侧的填充值。默认值为： 0。
-        - **padding_mode** (string, 可选的): 默认值为： ``'zeros'``。
-        - **dilation** (int 或者 tuple, 可选的): 核心的元素之间的间距。默认值为： 1。
-        - **groups** (int, 可选的): 从输入通道到输出通道的 `blocked connections` 数。默认值为：1。
-        - **bias** (bool, 可选的): 若为 ``True`` ，则向输出添加可学习的偏差。默认值为： ``True``。
+        - **in_channels** (int) - 输入图像的通道数。
+        - **out_channels** (int) - 卷积产生的通道数。
+        - **kernel_size** (int 或者 tuple) - 卷积核的大小。
+        - **stride** (int 或者 tuple, 可选的) - 卷积的步幅 (stride)。默认值为： 1。
+        - **padding** (int, tuple 或者 str, 可选的) - 添加到输入两侧的填充值。默认值为： 0。
+        - **padding_mode** (string, 可选的) - 默认值为： ``'zeros'``。
+        - **dilation** (int 或者 tuple, 可选的) - 核心的元素之间的间距。默认值为： 1。
+        - **groups** (int, 可选的) - 从输入通道到输出通道的 `blocked connections` 数。默认值为：1。
+        - **bias** (bool, 可选的) - 若为 ``True`` ，则向输出添加可学习的偏差。默认值为： ``True``。
 
     形状：
         - **Input** : :math:`(N, C_{in}, L_{in})`
@@ -319,12 +319,12 @@ reset_docstr(
                         \times (\text{kernel\_size} - 1) - 1}{\text{stride}} + 1\right\rfloor
 
     Attributes:
-        weight (Tensor): 形状为 :math:`(\text{out\_channels}, 
-            \frac{\text{in\_channels}}{\text{groups}}, \text{kernel\_size})` 的模块可学习权重。
+        weight (Tensor) - 形状为 :math:`(\text{out\_channels}, 
+            \frac{\text{in\_channels}}{\text{groups}}, \text{kernel\_size})` 的模块的可学习权重。
             这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
             :math:`k = \frac{groups}{C_\text{in} * \text{kernel\_size}}` 
 
-        bias (Tensor):  形状为 (out_channels) 的模块可学习权重。若 :attr:`bias` 为 ``True`` ，
+        bias (Tensor) -  形状为 (out_channels) 的模块的可学习权重。若 :attr:`bias` 为 ``True`` ，
             则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
             :math:`k = \frac{groups}{C_\text{in} * \text{kernel\_size}}`
 
@@ -395,15 +395,15 @@ reset_docstr(
         执行具有深度乘数 `K` 的深度卷积。
 
     参数：
-        - **in_channels** (int): 输入图像的通道数。
-        - **out_channels** (int): 卷积产生的通道数。
-        - **kernel_size** (int 或者 tuple): 卷积核的大小。
-        - **stride** (int 或者 tuple, 可选的): 卷积的步幅 (stride)。默认值为： 1。
-        - **padding** (int, tuple 或者 str, 可选的): 添加到输入两侧的填充值。默认值为： 0。
-        - **padding_mode** (string, 可选的): 默认值为： ``'zeros'``。
-        - **dilation** (int 或者 tuple, 可选的): 核心的元素之间的间距。默认值为： 1。
-        - **groups** (int, 可选的): 从输入通道到输出通道的 `blocked connections` 数。默认值为：1。
-        - **bias** (bool, 可选的): 若为 ``True`` ，则向输出添加可学习的偏差。默认值为：``True``。
+        - **in_channels** (int) - 输入图像的通道数。
+        - **out_channels** (int) - 卷积产生的通道数。
+        - **kernel_size** (int 或者 tuple) - 卷积核的大小。
+        - **stride** (int 或者 tuple, 可选的) - 卷积的步幅 (stride)。默认值为： 1。
+        - **padding** (int, tuple 或者 str, 可选的) - 添加到输入两侧的填充值。默认值为： 0。
+        - **padding_mode** (string, 可选的) - 默认值为： ``'zeros'``。
+        - **dilation** (int 或者 tuple, 可选的) - 核心的元素之间的间距。默认值为： 1。
+        - **groups** (int, 可选的) - 从输入通道到输出通道的 `blocked connections` 数。默认值为：1。
+        - **bias** (bool, 可选的) - 若为 ``True`` ，则向输出添加可学习的偏差。默认值为：``True``。
 
     形状：
         - **Input** : :math:`(N, C_{in}, H_{in}, W_{in})`
@@ -418,12 +418,12 @@ reset_docstr(
                         \times (\text{kernel_size}[1] - 1) - 1}{\text{stride}[1]} + 1\right\rfloor
 
     Attributes:
-        weight (Tensor): 形状为 :math:`(\text{out_channels}, \frac{\text{in_channels}}{\text{groups}},`
-            :math:`\text{kernel_size[0]}, \text{kernel_size[1]})` 的模块可学习权重。
+        weight (Tensor) - 形状为 :math:`(\text{out_channels}, \frac{\text{in_channels}}{\text{groups}},`
+            :math:`\text{kernel_size[0]}, \text{kernel_size[1]})` 的模块的可学习权重。
             这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
             :math:`k = \frac{groups}{C_\text{in} * \prod_{i=0}^{1}\text{kernel_size}[i]}`
 
-        bias (Tensor):  形状为 (out_channels) 的模块可学习权重。若 :attr:`bias` 为 ``True`` ，
+        bias (Tensor) -  形状为 (out_channels) 的模块的可学习权重。若 :attr:`bias` 为 ``True`` ，
             则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
             :math:`k = \frac{groups}{C_\text{in} * \prod_{i=0}^{1}\text{kernel_size}[i]}`
 
@@ -481,15 +481,15 @@ reset_docstr(
         但是在这种情况下，不支持除了 1 以外的任何步幅 (stride) 值。
 
     参数：
-        - **in_channels** (int): 输入图像的通道数。
-        - **out_channels** (int): 卷积产生的通道数。
-        - **kernel_size** (int 或者 tuple): 卷积核的大小。
-        - **stride** (int 或者 tuple, 可选的): 卷积的步幅 (stride)。默认值为： 1。
-        - **padding** (int, tuple 或者 str, 可选的): 添加到输入两侧的填充值。默认值为： 0。
-        - **padding_mode** (string, 可选的): 默认值为： ``'zeros'``。
-        - **dilation** (int 或者 tuple, 可选的): 核心的元素之间的间距。默认值为： 1。
-        - **groups** (int, 可选的): 从输入通道到输出通道的 `blocked connections` 数。默认值为：1。
-        - **bias** (bool, 可选的): 若为 ``True`` ，则向输出添加可学习的偏差。默认值为：``True``。
+        - **in_channels** (int) - 输入图像的通道数。
+        - **out_channels** (int) - 卷积产生的通道数。
+        - **kernel_size** (int 或者 tuple) - 卷积核的大小。
+        - **stride** (int 或者 tuple, 可选的) - 卷积的步幅 (stride)。默认值为： 1。
+        - **padding** (int, tuple 或者 str, 可选的) - 添加到输入两侧的填充值。默认值为： 0。
+        - **padding_mode** (string, 可选的) - 默认值为： ``'zeros'``。
+        - **dilation** (int 或者 tuple, 可选的) - 核心的元素之间的间距。默认值为： 1。
+        - **groups** (int, 可选的) - 从输入通道到输出通道的 `blocked connections` 数。默认值为：1。
+        - **bias** (bool, 可选的) - 若为 ``True`` ，则向输出添加可学习的偏差。默认值为：``True``。
     
     形状：
         - **Input** : :math:`(N, C_{in}, D_{in}, H_{in}, W_{in})`
@@ -508,12 +508,12 @@ reset_docstr(
                     \times (\text{kernel\_size}[2] - 1) - 1}{\text{stride}[2]} + 1\right\rfloor
 
     Attributes:
-        weight (Tensor): 形状为 :math:`(\text{out\_channels}, \frac{\text{in\_channels}}{\text{groups}},`
-                         :math:`\text{kernel\_size[0]}, \text{kernel\_size[1]}, \text{kernel\_size[2]})` 的模块可学习权重。
+        weight (Tensor) - 形状为 :math:`(\text{out\_channels}, \frac{\text{in\_channels}}{\text{groups}},`
+                         :math:`\text{kernel\_size[0]}, \text{kernel\_size[1]}, \text{kernel\_size[2]})` 的模块的可学习权重。
                          这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
                          :math:`k = \frac{groups}{C_\text{in} * \prod_{i=0}^{2}\text{kernel\_size}[i]}` 
 
-        bias (Tensor):  形状为 (out_channels) 的模块可学习权重。若 :attr:`bias` 为 ``True`` ，
+        bias (Tensor) -  形状为 (out_channels) 的模块的可学习权重。若 :attr:`bias` 为 ``True`` ，
                          则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
                          :math:`k = \frac{groups}{C_\text{in} * \prod_{i=0}^{2}\text{kernel\_size}[i]}`
 
@@ -563,20 +563,20 @@ reset_docstr(
 
     Note:
         在某些情况下，将 CUDA 后端与 CuDNN 一起使用时，此算子可能会选择非确定性算法来提高性能。
-            若此操作有不确定性，您可以尝试通过设置 ``torch.backends.cudnn.deterministic =
+            若此操作有不确定性，可以尝试通过设置 ``torch.backends.cudnn.deterministic =
             True`` 来使操作具有确定性（可能以性能为代价）。
-            背景请参阅有关随机性 (randomness)  的 note。
+            背景请参阅有关随机性 (randomness)  的 notes。
 
     参数：
-        - **in_channels** (int): 输入图像的通道数
-        - **out_channels** (int): 卷积产生的通道数
-        - **kernel_size** (int 或 tuple): 卷积核的大小
-        - **stride** (int 或 tuple, 可选的): 卷积的步幅 (stride)。默认值为： 1
-        - **padding** (int 或 tuple, 可选的): 添加到输入每侧的 ``dilation * (kernel_size - 1) - padding`` 大小的 0 填充值。默认值为： 0
-        - **output_padding** (int 或 tuple, 可选的): 添加到输出形状一侧的大小。默认值为：0
-        - **groups** (int, 可选的): 从输入通道到输出通道的 `blocked connections` 数。默认值为：1
-        - **bias** (bool, 可选的): 若为 ``True`` ，则向输出添加可学习的偏差。默认值为：``True``
-        - **dilation** (int 或 tuple, 可选的): 核心的元素之间的间距。默认值为： 1
+        - **in_channels** (int) - 输入图像的通道数
+        - **out_channels** (int) - 卷积产生的通道数
+        - **kernel_size** (int 或 tuple) - 卷积核的大小
+        - **stride** (int 或 tuple, 可选的) - 卷积的步幅 (stride)。默认值为： 1
+        - **padding** (int 或 tuple, 可选的) - 添加到输入每侧的 ``dilation * (kernel_size - 1) - padding`` 大小的 0 填充值。默认值为： 0
+        - **output_padding** (int 或 tuple, 可选的) - 添加到输出形状一侧的大小。默认值为：0
+        - **groups** (int, 可选的) - 从输入通道到输出通道的 `blocked connections` 数。默认值为：1
+        - **bias** (bool, 可选的) - 若为 ``True`` ，则向输出添加可学习的偏差。默认值为：``True``
+        - **dilation** (int 或 tuple, 可选的) - 核心的元素之间的间距。默认值为： 1
 
     形状：
         - **Input** : :math:`(N, C_{in}, L_{in})`
@@ -587,12 +587,12 @@ reset_docstr(
                         \times (\text{kernel_size} - 1) + \text{output_padding} + 1
 
     Attributes:
-        weight (Tensor): 形状为 :math:`(\text{in\_channels}, \frac{\text{out\_channels}}{\text{groups}},`
-                         :math:`\text{kernel\\_size})` 的模块可学习权重。
+        weight (Tensor) - 形状为 :math:`(\text{in\_channels}, \frac{\text{out\_channels}}{\text{groups}},`
+                         :math:`\text{kernel\\_size})` 的模块的可学习权重。
                          这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
                          :math:`k = \frac{groups}{C_\text{out} * \text{kernel\_size}}`
 
-        bias (Tensor):   形状为 (out_channels) 的模块可学习权重。若 :attr:`bias` 为 ``True`` ，
+        bias (Tensor) -   形状为 (out_channels) 的模块的可学习权重。若 :attr:`bias` 为 ``True`` ，
                          则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
                          :math:`k = \frac{groups}{C_\text{out} * \text{kernel\_size}}`
     
@@ -613,15 +613,15 @@ reset_docstr(
     该 module 可以看作是 Conv2d 相对于其输入的梯度。它也称为分数步幅卷积或反卷积（尽管它实际上不是反卷积操作）。
 
     参数：
-        - **in_channels** (int): 输入图像的通道数。
-        - **out_channels** (int): 卷积产生的通道数。
-        - **kernel_size** (int 或 tuple): 卷积核的大小。
-        - **stride** (int 或 tuple, 可选的): 卷积的步幅 (stride)。默认值为： 1。
-        - **padding** (int 或 tuple, 可选的): 添加到输入每侧的 ``dilation * (kernel_size - 1) - padding`` 大小的 0 填充值。默认值为： 0。
-        - **output_padding** (int 或 tuple, 可选的): 添加到输出形状一侧的大小。默认值为：0。
-        - **groups** (int, 可选的): 从输入通道到输出通道的 `blocked connections` 数。默认值为：1。
-        - **bias** (bool, 可选的): 若为 ``True`` ，则向输出添加可学习的偏差。默认值为：``True``。
-        - **dilation** (int 或 tuple, 可选的): 核心的元素之间的间距。默认值为： 1。
+        - **in_channels** (int) - 输入图像的通道数。
+        - **out_channels** (int) - 卷积产生的通道数。
+        - **kernel_size** (int 或 tuple) - 卷积核的大小。
+        - **stride** (int 或 tuple, 可选的) - 卷积的步幅 (stride)。默认值为： 1。
+        - **padding** (int 或 tuple, 可选的) - 添加到输入每侧的 ``dilation * (kernel_size - 1) - padding`` 大小的 0 填充值。默认值为： 0。
+        - **output_padding** (int 或 tuple, 可选的) - 添加到输出形状一侧的大小。默认值为：0。
+        - **groups** (int, 可选的) - 从输入通道到输出通道的 `blocked connections` 数。默认值为：1。
+        - **bias** (bool, 可选的) - 若为 ``True`` ，则向输出添加可学习的偏差。默认值为：``True``。
+        - **dilation** (int 或 tuple, 可选的) - 核心的元素之间的间距。默认值为： 1。
 
     形状：
         - **Input** : :math:`(N, C_{in}, H_{in}, W_{in})`
@@ -637,12 +637,12 @@ reset_docstr(
                         \times (\text{kernel_size}[1] - 1) + \text{output_padding}[1] + 1
 
     Attributes:
-        ConvTranspose2d.weight (Tensor): 形状为 :math:`(\text{in_channels}, \frac{\text{out_channels}}{\text{groups}},`
-                         :math:`\text{kernel_size[0]}, \text{kernel_size[1]})` 的模块可学习权重。
+        ConvTranspose2d.weight (Tensor) - 形状为 :math:`(\text{in_channels}, \frac{\text{out_channels}}{\text{groups}},`
+                         :math:`\text{kernel_size[0]}, \text{kernel_size[1]})` 的模块的可学习权重。
                          这些权重的值是由公式 `\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
                          :math:`k = \frac{groups}{C_\text{out} * \prod_{i=0}^{1}\text{kernel_size}[i]}`
 
-        ConvTranspose2d.bias (Tensor):   形状为 (out_channels) 的模块可学习权重。若 :attr:`bias` 为 ``True`` ，
+        ConvTranspose2d.bias (Tensor) -   形状为 (out_channels) 的模块的可学习权重。若 :attr:`bias` 为 ``True`` ，
                          则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
                          :math:`k = \frac{groups}{C_\text{out} * \text{kernel\_size}}`
 
@@ -705,15 +705,15 @@ reset_docstr(
         请注意，:attr:`output_padding` 仅用于查找输出形状，但实际上并未填充输出。
 
     参数：
-        - **in_channels** (int): 输入图像的通道数。
-        - **out_channels** (int): 卷积产生的通道数。
-        - **kernel_size** (int 或 tuple): 卷积核的大小。
-        - **stride** (int 或 tuple, 可选的): 卷积的步幅 (stride)。默认值为： 1。
-        - **padding** (int 或 tuple, 可选的): 添加到输入每侧的 ``dilation * (kernel_size - 1) - padding`` 大小的 0 填充值。默认值为： 0。
-        - **output_padding** (int 或 tuple, 可选的): 添加到输出形状一侧的大小。默认值为：0。
-        - **groups** (int, 可选的): 从输入通道到输出通道的 `blocked connections` 数。默认值为：1。
-        - **bias** (bool, 可选的): 若为 ``True`` ，则向输出添加可学习的偏差。默认值为：``True``。
-        - **dilation** (int 或 tuple, 可选的): 核心的元素之间的间距。默认值为： 1。
+        - **in_channels** (int) - 输入图像的通道数。
+        - **out_channels** (int) - 卷积产生的通道数。
+        - **kernel_size** (int 或 tuple) - 卷积核的大小。
+        - **stride** (int 或 tuple, 可选的) - 卷积的步幅 (stride)。默认值为： 1。
+        - **padding** (int 或 tuple, 可选的) - 添加到输入每侧的 ``dilation * (kernel_size - 1) - padding`` 大小的 0 填充值。默认值为： 0。
+        - **output_padding** (int 或 tuple, 可选的) - 添加到输出形状一侧的大小。默认值为：0。
+        - **groups** (int, 可选的) - 从输入通道到输出通道的 `blocked connections` 数。默认值为：1。
+        - **bias** (bool, 可选的) - 若为 ``True`` ，则向输出添加可学习的偏差。默认值为：``True``。
+        - **dilation** (int 或 tuple, 可选的) - 核心的元素之间的间距。默认值为： 1。
 
     形状：
         - **Input** : :math:`(N, C_{in}, D_{in}, H_{in}, W_{in})`
@@ -730,12 +730,12 @@ reset_docstr(
                         \times (\text{kernel_size}[2] - 1) + \text{output_padding}[2] + 1
 
     Attributes:
-        weight (Tensor): 形状为 :math:`(\text{in_channels}, \frac{\text{out_channels}}{\text{groups}},`
-                         :math:`\text{kernel_size[0]}, \text{kernel_size[1]}, \text{kernel_size[2]})` 的模块可学习权重。
+        weight (Tensor) - 形状为 :math:`(\text{in_channels}, \frac{\text{out_channels}}{\text{groups}},`
+                         :math:`\text{kernel_size[0]}, \text{kernel_size[1]}, \text{kernel_size[2]})` 的模块的可学习权重。
                          这些权重的值是由公式 `\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
                          :math:`k = \frac{groups}{C_\text{out} * \prod_{i=0}^{2}\text{kernel_size}[i]}`
 
-        bias (Tensor):   形状为 (out_channels) 的模块可学习权重。若 :attr:`bias` 为 ``True`` ，
+        bias (Tensor) -   形状为 (out_channels) 的模块的可学习权重。若 :attr:`bias` 为 ``True`` ，
                          则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
                          :math:`k = \frac{groups}{C_\text{out} * \text{kernel\_size}}`
 
@@ -788,7 +788,7 @@ reset_docstr(
     此类也可用于更高维度的输入，例如 2D 图像（见下文）。
 
     参数：
-        - **reduction** (string, 可选的): 指定应用于输出的 reduction（可以是 ``'none'`` 、 ``'mean'`` 、 ``'sum'`` ，默认值为 ``'mean'``）：
+        - **reduction** (string, 可选的) - 指定应用于输出的 reduction（可以是 ``'none'`` 、 ``'mean'`` 、 ``'sum'`` ，默认值为 ``'mean'``）：
             - ``'none'`` :不进行简化；
             - ``'mean'`` :取输出的加权平均值；
             - ``'sum'`` :取输出的和。
@@ -832,12 +832,12 @@ reset_docstr(
         \\end{cases}
 
     参数：
-        negative_slope: 控制负斜率的角度。默认值为 1e-2。
-        inplace: 可以选择就地执行操作。默认值为 ``False``。
+        - **negative_slope** - 控制负斜率的角度。默认值为 1e-2。
+        - **inplace** - 可以选择就地执行操作。默认值为 ``False``。
 
     形状：
-        - **Input**: :math:`(N, *)` ，其中 `*` 表示任意数量的附加维度。
-        - **Output**: :math:`(N, *)` ，与输入的形状相同。
+        - **Input** - :math:`(N, *)` ，其中 `*` 表示任意数量的附加维度。
+        - **Output** - :math:`(N, *)` ，与输入的形状相同。
 
     示例：
 
@@ -862,9 +862,9 @@ reset_docstr(
     对输入数据应用线性变换： :math:`y = xA^T + b`
 
     参数：
-        - **in_features**: 每一个输入样本的大小。
-        - **out_features**: 每一个输出样本的大小。
-        - **bias**: 若设置为 ``False`` ，则该层不会学习附加偏差。默认值为 ``True``。
+        - **in_features** - 每一个输入样本的大小。
+        - **out_features** - 每一个输出样本的大小。
+        - **bias** - 若设置为 ``False`` ，则该层不会学习附加偏差。默认值为 ``True``。
 
     形状：
         - Input: :math:`(N, *, H_{in})` ，其中 `*` 表示任意数量的附加维度，且 :math:`H_{in} = {in\\_features}`。
@@ -933,7 +933,7 @@ reset_docstr(
         \text{LogSoftmax}(x_{i}) = \log\left(\frac{\exp(x_i) }{ \sum_j \exp(x_j)} \right) = x_i - \log({ \sum_j \exp(x_j)})
 
     参数：
-        - **dim** (int): 将沿其计算 LogSoftmax 的维度。
+        - **dim** (int) - LogSoftmax 计算的维度。
 
     形状：
         - Input: :math:`(N, *)` ，其中 `*` 表示任意数量的附加维度。
@@ -974,8 +974,8 @@ reset_docstr(
         \\text{loss}(x1, x2, y) = \\max(0, -y * (x1 - x2) + \\text{margin})
 
     参数：
-        - **margin** (float, optional): 默认值为 :math:`0`。
-        - **reduction** (string, optional): 指定对输出应用的 reduction：``'none'`` | ``'mean'`` | ``'sum'``。``'none'`` ：不进行 reduction；``'mean'`` ：输出的和将会除以输出中的元素数量；``'sum'`` ：输出将被求和。默认值为 ``'mean'``。
+        - **margin** (float, optional) - 默认值为 :math:`0`。
+        - **reduction** (string, optional) - 指定对输出应用的 reduction：``'none'`` | ``'mean'`` | ``'sum'``。``'none'`` ：不进行 reduction；``'mean'`` ：输出的和将会除以输出中的元素数量；``'sum'`` ：输出将被求和。默认值为 ``'mean'``。
 
     形状：
         - `x1` : :math:`(N, D)` ，其中 `N` 是批量大小， `D` 是样本大小。
@@ -1033,12 +1033,12 @@ reset_docstr(
         当 ceil_mode = True 且滑动窗口从左侧填充区域或输入中开始，则允许其越界。从右侧填充区域开始的滑动窗口将被忽略。
 
     参数：
-        - **kernel_size**: 滑动窗口的大小，必须为正。
-        - **stride**: 滑动窗口的步长，必须为正。默认值为 :attr:`kernel_size`。
-        - **padding**: 两侧都用隐式的负无穷大填充，该值必须非负且不大于 kernel_size / 2。
-        - **dilation**: 滑动窗口中元素之间的跨步，必须为正。
-        - **return_indices**: 若设置为 ``True`` 则返回 argmax 以及最大值，在后续的 :class:`torch.nn.MaxUnpool1d` 中用到。
-        - **ceil_mode**: 若设置为 ``True`` 则使用 `ceil` 而非 `floor` 来计算输出形状。这确保了输入张量中的每个元素都被滑动窗口覆盖。
+        - **kernel_size** - 滑动窗口的大小，必须为正。
+        - **stride** - 滑动窗口的步长，必须为正。默认值为 :attr:`kernel_size`。
+        - **padding** - 两侧都用隐式的负无穷大填充，该值必须非负且不大于 kernel_size / 2。
+        - **dilation** - 滑动窗口中元素之间的跨步，必须为正。
+        - **return_indices** - 若设置为 ``True`` 则返回 argmax 以及最大值，在后续的 :class:`torch.nn.MaxUnpool1d` 中用到。
+        - **ceil_mode** - 若设置为 ``True`` 则使用 `ceil` 而非 `floor` 来计算输出形状。这确保了输入张量中的每个元素都被滑动窗口覆盖。
 
     形状：
         - Input: :math:`(N, C, L_{in})`
@@ -1091,12 +1091,12 @@ reset_docstr(
         - 一个由两个 int 组成的 ``tuple`` -- 在这种情况下，第一个整数用于高度维度，第二个整数用于宽度维度。
 
     参数：
-        - **kernel_size**: 窗口的最大尺寸。
-        - **stride**: 窗口的滑动步长。默认值为 :attr:`kernel_size`。
-        - **padding**: 要加在两侧的隐式最小填充值。
-        - **dilation**: 控制窗口中元素步幅的参数。
-        - **return_indices**: 若设置为 ``True`` ，则返回最大索引和输出，在后续的 :class:`torch.nn.MaxUnpool2d` 中用到。
-        - **ceil_mode**: 若设置为 ``True`` 则使用 `ceil` 而非 `floor` 来计算输出形状。
+        - **kernel_size** - 窗口的最大尺寸。
+        - **stride** - 窗口的滑动步长。默认值为 :attr:`kernel_size`。
+        - **padding** - 要加在两侧的隐式最小填充值。
+        - **dilation** - 控制窗口中元素步幅的参数。
+        - **return_indices** - 若设置为 ``True`` ，则返回最大索引和输出，在后续的 :class:`torch.nn.MaxUnpool2d` 中用到。
+        - **ceil_mode** - 若设置为 ``True`` 则使用 `ceil` 而非 `floor` 来计算输出形状。
 
     形状：
         - Input: :math:`(N, C, H_{in}, W_{in})`
@@ -1152,12 +1152,12 @@ reset_docstr(
         - 一个由三个 int 组成的 ``tuple`` -- 在这种情况下，第一个整数用于深度维度，第二个整数用于高度维度，第三个整数用于宽度维度。
 
     参数：
-        - **kernel_size**: 窗口的最大尺寸。
-        - **stride**: 窗口的滑动步长。默认值为 :attr:`kernel_size`。
-        - **padding**: 在三个边上都用隐式的最小值填充。
-        - **dilation**: 控制窗口中元素步幅的参数。
-        - **return_indices**: 若设置为 ``True`` ，则返回最大索引和输出，在后续的 :class:`torch.nn.MaxUnpool3d` 中用到。
-        - **ceil_mode**: 若设置为 ``True`` 则使用 `ceil` 而非 `floor` 来计算输出形状。
+        - **kernel_size** - 窗口的最大尺寸。
+        - **stride** - 窗口的滑动步长。默认值为 :attr:`kernel_size`。
+        - **padding** - 在三个边上都用隐式的最小值填充。
+        - **dilation** - 控制窗口中元素步幅的参数。
+        - **return_indices** - 若设置为 ``True`` ，则返回最大索引和输出，在后续的 :class:`torch.nn.MaxUnpool3d` 中用到。
+        - **ceil_mode** - 若设置为 ``True`` 则使用 `ceil` 而非 `floor` 来计算输出形状。
 
     形状：
         - Input: :math:`(N, C, D_{in}, H_{in}, W_{in})`
@@ -1230,13 +1230,13 @@ reset_docstr(
     若 per_layer_quantization == False ，则 scale 和 zero_point 的形状为 (input.shape[0],)。
 
     参数：
-        - **quantization_bit** (int): 量化输入为 uintX / intX ， X 的值在 [2, 8] 中，默认值为 8。
-        - **quantization_scheme** (str): "symmetric" 或 "affine" ， 量化为有符号/无符号整数。 默认值为 "symmetric"。
-        - **quantization_formula** (str): "google" or "cambricon"。
-        - **per_layer_quantization** (bool): 若设置为 True ，则表示 per-layer ，否则为 per-channel。默认值为 True。
+        - **quantization_bit** (int) - 量化输入为 uintX / intX ， X 的值在 [2, 8] 中，默认值为 8。
+        - **quantization_scheme** (str) - "symmetric" 或 "affine" ， 量化为有符号/无符号整数。 默认值为 "symmetric"。
+        - **quantization_formula** (str) - "google" or "cambricon"。
+        - **per_layer_quantization** (bool) - 若设置为 True ，则表示 per-layer ，否则为 per-channel。默认值为 True。
 
     返回值：
-        Tuple[oneflow.Tensor, oneflow.Tensor]: 输入张量的 scale 和 zero_point
+        Tuple[oneflow.Tensor, oneflow.Tensor]: 输入张量的 scale 和 zero_point。
 
     示例：
 
@@ -1318,17 +1318,17 @@ reset_docstr(
             & zero\\_point = -moving\\_min / scale
 
     Note:
-        ``current_train_step`` 可以直接被赋值给一个优化器（例如 SGD）
+        ``current_train_step`` 可以直接被赋值给一个优化器（例如 SGD）。
 
     参数：
-        - **training** (bool): 模式是否处于训练状态，默认值为 False。
-        - **quantization_bit** (int): 量化输入为 uintX / intX ， X 的值在 [2, 8] 中，默认值为 8。
-        - **quantization_scheme** (str): "symmetric" 或 "affine" ， 量化为有符号/无符号整数。 默认值为 "symmetric"。
-        - **quantization_formula** (str): "google" or "cambricon"。
-        - **momentum** (float): 指数移动平均运算的平滑参数，默认值为 0.95。
+        - **training** (bool) - 模式是否处于训练状态，默认值为 False。
+        - **quantization_bit** (int) - 量化输入为 uintX / intX ， X 的值在 [2, 8] 中，默认值为 8。
+        - **quantization_scheme** (str) - "symmetric" 或 "affine" ， 量化为有符号/无符号整数。 默认值为 "symmetric"。
+        - **quantization_formula** (str) - "google" or "cambricon"。
+        - **momentum** (float) - 指数移动平均运算的平滑参数，默认值为 0.95。
 
     返回值：
-        Tuple[oneflow.Tensor, oneflow.Tensor]: 输入张量的 scale 和 zero_point
+        Tuple[oneflow.Tensor, oneflow.Tensor]: 输入张量的 scale 和 zero_point。
 
     示例：
 
@@ -1410,7 +1410,7 @@ reset_docstr(
     (see below). In the case of images, it computes NLL loss per-pixel.
 
     参数：
-        reduction (string, optional): Specifies the reduction to apply to the output:
+        reduction (string, optional) - Specifies the reduction to apply to the output:
             ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'``: no reduction will
             be applied, ``'mean'``: the weighted mean of the output is taken,
             ``'sum'``: the output will be summed. Default: ``'mean'``
@@ -1452,12 +1452,12 @@ reset_docstr(
     此算子将张量读取为字节，输出取决于下游任务，可能需要进一步的解码过程，比如 cv2.imdecode() 用于图像和解码，以及 decode("utf-8") 用于字符。
     
     参数：
-        - **blob_name**: OFRecord 目标特征的名称。
-        - **name**: 图中此分量的名称。
-        - **input**: 可能由 OFRecordReader 提供的张量。
+        - **blob_name** - OFRecord 目标特征的名称。
+        - **name** - 图中此分量的名称。
+        - **input** - 可能由 OFRecordReader 提供的张量。
 
     返回值：
-        按字节编码后的张量
+        按字节编码后的张量。
 
     示例：
 
@@ -1513,15 +1513,15 @@ reset_docstr(
         通道维度是输入的第二维度。当输入维度不足 2 时，就不存在通道维度且通道数为 1。
 
     参数：
-        - **num_parameters** (int): 需要学习的 :math:`a` 的数量尽管它将一个 int 数值作为输入，但只有两类值是合法的： 1 或输入的通道数。默认值为 1。
-        - **init** (float): :math:`a` 的初始值。默认值为 0.25。
+        - **num_parameters** (int) - 需要学习的 :math:`a` 的数量尽管它将一个 int 数值作为输入，但只有两类值是合法的： 1 或输入的通道数。默认值为 1。
+        - **init** (float) - :math:`a` 的初始值。默认值为 0.25。
 
     形状：
         - Input: :math:`(N, *)` ，其中 `*` 表示任意数量的附加维度。
         - Output: :math:`(N, *)` ，与输入的形状相同。
 
     属性：
-        - weight (Tensor): 形状 (:attr:`num_parameters`) 的可学习权重。
+        - weight (Tensor) - 形状 (:attr:`num_parameters`) 的可学习权重。
 
     .. code-block:: python
 
@@ -1571,9 +1571,9 @@ reset_docstr(
             & (clamp(round(x / scale + zero\\_point), quant\\_min, quant\\_max) - zero\\_point)
 
     参数：
-        - **quantization_bit** (int): 量化输入为 uintX / intX ， X 的值在 [2, 8] 中，默认值为 8。
-        - **quantization_scheme** (str): "symmetric" 或 "affine" ， 量化为有符号/无符号整数。 默认值为 "symmetric"。
-        - **quantization_formula** (str): "google" or "cambricon"。
+        - **quantization_bit** (int) - 量化输入为 uintX / intX ， X 的值在 [2, 8] 中，默认值为 8。
+        - **quantization_scheme** (str) - "symmetric" 或 "affine" ， 量化为有符号/无符号整数。 默认值为 "symmetric"。
+        - **quantization_formula** (str) - "google" or "cambricon"。
 
     返回值：
         oneflow.Tensor: 经过量化操作后的输入张量。
@@ -1632,7 +1632,7 @@ reset_docstr(
         \\end{cases}
 
     参数：
-        - **inplace**: 可以选择就地执行操作。默认值为 ``False``。
+        - **inplace** - 可以选择就地执行操作。默认值为 ``False``。
 
     形状：
         - Input: :math:`(N, *)` ，其中 `*` 表示任意数量的附加维度。
@@ -1664,7 +1664,7 @@ reset_docstr(
     使用输入边界的反射来填充输入张量。
 
     参数：
-        - **padding** (Union[int,tuple]): 填充范围的大小或边界。若输入是一个 int，那各个维度上都会填充同样大小的数据。若输入是一个四个元素的元组，那么使用 :math:`(\\text{padding}_{\\text{left}}, \\text{padding}_{\\text{right}}, \\text{padding}_{\\text{top}}, \\text{padding}_{\\text{bottom}} )`。
+        - **padding** (Union[int,tuple]) - 填充范围的大小或边界。若输入是一个 int，那各个维度上都会填充同样大小的数据。若输入是一个四个元素的元组，那么使用 :math:`(\\text{padding}_{\\text{left}}, \\text{padding}_{\\text{right}}, \\text{padding}_{\\text{top}}, \\text{padding}_{\\text{bottom}} )`。
 
     返回值：
         Tensor: 返回一个新的张量，这是输入张量的反射填充的结果。
@@ -1711,7 +1711,7 @@ reset_docstr(
     通过复制输入张量边界元素对输入张量进行填充操作。
 
     参数：
-        - **padding** (Union[int, tuple, list]): 填充范围的大小。若输入是一个 int，那各个边界上都会填充上同样大小的数据。若输入是一个四个元素的元组，那么使用 (:math:`\\mathrm{padding_{left}}`, :math:`\\mathrm{padding_{right}}`, :math:`\\mathrm{padding_{top}}`, :math:`\\mathrm{padding_{bottom}}`)。
+        - **padding** (Union[int, tuple, list]) - 填充范围的大小。若输入是一个 int，那各个边界上都会填充上同样大小的数据。若输入是一个四个元素的元组，那么使用 (:math:`\\mathrm{padding_{left}}`, :math:`\\mathrm{padding_{right}}`, :math:`\\mathrm{padding_{top}}`, :math:`\\mathrm{padding_{bottom}}`)。
 
     形状：
         - Input: :math:`(N, C, H_{in}, W_{in})`
@@ -1838,10 +1838,10 @@ reset_docstr(
         * 对于平滑 L1 损失，随着 beta 的变化，损失的 L1 段的斜率恒为 1。而对于 :class:`HuberLoss` ，斜率是 beta。
 
     参数：
-        - **size_average** (bool, optional): 已弃用（参考 :attr:`reduction`）。默认情况下，损失是批次中每个损失元素的平均值。请注意，对于某些损失，每个样本有多个元素。若 :attr:`size_average` == ``False``，则每个小批量的损失相加。当 :attr:`reduce` == ``False`` 时忽略。默认值为 ``True``。
-        - **reduce** (bool, optional): 已弃用（参考 :attr:`reduction`）。根据 :attr:`size_average` 对每个小批量的损失进行平均或汇总。若 :attr:`reduce` == ``False``，则返回每个批元素的损失，并忽略 :attr:`size_average`。默认值为 ``True``。
-        - **reduction** (string, optional): 指定应用于输出的 reduction：``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行 reduction；``'mean'`` ：输出的和将会除以输出中的元素数量；``'sum'`` ：输出将被求和。注意： :attr:`size_average` 和 :attr:`reduce` 正逐渐被弃用，指定这二者的任何一个都将覆盖 :attr:`reduction`。默认值为 ``'mean'``。
-        - **beta** (float, optional): 指定在 L1 和 L2 损失之间更改的阈值。该值必须为非负。默认值为 1.0。
+        - **size_average** (bool, optional) - 已弃用（参考 :attr:`reduction`）。默认情况下，损失是批次中每个损失元素的平均值。请注意，对于某些损失，每个样本有多个元素。若 :attr:`size_average` == ``False``，则每个小批量的损失相加。当 :attr:`reduce` == ``False`` 时忽略。默认值为 ``True``。
+        - **reduce** (bool, optional) - 已弃用（参考 :attr:`reduction`）。根据 :attr:`size_average` 对每个小批量的损失进行平均或汇总。若 :attr:`reduce` == ``False``，则返回每个批元素的损失，并忽略 :attr:`size_average`。默认值为 ``True``。
+        - **reduction** (string, optional) - 指定应用于输出的 reduction：``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行 reduction；``'mean'`` ：输出的和将会除以输出中的元素数量；``'sum'`` ：输出将被求和。注意： :attr:`size_average` 和 :attr:`reduce` 正逐渐被弃用，指定这二者的任何一个都将覆盖 :attr:`reduction`。默认值为 ``'mean'``。
+        - **beta** (float, optional) - 指定在 L1 和 L2 损失之间更改的阈值。该值必须为非负。默认值为 1.0。
 
     形状：
         - Input: :math:`(N, *)` ，其中 `*` 表示任意数量的附加维度。
@@ -1891,7 +1891,7 @@ reset_docstr(
         out = \\frac{e^x-e^{-x}}{e^x+e^{-x}}
 
     参数：
-        - **input** (oneflow.Tensor): 张量。
+        - **input** (oneflow.Tensor) - 张量。
 
     返回值：
         oneflow.Tensor: 运算结果。
@@ -1933,10 +1933,10 @@ reset_docstr(
         d(x_i, y_i) = \left\lVert {\bf x}_i - {\bf y}_i \right\rVert_p
 
     参数：
-        - **margin** (float, optional): 默认值为 :math:`1`
-        - **p** (float, optional): 成对距离的范数，默认值为 :math:`2.0`
-        - **swap** (bool, optional): 默认值为 ``False``.
-        - **reduction** (string, optional): 指定对输出应用的 reduction ：
+        - **margin** (float, optional) - 默认值为 :math:`1`
+        - **p** (float, optional) - 成对距离的范数，默认值为 :math:`2.0`
+        - **swap** (bool, optional) - 默认值为 ``False``.
+        - **reduction** (string, optional) - 指定对输出应用的 reduction ：
             ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行 reduction ；
             ``'mean'`` ：输出的和将会除以输出中的元素数量；
             ``'sum'`` ：输出将被求和。默认值为 ``'mean'``。注意： :attr:`size_average` 和 :attr:`reduce` 正逐渐被弃用，指定这二者的任何一个都将覆盖 :attr:`reduction`。默认值为 ``'mean'``
@@ -1974,13 +1974,13 @@ reset_docstr(
 
     可用于上采样的算法分别是 3D、4D 和 5D 输入张量的最近邻和线性、双线性、双三次和三线性算法。
 
-    可以给出 :attr:`scale_factor` 或目标输出大小来计算输出大小。（你不能同时给出，因为它是模棱两可的）。
+    可以给出 :attr:`scale_factor` 或目标输出大小来计算输出大小。（不能同时给出，因为这是模棱两可的）。
 
     参数：
-        - **size** (int or Tuple[int] or Tuple[int, int] or Tuple[int, int, int], optional): 输出空间大小。
-        - **scale_factor** (float or Tuple[float] or Tuple[float, float] or Tuple[float, float, float], optional): 空间大小的乘数。若是 tuple 则需要匹配输入大小。
-        - **mode** (str, optional): 上采样算法： ``'nearest'``,``'linear'``, ``'bilinear'``, ``'bicubic'`` 和 ``'trilinear'``。默认值为： ``'nearest'``。
-        - **align_corners** (bool, optional): 若设置为 ``True`` ，则若为 True，则输入和输出张量的角像素对齐，从而保留这些像素的值。这仅在模式为 ``'linear'``, ``'bilinear'``, 或 ``'trilinear'`` 时有效。默认值为 False。
+        - **size** (int or Tuple[int] or Tuple[int, int] or Tuple[int, int, int], optional) - 输出空间大小。
+        - **scale_factor** (float or Tuple[float] or Tuple[float, float] or Tuple[float, float, float], optional) - 空间大小的乘数。若是 tuple 则需要匹配输入大小。
+        - **mode** (str, optional) - 上采样算法： ``'nearest'``,``'linear'``, ``'bilinear'``, ``'bicubic'`` 和 ``'trilinear'``。默认值为： ``'nearest'``。
+        - **align_corners** (bool, optional) - 若设置为 ``True`` ，则若为 True，则输入和输出张量的角像素对齐，从而保留这些像素的值。这仅在模式为 ``'linear'``, ``'bilinear'``, 或 ``'trilinear'`` 时有效。默认值为 False。
 
     形状：
         - Input: :math:`(N, C, W_{in})`, :math:`(N, C, H_{in}, W_{in})` 或 :math:`(N, C, D_{in}, H_{in}, W_{in})`
@@ -2032,8 +2032,8 @@ reset_docstr(
     若给定 :attr:`size` ，则它也是图像 `(h, w)` 的大小。
 
     参数：
-        - **size** (int or Tuple[int, int], optional): 输出空间大小。
-        - **scale_factor** (float or Tuple[float, float], optional): 空间大小的乘数。
+        - **size** (int or Tuple[int, int], optional) - 输出空间大小。
+        - **scale_factor** (float or Tuple[float, float], optional) - 空间大小的乘数。
 
     .. warning::
         对这个类的维护已经停止，请使用 :func:`~nn.functional.interpolate`。它等同于 ``nn.functional.interpolate(..., mode='bilinear', align_corners=True)``
@@ -2078,8 +2078,8 @@ reset_docstr(
     若给定 :attr:`size` ，则它也是图像 `(h, w)` 的大小。
 
     参数：
-        - **size** (int or Tuple[int, int], optional): 输出空间大小。
-        - **scale_factor** (float or Tuple[float, float], optional): 空间大小的乘数。
+        - **size** (int or Tuple[int, int], optional) - 输出空间大小。
+        - **scale_factor** (float or Tuple[float, float], optional) - 空间大小的乘数。
 
     .. warning::
         对这个类的维护已经停止，请使用 :func:`~nn.functional.interpolate`。
@@ -2120,7 +2120,7 @@ reset_docstr(
     用零填充输入张量边界。用户可以通过设置参数 `paddings` 来设置填充量。
 
     参数：
-        - **padding** (Union[int, tuple]):  填充量的大小。若是 `int` 类型，则在所有边界中使用相同的填充。若是 4-`tuple` 则使用 (:math:`\\mathrm{padding_{left}}`, :math:`\\mathrm{padding_{right}}`, :math:`\\mathrm{padding_{top}}`, :math:`\\mathrm{padding_{bottom}}`)
+        - **padding** (Union[int, tuple]) -  填充量的大小。若是 `int` 类型，则在所有边界中使用相同的填充。若是 4-`tuple` 则使用 (:math:`\\mathrm{padding_{left}}`, :math:`\\mathrm{padding_{right}}`, :math:`\\mathrm{padding_{top}}`, :math:`\\mathrm{padding_{bottom}}`)
 
     形状：
         - Input: :math:`(N, C, H_{in}, W_{in})`
