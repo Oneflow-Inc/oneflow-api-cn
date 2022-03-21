@@ -20,8 +20,11 @@ reset_docstr(
         - **gain**: 一个可选的缩放参数
 
     示例：
-        >>> w = flow.empty(3, 5)
-        >>> nn.init.xavier_uniform_(w, gain=nn.init.calculate_gain('relu'))
+
+    .. code-block:: python
+
+        > w = flow.empty(3, 5)
+        > nn.init.xavier_uniform_(w, gain=1.0)
     """
 )
 
@@ -44,8 +47,11 @@ reset_docstr(
         - **gain**: 一个可选的缩放参数
 
     示例：
-        >>> w = flow.empty(3, 5)
-        >>> nn.init.xavier_normal_(w)
+    
+    .. code-block:: python
+
+        > w = flow.empty(3, 5)
+        > nn.init.xavier_normal_(w)
     """
 )
 
@@ -71,8 +77,11 @@ reset_docstr(
             建议仅使用 ``'relu'`` or ``'leaky_relu'`` (默认)
 
     示例：
-        >>> w = flow.empty(3, 5)
-        >>> nn.init.kaiming_uniform_(w, mode='fan_in', nonlinearity='relu')
+
+    .. code-block:: python
+    
+        > w = flow.empty(3, 5)
+        > nn.init.kaiming_uniform_(w, mode='fan_in', nonlinearity='relu')
     """
 
 )
@@ -99,8 +108,11 @@ reset_docstr(
             建议仅使用 ``'relu'`` or ``'leaky_relu'`` (默认)
 
     示例：
-        >>> w = flow.empty(3, 5)
-        >>> nn.init.kaiming_normal_(w, mode='fan_out', nonlinearity='relu')
+    
+    .. code-block:: python
+
+        > w = flow.empty(3, 5)
+        > nn.init.kaiming_normal_(w, mode='fan_out', nonlinearity='relu')
     """
 
 )
