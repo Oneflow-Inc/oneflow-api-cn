@@ -1917,7 +1917,7 @@ reset_docstr(
     oneflow.nn.TripletMarginLoss,
     r"""TripletMarginLoss(margin: float = 1.0, p: float = 2.0, eps: float = 1e-06, swap: bool = False, size_average=None, reduce=None, reduction: str = 'mean')
     
-    在给定输入张量 :math:`x1`, :math:`x2`, :math:`x3` 和值大于 :math:`0` 的边距的情况下，创建一个测量三元组损失的标准。这用于测量样本之间的相对相似性。 三元组由 `a`, `p` and `n` 组成（即分别为锚点、正例和负例）。所有输入张量的形状应为 :math:`(N, D)`
+    给定输入张量 :math:`x1`, :math:`x2`, :math:`x3` ，且边界值大于 :math:`0` ，创建一个测量三元组损失的标准，这用于测量样本之间的相对相似性。 三元组由 `a`, `p` and `n` 组成（即分别为锚点、正例和负例）。所有输入张量的形状应为 :math:`(N, D)`
 
     在 V. Balntas, E. Riba 等人的 `Learning local feature descriptors with triplets and shallow convolutional neural networks <http://www.bmva.org/bmvc/2016/papers/paper119/index.html>`__ 中详细描述了距离交换。
 
