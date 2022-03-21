@@ -75,6 +75,6 @@ reset_docstr(
     r"""执行单个优化步骤。
 
         参数:
-            - **closure** (callable, optional)- 重新评估模型并返回损失的闭包。          
+            - **closure** (callable, optional)- 重新测试模型并返回损失的闭包。          
     """
 )

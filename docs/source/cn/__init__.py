@@ -39,3 +39,4 @@ from .cuda import *
 from .image import *
 from .adam import *
 from .adamw import *
+from .lamb import *

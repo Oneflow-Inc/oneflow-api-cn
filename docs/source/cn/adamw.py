@@ -14,7 +14,7 @@ reset_docstr(
 
     所以我们使用 Adam-weight-decay 算法来解决以下问题。
 
-    参数更新的方程是。
+    参数更新的方程是：
 
     .. math::
 
@@ -86,4 +86,13 @@ reset_docstr(
     关于 `clip_grad_max_norm` 和 `clip_grad_norm_type` 函数的更多细节，你可以参考 :func:`oneflow.nn.utils.clip_grad_norm` 。
 
     """
+)
+
+reset_docstr(
+    oneflow.optim.AdamW.step,
+    """执行一个优化步骤。
+
+        参数:
+            - **closure** (callable, optional) - 重新测试模型并返回损失的闭包。
+        """
 )

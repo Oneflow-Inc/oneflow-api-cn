@@ -2,15 +2,12 @@ import oneflow
 from docreset import reset_docstr
 
 reset_docstr(
-    oneflow.optim.Adam,
-    """实现 Adam 优化算法。
+    oneflow.optim.LAMB,
+    """实现 LAMB 优化算法。
 
-    它在 `Adam: A Method for Stochastic Optimization`_ 中被提出。
-    L2 penalty 的实现遵循了 `Decoupled Weight Decay Regularization`_ 中提出的变化。
+    LAMB 在 `Large Batch Optimization for Deep Learning: Training BERT in 76 minutes`_ 中被提出。
 
-    该算法可以根据梯度的一阶矩估计和二阶矩估计动态地调整每个参数的学习率。
-
-    参数更新的方程是：
+    参数更新的方程是。
 
     .. math::
 
@@ -18,9 +15,11 @@ reset_docstr(
 
         & S_t = \\beta_2*S_{t-1} + (1-\\beta_2)*{grad} \\odot {grad}
 
-        & \\hat{g} = learning\\_rate*\\frac{{V_t}}{\\sqrt{{S_t}}+\\epsilon}
+        & \\hat{u} = \\frac{{V_t}}{\\sqrt{{S_t}}+\\epsilon}
+        
+        & \\hat{r} = learning\\_rate * \\frac{||param_{old}||_2}{||\\hat{u}||_2}
 
-        & param_{new} = param_{old} - \\hat{g}
+        & param_{new} = param_{old} - \\hat{r} * \\hat{u}
 
     参数:
         - **params** (iterable) - 待优化参数构成的 iterable 或定义了参数组的 dict。
@@ -28,37 +27,35 @@ reset_docstr(
         - **betas** (Tuple[float, float], optional) - 用于计算梯度及其平方的移动平均的系数（默认值：(0.9, 0.999))
         - **eps** (float, optional) - 添加到分母中以提高数值稳定性的项（默认值：1e-8）。
         - **weight_decay** (float, optional) - 权重衰减 (L2 penalty) (默认值: 0)
-        - **amsgrad** (bool, optional) - 是否使用该算法的 AMSGrad 变体（默认值: False) 。
+        - **adam_w_mode** (bool, optional) - 应用 L2 正则化或去耦权重衰减 True (也被称为 AdamW 优化算法) (默认值: True)
         - **do_bias_correction** (bool, optional) - 是否做偏差校正（默认值：True）。
+        - **amsgrad** (bool, optional) - 是否使用该算法的 AMSGrad 变体，现在不支持! (默认值: False) 
+        
+    .. _Large Batch Optimization for Deep Learning\\: Training BERT in 76 minutes:
+        https://arxiv.org/abs/1904.00962
 
-    .. _Adam\\: A Method for Stochastic Optimization:
-        https://arxiv.org/abs/1412.6980
+    示例:
 
-    .. _Decoupled Weight Decay Regularization:
-        https://arxiv.org/abs/1711.05101
+    例1:
 
-    示例: 
+    .. code-block:: python
 
-    例1: 
-
-    .. code-block:: python 
-
-        # 假设 net 是一个自定义模型。 
-        adam = flow.optim.Adam(net.parameters(), lr=1e-3)
+        # 假设 net 是一个自定义模型。
+        lamb = flow.optim.LAMB(net.parameters(), lr=1e-3)
 
         for epoch in range(epochs):
             # 读取数据，计算损失，等等。
             # ...
             loss.backward()
-            adam.step()
-            adam.zero_grad()
+            lamb.step()
+            lamb.zero_grad()
 
-    例2: 
+    Example 2:
 
-    .. code-block:: python 
+    .. code-block:: python
 
         # 假设 net 是一个自定义模型。
-        adam = flow.optim.Adam(
+        lamb = flow.optim.LAMB(
             [
                 {
                     "params": net.parameters(),
@@ -73,20 +70,18 @@ reset_docstr(
             # 读取数据，计算损失，等等。
             # ...
             loss.backward()
-            adam.clip_grad()
-            adam.step()
-            adam.zero_grad()
+            lamb.clip_grad()
+            lamb.step()
+            lamb.zero_grad()
 
     如果你想使用 clip_grad 函数，你可以参考这个示例。
 
     关于 `clip_grad_max_norm` 和 `clip_grad_norm_type` 函数的更多细节，你可以参考 :func:`oneflow.nn.utils.clip_grad_norm` 。
-
-    
     """
 )
 
 reset_docstr(
-    oneflow.optim.Adam.step,
+    oneflow.optim.LAMB.step,
     """执行一个优化步骤。
 
         参数:
