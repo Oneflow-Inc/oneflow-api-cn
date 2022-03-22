@@ -72,7 +72,7 @@ reset_docstr(
     参数：
         - **tensor** - 一个 n 维的 `flow.Tensor`
         - **a** - 此层之后的激活层使用的负梯度（只能用于 ``'leaky_relu'`` ）
-        - **mode** - ``'fan_in'`` (默认) 或 ``'fan_out'`` 中的一个。选择 ``'fan_in'`` 将保留正向过程中的的权重方差。选择 ``'fan_out'`` 将保留反向过程中的权重方差
+        - **mode** - ``'fan_in'`` (默认) 或 ``'fan_out'`` 中的一个。选择 ``'fan_in'`` 将保留前向传播的权重方差。选择 ``'fan_out'`` 将保留反向传播的权重方差
         - **nonlinearity** - 非线性函数 (`nn.functional` 的名称),
             建议仅使用 ``'relu'`` 或者 ``'leaky_relu'`` (默认)
 
