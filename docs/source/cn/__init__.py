@@ -37,3 +37,4 @@ from .sbp import *
 from .env import *
 from .cuda import *
 from .image import *
+from .nn_init import *
