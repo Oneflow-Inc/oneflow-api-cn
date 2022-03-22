@@ -79,7 +79,7 @@ reset_docstr(
 
     如果你想使用 clip_grad 函数，你可以参考这个示例。
 
-    关于 `clip_grad_max_norm` 和 `clip_grad_norm_type` 函数的更多细节，你可以参考 :func:`oneflow.nn.utils.clip_grad_norm` 。
+    关于 `clip_grad_max_norm` 和 `clip_grad_norm_type` 函数的更多细节，请参考 :func:`oneflow.nn.utils.clip_grad_norm` 。
 
     
     """

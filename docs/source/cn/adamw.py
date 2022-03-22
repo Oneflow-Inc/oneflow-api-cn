@@ -6,7 +6,7 @@ reset_docstr(
     """实现 AdamW 优化算法。
 
     原始的的 Adam 算法是在 `Adam: A Method for Stochastic Optimization`_ 中被提出。
-    AdamW 的变式在 `Decoupled Weight Decay Regularization`_ 中被提出。
+    其变式 AdamW 在 `Decoupled Weight Decay Regularization`_ 中被提出。
 
     Adam-weight-decay 算法的优化器。
 
