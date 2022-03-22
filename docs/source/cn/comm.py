@@ -39,7 +39,7 @@ reset_docstr(
 reset_docstr(
     oneflow.comm.all_reduce,
     r"""
-    将所有机器上的 tensor 做 reduce 操作，结果返回给所有进程。
+    将所有机器上的 tensor 做规约操作，结果返回给所有进程。
 
     参数：
         - **tensor** (Tensor): 输入张量
@@ -73,7 +73,7 @@ reset_docstr(
 reset_docstr(
     oneflow.comm.reduce_scatter,
     r"""
-    对一个列表中的张量进行 reduce 操作，并将其分散到一个进程组中的所有进程。
+    对一个列表中的张量进行规约操作，并将其分发到一个进程组中的所有进程。
 
     参数：
         - **output** (Tensor): 输出张量
@@ -84,7 +84,7 @@ reset_docstr(
 reset_docstr(
     oneflow.comm.scatter,
     r"""
-    将一列张量分散到一个进程组中的所有进程，
+    将一列张量分发到一个进程组中的所有进程，
 
     每个进程将接收到正好一个张量，并将数据储存在 ``tensor`` 参数中。
 
@@ -99,7 +99,7 @@ reset_docstr(
 reset_docstr(
     oneflow.comm.reduce,
     r"""
-    对所有机器的张量数据做 reduce 操作。
+    对所有机器的张量数据做规约操作。
 
     只有拥有 rank ``dst`` 的进程将接收到 reduce 后的结果。
 
@@ -146,7 +146,7 @@ reset_docstr(
 reset_docstr(
     oneflow.comm.gather,
     r"""
-    将单个线程上的一列张量聚集。
+    将单个线程上的一列张量收集。
 
     参数：
         - **tensor** (Tensor): 输入张量
@@ -154,4 +154,66 @@ reset_docstr(
         - **dst** (int, 可选): 终点 rank (默认为 0)
 
     """
+)
+
+reset_docstr(
+    oneflow.comm.all_reduce,
+    """
+    将所有机器上的 tensor 做规约操作，结果返回给所有进程。
+    参数：
+        - **tensor** (Tensor): 输入张量
+    示例：
+    .. code-block:: python
+        > # We have 1 process groups, 2 ranks.
+        > import oneflow as flow
+        > tensor = flow.tensor([[1, 2], [3, 4]], device="cuda") + flow.env.get_local_rank()
+        > # tensor on rank0
+        > tensor
+        tensor([[1, 2],
+                [3, 4]], device='cuda:0', dtype=oneflow.int64)
+        > # tensor on rank1
+        > tensor
+        tensor([[2, 3],
+                [4, 5]], device='cuda:1', dtype=oneflow.int64)
+        > flow.comm.all_reduce(tensor)
+        > tensor.numpy()
+        array([[3, 5],
+               [7, 9]], dtype=int64)
+    """
+)
+
+reset_docstr(
+    oneflow.comm.all_gather,
+    r"""all_gather(tensor_list, tensor)
+    
+    将整个进程组的张量收集到一个列表中。
+    参数：
+        - **tensor_list** (list[Tensor]) - 输出列表。它应该包含正确大小的张量，用于集体的输出。
+        - **tensor** (Tensor) - 从当前进程广播的张量。
+    样例：
+    .. code-block:: python
+        > # We have 1 process groups, 2 ranks.
+        > import oneflow as flow
+        > input = flow.tensor([[1, 2], [3, 4]], device="cuda") + flow.env.get_local_rank()
+        > # input on rank0
+        > input
+        tensor([[1, 2],
+                [3, 4]], device='cuda:0', dtype=oneflow.int64)
+        > # input on rank1
+        > input
+        tensor([[2, 3],
+                [4, 5]], device='cuda:1', dtype=oneflow.int64)
+        > tensor_list = [flow.zeros(2, 2, dtype=flow.int64) for _ in range(2)]
+        > flow.comm.all_gather(tensor_list, input)
+        > # result on rank0
+        > tensor_list
+        [tensor([[1, 2],
+                [3, 4]], device='cuda:0', dtype=oneflow.int64), tensor([[2, 3],
+                [4, 5]], device='cuda:0', dtype=oneflow.int64)]
+        > # result on rank1
+        > tensor_list
+        [tensor([[1, 2],
+                [3, 4]], device='cuda:1', dtype=oneflow.int64), tensor([[2, 3],
+                [4, 5]], device='cuda:1', dtype=oneflow.int64)]
+    """,
 )
