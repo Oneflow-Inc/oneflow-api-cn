@@ -171,6 +171,7 @@ reset_docstr(
     样例：
     
     .. code-block:: python
+    
         > # We have 1 process groups, 2 ranks.
         > import oneflow as flow
         > input = flow.tensor([[1, 2], [3, 4]], device="cuda") + flow.env.get_local_rank()
