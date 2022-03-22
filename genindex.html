@@ -112,9 +112,10 @@
 <p class="caption"><span class="caption-text">OneFlow Python API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="oneflow.html">oneflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tensor.html">oneflow.Tensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tensor_attributes.html">Tensor Attributes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nn.html">oneflow.nn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functional.html">oneflow.nn.functional</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tensor.html">oneflow.Tensor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autograd.html">oneflow.autograd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cuda.html">oneflow.cuda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="distributed.html">oneflow.distributed</a></li>
@@ -127,8 +128,6 @@
 <li class="toctree-l1"><a class="reference internal" href="utils.html">oneflow.utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="env.html">oneflow.env</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comm.html">oneflow.comm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="placement.html">oneflow.placement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sbp.html">oneflow.sbp.sbp</a></li>
 </ul>
 
 </div>
@@ -234,6 +233,8 @@
 </li>
         <li><a href="optim.html#oneflow.optim.Optimizer.add_param_group">add_param_group() (oneflow.optim.Optimizer method)</a>
 </li>
+        <li><a href="nn.html#oneflow.nn.FusedMLP.add_parameters">add_parameters() (oneflow.nn.FusedMLP method)</a>
+</li>
         <li><a href="oneflow.html#oneflow.addmm">addmm() (in module oneflow)</a>
 
         <ul>
@@ -242,7 +243,7 @@
         </ul></li>
         <li><a href="functional.html#oneflow.nn.functional.affine_grid">affine_grid() (in module oneflow.nn.functional)</a>
 </li>
-        <li><a href="placement.html#oneflow.env.all_device_placement">all_device_placement() (in module oneflow.env)</a>
+        <li><a href="tensor_attributes.html#oneflow.env.all_device_placement">all_device_placement() (in module oneflow.env)</a>
 </li>
         <li><a href="comm.html#oneflow.comm.all_gather">all_gather() (in module oneflow.comm)</a>
 </li>
@@ -406,6 +407,10 @@
         </ul></li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="nn.html#oneflow.nn.FusedMLP.bias">bias() (oneflow.nn.FusedMLP method)</a>
+</li>
+        <li><a href="nn.html#oneflow.nn.FusedMLP.biases">biases() (oneflow.nn.FusedMLP method)</a>
+</li>
         <li><a href="oneflow.html#oneflow.bmm">bmm() (in module oneflow)</a>
 
         <ul>
@@ -558,6 +563,8 @@
         </ul></li>
         <li><a href="nn.html#oneflow.nn.CropMirrorNormalize">CropMirrorNormalize (class in oneflow.nn)</a>
 </li>
+        <li><a href="functional.html#oneflow.nn.functional.cross_entropy">cross_entropy() (in module oneflow.nn.functional)</a>
+</li>
         <li><a href="nn.html#oneflow.nn.CrossEntropyLoss">CrossEntropyLoss (class in oneflow.nn)</a>
 </li>
         <li><a href="functional.html#oneflow.nn.functional.ctc_greedy_decoder">ctc_greedy_decoder() (in module oneflow.nn.functional)</a>
@@ -615,6 +622,8 @@
         <li><a href="oneflow.html#oneflow.decode_onerec">decode_onerec() (in module oneflow)</a>
 </li>
         <li><a href="tensor.html#oneflow.Tensor.detach">detach() (oneflow.Tensor method)</a>
+</li>
+        <li><a href="tensor_attributes.html#oneflow.device">device (class in oneflow)</a>
 </li>
         <li><a href="tensor.html#oneflow.Tensor.device">device() (oneflow.Tensor property)</a>
 </li>
@@ -678,6 +687,8 @@
   <h2>E</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="oneflow.html#oneflow.einsum">einsum() (in module oneflow)</a>
+</li>
         <li><a href="tensor.html#oneflow.Tensor.element_size">element_size() (oneflow.Tensor method)</a>
 </li>
         <li><a href="nn.html#oneflow.nn.LayerNorm.elementwise_affine">elementwise_affine (oneflow.nn.LayerNorm attribute)</a>
@@ -765,6 +776,8 @@
 </li>
           <li><a href="nn.html#oneflow.nn.Flatten.extra_repr">(oneflow.nn.Flatten method)</a>
 </li>
+          <li><a href="nn.html#oneflow.nn.FusedMLP.extra_repr">(oneflow.nn.FusedMLP method)</a>
+</li>
           <li><a href="nn.html#oneflow.nn.GroupNorm.extra_repr">(oneflow.nn.GroupNorm method)</a>
 </li>
           <li><a href="nn.html#oneflow.nn.Hardsigmoid.extra_repr">(oneflow.nn.Hardsigmoid method)</a>
@@ -850,14 +863,14 @@
           <li><a href="cuda.html#oneflow.cuda.FloatTensor">(in module oneflow.cuda)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="oneflow.html#oneflow.floor">floor() (in module oneflow)</a>
 
         <ul>
           <li><a href="tensor.html#oneflow.Tensor.floor">(oneflow.Tensor method)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="oneflow.html#oneflow.floor_">floor_() (in module oneflow)</a>
 
         <ul>
@@ -883,6 +896,8 @@
         <li><a href="nn.html#oneflow.nn.FusedBatchNorm2d">FusedBatchNorm2d (class in oneflow.nn)</a>
 </li>
         <li><a href="nn.html#oneflow.nn.FusedBatchNorm3d">FusedBatchNorm3d (class in oneflow.nn)</a>
+</li>
+        <li><a href="nn.html#oneflow.nn.FusedMLP">FusedMLP (class in oneflow.nn)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -1545,9 +1560,11 @@
         </ul></li>
         <li><a href="nn.html#oneflow.nn.PixelShuffle">PixelShuffle (in module oneflow.nn)</a>
 </li>
+        <li><a href="nn.html#oneflow.nn.modules.pixelshuffle.PixelShufflev2">PixelShufflev2() (in module oneflow.nn.modules.pixelshuffle)</a>
+</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="placement.html#oneflow.placement">placement (class in oneflow)</a>
+        <li><a href="tensor_attributes.html#oneflow.placement">placement (class in oneflow)</a>
 </li>
         <li><a href="tensor.html#oneflow.Tensor.placement">placement() (oneflow.Tensor property)</a>
 </li>
@@ -1647,14 +1664,14 @@
 </li>
         <li><a href="nn.html#oneflow.nn.utils.remove_weight_norm">remove_weight_norm() (in module oneflow.nn.utils)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="oneflow.html#oneflow.repeat">repeat() (in module oneflow)</a>
 
         <ul>
           <li><a href="tensor.html#oneflow.Tensor.repeat">(oneflow.Tensor method)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="utils.html#oneflow.utils.data.RandomSampler.replacement">replacement (oneflow.utils.data.RandomSampler attribute)</a>
 </li>
         <li><a href="nn.html#oneflow.nn.ReplicationPad2d">ReplicationPad2d (class in oneflow.nn)</a>
@@ -1677,6 +1694,8 @@
           <li><a href="nn.html#oneflow.nn.ConvTranspose3d.reset_parameters">(oneflow.nn.ConvTranspose3d method)</a>
 </li>
           <li><a href="nn.html#oneflow.nn.Embedding.reset_parameters">(oneflow.nn.Embedding method)</a>
+</li>
+          <li><a href="nn.html#oneflow.nn.FusedMLP.reset_parameters">(oneflow.nn.FusedMLP method)</a>
 </li>
           <li><a href="nn.html#oneflow.nn.GroupNorm.reset_parameters">(oneflow.nn.GroupNorm method)</a>
 </li>
@@ -1731,7 +1750,9 @@
 </li>
         <li><a href="oneflow.html#oneflow.save">save() (in module oneflow)</a>
 </li>
-        <li><a href="sbp.html#oneflow.sbp.sbp">sbp (class in oneflow.sbp)</a>
+        <li><a href="tensor_attributes.html#oneflow.sbp.sbp">sbp (class in oneflow.sbp)</a>
+</li>
+        <li><a href="tensor.html#oneflow.Tensor.sbp">sbp() (oneflow.Tensor property)</a>
 </li>
         <li><a href="oneflow.html#oneflow.scatter">scatter() (in module oneflow)</a>
 
@@ -1764,6 +1785,8 @@
         <li><a href="utils.html#oneflow.utils.data.distributed.DistributedSampler.set_epoch">set_epoch() (oneflow.utils.data.distributed.DistributedSampler method)</a>
 </li>
         <li><a href="graph.html#oneflow.nn.Graph.set_grad_scaler">set_grad_scaler() (oneflow.nn.Graph method)</a>
+</li>
+        <li><a href="oneflow.html#oneflow.set_num_threads">set_num_threads() (in module oneflow)</a>
 </li>
         <li><a href="oneflow.html#oneflow.set_printoptions">set_printoptions() (in module oneflow)</a>
 </li>
@@ -2019,32 +2042,28 @@
         </ul></li>
         <li><a href="utils.html#oneflow.utils.data.DataLoader.timeout">timeout (oneflow.utils.data.DataLoader attribute)</a>
 </li>
-        <li><a href="oneflow.html#oneflow.to">to() (in module oneflow)</a>
+        <li><a href="module.html#oneflow.nn.Module.to">to() (oneflow.nn.Module method)</a>
 
         <ul>
-          <li><a href="module.html#oneflow.nn.Module.to">(oneflow.nn.Module method)</a>
-</li>
           <li><a href="tensor.html#oneflow.Tensor.to">(oneflow.Tensor method)</a>
 </li>
         </ul></li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="module.html#oneflow.nn.Module.to_consistent">to_consistent() (oneflow.nn.Module method)</a>
-</li>
-        <li><a href="oneflow.html#oneflow.to_global">to_global() (in module oneflow)</a>
 
         <ul>
-          <li><a href="module.html#oneflow.nn.Module.to_global">(oneflow.nn.Module method)</a>
+          <li><a href="tensor.html#oneflow.Tensor.to_consistent">(oneflow.Tensor method)</a>
 </li>
+        </ul></li>
+        <li><a href="module.html#oneflow.nn.Module.to_global">to_global() (oneflow.nn.Module method)</a>
+
+        <ul>
           <li><a href="tensor.html#oneflow.Tensor.to_global">(oneflow.Tensor method)</a>
 </li>
         </ul></li>
-        <li><a href="oneflow.html#oneflow.to_local">to_local() (in module oneflow)</a>
-
-        <ul>
-          <li><a href="tensor.html#oneflow.Tensor.to_local">(oneflow.Tensor method)</a>
+        <li><a href="tensor.html#oneflow.Tensor.to_local">to_local() (oneflow.Tensor method)</a>
 </li>
-        </ul></li>
         <li><a href="tensor.html#oneflow.Tensor.tolist">tolist() (oneflow.Tensor method)</a>
 </li>
         <li><a href="oneflow.html#oneflow.topk">topk() (in module oneflow)</a>
@@ -2149,7 +2168,11 @@
         </ul></li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="nn.html#oneflow.nn.FusedMLP.weight">weight() (oneflow.nn.FusedMLP method)</a>
+</li>
         <li><a href="nn.html#oneflow.nn.utils.weight_norm">weight_norm() (in module oneflow.nn.utils)</a>
+</li>
+        <li><a href="nn.html#oneflow.nn.FusedMLP.weights">weights() (oneflow.nn.FusedMLP method)</a>
 </li>
         <li><a href="oneflow.html#oneflow.where">where() (in module oneflow)</a>
 

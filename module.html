@@ -113,9 +113,10 @@
 <p class="caption"><span class="caption-text">OneFlow Python API</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="oneflow.html">oneflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tensor.html">oneflow.Tensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tensor_attributes.html">Tensor Attributes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nn.html">oneflow.nn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functional.html">oneflow.nn.functional</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tensor.html">oneflow.Tensor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autograd.html">oneflow.autograd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cuda.html">oneflow.cuda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="distributed.html">oneflow.distributed</a></li>
@@ -128,8 +129,6 @@
 <li class="toctree-l1"><a class="reference internal" href="utils.html">oneflow.utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="env.html">oneflow.env</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comm.html">oneflow.comm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="placement.html">oneflow.placement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sbp.html">oneflow.sbp.sbp</a></li>
 </ul>
 
 </div>
@@ -320,11 +319,38 @@ strings are acceptable.</p>
 <dl class="py method">
 <dt id="oneflow.nn.Module.to_consistent">
 <code class="sig-name descname"><span class="pre">to_consistent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Module.to_consistent" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This interface is no longer available, please use <a class="reference internal" href="#oneflow.nn.Module.to_global" title="oneflow.nn.Module.to_global"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.nn.Module.to_global()</span></code></a> instead.</p>
+</dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.Module.to_global">
 <code class="sig-name descname"><span class="pre">to_global</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">placement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sbp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Module.to_global" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Convert the parameters and buffers to global.</p>
+<p>It performs the same <a class="reference internal" href="tensor.html#oneflow.Tensor.to_global" title="oneflow.Tensor.to_global"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.Tensor.to_global()</span></code></a> conversion to each parameter and buffer in this module.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method modifies the module in-place.</p>
+<p>Both placement and sbp are required if the parameters and buffers of this module are local,
+otherwise at least one of placement and sbp is required.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>placement</strong> (<em>flow.placement</em><em>, </em><em>optional</em>) – the desired placement of the parameters and buffers in this module. Default: None</p></li>
+<li><p><strong>sbp</strong> (<em>flow.sbp.sbp</em><em> or </em><em>tuple of flow.sbp.sbp</em><em>, </em><em>optional</em>) – the desired sbp of the parameters and buffers in this module. Default: None</p></li>
+</ul>
+</dd>
+</dl>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">,</span> <span class="n">ranks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">sbp</span><span class="o">=</span><span class="p">[</span><span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">0</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">is_global</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">is_global</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.Module.train">
 <code class="sig-name descname"><span class="pre">train</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> → <span class="pre">T</span><a class="headerlink" href="#oneflow.nn.Module.train" title="Permalink to this definition">¶</a></dt>

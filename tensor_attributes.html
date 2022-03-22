@@ -2,10 +2,10 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="oneflow.sbp.sbp" href="sbp.html" /><link rel="prev" title="oneflow.comm" href="comm.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="oneflow.nn" href="nn.html" /><link rel="prev" title="oneflow.Tensor" href="tensor.html" />
 
     <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
-        <title>oneflow.placement - OneFlow documentation</title>
+        <title>Tensor Attributes - OneFlow documentation</title>
       <link rel="stylesheet" href="_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
     <link rel="stylesheet" href="_static/pygments.css">
     <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css">
@@ -113,9 +113,10 @@
 <p class="caption"><span class="caption-text">OneFlow Python API</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="oneflow.html">oneflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tensor.html">oneflow.Tensor</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Tensor Attributes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nn.html">oneflow.nn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functional.html">oneflow.nn.functional</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tensor.html">oneflow.Tensor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autograd.html">oneflow.autograd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cuda.html">oneflow.cuda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="distributed.html">oneflow.distributed</a></li>
@@ -128,8 +129,6 @@
 <li class="toctree-l1"><a class="reference internal" href="utils.html">oneflow.utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="env.html">oneflow.env</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comm.html">oneflow.comm</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">oneflow.placement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sbp.html">oneflow.sbp.sbp</a></li>
 </ul>
 
 </div>
@@ -144,10 +143,60 @@
         <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <div class="section" id="oneflow-placement">
-<h1>oneflow.placement<a class="headerlink" href="#oneflow-placement" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="oneflow-placement-class">
-<h2>OneFlow placement Class<a class="headerlink" href="#oneflow-placement-class" title="Permalink to this headline">¶</a></h2>
+        <div class="section" id="tensor-attributes">
+<h1>Tensor Attributes<a class="headerlink" href="#tensor-attributes" title="Permalink to this headline">¶</a></h1>
+<p>Each local <code class="docutils literal notranslate"><span class="pre">oneflow.Tensor</span></code> has a <code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.dtype</span></code>, <a class="reference internal" href="#oneflow.device" title="oneflow.device"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.device</span></code></a>, and global <code class="docutils literal notranslate"><span class="pre">oneflow.Tensor</span></code> has a <code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.dtype</span></code>, <a class="reference internal" href="#oneflow.placement" title="oneflow.placement"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.placement</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.sbp</span></code>.</p>
+<div class="section" id="oneflow-device">
+<h2>oneflow.device<a class="headerlink" href="#oneflow-device" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="oneflow.device">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">device</span></code><a class="headerlink" href="#oneflow.device" title="Permalink to this definition">¶</a></dt>
+<dd><p>The documentation is referenced from:
+<a class="reference external" href="https://pytorch.org/docs/stable/tensor_attributes.html#torch.torch.device">https://pytorch.org/docs/stable/tensor_attributes.html#torch.torch.device</a></p>
+<p>A <a class="reference internal" href="#oneflow.device" title="oneflow.device"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.device</span></code></a> is an object representing the device on which a <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.Tensor</span></code></a> is or will be allocated.</p>
+<p>The <a class="reference internal" href="#oneflow.device" title="oneflow.device"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.device</span></code></a> contains a device type (‘cpu’ or ‘cuda’) and optional device ordinal for the device type. If the
+device ordinal is not present, this object will always represent the current device for the device type.</p>
+<p>A <a class="reference internal" href="#oneflow.device" title="oneflow.device"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.device</span></code></a>’s device can be accessed via the Tensor.device property.</p>
+<p>A <a class="reference internal" href="#oneflow.device" title="oneflow.device"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.device</span></code></a> can be constructed via a string or via a string and device ordinal</p>
+<p>Via a string:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda:0'</span><span class="p">)</span>
+<span class="go">device(type='cuda', index=0)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cpu'</span><span class="p">)</span>
+<span class="go">device(type='cpu', index=0)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda'</span><span class="p">)</span>  <span class="c1"># current cuda device</span>
+<span class="go">device(type='cuda', index=0)</span>
+</pre></div>
+</div>
+<p>Via a string and device ordinal:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">device(type='cuda', index=0)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cpu'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">device(type='cpu', index=0)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a class="reference internal" href="#oneflow.device" title="oneflow.device"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.device</span></code></a> argument in functions can generally be substituted with a string. This allows for fast prototyping of code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example of a function that takes in a oneflow.device</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cuda0</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda:0'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">cuda0</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># You can substitute the flow.device with a string</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda:0'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+</div>
+<div class="section" id="oneflow-placement">
+<h2>oneflow.placement<a class="headerlink" href="#oneflow-placement" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="oneflow.placement">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">placement</span></code><a class="headerlink" href="#oneflow.placement" title="Permalink to this definition">¶</a></dt>
@@ -165,6 +214,9 @@
 </pre></div>
 </div>
 </dd></dl>
+</div>
+<div class="section" id="oneflow-env-all-device-placement">
+<h2>oneflow.env.all_device_placement<a class="headerlink" href="#oneflow-env-all-device-placement" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="oneflow.env.all_device_placement">
 <code class="sig-prename descclassname"><span class="pre">oneflow.env.</span></code><code class="sig-name descname"><span class="pre">all_device_placement</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> → <span class="pre">oneflow._oneflow_internal.placement</span><a class="headerlink" href="#oneflow.env.all_device_placement" title="Permalink to this definition">¶</a></dt>
@@ -185,29 +237,69 @@
 </div>
 </dd></dl>
 </div>
+<div class="section" id="oneflow-sbp-sbp">
+<h2>oneflow.sbp.sbp<a class="headerlink" href="#oneflow-sbp-sbp" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="oneflow.sbp.sbp">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.sbp.</span></code><code class="sig-name descname"><span class="pre">sbp</span></code><a class="headerlink" href="#oneflow.sbp.sbp" title="Permalink to this definition">¶</a></dt>
+<dd><p>一个 sbp 是一个表示全局视角下的 Tensor 与物理设备上的 Tensor 之间的映射关系的对象。</p>
+<p>sbp 有三种类型：</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>split</dt><dd><p>表示物理设备上的 Tensor 是将全局视角下的 Tensor 切分得到的。切分时需要指定切分的维度。物理设备上的 Tensor 如果根据切分的维度被拼接，可以还原得到全局视角的 Tensor 。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>broadcast</dt><dd><p>表示物理设备上的 Tensor 是全局视角下的 Tensor 完全相同的拷贝。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>partial_sum</dt><dd><p>表示全局视角下的 Tensor 与物理设备上的 Tensor 的形状相同，但是物理设备上的值，只是全局视角下 Tensor 的一部分。返回的全局视角下的 Tensor 是通过把物理设备上的 Tensor 按照对应的位置（按元素）相加得到的。</p>
+</dd>
+</dl>
+</li>
+</ol>
+<p>一个 sbp 可以以多种方式被构造：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">oneflow.sbp.split(axis=0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">broadcast</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">oneflow.sbp.broadcast</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">partial_sum</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span>
+<span class="go">oneflow.sbp.partial_sum</span>
+</pre></div>
+</div>
+</dd></dl>
+</div>
 </div>
 
       </article>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="sbp.html">
+          <a class="next-page" href="nn.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">oneflow.sbp.sbp</div>
+                <div class="title">oneflow.nn</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="comm.html">
+          <a class="prev-page" href="tensor.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">oneflow.comm</div>
+                <div class="title">oneflow.Tensor</div>
                 
               </div>
             </a>
@@ -221,7 +313,7 @@
               <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
               <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             |
-            <a class="muted-link" href="_sources/placement.rst.txt"
+            <a class="muted-link" href="_sources/tensor_attributes.rst.txt"
                rel="nofollow">
               Show Source
             </a>
@@ -241,8 +333,11 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">oneflow.placement</a><ul>
-<li><a class="reference internal" href="#oneflow-placement-class">OneFlow placement Class</a></li>
+<li><a class="reference internal" href="#">Tensor Attributes</a><ul>
+<li><a class="reference internal" href="#oneflow-device">oneflow.device</a></li>
+<li><a class="reference internal" href="#oneflow-placement">oneflow.placement</a></li>
+<li><a class="reference internal" href="#oneflow-env-all-device-placement">oneflow.env.all_device_placement</a></li>
+<li><a class="reference internal" href="#oneflow-sbp-sbp">oneflow.sbp.sbp</a></li>
 </ul>
 </li>
 </ul>

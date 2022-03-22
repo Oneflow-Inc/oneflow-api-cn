@@ -113,9 +113,10 @@
 <p class="caption"><span class="caption-text">OneFlow Python API</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="oneflow.html">oneflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tensor.html">oneflow.Tensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tensor_attributes.html">Tensor Attributes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nn.html">oneflow.nn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functional.html">oneflow.nn.functional</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tensor.html">oneflow.Tensor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autograd.html">oneflow.autograd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cuda.html">oneflow.cuda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="distributed.html">oneflow.distributed</a></li>
@@ -128,8 +129,6 @@
 <li class="toctree-l1"><a class="reference internal" href="utils.html">oneflow.utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="env.html">oneflow.env</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comm.html">oneflow.comm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="placement.html">oneflow.placement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sbp.html">oneflow.sbp.sbp</a></li>
 </ul>
 
 </div>
@@ -151,122 +150,104 @@
 <dl class="py function">
 <dt id="oneflow.nn.init.xavier_uniform_">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.init.</span></code><code class="sig-name descname"><span class="pre">xavier_uniform_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NCHW'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.init.xavier_uniform_" title="Permalink to this definition">¶</a></dt>
-<dd><p>The interface is consistent with PyTorch.
-The documentation is referenced from: <a class="reference external" href="https://pytorch.org/docs/stable/nn.init.html">https://pytorch.org/docs/stable/nn.init.html</a>.</p>
-<p>Fills the input <cite>Tensor</cite> with values according to the method
-described in <cite>Understanding the difficulty of training deep feedforward
-neural networks</cite> - Glorot, X. &amp; Bengio, Y. (2010), using a uniform
-distribution. The resulting tensor will have values sampled from
-<span class="math notranslate nohighlight">\(\mathcal{U}(-a, a)\)</span> where</p>
+<dd><p>此接口与 PyTorch 一致。文档可以参考：
+<a class="reference external" href="https://pytorch.org/docs/stable/nn.init.html">https://pytorch.org/docs/stable/nn.init.html</a></p>
+<p>根据 <cite>Understanding the difficulty of training deep feedforward
+neural networks</cite> - Glorot, X. &amp; Bengio, Y. (2010) 中描述的方法，使用均匀分布填充输入张量 <cite>Tensor</cite> 的值。结果张量将通过 <span class="math notranslate nohighlight">\(\mathcal{U}(-a, a)\)</span> 采样得到，其中</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[a = \text{gain} \times \sqrt{\frac{6}{\text{fan_in} + \text{fan_out}}}\]</div></div>
-<p>Also known as Glorot initialization.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>tensor</strong> – an n-dimensional <cite>flow.Tensor</cite></p></li>
-<li><p><strong>gain</strong> – an optional scaling factor</p></li>
+<p>此算法也被称为 Glorot initialization 。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>tensor</strong> - 一个 n 维的 <cite>flow.Tensor</cite></p></li>
+<li><p><strong>gain</strong> - 一个可选的缩放因子</p></li>
 </ul>
 </dd>
 </dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">xavier_uniform_</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">calculate_gain</span><span class="p">(</span><span class="s1">'relu'</span><span class="p">))</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">w</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">xavier_uniform_</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.init.xavier_normal_">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.init.</span></code><code class="sig-name descname"><span class="pre">xavier_normal_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NCHW'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.init.xavier_normal_" title="Permalink to this definition">¶</a></dt>
-<dd><p>The interface is consistent with PyTorch.
-The documentation is referenced from: <a class="reference external" href="https://pytorch.org/docs/stable/nn.init.html">https://pytorch.org/docs/stable/nn.init.html</a>.</p>
-<p>Fills the input <cite>Tensor</cite> with values according to the method
-described in <cite>Understanding the difficulty of training deep feedforward
-neural networks</cite> - Glorot, X. &amp; Bengio, Y. (2010), using a normal
-distribution. The resulting tensor will have values sampled from
-<span class="math notranslate nohighlight">\(\mathcal{N}(0, \text{std}^2)\)</span> where</p>
+<dd><p>此接口与 PyTorch 一致。文档可以参考：
+<a class="reference external" href="https://pytorch.org/docs/stable/nn.init.html">https://pytorch.org/docs/stable/nn.init.html</a></p>
+<p>根据 <cite>Understanding the difficulty of training deep feedforward
+neural networks</cite> - Glorot, X. &amp; Bengio, Y. (2010) 中描述的方法，使用正态分布填充输入张量 <cite>Tensor</cite> 的值。结果张量将通过 <span class="math notranslate nohighlight">\(\mathcal{N}(0, \text{std}^2)\)</span> 采样得到，其中</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\text{std} = \text{gain} \times \sqrt{\frac{2}{\text{fan_in} + \text{fan_out}}}\]</div></div>
-<p>Also known as Glorot initialization.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>tensor</strong> – an n-dimensional <cite>flow.Tensor</cite></p></li>
-<li><p><strong>gain</strong> – an optional scaling factor</p></li>
+<p>此算法也被称为 Glorot initialization 。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>tensor</strong> - 一个 n 维的 <cite>flow.Tensor</cite></p></li>
+<li><p><strong>gain</strong> - 一个可选的缩放因子</p></li>
 </ul>
 </dd>
 </dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">xavier_normal_</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">w</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">xavier_normal_</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.init.kaiming_uniform_">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.init.</span></code><code class="sig-name descname"><span class="pre">kaiming_uniform_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fan_in'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nonlinearity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'leaky_relu'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NCHW'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.init.kaiming_uniform_" title="Permalink to this definition">¶</a></dt>
-<dd><p>The interface is consistent with PyTorch.
-The documentation is referenced from: <a class="reference external" href="https://pytorch.org/docs/stable/nn.init.html">https://pytorch.org/docs/stable/nn.init.html</a>.</p>
-<p>Fills the input <cite>Tensor</cite> with values according to the method
-described in <cite>Delving deep into rectifiers: Surpassing human-level
-performance on ImageNet classification</cite> - He, K. et al. (2015), using a
-uniform distribution. The resulting tensor will have values sampled from
-<span class="math notranslate nohighlight">\(\mathcal{U}(-\text{bound}, \text{bound})\)</span> where</p>
+<dd><p>此接口与 PyTorch 一致。文档可以参考：
+<a class="reference external" href="https://pytorch.org/docs/stable/nn.init.html">https://pytorch.org/docs/stable/nn.init.html</a></p>
+<p>根据 <cite>Delving deep into rectifiers: Surpassing human-level
+performance on ImageNet classification</cite> - He, K. et al. (2015) 中描述的方法，使用均匀分布填充输入张量 <cite>Tensor</cite> 的值。结果张量将通过 <span class="math notranslate nohighlight">\(\mathcal{U}(-\text{bound}, \text{bound})\)</span> 采样得到，其中</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\text{bound} = \text{gain} \times \sqrt{\frac{3}{\text{fan_mode}}}\]</div></div>
-<p>Also known as He initialization.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>tensor</strong> – an n-dimensional <cite>flow.Tensor</cite></p></li>
-<li><p><strong>a</strong> – the negative slope of the rectifier used after this layer (only
-used with <code class="docutils literal notranslate"><span class="pre">'leaky_relu'</span></code>)</p></li>
-<li><p><strong>mode</strong> – either <code class="docutils literal notranslate"><span class="pre">'fan_in'</span></code> (default) or <code class="docutils literal notranslate"><span class="pre">'fan_out'</span></code>. Choosing <code class="docutils literal notranslate"><span class="pre">'fan_in'</span></code>
-preserves the magnitude of the variance of the weights in the
-forward pass. Choosing <code class="docutils literal notranslate"><span class="pre">'fan_out'</span></code> preserves the magnitudes in the
-backwards pass.</p></li>
-<li><p><strong>nonlinearity</strong> – the non-linear function (<cite>nn.functional</cite> name),
-recommended to use only with <code class="docutils literal notranslate"><span class="pre">'relu'</span></code> or <code class="docutils literal notranslate"><span class="pre">'leaky_relu'</span></code> (default).</p></li>
+<p>此算法也被称为 He initialization 。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>tensor</strong> - 一个 n 维的 <cite>flow.Tensor</cite></p></li>
+<li><p><strong>a</strong> - 此层之后的激活层使用的负梯度（只能用于 <code class="docutils literal notranslate"><span class="pre">'leaky_relu'</span></code> ）</p></li>
+<li><p><strong>mode</strong> - <code class="docutils literal notranslate"><span class="pre">'fan_in'</span></code> (默认) 或 <code class="docutils literal notranslate"><span class="pre">'fan_out'</span></code> 中的一个。选择 <code class="docutils literal notranslate"><span class="pre">'fan_in'</span></code> 将保留前向传播的权重方差。选择 <code class="docutils literal notranslate"><span class="pre">'fan_out'</span></code> 将保留反向传播的权重方差</p></li>
+<li><dl class="simple">
+<dt><strong>nonlinearity</strong> - 非线性函数 (<cite>nn.functional</cite> 的名称),</dt><dd><p>建议仅使用 <code class="docutils literal notranslate"><span class="pre">'relu'</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">'leaky_relu'</span></code> (默认)</p>
+</dd>
+</dl>
+</li>
 </ul>
 </dd>
 </dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">kaiming_uniform_</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'fan_in'</span><span class="p">,</span> <span class="n">nonlinearity</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">)</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">w</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">kaiming_uniform_</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'fan_in'</span><span class="p">,</span> <span class="n">nonlinearity</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.init.kaiming_normal_">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.init.</span></code><code class="sig-name descname"><span class="pre">kaiming_normal_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fan_in'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nonlinearity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'leaky_relu'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NCHW'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.init.kaiming_normal_" title="Permalink to this definition">¶</a></dt>
-<dd><p>The interface is consistent with PyTorch.
-The documentation is referenced from: <a class="reference external" href="https://pytorch.org/docs/stable/nn.init.html">https://pytorch.org/docs/stable/nn.init.html</a>.</p>
-<p>Fills the input <cite>Tensor</cite> with values according to the method
-described in <cite>Delving deep into rectifiers: Surpassing human-level
-performance on ImageNet classification</cite> - He, K. et al. (2015), using a
-normal distribution. The resulting tensor will have values sampled from
-<span class="math notranslate nohighlight">\(\mathcal{N}(0, \text{std}^2)\)</span> where</p>
+<dd><p>此接口与 PyTorch 一致。文档可以参考：
+<a class="reference external" href="https://pytorch.org/docs/stable/nn.init.html">https://pytorch.org/docs/stable/nn.init.html</a></p>
+<p>根据 <cite>Delving deep into rectifiers: Surpassing human-level
+performance on ImageNet classification</cite> - He, K. et al. (2015) 中描述的方法，使用正态分布填充输入张量 <cite>Tensor</cite> 的值。结果张量将通过 <span class="math notranslate nohighlight">\(\mathcal{N}(0, \text{std}^2)\)</span> 采样得到，其中</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\text{std} = \frac{\text{gain}}{\sqrt{\text{fan_mode}}}\]</div></div>
-<p>Also known as He initialization.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>tensor</strong> – an n-dimensional <cite>flow.Tensor</cite></p></li>
-<li><p><strong>a</strong> – the negative slope of the rectifier used after this layer (only
-used with <code class="docutils literal notranslate"><span class="pre">'leaky_relu'</span></code>)</p></li>
-<li><p><strong>mode</strong> – either <code class="docutils literal notranslate"><span class="pre">'fan_in'</span></code> (default) or <code class="docutils literal notranslate"><span class="pre">'fan_out'</span></code>. Choosing <code class="docutils literal notranslate"><span class="pre">'fan_in'</span></code>
-preserves the magnitude of the variance of the weights in the
-forward pass. Choosing <code class="docutils literal notranslate"><span class="pre">'fan_out'</span></code> preserves the magnitudes in the
-backwards pass.</p></li>
-<li><p><strong>nonlinearity</strong> – the non-linear function (<cite>nn.functional</cite> name),
-recommended to use only with <code class="docutils literal notranslate"><span class="pre">'relu'</span></code> or <code class="docutils literal notranslate"><span class="pre">'leaky_relu'</span></code> (default).</p></li>
+<p>此算法也被称为 He initialization 。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>tensor</strong> - 一个 n 维的 <cite>flow.Tensor</cite></p></li>
+<li><p><strong>a</strong> - 此层之后的激活层使用的负梯度（只能用于 <code class="docutils literal notranslate"><span class="pre">'leaky_relu'</span></code> ）</p></li>
+<li><p><strong>mode</strong> - <code class="docutils literal notranslate"><span class="pre">'fan_in'</span></code> (默认) 或 <code class="docutils literal notranslate"><span class="pre">'fan_out'</span></code> 中的一个。选择 <code class="docutils literal notranslate"><span class="pre">'fan_in'</span></code> 将保留正向传播中的的权重方差。选择 <code class="docutils literal notranslate"><span class="pre">'fan_out'</span></code> 将保留反向传播中的权重方差</p></li>
+<li><dl class="simple">
+<dt><strong>nonlinearity</strong> - 非线性函数 (<cite>nn.functional</cite> 的名称),</dt><dd><p>建议仅使用 <code class="docutils literal notranslate"><span class="pre">'relu'</span></code>  或者 <code class="docutils literal notranslate"><span class="pre">'leaky_relu'</span></code> (默认)</p>
+</dd>
+</dl>
+</li>
 </ul>
 </dd>
 </dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">kaiming_normal_</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'fan_out'</span><span class="p">,</span> <span class="n">nonlinearity</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">)</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">w</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">kaiming_normal_</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'fan_out'</span><span class="p">,</span> <span class="n">nonlinearity</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>

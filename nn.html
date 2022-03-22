@@ -2,7 +2,7 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="oneflow.nn.functional" href="functional.html" /><link rel="prev" title="oneflow" href="oneflow.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="oneflow.nn.functional" href="functional.html" /><link rel="prev" title="Tensor Attributes" href="tensor_attributes.html" />
 
     <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
         <title>oneflow.nn - OneFlow documentation</title>
@@ -113,9 +113,10 @@
 <p class="caption"><span class="caption-text">OneFlow Python API</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="oneflow.html">oneflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tensor.html">oneflow.Tensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tensor_attributes.html">Tensor Attributes</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">oneflow.nn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functional.html">oneflow.nn.functional</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tensor.html">oneflow.Tensor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autograd.html">oneflow.autograd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cuda.html">oneflow.cuda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="distributed.html">oneflow.distributed</a></li>
@@ -128,8 +129,6 @@
 <li class="toctree-l1"><a class="reference internal" href="utils.html">oneflow.utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="env.html">oneflow.env</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comm.html">oneflow.comm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="placement.html">oneflow.placement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sbp.html">oneflow.sbp.sbp</a></li>
 </ul>
 
 </div>
@@ -2026,6 +2025,77 @@ in both training and eval modes. Default: <code class="docutils literal notransl
 </div>
 </dd></dl>
 <dl class="py class">
+<dt id="oneflow.nn.FusedMLP">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">FusedMLP</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_final_activation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.FusedMLP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies a linear transformation with relu activation to the incoming data: <span class="math notranslate nohighlight">\(y = ReLU(xA^T + b)\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>in_features</strong> – size of each input sample</p></li>
+<li><p><strong>hidden_features</strong> – A tuple of each Linear layer hidden size</p></li>
+<li><p><strong>out_features</strong> – The final Linear layer hidden size</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Input: <span class="math notranslate nohighlight">\((N, *, H_{in})\)</span> where <span class="math notranslate nohighlight">\(*\)</span> means any number of
+additional dimensions and <span class="math notranslate nohighlight">\(H_{in} = {in\_features}\)</span></p></li>
+<li><p>Output: <span class="math notranslate nohighlight">\((N, *, H_{out})\)</span> where all but the last dimension
+are the same shape as the input and <span class="math notranslate nohighlight">\(H_{out} = {out\_features}\)</span>.</p></li>
+</ul>
+</dd>
+<dt>Attr:</dt><dd><ul class="simple">
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">skip_final_activation</span></code>: Whether to skip final hidden layer’s activation. Default: False.</p></li>
+</ul>
+</dd>
+</dl>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">FusedMLP</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="p">[</span><span class="mi">256</span><span class="p">,</span> <span class="mi">512</span><span class="p">],</span> <span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">128</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="go">oneflow.Size([1, 1024])</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="oneflow.nn.FusedMLP.add_parameters">
+<code class="sig-name descname"><span class="pre">add_parameters</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#oneflow.nn.FusedMLP.add_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="oneflow.nn.FusedMLP.bias">
+<code class="sig-name descname"><span class="pre">bias</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.FusedMLP.bias" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="oneflow.nn.FusedMLP.biases">
+<code class="sig-name descname"><span class="pre">biases</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.FusedMLP.biases" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="oneflow.nn.FusedMLP.extra_repr">
+<code class="sig-name descname"><span class="pre">extra_repr</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">str</span><a class="headerlink" href="#oneflow.nn.FusedMLP.extra_repr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the extra representation of the module</p>
+<p>To print customized extra information, you should re-implement
+this method in your own modules. Both single-line and multi-line
+strings are acceptable.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="oneflow.nn.FusedMLP.reset_parameters">
+<code class="sig-name descname"><span class="pre">reset_parameters</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#oneflow.nn.FusedMLP.reset_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="oneflow.nn.FusedMLP.weight">
+<code class="sig-name descname"><span class="pre">weight</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.FusedMLP.weight" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="oneflow.nn.FusedMLP.weights">
+<code class="sig-name descname"><span class="pre">weights</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.FusedMLP.weights" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+<dl class="py class">
 <dt id="oneflow.nn.GELU">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">GELU</span></code><a class="headerlink" href="#oneflow.nn.GELU" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gelu activation operator.</p>
@@ -3651,7 +3721,7 @@ strings are acceptable.</p>
 <dl class="py attribute">
 <dt id="oneflow.nn.PixelShuffle">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">PixelShuffle</span></code><a class="headerlink" href="#oneflow.nn.PixelShuffle" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.nn.modules.pixelshuffle.PixelShufflev2</span></code></p>
+<dd><p>alias of <a class="reference internal" href="#oneflow.nn.modules.pixelshuffle.PixelShufflev2" title="oneflow.nn.modules.pixelshuffle.PixelShufflev2"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.nn.modules.pixelshuffle.PixelShufflev2</span></code></a></p>
 </dd></dl>
 <dl class="py class">
 <dt id="oneflow.nn.Quantization">
@@ -4575,6 +4645,57 @@ The documentation is referenced from:
 </div>
 </dd></dl>
 <dl class="py function">
+<dt id="oneflow.nn.modules.pixelshuffle.PixelShufflev2">
+<code class="sig-prename descclassname"><span class="pre">oneflow.nn.modules.pixelshuffle.</span></code><code class="sig-name descname"><span class="pre">PixelShufflev2</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">upscale_factor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h_upscale_factor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w_upscale_factor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#oneflow.nn.modules.pixelshuffle.PixelShufflev2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Part of the documentation is referenced from:
+<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.PixelShuffle.html#torch.nn.PixelShuffle">https://pytorch.org/docs/stable/generated/torch.nn.PixelShuffle.html#torch.nn.PixelShuffle</a></p>
+<p>Rearranges elements in a tensor of shape <span class="math notranslate nohighlight">\((*, C \times r_h \times r_w, H, W)\)</span>
+to a tensor of shape <span class="math notranslate nohighlight">\((*, C, H \times r_h, W \times r_w)\)</span>, where r_h and r_w are upscale factors.</p>
+<p>This is useful for implementing efficient sub-pixel convolution
+with a stride of <span class="math notranslate nohighlight">\(1/r\)</span>.</p>
+<p>See the paper:
+<a class="reference external" href="https://arxiv.org/abs/1609.05158">Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network</a>
+by Shi et. al (2016) for more details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>upscale_factor</strong> (<em>int</em><em>, </em><em>optional</em>) – factor to increase spatial resolution by, only use when factors of height and width spatial are the same.</p></li>
+<li><p><strong>h_upscale_factor</strong> (<em>int</em><em>, </em><em>optional</em>) – factor to increase height spatial resolution by, only one of h_upscale_factor and upscale_factor can be used.</p></li>
+<li><p><strong>w_upscale_factor</strong> (<em>int</em><em>, </em><em>optional</em>) – factor to increase width spatial resolution by, only one of w_upscale_factor and upscale_factor can be used.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Input: <span class="math notranslate nohighlight">\((*, C_{in}, H_{in}, W_{in})\)</span>, where * is zero or more batch dimensions</p></li>
+<li><p>Output: <span class="math notranslate nohighlight">\((*, C_{out}, H_{out}, W_{out})\)</span>, where</p></li>
+</ul>
+</dd>
+</dl>
+<p>if use upscale_factor:</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}C_{out} = C_{in} \div \text{h_upscale_factor}^2\\H_{out} = H_{in} \times \text{upscale_factor}\\W_{out} = W_{in} \times \text{upscale_factor}\end{aligned}\end{align} \]</div></div>
+<p>if use h_upscale_factor and w_upscale_factor:</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}C_{out} = C_{in} \div \text{h_upscale_factor} \div \text{w_upscale_factor}\\H_{out} = H_{in} \times \text{h_upscale_factor}\\W_{out} = W_{in} \times \text{w_upscale_factor}\end{aligned}\end{align} \]</div></div>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">PixelShuffle</span><span class="p">(</span><span class="n">upscale_factor</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">oneflow.Size([3, 1, 10, 10])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">PixelShuffle</span><span class="p">(</span><span class="n">h_upscale_factor</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">w_upscale_factor</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">oneflow.Size([1, 2, 6, 8])</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
 <dt id="oneflow.nn.parallel.DistributedDataParallel">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.parallel.</span></code><code class="sig-name descname"><span class="pre">DistributedDataParallel</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow.nn.module.Module</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">broadcast_buffers</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bucket_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.parallel.DistributedDataParallel" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -4697,14 +4818,14 @@ The documentation is referenced from:
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="oneflow.html">
+          <a class="prev-page" href="tensor_attributes.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">oneflow</div>
+                <div class="title">Tensor Attributes</div>
                 
               </div>
             </a>
