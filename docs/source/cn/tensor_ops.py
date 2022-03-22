@@ -740,7 +740,7 @@ reset_docstr(
 )
 
 reset_docstr(
-    oneflow.to_local,
+    oneflow.Tensor.to_local,
     r"""to_local(input) -> Tensor
 
     返回 global tensor :attr:`input` 的 local tensor 。
