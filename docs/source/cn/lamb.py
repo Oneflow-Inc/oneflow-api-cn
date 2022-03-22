@@ -7,7 +7,7 @@ reset_docstr(
 
     LAMB 在 `Large Batch Optimization for Deep Learning: Training BERT in 76 minutes`_ 中被提出。
 
-    参数更新的方程是。
+    参数更新的方程是：
 
     .. math::
 

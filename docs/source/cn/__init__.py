@@ -37,6 +37,7 @@ from .sbp import *
 from .env import *
 from .cuda import *
 from .image import *
+from .nn_init import *
 from .adam import *
 from .adamw import *
 from .lamb import *
