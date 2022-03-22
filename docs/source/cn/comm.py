@@ -70,18 +70,19 @@ reset_docstr(
 
 reset_docstr(
     oneflow.comm.all_gather,
-    r"""all_gather(tensor_list, tensor)
+    r"""
+    all_gather(tensor_list, tensor)
     
     将整个进程组的张量收集到一个列表中。
-
+    
     参数：
         - **tensor_list** (list[Tensor]) - 输出列表。它应该包含正确大小的张量，用于集体的输出。
         - **tensor** (Tensor) - 从当前进程广播的张量。
-
+        
     样例：
-
+    
     .. code-block:: python
-
+    
         > # We have 1 process groups, 2 ranks.
         > import oneflow as flow
 
