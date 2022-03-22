@@ -8,11 +8,7 @@ reset_docstr(
     原始的的 Adam 算法是在 `Adam: A Method for Stochastic Optimization`_ 中被提出。
     其变式 AdamW 在 `Decoupled Weight Decay Regularization`_ 中被提出。
 
-    Adam-weight-decay 算法的优化器。
-
-    (更多详情参考 `Adam-weight-decay <https://www.fast.ai/2018/07/02/adam-weight-decay/>`_ )。
-
-    所以我们使用 Adam-weight-decay 算法来解决以下问题。
+    所以我们使用 `Adam-weight-decay <https://www.fast.ai/2018/07/02/adam-weight-decay/>`_ 算法来解决以下问题。
 
     参数更新的方程是：
 
