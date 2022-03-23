@@ -53,7 +53,7 @@ reset_docstr(
             adamw.step()
             adamw.zero_grad()
 
-    Example 2: 
+    例 2: 
 
     .. code-block:: python 
 

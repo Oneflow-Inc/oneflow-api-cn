@@ -50,7 +50,7 @@ reset_docstr(
             lamb.step()
             lamb.zero_grad()
 
-    Example 2:
+    例 2:
 
     .. code-block:: python
 
