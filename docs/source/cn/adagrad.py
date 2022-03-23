@@ -16,7 +16,7 @@ reset_docstr(
             & X_{t} = X_{t-1} - \frac{decay\_lr}{\sqrt{S_{t} + \epsilon}} \odot grad
 
         参数:
-            - **params** (Union[Iterator[Parameter], List[Dict]])- 用来优化或 dicts 定义的可迭代参数。
+            - **params** (Union[Iterator[Parameter], List[Dict]])- 待优化参数构成的 iterable 或定义了参数的 dict。
             - **lr** (float, optional)- 学习率，默认为 0.001。
             - **lr_decay** (float, optional)- 学习率的衰减因子，默认为 0.0。
             - **weight_decay** (float, optional)- 权重衰减， 默认为 0。
@@ -75,6 +75,6 @@ reset_docstr(
     r"""执行单个优化步骤。
 
         参数:
-            - **closure** (callable, optional)- 重新评估模型并返回损失的闭包。          
+            - **closure** (callable, optional)- 重新测试模型并返回损失的闭包。          
     """
 )
