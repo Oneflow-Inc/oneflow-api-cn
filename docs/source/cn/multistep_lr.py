@@ -9,7 +9,7 @@ reset_docstr(
 
     参数：
         - **optimizer** (Optimizer) - 封装的优化器。
-        - **milestones**(list) - step indices 的 list，必须是增加的。
+        - **milestones** (list) - step indices 的 list，必须是增加的。
         - **gamma** (float, optional) - 学习率衰减的乘法系数（默认值：0.1）。
         - **last_step** (int) - 最后一个 epoch 的索引（默认值：-1）。
         - **verbose** (bool) - 如果为 ``True`` ，则会为每次更新打印一条信息到 stdout（默认值: ``False`` ）。
@@ -26,5 +26,5 @@ reset_docstr(
             train(...)
             multistep_lr.step()
 
-    """
+    """,
 )

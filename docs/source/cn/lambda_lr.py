@@ -13,7 +13,7 @@ reset_docstr(
 
     参数：
         - **optimizer** (Optimizer) - 封装的优化器。
-        - **lr_lambda**(function or list) - 一个给定整数参数 epoch 的计算乘法因子的函数，
+        - **lr_lambda** (function or list) - 一个给定整数参数 epoch 的计算乘法因子的函数，
             或者一个此类函数的列表，一个在每组 optimizer.param_groups 中。
         - **last_step** (int) - 最后一个 epoch 的索引（默认值：-1）。
         - **verbose** (bool) - 如果为 ``True`` ，则会为每次更新打印一条信息到 stdout（默认值: ``False`` ）。
