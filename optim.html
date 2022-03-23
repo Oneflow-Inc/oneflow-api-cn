@@ -168,7 +168,7 @@ limitations under the License.</p>
 \[ \begin{align}\begin{aligned}&amp; S_{t} = S_{t-1} + grad \odot grad\\&amp; decay\_lr = \frac{learning\_rate}{(1 + (train\_step - 1) * lr\_decay)}\\&amp; X_{t} = X_{t-1} - \frac{decay\_lr}{\sqrt{S_{t} + \epsilon}} \odot grad\end{aligned}\end{align} \]</div></div>
 <dl class="simple">
 <dt>参数:</dt><dd><ul class="simple">
-<li><p><strong>params</strong> (Union[Iterator[Parameter], List[Dict]])- 用来优化或 dicts 定义的可迭代参数。</p></li>
+<li><p><strong>params</strong> (Union[Iterator[Parameter], List[Dict]])- 待优化参数构成的 iterable 或定义了参数的 dict。</p></li>
 <li><p><strong>lr</strong> (float, optional)- 学习率，默认为 0.001。</p></li>
 <li><p><strong>lr_decay</strong> (float, optional)- 学习率的衰减因子，默认为 0.0。</p></li>
 <li><p><strong>weight_decay</strong> (float, optional)- 权重衰减， 默认为 0。</p></li>
@@ -220,7 +220,7 @@ limitations under the License.</p>
 <dd><p>执行单个优化步骤。</p>
 <dl class="simple">
 <dt>参数:</dt><dd><ul class="simple">
-<li><p><strong>closure</strong> (callable, optional)- 重新评估模型并返回损失的闭包。</p></li>
+<li><p><strong>closure</strong> (callable, optional)- 重新测试模型并返回损失的闭包。</p></li>
 </ul>
 </dd>
 </dl>
@@ -229,45 +229,40 @@ limitations under the License.</p>
 <dl class="py class">
 <dt id="oneflow.optim.Adam">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.optim.</span></code><code class="sig-name descname"><span class="pre">Adam</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.nn.Parameter</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">betas</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">(0.9,</span> <span class="pre">0.999)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1e-08</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_decay</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amsgrad</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_bias_correction</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.Adam" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implements Adam algorithm.</p>
-<p>It has been proposed in <a class="reference external" href="https://arxiv.org/abs/1412.6980">Adam: A Method for Stochastic Optimization</a>.
-The implementation of the L2 penalty follows changes proposed in
-<a class="reference external" href="https://arxiv.org/abs/1711.05101">Decoupled Weight Decay Regularization</a>.</p>
-<p>This algorithm can adjust the learning rate of each parameter dynamically according to the 1st-moment estimates and the 2nd-moment estimates of gradient.</p>
-<p>the equation of parameters updating is:</p>
+<dd><p>实现 Adam 优化算法。</p>
+<p>它在 <a class="reference external" href="https://arxiv.org/abs/1412.6980">Adam: A Method for Stochastic Optimization</a> 中被提出。
+L2 penalty 的实现遵循了 <a class="reference external" href="https://arxiv.org/abs/1711.05101">Decoupled Weight Decay Regularization</a> 中提出的变化。</p>
+<p>该算法可以根据梯度的一阶矩估计和二阶矩估计动态地调整每个参数的学习率。</p>
+<p>参数更新的方程是：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}&amp; V_t = \beta_1*V_{t-1} + (1-\beta_1)*grad\\&amp; S_t = \beta_2*S_{t-1} + (1-\beta_2)*{grad} \odot {grad}\\&amp; \hat{g} = learning\_rate*\frac{{V_t}}{\sqrt{{S_t}}+\epsilon}\\&amp; param_{new} = param_{old} - \hat{g}\end{aligned}\end{align} \]</div></div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>params</strong> (<em>iterable</em>) – iterable of parameters to optimize or dicts defining
-parameter groups</p></li>
-<li><p><strong>lr</strong> (<em>float</em><em>, </em><em>optional</em>) – learning rate (default: 1e-3)</p></li>
-<li><p><strong>betas</strong> (<em>Tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>]</em><em>, </em><em>optional</em>) – coefficients used for computing
-running averages of gradient and its square (default: (0.9, 0.999))</p></li>
-<li><p><strong>eps</strong> (<em>float</em><em>, </em><em>optional</em>) – term added to the denominator to improve
-numerical stability (default: 1e-8)</p></li>
-<li><p><strong>weight_decay</strong> (<em>float</em><em>, </em><em>optional</em>) – weight decay (L2 penalty) (default: 0)</p></li>
-<li><p><strong>amsgrad</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to use the AMSGrad variant of this algorithm. (default: False)</p></li>
-<li><p><strong>do_bias_correction</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether do bias correction (default: True)</p></li>
+<dl class="simple">
+<dt>参数:</dt><dd><ul class="simple">
+<li><p><strong>params</strong> (iterable) - 待优化参数构成的 iterable 或定义了参数组的 dict。</p></li>
+<li><p><strong>lr</strong> (float, optional) - 学习率（默认值：1e-3）。</p></li>
+<li><p><strong>betas</strong> (Tuple[float, float], optional) - 用于计算梯度及其平方的移动平均的系数（默认值：(0.9, 0.999))</p></li>
+<li><p><strong>eps</strong> (float, optional) - 添加到分母中以提高数值稳定性的项（默认值：1e-8）。</p></li>
+<li><p><strong>weight_decay</strong> (float, optional) - 权重衰减 (L2 penalty) (默认值: 0)</p></li>
+<li><p><strong>amsgrad</strong> (bool, optional) - 是否使用该算法的 AMSGrad 变体（默认值: False) 。</p></li>
+<li><p><strong>do_bias_correction</strong> (bool, optional) - 是否做偏差校正（默认值：True）。</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
-<p>Example 1:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume net is a custom model.</span>
+<p>示例:</p>
+<p>例1:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 假设 net 是一个自定义模型。</span>
 <span class="n">adam</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-    <span class="c1"># Read data, Compute the loss and so on.</span>
+    <span class="c1"># 读取数据，计算损失，等等。</span>
     <span class="c1"># ...</span>
     <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
     <span class="n">adam</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
     <span class="n">adam</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Example 2:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume net is a custom model.</span>
+<p>例2:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 假设 net 是一个自定义模型。</span>
 <span class="n">adam</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span>
     <span class="p">[</span>
         <span class="p">{</span>
@@ -280,7 +275,7 @@ numerical stability (default: 1e-8)</p></li>
 <span class="p">)</span>
 
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-    <span class="c1"># Read data, Compute the loss and so on.</span>
+    <span class="c1"># 读取数据，计算损失，等等。</span>
     <span class="c1"># ...</span>
     <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
     <span class="n">adam</span><span class="o">.</span><span class="n">clip_grad</span><span class="p">()</span>
@@ -288,16 +283,16 @@ numerical stability (default: 1e-8)</p></li>
     <span class="n">adam</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>If you want to use clip_grad, you can refer this example.</p>
-<p>For more details of <cite>clip_grad_max_norm</cite> and <cite>clip_grad_norm_type</cite>, you can refer to <a class="reference internal" href="nn.html#oneflow.nn.utils.clip_grad_norm_" title="oneflow.nn.utils.clip_grad_norm_"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.nn.utils.clip_grad_norm_()</span></code></a>.</p>
+<p>若要使用 clip_grad 函数，请参考这个示例。</p>
+<p>关于 <cite>clip_grad_max_norm</cite> 和 <cite>clip_grad_norm_type</cite> 函数的更多细节，请参考 <code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.nn.utils.clip_grad_norm()</span></code> 。</p>
 <dl class="py method">
 <dt id="oneflow.optim.Adam.step">
 <code class="sig-name descname"><span class="pre">step</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">closure</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.Adam.step" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs a single optimization step.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>closure</strong> (<em>callable</em><em>, </em><em>optional</em>) – A closure that reevaluates the model
-and returns the loss.</p>
+<dd><p>执行一个优化步骤。</p>
+<dl class="simple">
+<dt>参数:</dt><dd><ul class="simple">
+<li><p><strong>closure</strong> (callable, optional) - 重新测试模型并返回损失的闭包。</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -309,46 +304,40 @@ and returns the loss.</p>
 <dl class="py class">
 <dt id="oneflow.optim.AdamW">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.optim.</span></code><code class="sig-name descname"><span class="pre">AdamW</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.nn.Parameter</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">betas</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">(0.9,</span> <span class="pre">0.999)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1e-08</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_decay</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amsgrad</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_bias_correction</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.AdamW" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implements AdamW algorithm.</p>
-<p>The original Adam algorithm was proposed in <a class="reference external" href="https://arxiv.org/abs/1412.6980">Adam: A Method for Stochastic Optimization</a>.
-The AdamW variant was proposed in <a class="reference external" href="https://arxiv.org/abs/1711.05101">Decoupled Weight Decay Regularization</a>.</p>
-<p>The optimizer of the Adam-weight-decay algorithm.</p>
-<p>(More details please refer to <a class="reference external" href="https://www.fast.ai/2018/07/02/adam-weight-decay/">Adam-weight-decay</a>).</p>
-<p>So we use Adam-weight-decay algorithm to solve this problem.</p>
-<p>the equation of parameters updating is:</p>
+<dd><p>实现 AdamW 优化算法。</p>
+<p>原始的的 Adam 算法是在 <a class="reference external" href="https://arxiv.org/abs/1412.6980">Adam: A Method for Stochastic Optimization</a> 中被提出。
+其变式 AdamW 在 <a class="reference external" href="https://arxiv.org/abs/1711.05101">Decoupled Weight Decay Regularization</a> 中被提出。</p>
+<p>所以我们使用 <a class="reference external" href="https://www.fast.ai/2018/07/02/adam-weight-decay/">Adam-weight-decay</a> 算法来解决以下问题。</p>
+<p>参数更新的方程是：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}&amp; V_t = \beta_1*V_{t-1} + (1-\beta_1)*grad\\&amp; S_t = \beta_2*S_{t-1} + (1-\beta_2)*{grad} \odot {grad}\\&amp; \hat{g} = learning\_rate*(\frac{{V_t}}{\sqrt{{S_t}}+\epsilon}+\lambda*param_{old})\\&amp; param_{new} = param_{old} - \hat{g}\end{aligned}\end{align} \]</div></div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>params</strong> (<em>iterable</em>) – iterable of parameters to optimize or dicts defining
-parameter groups</p></li>
-<li><p><strong>lr</strong> (<em>float</em><em>, </em><em>optional</em>) – learning rate (default: 1e-3)</p></li>
-<li><p><strong>betas</strong> (<em>Tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>]</em><em>, </em><em>optional</em>) – coefficients used for computing
-running averages of gradient and its square (default: (0.9, 0.999))</p></li>
-<li><p><strong>eps</strong> (<em>float</em><em>, </em><em>optional</em>) – term added to the denominator to improve
-numerical stability (default: 1e-8)</p></li>
-<li><p><strong>weight_decay</strong> (<em>float</em><em>, </em><em>optional</em>) – weight decay (L2 penalty) (In the equation is λ, default: 0)</p></li>
-<li><p><strong>amsgrad</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to use the AMSGrad variant of this algorithm. (default: False)</p></li>
-<li><p><strong>do_bias_correction</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether do bias correction (default: True)</p></li>
+<dl class="simple">
+<dt>参数:</dt><dd><ul class="simple">
+<li><p><strong>params</strong> (iterable) - 待优化参数构成的 iterable 或定义了参数组的 dict。</p></li>
+<li><p><strong>lr</strong> (float, optional) - 学习率（默认值：1e-3）。</p></li>
+<li><p><strong>betas</strong> (Tuple[float, float], optional) - 用于计算梯度及其平方的移动平均的系数（默认值：(0.9, 0.999))</p></li>
+<li><p><strong>eps</strong> (float, optional) - 添加到分母中以提高数值稳定性的项（默认值：1e-8）。</p></li>
+<li><p><strong>weight_decay</strong> (float, optional) - 权重衰减 (L2 penalty) (在等式中为 λ, 默认值: 0)</p></li>
+<li><p><strong>amsgrad</strong> (bool, optional) - 是否使用该算法的 AMSGrad 变体 (默认值: False) 。</p></li>
+<li><p><strong>do_bias_correction</strong> (bool, optional) - 是否做偏差校正（默认值：True）。</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
-<p>Example 1:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume net is a custom model.</span>
+<p>示例:</p>
+<p>例1:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 假设 net 是一个自定义模型。</span>
 <span class="n">adamw</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-    <span class="c1"># Read data, Compute the loss and so on.</span>
+    <span class="c1"># 读取数据，计算损失，等等。</span>
     <span class="c1"># ...</span>
     <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
     <span class="n">adamw</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
     <span class="n">adamw</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Example 2:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume net is a custom model.</span>
+<p>例 2:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 假设 net 是一个自定义模型。</span>
 <span class="n">adamw</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span><span class="p">(</span>
     <span class="p">[</span>
         <span class="p">{</span>
@@ -361,7 +350,7 @@ numerical stability (default: 1e-8)</p></li>
 <span class="p">)</span>
 
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-    <span class="c1"># Read data, Compute the loss and so on.</span>
+    <span class="c1"># 读取数据，计算损失，等等。</span>
     <span class="c1"># ...</span>
     <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
     <span class="n">adamw</span><span class="o">.</span><span class="n">clip_grad</span><span class="p">()</span>
@@ -369,16 +358,16 @@ numerical stability (default: 1e-8)</p></li>
     <span class="n">adamw</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>If you want to use clip_grad, you can refer this example.</p>
-<p>For more details of <cite>clip_grad_max_norm</cite> and <cite>clip_grad_norm_type</cite>, you can refer to <a class="reference internal" href="nn.html#oneflow.nn.utils.clip_grad_norm_" title="oneflow.nn.utils.clip_grad_norm_"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.nn.utils.clip_grad_norm_()</span></code></a>.</p>
+<p>若要使用 clip_grad 函数，请参考这个示例。</p>
+<p>关于 <cite>clip_grad_max_norm</cite> 和 <cite>clip_grad_norm_type</cite> 函数的更多细节，请参考 <code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.nn.utils.clip_grad_norm()</span></code> 。</p>
 <dl class="py method">
 <dt id="oneflow.optim.AdamW.step">
 <code class="sig-name descname"><span class="pre">step</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">closure</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.AdamW.step" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs a single optimization step.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>closure</strong> (<em>callable</em><em>, </em><em>optional</em>) – A closure that reevaluates the model
-and returns the loss.</p>
+<dd><p>执行一个优化步骤。</p>
+<dl class="simple">
+<dt>参数:</dt><dd><ul class="simple">
+<li><p><strong>closure</strong> (callable, optional) - 重新测试模型并返回损失的闭包。</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -390,45 +379,39 @@ and returns the loss.</p>
 <dl class="py class">
 <dt id="oneflow.optim.LAMB">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.optim.</span></code><code class="sig-name descname"><span class="pre">LAMB</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.nn.Parameter</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">betas</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">(0.9,</span> <span class="pre">0.999)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1e-08</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_decay</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adam_w_mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_bias_correction</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amsgrad</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.LAMB" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implements LAMB algorithm.</p>
-<p>LAMB was proposed in <a class="reference external" href="https://arxiv.org/abs/1904.00962">Large Batch Optimization for Deep Learning: Training BERT in 76 minutes</a>.</p>
-<p>The equation of parameters updating is:</p>
+<dd><p>实现 LAMB 优化算法。</p>
+<p>LAMB 在 <a class="reference external" href="https://arxiv.org/abs/1904.00962">Large Batch Optimization for Deep Learning: Training BERT in 76 minutes</a> 中被提出。</p>
+<p>参数更新的方程是：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}&amp; V_t = \beta_1*V_{t-1} + (1-\beta_1)*grad\\&amp; S_t = \beta_2*S_{t-1} + (1-\beta_2)*{grad} \odot {grad}\\&amp; \hat{u} = \frac{{V_t}}{\sqrt{{S_t}}+\epsilon}\\&amp; \hat{r} = learning\_rate * \frac{||param_{old}||_2}{||\hat{u}||_2}\\&amp; param_{new} = param_{old} - \hat{r} * \hat{u}\end{aligned}\end{align} \]</div></div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>parameters</strong> (<em>iterable</em>) – iterable of parameters to optimize or dicts defining
-parameter groups</p></li>
-<li><p><strong>lr</strong> (<em>float</em><em>, </em><em>optional</em>) – learning rate (default: 1e-3)</p></li>
-<li><p><strong>betas</strong> (<em>Tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>]</em><em>, </em><em>optional</em>) – coefficients used for computing
-running averages of gradient and its square (default: (0.9, 0.999))</p></li>
-<li><p><strong>eps</strong> (<em>float</em><em>, </em><em>optional</em>) – term added to the denominator to improve
-numerical stability (default: 1e-8)</p></li>
-<li><p><strong>weight_decay</strong> (<em>float</em><em>, </em><em>optional</em>) – weight decay (L2 penalty) (default: 0)</p></li>
-<li><p><strong>adam_w_mode</strong> (<em>bool</em><em>, </em><em>optional</em>) – apply L2 regularization or weight decay True for
-decoupled weight decay (also known as AdamW) (default: True)</p></li>
-<li><p><strong>do_bias_correction</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to do bias correction (default: True)</p></li>
-<li><p><strong>amsgrad</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to use the AMSGrad variant of this algorithm.</p></li>
-<li><p><strong>SUPPORTED now!</strong><strong> (</strong><strong>default</strong> (<em>NOT</em>) – False)</p></li>
+<dl class="simple">
+<dt>参数:</dt><dd><ul class="simple">
+<li><p><strong>params</strong> (iterable) - 待优化参数构成的 iterable 或定义了参数组的 dict。</p></li>
+<li><p><strong>lr</strong> (float, optional) - 学习率（默认值：1e-3）。</p></li>
+<li><p><strong>betas</strong> (Tuple[float, float], optional) - 用于计算梯度及其平方的移动平均的系数（默认值：(0.9, 0.999))</p></li>
+<li><p><strong>eps</strong> (float, optional) - 添加到分母中以提高数值稳定性的项（默认值：1e-8）。</p></li>
+<li><p><strong>weight_decay</strong> (float, optional) - 权重衰减 (L2 penalty) (默认值: 0)</p></li>
+<li><p><strong>adam_w_mode</strong> (bool, optional) - 应用 L2 正则化或去耦权重衰减 True (也被称为 AdamW 优化算法) (默认值: True)</p></li>
+<li><p><strong>do_bias_correction</strong> (bool, optional) - 是否做偏差校正（默认值：True）。</p></li>
+<li><p><strong>amsgrad</strong> (bool, optional) - 是否使用该算法的 AMSGrad 变体，现在不支持! (默认值: False)</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
-<p>Example 1:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume net is a custom model.</span>
+<p>示例:</p>
+<p>例1:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 假设 net 是一个自定义模型。</span>
 <span class="n">lamb</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">LAMB</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-    <span class="c1"># Read data, Compute the loss and so on.</span>
+    <span class="c1"># 读取数据，计算损失，等等。</span>
     <span class="c1"># ...</span>
     <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
     <span class="n">lamb</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
     <span class="n">lamb</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Example 2:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume net is a custom model.</span>
+<p>例 2:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 假设 net 是一个自定义模型。</span>
 <span class="n">lamb</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">LAMB</span><span class="p">(</span>
     <span class="p">[</span>
         <span class="p">{</span>
@@ -441,7 +424,7 @@ decoupled weight decay (also known as AdamW) (default: True)</p></li>
 <span class="p">)</span>
 
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-    <span class="c1"># Read data, Compute the loss and so on.</span>
+    <span class="c1"># 读取数据，计算损失，等等。</span>
     <span class="c1"># ...</span>
     <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
     <span class="n">lamb</span><span class="o">.</span><span class="n">clip_grad</span><span class="p">()</span>
@@ -449,16 +432,16 @@ decoupled weight decay (also known as AdamW) (default: True)</p></li>
     <span class="n">lamb</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>If you want to use clip_grad, you can refer this example.</p>
-<p>For more details of <cite>clip_grad_max_norm</cite> and <cite>clip_grad_norm_type</cite>, you can refer to <a class="reference internal" href="nn.html#oneflow.nn.utils.clip_grad_norm_" title="oneflow.nn.utils.clip_grad_norm_"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.nn.utils.clip_grad_norm_()</span></code></a>.</p>
+<p>若要使用 clip_grad 函数，请参考这个示例。</p>
+<p>关于 <cite>clip_grad_max_norm</cite> 和 <cite>clip_grad_norm_type</cite> 函数的更多细节，请参考 <code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.nn.utils.clip_grad_norm()</span></code> 。</p>
 <dl class="py method">
 <dt id="oneflow.optim.LAMB.step">
 <code class="sig-name descname"><span class="pre">step</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">closure</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.LAMB.step" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs a single optimization step.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>closure</strong> (<em>callable</em><em>, </em><em>optional</em>) – A closure that reevaluates the model
-and returns the loss.</p>
+<dd><p>执行一个优化步骤。</p>
+<dl class="simple">
+<dt>参数:</dt><dd><ul class="simple">
+<li><p><strong>closure</strong> (callable, optional) - 重新测试模型并返回损失的闭包。</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -473,29 +456,28 @@ and returns the loss.</p>
 <dl class="py method">
 <dt id="oneflow.optim.Optimizer.clip_grad">
 <code class="sig-name descname"><span class="pre">clip_grad</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.Optimizer.clip_grad" title="Permalink to this definition">¶</a></dt>
-<dd><p>Clips gradient norm of an iterable of parameters.
-The norm is computed over all gradients together, as if they were concatenated into a single vector.</p>
-<p>You can set the max_norm and norm_type.</p>
-<p>For more details, you can refer to the documentation of each optimizer(like Adam, SGD and so on).</p>
-<p>You can also refer the code in <a class="reference internal" href="nn.html#oneflow.nn.utils.clip_grad_norm_" title="oneflow.nn.utils.clip_grad_norm_"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.nn.utils.clip_grad_norm_()</span></code></a></p>
+<dd><p>剪切一个参数 iterable 的梯度范数。
+范数是在所有梯度上一起计算的，就像它们被串联成一个向量一样。
+可以设置 max_norm 和 norm_type。</p>
+<p>更多的细节请参考文档中的优化器（如 Adam、SGD 等）。</p>
+<p>也可以参考代码中的 <a class="reference internal" href="nn.html#oneflow.nn.utils.clip_grad_norm_" title="oneflow.nn.utils.clip_grad_norm_"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.nn.utils.clip_grad_norm_()</span></code></a> 函数。</p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.optim.Optimizer.load_state_dict">
 <code class="sig-name descname"><span class="pre">load_state_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_dict</span></span></em><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#oneflow.optim.Optimizer.load_state_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load the state of the optimizer which is created by <cite>state_dict</cite> function.</p>
-<p>It almost copied from: <a class="reference external" href="https://pytorch.org/docs/stable/_modules/torch/optim/optimizer.html#Optimizer.load_state_dict">https://pytorch.org/docs/stable/_modules/torch/optim/optimizer.html#Optimizer.load_state_dict</a></p>
+<dd><p>加载由 <cite>state_dict</cite> 函数创建的优化器的状态。</p>
+<p>参考自: <a class="reference external" href="https://pytorch.org/docs/stable/_modules/torch/optim/optimizer.html#Optimizer.load_state_dict">https://pytorch.org/docs/stable/_modules/torch/optim/optimizer.html#Optimizer.load_state_dict</a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.optim.Optimizer.state_dict">
 <code class="sig-name descname"><span class="pre">state_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.Optimizer.state_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the state of the optimizer as a <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>.</p>
-<p>It contains two entries:</p>
+<dd><p>以 <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code> 作为类型返回优化器的状态。</p>
+<p>它包含两个条目:</p>
 <ul class="simple">
-<li><p>state - a dict holding current optimization state. Its content
-differs between optimizer classes.</p></li>
-<li><p>param_group - a dict containing all parameter groups.</p></li>
+<li><p>state - 一个保存当前优化状态的 dict，它的内容在不同的优化器类之间是不同的。</p></li>
+<li><p>param_group - 一个包含所有参数组的 dict。</p></li>
 </ul>
-<p>It almost copied from: <a class="reference external" href="https://pytorch.org/docs/stable/_modules/torch/optim/optimizer.html#Optimizer.state_dict">https://pytorch.org/docs/stable/_modules/torch/optim/optimizer.html#Optimizer.state_dict</a></p>
+<p>参考自: <a class="reference external" href="https://pytorch.org/docs/stable/_modules/torch/optim/optimizer.html#Optimizer.state_dict">https://pytorch.org/docs/stable/_modules/torch/optim/optimizer.html#Optimizer.state_dict</a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.optim.Optimizer.step">
@@ -508,23 +490,17 @@ differs between optimizer classes.</p></li>
 <dl class="py method">
 <dt id="oneflow.optim.Optimizer.zero_grad">
 <code class="sig-name descname"><span class="pre">zero_grad</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">set_to_none</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.Optimizer.zero_grad" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the gradients of all optimized torch.Tensor s to zero.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>set_to_none</strong> (<em>bool</em>) – instead of setting to zero, set the grads to None.
-This will in general have lower memory footprint, and can modestly
-improve performance. However, it changes certain behaviors.</p>
+<dd><p>将所有已优化的张量的梯度设置为零。</p>
+<dl class="simple">
+<dt>参数:</dt><dd><ul class="simple">
+<li><p><strong>set_to_none</strong> (bool) - 设置 grads 为 None 而不是 0。一般来说，这将有较低的内存占用，并能适度地提高性能。然而，这会导致一些不同的行为。</p></li>
+</ul>
 </dd>
-</dl>
-<dl>
-<dt>For example:</dt><dd><p>1. When the user tries to access a gradient and perform manual ops on
-it, a None attribute or a Tensor full of 0s will behave differently.</p>
-<p>2. If the user requests zero_grad(set_to_none=True) followed by a
-backward pass, grads are guaranteed to be None for params that did not
-receive a gradient.</p>
-<p>3. Optimizers have a different behavior if the gradient is 0 or None
-(in one case it does the step with a gradient of 0 and in the other
-it skips the step altogether).</p>
+<dt>例如:</dt><dd><ol class="arabic simple">
+<li><p>当用户试图访问一个 gradient 并对其进行手动操作时，一个 None 属性或一个全是 0 的 Tensor 将表现得不同。</p></li>
+<li><p>如果用户请求 zero_grad (set_to_none=True)，然后再反向传播，对于没有收到梯度的参数，保证其梯度为 None。</p></li>
+<li><p>如果梯度为 0 或 None，优化器有不同的行为（在一些情况下，它以 0 梯度执行该步骤；而在另一些情况下，它完全跳过该步骤）</p></li>
+</ol>
 </dd>
 </dl>
 </dd></dl>
