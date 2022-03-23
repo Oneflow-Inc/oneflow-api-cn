@@ -39,7 +39,7 @@ reset_docstr(
 reset_docstr(
     oneflow.comm.all_reduce,
     r"""
-    将所有机器上的 tensor 做规约操作，结果返回给所有进程。
+    对所有机器上的张量做规约操作，结果返回给所有进程。
 
     参数：
         - **tensor** (Tensor): 输入张量
