@@ -5,10 +5,6 @@ using namespace std;
 
 #define STRINGIFY(x) #x
 
-int add(int i, int j) {
-    return i + j;
-}
-
 namespace py = pybind11;
 
 py::object ReplaceDoc(py::object f, const std::string& doc_string) {
@@ -45,6 +41,9 @@ py::object ReplaceDoc(py::object f, const std::string& doc_string) {
     py::setattr(f, "__doc__", py::reinterpret_steal<py::object>(PyUnicode_FromString(doc_str)));
   } else if (Py_TYPE(obj)->tp_name == PyProperty_Type.tp_name) {
     py::setattr(f, "__doc__", py::reinterpret_steal<py::object>(PyUnicode_FromString(doc_str)));
+  } else if (PyInstanceMethod_Check(obj)) {
+    auto* f = (PyCFunctionObject*)(PyInstanceMethod_Function(obj));
+    f->m_ml->ml_doc = doc_str;
   } else {
     cout << "function is " << Py_TYPE(obj)->tp_name << ", not a valid function.";
     return py::object();
