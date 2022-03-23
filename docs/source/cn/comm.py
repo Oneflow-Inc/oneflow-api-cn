@@ -73,7 +73,7 @@ reset_docstr(
 reset_docstr(
     oneflow.comm.reduce_scatter,
     r"""
-    对一个列表中的张量进行规约操作，并将其分发到一个进程组中的所有进程。
+    对输入列表中的张量做规约操作，然后将其分发到一个进程组中的所有进程。
 
     参数：
         - **output** (Tensor): 输出张量
