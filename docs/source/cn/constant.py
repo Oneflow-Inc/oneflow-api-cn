@@ -607,15 +607,15 @@ reset_docstr(
     计算 element-wise 的不等性。
     第二个参数是一个可以与第一个参数广播的数字或张量。
 
-    Args:
+    参数：
         - **input** (oneflow.Tensor): 用于比较的张量。
         - **other** (oneflow.Tensor, float 或者 int): 用于比较的对象
 
-    Returns:
+    返回：
 
         - 一个布尔值张量，当 :attr:`input` 不等于 :attr:`other` 时为真，否则为假。
 
-    For example:
+    示例：
 
     .. code-block:: python
 
