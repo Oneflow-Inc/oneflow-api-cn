@@ -75,42 +75,42 @@ reset_docstr(
     """
 )
 
-# reset_docstr(
-#     oneflow.nn.Module.to_consistent,
-#     """
-#     此接口已停止维护，请使用 :func:`oneflow.nn.Module.to_global` 
-#     """
-# )
+reset_docstr(
+    oneflow.nn.Module.to_consistent,
+    """
+    此接口已停止维护，请使用 :func:`oneflow.nn.Module.to_global` 
+    """
+)
 
-# reset_docstr(
-#     oneflow.nn.Module.to_global,
-#     """
-#     将所有参数和缓存设置为全局的。
+reset_docstr(
+    oneflow.nn.Module.to_global,
+    """
+    将所有参数和缓存设置为全局的。
 
-#     它对此模块中每一个参数和缓存执行相同的 :func:`oneflow.Tensor.to_global` 
+    它对此模块中每一个参数和缓存执行相同的 :func:`oneflow.Tensor.to_global` 
 
-#     Note:
-#         此方法会以 in-place 方式修改模块。
+    Note:
+        此方法会以 in-place 方式修改模块。
 
-#         如果该模块的参数和缓存是本地的，则 placement 和 sbp 都是必需的，否则至少需要其中的一个。
+        如果该模块的参数和缓存是本地的，则 placement 和 sbp 都是必需的，否则至少需要其中的一个。
 
-#     参数：
-#         - **placement** (flow.placement, optional) - 该模块中参数和缓存的所需位置。默认值为 None
-#         - **sbp** (flow.sbp.sbp or tuple of flow.sbp.sbp, optional) - 此模块中参数和缓存的所需 sbp。默认值为 None
+    参数：
+        - **placement** (flow.placement, optional) - 该模块中参数和缓存的所需位置。默认值为 None
+        - **sbp** (flow.sbp.sbp or tuple of flow.sbp.sbp, optional) - 此模块中参数和缓存的所需 sbp。默认值为 None
 
-#     示例：
+    示例：
 
-#     .. code-block:: python
+    .. code-block:: python
 
-#         >   import oneflow as flow
-#         >   m = flow.nn.Conv2d(in_channels=3, out_channels=4, kernel_size=3)
-#         >   m.to_global(placement=flow.placement("cpu", ranks=[0]), sbp=[flow.sbp.split(0)])
-#         >   m.weight.is_global
-#         True
-#         >   m.bias.is_global
-#         True
-#     """
-# )
+        >   import oneflow as flow
+        >   m = flow.nn.Conv2d(in_channels=3, out_channels=4, kernel_size=3)
+        >   m.to_global(placement=flow.placement("cpu", ranks=[0]), sbp=[flow.sbp.split(0)])
+        >   m.weight.is_global
+        True
+        >   m.bias.is_global
+        True
+    """
+)
 
 reset_docstr(
     oneflow.nn.Module.zero_grad,
