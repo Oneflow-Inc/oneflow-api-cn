@@ -162,69 +162,63 @@ limitations under the License.</p>
 <dl class="py function">
 <dt id="oneflow.comm.all_gather">
 <code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">all_gather</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.all_gather" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gathers tensors from the whole group in a list.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>tensor_list</strong> (<em>list</em><em>[</em><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em>]</em>) – Output list. It should contain
-correctly-sized tensors to be used for output of the collective.</p></li>
-<li><p><strong>tensor</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – Tensor to be broadcast from current process.</p></li>
+<dd><p>将整个进程组的张量收集到一个列表中。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>tensor_list</strong> (list[Tensor]) - 输出列表。它应该包含正确大小的张量，用于整体的输出。</p></li>
+<li><p><strong>tensor</strong> (Tensor) - 从当前进程广播的张量。</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># We have 1 process groups, 2 ranks.</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span> <span class="o">+</span> <span class="n">flow</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">get_local_rank</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># input on rank0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> 
-<span class="go">tensor([[1, 2],</span>
-<span class="go">        [3, 4]], device='cuda:0', dtype=oneflow.int64)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># input on rank1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> 
-<span class="go">tensor([[2, 3],</span>
-<span class="go">        [4, 5]], device='cuda:1', dtype=oneflow.int64)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">flow</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">all_gather</span><span class="p">(</span><span class="n">tensor_list</span><span class="p">,</span> <span class="nb">input</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># result on rank0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor_list</span> 
-<span class="go">[tensor([[1, 2],</span>
-<span class="go">        [3, 4]], device='cuda:0', dtype=oneflow.int64), tensor([[2, 3],</span>
-<span class="go">        [4, 5]], device='cuda:0', dtype=oneflow.int64)]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># result on rank1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor_list</span> 
-<span class="go">[tensor([[1, 2],</span>
-<span class="go">        [3, 4]], device='cuda:1', dtype=oneflow.int64), tensor([[2, 3],</span>
-<span class="go">        [4, 5]], device='cuda:1', dtype=oneflow.int64)]</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="c1"># We have 1 process groups, 2 ranks.</span>
+<span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="o">&gt;</span> <span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span> <span class="o">+</span> <span class="n">flow</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">get_local_rank</span><span class="p">()</span>
+<span class="o">&gt;</span> <span class="c1"># input on rank0</span>
+<span class="o">&gt;</span> <span class="nb">input</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda:0'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">oneflow</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="c1"># input on rank1</span>
+<span class="o">&gt;</span> <span class="nb">input</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda:1'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">oneflow</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">tensor_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">flow</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span>
+<span class="o">&gt;</span> <span class="n">flow</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">all_gather</span><span class="p">(</span><span class="n">tensor_list</span><span class="p">,</span> <span class="nb">input</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="c1"># result on rank0</span>
+<span class="o">&gt;</span> <span class="n">tensor_list</span>
+<span class="p">[</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda:0'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">oneflow</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span> <span class="n">tensor</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda:0'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">oneflow</span><span class="o">.</span><span class="n">int64</span><span class="p">)]</span>
+<span class="o">&gt;</span> <span class="c1"># result on rank1</span>
+<span class="o">&gt;</span> <span class="n">tensor_list</span>
+<span class="p">[</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda:1'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">oneflow</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span> <span class="n">tensor</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda:1'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">oneflow</span><span class="o">.</span><span class="n">int64</span><span class="p">)]</span>
 </pre></div>
 </div>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.comm.all_reduce">
 <code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">all_reduce</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.all_reduce" title="Permalink to this definition">¶</a></dt>
-<dd><p>将所有机器上的 tensor 做 reduce 操作，结果返回给所有进程。</p>
+<dd><p>对所有机器上的张量做规约操作，结果返回给所有进程。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>tensor</strong> (Tensor): 输入张量</p></li>
+<li><p><strong>tensor</strong> (Tensor) - 输入张量</p></li>
 </ul>
 </dd>
 </dl>
 <p>示例：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 我们有一个进程组，两个 rank 。</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="c1"># We have 1 process groups, 2 ranks.</span>
 <span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-
 <span class="o">&gt;</span> <span class="n">tensor</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span> <span class="o">+</span> <span class="n">flow</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">get_local_rank</span><span class="p">()</span>
-<span class="c1"># rank0 上的 tensor</span>
+<span class="o">&gt;</span> <span class="c1"># tensor on rank0</span>
 <span class="o">&gt;</span> <span class="n">tensor</span>
 <span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
         <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda:0'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">oneflow</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
-
-<span class="c1"># rank1 上的 tensor</span>
+<span class="o">&gt;</span> <span class="c1"># tensor on rank1</span>
 <span class="o">&gt;</span> <span class="n">tensor</span>
 <span class="n">tensor</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
         <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda:1'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">oneflow</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
-
 <span class="o">&gt;</span> <span class="n">flow</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">all_reduce</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">tensor</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 <span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
@@ -235,49 +229,42 @@ correctly-sized tensors to be used for output of the collective.</p></li>
 <dl class="py function">
 <dt id="oneflow.comm.broadcast">
 <code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">broadcast</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.broadcast" title="Permalink to this definition">¶</a></dt>
-<dd><p>Broadcasts the tensor to the whole group.
-<code class="docutils literal notranslate"><span class="pre">tensor</span></code> must have the same number of elements in all processes
-participating in the collective.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>tensor</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – Data to be sent if <code class="docutils literal notranslate"><span class="pre">src</span></code> is the rank of current
-process, and tensor to be used to save received data otherwise.</p></li>
-<li><p><strong>src</strong> (<em>int</em>) – Source rank.</p></li>
+<dd><p>将张量广播到进程组中的所有进程中。<code class="docutils literal notranslate"><span class="pre">tensor</span></code> 在所有参与广播的进程中必须拥有相同的元素数量。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>tensor</strong> (Tensor) - 如果 <code class="docutils literal notranslate"><span class="pre">src</span></code> 为当前进程的 rank 则为被发送的张量，否则为用于保存接收数据的张量。</p></li>
+<li><p><strong>src</strong> (int) - 源数据的 rank。</p></li>
 </ul>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># We have 1 process groups, 2 ranks.</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span> <span class="o">+</span> <span class="n">flow</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">get_local_rank</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># input on rank0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span> 
-<span class="go">tensor([[1, 2],</span>
-<span class="go">        [3, 4]], device='cuda:0', dtype=oneflow.int64)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># input on rank1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span> 
-<span class="go">tensor([[2, 3],</span>
-<span class="go">        [4, 5]], device='cuda:1', dtype=oneflow.int64)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">broadcast</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># result on rank0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span> 
-<span class="go">tensor([[1, 2],</span>
-<span class="go">        [3, 4]], device='cuda:0', dtype=oneflow.int64)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span>   <span class="c1"># We have 1 process groups, 2 ranks.</span>
+<span class="o">&gt;</span>   <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="o">&gt;</span>   <span class="n">tensor</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span> <span class="o">+</span> <span class="n">flow</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">get_local_rank</span><span class="p">()</span>
+<span class="o">&gt;</span>   <span class="c1"># input on rank0</span>
+<span class="o">&gt;</span>   <span class="n">tensor</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda:0'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">oneflow</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+<span class="o">&gt;</span>   <span class="c1"># input on rank1</span>
+<span class="o">&gt;</span>   <span class="n">tensor</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda:1'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">oneflow</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+<span class="o">&gt;</span>   <span class="n">flow</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">broadcast</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="o">&gt;</span>   <span class="c1"># result on rank0</span>
+<span class="o">&gt;</span>   <span class="n">tensor</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda:0'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">oneflow</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.comm.gather">
 <code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">gather</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gather_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.gather" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gathers a list of tensors in a single process.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>tensor</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – Input tensor.</p></li>
-<li><p><strong>gather_list</strong> (<em>list</em><em>[</em><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em>]</em><em>, </em><em>optional</em>) – List of appropriately-sized
-tensors to use for gathered data (default is None, must be specified
-on the destination rank)</p></li>
-<li><p><strong>dst</strong> (<em>int</em><em>, </em><em>optional</em>) – Destination rank (default is 0)</p></li>
+<dd><p>将单个进程上的张量收集到一个列表中。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>tensor</strong> (Tensor) - 输入张量</p></li>
+<li><p><strong>gather_list</strong> (list[Tensor], 可选) - 用于收集数据的适当大小的张量列表（默认值为 None，在源 rank 上必须被指定）</p></li>
+<li><p><strong>dst</strong> (int, 可选) - 目标 rank (默认值为 0)</p></li>
 </ul>
 </dd>
 </dl>
@@ -285,32 +272,30 @@ on the destination rank)</p></li>
 <dl class="py function">
 <dt id="oneflow.comm.recv">
 <code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">recv</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.recv" title="Permalink to this definition">¶</a></dt>
-<dd><p>同步接收张量。</p>
-<p>如果 send_meta = False，所有 <cite>shape</cite> 和 <cite>dtype</cite> 要有值，否则全部为 None 。</p>
+<dd><p>同步地接收一个张量。</p>
+<p>如果 send_meta = False，那么 <cite>shape</cite>、<cite>dtype</cite> 和 <cite>device</cite> 都应有值，否则应全为 None。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>src</strong> (int, optional): 来源 rank 。如果未指定，将从任何进程接收。</p></li>
-<li><p><strong>shape</strong> (optional): 输出张量形状。</p></li>
-<li><p><strong>dataType</strong> (optional): 输出张量数据类型。</p></li>
-<li><p><strong>device</strong> (optional): 输出张量设备。</p></li>
-<li><p><strong>out</strong> (Tensor, optional): 填充接收到的数据的张量。</p></li>
+<li><p><strong>src</strong> (int, optional) - 源数据的 rank。如果未指定，将从任何进程接收。</p></li>
+<li><p><strong>shape</strong> (optional) - 输出张量的形状。</p></li>
+<li><p><strong>dataType</strong> (optional) - 输出张量数据的类型。</p></li>
+<li><p><strong>device</strong> (optional) - 输出张量的设备。</p></li>
+<li><p><strong>out</strong> (Tensor, optional) - 使用接收数据填充的张量。</p></li>
 </ul>
 </dd>
-<dt>返回类型：</dt><dd><p>如果 <cite>out</cite> 为 None，则返回接收到的张量。否则 out 将获取数据而不返回数据。</p>
+<dt>返回值：</dt><dd><p>如果 <cite>out</cite> 为 <cite>None</cite>，则返回接收到的张量。否则将从 <cite>out</cite> 自身获取数据而不返回。</p>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.comm.reduce">
 <code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">reduce</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.reduce" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reduces the tensor data across all machines.</p>
-<p>Only the process with rank <code class="docutils literal notranslate"><span class="pre">dst</span></code> is going to receive the final result.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>tensor</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – Input and output of the collective. The function
-operates in-place.</p></li>
-<li><p><strong>dst</strong> (<em>int</em>) – Destination rank</p></li>
+<dd><p>对所有机器上的张量做规约操作。</p>
+<p>只有 rank 为 <code class="docutils literal notranslate"><span class="pre">dst</span></code> 的进程可以接收到结果。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>tensor</strong> (Tensor) - 输入和输出的张量集合。函数以 in-place 方式操作。</p></li>
+<li><p><strong>dst</strong> (int) - 目标 rank。</p></li>
 </ul>
 </dd>
 </dl>
@@ -318,12 +303,11 @@ operates in-place.</p></li>
 <dl class="py function">
 <dt id="oneflow.comm.reduce_scatter">
 <code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">reduce_scatter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.reduce_scatter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reduces, then scatters a list of tensors to all processes in a group.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>output</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – Output tensor.</p></li>
-<li><p><strong>input_list</strong> (<em>list</em><em>[</em><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em>]</em>) – List of tensors to reduce and scatter.</p></li>
+<dd><p>对输入列表中的张量做规约操作，然后将其分发到一个进程组中的所有进程。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>output</strong> (Tensor) - 输出张量</p></li>
+<li><p><strong>input_list</strong> (list[Tensor]) - 被规约并分发的张量的列表</p></li>
 </ul>
 </dd>
 </dl>
@@ -331,16 +315,13 @@ operates in-place.</p></li>
 <dl class="py function">
 <dt id="oneflow.comm.scatter">
 <code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">scatter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scatter_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.scatter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Scatters a list of tensors to all processes in a group.</p>
-<p>Each process will receive exactly one tensor and store its data in the
-<code class="docutils literal notranslate"><span class="pre">tensor</span></code> argument.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>tensor</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – Output tensor.</p></li>
-<li><p><strong>scatter_list</strong> (<em>list</em><em>[</em><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em>]</em>) – List of tensors to scatter (default is
-None, must be specified on the source rank)</p></li>
-<li><p><strong>src</strong> (<em>int</em>) – Source rank (default is 0)</p></li>
+<dd><p>将输入列表中的张量分发到一个进程组中的所有进程。</p>
+<p>每个进程都会准确地接收到一个张量，并将其数据存储在 <code class="docutils literal notranslate"><span class="pre">tensor</span></code> 参数中。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>tensor</strong> (Tensor) - 输出张量</p></li>
+<li><p><strong>scatter_list</strong> (list[Tensor]) - 被分发的张量列表（默认值为 None，在源 rank 上必须被指定）</p></li>
+<li><p><strong>src</strong> (int) - 源数据的 rank (默认值为 0)</p></li>
 </ul>
 </dd>
 </dl>
@@ -348,12 +329,12 @@ None, must be specified on the source rank)</p></li>
 <dl class="py function">
 <dt id="oneflow.comm.send">
 <code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">send</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">send_meta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.send" title="Permalink to this definition">¶</a></dt>
-<dd><p>同步发送张量。</p>
+<dd><p>同步地发送一个张量。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>input</strong> (tensor): 要发送的张量</p></li>
-<li><p><strong>dst</strong> (int): 目的地rank</p></li>
-<li><p><strong>send_meta</strong> (bool): 是否发送元信息（默认为 True）</p></li>
+<li><p><strong>input</strong> (tensor) - 要发送的张量</p></li>
+<li><p><strong>dst</strong> (int) - 目标 rank</p></li>
+<li><p><strong>send_meta</strong> (bool) - 是否发送元信息（默认值为 True）</p></li>
 </ul>
 </dd>
 </dl>
