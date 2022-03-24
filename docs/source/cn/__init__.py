@@ -42,6 +42,7 @@ from .adam import *
 from .adamw import *
 from .lamb import *
 from .optimizer import *
+from .module import *
 from .rmsprop import *
 from .sgd import *
 from .cosine_decay_lr import *
@@ -49,3 +50,4 @@ from .cosine_annealing_lr import *
 from .exponential_lr import *
 from .multistep_lr import *
 from .lambda_lr import *
+
