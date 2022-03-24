@@ -42,3 +42,4 @@ from .adam import *
 from .adamw import *
 from .lamb import *
 from .optimizer import *
+from .module import *
