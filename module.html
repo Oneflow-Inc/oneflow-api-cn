@@ -153,15 +153,15 @@
 <dd><dl class="py method">
 <dt id="oneflow.nn.Module.add_module">
 <code class="sig-name descname"><span class="pre">add_module</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow.nn.module.Module</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#oneflow.nn.Module.add_module" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds a child module to the current module.</p>
-<p>The module can be accessed as an attribute using the given name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<em>string</em>) – name of the child module. The child module can be
-accessed from this module using the given name</p></li>
-<li><p><strong>module</strong> (<a class="reference internal" href="#oneflow.nn.Module" title="oneflow.nn.Module"><em>Module</em></a>) – child module to be added to the module.</p></li>
+<dd><p>将子模块添加到当前模块。</p>
+<p>可以使用给定的名称作为属性来访问模块。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>name</strong> (string) - 子模块的名称，可以使用给定的名称作为属性来访问模块。</p></li>
+<li><p><strong>module</strong> (Module) - 要添加到模块的子模块。</p></li>
 </ul>
+</dd>
+<dt>返回值：</dt><dd><p>Module: self</p>
 </dd>
 </dl>
 </dd></dl>
@@ -180,58 +180,40 @@ accessed from this module using the given name</p></li>
 <dl class="py method">
 <dt id="oneflow.nn.Module.cpu">
 <code class="sig-name descname"><span class="pre">cpu</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">T</span><a class="headerlink" href="#oneflow.nn.Module.cpu" title="Permalink to this definition">¶</a></dt>
-<dd><p>Moves all model parameters and buffers to the CPU.</p>
+<dd><p>将所有模型参数和缓存移动到 CPU。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This method modifies the module in-place.</p>
+<p>此方法会以 in-place 方式修改模块。</p>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>self</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="#oneflow.nn.Module" title="oneflow.nn.Module">Module</a></p>
-</dd>
-</dl>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.Module.cuda">
 <code class="sig-name descname"><span class="pre">cuda</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">oneflow._oneflow_internal.device</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> → <span class="pre">T</span><a class="headerlink" href="#oneflow.nn.Module.cuda" title="Permalink to this definition">¶</a></dt>
-<dd><p>Moves all model parameters and buffers to the GPU.</p>
-<p>This also makes associated parameters and buffers different objects. So
-it should be called before constructing optimizer if the module will
-live on GPU while being optimized.</p>
+<dd><p>将所有模型参数和缓存移动到 GPU。</p>
+<p>这也会使关联的参数和缓存成为不同的对象。因此，如果模块运行在 GPU 上且需要被优化，该函数应在构建优化器之前被调用。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This method modifies the module in-place.</p>
+<p>此方法会以 in-place 方式修改模块。</p>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>device</strong> (<em>int</em><em>, </em><em>optional</em>) – if specified, all parameters will be
-copied to that device</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>device</strong> (int, optional) - 如果指定了 device，所有参数将被复制到此</p></li>
+</ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>self</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#oneflow.nn.Module" title="oneflow.nn.Module">Module</a></p>
+<dt>返回值：</dt><dd><p>Module: self</p>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.Module.double">
 <code class="sig-name descname"><span class="pre">double</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">T</span><a class="headerlink" href="#oneflow.nn.Module.double" title="Permalink to this definition">¶</a></dt>
-<dd><p>Casts all floating point parameters and buffers to <code class="docutils literal notranslate"><span class="pre">double</span></code> datatype.</p>
+<dd><p>将所有浮点参数和缓存转换为 <code class="docutils literal notranslate"><span class="pre">double</span></code> 数据类型。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This method modifies the module in-place.</p>
+<p>此方法会以 in-place 方式修改模块。</p>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>self</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="#oneflow.nn.Module" title="oneflow.nn.Module">Module</a></p>
+<dl class="simple">
+<dt>返回值：</dt><dd><p>Module: self</p>
 </dd>
 </dl>
 </dd></dl>
@@ -242,25 +224,19 @@ copied to that device</p>
 <dl class="py method">
 <dt id="oneflow.nn.Module.extra_repr">
 <code class="sig-name descname"><span class="pre">extra_repr</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">str</span><a class="headerlink" href="#oneflow.nn.Module.extra_repr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the extra representation of the module</p>
-<p>To print customized extra information, you should re-implement
-this method in your own modules. Both single-line and multi-line
-strings are acceptable.</p>
+<dd><p>设置此模块的其余表现形式。</p>
+<p>要打印自定义的额外信息，应在模块中重新实现此方法。接受单行和多行字符串。</p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.Module.float">
 <code class="sig-name descname"><span class="pre">float</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">T</span><a class="headerlink" href="#oneflow.nn.Module.float" title="Permalink to this definition">¶</a></dt>
-<dd><p>Casts all floating point parameters and buffers to <code class="docutils literal notranslate"><span class="pre">float</span></code> datatype.</p>
+<dd><p>将所有浮点参数和缓存转换为 <code class="docutils literal notranslate"><span class="pre">float</span></code> 数据类型。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This method modifies the module in-place.</p>
+<p>此方法会以 in-place 方式修改模块。</p>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>self</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="#oneflow.nn.Module" title="oneflow.nn.Module">Module</a></p>
+<dl class="simple">
+<dt>返回值：</dt><dd><p>Module: self</p>
 </dd>
 </dl>
 </dd></dl>
@@ -319,35 +295,33 @@ strings are acceptable.</p>
 <dl class="py method">
 <dt id="oneflow.nn.Module.to_consistent">
 <code class="sig-name descname"><span class="pre">to_consistent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Module.to_consistent" title="Permalink to this definition">¶</a></dt>
-<dd><p>This interface is no longer available, please use <a class="reference internal" href="#oneflow.nn.Module.to_global" title="oneflow.nn.Module.to_global"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.nn.Module.to_global()</span></code></a> instead.</p>
+<dd><p>此接口已停止维护，请使用 <a class="reference internal" href="#oneflow.nn.Module.to_global" title="oneflow.nn.Module.to_global"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.nn.Module.to_global()</span></code></a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.Module.to_global">
 <code class="sig-name descname"><span class="pre">to_global</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">placement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sbp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Module.to_global" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert the parameters and buffers to global.</p>
-<p>It performs the same <a class="reference internal" href="tensor.html#oneflow.Tensor.to_global" title="oneflow.Tensor.to_global"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.Tensor.to_global()</span></code></a> conversion to each parameter and buffer in this module.</p>
+<dd><p>将所有参数和缓存设置为全局的。</p>
+<p>它对此模块中每一个参数和缓存执行相同的 <a class="reference internal" href="tensor.html#oneflow.Tensor.to_global" title="oneflow.Tensor.to_global"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.Tensor.to_global()</span></code></a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This method modifies the module in-place.</p>
-<p>Both placement and sbp are required if the parameters and buffers of this module are local,
-otherwise at least one of placement and sbp is required.</p>
+<p>此方法会以 in-place 方式修改模块。</p>
+<p>如果该模块的参数和缓存是本地的，则 placement 和 sbp 都是必需的，否则至少需要其中的一个。</p>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>placement</strong> (<em>flow.placement</em><em>, </em><em>optional</em>) – the desired placement of the parameters and buffers in this module. Default: None</p></li>
-<li><p><strong>sbp</strong> (<em>flow.sbp.sbp</em><em> or </em><em>tuple of flow.sbp.sbp</em><em>, </em><em>optional</em>) – the desired sbp of the parameters and buffers in this module. Default: None</p></li>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>placement</strong> (flow.placement, optional) - 该模块中参数和缓存的所需位置。默认值为 None</p></li>
+<li><p><strong>sbp</strong> (flow.sbp.sbp or tuple of flow.sbp.sbp, optional) - 此模块中参数和缓存的所需 sbp。默认值为 None</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">,</span> <span class="n">ranks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">sbp</span><span class="o">=</span><span class="p">[</span><span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">0</span><span class="p">)])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">is_global</span>
-<span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">is_global</span>
-<span class="go">True</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span>   <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="o">&gt;</span>   <span class="n">m</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="o">&gt;</span>   <span class="n">m</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">,</span> <span class="n">ranks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">sbp</span><span class="o">=</span><span class="p">[</span><span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">0</span><span class="p">)])</span>
+<span class="o">&gt;</span>   <span class="n">m</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">is_global</span>
+<span class="bp">True</span>
+<span class="o">&gt;</span>   <span class="n">m</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">is_global</span>
+<span class="bp">True</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -358,12 +332,11 @@ otherwise at least one of placement and sbp is required.</p>
 <dl class="py method">
 <dt id="oneflow.nn.Module.zero_grad">
 <code class="sig-name descname"><span class="pre">zero_grad</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">set_to_none</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#oneflow.nn.Module.zero_grad" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets gradients of all model parameters to zero. See similar function
-under <a class="reference internal" href="optim.html#oneflow.optim.Optimizer" title="oneflow.optim.Optimizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.optim.Optimizer</span></code></a> for more context.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>set_to_none</strong> (<em>bool</em>) – instead of setting to zero, set the grads to None.
-See <a class="reference internal" href="optim.html#oneflow.optim.Optimizer.zero_grad" title="oneflow.optim.Optimizer.zero_grad"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oneflow.optim.Optimizer.zero_grad()</span></code></a> for details.</p>
+<dd><p>将所有模型参数的梯度设置为零。更多细节请参考 <a class="reference internal" href="optim.html#oneflow.optim.Optimizer" title="oneflow.optim.Optimizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.optim.Optimizer</span></code></a> 中的类似功能。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>set_to_none</strong> (bool) - 设置梯度为 None 而非 0。更多细节请参考 <a class="reference internal" href="optim.html#oneflow.optim.Optimizer.zero_grad" title="oneflow.optim.Optimizer.zero_grad"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oneflow.optim.Optimizer.zero_grad()</span></code></a></p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
