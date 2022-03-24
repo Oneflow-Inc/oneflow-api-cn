@@ -613,7 +613,7 @@ reset_docstr(
 
     返回：
 
-        - 一个布尔值张量，当 :attr:`input` 不等于 :attr:`other` 时为真，否则为假。
+        一个布尔值张量，当 :attr:`input` 不等于 :attr:`other` 时为真，否则为假。
 
     示例：
 
