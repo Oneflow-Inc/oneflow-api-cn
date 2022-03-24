@@ -235,7 +235,7 @@ reset_docstr(
     """
     将数据加载到数据集子集的采样器。
 
-    它与 :class:`flow.nn.parallel.DistributedDataParallel` 结合使用时特别有用。在这种情况下，每个进程都可以将 :class:`~flow.utils.data.DistributedSampler` 实例作为 :class:`~flow.utils.data.DataLoader` 采样器传递，并加载它独有的原始数据集的子集。
+    它与 :class:`flow.nn.parallel.DistributedDataParallel` 结合使用时特别有效。在这种情况下，每个进程都可以将 :class:`~flow.utils.data.DistributedSampler` 实例作为 :class:`~flow.utils.data.DataLoader` 采样器传递，并加载它独有的原始数据集的子集。
 
     .. note::
         假定数据集大小不变。
@@ -244,12 +244,12 @@ reset_docstr(
         - **dataset** - 用于采样的数据集
         - **num_replicas** (int, optional) - 参与分布式训练的进程数。默认情况下，:attr:`world_size` 从当前分布式组中检索。
         - **rank** (int, optional) - 当前进程在 :attr:`num_replicas` 中的 rank。默认情况下，:attr:`rank` 是从当前分布式组中检索的。
-        - **shuffle** (bool, optional) - 如果为 ``True`` ( 默认值 )，采样器将打乱索引
+        - **shuffle** (bool, optional) - 如果为 ``True`` （默认值），采样器将打乱索引
         - **seed** (int, optional) - 如果 :attr:`shuffle=True`，:attr:`seed` 是用于打乱采样器的随机种子。此数字在分布式组中的所有进程中应相同。默认值为 0。
         - **drop_last** (bool, optional) - 如果为 ``True``，采样器将丢弃数据的尾部以使其在副本数量上均匀可分。如果为 ``False``，采样器将添加额外的索引，以使数据在副本中均匀可分。默认值为 ``False``。
 
     .. warning::
-        在分布式模式下，在每个 epoch 开始时，创建 :class:`DataLoader` 迭代器 **之前** 调用 :meth:`set_epoch` 方法是必要的，
+        在分布式模式下，当每个 epoch 开始时，创建 :class:`DataLoader` 迭代器 **之前** 调用 :meth:`set_epoch` 方法是必要的，
         以使 shuffle 在多个 epoch 中正常工作。否则，将始终使用相同的顺序。
 
     示例：
