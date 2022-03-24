@@ -159,10 +159,12 @@ reset_docstr(
     将整个进程组的张量收集到一个列表中。
 
     参数：
+
         - **tensor_list** (list[Tensor]) - 输出列表。它应该包含正确大小的张量，用于整体的输出。
         - **tensor** (Tensor) - 从当前进程广播的张量。
 
     示例：
+
 
     .. code-block:: python
 
