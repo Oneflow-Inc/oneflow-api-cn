@@ -163,13 +163,13 @@ limitations under the License.</p>
 <dt id="oneflow.comm.all_gather">
 <code class="sig-prename descclassname"><span class="pre">oneflow.comm.</span></code><code class="sig-name descname"><span class="pre">all_gather</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.comm.all_gather" title="Permalink to this definition">¶</a></dt>
 <dd><p>将整个进程组的张量收集到一个列表中。</p>
-<dl class="simple">
-<dt>参数：</dt><dd><ul class="simple">
+<p>参数：</p>
+<blockquote>
+<div><ul class="simple">
 <li><p><strong>tensor_list</strong> (list[Tensor]) - 输出列表。它应该包含正确大小的张量，用于整体的输出。</p></li>
 <li><p><strong>tensor</strong> (Tensor) - 从当前进程广播的张量。</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="c1"># We have 1 process groups, 2 ranks.</span>
 <span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>

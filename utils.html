@@ -165,9 +165,9 @@ limitations under the License.</p>
 <dd><p>将另一个采样器包装为 mini-batch 索引。</p>
 <dl>
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>sampler</strong> (Sampler or Iterable): 原采样器。可以是任何可迭代对象。</p></li>
-<li><p><strong>batch_size</strong> (int): mini-batch 的大小</p></li>
-<li><p><strong>drop_last</strong> (bool): 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code> ，采样器会在最后一个 batch 小于 <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> 时将其丢弃。</p></li>
+<li><p><strong>sampler</strong> (Sampler or Iterable) - 原采样器。可以是任何可迭代对象。</p></li>
+<li><p><strong>batch_size</strong> (int) - mini-batch 的大小</p></li>
+<li><p><strong>drop_last</strong> (bool) - 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code> ，采样器会在最后一个 batch 小于 <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> 时将其丢弃。</p></li>
 </ul>
 </dd>
 <dt>样例：</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span>
@@ -188,7 +188,7 @@ limitations under the License.</p>
 <dd><p>一个由多个数据集串接而成的数据集。这个类可用于聚集不同的已有数据集。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>datasets</strong> (sequence): 被串接的数据集列表</p></li>
+<li><p><strong>datasets</strong> (sequence) - 被串接的数据集列表</p></li>
 </ul>
 </dd>
 </dl>
@@ -213,18 +213,18 @@ limitations under the License.</p>
 查看 <code class="xref py py-mod docutils literal notranslate"><span class="pre">flow.utils.data</span></code> 文档页面以获取更多信息。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>dataset</strong> (Dataset): 用于提取并加载数据的数据集</p></li>
-<li><p><strong>batch_size</strong> (int, 可选): 每个 batch 加载的样本数量 (默认： <code class="docutils literal notranslate"><span class="pre">1</span></code>)</p></li>
-<li><p><strong>shuffle</strong> (bool, 可选): 设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 使得数据在每个时刻重新打乱 (默认： <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
-<li><p><strong>sampler</strong> (Sampler or Iterable, 可选): 定义从数据库中抽取样本的策略。可以是任何采用了 <code class="docutils literal notranslate"><span class="pre">__len__</span></code> 的 <code class="docutils literal notranslate"><span class="pre">Iterable</span></code>。如果该参数已被指定，则 <code class="xref py py-attr docutils literal notranslate"><span class="pre">shuffle</span></code> 无法被指定</p></li>
-<li><p><strong>batch_sampler</strong> (Sampler or Iterable, 可选): 类似 <a class="reference internal" href="#oneflow.utils.data.DataLoader.sampler" title="oneflow.utils.data.DataLoader.sampler"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sampler</span></code></a>, 但每次返回一个 batch 索引。与 <a class="reference internal" href="#oneflow.utils.data.DataLoader.batch_size" title="oneflow.utils.data.DataLoader.batch_size"><code class="xref py py-attr docutils literal notranslate"><span class="pre">batch_size</span></code></a>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">shuffle</span></code> , <a class="reference internal" href="#oneflow.utils.data.DataLoader.sampler" title="oneflow.utils.data.DataLoader.sampler"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sampler</span></code></a>,和 <a class="reference internal" href="#oneflow.utils.data.DataLoader.drop_last" title="oneflow.utils.data.DataLoader.drop_last"><code class="xref py py-attr docutils literal notranslate"><span class="pre">drop_last</span></code></a> 互斥</p></li>
-<li><p><strong>num_workers</strong> (int, 可选): 被用于加载数据的子线程数量 (默认： <code class="docutils literal notranslate"><span class="pre">0</span></code>). <code class="docutils literal notranslate"><span class="pre">0</span></code> 意味着所有数据都将在主进程加载</p></li>
-<li><p><strong>collate_fn</strong> (callable, 可选): 将一个样本列表合并成 mini-batch 张量。在从 map-style 数据集中使用批加载时被调用</p></li>
-<li><p><strong>drop_last</strong> (bool, 可选): 设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 以在数据集大小无法被 batch 大小整除时将最后一个不完整 batch 丢弃。当为 <code class="docutils literal notranslate"><span class="pre">False</span></code> 时，如果数据集大小无法被 batch 大小整除，最后一个 batch 将相对较小 (默认： <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
-<li><p><strong>timeout</strong> (numeric, 可选): 若为正数，该参数为从 worker 处收集 batch 的 timeout 值。应总为非负值 (默认： <code class="docutils literal notranslate"><span class="pre">0</span></code>)</p></li>
-<li><p><strong>worker_init_fn</strong> (callable, 可选): 如果不是 <code class="docutils literal notranslate"><span class="pre">None</span></code>, 该参数将在 seeding 之后和加载数据前，与 worker id (an int in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">num_workers</span> <span class="pre">-</span> <span class="pre">1]</span></code>)一起在每个 worker 的子进程被调用，以作为输入 (默认： <code class="docutils literal notranslate"><span class="pre">None</span></code>)</p></li>
-<li><p><strong>prefetch_factor</strong> (int, 可选, 键word-only arg): 在每个 worker 之前就被加载的样本数量 <code class="docutils literal notranslate"><span class="pre">2``意味着将会有</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">num_workers</span> <span class="pre">个样本在所有</span> <span class="pre">worker</span> <span class="pre">之前被预提取。(default:</span> <span class="pre">``2</span></code>)</p></li>
-<li><p><strong>persistent_workers</strong> (bool, 可选): 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code>, 数据加载器将不会在数据集被加载后关闭 worker 进程。这将允许 <cite>Dataset</cite> worker 进程保持活跃 (默认： <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+<li><p><strong>dataset</strong> (Dataset) - 用于提取并加载数据的数据集</p></li>
+<li><p><strong>batch_size</strong> (int, 可选) - 每个 batch 加载的样本数量 (默认： <code class="docutils literal notranslate"><span class="pre">1</span></code>)</p></li>
+<li><p><strong>shuffle</strong> (bool, 可选) - 设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 使得数据在每个时刻重新打乱 (默认： <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+<li><p><strong>sampler</strong> (Sampler or Iterable, 可选) - 定义从数据库中抽取样本的策略。可以是任何采用了 <code class="docutils literal notranslate"><span class="pre">__len__</span></code> 的 <code class="docutils literal notranslate"><span class="pre">Iterable</span></code>。如果该参数已被指定，则 <code class="xref py py-attr docutils literal notranslate"><span class="pre">shuffle</span></code> 无法被指定</p></li>
+<li><p><strong>batch_sampler</strong> (Sampler or Iterable, 可选) - 类似 <a class="reference internal" href="#oneflow.utils.data.DataLoader.sampler" title="oneflow.utils.data.DataLoader.sampler"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sampler</span></code></a>, 但每次返回一个 batch 索引。与 <a class="reference internal" href="#oneflow.utils.data.DataLoader.batch_size" title="oneflow.utils.data.DataLoader.batch_size"><code class="xref py py-attr docutils literal notranslate"><span class="pre">batch_size</span></code></a>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">shuffle</span></code> , <a class="reference internal" href="#oneflow.utils.data.DataLoader.sampler" title="oneflow.utils.data.DataLoader.sampler"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sampler</span></code></a>,和 <a class="reference internal" href="#oneflow.utils.data.DataLoader.drop_last" title="oneflow.utils.data.DataLoader.drop_last"><code class="xref py py-attr docutils literal notranslate"><span class="pre">drop_last</span></code></a> 互斥</p></li>
+<li><p><strong>num_workers</strong> (int, 可选) - 被用于加载数据的子线程数量 (默认： <code class="docutils literal notranslate"><span class="pre">0</span></code>). <code class="docutils literal notranslate"><span class="pre">0</span></code> 意味着所有数据都将在主进程加载</p></li>
+<li><p><strong>collate_fn</strong> (callable, 可选) - 将一个样本列表合并成 mini-batch 张量。在从 map-style 数据集中使用批加载时被调用</p></li>
+<li><p><strong>drop_last</strong> (bool, 可选) - 设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 以在数据集大小无法被 batch 大小整除时将最后一个不完整 batch 丢弃。当为 <code class="docutils literal notranslate"><span class="pre">False</span></code> 时，如果数据集大小无法被 batch 大小整除，最后一个 batch 将相对较小 (默认： <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+<li><p><strong>timeout</strong> (numeric, 可选) - 若为正数，该参数为从 worker 处收集 batch 的 timeout 值。应总为非负值 (默认： <code class="docutils literal notranslate"><span class="pre">0</span></code>)</p></li>
+<li><p><strong>worker_init_fn</strong> (callable, 可选) - 如果不是 <code class="docutils literal notranslate"><span class="pre">None</span></code>, 该参数将在 seeding 之后和加载数据前，与 worker id (an int in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">num_workers</span> <span class="pre">-</span> <span class="pre">1]</span></code>)一起在每个 worker 的子进程被调用，以作为输入 (默认： <code class="docutils literal notranslate"><span class="pre">None</span></code>)</p></li>
+<li><p><strong>prefetch_factor</strong> (int, 可选, 键word-only arg) - 在每个 worker 之前就被加载的样本数量 <code class="docutils literal notranslate"><span class="pre">2``意味着将会有</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">num_workers</span> <span class="pre">个样本在所有</span> <span class="pre">worker</span> <span class="pre">之前被预提取。(default:</span> <span class="pre">``2</span></code>)</p></li>
+<li><p><strong>persistent_workers</strong> (bool, 可选) - 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code>, 数据加载器将不会在数据集被加载后关闭 worker 进程。这将允许 <cite>Dataset</cite> worker 进程保持活跃 (默认： <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -364,10 +364,10 @@ batch 的样本将被丢弃。遗憾的是， OneFlow 通常无法检测这类�
 <dd><p>将元素随机采样。如果没有替换，则直接采样一个完整的打乱的数据集。如果有替换，则用户可以指定抽取的数量。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>data_source</strong> (Dataset): 用于采样的数据集</p></li>
-<li><p><strong>replacement</strong> (bool): 为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 时，样本将根据指定方式被抽取，默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
-<li><p><strong>num_samples</strong> (int): 抽取的数量，默认为 <cite>len(dataset)</cite> 。该参数只有在 <cite>replacement</cite> 为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 时需要被指定</p></li>
-<li><p><strong>generator</strong> (Generator): 采样中被使用的生成器。</p></li>
+<li><p><strong>data_source</strong> (Dataset) - 用于采样的数据集</p></li>
+<li><p><strong>replacement</strong> (bool) - 为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 时，样本将根据指定方式被抽取，默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>num_samples</strong> (int) - 抽取的数量，默认为 <cite>len(dataset)</cite> 。该参数只有在 <cite>replacement</cite> 为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 时需要被指定</p></li>
+<li><p><strong>generator</strong> (Generator) - 采样中被使用的生成器。</p></li>
 </ul>
 </dd>
 </dl>
@@ -400,7 +400,7 @@ batch 的样本将被丢弃。遗憾的是， OneFlow 通常无法检测这类�
 <dd><p>依次采样元素，总是以相同的顺序。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>data_source</strong> (Dataset): 用于采样的数据集</p></li>
+<li><p><strong>data_source</strong> (Dataset) - 用于采样的数据集</p></li>
 </ul>
 </dd>
 </dl>
@@ -415,8 +415,8 @@ batch 的样本将被丢弃。遗憾的是， OneFlow 通常无法检测这类�
 <dd><p>一个由数据集的指定索引形成的子集。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>dataset</strong> (Dataset): 整个数据集</p></li>
-<li><p><strong>indices</strong> (sequence): 被选入子集的索引</p></li>
+<li><p><strong>dataset</strong> (Dataset) - 整个数据集</p></li>
+<li><p><strong>indices</strong> (sequence) - 被选入子集的索引</p></li>
 </ul>
 </dd>
 </dl>
@@ -435,8 +435,8 @@ batch 的样本将被丢弃。遗憾的是， OneFlow 通常无法检测这类�
 <dd><p>根据给定的索引列表随机采样元素，没有替换机制。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>indices</strong> (sequence): 一个索引的序列</p></li>
-<li><p><strong>generator</strong> (Generator): 用于采样的生成器</p></li>
+<li><p><strong>indices</strong> (sequence) - 一个索引的序列</p></li>
+<li><p><strong>generator</strong> (Generator) - 用于采样的生成器</p></li>
 </ul>
 </dd>
 </dl>
@@ -452,7 +452,7 @@ batch 的样本将被丢弃。遗憾的是， OneFlow 通常无法检测这类�
 <p>每个样本都将通过索引张量的第一个维度来提取。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>tensors</strong> (tensor): 第一维度大小相同的张量</p></li>
+<li><p><strong>tensors</strong> (tensor) - 第一维度大小相同的张量</p></li>
 </ul>
 </dd>
 </dl>
@@ -460,17 +460,15 @@ batch 的样本将被丢弃。遗憾的是， OneFlow 通常无法检测这类�
 <dl class="py function">
 <dt id="oneflow.utils.data.random_split">
 <code class="sig-prename descclassname"><span class="pre">oneflow.utils.data.</span></code><code class="sig-name descname"><span class="pre">random_split</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">dataset:</span> <span class="pre">oneflow.utils.data.dataset.Dataset[T],</span> <span class="pre">lengths:</span> <span class="pre">Sequence[int],</span> <span class="pre">generator:</span> <span class="pre">Optional[object]</span> <span class="pre">=</span> <span class="pre">&lt;built-in</span> <span class="pre">method</span> <span class="pre">default_generator</span> <span class="pre">of</span> <span class="pre">PyCapsule</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span> → <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow.utils.data.dataset.Subset</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#oneflow.utils.data.random_split" title="Permalink to this definition">¶</a></dt>
-<dd><p>Randomly split a dataset into non-overlapping new datasets of given lengths.
-Optionally fix the generator for reproducible results, e.g.:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random_split</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">generator</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">Generator</span><span class="p">()</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">))</span>
+<dd><p>将数据集随机拆分为给定长度的非重叠新数据集。可选择使用生成器以获得可重复的结果。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span>   <span class="n">random_split</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">generator</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">Generator</span><span class="p">()</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">))</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataset</strong> (<a class="reference internal" href="#oneflow.utils.data.Dataset" title="oneflow.utils.data.Dataset"><em>Dataset</em></a>) – Dataset to be split</p></li>
-<li><p><strong>lengths</strong> (<em>sequence</em>) – lengths of splits to be produced</p></li>
-<li><p><strong>generator</strong> (<em>Generator</em>) – Generator used for the random permutation.</p></li>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>dataset</strong> (Dataset) - 待拆分的数据集</p></li>
+<li><p><strong>lengths</strong> (sequence) - 新数据集的长度</p></li>
+<li><p><strong>generator</strong> (Generator) - 用于随机排列的生成器</p></li>
 </ul>
 </dd>
 </dl>
@@ -490,64 +488,46 @@ limitations under the License.</p>
 <dl class="py class">
 <dt id="oneflow.utils.data.distributed.DistributedSampler">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.data.distributed.</span></code><code class="sig-name descname"><span class="pre">DistributedSampler</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow.utils.data.dataset.Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_replicas</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rank</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_last</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.data.distributed.DistributedSampler" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sampler that restricts data loading to a subset of the dataset.</p>
-<p>It is especially useful in conjunction with
-<code class="xref py py-class docutils literal notranslate"><span class="pre">flow.nn.parallel.DistributedDataParallel</span></code>. In such a case, each
-process can pass a <code class="xref py py-class docutils literal notranslate"><span class="pre">DistributedSampler</span></code> instance as a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code> sampler, and load a subset of the
-original dataset that is exclusive to it.</p>
+<dd><p>将数据加载到数据集子集的采样器。</p>
+<p>它与 <code class="xref py py-class docutils literal notranslate"><span class="pre">flow.nn.parallel.DistributedDataParallel</span></code> 结合使用时特别有效。在这种情况下，每个进程都可以将 <code class="xref py py-class docutils literal notranslate"><span class="pre">DistributedSampler</span></code> 实例作为 <code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code> 采样器传递，并加载它独有的原始数据集的子集。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Dataset is assumed to be of constant size.</p>
+<p>假定数据集大小不变。</p>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataset</strong> – Dataset used for sampling.</p></li>
-<li><p><strong>num_replicas</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of processes participating in
-distributed training. By default, <code class="xref py py-attr docutils literal notranslate"><span class="pre">world_size</span></code> is retrieved from the
-current distributed group.</p></li>
-<li><p><strong>rank</strong> (<em>int</em><em>, </em><em>optional</em>) – Rank of the current process within <code class="xref py py-attr docutils literal notranslate"><span class="pre">num_replicas</span></code>.
-By default, <code class="xref py py-attr docutils literal notranslate"><span class="pre">rank</span></code> is retrieved from the current distributed
-group.</p></li>
-<li><p><strong>shuffle</strong> (<em>bool</em><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> (default), sampler will shuffle the
-indices.</p></li>
-<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – random seed used to shuffle the sampler if
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">shuffle=True</span></code>. This number should be identical across all
-processes in the distributed group. Default: <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
-<li><p><strong>drop_last</strong> (<em>bool</em><em>, </em><em>optional</em>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, then the sampler will drop the
-tail of the data to make it evenly divisible across the number of
-replicas. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, the sampler will add extra indices to make
-the data evenly divisible across the replicas. Default: <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>dataset</strong> - 用于采样的数据集</p></li>
+<li><p><strong>num_replicas</strong> (int, optional) - 参与分布式训练的进程数。默认情况下，<code class="xref py py-attr docutils literal notranslate"><span class="pre">world_size</span></code> 从当前分布式组中检索。</p></li>
+<li><p><strong>rank</strong> (int, optional) - 当前进程在 <code class="xref py py-attr docutils literal notranslate"><span class="pre">num_replicas</span></code> 中的 rank。默认情况下，<code class="xref py py-attr docutils literal notranslate"><span class="pre">rank</span></code> 是从当前分布式组中检索的。</p></li>
+<li><p><strong>shuffle</strong> (bool, optional) - 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code> （默认值），采样器将打乱索引</p></li>
+<li><p><strong>seed</strong> (int, optional) - 如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">shuffle=True</span></code>，<code class="xref py py-attr docutils literal notranslate"><span class="pre">seed</span></code> 是用于打乱采样器的随机种子。此数字在分布式组中的所有进程中应相同。默认值为 0。</p></li>
+<li><p><strong>drop_last</strong> (bool, optional) - 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，采样器将丢弃数据的尾部以使其在副本数量上均匀可分。如果为 <code class="docutils literal notranslate"><span class="pre">False</span></code>，采样器将添加额外的索引，以使数据在副本中均匀可分。默认值为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
 </ul>
 </dd>
 </dl>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>In distributed mode, calling the <a class="reference internal" href="#oneflow.utils.data.distributed.DistributedSampler.set_epoch" title="oneflow.utils.data.distributed.DistributedSampler.set_epoch"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_epoch()</span></code></a> method at
-the beginning of each epoch <strong>before</strong> creating the <code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code> iterator
-is necessary to make shuffling work properly across multiple epochs. Otherwise,
-the same ordering will be always used.</p>
+<p>在分布式模式下，当每个 epoch 开始时，创建 <code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code> 迭代器 <strong>之前</strong> 调用 <a class="reference internal" href="#oneflow.utils.data.distributed.DistributedSampler.set_epoch" title="oneflow.utils.data.distributed.DistributedSampler.set_epoch"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_epoch()</span></code></a> 方法是必要的，
+以使 shuffle 在多个 epoch 中正常工作。否则，将始终使用相同的顺序。</p>
 </div>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sampler</span> <span class="o">=</span> <span class="n">DistributedSampler</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span> <span class="k">if</span> <span class="n">is_distributed</span> <span class="k">else</span> <span class="bp">None</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="p">(</span><span class="n">sampler</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">),</span> <span class="n">sampler</span><span class="o">=</span><span class="n">sampler</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start_epoch</span><span class="p">,</span> <span class="n">n_epochs</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="k">if</span> <span class="n">is_distributed</span><span class="p">:</span>
-<span class="gp">... </span>        <span class="n">sampler</span><span class="o">.</span><span class="n">set_epoch</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="n">train</span><span class="p">(</span><span class="n">loader</span><span class="p">)</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span>   <span class="n">sampler</span> <span class="o">=</span> <span class="n">DistributedSampler</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span> <span class="k">if</span> <span class="n">is_distributed</span> <span class="k">else</span> <span class="bp">None</span>
+<span class="o">&gt;</span>   <span class="n">loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="p">(</span><span class="n">sampler</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">),</span> <span class="n">sampler</span><span class="o">=</span><span class="n">sampler</span><span class="p">)</span>
+<span class="o">&gt;</span>   <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start_epoch</span><span class="p">,</span> <span class="n">n_epochs</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="n">is_distributed</span><span class="p">:</span>
+<span class="o">...</span>         <span class="n">sampler</span><span class="o">.</span><span class="n">set_epoch</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
+<span class="o">...</span>     <span class="n">train</span><span class="p">(</span><span class="n">loader</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="py method">
 <dt id="oneflow.utils.data.distributed.DistributedSampler.set_epoch">
 <code class="sig-name descname"><span class="pre">set_epoch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#oneflow.utils.data.distributed.DistributedSampler.set_epoch" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the epoch for this sampler.
-When <code class="xref py py-attr docutils literal notranslate"><span class="pre">shuffle=True</span></code>, this ensures all replicas use a different random
-ordering for each epoch. Otherwise, the next iteration of this sampler
-will yield the same ordering.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>epoch</strong> (<em>int</em>) – Epoch number.</p>
+<dd><p>设置采样器的 epoch。</p>
+<p>当 <code class="xref py py-attr docutils literal notranslate"><span class="pre">shuffle=True</span></code> 时，可以确保所有副本对每个 epoch 使用不同的随机排序。否则，此采样器的下一次迭代将产生相同的排序。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>epoch</strong> (int) - Epoch 数量</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
