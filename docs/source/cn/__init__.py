@@ -50,4 +50,7 @@ from .cosine_annealing_lr import *
 from .exponential_lr import *
 from .multistep_lr import *
 from .lambda_lr import *
-
+from .multistep_lr import *
+from .polynomial_lr import *
+from .reduce_lr_on_plateau import *
+from .step_lr import *

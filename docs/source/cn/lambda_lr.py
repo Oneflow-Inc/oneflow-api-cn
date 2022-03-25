@@ -34,3 +34,21 @@ reset_docstr(
 
     """
 )
+
+reset_docstr(
+    oneflow.optim.lr_scheduler.LambdaLR.load_state_dict,
+    """加载调整器的状态。
+
+        参数：
+            - **state_dict** (dict) - 调整器的状态，应为调用 :meth:`state_dict` 函数所返回的对象。
+        """
+)
+
+reset_docstr(
+    oneflow.optim.lr_scheduler.LambdaLR.state_dict,
+    """ 以 :class:`dict` 形式返回调整器的状态。
+
+        它包含了 self.__dict__ 中每个变量的条目，而这些变量并不是优化器。
+        学习率 lambda 函数只有在它们是可调用的对象时才会被保存，如果它们是函数或 lambdas 则不会被保存。
+        """
+)
