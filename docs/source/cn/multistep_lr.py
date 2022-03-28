@@ -29,9 +29,4 @@ reset_docstr(
     """
 )
 
-reset_docstr(
-    oneflow.optim.lr_scheduler.MultiStepLR.get_lr,
-    """
-    利用学习率调整器链式计算学习率。
-    """
-)
+
