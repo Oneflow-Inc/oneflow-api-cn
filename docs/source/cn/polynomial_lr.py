@@ -23,7 +23,7 @@ reset_docstr(
         \end{aligned}
 
     参数:
-        - **optimizer** (Optimizer) - 封装的优化器。
+        - **optimizer** (Optimizer) - 被包装的优化器。
         - **steps** (int) - decayed steps。
         - **end_learning_rate** (float, optional) - 最终学习率，默认值为 0.0001。
         - **power** (float, optional) - 多项式的幂，默认为 1.0。

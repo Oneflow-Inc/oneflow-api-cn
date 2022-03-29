@@ -19,7 +19,7 @@ reset_docstr(
             & T_{cur} = (2k+1)T_{max}.
         \end{aligned}
 
-    当 last_step=-1， 设置初始学习率为 lr。因为时间表是递归定义的， 在这个学习率调整器之外，它也可以同时被其他操作者修改。
+    当 last_step=-1， 设置初始学习率为 lr。因为调整是递归定义的， 除学习率调整器之外，它也可以同时被其他算子修改。
     如果学习率完全由这个调整器设定，每一步的学习率就变成了：
 
     .. math::
@@ -27,10 +27,10 @@ reset_docstr(
         \cos\left(\frac{T_{cur}}{T_{max}}\pi\right)\right)
 
     它在 `SGDR: Stochastic Gradient Descent with Warm Restarts`_ 中被提出。
-    请注意，这只实现了 SGDR 的 cosine annealing 部分，而不是重新启动。
+    请注意，这只实现了 SGDR 的 cosine annealing 部分，并不包括重新启动。
 
     参数:
-        - **optimizer** (Optimizer) - 封装的优化器。
+        - **optimizer** (Optimizer) - 被包装的优化器。
         - **T_max** (int) - 迭代的最大数量。
         - **eta_min** (float) - 学习率的最小值，默认值：0。
         - **last_step** (int) - 最后一个 epoch 的索引，默认值：-1。

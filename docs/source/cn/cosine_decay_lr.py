@@ -25,7 +25,7 @@ reset_docstr(
     请注意，这里只实现了 SGDR 的 cosine annealing 部分，而不是重新启动。
 
     参数：
-        - **optimizer** (Optimizer) - 封装的优化器。
+        - **optimizer** (Optimizer) - 被包装的优化器。
         - **decay_steps** (int) - 学习率调整器中 decay steps。
         - **alpha** (float, optional) - 学习率比例因子（ :math:`\\alpha` ）（默认值： 0.0）。
         - **last_step** (int) - 最后一个 epoch 的索引，默认值：-1。

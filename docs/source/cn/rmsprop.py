@@ -5,7 +5,7 @@ reset_docstr(
     oneflow.optim.RMSprop,
     """实现 RMSprop 优化算法。
 
-    Root Mean Squared Propagation (RMSProp) 是一种未发表的、自适应的学习率方法。最初的构想提出了 RMSProp，在
+    Root Mean Squared Propagation (RMSProp) 是一种未发表的、自适应的学习率方法。最先提出了 RMSProp 的构想出现在
     http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf 的第29页。
 
     原始方程如下：
@@ -17,7 +17,7 @@ reset_docstr(
         W = w - \\frac{\\eta} {\\\\sqrt{r(w,t) + \\epsilon}} \\nabla Q_{i}(w)
 
     第一个方程计算了每个权重的梯度平方的移动平均值。然后将梯度除以 :math:`sqrt{v(w,t)}`.
-    在一些情况下，加入一个 momentum 项 :math: `\\beta` 是很有效的。在这个优化算法实现的过程中，使用了 Nesterov momentum:
+    在一些情况下，加入一个动量项 :math:`\\beta` 是很有效的。OneFlow 的实现中采用了 Nesterov 加速方法：
 
     .. math::
 
@@ -42,7 +42,7 @@ reset_docstr(
         w = w - v(w, t)
 
     其中 :math:`\\alpha` 是一个超参数，其典型值为 0.99， 0.95 等等。 :math:`\\beta` 是一个 momentum 项。
-    :math:`\\epsilon` 是一个 smoothing 项，以避免被零整除，通常设置的范围在 1e-4 到 1e-8。
+    :math:`\\epsilon` 是一个 smoothing 项，用来避免被零整除，通常设置在 1e-4 到 1e-8 的范围内。
 
 
     参数:
@@ -96,7 +96,7 @@ reset_docstr(
 
     若要使用 clip_grad 函数，请参考这个示例。
 
-    关于 `clip_grad_max_norm` 和 `clip_grad_norm_type` 函数的更多细节，请参考 :func:`oneflow.nn.utils.clip_grad_norm` 。
+    关于 `clip_grad_max_norm_` 和 `clip_grad_norm_type` 函数的更多细节，请参考 :func:`oneflow.nn.utils.clip_grad_norm` 。
 
     """
 )

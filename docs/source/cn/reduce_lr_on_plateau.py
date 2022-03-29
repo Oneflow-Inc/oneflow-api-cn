@@ -9,7 +9,7 @@ reset_docstr(
     学习率就会降低。
 
     参数:
-        - **optimizer** (Optimizer) - 封装的优化器。
+        - **optimizer** (Optimizer) - 被包装的优化器。
         - **mode** (str) - `min` 或者 `max` 。在 `min` 模式中，当监测的数量不再减少时学习率将会减小；
             在 `max` 模式中，当监测的数量不再增加时学习率将会减小。默认： `min` 。
         - **factor** (float) - 学习率降低的系数， new_lr = lr * factor ， 默认值：0.1。
