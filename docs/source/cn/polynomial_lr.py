@@ -24,10 +24,10 @@ reset_docstr(
 
     参数:
         - **optimizer** (Optimizer) - 被包装的优化器。
-        - **steps** (int) - decayed steps。
+        - **steps** (int) - 衰减的步数。
         - **end_learning_rate** (float, optional) - 最终学习率，默认值为 0.0001。
         - **power** (float, optional) - 多项式的幂，默认为 1.0。
-        - **cycle** (bool, optional) - 如果 cycle 为 True，调整器将在每一个 decay step 中衰减学习率，默认值为 False。
+        - **cycle** (bool, optional) - 如果 cycle 为 True，调整器将在每一个衰减步骤中衰减学习率，默认值为 False。
    
     示例：
 
