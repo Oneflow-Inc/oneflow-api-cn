@@ -34,7 +34,7 @@ reset_docstr(
         - **T_max** (int) - 迭代的最大数量。
         - **eta_min** (float) - 学习率的最小值，默认值：0。
         - **last_step** (int) - 最后一个 epoch 的索引，默认值：-1。
-        - **verbose** (bool) - 如果为 ``True`` ，则会为每次更新打印一条信息到 stdout，默认值: ``False`` 。
+        - **verbose** (bool) - 如果为 ``True`` ，则会为每次更新打印一条信息到标准输出，默认值: ``False`` 。
 
     .. _SGDR\: Stochastic Gradient Descent with Warm Restarts:
         https://arxiv.org/abs/1608.03983
