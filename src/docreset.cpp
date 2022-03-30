@@ -47,9 +47,16 @@ py::object ReplaceDoc(py::object f, const std::string& doc_string) {
     auto* f = (PyCFunctionObject*)(PyInstanceMethod_Function(obj));
     f->m_ml->ml_doc = doc_str;
   } else if(PyMethod_Check(obj)){
-    cout << "in branch, ENUM TYPE: " << Py_TYPE(obj) << endl;
-    auto* f = (PyCFunctionObject*)(PyMethod_Function(obj));
-    f->m_ml->ml_doc = doc_str;
+    auto *f = (PyFunctionObject *)(PyMethod_Function(obj));
+    if (f->func_doc == Py_None) {
+      cout << "function "
+           << PyBytes_AsString(
+                  PyUnicode_AsEncodedString(f->func_name, "utf-8", "~E~"))
+           << " does not have a docstring yet.";
+      return py::object();
+    }
+    Py_DECREF(f->func_doc);
+    f->func_doc = PyUnicode_FromString(doc_str);
   } 
   else {
     cout << "object type is " << Py_TYPE(obj)->tp_name << ", invalid.";
