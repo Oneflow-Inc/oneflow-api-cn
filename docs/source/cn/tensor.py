@@ -1277,7 +1277,7 @@ reset_docstr(
         >>> flow.device('cuda')  # 当前 cuda 设备
         device(type='cuda', index=0)
     
-    通过 string 和设备序号的构建方式：
+    通过 string 和设备序号构建的示例：
 
     .. code-block:: python
 
