@@ -418,7 +418,7 @@ reset_docstr(
     oneflow.vsplit,
     r"""
     根据 indices_or_sections 的值，将输入的二维或更高维张量垂直地切分成多个张量。
-    每个分出的张量都是输入张量的 view 。此算子等价于调用 torch.tensor_split(input, indices_or_sections, dim=0) （分裂维度为 0 ），除了在 indices_or_sections 是
+    每个切分出的张量都是输入张量的一个 view 。此算子等价于调用 torch.tensor_split(input, indices_or_sections, dim=0) （切分维度为 0 ），除了在 indices_or_sections 是
     一个整型的情况下，它必须整除分裂的维度，否则一个运行错误将被抛出。此文档参考自：https://pytorch.org/docs/stable/generated/torch.vsplit.html#torch.vsplit
     
 
