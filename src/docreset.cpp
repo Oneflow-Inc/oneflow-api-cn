@@ -44,8 +44,12 @@ py::object ReplaceDoc(py::object f, const std::string& doc_string) {
   } else if (PyInstanceMethod_Check(obj)) {
     auto* f = (PyCFunctionObject*)(PyInstanceMethod_Function(obj));
     f->m_ml->ml_doc = doc_str;
-  } else {
-    cout << "function is " << Py_TYPE(obj)->tp_name << ", not a valid function.";
+  } else if(PyMethod_Check(obj)){
+    auto* f = (PyCFunctionObject*)(PyMethod_Function(obj));
+    f->m_ml->ml_doc = doc_str;
+  } 
+  else {
+    cout << "object type is " << Py_TYPE(obj)->tp_name << ", invalid.";
     return py::object();
   }
   f.inc_ref();
