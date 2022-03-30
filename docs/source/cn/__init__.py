@@ -6,6 +6,7 @@ from .sin import *
 from .slice import *
 from .sort import *
 from .array_ops import *
+from .functional1 import *
 from .cast import *
 from .comm import *
 from .comparison import *
