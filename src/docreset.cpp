@@ -12,6 +12,8 @@ py::object ReplaceDoc(py::object f, const std::string& doc_string) {
   all_doc_strings.emplace_back(doc_string);
   const char* doc_str = all_doc_strings.back().c_str(); 
   PyObject* obj = f.ptr();
+  cout << "ENUM TYPE: " << Py_TYPE(obj) << endl;
+  cout << "METHOD TYPE: " << &PyMethod_Type << endl;
   if (PyCFunction_Check(obj)) {
     auto* f = (PyCFunctionObject*)obj;
     if (!f->m_ml->ml_doc) {
@@ -45,6 +47,7 @@ py::object ReplaceDoc(py::object f, const std::string& doc_string) {
     auto* f = (PyCFunctionObject*)(PyInstanceMethod_Function(obj));
     f->m_ml->ml_doc = doc_str;
   } else if(PyMethod_Check(obj)){
+    cout << "in branch, ENUM TYPE: " << Py_TYPE(obj) << endl;
     auto* f = (PyCFunctionObject*)(PyMethod_Function(obj));
     f->m_ml->ml_doc = doc_str;
   } 
