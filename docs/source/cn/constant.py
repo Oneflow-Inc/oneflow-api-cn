@@ -424,7 +424,7 @@ reset_docstr(
 
     参数：
         - **input** (Tensor) - 输入张量
-        - **indices_or_sections** (int 或者一个列表) - 如果 indices_or_sections 是一个整型 n , input 将从维度 dim 被分裂成 n 个部分。
+        - **indices_or_sections** (int 或者一个列表) - 如果 indices_or_sections 是一个整型 n , input 将沿着维度 dim 被切分为 n 个部分。
             如果 input 的维度 dim 能被 n 整除，每个部分大小相同。如果 input 无法被 n 整除，最先的 int(input.size(dim) % n) 个部分将拥有 int(input.size(dim) / n) + 1 的
             大小，而余下的将拥有 int(input.size(dim) / n) 的大小。如果 indices_or_sections 是一个整型的列表或元组，则输入将从维度 dim 根据列表或元组内的每个索引被分裂。
             比如， indices_or_sections=[2, 3] 和 dim=0 将使输入张量被分裂为 input[:2], input[2:3], 和 input[3:] 。如果 indices_or_sections 是一个张量，它必须是一个位于 cpu 的
