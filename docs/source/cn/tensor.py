@@ -1261,7 +1261,7 @@ reset_docstr(
 
     :class:`oneflow.device` 所指代的设备可以通过 Tensor.device 属性获取。
 
-    :class:`oneflow.device` 可以通过一个 string 构建，也可以通过 string 和设备序号构建。
+    :class:`oneflow.device` 可以通过一个 string 构建，也可以通过 string 和设备序号共同构建。
 
     通过 string 的构建方式：
 
