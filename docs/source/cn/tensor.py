@@ -1263,7 +1263,7 @@ reset_docstr(
 
     :class:`oneflow.device` 可以通过一个 string 构建，也可以通过 string 和设备序号共同构建。
 
-    通过 string 的构建方式：
+    通过 string 构建的示例：
 
     .. code-block:: python
 
