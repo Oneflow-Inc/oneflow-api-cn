@@ -106,31 +106,23 @@ reset_docstr(
 
 reset_docstr(
     oneflow.nn.FakeQuantization,
-    r"""FakeQuantization(quantization_formula='google', quantization_bit=8, quantization_scheme='symmetric')
+    """FakeQuantization(quantization_formula='google', quantization_bit=8, quantization_scheme='symmetric')
     
-    在训练时间内模拟量化 (quantize) 和反量化 (dequantize) 操作。
+    在训练时间内模拟量化 (quantize) 和反量化 (dequantize) 操作。输出的计算为：
 
-    输出将计算为：
+    若 quantization_scheme == "symmetric":
 
-        若 quantization_scheme == "symmetric":
+    .. math::
+        & quant\_max = 2^{quantization\_to\_bit - 1} - 1
+        & quant\_min = -quant\_max
+        & clamp(round(x / scale), quant\_min, quant\_max) * scale
 
-        .. math::
+    若 quantization_scheme == "affine":
 
-            & quant\_max = 2^{quantization\_to\_bit - 1} - 1
-
-            & quant\_min = -quant\_max
-
-            & clamp(round(x / scale), quant\_min, quant\_max) * scale
-
-        若 quantization_scheme == "affine":
-
-        .. math::
-
-            & quant\_max = 2^{quantization\_to\_bit} - 1
-
-            & quant\_min = 0
-
-            & (clamp(round(x / scale + zero\_point), quant\_min, quant\_max) - zero\_point) * scale
+    .. math::
+        & quant\_max = 2^{quantization\_to\_bit} - 1
+        & quant\_min = 0
+        & (clamp(round(x / scale + zero\_point), quant\_min, quant\_max) - zero\_point) * scale
 
     参数：
         - **quantization_bit** (int): 量化输入为 uintX / intX ， X 可以在范围 [2, 8] 中。默认为 8

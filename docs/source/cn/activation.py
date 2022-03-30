@@ -102,6 +102,37 @@ reset_docstr(
 )
 
 reset_docstr(
+    oneflow.nn.Mish,
+    """逐元素应用公式：
+
+    .. math::
+        \\text{Mish}(x) = x * \\text{Tanh}(\\text{Softplus}(x))
+
+    .. note::
+        请参考 `Mish: A Self Regularized Non-Monotonic Neural Activation Function <https://arxiv.org/abs/1908.08681>`_
+
+    形状：
+        - Input: :math:`(N, *)` ，其中 `*` 表示任意数量的附加维度。
+        - Output: :math:`(N, *)` ，与输入的形状相同。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+        
+        >>> x = np.array([1, 2, 3]).astype(np.float32)
+        >>> input = flow.Tensor(x)
+        >>> mish = flow.nn.Mish()
+
+        >>> out = mish(input)
+        >>> out
+        tensor([0.8651, 1.9440, 2.9865], dtype=oneflow.float32)
+    """
+)
+
+reset_docstr(
     oneflow.tanh,
     r"""
     tanh(x) -> Tensor 

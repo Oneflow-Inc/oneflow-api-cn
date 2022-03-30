@@ -1,21 +1,6 @@
 import oneflow
 from docreset import reset_docstr
 
-## oneflow.nn.AdaptiveAvgPool1d(output_size: Union[int, Tuple[int]])
-## oneflow.nn.AdaptiveAvgPool2d(output_size)
-## oneflow.nn.AdaptiveAvgPool3d(output_size)
-## oneflow.nn.AvgPool1d(kernel_size: Union[int, Tuple[int, int]], stride: Optional[Union[int, Tuple[int, int]]] = None, padding: Union[int, Tuple[int, int]] = 0, ceil_mode: bool = False, count_include_pad: bool = True)
-## oneflow.nn.AvgPool2d(kernel_size: Union[int, Tuple[int, int]], stride: Optional[Union[int, Tuple[int, int]]] = None, padding: Union[int, Tuple[int, int]] = 0, ceil_mode: bool = False, count_include_pad: bool = True, divisor_override: int = 0)
-## oneflow.nn.AvgPool3d(kernel_size: Union[int, Tuple[int, int, int]], stride: Optional[Union[int, Tuple[int, int, int]]] = None, padding: Union[int, Tuple[int, int, int]] = 0, ceil_mode: bool = False, count_include_pad: bool = True, divisor_override: int = 0)
-## oneflow.nn.BCELoss(weight: Optional[oneflow._oneflow_internal.Tensor] = None, reduction: str = 'mean')
-## oneflow.nn.BCEWithLogitsLoss(weight: Optional[oneflow._oneflow_internal.Tensor] = None, reduction: str = 'mean', pos_weight: Optional[oneflow._oneflow_internal.Tensor] = None)
-## oneflow.nn.BatchNorm1d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-## oneflow.nn.BatchNorm2d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-## oneflow.nn.BatchNorm3d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-## oneflow.nn.CELU(alpha: float = 1.0, inplace: bool = False)
-#### oneflow.nn.COCOReader
-
-
 reset_docstr(
     oneflow.nn.CTCLoss,
     r"""CTCLoss(blank=0, reduction='mean', zero_infinity=False)
@@ -76,8 +61,6 @@ reset_docstr(
 
     """
 )
-
-#### oneflow.nn.CoinFlip
 
 reset_docstr(
     oneflow.nn.CombinedMarginLoss,
@@ -374,19 +357,15 @@ reset_docstr(
     * :attr:`dilation` 控制核心点 (kernel points) 之间的间距，也称为 `à trous algorithm`。这个 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__ 中有 :attr:`dilation` 的可视化展示。
 
     * :attr:`groups` 控制输入和输出之间的连接。 :attr:`in_channels` 和 :attr:`out_channels` 都必须能被 :attr:`groups` 整除。
-      例如，
-
+      例如：
         * 当 groups=1 时，所有输入都卷积到输出。
-
         * 当 groups=2 时，该操作等效于并排放置两个 conv 层，其中每个层检查一半的输入通道并产生一半的输出通道，然后将两者连接起来。
-
         * 当 groups= :attr:`in_channels` 时， 每个输入通道都与它自己的一组过滤器(大小为
           :math:`\frac{\text{out_channels}}{\text{in_channels}}`)进行卷积。
 
     参数 :attr:`kernel_size` 、 :attr:`stride` 、 :attr:`padding` 、 :attr:`dilation` 可以是：
-
-        - 单个 ``int`` -- 在这种情况下，高度和宽度使用相同的值。
-        - 一个由两个 int 组成的 ``tuple`` -- 在这种情况下，第一个 `int` 用于高度，第二个 `int` 用于宽度。
+        * 单个 ``int`` -- 在这种情况下，高度和宽度使用相同的值。
+        * 一个由两个 int 组成的 ``tuple`` -- 在这种情况下，第一个 `int` 用于高度，第二个 `int` 用于宽度。
 
     Note:
         当 `groups == in_channels` 并且 `out_channels == K * in_channels` 时，其中 `K` 是一个正整数，这个操作被称为“深度卷积”。
@@ -537,35 +516,29 @@ reset_docstr(
 
 reset_docstr(
     oneflow.nn.ConvTranspose1d,
-    r"""ConvTranspose1d(in_channels, out_channels, kernel_size, stride=1, padding=0, output_padding=0, groups=1, bias=True, dilation=1, padding_mode='zeros')
-
+    r"""
     在由多个输入平面组成的输入图像上应用 1D 转置卷积算子。
 
-    该 module 可以看作是 Conv1d 相对于其输入的梯度。它也称为分数步幅卷积或反卷积（尽管它实际上不是反卷积操作）。
+    该 module 可以看作是 Conv1d 相对于其输入的梯度。它也称为分数步幅卷积或反卷积（尽管它实际上不是反卷积操作）。此 module 支持 TensorFloat32。
 
-    此 module 支持 TensorFloat32。
-
-    * :attr:`stride` 控制互相关 (cross-correlation) 的步幅 (stride)。
-
-    * :attr:`padding` 控制应用于输入两侧，点的数量为 ``dilation * (kernel_size - 1) - padding`` 的隐式 0 填充。
-      更多细节请参考 ``note``。
-
-    * :attr:`output_padding`  控制添加到输出形状一侧的大小。更多信息请参考 ``note``。
-
-    * :attr:`dilation` 控制核心点 (kernel points) 之间的间距，也称为 `à trous algorithm`。这个 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__ 中有 :attr:`dilation` 的可视化展示。
+    其中：
+        - :attr:`stride` 控制互相关 (cross-correlation) 的步幅 (stride)。
+        - :attr:`padding` 控制应用于输入两侧，点的数量为 ``dilation * (kernel_size - 1) - padding`` 的隐式 0 填充。更多细节请参考 ``note``。
+        - :attr:`output_padding`  控制添加到输出形状一侧的大小。更多信息请参考 ``note``。
+        - :attr:`dilation` 控制核心点 (kernel points) 之间的间距，也称为 `à trous algorithm`。这个 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__ 中有 :attr:`dilation` 的可视化展示。
 
     Note:
         :attr:`padding` 参数有效地将 ``dilation * (kernel_size - 1) - padding`` 个 0 填充到输入的两侧。
-            设定此项的目的是当 :class:`~torch.nn.Conv1d` 与 :class:`~torch.nn.ConvTranspose1d` 用相同的参数初始化时，
-            它们的输入和输出的形状是互逆的。然而，当 ``stride > 1`` 时， :class:`~torch.nn.Conv1d` 
-            将多个输入形状映射到相同的输出形状。则使用 :attr:`output_padding` 有效地增加一侧的输出形状来解决这种歧义。
-            请注意，:attr:`output_padding` 仅用于查找输出形状，但实际上并未填充输出。
+        设定此项的目的是当 :class:`~torch.nn.Conv1d` 与 :class:`~torch.nn.ConvTranspose1d` 用相同的参数初始化时，
+        它们的输入和输出的形状是互逆的。然而，当 ``stride > 1`` 时， :class:`~torch.nn.Conv1d` 
+        将多个输入形状映射到相同的输出形状。则使用 :attr:`output_padding` 有效地增加一侧的输出形状来解决这种歧义。
+        请注意，:attr:`output_padding` 仅用于查找输出形状，但实际上并未填充输出。
 
     Note:
         在某些情况下，将 CUDA 后端与 CuDNN 一起使用时，此算子可能会选择非确定性算法来提高性能。
-            若此操作有不确定性，可以尝试通过设置 ``torch.backends.cudnn.deterministic =
-            True`` 来使操作具有确定性（可能以性能为代价）。
-            背景请参阅有关随机性 (randomness)  的 notes。
+        若此操作有不确定性，可以尝试通过设置 ``torch.backends.cudnn.deterministic =
+        True`` 来使操作具有确定性（可能以性能为代价）。
+        背景请参阅有关随机性 (randomness)  的 notes。
 
     参数：
         - **in_channels** (int) - 输入图像的通道数
@@ -587,15 +560,17 @@ reset_docstr(
                         \times (\text{kernel_size} - 1) + \text{output_padding} + 1
 
     Attributes:
-        weight (Tensor) - 形状为 :math:`(\text{in\_channels}, \frac{\text{out\_channels}}{\text{groups}},`
-                         :math:`\text{kernel\\_size})` 的模块的可学习权重。
-                         这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
-                         :math:`k = \frac{groups}{C_\text{out} * \text{kernel\_size}}`
+        weight (Tensor): the learnable weights of the module of shape
+                         :math:`(\text{in_channels}, \frac{\text{out_channels}}{\text{groups}},`
+                         :math:`\text{kernel_size})`.
+                         The values of these weights are sampled from
+                         :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` where
+                         :math:`k = \frac{groups}{C_\text{out} * \text{kernel_size}}`
+        bias (Tensor):   the learnable bias of the module of shape (out_channels).
+                         If :attr:`bias` is ``True``, then the values of these weights are
+                         sampled from :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` where
+                         :math:`k = \frac{groups}{C_\text{out} * \text{kernel_size}}`
 
-        bias (Tensor) -   形状为 (out_channels) 的模块的可学习权重。若 :attr:`bias` 为 ``True`` ，
-                         则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
-                         :math:`k = \frac{groups}{C_\text{out} * \text{kernel\_size}}`
-    
     .. _cross-correlation:
         https://en.wikipedia.org/wiki/Cross-correlation
 
@@ -637,12 +612,12 @@ reset_docstr(
                         \times (\text{kernel_size}[1] - 1) + \text{output_padding}[1] + 1
 
     Attributes:
-        ConvTranspose2d.weight (Tensor) - 形状为 :math:`(\text{in_channels}, \frac{\text{out_channels}}{\text{groups}},`
+        weight (Tensor): 形状为 :math:`(\text{in_channels}, \frac{\text{out_channels}}{\text{groups}},`
                          :math:`\text{kernel_size[0]}, \text{kernel_size[1]})` 的模块的可学习权重。
                          这些权重的值是由公式 `\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
                          :math:`k = \frac{groups}{C_\text{out} * \prod_{i=0}^{1}\text{kernel_size}[i]}`
 
-        ConvTranspose2d.bias (Tensor) -   形状为 (out_channels) 的模块的可学习权重。若 :attr:`bias` 为 ``True`` ，
+        bias (Tensor):   形状为 (out_channels) 的模块的可学习权重。若 :attr:`bias` 为 ``True`` ，
                          则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
                          :math:`k = \frac{groups}{C_\text{out} * \text{kernel\_size}}`
 
@@ -761,8 +736,6 @@ reset_docstr(
     """
 )
 
-#### oneflow.nn.CropMirrorNormalize
-
 reset_docstr(
     oneflow.nn.CrossEntropyLoss,
     r"""CrossEntropyLoss(weight=None, ignore_index=100, reduction='mean')
@@ -814,10 +787,8 @@ reset_docstr(
         >>> out_mean
         tensor(0.7590, dtype=oneflow.float32)
 
-    """)
-
-## oneflow.nn.Dropout(p: float = 0.5, inplace: bool = False, generator=None)
-## oneflow.nn.ELU(alpha: float = 1.0, inplace: bool = False)
+    """
+)
 
 reset_docstr(
     oneflow.nn.LeakyReLU,
@@ -1265,10 +1236,6 @@ reset_docstr(
     """
 )
 
-#### oneflow.nn.ModuleDict
-#### oneflow.nn.ModuleList
-
-
 reset_docstr(
     oneflow.nn.MovingAverageMinMaxObserver,
     """MovingAverageMinMaxObserver(training: bool = False, quantization_formula: str = 'google', stop_update_after_iters: int = 0, quantization_bit: int = 8, quantization_scheme: str = 'symmetric', momentum: float = 0)
@@ -1372,29 +1339,25 @@ reset_docstr(
     
     负对数似然损失。用 `C` 类训练分类问题很有用。
 
-    The `input` given through a forward call is expected to contain
-    log-probabilities of each class. `input` has to be a Tensor of size either
-    :math:`(minibatch, C)` or :math:`(minibatch, C, d_1, d_2, ..., d_K)`
-    with :math:`K \\geq 1` for the `K`-dimensional case (described later).
+    通过前向调用给出的输入将包含每个类的对数概率。在 `K` 维情况下，输入必须是
+    大小为 :math:`(minibatch, C)` 或 :math:`(minibatch, C, d_1, d_2, ..., d_K)` 的
+    张量且 :math:`K \\geq 1` 
 
-    Obtaining log-probabilities in a neural network is easily achieved by
-    adding a  `LogSoftmax`  layer in the last layer of your network.
-    You may use `CrossEntropyLoss` instead, if you prefer not to add an extra
-    layer.
+    通过在网络的最后一层添加 `LogSoftmax` 层，可以轻松得到
+    神经网络中的对数概率。如果您不想添加额外的层，可以改用 `CrossEntropyLoss` 
 
-    The `target` that this loss expects should be a class index in the range :math:`[0, C-1]`
-    where `C = number of classes`;
+    该函数期望的 `target` 应为 :math:`[0, C-1]` 范围内的索引，其中 `C = number of classes`
 
-    The unreduced (i.e. with :attr:`reduction` set to ``'none'``) loss can be described as:
+    未规约的损失（如将 :attr:`reduction` 设置为 ``'none'``）可被描述为：
 
     .. math::
         \\ell(x, y) = L = \\{l_1,\\dots,l_N\\}^\\top, \\quad
         l_n = - w_{y_n} x_{n,y_n}, \\quad
         w_{c} = \\mathbb{1},
 
-    where :math:`x` is the input, :math:`y` is the target, :math:`w` is the weight, and
-    :math:`N` is the batch size. If :attr:`reduction` is not ``'none'``
-    (default ``'mean'``), then
+    其中 :math:`x` 是输入，:math:`y` 是输出，:math:`w` 是权重且
+    :math:`N` 是批的大小。如果 :attr:`reduction` 不是 ``'none'``
+    （默认值为 ``'mean'``），则有
 
     .. math::
         \\ell(x, y) = \\begin{cases}
@@ -1404,16 +1367,13 @@ reset_docstr(
             \\text{if reduction} = \\text{`sum'.}
         \\end{cases}
 
-    Can also be used for higher dimension inputs, such as 2D images, by providing
-    an input of size :math:`(minibatch, C, d_1, d_2, ..., d_K)` with :math:`K \\geq 1`,
-    where :math:`K` is the number of dimensions, and a target of appropriate shape
-    (see below). In the case of images, it computes NLL loss per-pixel.
+    该函数也可用于更高维度的输入，例如 2D 图像，通过提供
+    大小为 :math:`(minibatch, C, d_1, d_2, ..., d_K)` 且 :math:`K \\geq 1` 的输
+    入和一个形状合适的目标，其中 :math:`K` 是维度数。在图像的情况下，它计
+    算每个像素的 NLL 损失。
 
     参数：
-        reduction (string, optional) - Specifies the reduction to apply to the output:
-            ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'``: no reduction will
-            be applied, ``'mean'``: the weighted mean of the output is taken,
-            ``'sum'``: the output will be summed. Default: ``'mean'``
+    - **reduction** (string, optional) - 指定应用于输出的 reduction：``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行 reduction；``'mean'`` ：取输出的加权平均值；``'sum'`` ：输出将被求和。默认值为 ``'mean'``。
 
     示例：
 
@@ -1489,11 +1449,6 @@ reset_docstr(
     """
 )
 
-#### oneflow.nn.OFRecordImageDecoder
-#### oneflow.nn.OFRecordImageDecoderRandomCrop
-#### oneflow.nn.OFRecordRawDecoder
-#### oneflow.nn.OFRecordReader
-
 reset_docstr(
     oneflow.nn.PReLU,
     """PReLU(num_parameters: int = 1, init: float = 0.25, device=None, dtype=None)
@@ -1536,11 +1491,6 @@ reset_docstr(
 
     """
 )
-
-#### oneflow.nn.Parameter
-#### oneflow.nn.ParameterDict
-#### oneflow.nn.ParameterList
-#### oneflow.nn.PixelShuffle
 
 reset_docstr(
     oneflow.nn.Quantization,
@@ -1613,9 +1563,6 @@ reset_docstr(
 
     """
 )
-
-## oneflow.nn.ReLU
-
 
 reset_docstr(
     oneflow.nn.ReLU6,
@@ -1749,8 +1696,6 @@ reset_docstr(
     """
 )
 
-## oneflow.nn.SELU
-
 reset_docstr(
     oneflow.nn.Sequential,
     r"""Sequential(*args: Any)
@@ -1787,9 +1732,6 @@ reset_docstr(
 
     """
 )
-
-## oneflow.nn.SiLU
-## oneflow.nn.Sigmoid
 
 reset_docstr(
     oneflow.nn.SmoothL1Loss,
@@ -1874,9 +1816,165 @@ reset_docstr(
     """
 )
 
-## oneflow.nn.Softmax
-## oneflow.nn.Softplus
-## oneflow.nn.Softsign
+reset_docstr(
+    oneflow.nn.MSELoss,
+    """此接口与 PyTorch 一致。文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html?highlight=mseloss#torch.nn.MSELoss 。
+
+    创建一个标准，用于测量输入 :math:`x` 和目标 :math:`y` 中每个元素之间的均方误差（平方 L2 范数）。
+
+    未规约的损失（如将 :attr:`reduction` 设置为 ``'none'``）可被描述为：
+
+    .. math::
+        \\ell(x, y) = L = \\{l_1,\\dots,l_N\\}^\\top, \\quad
+        l_n = \\left( x_n - y_n \\right)^2,
+
+    其中 :math:`N` 是批的大小。如果 :attr:`reduction` 不是 ``'none'``
+    （默认值为 ``'mean'``），则有
+
+    .. math::
+        \\ell(x, y) =
+        \\begin{cases}
+            \\operatorname{mean}(L), &  \\text{if reduction} = \\text{`mean';}\\\\
+            \\operatorname{sum}(L),  &  \\text{if reduction} = \\text{`sum'.}
+        \\end{cases}
+
+    :math:`x` 和 :math:`y` 是任意形状的张量，每个都有 :math:`n` 个元素。
+
+    平均运算仍然对所有元素进行运算，并除以 :math:`n`
+
+    如果设置 ``reduction = 'sum'``，则可以避免除以 :math:`n` 
+
+    参数：
+        - **reduction** (string, optional) - 指定应用于输出的 reduction：``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行 reduction；``'mean'`` ：输出的和将会除以输出中的元素数量；``'sum'`` ：输出将被求和。默认值为 ``'mean'``。
+
+    形状：
+        - Input: :math:`(N, *)` ，其中 `*` 表示任意数量的附加维度。
+        - Output: :math:`(N, *)` ，与输入的形状相同。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        >>> input = flow.tensor(
+        ... [[-0.02557137, 0.03101675, 1.37493674],
+        ... [0.25599439, -1.08372561, -0.21006816]], dtype=flow.float32)
+        >>> target = flow.tensor(
+        ... [[-1.53105064, -0.68137555, 0.5931354],
+        ... [-0.49158347, 0.93673637, 0.1324141]], dtype=flow.float32)
+        >>> m = flow.nn.MSELoss(reduction="none")
+        >>> out = m(input, target)
+        >>> out
+        tensor([[2.2665, 0.5075, 0.6112],
+                [0.5589, 4.0823, 0.1173]], dtype=oneflow.float32)
+        >>> m = flow.nn.MSELoss(reduction="mean")
+        >>> out = m(input, target)
+        >>> out
+        tensor(1.3573, dtype=oneflow.float32)
+        >>> m = flow.nn.MSELoss(reduction="sum")
+        >>> out = m(input, target)
+        >>> out
+        tensor(8.1436, dtype=oneflow.float32)
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.FusedMLP,
+    """对输入数据应用带有 relu 激活的线性变换：:math:`y = ReLU(xA^T + b)`
+
+    参数：
+        - **in_features** - 每一个输入样本的大小
+        - **hidden_features** - 每一个线形层的藏层大小的元组
+        - **out_features** - 最后一层的隐藏大小
+
+    形状：
+        - Input: :math:`(N, *, H_{in})`，其中 :math:`*` 表示任意维度且 :math:`H_{in} = {in\\_features}`
+        - Output: :math:`(N, *, H_{out})`其中除了最后一个维度之外的所有维度都与输入的形状相同且 :math:`H_{out} = {out\\_features}`
+
+    属性：
+        - :attr:`skip_final_activation`: 是否跳过最后一个隐藏层的激活，默认为 False 
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+        
+
+        >>> m = flow.nn.FusedMLP(128, [256, 512], 1024).to("cuda")
+        >>> input = flow.Tensor(np.random.randn(1, 128)).to("cuda")
+        >>> output = m(input)
+        >>> output.size()
+        oneflow.Size([1, 1024])
+
+    """
+)
+
+reset_docstr(
+    oneflow.nn.modules.pixelshuffle.PixelShufflev2,
+    """
+    部分文档参考自：
+    https://pytorch.org/docs/stable/generated/torch.nn.PixelShuffle.html#torch.nn.PixelShuffle
+
+    将形状为 :math:`(*, C \\times r_h \\times r_w, H, W)` 的张量中的元素重新排列为形状为 :math:`(*, C, H \\times r_h, W \\times r_w)` 的张量，其中 r_h 和 r_w 是放大因子。
+
+    这对于实现步幅为 :math:`1/r` 的高效亚像素卷积很有用。
+
+    更多细节请参考这篇论文：
+    `Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network`_
+
+    参数：
+        - **upscale_factor** (int, optional) - 增加空间分辨率的因子，仅在空间高度和宽度因子相同时使用。
+        - **h_upscale_factor** (int, optional) - 增加高度空间分辨率的因子，只能使用 h_upscale_factor 和 upscale_factor 的其中一个。
+        - **w_upscale_factor** (int, optional) - 增加宽度空间分辨率的因子，只能使用 w_upscale_factor 和 upscale_factor 的其中一个。
+
+    形状：
+        - Input: :math:`(*, C_{in}, H_{in}, W_{in})`，其中 * 是零个或多个批次维度
+        - Output: :math:`(*, C_{out}, H_{out}, W_{out})`，其中
+
+    如果使用 upscale_factor：
+
+    .. math::
+        C_{out} = C_{in} \\div \\text{h_upscale_factor}^2
+
+        H_{out} = H_{in} \\times \\text{upscale_factor}
+
+        W_{out} = W_{in} \\times \\text{upscale_factor}
+
+    如果使用 h_upscale_factor 和 w_upscale_factor：
+
+    .. math::
+        C_{out} = C_{in} \\div \\text{h_upscale_factor} \\div \\text{w_upscale_factor}
+
+        H_{out} = H_{in} \\times \\text{h_upscale_factor}
+
+        W_{out} = W_{in} \\times \\text{w_upscale_factor}
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        >>> m = flow.nn.PixelShuffle(upscale_factor=2)
+        >>> x = flow.Tensor(np.random.randn(3, 4, 5, 5))
+        >>> y = m(x)
+        >>> y.shape
+        oneflow.Size([3, 1, 10, 10])
+
+        >>> m = flow.nn.PixelShuffle(h_upscale_factor=3, w_upscale_factor=4)
+        >>> x = flow.Tensor(np.random.randn(1, 24, 2, 2))
+        >>> y = m(x)
+        >>> y.shape
+        oneflow.Size([1, 2, 6, 8])
+
+    .. _Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network:
+        https://arxiv.org/abs/1609.05158
+    """
+)
 
 reset_docstr(
     oneflow.nn.Tanh,
@@ -2173,8 +2271,3 @@ reset_docstr(
                   [ 0., 15., 16., 17.,  0.,  0.]]]], dtype=oneflow.float32)
     """
 )
-
-#### oneflow.nn.parallel.DistributedDataParallel
-## oneflow.nn.utils.clip_grad_norm_
-## oneflow.nn.utils.weight_norm
-## oneflow.nn.utils.remove_weight_norm
