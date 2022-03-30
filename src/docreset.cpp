@@ -16,7 +16,7 @@ py::object ReplaceDoc(py::object f, const std::string &doc_string) {
     auto *f = (PyCFunctionObject *)obj;
     if (!f->m_ml->ml_doc) {
       cout << "function " << f->m_ml->ml_name
-           << " does not have a docstring yet.";
+           << " does not have a docstring yet." << endl;
       return py::object();
     }
     f->m_ml->ml_doc = doc_str;
@@ -26,7 +26,7 @@ py::object ReplaceDoc(py::object f, const std::string &doc_string) {
       cout << "function "
            << PyBytes_AsString(
                   PyUnicode_AsEncodedString(f->func_name, "utf-8", "~E~"))
-           << " does not have a docstring yet.";
+           << " does not have a docstring yet." << endl;
       return py::object();
     }
     Py_DECREF(f->func_doc);
@@ -36,7 +36,7 @@ py::object ReplaceDoc(py::object f, const std::string &doc_string) {
       auto doc = py::getattr(f, "__doc__");
       if (doc.is(py::none())) {
         cout << " function" << Py_TYPE(obj)->tp_name
-             << " does not have a docstring yet.";
+             << " does not have a docstring yet." << endl;
         return py::object();
       }
     }
@@ -47,7 +47,7 @@ py::object ReplaceDoc(py::object f, const std::string &doc_string) {
     auto doc = py::getattr(f, "__doc__");
     if (doc.is(py::none())) {
       cout << "object" << Py_TYPE(obj)->tp_name
-           << " does not have a docstring yet.";
+           << " does not have a docstring yet." << endl;
       return py::object();
     }
     py::setattr(
@@ -62,13 +62,13 @@ py::object ReplaceDoc(py::object f, const std::string &doc_string) {
       cout << "function "
            << PyBytes_AsString(
                   PyUnicode_AsEncodedString(f->func_name, "utf-8", "~E~"))
-           << " does not have a docstring yet.";
+           << " does not have a docstring yet." << endl;
       return py::object();
     }
     Py_DECREF(f->func_doc);
     f->func_doc = PyUnicode_FromString(doc_str);
   } else {
-    cout << "object type is " << Py_TYPE(obj)->tp_name << ", invalid.";
+    cout << "object type is " << Py_TYPE(obj)->tp_name << ", invalid." << endl;
     return py::object();
   }
   f.inc_ref();
