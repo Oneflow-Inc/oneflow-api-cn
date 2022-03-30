@@ -1,8 +1,6 @@
 import oneflow
 from docreset import reset_docstr
 
-reset_docstr(oneflow.autograd.Function.apply, "test")
-
 reset_docstr(
     oneflow.chunk,
     r"""chunk(input, chunks, dim) -> Tensor
