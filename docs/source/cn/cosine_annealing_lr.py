@@ -26,7 +26,7 @@ reset_docstr(
         \eta_t = \eta_{min} + \frac{1}{2}(\eta_{max} - \eta_{min})\left(1 +
         \cos\left(\frac{T_{cur}}{T_{max}}\pi\right)\right)
 
-    它在 `SGDR: Stochastic Gradient Descent with Warm Restarts`_ 中被提出。
+    这在 `SGDR: Stochastic Gradient Descent with Warm Restarts`_ 中被提出。
     请注意，这只实现了 SGDR 的 cosine annealing 部分，并不包括重新启动。
 
     参数:

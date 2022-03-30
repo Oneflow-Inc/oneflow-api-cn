@@ -4,7 +4,7 @@ from docreset import reset_docstr
 reset_docstr(
     oneflow.optim.lr_scheduler.PolynomialLR,
     r"""
-    这个算子创建了一个多项式衰减学习率的调整器。学习率将被更新如下：
+    此算子创建了一个多项式形式的学习率衰减调整器。学习率按如下方式更新：
 
     如果 cycle 为 `True` ，则等式为：
 
@@ -27,7 +27,7 @@ reset_docstr(
         - **steps** (int) - 衰减的步数。
         - **end_learning_rate** (float, optional) - 最终学习率，默认值为 0.0001。
         - **power** (float, optional) - 多项式的幂，默认为 1.0。
-        - **cycle** (bool, optional) - 如果 cycle 为 True，调整器将在每一个衰减步骤中衰减学习率，默认值为 False。
+        - **cycle** (bool, optional) - 如果 cycle 为 True，调整器将在每一步中衰减学习率，默认值为 False。
    
     示例：
 
@@ -45,4 +45,3 @@ reset_docstr(
 
     """
 )
-
