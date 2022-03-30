@@ -1257,7 +1257,7 @@ reset_docstr(
 
     :class:`oneflow.device` 是一个对象，用于指代一个 :class:`oneflow.Tensor` 将被分配到的设备。
 
-    :class:`oneflow.device` 包括一个设备类型（ 'cpu' 或 'cuda' ）和一个可选的设备类型下的设备序号。如果设备序数不存在，则此对象将总是指代某设备类型下的当前设备。
+    :class:`oneflow.device` 包括一个设备类型（ 'cpu' 或 'cuda' ）和一个可选的设备类型下的设备序号。如果设备序号不存在，则此对象将总是指代当前设备类型下的当前设备。
 
     :class:`oneflow.device` 中的设备可以通过 Tensor.device 属性获取。
 
