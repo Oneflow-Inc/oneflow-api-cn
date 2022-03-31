@@ -39,3 +39,10 @@ reset_docstr(
         """
 )
 
+reset_docstr(
+    oneflow.autograd.Function.apply,
+    r"""
+        计算输出张量并建立反向传播计算图。
+        """
+)
+
