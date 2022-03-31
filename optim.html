@@ -162,7 +162,7 @@ limitations under the License.</p>
 <dl class="py class">
 <dt id="oneflow.optim.Adagrad">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.optim.</span></code><code class="sig-name descname"><span class="pre">Adagrad</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.nn.Parameter</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr_decay</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_decay</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_accumulator_value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1e-10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.Adagrad" title="Permalink to this definition">¶</a></dt>
-<dd><p>实现 Adagrad 优化器。</p>
+<dd><p>实现 Adagrad 优化算法。</p>
 <p>公式是:</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}&amp; S_{t} = S_{t-1} + grad \odot grad\\&amp; decay\_lr = \frac{learning\_rate}{(1 + (train\_step - 1) * lr\_decay)}\\&amp; X_{t} = X_{t-1} - \frac{decay\_lr}{\sqrt{S_{t} + \epsilon}} \odot grad\end{aligned}\end{align} \]</div></div>
@@ -508,59 +508,50 @@ L2 penalty 的实现遵循了 <a class="reference external" href="https://arxiv.
 <dl class="py class">
 <dt id="oneflow.optim.RMSprop">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.optim.</span></code><code class="sig-name descname"><span class="pre">RMSprop</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.nn.Parameter</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.99</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1e-08</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_decay</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentum</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centered</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.RMSprop" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implements RMSprop algorithm.</p>
-<p>oot Mean Squared Propagation (RMSProp) is an unpublished, adaptive learning
-rate method. The original slides proposed RMSProp: Slide 29 of
-<a class="reference external" href="http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf">http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf</a> .</p>
-<p>The original equation is as follows:</p>
+<dd><p>实现 RMSprop 优化算法。</p>
+<p>Root Mean Squared Propagation (RMSProp) 是一种未发表的、自适应的学习率方法。最先提出了 RMSProp 的构想出现在
+<a class="reference external" href="http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf">http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf</a> 的第29页。</p>
+<p>原始方程如下：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}r(w, t) = \alpha r(w, t-1) + (1 - \alpha)(\nabla Q_{i}(w))^2\\\begin{split}W = w - \frac{\eta} {\\sqrt{r(w,t) + \epsilon}} \nabla Q_{i}(w)\end{split}\end{aligned}\end{align} \]</div></div>
-<p>The first equation calculates moving average of the squared gradient for
-each weight. Then dividing the gradient by <span class="math notranslate nohighlight">\(sqrt{v(w,t)}\)</span>.
-In some cases, adding a momentum term :math: <cite>beta</cite> is beneficial.
-In our implementation, Nesterov momentum is used:</p>
+<p>第一个方程计算了每个权重的梯度平方的移动平均值。然后将梯度除以 <span class="math notranslate nohighlight">\(sqrt{v(w,t)}\)</span>.
+在一些情况下，加入一个动量项 <span class="math notranslate nohighlight">\(\beta\)</span> 是很有效的。OneFlow 的实现中采用了 Nesterov 加速方法：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}r(w, t) = \alpha r(w, t-1) + (1 - \alpha)(\nabla Q_{i}(w))^2\\\begin{split}v(w, t) = \beta v(w, t-1) + \frac{\eta} {\\sqrt{r(w,t) +
     \epsilon}} \nabla Q_{i}(w)\end{split}\\w = w - v(w, t)\end{aligned}\end{align} \]</div></div>
-<p>if centered is True:</p>
+<p>如果 centered 为 True:</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}r(w, t) = \alpha r(w, t-1) + (1 - \alpha)(\nabla Q_{i}(w))^2\\g(w, t) = \alpha g(w, t-1) + (1 - \alpha)\nabla Q_{i}(w)\\\begin{split}v(w, t) = \beta v(w, t-1) + \frac{\eta} {\\sqrt{r(w,t) - (g(w, t))^2 +
     \epsilon}} \nabla Q_{i}(w)\end{split}\\w = w - v(w, t)\end{aligned}\end{align} \]</div></div>
-<p>where, <span class="math notranslate nohighlight">\(\alpha\)</span> is a hyperparameter and typical values are 0.99, 0.95
-and so on. <span class="math notranslate nohighlight">\(\beta\)</span> is the momentum term. <span class="math notranslate nohighlight">\(\epsilon\)</span> is a
-smoothing term to avoid division by zero, usually set somewhere in range
-from 1e-4 to 1e-8.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>params</strong> (<em>iterable</em>) – iterable of parameters to optimize or dicts defining
-parameter groups</p></li>
-<li><p><strong>lr</strong> (<em>float</em><em>, </em><em>optional</em>) – learning rate (default: 1e-2)</p></li>
-<li><p><strong>momentum</strong> (<em>float</em><em>, </em><em>optional</em>) – momentum factor (default: 0, oneflow not support momenmtum &gt; 0 now!)</p></li>
-<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>optional</em>) – smoothing constant (default: 0.99)</p></li>
-<li><p><strong>eps</strong> (<em>float</em><em>, </em><em>optional</em>) – term added to the denominator to improve
-numerical stability (default: 1e-8)</p></li>
-<li><p><strong>centered</strong> (<em>bool</em><em>, </em><em>optional</em>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, compute the centered RMSProp,
-the gradient is normalized by an estimation of its variance</p></li>
-<li><p><strong>weight_decay</strong> (<em>float</em><em>, </em><em>optional</em>) – weight decay (L2 penalty) (default: 0)</p></li>
+<p>其中 <span class="math notranslate nohighlight">\(\alpha\)</span> 是一个超参数，其典型值为 0.99， 0.95 等等。 <span class="math notranslate nohighlight">\(\beta\)</span> 是一个 momentum 项。
+<span class="math notranslate nohighlight">\(\epsilon\)</span> 是一个 smoothing 项，用来避免被零整除，通常设置在 1e-4 到 1e-8 的范围内。</p>
+<dl class="simple">
+<dt>参数:</dt><dd><ul class="simple">
+<li><p><strong>params</strong> (iterable) - 待优化参数构成的 iterable 或定义了参数组的 dict。</p></li>
+<li><p><strong>lr</strong> (float, optional) - 学习率（默认值：1e-2）。</p></li>
+<li><p><strong>momentum</strong> (float, optional) - momentum 因子（默认值: 0, oneflow 现在不支持 momenmtum &gt; 0）。</p></li>
+<li><p><strong>alpha</strong> (float, optional) - smoothing 常量（默认值: 0.99）。</p></li>
+<li><p><strong>eps</strong> (float, optional) - 添加到分母中以提高数值稳定性的项（默认值：1e-8）。</p></li>
+<li><p><strong>centered</strong> (bool, optional) - 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code> ， 计算 centered RMSProp，梯度通过对其方差的估计进行标准化处理。</p></li>
+<li><p><strong>weight_decay</strong> (float, optional) - 权重衰减（L2 penalty）（默认值: 0）。</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
-<p>Example 1:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume net is a custom model.</span>
+<p>示例:</p>
+<p>例 1:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 假设 net 是一个自定义模型。</span>
 <span class="n">rmsprop</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">RMSprop</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-    <span class="c1"># Read data, Compute the loss and so on.</span>
+    <span class="c1"># 读取数据，计算损失，等等。</span>
     <span class="c1"># ...</span>
     <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
     <span class="n">rmsprop</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
     <span class="n">rmsprop</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Example 2:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume net is a custom model.</span>
+<p>例 2:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 假设 net 是一个自定义模型。</span>
 <span class="n">rmsprop</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">RMSprop</span><span class="p">(</span>
     <span class="p">[</span>
         <span class="p">{</span>
@@ -573,7 +564,7 @@ the gradient is normalized by an estimation of its variance</p></li>
 <span class="p">)</span>
 
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-    <span class="c1"># Read data, Compute the loss and so on.</span>
+    <span class="c1"># 读取数据，计算损失，等等。</span>
     <span class="c1"># ...</span>
     <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
     <span class="n">rmsprop</span><span class="o">.</span><span class="n">clip_grad</span><span class="p">()</span>
@@ -581,16 +572,16 @@ the gradient is normalized by an estimation of its variance</p></li>
     <span class="n">rmsprop</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>If you want to use clip_grad, you can refer this example.</p>
-<p>For more details of <cite>clip_grad_max_norm</cite> and <cite>clip_grad_norm_type</cite>, you can refer to <a class="reference internal" href="nn.html#oneflow.nn.utils.clip_grad_norm_" title="oneflow.nn.utils.clip_grad_norm_"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.nn.utils.clip_grad_norm_()</span></code></a>.</p>
+<p>若要使用 clip_grad 函数，请参考这个示例。</p>
+<p>关于 <cite>clip_grad_max_norm_</cite> 和 <cite>clip_grad_norm_type</cite> 函数的更多细节，请参考 <code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.nn.utils.clip_grad_norm()</span></code> 。</p>
 <dl class="py method">
 <dt id="oneflow.optim.RMSprop.step">
 <code class="sig-name descname"><span class="pre">step</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">closure</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.RMSprop.step" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs a single optimization step.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>closure</strong> (<em>callable</em><em>, </em><em>optional</em>) – A closure that reevaluates the model
-and returns the loss.</p>
+<dd><p>执行一个优化步骤。</p>
+<dl class="simple">
+<dt>参数:</dt><dd><ul class="simple">
+<li><p><strong>closure</strong> (callable, optional) - 重新测试模型并返回损失的闭包。</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -598,45 +589,42 @@ and returns the loss.</p>
 <dl class="py class">
 <dt id="oneflow.optim.SGD">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.optim.</span></code><code class="sig-name descname"><span class="pre">SGD</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.nn.Parameter</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentum</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_decay</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.SGD" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implements SGD algorithm.</p>
-<p>This algorithm takes a random sample’s gradient as an approximate estimate of
-the overall gradient in small batch gradient descent.</p>
-<p>When the momentum = 0, the equation of parameters updating is:</p>
+<dd><p>实现 SGD 优化算法。</p>
+<p>该算法将随机样本的梯度作为小批量梯度下降中整体梯度的近似估计。</p>
+<p>当 momentum = 0，参数的更新方程为：</p>
 <blockquote>
 <div><div class="math-wrapper"><div class="math notranslate nohighlight">
 \[param_{new} = param_{old} - learning\_rate * grad\]</div></div>
 </div></blockquote>
-<p>With momentum, the equation of parameters updating is:</p>
+<p>当有了 momentum，参数的更新方程为：</p>
 <blockquote>
 <div><div class="math-wrapper"><div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}&amp; V_t = \beta * V_{t-1} - learning\_rate * (g_t + param_{old} * weight\_decay)\\&amp; param_{new} = param_{old} + V_t\end{aligned}\end{align} \]</div></div>
 </div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>params</strong> (<em>iterable</em>) – iterable of parameters to optimize or dicts defining
-parameter groups</p></li>
-<li><p><strong>lr</strong> (<em>float</em><em>, </em><em>optional</em>) – learning rate (default: 1e-3)</p></li>
-<li><p><strong>momentum</strong> (<em>float</em><em>, </em><em>optional</em>) – Momentum factor (default: 0.0)</p></li>
-<li><p><strong>weight_decay</strong> (<em>float</em><em>, </em><em>optional</em>) – weight decay (L2 penalty) (default: 0.0)</p></li>
+<dl class="simple">
+<dt>参数:</dt><dd><ul class="simple">
+<li><p><strong>params</strong> (iterable) - 待优化参数构成的 iterable 或定义了参数组的 dict。</p></li>
+<li><p><strong>lr</strong> (float, optional) - 学习率（默认值：1e-3）。</p></li>
+<li><p><strong>momentum</strong> (float, optional) - momentum 因子（默认值: 0.0）。</p></li>
+<li><p><strong>weight_decay</strong> (float, optional) - 权重衰减（L2 penalty）（默认值: 0.0）。</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
-<p>Example 1:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume net is a custom model.</span>
+<p>示例：</p>
+<p>例1:：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 假设 net 是一个自定义模型。</span>
 <span class="n">sgd</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-    <span class="c1"># Read data, Compute the loss and so on.</span>
+    <span class="c1"># 读取数据，计算损失，等等。</span>
     <span class="c1"># ...</span>
     <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
     <span class="n">sgd</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
     <span class="n">sgd</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Example 2:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume net is a custom model.</span>
+<p>例2：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 假设 net 是一个自定义模型。</span>
 <span class="n">sgd</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span>
     <span class="p">[</span>
         <span class="p">{</span>
@@ -649,7 +637,7 @@ parameter groups</p></li>
 <span class="p">)</span>
 
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-    <span class="c1"># Read data, Compute the loss and so on.</span>
+    <span class="c1"># 读取数据，计算损失，等等。</span>
     <span class="c1"># ...</span>
     <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
     <span class="n">sgd</span><span class="o">.</span><span class="n">clip_grad</span><span class="p">()</span>
@@ -657,8 +645,8 @@ parameter groups</p></li>
     <span class="n">sgd</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>If you want to use clip_grad, you can refer this example.</p>
-<p>For more details of <cite>clip_grad_max_norm</cite> and <cite>clip_grad_norm_type</cite>, you can refer to <a class="reference internal" href="nn.html#oneflow.nn.utils.clip_grad_norm_" title="oneflow.nn.utils.clip_grad_norm_"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.nn.utils.clip_grad_norm_()</span></code></a>.</p>
+<p>若要使用 clip_grad 函数，请参考这个示例。</p>
+<p>关于 <cite>clip_grad_max_norm</cite> 和 <cite>clip_grad_norm_type</cite> 函数的更多细节，请参考 <code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.nn.utils.clip_grad_norm()</span></code> 。</p>
 <dl class="py method">
 <dt id="oneflow.optim.SGD.step">
 <code class="sig-name descname"><span class="pre">step</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">closure</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.SGD.step" title="Permalink to this definition">¶</a></dt>
@@ -683,10 +671,9 @@ limitations under the License.</p>
 <dl class="py class">
 <dt id="oneflow.optim.lr_scheduler.CosineAnnealingLR">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.optim.lr_scheduler.</span></code><code class="sig-name descname"><span class="pre">CosineAnnealingLR</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow.nn.optimizer.optimizer.Optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_max</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eta_min</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_step</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.lr_scheduler.CosineAnnealingLR" title="Permalink to this definition">¶</a></dt>
-<dd><p>The documentation is referenced from: <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.CosineAnnealingLR.html?highlight=cosine#torch.optim.lr_scheduler.CosineAnnealingLR">https://pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.CosineAnnealingLR.html?highlight=cosine#torch.optim.lr_scheduler.CosineAnnealingLR</a></p>
-<p>Set the learning rate of each parameter group using a cosine annealing
-schedule, where <span class="math notranslate nohighlight">\(\eta_{max}\)</span> is set to the initial lr and
-<span class="math notranslate nohighlight">\(T_{cur}\)</span> is the number of epochs since the last restart in SGDR:</p>
+<dd><p>文档参考自： <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.CosineAnnealingLR.html?highlight=cosine#torch.optim.lr_scheduler.CosineAnnealingLR">https://pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.CosineAnnealingLR.html?highlight=cosine#torch.optim.lr_scheduler.CosineAnnealingLR</a></p>
+<p>使用 cosine annealing schedule 设置每个参数组的学习率，其中 <span class="math notranslate nohighlight">\(\eta_{max}\)</span> 被设置为初始学学习率，
+<span class="math notranslate nohighlight">\(T_{cur}\)</span> 是自 SGDR 中最后一次重启以来的 epoch 数。</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
     \eta_t &amp; = \eta_{min} + \frac{1}{2}(\eta_{max} - \eta_{min})\left(1
@@ -696,25 +683,20 @@ schedule, where <span class="math notranslate nohighlight">\(\eta_{max}\)</span>
     \left(1 - \cos\left(\frac{1}{T_{max}}\pi\right)\right),
     &amp; T_{cur} = (2k+1)T_{max}.
 \end{aligned}\end{split}\]</div></div>
-<p>When last_step=-1, sets initial lr as lr. Notice that because the schedule
-is defined recursively, the learning rate can be simultaneously modified
-outside this scheduler by other operators. If the learning rate is set
-solely by this scheduler, the learning rate at each step becomes:</p>
+<p>当 last_step=-1， 设置初始学习率为 lr。因为调整是递归定义的， 除学习率调整器之外，它也可以同时被其他算子修改。
+如果学习率完全由这个调整器设定，每一步的学习率就变成了：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\eta_t = \eta_{min} + \frac{1}{2}(\eta_{max} - \eta_{min})\left(1 +
 \cos\left(\frac{T_{cur}}{T_{max}}\pi\right)\right)\]</div></div>
-<p>It has been proposed in
-<a class="reference external" href="https://arxiv.org/abs/1608.03983">SGDR: Stochastic Gradient Descent with Warm Restarts</a>. Note that this only
-implements the cosine annealing part of SGDR, and not the restarts.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>optimizer</strong> (<a class="reference internal" href="#oneflow.optim.Optimizer" title="oneflow.optim.Optimizer"><em>Optimizer</em></a>) – Wrapped optimizer.</p></li>
-<li><p><strong>T_max</strong> (<em>int</em>) – Maximum number of iterations.</p></li>
-<li><p><strong>eta_min</strong> (<em>float</em>) – Minimum learning rate. Default: 0.</p></li>
-<li><p><strong>last_step</strong> (<em>int</em>) – The index of last epoch. Default: -1.</p></li>
-<li><p><strong>verbose</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, prints a message to stdout for
-each update. Default: <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<p>这在 <a class="reference external" href="https://arxiv.org/abs/1608.03983">SGDR: Stochastic Gradient Descent with Warm Restarts</a> 中被提出。
+请注意，这只实现了 SGDR 的 cosine annealing 部分，并不包括重新启动。</p>
+<dl class="simple">
+<dt>参数:</dt><dd><ul class="simple">
+<li><p><strong>optimizer</strong> (Optimizer) - 被包装的优化器。</p></li>
+<li><p><strong>T_max</strong> (int) - 迭代的最大数量。</p></li>
+<li><p><strong>eta_min</strong> (float) - 学习率的最小值，默认值：0。</p></li>
+<li><p><strong>last_step</strong> (int) - 最后一个 epoch 的索引，默认值：-1。</p></li>
+<li><p><strong>verbose</strong> (bool) - 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code> ，则会为每次更新打印一条信息到标准输出，默认值: <code class="docutils literal notranslate"><span class="pre">False</span></code> 。</p></li>
 </ul>
 </dd>
 </dl>
@@ -727,28 +709,26 @@ each update. Default: <code class="docutils literal notranslate"><span class="pr
 <dl class="py class">
 <dt id="oneflow.optim.lr_scheduler.CosineDecayLR">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.optim.lr_scheduler.</span></code><code class="sig-name descname"><span class="pre">CosineDecayLR</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow.nn.optimizer.optimizer.Optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay_steps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_step</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.lr_scheduler.CosineDecayLR" title="Permalink to this definition">¶</a></dt>
-<dd><p>This operator creates a Cosine decayed learning rate scheduler.</p>
-<p>Before the decay_steps are specified by user, the learning rate will be updated as:</p>
+<dd><p>此算子构建了一个 Cosine decayed 学习率调整器。</p>
+<p>在用户指定的 decay_steps 之前，学习率被更新为：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}&amp; cos\_decay = 0.5*(1+cos(\pi*\frac{current\_step}{decay\_steps}))\\&amp; decay\_factor = (1-\alpha)*cos\_decay+\alpha\\&amp; learning\_rate = base\_learning\_rate*decay\_factor\end{aligned}\end{align} \]</div></div>
-<p>After the decay_steps specified by user, the learning rate will be :</p>
+<p>在用户指定的 decay_steps 之后，学习率被更新为：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[learning\_rate = {base\_learning\_rate}*{\alpha}\]</div></div>
-<p>It has been proposed in
-<a class="reference external" href="https://arxiv.org/abs/1608.03983">SGDR: Stochastic Gradient Descent with Warm Restarts</a>. Note that this only
-implements the cosine annealing part of SGDR, and not the restarts.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>optimizer</strong> (<a class="reference internal" href="#oneflow.optim.Optimizer" title="oneflow.optim.Optimizer"><em>Optimizer</em></a>) – Wrapped optimizer.</p></li>
-<li><p><strong>decay_steps</strong> (<em>int</em>) – The decay steps in the scheduler.</p></li>
-<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>optional</em>) – The learning rate scale factor (<span class="math notranslate nohighlight">\(\alpha\)</span>). (default: 0.0)</p></li>
-<li><p><strong>last_step</strong> (<em>int</em><em>, </em><em>optional</em>) – The index of last step. (default: -1)</p></li>
-<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, prints a message to stdout for each update. (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+<p>这在 <a class="reference external" href="https://arxiv.org/abs/1608.03983">SGDR: Stochastic Gradient Descent with Warm Restarts</a> 中被提出。
+请注意，这里只实现了 SGDR 的 cosine annealing 部分，并不包括重新启动。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>optimizer</strong> (Optimizer) - 被包装的优化器。</p></li>
+<li><p><strong>decay_steps</strong> (int) - 学习率调整器中 decay steps。</p></li>
+<li><p><strong>alpha</strong> (float, optional) - 学习率比例因子( <span class="math notranslate nohighlight">\(\alpha\)</span> )，默认值为 0.0。</p></li>
+<li><p><strong>last_step</strong> (int) - 最后一个 epoch 的索引，默认值：-1。</p></li>
+<li><p><strong>verbose</strong> (bool) - 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code> ，则会在每次更新时打印一条信息到标准输出。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
 <span class="o">...</span>
@@ -767,16 +747,14 @@ implements the cosine annealing part of SGDR, and not the restarts.</p>
 <dl class="py class">
 <dt id="oneflow.optim.lr_scheduler.ExponentialLR">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.optim.lr_scheduler.</span></code><code class="sig-name descname"><span class="pre">ExponentialLR</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow.nn.optimizer.optimizer.Optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_step</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.lr_scheduler.ExponentialLR" title="Permalink to this definition">¶</a></dt>
-<dd><p>Decays the learning rate of each parameter group by gamma every epoch.
-When last_epoch=-1, sets initial lr as lr.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>optimizer</strong> (<a class="reference internal" href="#oneflow.optim.Optimizer" title="oneflow.optim.Optimizer"><em>Optimizer</em></a>) – Wrapped optimizer.</p></li>
-<li><p><strong>gamma</strong> (<em>float</em>) – Multiplicative factor of learning rate decay.</p></li>
-<li><p><strong>last_step</strong> (<em>int</em>) – The index of last step. Default: -1.</p></li>
-<li><p><strong>verbose</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, prints a message to stdout for
-each update. Default: <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<dd><p>在每个 epoch 中对每个参数组的学习率进行伽玛衰减操作。
+当 last_step = -1 时，设置初始学习率为 lr。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>optimizer</strong> (Optimizer) - 被包装的优化器。</p></li>
+<li><p><strong>gamma</strong> (float) - 学习率衰减的乘法系数。</p></li>
+<li><p><strong>last_step</strong> (int) - 最后一个 epoch 的索引，默认值：-1。</p></li>
+<li><p><strong>verbose</strong> (bool) - 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code> ，则会在每次更新时打印一条信息到标准输出。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
 </ul>
 </dd>
 </dl>
@@ -789,22 +767,20 @@ each update. Default: <code class="docutils literal notranslate"><span class="pr
 <dl class="py class">
 <dt id="oneflow.optim.lr_scheduler.LambdaLR">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.optim.lr_scheduler.</span></code><code class="sig-name descname"><span class="pre">LambdaLR</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr_lambda</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.lr_scheduler.LambdaLR" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the learning rate of each parameter group to the initial lr times a given function.
-When last_step=-1, sets initial lr as lr.</p>
+<dd><p>将每个参数组的学习率设置为给定函数的初始 lr 倍。
+当 last_step = -1 时，设置初始学习率为 lr。</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[learning\_rate = base\_learning\_rate*lambda(last\_step)\]</div></div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>optimizer</strong> (<a class="reference internal" href="#oneflow.optim.Optimizer" title="oneflow.optim.Optimizer"><em>Optimizer</em></a>) – Wrapped optimizer.</p></li>
-<li><p><strong>lr_lambda</strong> (<em>function</em><em> or </em><em>list</em>) – A function which computes a multiplicative factor given an integer
-parameter epoch, or a list of such functions, one for each group in optimizer.param_groups.</p></li>
-<li><p><strong>last_step</strong> (<em>int</em><em>, </em><em>optional</em>) – The index of last step. (default: -1)</p></li>
-<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, prints a message to stdout for each update. (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>optimizer</strong> (Optimizer) - 被包装的优化器。</p></li>
+<li><p><strong>lr_lambda</strong> (function or list) - 一个根据给定参数 epoch 计算乘法因子的函数，或为一组函数，其中每个函数用于 optimizer.param_groups 中的每一个组。</p></li>
+<li><p><strong>last_step</strong> (int) - 最后一个 epoch 的索引（默认值：-1）。</p></li>
+<li><p><strong>verbose</strong> (bool) - 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code> ，则会在每次更新时打印一条信息到标准输出。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
 <span class="o">...</span>
@@ -819,22 +795,20 @@ parameter epoch, or a list of such functions, one for each group in optimizer.pa
 <dl class="py method">
 <dt id="oneflow.optim.lr_scheduler.LambdaLR.load_state_dict">
 <code class="sig-name descname"><span class="pre">load_state_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.lr_scheduler.LambdaLR.load_state_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads the schedulers state.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>state_dict</strong> (<em>dict</em>) – scheduler state. Should be an object returned
-from a call to <a class="reference internal" href="#oneflow.optim.lr_scheduler.LambdaLR.state_dict" title="oneflow.optim.lr_scheduler.LambdaLR.state_dict"><code class="xref py py-meth docutils literal notranslate"><span class="pre">state_dict()</span></code></a>.</p>
+<dd><p>加载调整器的状态。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>state_dict</strong> (dict) - 调整器的状态，应为调用 <a class="reference internal" href="#oneflow.optim.lr_scheduler.LambdaLR.state_dict" title="oneflow.optim.lr_scheduler.LambdaLR.state_dict"><code class="xref py py-meth docutils literal notranslate"><span class="pre">state_dict()</span></code></a> 函数所返回的对象。</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.optim.lr_scheduler.LambdaLR.state_dict">
 <code class="sig-name descname"><span class="pre">state_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.lr_scheduler.LambdaLR.state_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the state of the scheduler as a <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>.</p>
-<p>It contains an entry for every variable in self.__dict__ which
-is not the optimizer.
-The learning rate lambda functions will only be saved if they are callable objects
-and not if they are functions or lambdas.</p>
+<dd><p>以 <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code> 类型返回调整器的状态。</p>
+<p>它包含了 self.__dict__ 中每个变量不是优化器的条目。
+学习率 lambda 函数只有在它们是可调用的对象时才会被保存，如果是函数或 lambdas 则不会被保存。</p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.optim.lr_scheduler.LambdaLR.step">
@@ -844,21 +818,19 @@ and not if they are functions or lambdas.</p>
 <dl class="py class">
 <dt id="oneflow.optim.lr_scheduler.MultiStepLR">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.optim.lr_scheduler.</span></code><code class="sig-name descname"><span class="pre">MultiStepLR</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow.nn.optimizer.optimizer.Optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">milestones</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_step</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.lr_scheduler.MultiStepLR" title="Permalink to this definition">¶</a></dt>
-<dd><p>Decays the learning rate of each parameter group by gamma once the number of step
-reaches one of the milestones. Notice that such decay can happen simultaneously with
-other changes to the learning rate from outside this scheduler.When last_step=-1, sets initial lr as lr.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>optimizer</strong> (<a class="reference internal" href="#oneflow.optim.Optimizer" title="oneflow.optim.Optimizer"><em>Optimizer</em></a>) – Wrapped optimizer.</p></li>
-<li><p><strong>milestones</strong> (<em>list</em>) – List of step indices. Must be increasing</p></li>
-<li><p><strong>gamma</strong> (<em>float</em><em>, </em><em>optional</em>) – Multiplicative factor of learning rate decay. (default: 0.1)</p></li>
-<li><p><strong>last_step</strong> (<em>int</em><em>, </em><em>optional</em>) – The index of last step. (default: -1)</p></li>
-<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, prints a message to stdout for each update. (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+<dd><p>一旦步数达到一个临界值，对每个参数组的学习率进行伽玛衰减操作。注意，这种衰减可以与其他因素导致的学习率变化同时发生。
+当 last_step = -1 时，设置初始学习率为 lr。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>optimizer</strong> (Optimizer) - 被包装的优化器。</p></li>
+<li><p><strong>milestones</strong> (list) - step indices 的 list，必须是递增的。</p></li>
+<li><p><strong>gamma</strong> (float, optional) - 学习率衰减的乘法系数（默认值：0.1）。</p></li>
+<li><p><strong>last_step</strong> (int) - 最后一个 epoch 的索引（默认值：-1）。</p></li>
+<li><p><strong>verbose</strong> (bool) - 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code> ，则会在每次更新时打印一条信息到标准输出。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
 <span class="o">...</span>
@@ -877,39 +849,36 @@ other changes to the learning rate from outside this scheduler.When last_step=-1
 <dl class="py class">
 <dt id="oneflow.optim.lr_scheduler.PolynomialLR">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.optim.lr_scheduler.</span></code><code class="sig-name descname"><span class="pre">PolynomialLR</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_learning_rate</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cycle</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_step</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.lr_scheduler.PolynomialLR" title="Permalink to this definition">¶</a></dt>
-<dd><p>This operator creates a polynomial decayed learning rate scheduler.
-The learning rate will be updated as follows:</p>
-<p>If cycle is <cite>True</cite>, the equation is:</p>
+<dd><p>此算子创建了一个多项式形式的学习率衰减调整器。学习率按如下方式更新：</p>
+<p>如果 cycle 为 <cite>True</cite> ，则等式为：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
    &amp; decay\_batch = decay\_batch*ceil(\frac{current\_batch}{decay\_batch}) \\
    &amp; learning\_rate = (base\_lr-end\_lr)*(1-\frac{current\_batch}{decay\_batch})^{power}+end\_lr
 \end{aligned}\end{split}\]</div></div>
-<p>If cycle is <cite>False</cite>, the equation is:</p>
+<p>如果 cycle 为 <cite>False</cite> ，则等式为：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
    &amp; decay\_batch = min(decay\_batch, current\_batch) \\
    &amp; learning\_rate = (base\_lr-end\_lr)*(1-\frac{current\_batch}{decay\_batch})^{power}+end\_lr
 \end{aligned}\end{split}\]</div></div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>optimizer</strong> (<a class="reference internal" href="#oneflow.optim.Optimizer" title="oneflow.optim.Optimizer"><em>Optimizer</em></a>) – Wrapper optimizer.</p></li>
-<li><p><strong>steps</strong> (<em>int</em>) – The decayed steps.</p></li>
-<li><p><strong>end_learning_rate</strong> (<em>float</em><em>, </em><em>optional</em>) – The final learning rate. Defaults to 0.0001.</p></li>
-<li><p><strong>power</strong> (<em>float</em><em>, </em><em>optional</em>) – The power of polynomial. Defaults to 1.0.</p></li>
-<li><p><strong>cycle</strong> (<em>bool</em><em>, </em><em>optional</em>) – If cycle is True, the scheduler will decay the learning rate every decay steps. Defaults to False.</p></li>
+<dl class="simple">
+<dt>参数:</dt><dd><ul class="simple">
+<li><p><strong>optimizer</strong> (Optimizer) - 被包装的优化器。</p></li>
+<li><p><strong>steps</strong> (int) - 衰减的步数。</p></li>
+<li><p><strong>end_learning_rate</strong> (float, optional) - 最终学习率，默认值为 0.0001。</p></li>
+<li><p><strong>power</strong> (float, optional) - 多项式的幂，默认为 1.0。</p></li>
+<li><p><strong>cycle</strong> (bool, optional) - 如果 cycle 为 True，调整器将在每一步中衰减学习率，默认值为 False。</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
 <span class="o">...</span>
 <span class="n">polynomial_scheduler</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">PolynomialLR</span><span class="p">(</span>
     <span class="n">optimizer</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">end_learning_rate</span><span class="o">=</span><span class="mf">0.00001</span><span class="p">,</span> <span class="n">power</span><span class="o">=</span><span class="mi">2</span>
     <span class="p">)</span>
-
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epoch</span><span class="p">):</span>
     <span class="n">train</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
     <span class="n">polynomial_scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
@@ -924,54 +893,32 @@ The learning rate will be updated as follows:</p>
 <dl class="py class">
 <dt id="oneflow.optim.lr_scheduler.ReduceLROnPlateau">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.optim.lr_scheduler.</span></code><code class="sig-name descname"><span class="pre">ReduceLROnPlateau</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'min'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patience</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cooldown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_lr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-08</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.lr_scheduler.ReduceLROnPlateau" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reduce learning rate when a metric has stopped improving.
-Models often benefit from reducing the learning rate by a factor
-of 2-10 once learning stagnates. This scheduler reads a metrics
-quantity and if no improvement is seen for a ‘patience’ number
-of epochs, the learning rate is reduced.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>optimizer</strong> (<a class="reference internal" href="#oneflow.optim.Optimizer" title="oneflow.optim.Optimizer"><em>Optimizer</em></a>) – Wrapped optimizer.</p></li>
-<li><p><strong>mode</strong> (<em>str</em>) – One of <cite>min</cite>, <cite>max</cite>. In <cite>min</cite> mode, lr will
-be reduced when the quantity monitored has stopped
-decreasing; in <cite>max</cite> mode it will be reduced when the
-quantity monitored has stopped increasing. Default: ‘min’.</p></li>
-<li><p><strong>factor</strong> (<em>float</em>) – Factor by which the learning rate will be
-reduced. new_lr = lr * factor. Default: 0.1.</p></li>
-<li><p><strong>patience</strong> (<em>int</em>) – Number of epochs with no improvement after
-which learning rate will be reduced. For example, if
-<cite>patience = 2</cite>, then we will ignore the first 2 epochs
-with no improvement, and will only decrease the LR after the
-3rd epoch if the loss still hasn’t improved then.
-Default: 10.</p></li>
-<li><p><strong>threshold</strong> (<em>float</em>) – Threshold for measuring the new optimum,
-to only focus on significant changes. Default: 1e-4.</p></li>
-<li><p><strong>threshold_mode</strong> (<em>str</em>) – One of <cite>rel</cite>, <cite>abs</cite>. In <cite>rel</cite> mode,
-dynamic_threshold = best * ( 1 + threshold ) in ‘max’
-mode or best * ( 1 - threshold ) in <cite>min</cite> mode.
-In <cite>abs</cite> mode, dynamic_threshold = best + threshold in
-<cite>max</cite> mode or best - threshold in <cite>min</cite> mode. Default: ‘rel’.</p></li>
-<li><p><strong>cooldown</strong> (<em>int</em>) – Number of epochs to wait before resuming
-normal operation after lr has been reduced. Default: 0.</p></li>
-<li><p><strong>min_lr</strong> (<em>float</em><em> or </em><em>list</em>) – A scalar or a list of scalars. A
-lower bound on the learning rate of all param groups
-or each group respectively. Default: 0.</p></li>
-<li><p><strong>eps</strong> (<em>float</em>) – Minimal decay applied to lr. If the difference
-between new and old lr is smaller than eps, the update is
-ignored. Default: 1e-8.</p></li>
-<li><p><strong>verbose</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, prints a message to stdout for
-each update. Default: <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<dd><p>当一个 metric 停止更新时，降低学习率。
+一旦学习停滞不前，降低 2-10 倍的学习率往往能有效改善。
+这个调整器每读取一个指标量，如果没有在第 ‘patience’ 轮学习中看到改进，
+就会降低学习率。</p>
+<dl class="simple">
+<dt>参数:</dt><dd><ul class="simple">
+<li><p><strong>optimizer</strong> (Optimizer) - 被包装的优化器。</p></li>
+<li><p><strong>mode</strong> (str) - <cite>min</cite> 或者 <cite>max</cite> 。在 <cite>min</cite> 模式中，当被监测的数量不再减少时学习率将会减小；在 <cite>max</cite> 模式中，当被监测的数量不再增加时学习率将会减小。默认为 <cite>min</cite>。</p></li>
+<li><p><strong>factor</strong> (float) - 学习率降低的系数， new_lr = lr * factor ， 默认值：0.1。</p></li>
+<li><p><strong>patience</strong> (int) - 若在这个 epoch 中模型还没有改善，学习率将降低。例如，如果 <cite>patience = 2</cite> ，那么我们会忽略前两个没有改善的 epoch ，如果此后 loss 仍然没有减小，学习率也将会在第三个 epoch 后减小。默认值：10。</p></li>
+<li><p><strong>threshold</strong> (float) - 测量新的最佳状态的阈值，只关注一些重要变化。默认：1e-4。</p></li>
+<li><p><strong>threshold_mode</strong> (str) - <cite>rel</cite> 或 <cite>abs</cite> 。 在 <cite>rel</cite> 模式中，（max）dynamic_threshold = best * ( 1 + threshold )，（min）dynamic_threshold = best * ( 1 - threshold )； 在 <cite>abs</cite> 模式中，（max）dynamic_threshold = best + threshold，（min）dynamic_threshold = best - threshold inmode。默认： <cite>rel</cite> 。</p></li>
+<li><p><strong>cooldown</strong> (int) - 学习率减少后，在恢复正常操作前要等待的 epoch 数，默认值：0。</p></li>
+<li><p><strong>min_lr</strong> (float or list) - 一个标量或一个标量列表，分别是所有参数组和每组的学习率下限，默认：0。</p></li>
+<li><p><strong>eps</strong> (float) - 应用于学习率的最小衰减，如果新旧学习率之间的差异小于 eps，更新将被忽略。默认值：1e-8。</p></li>
+<li><p><strong>verbose</strong> (bool) - 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code> ，则会在每次更新时打印一条信息到标准输出。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
+<p>示例:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
 <span class="n">scheduler</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">ReduceLROnPlateau</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="s1">'min'</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="n">train</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
     <span class="n">val_loss</span> <span class="o">=</span> <span class="n">validate</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
-    <span class="c1"># Note that step should be called after validate()</span>
+    <span class="c1"># 注意，该步骤应在validate()之后调用。</span>
     <span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">val_loss</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -986,28 +933,28 @@ each update. Default: <code class="docutils literal notranslate"><span class="pr
 <dl class="py method">
 <dt id="oneflow.optim.lr_scheduler.ReduceLROnPlateau.load_state_dict">
 <code class="sig-name descname"><span class="pre">load_state_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.lr_scheduler.ReduceLROnPlateau.load_state_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads the schedulers state.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>state_dict</strong> (<em>dict</em>) – scheduler state. Should be an object returned
-from a call to <a class="reference internal" href="#oneflow.optim.lr_scheduler.ReduceLROnPlateau.state_dict" title="oneflow.optim.lr_scheduler.ReduceLROnPlateau.state_dict"><code class="xref py py-meth docutils literal notranslate"><span class="pre">state_dict()</span></code></a>.</p>
+<dd><p>加载调整器的状态。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>state_dict</strong> (dict) - 调整器的状态，应为调用 <a class="reference internal" href="#oneflow.optim.lr_scheduler.ReduceLROnPlateau.state_dict" title="oneflow.optim.lr_scheduler.ReduceLROnPlateau.state_dict"><code class="xref py py-meth docutils literal notranslate"><span class="pre">state_dict()</span></code></a> 函数所返回的对象。</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.optim.lr_scheduler.ReduceLROnPlateau.state_dict">
 <code class="sig-name descname"><span class="pre">state_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.lr_scheduler.ReduceLROnPlateau.state_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the state of the scheduler as a <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>.</p>
-<p>It contains an entry for every variable in self.__dict__ which
-is not the optimizer.</p>
+<dd><p>以 <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code> 形式返回调整器的状态。</p>
+<p>它包含了 self.__dict__ 中每个变量的条目，而这些变量并不是优化器。</p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.optim.lr_scheduler.ReduceLROnPlateau.step">
 <code class="sig-name descname"><span class="pre">step</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metrics</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.lr_scheduler.ReduceLROnPlateau.step" title="Permalink to this definition">¶</a></dt>
-<dd><p>Step forward once.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>metrics</strong> (<em>float</em>) – a metrics quantity of Measuring the effect of model training.</p>
+<dd><p>执行单个优化步骤。</p>
+<dl class="simple">
+<dt>参数:</dt><dd><ul class="simple">
+<li><p><strong>metrics</strong> (float)- 一个衡量模型训练效果的指标量。</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -1015,21 +962,20 @@ is not the optimizer.</p>
 <dl class="py class">
 <dt id="oneflow.optim.lr_scheduler.StepLR">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.optim.lr_scheduler.</span></code><code class="sig-name descname"><span class="pre">StepLR</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow.nn.optimizer.optimizer.Optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_step</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.lr_scheduler.StepLR" title="Permalink to this definition">¶</a></dt>
-<dd><p>Decays the learning rate of each parameter group by gamma every step_size steps.
-Notice that such decay can happen simultaneously with other changes to the learning
-rate fromoutside this scheduler. When last_step=-1, sets initial lr as lr.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>optimizer</strong> (<a class="reference internal" href="#oneflow.optim.Optimizer" title="oneflow.optim.Optimizer"><em>Optimizer</em></a>) – Wrapped optimizer.</p></li>
-<li><p><strong>step_size</strong> (<em>int</em>) – Period of learning rate decay.</p></li>
-<li><p><strong>gamma</strong> (<em>float</em><em>, </em><em>optional</em>) – Multiplicative factor of learning rate decay. (default: 0.1)</p></li>
-<li><p><strong>last_step</strong> (<em>int</em><em>, </em><em>optional</em>) – The index of last step. (default: -1)</p></li>
-<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, prints a message to stdout for each update. (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+<dd><p>在每一个周期为 step_size 的步骤中，对每个参数组的学习率进行伽玛衰减操作。
+注意，这种衰减可以与其他因素导致的学习率变化同时发生。
+当 last_step = -1 时，设置初始学习率为 lr。</p>
+<dl class="simple">
+<dt>参数:</dt><dd><ul class="simple">
+<li><p><strong>optimizer</strong> (Optimizer) - 被包装的优化器。</p></li>
+<li><p><strong>step_size</strong> (int) - 学习率衰减的周期。</p></li>
+<li><p><strong>gamma</strong> (float, optional) - 学习率衰减的乘法系数（默认：0.1）。</p></li>
+<li><p><strong>last_step</strong> (int) - 最后一个 epoch 的索引（默认值：-1）。</p></li>
+<li><p><strong>verbose</strong> (bool) - 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code> ，则会在每次更新时打印一条信息到标准输出。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
 <span class="o">...</span>
