@@ -8,8 +8,8 @@ reset_docstr(
 
     创建自定义 autograd.Function 的基类。
 
-    要创建一个自定义的 autograd.Function，子类化这个类并实现静态函数 ``forward()`` 和 ``backward()`` 。 
-    然后在前馈计算中使用自定义算子，调用子类中的函数 ``apply()`` 或者 ``__call__()`` ，不要直接调用 ``forward()`` 函数。
+    要创建一个自定义的 autograd.Function，继承这个类并实现静态函数 ``forward()`` 和 ``backward()`` 。 
+    然后在前向计算中使用自定义算子，调用子类中的函数 ``apply()`` 或者 ``__call__()`` ，不要直接调用 ``forward()`` 函数。
 
     示例：
 
