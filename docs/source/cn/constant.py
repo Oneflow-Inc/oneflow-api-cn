@@ -612,7 +612,7 @@ reset_docstr(
         - **other** (oneflow.Tensor, float 或者 int): 用于比较的对象
 
     返回：
-        一个布尔值张量，当 :attr:`input` 不等于 :attr:`other` 时为真，否则为假。
+        一个布尔值构成的张量，当 :attr:`input` 不等于 :attr:`other` 时为真，否则为假。
 
     示例：
 
