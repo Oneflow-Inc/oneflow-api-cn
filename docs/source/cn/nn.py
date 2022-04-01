@@ -7,7 +7,7 @@ reset_docstr(
 
     计算 CTC(Connectionist Temporal Classification) 损失。
     
-    此接口与 PyTorch 一致。文档参考自：https://pytorch.org/docs/stable/generated/torch.nn.CTCLoss.html#torch.nn.CTCLoss 。
+    此接口与 PyTorch 一致，文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.CTCLoss.html#torch.nn.CTCLoss 。
 
     计算连续且未分段的时间序列和 :attr:`target` 序列之间的损失。CTCLoss 对 :attr:`input` 与 :attr:`target` 可能对齐的概率求和，产生一个相对于每个 :attr:`input` 节点可微的损失值。
     假定 :attr:`input` 与 :attr:`target` 的对齐为“多对一”，这限制了 :attr:`target` 序列的长度，即 :attr:`target` :math:`\leq` :attr:`input`。
@@ -103,7 +103,7 @@ reset_docstr(
     oneflow.nn.ConstantPad1d,
     r"""ConstantPad1d(padding, value=0)
 
-    用常数值填充输入 tensor 边界。此接口与 PyTorch 一致，文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.ConstantPad1d.html 。
+    用常数值填充输入张量的边界。此接口与 PyTorch 一致，文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.ConstantPad1d.html 。
 
     用 :func:`torch.nn.functional.pad()` 来进行 `N` 维填充。
 
@@ -140,7 +140,7 @@ reset_docstr(
     oneflow.nn.ConstantPad2d,
     r"""ConstantPad2d(padding, value=0)
     
-    此接口与 PyTorch 一致。文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.ConstantPad2d.html 。
+    此接口与 PyTorch 一致，文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.ConstantPad2d.html 。
 
     用 0 填充输入张量边界。用户可以通过设置参数 :attr:`paddings` 来设置填充量。
 
@@ -203,7 +203,7 @@ reset_docstr(
     oneflow.nn.ConstantPad3d,
     r"""ConstantPad3d(padding, value=0)
 
-    用常数值填充输入 tensor 边界。此接口与 PyTorch 一致，文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.ConstantPad3d.html 。
+    用常数填充输入张量的边界。此接口与 PyTorch 一致，文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.ConstantPad3d.html 。
 
     用 :func:`torch.nn.functional.pad()` 来进行 `N` 维填充。
 
@@ -257,8 +257,8 @@ reset_docstr(
     oneflow.nn.Conv1d,
     r"""Conv1d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode='zeros')
     
-    此接口与 PyTorch 一致。文档参考自：https://pytorch.org/docs/master/generated/torch.nn.Conv1d.html#conv1d 。
-    
+    此接口与 PyTorch 一致，文档参考自： https://pytorch.org/docs/master/generated/torch.nn.Conv1d.html#conv1d 。
+
     对由多个平面组成的输入信号应用 1D 卷积。
 
     在最简单的情况下，大小为 :math:`(N, C_{\text{in}}, L)` 的输入层的输出值和输出 :math:`(N, C_{\text{out}}, L_{\text{out}})` 可以被准确的表述为：
@@ -329,13 +329,13 @@ reset_docstr(
         https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md
     """
 
-)  
+)
 
 reset_docstr(
     oneflow.nn.Conv2d,
     r"""Conv2d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode='zeros')
     
-    此接口与 PyTorch 一致。文档参考自： https://pytorch.org/docs/master/generated/torch.nn.Conv2d.html#conv2d 。
+    此接口与 PyTorch 一致，文档参考自： https://pytorch.org/docs/master/generated/torch.nn.Conv2d.html#conv2d 。
     
     对由多个平面组成的输入信号应用 2D 卷积。
 
@@ -430,7 +430,7 @@ reset_docstr(
     oneflow.nn.Conv3d,
     r"""Conv3d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode='zeros')
 
-    此接口与 PyTorch 一致。文档参考自：https://pytorch.org/docs/master/generated/torch.nn.Conv3d.html#conv3 。
+    此接口与 PyTorch 一致，文档参考自： https://pytorch.org/docs/master/generated/torch.nn.Conv3d.html#conv3 。
 
     对由多个平面组成的输入信号应用 3D 卷积。
 
@@ -749,7 +749,7 @@ reset_docstr(
     在 `K` 维下， :attr:`input` 的大小必须为 :math:`(minibatch, C)` 或 :math:`(minibatch, C, d_1, d_2, ..., d_K)` ，
     其中 :math:`K \geq 1` （见下文）。
 
-    在此标准中，类的索引应在 :math:`[0, C-1]` 范围内并引作为大小为 `minibatch` 的 1D tensor 的 `target` ；
+    在此标准中，类的索引应在 :math:`[0, C-1]` 范围内并引作为大小为 `minibatch` 的一维张量的 `target` ；
 
     该损失可以被描述为：
 
@@ -794,7 +794,7 @@ reset_docstr(
     oneflow.nn.LeakyReLU,
     """LeakyReLU(negative_slope: float = 0.01, inplace: bool = False)
     
-    逐元素应用公式：
+    逐元素地应用如下公式：
 
     .. math::
         \\text{LeakyRELU}(x) = \\begin{cases}
@@ -830,7 +830,7 @@ reset_docstr(
     oneflow.nn.Linear,
     """Linear(in_features: int, out_features: int, bias: bool = True)
     
-    对输入数据应用线性变换： :math:`y = xA^T + b`
+    对输入数据应用线性变换： :math:`y = xA^T + b` 。
 
     参数：
         - **in_features** - 每一个输入样本的大小。
@@ -838,12 +838,12 @@ reset_docstr(
         - **bias** - 若设置为 ``False`` ，则该层不会学习附加偏差。默认值为 ``True``。
 
     形状：
-        - Input: :math:`(N, *, H_{in})` ，其中 `*` 表示任意数量的附加维度，且 :math:`H_{in} = {in\\_features}`。
-        - Output: :math:`(N, *, H_{out})` ，其中除了最后一个维度之外的所有维度都与输入的形状相同，且 :math:`H_{out} = {out\\_features}`。
+        - Input: :math:`(N, *, H_{in})` ，其中 `*` 表示任意数量的附加维度，且 :math:`H_{in} = {in\\_features}` 。
+        - Output: :math:`(N, *, H_{out})` ，其中除了最后一个维度之外的所有维度都与输入的形状相同，且 :math:`H_{out} = {out\\_features}` 。
 
     属性：
-        - :attr:`weight`: 形状为 :math:`({out\\_features}, {in\\_features})` 的模块的可学习参数。这些值通过 :math:`\\mathcal{U}(-\\sqrt{k}, \\sqrt{k})` 初始化，其中 :math:`(k = 1 / {in\\_features})`
-        - :attr:`bias`: 形状为 :math:`({out\\_features})` 的模块的可学习参数。若 :attr:`bias` = ``True`` ，则这些值通过 :math:`\\mathcal{U}(-\\sqrt{k}, \\sqrt{k})` 初始化，其中 :math:`(k = 1 / {in\\_features})`
+        - :attr:`weight`: 形状为 :math:`({out\\_features}, {in\\_features})`  的模块的可学习参数。这些值通过 :math:`\\mathcal{U}(-\\sqrt{k}, \\sqrt{k})` 初始化，其中 :math:`k = 1 / {in\\_features}`  。
+        - :attr:`bias`: 形状为 :math:`({out\\_features})`  的模块的可学习参数。若 :attr:`bias` = ``True`` ，则这些值通过 :math:`\\mathcal{U}(-\\sqrt{k}, \\sqrt{k})` 初始化，其中 :math:`k = 1 / {in\\_features}`  。
 
 
     示例：
@@ -865,7 +865,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.nn.LogSigmoid,
-    """逐元素应用公式：
+    """逐元素地应用如下公式：
 
     .. math::
         \\text{LogSigmoid}(x) = \\log\\left(\\frac{ 1 }{ 1 + \\exp(-x)}\\right)
@@ -897,8 +897,7 @@ reset_docstr(
     oneflow.nn.LogSoftmax,
     r"""LogSoftmax(dim: Optional[int] = None)
     
-    对一个 n 维输入张量应用 LogSoftmax 公式。
-    LogSoftmax 公式可以被简化为：
+    对一个 n 维输入张量应用 LogSoftmax 公式，它可以被简化为：
 
     .. math::
         \text{LogSoftmax}(x_{i}) = \log\left(\frac{\exp(x_i) }{ \sum_j \exp(x_j)} \right) = x_i - \log({ \sum_j \exp(x_j)})
@@ -935,9 +934,9 @@ reset_docstr(
     oneflow.nn.MarginRankingLoss,
     """MarginRankingLoss(margin: float = 0.0, reduction: str = 'mean')
     
-    创造一个标准来衡量损失，给定输入 :math:`x1`, :math:`x2` ，两个 1D mini-batch `Tensors` ，以及一个带标签的 1D mini-batch tensor :math:`y` （包含 1 或 -1）。
+    根据给定的输入 :math:`x1`, :math:`x2` ，两个一维小批量 `Tensors` ，以及一个带标签的一维小批量张量 :math:`y` （包含 1 或 -1），创建一个指标来测量损失。
 
-    若 :math:`y = 1` 则假定第一个输入的 rank 比第二个输入更高， :math:`y = -1` 时反之亦然。
+    若 :math:`y = 1` 则假定第一个输入的 rank 比第二个输入更高， :math:`y = -1` 反之亦然。
 
     小批量中每个样本的损失函数为：
 
@@ -945,14 +944,14 @@ reset_docstr(
         \\text{loss}(x1, x2, y) = \\max(0, -y * (x1 - x2) + \\text{margin})
 
     参数：
-        - **margin** (float, optional) - 默认值为 :math:`0`。
-        - **reduction** (string, optional) - 指定对输出应用的 reduction：``'none'`` | ``'mean'`` | ``'sum'``。``'none'`` ：不进行 reduction；``'mean'`` ：输出的和将会除以输出中的元素数量；``'sum'`` ：输出将被求和。默认值为 ``'mean'``。
+        - **margin** (float, optional) - 默认为 :math:`0`。
+        - **reduction** (string, optional) - 指定应用于输出的规约操作： ``'none'`` | ``'mean'`` | ``'sum'`` 。若为 ``'none'`` ：不进行规约；``'mean'`` ：输出的和将会除以输出中的元素数量； ``'sum'`` ：输出将被求和。默认为 ``'mean'``。
 
     形状：
         - `x1` : :math:`(N, D)` ，其中 `N` 是批量大小， `D` 是样本大小。
         - `x2` : :math:`(N, D)` ，其中 `N` 是批量大小， `D` 是样本大小。
-        - Target: :math:`(N)`
-        - Output: 若 :attr:`reduction` = ``'none'`` ，那么输出为 :math:`(N)` ，否则为标量。
+        - Target : :math:`(N)`
+        - Output : 若 :attr:`reduction` = ``'none'`` ，那么输出为 :math:`(N)` ，否则为标量。
 
     示例：
 
@@ -988,28 +987,28 @@ reset_docstr(
     oneflow.nn.MaxPool1d,
     r"""MaxPool1d(kernel_size: Union[int, Tuple[int]], stride: Optional[Union[int, Tuple[int]]] = None, padding: Union[int, Tuple[int]] = 0, dilation: Union[int, Tuple[int]] = 1, return_indices: bool = False, ceil_mode: bool = False)
     
-    此接口与 PyTorch 一致。文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.MaxPool1d.html#torch.nn.MaxPool1d 。
+    此接口与 PyTorch 一致，文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.MaxPool1d.html#torch.nn.MaxPool1d 。
 
-    在一个由多个输入平面组成的输入信号上应用 1D max pooling。
+    在一个由多个输入平面组成的输入信号上应用 **1D max pooling** 。
 
     在最简单的情况下，若输入大小为 :math:`(N, C, L)` 和输出大小为 :math:`(N, C, L_{out})` ，则该层的输出值可以被准确描述为：
 
     .. math::
-        out(N_i, C_j, k) = \max_{m=0, \ldots, \text{kernel\_size} - 1}
+        out(N_i, C_j, k) = \max_{m=0, \ldots, \text{kernel_size} - 1}
                 input(N_i, C_j, stride \times k + m)
 
-    若 :attr:`padding` 非负，则在输入的两侧使用最小值隐式填充，以填充点数。 :attr:`dilation` 是滑动窗口中元素之间的跨步。这个 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__ 中有 :attr:`dilation` 的可视化展示。
+    若 :attr:`padding` 不为零，则在输入的两侧用最小值隐式地填充 :attr:`padding` 个点。 :attr:`dilation` 是滑动窗口中元素之间的跨步。这个 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__ 中有 :attr:`dilation` 的可视化展示。
 
     Note:
-        当 ceil_mode = True 且滑动窗口从左侧填充区域或输入中开始，则允许其越界。从右侧填充区域开始的滑动窗口将被忽略。
+        若 ceil_mode = True 且滑动窗口从左侧填充区域或输入中开始，则允许其越界。从右侧填充区域开始的滑动窗口将被忽略。
 
     参数：
         - **kernel_size** - 滑动窗口的大小，必须为正。
         - **stride** - 滑动窗口的步长，必须为正。默认值为 :attr:`kernel_size`。
-        - **padding** - 两侧都用隐式的负无穷大填充，该值必须非负且不大于 kernel_size / 2。
-        - **dilation** - 滑动窗口中元素之间的跨步，必须为正。
-        - **return_indices** - 若设置为 ``True`` 则返回 argmax 以及最大值，在后续的 :class:`torch.nn.MaxUnpool1d` 中用到。
-        - **ceil_mode** - 若设置为 ``True`` 则使用 `ceil` 而非 `floor` 来计算输出形状。这确保了输入张量中的每个元素都被滑动窗口覆盖。
+        - **padding** - 填充在输入张量两侧的隐式负无穷，该值必须非负且不大于 kernel_size / 2。
+        - **dilation** - 滑动窗口中元素之间的步幅，必须为正。
+        - **return_indices** - 若设置为 ``True`` 则返回 argmax 以及最大值，在后续的 :class:`torch.nn.MaxUnpool1d` 中使用。
+        - **ceil_mode** - 若设置为 ``True`` 则使用 `ceil` 而非 `floor` 来计算输出形状，这确保了输入张量中的每个元素都被滑动窗口覆盖。
 
     形状：
         - Input: :math:`(N, C, L_{in})`
@@ -1039,9 +1038,9 @@ reset_docstr(
     oneflow.nn.MaxPool2d,
     r"""MaxPool2d(kernel_size: Union[int, Tuple[int, int]], stride: Optional[Union[int, Tuple[int, int]]] = None, padding: Union[int, Tuple[int, int]] = 0, dilation: Union[int, Tuple[int, int]] = 1, return_indices: bool = False, ceil_mode: bool = False)
     
-    此接口与 PyTorch 一致。文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html#torch.nn.MaxPool2d 。
+    此接口与 PyTorch 一致，文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.MaxPool2d.html#torch.nn.MaxPool2d 。
     
-    在一个由多个输入平面组成的输入信号上应用 2D max pooling。
+    在一个由多个输入平面组成的输入信号上应用 **2D max pooling** 。
 
     在最简单的情况下，若输入大小为 :math:`(N, C, H, W)` ，输出大小为 :math:`(N, C, H_{out}, W_{out})` 且 :attr:`kernel_size` 为 :math:`(kH, kW)` ，则该层的输出值可以被准确描述为：
 
@@ -1052,10 +1051,10 @@ reset_docstr(
                                                    \text{stride[1]} \times w + n)
         \end{aligned}
 
-    若 :attr:`padding` 非负，则在输入的两侧使用最小值隐式填充，以填充点数。 :attr:`dilation` 控制了核点之间的空间。这个 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__ 中有 :attr:`dilation` 的可视化展示。
+    若 :attr:`padding` 不为零，则在输入的两侧用最小值隐式地填充 :attr:`padding` 个点。 :attr:`dilation` 控制了核点之间的空间。这个 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__ 中有 :attr:`dilation` 的可视化展示。
 
     Note:
-        若 ceil_mode == True 且滑动窗口从左侧填充区域或输入中开始，则允许滑动窗口越界。从右侧填充区域开始的滑动窗口将被忽略。
+        若 ceil_mode = True 且滑动窗口从左侧填充区域或输入中开始，则允许其越界。从右侧填充区域开始的滑动窗口将被忽略。
 
     参数 :attr:`kernel_size`, :attr:`stride`, :attr:`padding`, :attr:`dilation` 可以是：
         - 一个单独的 ``int`` -- 在这种情况下，高度和宽度维度使用相同的值。
@@ -1063,10 +1062,10 @@ reset_docstr(
 
     参数：
         - **kernel_size** - 窗口的最大尺寸。
-        - **stride** - 窗口的滑动步长。默认值为 :attr:`kernel_size`。
-        - **padding** - 要加在两侧的隐式最小填充值。
-        - **dilation** - 控制窗口中元素步幅的参数。
-        - **return_indices** - 若设置为 ``True`` ，则返回最大索引和输出，在后续的 :class:`torch.nn.MaxUnpool2d` 中用到。
+        - **stride** - 滑动窗口的步长，必须为正。默认值为 :attr:`kernel_size`。
+        - **padding** - 要添加在两侧的隐式最小填充。
+        - **dilation** - 滑动窗口中元素之间的步幅，必须为正。
+        - **return_indices** - 若设置为 ``True`` ，则返回最大索引和输出，在后续的 :class:`torch.nn.MaxUnpool2d` 中使用。
         - **ceil_mode** - 若设置为 ``True`` 则使用 `ceil` 而非 `floor` 来计算输出形状。
 
     形状：
@@ -1100,9 +1099,9 @@ reset_docstr(
     oneflow.nn.MaxPool3d,
     r"""MaxPool3d(kernel_size: Union[int, Tuple[int, int, int]], stride: Optional[Union[int, Tuple[int, int, int]]] = None, padding: Union[int, Tuple[int, int, int]] = 0, dilation: Union[int, Tuple[int, int, int]] = 1, return_indices: bool = False, ceil_mode: bool = False)
     
-    此接口与 PyTorch 一致。文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.MaxPool3d.html#torch.nn.MaxPool3d 。
+    此接口与 PyTorch 一致，文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.MaxPool3d.html#torch.nn.MaxPool3d 。
 
-    在一个由多个输入平面组成的输入信号上应用 3D max pooling。
+    在一个由多个输入平面组成的输入信号上应用 **3D max pooling** 。
 
     在最简单的情况下，若输入大小为 :math:`(N, C, D, H, W)` ，输出大小为 :math:`(N, C, D_{out}, H_{out}, W_{out})` 且 :attr:`kernel_size` 为 :math:`(kD, kH, kW)` ，则该层的输出值可以被准确描述为：
 
@@ -1113,10 +1112,10 @@ reset_docstr(
                                                              \text{stride[1]} \times h + m, \text{stride[2]} \times w + n)
         \end{aligned}
 
-    若 :attr:`padding` 非负，则在输入的两侧使用最小值隐式填充，以填充点数。 :attr:`dilation` 控制了核点之间的空间。这个 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__ 中有 :attr:`dilation` 的可视化展示。
+    若 :attr:`padding` 不为零，则在输入的两侧用最小值隐式地填充 :attr:`padding` 个点。 :attr:`dilation` 控制了核点之间的空间。这个 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__ 中有 :attr:`dilation` 的可视化展示。
 
     Note:
-        若 ceil_mode == True 且滑动窗口从左侧填充区域或输入中开始，则允许滑动窗口越界。从右侧填充区域开始的滑动窗口将被忽略。
+        若 ceil_mode = True 且滑动窗口从左侧填充区域或输入中开始，则允许其越界。从右侧填充区域开始的滑动窗口将被忽略。
 
     参数 :attr:`kernel_size`, :attr:`stride`, :attr:`padding`, :attr:`dilation` 可以是：
         - 一个单独的 ``int`` -- 在这种情况下，深度、高度和宽度维度使用相同的值。
@@ -1124,10 +1123,10 @@ reset_docstr(
 
     参数：
         - **kernel_size** - 窗口的最大尺寸。
-        - **stride** - 窗口的滑动步长。默认值为 :attr:`kernel_size`。
-        - **padding** - 在三个边上都用隐式的最小值填充。
-        - **dilation** - 控制窗口中元素步幅的参数。
-        - **return_indices** - 若设置为 ``True`` ，则返回最大索引和输出，在后续的 :class:`torch.nn.MaxUnpool3d` 中用到。
+        - **stride** - 滑动窗口的步长，必须为正。默认值为 :attr:`kernel_size`。
+        - **padding** - 要添加在三个边上的的隐式最小填充。
+        - **dilation** - 滑动窗口中元素之间的步幅，必须为正。
+        - **return_indices** - 若设置为 ``True`` ，则返回最大索引和输出，在后续的 :class:`torch.nn.MaxUnpool3d` 中使用。
         - **ceil_mode** - 若设置为 ``True`` 则使用 `ceil` 而非 `floor` 来计算输出形状。
 
     形状：
@@ -1178,7 +1177,7 @@ reset_docstr(
 
     然后用以下等式计算 scale 和 zero_point ：
 
-        若 quantization_scheme == "symmetric":
+        若 quantization_scheme 为 "symmetric":
 
         .. math::
 
@@ -1188,7 +1187,7 @@ reset_docstr(
 
             & zero\\_point = 0
 
-        若 quantization_scheme == "affine":
+        若 quantization_scheme 为 "affine":
 
         .. math::
 
@@ -1198,13 +1197,13 @@ reset_docstr(
 
             & zero\\_point = -min\\_value / scale
 
-    若 per_layer_quantization == False ，则 scale 和 zero_point 的形状为 (input.shape[0],)。
+    若 per_layer_quantization 为 False，则 scale 和 zero_point 的形状将为 ``(input.shape[0],)``。
 
     参数：
-        - **quantization_bit** (int) - 量化输入为 uintX / intX ， X 的值在 [2, 8] 中，默认值为 8。
-        - **quantization_scheme** (str) - "symmetric" 或 "affine" ， 量化为有符号/无符号整数。 默认值为 "symmetric"。
-        - **quantization_formula** (str) - "google" or "cambricon"。
-        - **per_layer_quantization** (bool) - 若设置为 True ，则表示 per-layer ，否则为 per-channel。默认值为 True。
+        - **quantization_bit** (int) - 量化输入为 uintX / intX，X 的值在 [2, 8] 中，默认值为 8。
+        - **quantization_scheme** (str) - "symmetric" 或 "affine"，量化为有符号/无符号整数。默认值为 "symmetric"。
+        - **quantization_formula** (str) - "google" 或 "cambricon"。
+        - **per_layer_quantization** (bool) - 若设置为 True，则表示 per-layer，否则为 per-channel。默认值为 True。
 
     返回值：
         Tuple[oneflow.Tensor, oneflow.Tensor]: 输入张量的 scale 和 zero_point。
@@ -1242,9 +1241,9 @@ reset_docstr(
     
     根据输入张量的最小值和最大值的移动平均计算量化参数。
 
-    首先计算输入张量的 moving\\_max 和 moving\\_min ：
+    首先计算输入张量的 moving\\_max 和 moving\\_min：
 
-        若 quantization_scheme == "symmetric":
+        若 quantization_scheme 为 "symmetric":
 
         .. math::
 
@@ -1252,7 +1251,7 @@ reset_docstr(
 
             & moving\\_min = moving\\_max
 
-        若 quantization_scheme == "affine":
+        若 quantization_scheme 为 "affine":
 
         .. math::
 
@@ -1262,9 +1261,9 @@ reset_docstr(
 
     最小值和最大值的移动平均值被初始化为第一批输入 `Blob` 的最小值和最大值。
 
-    然后用以下等式计算 scale 和 zero_point ：
+    然后用以下等式计算 scale 和 zero_point：
 
-        若 quantization_scheme == "symmetric":
+        若 quantization_scheme 为 "symmetric":
 
         .. math::
 
@@ -1274,7 +1273,7 @@ reset_docstr(
 
             & zero\\_point = 0
 
-        若 quantization_scheme == "affine":
+        若 quantization_scheme 为 "affine":
 
         .. math::
 
@@ -1289,9 +1288,9 @@ reset_docstr(
 
     参数：
         - **training** (bool) - 模式是否处于训练状态，默认值为 False。
-        - **quantization_bit** (int) - 量化输入为 uintX / intX ， X 的值在 [2, 8] 中，默认值为 8。
-        - **quantization_scheme** (str) - "symmetric" 或 "affine" ， 量化为有符号/无符号整数。 默认值为 "symmetric"。
-        - **quantization_formula** (str) - "google" or "cambricon"。
+        - **quantization_bit** (int) - 量化输入为 uintX / intX，X 的值在 [2, 8] 中，默认值为 8。
+        - **quantization_scheme** (str) - "symmetric" 或 "affine"，量化为有符号/无符号整数。默认值为 "symmetric"。
+        - **quantization_formula** (str) - "google" 或 "cambricon"。
         - **momentum** (float) - 指数移动平均运算的平滑参数，默认值为 0.95。
 
     返回值：
@@ -1373,7 +1372,7 @@ reset_docstr(
     算每个像素的 NLL 损失。
 
     参数：
-    - **reduction** (string, optional) - 指定应用于输出的 reduction：``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行 reduction；``'mean'`` ：取输出的加权平均值；``'sum'`` ：输出将被求和。默认值为 ``'mean'``。
+        - **reduction** (string, optional) - 指定应用于输出的 reduction：``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行 reduction；``'mean'`` ：取输出的加权平均值；``'sum'`` ：输出将被求和。默认值为 ``'mean'``。
 
     示例：
 
@@ -1453,7 +1452,7 @@ reset_docstr(
     oneflow.nn.PReLU,
     """PReLU(num_parameters: int = 1, init: float = 0.25, device=None, dtype=None)
     
-    逐元素应用公式：
+    逐元素地应用如下公式：
 
     .. math::
         PReLU(x) = \\max(0,x) + a * \\min(0,x)
@@ -1568,7 +1567,7 @@ reset_docstr(
     oneflow.nn.ReLU6,
     """ReLU6(inplace: bool = False)
     
-    逐元素应用公式：
+    逐元素地应用如下公式：
 
     .. math::
 
@@ -1606,7 +1605,7 @@ reset_docstr(
 reset_docstr(
     oneflow.nn.ReflectionPad2d,
     """ReflectionPad2d(padding: Union[int, Tuple[int, int, int, int]])
-    此接口与 PyTorch 一致。文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.ReflectionPad2d.html 。
+    此接口与 PyTorch 一致，文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.ReflectionPad2d.html 。
 
     使用输入边界的反射来填充输入张量。
 
@@ -1653,7 +1652,7 @@ reset_docstr(
     oneflow.nn.ReplicationPad2d,
     """ReplicationPad2d(padding: Union[int, Tuple[int, int, int, int]])
     
-    此接口与 PyTorch 一致。文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.ReplicationPad2d.html#replicationpad2d 。
+    此接口与 PyTorch 一致，文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.ReplicationPad2d.html#replicationpad2d 。
 
     通过复制输入张量边界元素对输入张量进行填充操作。
 
@@ -1737,9 +1736,9 @@ reset_docstr(
     oneflow.nn.SmoothL1Loss,
     """SmoothL1Loss(reduction: str = 'mean', beta: float = 1.0)
     
-    若逐元素的绝对误差低于 beta ，则创建一个使用平方项的标准，否则创建一个使用 L1 项的标准。
+    若逐元素的绝对误差低于 beta ，则创建一个使用平方项的指标，否则创建一个使用 L1 项的指标。
 
-    此接口与 PyTorch 一致。文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.SmoothL1Loss.html 。
+    此接口与 PyTorch 一致，文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.SmoothL1Loss.html 。
     
     与 :class:`torch.nn.MSELoss` 相比，它对异常值不太敏感，并在某些场景下可以防止梯度爆炸。比如 Ross Girshick 的论文`Fast R-CNN <https://openaccess.thecvf.com/content_iccv_2015/papers/Girshick_Fast_R-CNN_ICCV_2015_paper.pdf>`__。
 
@@ -1780,7 +1779,7 @@ reset_docstr(
         * 对于平滑 L1 损失，随着 beta 的变化，损失的 L1 段的斜率恒为 1。而对于 :class:`HuberLoss` ，斜率是 beta。
 
     参数：
-        - **size_average** (bool, optional) - 已弃用（参考 :attr:`reduction`）。默认情况下，损失是批次中每个损失元素的平均值。请注意，对于某些损失，每个样本有多个元素。若 :attr:`size_average` == ``False``，则每个小批量的损失相加。当 :attr:`reduce` == ``False`` 时忽略。默认值为 ``True``。
+        - **size_average** (bool, optional) - 已弃用（参考 :attr:`reduction`）。默认情况下，损失是批次中每个损失元素的平均值。请注意，对于某些损失，每个样本有多个元素。若 :attr:`size_average` == ``False``，则将每个小批量的损失相加。当 :attr:`reduce` == ``False`` 时忽略。默认值为 ``True``。
         - **reduce** (bool, optional) - 已弃用（参考 :attr:`reduction`）。根据 :attr:`size_average` 对每个小批量的损失进行平均或汇总。若 :attr:`reduce` == ``False``，则返回每个批元素的损失，并忽略 :attr:`size_average`。默认值为 ``True``。
         - **reduction** (string, optional) - 指定应用于输出的 reduction：``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行 reduction；``'mean'`` ：输出的和将会除以输出中的元素数量；``'sum'`` ：输出将被求和。注意： :attr:`size_average` 和 :attr:`reduce` 正逐渐被弃用，指定这二者的任何一个都将覆盖 :attr:`reduction`。默认值为 ``'mean'``。
         - **beta** (float, optional) - 指定在 L1 和 L2 损失之间更改的阈值。该值必须为非负。默认值为 1.0。
@@ -1818,9 +1817,9 @@ reset_docstr(
 
 reset_docstr(
     oneflow.nn.MSELoss,
-    """此接口与 PyTorch 一致。文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html?highlight=mseloss#torch.nn.MSELoss 。
+    """此接口与 PyTorch 一致，文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html?highlight=mseloss#torch.nn.MSELoss 。
 
-    创建一个标准，用于测量输入 :math:`x` 和目标 :math:`y` 中每个元素之间的均方误差（平方 L2 范数）。
+    创建一个指标来测量输入 :math:`x` 和目标 :math:`y` 中每个元素之间的均方误差（平方 L2 范数）。
 
     未规约的损失（如将 :attr:`reduction` 设置为 ``'none'``）可被描述为：
 
@@ -1828,7 +1827,7 @@ reset_docstr(
         \\ell(x, y) = L = \\{l_1,\\dots,l_N\\}^\\top, \\quad
         l_n = \\left( x_n - y_n \\right)^2,
 
-    其中 :math:`N` 是批的大小。如果 :attr:`reduction` 不是 ``'none'``
+    其中 :math:`N` 是每个批量的大小。如果 :attr:`reduction` 不是 ``'none'``
     （默认值为 ``'mean'``），则有
 
     .. math::
@@ -1838,14 +1837,10 @@ reset_docstr(
             \\operatorname{sum}(L),  &  \\text{if reduction} = \\text{`sum'.}
         \\end{cases}
 
-    :math:`x` 和 :math:`y` 是任意形状的张量，每个都有 :math:`n` 个元素。
-
-    平均运算仍然对所有元素进行运算，并除以 :math:`n`
-
-    如果设置 ``reduction = 'sum'``，则可以避免除以 :math:`n` 
+    :math:`x` 和 :math:`y` 是任意形状的张量，每个都有 :math:`n` 个元素。平均运算对所有元素进行操作，除以 :math:`n` 。如果设置 ``reduction = 'sum'``，则可以避免除以 :math:`n` 的行为。
 
     参数：
-        - **reduction** (string, optional) - 指定应用于输出的 reduction：``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行 reduction；``'mean'`` ：输出的和将会除以输出中的元素数量；``'sum'`` ：输出将被求和。默认值为 ``'mean'``。
+        - **reduction** (string, optional) - 指定应用于输出的规约操作： ``'none'`` | ``'mean'`` | ``'sum'`` 。若为 ``'none'`` ：不进行规约；``'mean'`` ：输出的和将会除以输出中的元素数量； ``'sum'`` ：输出将被求和。默认为 ``'mean'``。
 
     形状：
         - Input: :math:`(N, *)` ，其中 `*` 表示任意数量的附加维度。
@@ -1916,8 +1911,7 @@ reset_docstr(
 reset_docstr(
     oneflow.nn.modules.pixelshuffle.PixelShufflev2,
     """
-    部分文档参考自：
-    https://pytorch.org/docs/stable/generated/torch.nn.PixelShuffle.html#torch.nn.PixelShuffle
+    部分文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.PixelShuffle.html#torch.nn.PixelShuffle 。
 
     将形状为 :math:`(*, C \\times r_h \\times r_w, H, W)` 的张量中的元素重新排列为形状为 :math:`(*, C, H \\times r_h, W \\times r_w)` 的张量，其中 r_h 和 r_w 是放大因子。
 
@@ -2015,11 +2009,11 @@ reset_docstr(
     oneflow.nn.TripletMarginLoss,
     r"""TripletMarginLoss(margin: float = 1.0, p: float = 2.0, eps: float = 1e-06, swap: bool = False, size_average=None, reduce=None, reduction: str = 'mean')
     
-    给定输入张量 :math:`x1`, :math:`x2`, :math:`x3` ，且边界值大于 :math:`0` ，创建一个测量三元组损失的标准，这用于测量样本之间的相对相似性。 三元组由 `a`, `p` and `n` 组成（即分别为锚点、正例和负例）。所有输入张量的形状应为 :math:`(N, D)`
+    根据给定的输入张量 :math:`x1`, :math:`x2`, :math:`x3` 以及大于 :math:`0` 的边界值，创建一个测量三元组损失的指标来测量样本之间的相对相似性。三元组由 `a`, `p` 和 `n` 组成（即分别为锚点、正例和负例）。所有输入张量的形状应为 :math:`(N, D)` 。
 
     在 V. Balntas, E. Riba 等人的 `Learning local feature descriptors with triplets and shallow convolutional neural networks <http://www.bmva.org/bmvc/2016/papers/paper119/index.html>`__ 中详细描述了距离交换。
 
-    小批量中每一个样本的损失函数是：
+    小批量中每个样本的损失函数是：
 
     .. math::
         L(a, p, n) = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
@@ -2064,11 +2058,11 @@ reset_docstr(
     oneflow.nn.Upsample,
     """
     
-    此接口与 PyTorch 一致。文档参考自： https://pytorch.org/docs/1.9.0/_modules/torch/nn/modules/upsampling.html#Upsample 。
+    此接口与 PyTorch 一致，文档参考自： https://pytorch.org/docs/1.9.0/_modules/torch/nn/modules/upsampling.html#Upsample 。
 
     对给定的多通道 1D（时间）、2D（空间）或 3D（体积）数据进行上采样。
 
-    假定输入数据的形式为 小批量 x 通道 x [可选深度] x [可选高度] x 宽度。 因此，对于空间输入，我们期待一个 4D 张量；对于体积输入，我们期待一个 5D 张量。
+    假定输入数据的形式为 ``批量大小 x 通道 x [可选深度] x [可选高度] x 宽度``。 因此，对于空间输入，我们期待一个 4D 张量；对于体积输入，我们期待一个 5D 张量。
 
     可用于上采样的算法分别是 3D、4D 和 5D 输入张量的最近邻和线性、双线性、双三次和三线性算法。
 
@@ -2213,7 +2207,7 @@ reset_docstr(
     oneflow.nn.ZeroPad2d,
     """
     
-    此接口与 PyTorch 一致。文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.ZeroPad2d.html 。
+    此接口与 PyTorch 一致，文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.ZeroPad2d.html 。
 
     用零填充输入张量边界。用户可以通过设置参数 `paddings` 来设置填充量。
 

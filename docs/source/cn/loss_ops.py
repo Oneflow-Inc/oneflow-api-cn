@@ -64,7 +64,7 @@ reset_docstr(
 
     参数：
         - **weight** (oneflow.Tensor, 可选的): 手动重新调整损失的权重。默认为 ``None`` ，对应的权重值为 1
-        - **reduction** (str, 可选的): reduce 的方式，可以是 "none" 、 "mean" 、 "sum" 中的一种。默认为 "mean" 
+        - **reduction** (str, 可选的): 规约的方式，可以是 "none" 、 "mean" 、 "sum" 中的一种。默认为 "mean" 
 
     Attention:
         输入值必须在区间 (0, 1) 内。否则此损失函数可能返回 `nan` 值。
@@ -131,7 +131,7 @@ reset_docstr(
 
     参数：
         - **weight** (Tensor, 可选的): 手动重新调整损失的权重。默认为 ``None``
-        - **reduction** (str, 可选的): reduce 的方式，可以是 ``"none"`` 、 ``"mean"`` 、 ``"sum"`` 中的一种。默认为 "mean" 。如果为 ``'none'`` 则不进行 reduce 。如果为 ``'mean'`` ，输出的值的和除以元素数。如果为 ``'sum'`` ，输出将被求和。默认为 ``"mean"``
+        - **reduction** (str, 可选的): 规约的方式，可以是 ``"none"`` 、 ``"mean"`` 、 ``"sum"`` 中的一种。默认为 "mean" 。如果为 ``'none'`` 则不进行规约。如果为 ``'mean'`` ，输出的值的和除以元素数。如果为 ``'sum'`` ，输出将被求和。默认为 ``"mean"``
         - **pos_weight** (Tensor, 可选的): 手动重新调整正例的权重。
 
     形状：
