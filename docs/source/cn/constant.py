@@ -608,7 +608,7 @@ reset_docstr(
     第二个参数是一个可以与第一个参数广播的数字或张量。
 
     参数：
-        - **input** (oneflow.Tensor): 用于比较的张量。
+        - **input** (oneflow.Tensor): 需要比较的对象。
         - **other** (oneflow.Tensor, float 或者 int): 与输入比较的张量。
 
     返回：
