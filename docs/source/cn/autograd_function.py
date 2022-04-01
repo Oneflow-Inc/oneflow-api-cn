@@ -8,8 +8,8 @@ reset_docstr(
 
     创建自定义 autograd.Function 的基类。
 
-    要创建一个自定义的 autograd.Function，继承这个类并实现静态函数 ``forward()`` 和 ``backward()`` 。 
-    然后在前向计算中使用自定义算子，调用子类中的函数 ``apply()`` 或者 ``__call__()`` ，不要直接调用 ``forward()`` 函数。
+    要创建一个自定义的 autograd.Function，需要继承这个类并实现静态函数 ``forward()`` 和 ``backward()`` 。 
+    此后，若要在前向计算中使用自定义算子，调用子类中的函数 ``apply()`` 或者 ``__call__()`` ，不要直接调用 ``forward()`` 函数。
 
     示例：
 
@@ -42,7 +42,7 @@ reset_docstr(
 reset_docstr(
     oneflow.autograd.Function.apply,
     r"""
-        计算输出张量并建立反向传播计算图。
+        计算输出张量并构建反向传播计算图。
         """
 )
 
