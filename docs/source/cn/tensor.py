@@ -1249,4 +1249,58 @@ reset_docstr(
     """
 )
 
+reset_docstr(
+    oneflow.device,
+    r"""
+    该文档参考自：
+    https://pytorch.org/docs/stable/tensor_attributes.html#torch.torch.device
 
+    :class:`oneflow.device` 是一个对象，用于指代一个 :class:`oneflow.Tensor` 将被分配到的设备。
+
+    :class:`oneflow.device` 包括一个设备类型（ 'cpu' 或 'cuda' ）和一个可选的设备类型下的设备序号。如果设备序号不存在，则此对象将总是指代当前设备类型下的当前设备。
+
+    :class:`oneflow.device` 所指代的设备可以通过 Tensor.device 属性获取。
+
+    :class:`oneflow.device` 可以通过一个 string 构建，也可以通过 string 和设备序号共同构建。
+
+    通过 string 构建的示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> flow.device('cuda:0')
+        device(type='cuda', index=0)
+
+        >>> flow.device('cpu')
+        device(type='cpu', index=0)
+
+        >>> flow.device('cuda')  # 当前 cuda 设备
+        device(type='cuda', index=0)
+    
+    通过 string 和设备序号构建的示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> flow.device('cuda', 0)
+        device(type='cuda', index=0)
+
+        >>> flow.device('cpu', 0)
+        device(type='cpu', index=0)
+    
+    Note:
+        The :class:`oneflow.device` 参数在函数中通常可以被一个字符串替代。这保证了代码的快速原型化。
+        
+        .. code-block:: python
+
+            >>> import oneflow as flow
+            >>> # 一个使用了 oneflow.device 的示例函数
+            >>> cuda0 = flow.device('cuda:0')
+            >>> x = flow.randn(2,3, device=cuda0)
+        
+        .. code-block:: python
+
+            >>> # 可以将 flow.device 用 string 替代
+            >>> x = flow.randn(2,3, device='cuda:0')
+    """
+)
