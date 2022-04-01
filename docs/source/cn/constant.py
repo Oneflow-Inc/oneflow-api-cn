@@ -544,7 +544,7 @@ reset_docstr(
 
     参数：
         - **input** (oneflow.Tensor) - 输入张量
-        - **shifts** (int or int 元组 ) - 张量偏移的位置数量。如果 shifts 是一个元组，则 dims 必须也是一个相同大小的元组，且每个维度将会根据对应的值滚动。
+        - **shifts** (int or int 元组 ) - 张量元素移动的位置数。如果 shifts 是一个元组，则 dims 必须也是一个相同大小的元组，且每个维度将会根据对应的值滚动。
         - **dims** (int or tuple of python:ints) - 滚动的轴向维度
 
     返回：
