@@ -457,16 +457,15 @@ reset_docstr(
 reset_docstr(
     oneflow.t,
     r"""
-    oneflow.t(input) → Tensor.
 
-        要求 `input` 小于二维，并交换第零维和第一维。
+    要求 `input` 小于二维，并交换第零维和第一维。
 
-        零维和一维张量将返回其本身。对于二维张量，此算子等价于 `transpose(input, 0, 1)` 。
+    零维和一维张量将返回其本身。对于二维张量，此算子等价于 `transpose(input, 0, 1)` 。
 
     参数：
         - **input** (oneflow.Tensor) - 输入张量  
  
-    For example:
+    示例：
 
     .. code-block:: python
 
