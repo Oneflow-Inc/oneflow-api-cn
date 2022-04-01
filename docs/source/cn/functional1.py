@@ -50,31 +50,24 @@ reset_docstr(
 
 reset_docstr(
     oneflow.nn.functional.dropout,
-    """
-    翻译失效。
-    dropout(x: Tensor, p: float = 0.5, training: bool = True, generator :Generator = None, *, addend: Tensor) -> Tensor 
+    """dropout(x: Tensor, p: float = 0.5, training: bool = True, generator :Generator = None, *, addend: Tensor) -> Tensor 
     
-    The documentation is referenced from:
-    https://pytorch.org/docs/stable/generated/torch.nn.functional.dropout.html
+    文档引用自： https://pytorch.org/docs/stable/generated/torch.nn.functional.dropout.html 。
 
-    During training, randomly zeroes some of the elements of the input
-    tensor with probability :attr:`p` using samples from a Bernoulli
-    distribution.
+    在训练期间，使用来自伯努利分布的样本以概率 :attr:`p` 将输入张量的一些元素随机归零。
 
     参数：      
-        - **x** (Tensor) - A Tensor which will be applyed dropout. 
-        - **p** (float) - probability of an element to be zeroed. Default: 0.5    
-        - **training** (bool) - If is True it will apply dropout. Default: True     
-        - **generator** (Generator, optional) -  A pseudorandom number generator for sampling
-        - **addend** (Tensor, optional) -  A Tensor add in result after dropout, it can be used in model's residual connection structure. Default: None  
+        - **x** (Tensor) - 将被实施丢弃操作的张量。
+        - **p** (float) - 任一元素被归零的概率，默认为 0.5。
+        - **training** (bool) - 若为 True 则将实施丢弃操作，默认为 True。   
+        - **generator** (Generator, optional) - 用于采样的伪随机数发生器。
+        - **addend** (Tensor, optional) - 加入到丢弃操作的结果中的张量，它可以用于模型的残差连接结构。默认为 None。
 
     形状：
-        - Input: :math:`(*)`. Input can be of any shape
-        - Output: :math:`(*)`. Output is of the same shape as input
+        - Input: :math:`(*)` ，输入可以为任何形状。
+        - Output: :math:`(*)` ，与输入形状相同。
 
-    示例：
-
-    Example 1: 
+    示例 1：
 
     .. code-block:: python
 
@@ -103,7 +96,7 @@ reset_docstr(
         >>> generator = flow.Generator()
         >>> y = flow.nn.functional.dropout(x, p=0.5, generator=generator) 
       
-    Example 2: 
+    示例 2：
     
     .. code-block:: python
 
@@ -133,38 +126,24 @@ reset_docstr(
 
 reset_docstr(
     oneflow._C.upsample,
-    r"""
-    翻译失效。
-    upsample(x: Tensor, height_scale: Float, width_scale: Float, align_corners: Bool, interpolation: str, data_format: str = "channels_first") -> Tensor
+    r"""upsample(x: Tensor, height_scale: Float, width_scale: Float, align_corners: Bool, interpolation: str, data_format: str = "channels_first") -> Tensor
   
-    Upsample a given multi-channel 2D (spatial) data.
+    对给定的多通道 2D（空间）数据进行上采样。
 
-    The input data is assumed to be of the form
-    `minibatch x channels x height x width`.
-    Hence, for spatial inputs, we expect a 4D Tensor.
+    假设输入数据的形式为 `minibatch x channels x height x width`。因此，对于空间输入，4D 张量是被期待的。
 
-    The algorithms available for upsampling are nearest neighbor,
-    bilinear, 4D input Tensor, respectively.
+    可用于上采样的算法分别是最近邻、双线性、4D 输入张量。
 
     参数：
-        height_scale (float):
-            multiplier for spatial size. Has to match input size if it is a tuple.
-        
-        width_scale (float):
-            multiplier for spatial size. Has to match input size if it is a tuple.
-
-        align_corners (bool) - if ``True``, the corner pixels of the input
-            and output tensors are aligned, and thus preserving the values at
-            those pixels. This only has effect when :attr:`mode` is ``'bilinear'``.            
-
-        interpolation (str, optional) - the upsampling algorithm: one of ``'nearest'``,
-            ``'bilinear'``.        
-
-        data_format (str, optional) - Default: ``'channels_first'``
+        - **height_scale** (float) - 空间大小的乘数。如果它是元组，则必须匹配输入大小。
+        - **width_scale** (float) - 空间大小的乘数。如果它是元组，则必须匹配输入大小。
+        - **align_corners** (bool) - 如果为 ``True``，则输入和输出张量的角像素对齐，从而保留这些像素的值。这仅在模式为“双线性”时有效。  
+        - **interpolation** (str, optional) - 上采样算法，可以为 ``'nearest'`` 或 ``'bilinear'``。
+        - **data_format** (str, optional) - 默认为 ``'channels_first'``。
 
     形状：
         - Input: : :math:`(N, C, H_{in}, W_{in})`
-        - Output: :math:`(N, C, H_{out}, W_{out})` , where
+        - Output: :math:`(N, C, H_{out}, W_{out})` ，其中
   
     .. math::
         H_{out} = \left\lfloor H_{in} \times \text{height_scale} \right\rfloor
@@ -190,7 +169,7 @@ reset_docstr(
                   [3., 3., 4., 4.],
                   [3., 3., 4., 4.]]]], dtype=oneflow.float32)
 
-    See :class:`~oneflow.nn.Upsample` for more details.
+    参考 :class:`~oneflow.nn.Upsample` 获得更多细节。
 
     """,
 )
@@ -322,11 +301,11 @@ reset_docstr(
 
     .. code-block:: python
 
-        >>> import oneflow as flow
-        >>> import numpy as np
-        
-        >>> input = flow.tensor(np.arange(1, 5).reshape((1, 1, 4)), dtype=flow.float32)
-        >>> output = flow.nn.functional.interpolate(input, scale_factor=2.0, mode="linear")
+        > import oneflow as flow
+        > import numpy as np
+
+        > input = flow.tensor(np.arange(1, 5).reshape((1, 1, 4)), dtype=flow.float32)
+        > output = flow.nn.functional.interpolate(input, scale_factor=2.0, mode="linear")
         > output
         tensor([[[1.0000, 1.2500, 1.7500, 2.2500, 2.7500, 3.2500, 3.7500, 4.0000]]], dtype=oneflow.float32)
 
@@ -510,4 +489,109 @@ reset_docstr(
         >>> loss.backward()
 
     """
+)
+
+reset_docstr(
+    oneflow._C.log_softmax,
+    r"""log_softmax(x: Tensor, dim: int) -> Tensor 
+
+    LogSoftmax 的公式为：
+
+    .. math::
+        \text{LogSoftmax}(x_{i}) = \log\left(\frac{\exp(x_i) }{ \sum_j \exp(x_j)} \right) = x_i - \log({ \sum_j \exp(x_j)})
+    
+    参考 :class:`~oneflow.nn.LogSoftmax` 获得更多细节。
+    """
+)
+
+reset_docstr(
+    oneflow.nn.functional.gelu,
+    r"""
+    Gelu 激活算子。
+
+    公式为：
+
+    .. math::
+        out = 0.5 * x * (1 + tanh(\sqrt{\frac{2}{\pi}} * (x + 0.044715x^{3})))
+
+    参数：
+        **x** (oneflow.tensor) - 输入张量。
+
+    返回类型：
+        oneflow.tensor
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.tensor([-0.5, 0, 0.5], dtype=flow.float32)
+        >>> gelu = flow.nn.GELU()
+
+        >>> out = gelu(input)
+        >>> out
+        tensor([-0.1543,  0.0000,  0.3457], dtype=oneflow.float32)
+
+    """
+)
+
+reset_docstr(
+    oneflow._C.glu,
+    """
+    glu(input: Tensor, dim: int) -> Tensor 
+
+    公式为：
+
+    .. math::
+         GLU(input) = GLU(a, b) = a \otimes sigmoid(b)
+    
+    .. note::
+        where input is split in half along dim to form a and b, ⊗ is the element-wise product between matrices.
+    
+    For example:
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import oneflow.nn as nn
+        >>> x = flow.tensor([[1, 2, 3, 4], [5, 6, 7, 8]], dtype=flow.float32)
+        >>> y = nn.functional.glu(x)
+        >>> y
+        tensor([[0.9526, 1.9640],
+                [4.9954, 5.9980]], dtype=oneflow.float32)
+
+    See    
+    :class:`~oneflow.nn.GLU` for more details.
+ 
+    """,
+)
+
+reset_docstr(
+    oneflow._C.softsign,
+    r"""
+    softsign(x: Tensor) -> Tensor 
+
+    公式为：
+    
+    .. math::  
+    
+        softsign(x) = \frac{x}{1 + |x|}
+    
+    For example:
+    
+    .. code-block:: python
+    
+        >>> import numpy as np
+        >>> import oneflow as flow
+
+        >>> x = np.array([1, 2, 3]).astype(np.float32)
+        >>> input = flow.tensor(x) 
+        >>> out = flow.nn.functional.softsign(input)
+        >>> out
+        tensor([0.5000, 0.6667, 0.7500], dtype=oneflow.float32)
+ 
+    See :class:`~oneflow.nn.Softsign` for more details.
+    
+    """,
 )
