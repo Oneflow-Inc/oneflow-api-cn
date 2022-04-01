@@ -509,7 +509,7 @@ reset_docstr(
 reset_docstr(
     oneflow.select,
     r"""
-    将原张量根据提供的索引在给定维度上切分。此算子返回原张量在给定维度被移除后的 view 。
+    将原张量根据给定的索引在指定维度上切分。此算子返回移除了给定维度后原张量的 view 。
 
     参数：
         - **input** (Tensor) - 输入张量
