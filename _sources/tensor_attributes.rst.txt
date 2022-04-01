@@ -2,7 +2,7 @@
 
 Tensor Attributes
 =============================================================
-Each local ``oneflow.Tensor`` has a :class:`oneflow.dtype`, :class:`oneflow.device`, and global ``oneflow.Tensor`` has a :class:`oneflow.dtype`, :class:`oneflow.placement`, :class:`oneflow.sbp`.
+每个本地 ``oneflow.Tensor`` 都有一个 :class:`oneflow.dtype` 和 :class:`oneflow.device` ，而每个全局 ``oneflow.Tensor`` 都有一个 :class:`oneflow.dtype`, :class:`oneflow.placement` 和 :class:`oneflow.sbp` 。
 
 oneflow.device
 --------------------------------------------------------------

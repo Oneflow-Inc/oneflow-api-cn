@@ -145,20 +145,19 @@
         </label>
         <div class="section" id="tensor-attributes">
 <h1>Tensor Attributes<a class="headerlink" href="#tensor-attributes" title="Permalink to this headline">¶</a></h1>
-<p>Each local <code class="docutils literal notranslate"><span class="pre">oneflow.Tensor</span></code> has a <code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.dtype</span></code>, <a class="reference internal" href="#oneflow.device" title="oneflow.device"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.device</span></code></a>, and global <code class="docutils literal notranslate"><span class="pre">oneflow.Tensor</span></code> has a <code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.dtype</span></code>, <a class="reference internal" href="#oneflow.placement" title="oneflow.placement"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.placement</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.sbp</span></code>.</p>
+<p>每个本地 <code class="docutils literal notranslate"><span class="pre">oneflow.Tensor</span></code> 都有一个 <code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.dtype</span></code> 和 <a class="reference internal" href="#oneflow.device" title="oneflow.device"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.device</span></code></a> ，而每个全局 <code class="docutils literal notranslate"><span class="pre">oneflow.Tensor</span></code> 都有一个 <code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.dtype</span></code>, <a class="reference internal" href="#oneflow.placement" title="oneflow.placement"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.placement</span></code></a> 和 <code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.sbp</span></code> 。</p>
 <div class="section" id="oneflow-device">
 <h2>oneflow.device<a class="headerlink" href="#oneflow-device" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="oneflow.device">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">device</span></code><a class="headerlink" href="#oneflow.device" title="Permalink to this definition">¶</a></dt>
-<dd><p>The documentation is referenced from:
+<dd><p>该文档参考自：
 <a class="reference external" href="https://pytorch.org/docs/stable/tensor_attributes.html#torch.torch.device">https://pytorch.org/docs/stable/tensor_attributes.html#torch.torch.device</a></p>
-<p>A <a class="reference internal" href="#oneflow.device" title="oneflow.device"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.device</span></code></a> is an object representing the device on which a <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.Tensor</span></code></a> is or will be allocated.</p>
-<p>The <a class="reference internal" href="#oneflow.device" title="oneflow.device"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.device</span></code></a> contains a device type (‘cpu’ or ‘cuda’) and optional device ordinal for the device type. If the
-device ordinal is not present, this object will always represent the current device for the device type.</p>
-<p>A <a class="reference internal" href="#oneflow.device" title="oneflow.device"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.device</span></code></a>’s device can be accessed via the Tensor.device property.</p>
-<p>A <a class="reference internal" href="#oneflow.device" title="oneflow.device"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.device</span></code></a> can be constructed via a string or via a string and device ordinal</p>
-<p>Via a string:</p>
+<p><a class="reference internal" href="#oneflow.device" title="oneflow.device"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.device</span></code></a> 是一个对象，用于指代一个 <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.Tensor</span></code></a> 将被分配到的设备。</p>
+<p><a class="reference internal" href="#oneflow.device" title="oneflow.device"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.device</span></code></a> 包括一个设备类型（ ‘cpu’ 或 ‘cuda’ ）和一个可选的设备类型下的设备序号。如果设备序号不存在，则此对象将总是指代当前设备类型下的当前设备。</p>
+<p><a class="reference internal" href="#oneflow.device" title="oneflow.device"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.device</span></code></a> 所指代的设备可以通过 Tensor.device 属性获取。</p>
+<p><a class="reference internal" href="#oneflow.device" title="oneflow.device"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.device</span></code></a> 可以通过一个 string 构建，也可以通过 string 和设备序号共同构建。</p>
+<p>通过 string 构建的示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda:0'</span><span class="p">)</span>
 <span class="go">device(type='cuda', index=0)</span>
@@ -166,11 +165,11 @@ device ordinal is not present, this object will always represent the current dev
 <span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cpu'</span><span class="p">)</span>
 <span class="go">device(type='cpu', index=0)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda'</span><span class="p">)</span>  <span class="c1"># current cuda device</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda'</span><span class="p">)</span>  <span class="c1"># 当前 cuda 设备</span>
 <span class="go">device(type='cuda', index=0)</span>
 </pre></div>
 </div>
-<p>Via a string and device ordinal:</p>
+<p>通过 string 和设备序号构建的示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="go">device(type='cuda', index=0)</span>
@@ -181,14 +180,14 @@ device ordinal is not present, this object will always represent the current dev
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <a class="reference internal" href="#oneflow.device" title="oneflow.device"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.device</span></code></a> argument in functions can generally be substituted with a string. This allows for fast prototyping of code.</p>
+<p>The <a class="reference internal" href="#oneflow.device" title="oneflow.device"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.device</span></code></a> 参数在函数中通常可以被一个字符串替代。这保证了代码的快速原型化。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example of a function that takes in a oneflow.device</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 一个使用了 oneflow.device 的示例函数</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cuda0</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda:0'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">cuda0</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># You can substitute the flow.device with a string</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># 可以将 flow.device 用 string 替代</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda:0'</span><span class="p">)</span>
 </pre></div>
 </div>

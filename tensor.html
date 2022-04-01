@@ -751,12 +751,14 @@
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.is_contiguous">
-<code class="sig-name descname"><span class="pre">is_contiguous</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow._oneflow_internal.Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">bool</span><a class="headerlink" href="#oneflow.Tensor.is_contiguous" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">is_contiguous</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">bool</span><a class="headerlink" href="#oneflow.Tensor.is_contiguous" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if <cite>self</cite> tensor is contiguous in memory.</p>
+</dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.is_cuda">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">is_cuda</span></code><a class="headerlink" href="#oneflow.Tensor.is_cuda" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Is <cite>True</cite> if the Tensor is stored on the GPU, <cite>False</cite> otherwise.</p>
+</dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.is_floating_point">
 <code class="sig-name descname"><span class="pre">is_floating_point</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.is_floating_point" title="Permalink to this definition">¶</a></dt>
@@ -1305,8 +1307,16 @@ for leaf tensors.</p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.storage_offset">
-<code class="sig-name descname"><span class="pre">storage_offset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow._oneflow_internal.Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Maybe</span><span class="p"><span class="pre">[</span></span><span class="pre">void</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#oneflow.Tensor.storage_offset" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">storage_offset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.Tensor.storage_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns self tensor’s offset in the underlying storage in terms of number of storage elements (not bytes).</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">storage_offset</span><span class="p">()</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+</dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.stride">
 <code class="sig-name descname"><span class="pre">stride</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow._oneflow_internal.Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Maybe</span><span class="p"><span class="pre">[</span></span><span class="pre">void</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#oneflow.Tensor.stride" title="Permalink to this definition">¶</a></dt>
