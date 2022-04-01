@@ -402,3 +402,230 @@ reset_docstr(
 
     """
 )
+
+reset_docstr(
+    oneflow.set_num_threads,
+    r"""
+    设置在 cpu 上用于 intraop 并行计算的线程数量。
+    
+    .. WARNING::
+        为了保证正确数量的线程被使用， set_num_threads 必须在运行 eager ， eager globe 或 ddp 之前被调用。
+
+    """
+)
+
+reset_docstr(
+    oneflow.vsplit,
+    r"""
+    根据 indices_or_sections 的值，将输入的二维或更高维张量垂直地切分成多个张量。
+    每个切分出的张量都是输入张量的一个 view 。此算子等价于调用 torch.tensor_split(input, indices_or_sections, dim=0) （切分维度为 0 ），除了在 indices_or_sections 是
+    一个整型的情况下，此时它必须平均划分切分维度，否则将抛出一个运行时错误。此文档参考自：https://pytorch.org/docs/stable/generated/torch.vsplit.html#torch.vsplit
+    
+
+    参数：
+        - **input** (Tensor) - 输入张量
+        - **indices_or_sections** (int 或者一个列表) - 如果 indices_or_sections 是一个整型 n , input 将沿着维度 dim 被切分为 n 个部分。
+            如果在维度 dim 上 input 能被 n 整除，则每个部分的大小相同，都为 ``input.size(dim)/n``。如果 input 无法被 n 整除，则前 int(input.size(dim) % n) 个部分（section）的大小都为 int(input.size(dim) / n) + 1，
+            而余下的部分大小则是 int(input.size(dim) / n)。如果 indices_or_sections 是一个整型的列表或元组，则输入将在维度 dim 上根据列表或元组内的每个索引被切分。
+            比如，若 indices_or_sections=[2, 3] 和 dim=0，输入张量将被切分为 input[:2], input[2:3], 和 input[3:]。如果 indices_or_sections 是一个张量，它必须是一个位于 cpu 的
+            零维或者一维张量。
+            
+
+    返回值：
+        输出的 TensorTuple
+    
+    返回类型：
+        oneflow.TensorTuple
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> input = flow.rand(3,4,5,6)
+        >>> output = flow.vsplit(input,(1,3))
+        >>> output[0].size()
+        oneflow.Size([1, 4, 5, 6])
+        >>> output[1].size()
+        oneflow.Size([2, 4, 5, 6])
+        >>> output[2].size()
+        oneflow.Size([1, 4, 5, 6])
+    """,
+)
+
+reset_docstr(
+    oneflow.t,
+    r"""
+
+    要求 `input` 小于二维，并交换第零维和第一维。
+
+    零维和一维张量将返回其本身。对于二维张量，此算子等价于 `transpose(input, 0, 1)` 。
+
+    参数：
+        - **input** (oneflow.Tensor) - 输入张量  
+ 
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> x = flow.rand()
+        >>> flow.t(x).shape
+        oneflow.Size([])
+        >>> x = flow.rand(3)
+        >>> flow.t(x).shape
+        oneflow.Size([3])
+        >>> x = flow.rand(2,3)
+        >>> flow.t(x).shape
+        oneflow.Size([3, 2])
+    
+    """,
+)
+
+reset_docstr(
+    oneflow.swapaxes,
+    r"""此函数等价于 NumPy 的 swapaxes 函数。
+
+    示例：
+
+    .. code-block:: python
+    
+        >>> import oneflow as flow
+               
+        >>> x = flow.tensor([[[0,1],[2,3]],[[4,5],[6,7]]])
+        >>> x.shape
+        oneflow.Size([2, 2, 2])
+        >>> flow.swapaxes(x, 0, 1).shape
+        oneflow.Size([2, 2, 2])
+        >>> flow.swapaxes(x, 0, 2).shape
+        oneflow.Size([2, 2, 2])
+
+    """,
+)
+
+reset_docstr(
+    oneflow.select,
+    r"""
+    将原张量根据给定的索引在指定维度上切分。此算子返回移除了给定维度后原张量的 view 。
+
+    参数：
+        - **input** (Tensor) - 输入张量
+        - **dim**  (int) - 切分的维度
+        - **select** (int) - 选择的索引
+
+    返回：
+        oneflow.Tensor: 输出张量。
+
+    示例：
+    
+    .. code-block:: python
+    
+        >>> import oneflow as flow
+        >>> input = flow.rand(3, 4, 5)
+        >>> out = flow.select(input, 0, 1)
+        >>> out.size()
+        oneflow.Size([4, 5])
+        >>> out = flow.select(input, 1, 1)
+        >>> out.size()
+        oneflow.Size([3, 5])
+    """,
+)
+
+reset_docstr(
+    oneflow.roll,
+    r"""将张量根据指定维度滚动。
+    
+    超出最后一个位置的元素将在第一个位置重新引入。
+    
+    如果维度没有被指定，张量将在滚动前被扁平化，然后被恢复至原形状。
+
+    参数：
+        - **input** (oneflow.Tensor) - 输入张量
+        - **shifts** (int or int 元组 ) - 张量元素移动的位置数。如果 shifts 是一个元组，则 dims 必须也是一个相同大小的元组，且每个维度将会根据对应的值滚动。
+        - **dims** (int or tuple of python:ints) - 滚动所沿的维度
+
+    返回：
+        oneflow.Tensor: 结果张量。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> x = flow.tensor([[1, 2],
+        ...               [3, 4],
+        ...               [5, 6],
+        ...               [7, 8]], dtype=flow.float32)
+        >>> input = flow.Tensor(x)
+        >>> input.shape
+        oneflow.Size([4, 2])
+        >>> out = flow.roll(input, 1, 0)
+        >>> out
+        tensor([[7., 8.],
+                [1., 2.],
+                [3., 4.],
+                [5., 6.]], dtype=oneflow.float32)
+        >>> input.roll(-1, 1)
+        tensor([[2., 1.],
+                [4., 3.],
+                [6., 5.],
+                [8., 7.]], dtype=oneflow.float32)
+    """
+)
+
+reset_docstr(
+    oneflow.permute,
+    r"""
+    permute(input, *dims) -> Tensor
+
+    返回原张量的维度换位后的 view 。
+
+    参数：
+        - **dims** (int 的元组 ) - 需要的维度排序
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.rand(2, 6, 5, 3)
+        >>> output = flow.permute(input, (1, 0, 2, 3)).shape
+        >>> output
+        oneflow.Size([6, 2, 5, 3])
+
+    """,
+)
+
+reset_docstr(
+    oneflow.ne,
+    r"""ne(input, other) -> Tensor
+
+    计算 element-wise 的不等性。
+    第二个参数是一个可以与第一个参数广播的数字或张量。
+
+    参数：
+        - **input** (oneflow.Tensor): 需要比较的对象。
+        - **other** (oneflow.Tensor, float 或者 int): 与输入比较的张量。
+
+    返回：
+        一个布尔值构成的张量，当 :attr:`input` 不等于 :attr:`other` 时为真，否则为假。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.tensor([2, 3, 4, 5], dtype=flow.float32)
+        >>> other = flow.tensor([2, 3, 4, 1], dtype=flow.float32)
+
+        >>> y = flow.ne(input, other)
+        >>> y
+        tensor([False, False, False,  True], dtype=oneflow.bool)
+
+    """,
+
+)
