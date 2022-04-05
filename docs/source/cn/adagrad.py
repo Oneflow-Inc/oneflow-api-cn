@@ -3,7 +3,7 @@ from docreset import reset_docstr
 
 reset_docstr(
     oneflow.optim.Adagrad,
-    r"""实现 Adagrad 优化器。 
+    r"""实现 Adagrad 优化算法。 
 
         公式是: 
 
