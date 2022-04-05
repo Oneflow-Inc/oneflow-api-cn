@@ -918,7 +918,7 @@ reset_docstr(
         r"""
     softplus(x: Tensor) -> Tensor 
 
-    应用此 element-wise 公式：
+    逐元素地应用此公式：
 
     .. math::
         \text{Softplus}(x) = \frac{1}{\beta} * \log(1 + \exp(\beta * x))    

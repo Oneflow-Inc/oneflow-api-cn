@@ -78,7 +78,7 @@ reset_docstr(
     r"""
     mish(x: Tensor) -> Tensor 
 
-    应用此 element-wise 公式：
+    逐元素地应用此公式：
 
     .. math::
         \text{mish}(x) = x * \text{tanh}(\text{softplus}(x))

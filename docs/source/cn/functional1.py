@@ -6,7 +6,7 @@ reset_docstr(
     r"""
     文档参考自：https://pytorch.org/docs/stable/generated/torch.nn.functional.triplet_margin_loss.html?highlight=triplet_margin_loss
 
-    在给定输入张量 :math:`x1`, :math:`x2`, :math:`x3` 和值大于 :math:`0` 的边距的情况下，创建一个测量三元组损失的标准。这用于测量样本之间的相对相似性。三元组由 `a`, `p` 和 `n` 组成（即分别为锚点、正例和负例）。所有输入张量的形状应为 :math:`(N, D)` 
+    在给定输入张量 :math:`x1`, :math:`x2`, :math:`x3` 和值大于 :math:`0` 的边距的情况下，创建一个测量三元组损失的标准。这用于测量样本之间的相对相似性。三元组由 `a`, `p` 和 `n` 组成（即分别为锚点、正例和负例）。所有输入张量的形状应为 :math:`(N, D)` 。
 
     Vassileios Balntas、Edgar Riba 等人的 `Learning shallow convolutional feature descriptors with triplet losses <http://www.bmva.org/bmvc/2016/papers/paper119/index.html>`__ 一文中详细描述了距离交换。
 
@@ -28,7 +28,7 @@ reset_docstr(
         - **reduction** (string, optional) - 指定应用于输出的 reduction：``'none'`` | ``'mean'`` | ``'sum'``。若值为 ``'none'`` ：不进行 reduction；值为 ``'mean'`` ：输出的和将会除以输出中的元素数量；值为``'sum'`` ：输出将被求和。请注意：:attr:`size_average` 和 :attr:`reduce` 正逐渐被弃用，指定这二者的任何一个都将覆盖 :attr:`reduction`。默认值为 ``'mean'``。
 
     形状：
-        - Input: :math:`(N, D)` ，其中 :math:`D` 是向量维度
+        - Input: :math:`(N, D)` ，其中 :math:`D` 是向量维度。
         - Output: 若 :attr:`reduction` == ``'none'`` 则输出为形状为 :math:`(N)` 的张量，否则是一个标量。
 
     示例：
@@ -119,7 +119,7 @@ reset_docstr(
                 [ 1.4299,  1.3626,  0.5108,  1.4141],
                 [-0.4115,  2.2183,  0.4497,  1.6520]], dtype=oneflow.float32)
     
-    See :class:`~oneflow.nn.Dropout` for details.   
+    参考 :class:`~oneflow.nn.Dropout` 获得更多细节。
  
     """,
 )
@@ -507,15 +507,13 @@ reset_docstr(
 reset_docstr(
     oneflow.nn.functional.gelu,
     r"""
-    Gelu 激活算子。
-
-    公式为：
+    Gelu 激活算子，其公式为：
 
     .. math::
         out = 0.5 * x * (1 + tanh(\sqrt{\frac{2}{\pi}} * (x + 0.044715x^{3})))
 
     参数：
-        **x** (oneflow.tensor) - 输入张量。
+        **x** (oneflow.tensor) - 输入张量
 
     返回类型：
         oneflow.tensor
@@ -541,15 +539,15 @@ reset_docstr(
     """
     glu(input: Tensor, dim: int) -> Tensor 
 
-    公式为：
+    glu 的公式为：
 
     .. math::
          GLU(input) = GLU(a, b) = a \otimes sigmoid(b)
     
     .. note::
-        where input is split in half along dim to form a and b, ⊗ is the element-wise product between matrices.
+        其中输入沿维度 dim 被切分成 a 和 b 两半，⊗ 是矩阵间的按元素积。
     
-    For example:
+    示例：
 
     .. code-block:: python
 
@@ -561,9 +559,7 @@ reset_docstr(
         tensor([[0.9526, 1.9640],
                 [4.9954, 5.9980]], dtype=oneflow.float32)
 
-    See    
-    :class:`~oneflow.nn.GLU` for more details.
- 
+    参考 :class:`~oneflow.nn.GLU` 获得更多细节。
     """,
 )
 
@@ -572,13 +568,13 @@ reset_docstr(
     r"""
     softsign(x: Tensor) -> Tensor 
 
-    公式为：
+    softsign 的公式为：
     
     .. math::  
     
         softsign(x) = \frac{x}{1 + |x|}
     
-    For example:
+    示例：
     
     .. code-block:: python
     
@@ -590,8 +586,46 @@ reset_docstr(
         >>> out = flow.nn.functional.softsign(input)
         >>> out
         tensor([0.5000, 0.6667, 0.7500], dtype=oneflow.float32)
- 
-    See :class:`~oneflow.nn.Softsign` for more details.
+
+    参考 :class:`~oneflow.nn.Softsign` 获得更多细节。
     
     """,
+)
+
+reset_docstr(
+    oneflow._C.one_hot,
+    r"""
+    one_hot(input, num_classes=-1, on_value=1, off_value=0)
+    该算子根据输入张量生成一个 onehot 张量。
+
+    如果输入张量的秩为 `N`，相应的 onehot 张量的秩为 `N+1`。
+
+    参数：
+        - **input** (Tensor) - 输入张量。
+        - **num_classes** (int) - 输出的 onehot 张量的长度。
+        - **on_value** (Union[int, float], optional) - 当 `x[i] == i` 时的填充值，默认为 1。
+        - **off_value** (Union[int, float], optional) - 当 `x[i] != i` 时的填充值，默认为 0。
+
+    Note:
+        输入张量的数据类型应为：`int32` 或 `int64`。
+
+    返回值：
+        oneflow.Tensor
+    
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+
+        >>> input=flow.tensor(np.array([0, 3, 1, 2]).astype(np.int64), dtype=flow.int64)
+        >>> out = flow.nn.functional.one_hot(input, num_classes=5)
+        >>> out
+        tensor([[1, 0, 0, 0, 0],
+                [0, 0, 0, 1, 0],
+                [0, 1, 0, 0, 0],
+                [0, 0, 1, 0, 0]], dtype=oneflow.int64)
+    
+    """
 )
