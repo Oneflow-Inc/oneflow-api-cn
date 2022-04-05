@@ -150,11 +150,10 @@
 <dl class="py class">
 <dt id="oneflow.autograd.Function">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.autograd.</span></code><code class="sig-name descname"><span class="pre">Function</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.autograd.Function" title="Permalink to this definition">¶</a></dt>
-<dd><p>Base class to create custom autograd.Function.</p>
-<p>To create a custom autograd.Function, subclass this class and implement the <code class="docutils literal notranslate"><span class="pre">forward()</span></code>
-and <code class="docutils literal notranslate"><span class="pre">backward()</span></code> static methods. Then, to use your custom op in the forward pass, call the
-class method <code class="docutils literal notranslate"><span class="pre">apply()</span></code> or <code class="docutils literal notranslate"><span class="pre">__call__()</span></code>. Do not call <code class="docutils literal notranslate"><span class="pre">forward()</span></code> directly.</p>
-<p>For example:</p>
+<dd><p>创建自定义 autograd.Function 的基类。</p>
+<p>要创建一个自定义的 autograd.Function，需要继承这个类并实现静态函数 <code class="docutils literal notranslate"><span class="pre">forward()</span></code> 和 <code class="docutils literal notranslate"><span class="pre">backward()</span></code> 。
+此后，若要在前向计算中使用自定义算子，调用子类中的函数 <code class="docutils literal notranslate"><span class="pre">apply()</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">__call__()</span></code> ，不要直接调用 <code class="docutils literal notranslate"><span class="pre">forward()</span></code> 函数。</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Exp</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
@@ -167,19 +166,19 @@ class method <code class="docutils literal notranslate"><span class="pre">apply(
         <span class="n">result</span><span class="p">,</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">saved_tensors</span>
         <span class="k">return</span> <span class="n">grad_output</span> <span class="o">*</span> <span class="n">result</span>
 
-<span class="c1"># Use it by calling the apply method or __call__ method</span>
+<span class="c1"># 通过调用 apply 函数或 __call__ 函数来使用</span>
 <span class="n">output</span> <span class="o">=</span> <span class="n">Exp</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>  <span class="c1"># output = Exp()(input)</span>
 </pre></div>
 </div>
 <dl class="py method">
 <dt id="oneflow.autograd.Function.__call__">
 <code class="sig-name descname"><span class="pre">__call__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.autograd.Function.__call__" title="Permalink to this definition">¶</a></dt>
-<dd><p>See <code class="xref py py-meth docutils literal notranslate"><span class="pre">self.apply()</span></code>.</p>
+<dd><p>参考 <code class="xref py py-meth docutils literal notranslate"><span class="pre">self.apply()</span></code> 。</p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.autograd.Function.apply">
 <em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">apply</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.autograd.Function.apply" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate output tensors and build backward graph.</p>
+<dd><p>计算输出张量并构建反向传播计算图。</p>
 </dd></dl>
 </dd></dl>
 <span class="target" id="module-oneflow.autograd"></span><p>Copyright 2020 The OneFlow Authors. All rights reserved.</p>
@@ -197,38 +196,24 @@ limitations under the License.</p>
 <dl class="py function">
 <dt id="oneflow.autograd.backward">
 <code class="sig-prename descclassname"><span class="pre">oneflow.autograd.</span></code><code class="sig-name descname"><span class="pre">backward</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.Tensor</span><span class="p"><span class="pre">,</span> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_tensors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.Tensor</span><span class="p"><span class="pre">,</span> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retain_graph</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_graph</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#oneflow.autograd.backward" title="Permalink to this definition">¶</a></dt>
-<dd><p>The documentation is referenced from:
-<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.autograd.backward.html#torch.autograd.backward">https://pytorch.org/docs/stable/generated/torch.autograd.backward.html#torch.autograd.backward</a></p>
-<p>Computes the sum of gradients of given tensors with respect to graph leaves.</p>
-<p>The graph is differentiated using the chain rule. If any of <code class="docutils literal notranslate"><span class="pre">tensors</span></code> are non-scalar (i.e.
-their data has more than one element) and require gradient, then the Jacobian-vector product
-would be computed, in this case the function additionally requires specifying <code class="docutils literal notranslate"><span class="pre">grad_tensors</span></code>.
-It should be a sequence of matching length, that contains the “vector” in the Jacobian-vector
-product, usually the gradient of the differentiated function w.r.t. corresponding tensors.
-(<code class="docutils literal notranslate"><span class="pre">None</span></code> is an acceptable value for all tensors that don’t need gradient.)</p>
-<p>This function accumulates gradients in the leaves - you might need to zero <code class="docutils literal notranslate"><span class="pre">.grad</span></code> attributes
-or set them to <code class="docutils literal notranslate"><span class="pre">None</span></code> before calling it.</p>
+<dd><p>文档参考自：<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.autograd.backward.html#torch.autograd.backward">https://pytorch.org/docs/stable/generated/torch.autograd.backward.html#torch.autograd.backward</a> 。</p>
+<p>计算给定张量相对于图中叶子结点的梯度之和。</p>
+<p>使用链式法则对该 graph 进行微分。如果 <code class="docutils literal notranslate"><span class="pre">tensors</span></code> 中不全是标量（即它的某个数据有一个以上的元素）且需要梯度，
+那么将计算雅各比向量积，此时，该函数还需要指定 <code class="docutils literal notranslate"><span class="pre">grad_tensors</span></code>。这应当是一个长度匹配的序列，
+包含通常是对应张量的微分函数的梯度的位于雅各布向量积中的“向量”。（若所有张量都不需要梯度，<code class="docutils literal notranslate"><span class="pre">None</span></code> 也是可接受的值）</p>
+<p>此算子累计了叶子结点的梯度——你可能需要将 <code class="docutils literal notranslate"><span class="pre">.grad</span></code> 属性归零或者在调用前设置它们为 <code class="docutils literal notranslate"><span class="pre">None</span></code>。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Using this method with <code class="docutils literal notranslate"><span class="pre">create_graph=True</span></code> will create a reference cycle between the
-parameter and its gradient which can cause a memory leak. We recommend using
-<code class="docutils literal notranslate"><span class="pre">autograd.grad</span></code> when creating the graph to avoid this. If you have to use this function,
-make sure to reset the <code class="docutils literal notranslate"><span class="pre">.grad</span></code> fields of your parameters to <code class="docutils literal notranslate"><span class="pre">None</span></code> after use to break
-the cycle and avoid the leak.</p>
+<p>设置 <code class="docutils literal notranslate"><span class="pre">create_graph=True</span></code> 来调用这个函数会造成一个参数和其梯度之间的循环引用，这可能会导致内存泄漏。当创建 graph 时，
+我们推荐使用 <code class="docutils literal notranslate"><span class="pre">autograd.grad</span></code> 来避免这个问题。如果你必须使用这个函数，确保重置参数中的 <code class="docutils literal notranslate"><span class="pre">.grad</span></code> 字段为 <code class="docutils literal notranslate"><span class="pre">None</span></code>
+以打破循环，避免内存泄漏。</p>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>tensors</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em> or </em><em>Sequence</em><em>[</em><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em>]</em>) – Tensors of which the derivative will be computed.</p></li>
-<li><p><strong>grad_tensors</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em> or </em><em>Sequence</em><em>[</em><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em>]</em><em>, </em><em>optional</em>) – The “vector” in the Jacobian-vector
-product, usually gradients each element of corresponding tensors. (None values can be
-specified for scalar Tensors or ones that don’t require grad.)</p></li>
-<li><p><strong>retain_graph</strong> (<em>bool</em><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">False</span></code>, the graph used to compute the grads will be
-reset after backward is complete. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>. Note that in nearly all cases
-setting this option to <code class="docutils literal notranslate"><span class="pre">True</span></code> is not needed and often can be worked around in a much
-more efficient way. Defaults to the value of <code class="docutils literal notranslate"><span class="pre">create_graph</span></code>.</p></li>
-<li><p><strong>create_graph</strong> (<em>bool</em><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, graph of the derivative will be constructed,
-allowing to compute higher order derivative products. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>tensors</strong> (Tensor or Sequence[Tensor]) - 将被计算导数的张量。</p></li>
+<li><p><strong>grad_tensors</strong> (Tensor or Sequence[Tensor], optional) - 雅各比向量乘积中的“向量”，通常对相应张量的每个元素进行梯度计算。(对于标量张量或不需要梯度的张量，可以指定为 None)</p></li>
+<li><p><strong>retain_graph</strong> (bool, optional) - 如果为 <code class="docutils literal notranslate"><span class="pre">False</span></code> ，用来计算梯度的计算图将会在反向传播完成后被重置。默认值： <code class="docutils literal notranslate"><span class="pre">False</span></code> 。注意在几乎所有的情况下都不需要把这个选项设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，通常这可以用更有效的方法来解决。默认为 <code class="docutils literal notranslate"><span class="pre">create_graph</span></code> 的值。</p></li>
+<li><p><strong>create_graph</strong> (bool, optional) - 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code> ， 将构建导数的计算图，允许计算高阶导数，默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
 </ul>
 </dd>
 </dl>
@@ -236,34 +221,22 @@ allowing to compute higher order derivative products. Defaults to <code class="d
 <dl class="py function">
 <dt id="oneflow.autograd.grad">
 <code class="sig-prename descclassname"><span class="pre">oneflow.autograd.</span></code><code class="sig-name descname"><span class="pre">grad</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outputs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.Tensor</span><span class="p"><span class="pre">,</span> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.Tensor</span><span class="p"><span class="pre">,</span> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_outputs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.Tensor</span><span class="p"><span class="pre">,</span> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retain_graph</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_graph</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.Tensor</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#oneflow.autograd.grad" title="Permalink to this definition">¶</a></dt>
-<dd><p>The documentation is referenced from:
-<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.autograd.grad.html#torch.autograd.grad">https://pytorch.org/docs/stable/generated/torch.autograd.grad.html#torch.autograd.grad</a></p>
-<p>Computes and returns the sum of gradients of outputs with respect to the inputs.</p>
-<p>The graph is differentiated using the chain rule. <code class="docutils literal notranslate"><span class="pre">grad_outputs</span></code> should be a sequence of
-length matching <code class="docutils literal notranslate"><span class="pre">outputs</span></code>, containing the “vector” in the Jacobian-vector product.
-(<code class="docutils literal notranslate"><span class="pre">None</span></code> is an acceptable value for that tensor don’t require gradient.)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>outputs</strong> (<em>Sequence</em><em>[</em><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em>]</em>) – Tensors of which the derivative will be computed.</p></li>
-<li><p><strong>inputs</strong> (<em>Sequence</em><em>[</em><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em>]</em>) – Inputs w.r.t. which the derivative will be returned(and not
-accumulated into <code class="docutils literal notranslate"><span class="pre">.grad</span></code>).</p></li>
-<li><p><strong>grad_outputs</strong> (<em>Sequence</em><em>[</em><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em>]</em><em>, </em><em>optional</em>) – The “vector” in the Jacobian-vector product.
-Usually gradients w.r.t. each output. None values can be specified for scalar Tensors
-or ones that don’t require grad. Defaults to None.</p></li>
-<li><p><strong>retain_graph</strong> (<em>bool</em><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">False</span></code>, the graph used to compute the grads will be
-reset after backward is complete. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>. Note that in nearly all cases
-setting this option to <code class="docutils literal notranslate"><span class="pre">True</span></code> is not needed and often can be worked around in a much
-more efficient way. Defaults to the value of <code class="docutils literal notranslate"><span class="pre">create_graph</span></code>.</p></li>
-<li><p><strong>create_graph</strong> (<em>bool</em><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, graph of the derivative will be constructed,
-allowing to compute higher order derivative products. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<dd><p>文档参考自： <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.autograd.grad.html#torch.autograd.grad">https://pytorch.org/docs/stable/generated/torch.autograd.grad.html#torch.autograd.grad</a> 。</p>
+<p>计算并返回输出相对于输入的梯度之和。</p>
+<p>使用链式法则对该计算图进行微分。<code class="docutils literal notranslate"><span class="pre">grad_outputs</span></code> 应该是一个长度与 <code class="docutils literal notranslate"><span class="pre">outputs</span></code> 相匹配的序列，包含雅各比向量积中的“向量”。
+（ <code class="docutils literal notranslate"><span class="pre">None</span></code> 是一个可接受的值，该张量不需要梯度。）</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>outputs</strong> (Sequence[Tensor]) - 将被计算导数的张量。</p></li>
+<li><p><strong>inputs</strong> (Sequence[Tensor]) - 导数将被返回的输入张量（而不是累积到 <code class="docutils literal notranslate"><span class="pre">.grad</span></code>）。</p></li>
+<li><p><strong>grad_outputs</strong> (Sequence[Tensor], optional) - 雅各比向量乘积中的“向量”，通常是相对于每个输出的梯度。对于标量张量或者不需要梯度的张量，可以指定值为 None。默认值为 None。</p></li>
+<li><p><strong>retain_graph</strong> (bool, optional) - 如果为 <code class="docutils literal notranslate"><span class="pre">False</span></code> ，用来计算梯度的 graph 将会在后向计算完成后被重置。默认值： <code class="docutils literal notranslate"><span class="pre">False</span></code> 。注意在几乎所有的情况下都不需要把这个选项设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> ，通常可以用更有效的方法来解决。默认为 <code class="docutils literal notranslate"><span class="pre">create_graph</span></code> 的值。</p></li>
+<li><p><strong>create_graph</strong> (bool, optional) - 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code> ， 将构建导数的 graph，允许计算高阶导数结果，默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code> 。</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A tuple of tensors containing the gradients for each <code class="docutils literal notranslate"><span class="pre">inputs</span></code>.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Tuple(<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor">Tensor</a>)</p>
+<dt>返回值：</dt><dd><ul class="simple">
+<li><p><strong>Tuple</strong> (Tensor) - 包含每个 <code class="docutils literal notranslate"><span class="pre">input</span></code> 梯度的张量元组。</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
