@@ -44,6 +44,8 @@ from .adamw import *
 from .lamb import *
 from .optimizer import *
 from .module import *
+from .autograd_function import *
+from .autograd import *
 from .rmsprop import *
 from .sgd import *
 from .cosine_decay_lr import *
