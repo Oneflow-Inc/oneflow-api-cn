@@ -228,6 +228,7 @@ reset_docstr(
         tensor([[[[ 1.0000, -0.5000],
                   [ 3.0000,  4.0000]]]], dtype=oneflow.float32,
                grad_fn=<prelu_backward>)
+               
     更多细节请参考 :class:`~oneflow.nn.PReLU` 。
  
     """
