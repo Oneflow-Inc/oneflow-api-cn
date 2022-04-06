@@ -180,7 +180,7 @@ reset_docstr(
     r"""
     logsigmoid(x: Tensor) -> Tensor 
 
-    应用以下 element-wise 函数:
+    逐元素应用函数:
 
     .. math::
         \text{logsigmoid}(x) = \log\left(\frac{ 1 }{ 1 + \exp(-x)}\right)
@@ -210,7 +210,7 @@ reset_docstr(
     """
     prelu(x: Tensor, alpha: Tensor) -> Tensor  
 
-    应用以下 element-wise 函数:
+    逐元素应用以下函数:
 
     .. math::
         prelu(x) = max(0,x) + alpha * min(0,x) 
@@ -238,7 +238,7 @@ reset_docstr(
     r"""
     sigmoid(input) -> Tensor
 
-    应用以下 element-wise 函数：
+    逐元素应用以下函数:
     
     :math:`\text{Sigmoid}(x) = \frac{1}{1 + \exp(-x)}`
 
@@ -266,7 +266,7 @@ reset_docstr(
     r"""
     elu(x: Tensor, alpha :Float) -> Tensor
 
-    应用以下 element-wise 函数：
+    逐元素应用以下函数:
     
     :math:`\text{ELU}(x) = \max(0,x) + \min(0, \alpha * (\exp(x) - 1))`
 
@@ -292,7 +292,7 @@ reset_docstr(
     r"""
     leaky_relu(x: Tensor,  alpha :Float) -> Tensor
 
-    应用以下 element-wise 函数：
+    逐元素应用以下函数:
     
     :math:`\text{LeakyReLU}(x) = \max(0, x) + \text{negative_slope} * \min(0, x)`
 
@@ -340,7 +340,7 @@ reset_docstr(
     r"""
     hardsigmoid(x: Tensor)-> Tensor
 
-    应用以下 element-wise 函数：
+    逐元素应用以下函数:
 
     .. math::
         \text{Hardsigmoid}(x) = \begin{cases}
