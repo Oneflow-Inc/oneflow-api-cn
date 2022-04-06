@@ -1669,9 +1669,7 @@ reset_docstr(
     oneflow.nn.Sequential,
     r"""Sequential(*args: Any)
     
-    一个序列容器。
-
-    按照 Module 在构造函数中被传递的顺序将其添加到容器中。或者，也可以向构造函数传递 Module 的有序字典。
+    一个序列容器。按照 Module 在构造函数中被传递的顺序将其添加到容器中。或者，也可以向构造函数传递 Module 的有序字典。
 
     为了便于理解，这里有一个示例：
 
