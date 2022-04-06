@@ -246,12 +246,11 @@ reset_docstr(
     因为批归一化 (Batch Normalization) 是在 `C` 维度上完成的，计算 `(N, L)` 切片的统计数据，所以常称其为 Temporal Batch Normalization 。
     
     参数：
-        - **num_features** : :math:`C` 来自于大小为 :math:`(N, C, L)` 的预期输入或 :math:`L` 来自大小为 :math:`(N, L)` 的输入
-        - **eps** : 为数值稳定性而为分母加的值。默认为：1e-5
-        - **momentum** : 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。设定为 ``None`` 则计算移动平均 (Moving average) ，默认：0.1
-        - **affine** : 如果为 ``True`` ，该模块具有可学习的仿射参数。默认为 ``True`` 
-        - **track_running_stats** : 当设置为 ``True`` 时，该模块跟踪运行均值和方差，当设置为 ``False`` 时，此模块不会跟踪此类统计信息，
-            并将统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 初始化为 ``None`` 。当这些缓冲区为“无”时，此模块在训练和评估模式中始终使用批处理统计信息。默认值： ``True``
+        - **num_features** - :math:`C` 来自于大小为 :math:`(N, C, L)` 的预期输入或 :math:`L` 来自大小为 :math:`(N, L)` 的输入
+        - **eps** - 为数值稳定性而为分母加的值。默认为：1e-5
+        - **momentum** - 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。设定为 ``None`` 则计算移动平均 (Moving average) ，默认：0.1
+        - **affine** - 如果为 ``True`` ，该模块具有可学习的仿射参数。默认为 ``True`` 
+        - **track_running_stats** - 当设置为 ``True`` 时，该模块跟踪运行均值和方差，当设置为 ``False`` 时，此模块不会跟踪此类统计信息，并将统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 初始化为 ``None`` 。当这些缓冲区为“无”时，此模块在训练和评估模式中始终使用批处理统计信息。默认值： ``True``
     
     形状：
         - **Input** : :math:`(N, C)` 或 :math:`(N, C, L)`
@@ -296,12 +295,11 @@ reset_docstr(
     因为批归一化 (Batch Normalization) 是在 `C` 维度上完成的，计算 `(N, H, W)` 切片的统计数据，所以常称其为 Spatial Batch Normalization 。
 
     参数：
-        - **num_features** : :math:`C` 来自于大小为 :math:`(N, C, H, W)` 的预期输入
-        - **eps** : 为数值稳定性而为分母加的值。默认为：1e-5
-        - **momentum** : 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。设定为 ``None`` 则计算移动平均 (Moving average) ，默认：0.1
-        - **affine** : 如果为 ``True`` ，该模块具有可学习的仿射参数。默认为 ``True`` 
-        - **track_running_stats** : 当设置为 ``True`` 时，该模块跟踪运行均值和方差，当设置为 ``False`` 时，此模块不会跟踪此类统计信息，
-            并将统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 初始化为 ``None`` 。当这些缓冲区为“无”时，此模块在训练和评估模式中始终使用批处理统计信息。默认值： ``True``
+        - **num_features** - :math:`C` 来自于大小为 :math:`(N, C, H, W)` 的预期输入
+        - **eps** - 为数值稳定性而为分母加的值。默认为：1e-5
+        - **momentum** - 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。设定为 ``None`` 则计算移动平均 (Moving average) ，默认：0.1
+        - **affine** - 如果为 ``True`` ，该模块具有可学习的仿射参数。默认为 ``True`` 
+        - **track_running_stats** - 当设置为 ``True`` 时，该模块跟踪运行均值和方差，当设置为 ``False`` 时，此模块不会跟踪此类统计信息，并将统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 初始化为 ``None`` 。当这些缓冲区为“无”时，此模块在训练和评估模式中始终使用批处理统计信息。默认值： ``True``
 
     形状：
         - **Input** : :math:`(N, C, H, W)` 
@@ -345,12 +343,11 @@ reset_docstr(
     因为批归一化 (Batch Normalization) 是在 `C` 维度上完成的，计算 `(N, H, W)` 切片的统计数据，所以常称其为 Spatial Batch Normalization 。
 
     参数：
-        - **num_features** : :math:`C` 来自于大小为 :math:`(N, C, D, H, W)` 的预期输入
-        - **eps** : 为数值稳定性而为分母加的值。默认为：1e-5
-        - **momentum** : 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。设定为 ``None`` 则计算移动平均 (Moving average) ，默认：0.1
-        - **affine** : 如果为 ``True`` ，该模块具有可学习的仿射参数。默认为 ``True`` 
-        - **track_running_stats** : 当设置为 ``True`` 时，该模块跟踪运行均值和方差，当设置为 ``False`` 时，此模块不会跟踪此类统计信息，
-            并将统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 初始化为 ``None`` 。当这些缓冲区为“无”时，此模块在训练和评估模式中始终使用批处理统计信息。默认值： ``True``
+        - **num_features** - :math:`C` 来自于大小为 :math:`(N, C, D, H, W)` 的预期输入
+        - **eps** - 为数值稳定性而为分母加的值。默认为：1e-5
+        - **momentum** - 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。设定为 ``None`` 则计算移动平均 (Moving average) ，默认：0.1
+        - **affine** - 如果为 ``True`` ，该模块具有可学习的仿射参数。默认为 ``True`` 
+        - **track_running_stats** - 当设置为 ``True`` 时，该模块跟踪运行均值和方差，当设置为 ``False`` 时，此模块不会跟踪此类统计信息，并将统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 初始化为 ``None`` 。当这些缓冲区为“无”时，此模块在训练和评估模式中始终使用批处理统计信息。默认值： ``True``
     
     形状：
         - **Input** : :math:`(N, C, D, H, W)` 

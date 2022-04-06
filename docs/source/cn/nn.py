@@ -15,8 +15,7 @@ reset_docstr(
     参数：
         - **blank** (int, 可选的) - 空白标签。默认值为 :math:`0`。
         - **reduction** (string, 可选的) - 指定应用于输出的 reduction：``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行 reduction；``'mean'`` ：输出损失将除以目标长度，然后取该批次的平均值。默认值为： ``'mean'``。
-        - **zero_infinity** (bool, 可选的) - 是否将无限损失和相关梯度归零。默认值为： ``False``。
-            无限损失主要发生在 :attr:`inputs` 太短而无法与 :attr:`target` 对齐时。
+        - **zero_infinity** (bool, 可选的) - 是否将无限损失和相关梯度归零。默认值为：``False``。无限损失主要发生在 :attr:`inputs` 太短而无法与 :attr:`target` 对齐时。
 
     形状：
         - **Log_probs** : 形状为 :math:`(T, N, C)` 的张量且 :math:`T = \text{input length}`  、 :math:`N = \text{batch size}` 、 :math:`C = \text{number of classes (including blank)}`。
@@ -66,7 +65,7 @@ reset_docstr(
     oneflow.nn.CombinedMarginLoss,
     r"""CombinedMarginLoss(m1=1.0, m2=0.0, m3=0.0)
 
-    以下操作在 InsightFace 中实现了 "margin_softmax" ：
+    以下操作在 InsightFace 中实现了 ``margin_softmax``：
     https://github.com/deepinsight/insightface/blob/master/recognition/arcface_mxnet/train.py
     InsightFace 中 margin_softmax 的实现是由多个算子组成的。
     我们将它们组合在一起以加快速度。
@@ -222,10 +221,10 @@ reset_docstr(
           :math:`W_{out} = W_{in} + \text{padding_left} + \text{padding_right}`
 
     示例：
+
     .. code-block:: python
 
         >>> import oneflow as flow
-
         >>> input = flow.arange(8, dtype=flow.int32).reshape(1,1,2,2,2)
         >>> m = flow.nn.ConstantPad3d(padding=1, value=9)
         >>> output = m(input)
