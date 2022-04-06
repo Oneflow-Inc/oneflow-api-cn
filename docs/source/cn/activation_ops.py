@@ -242,7 +242,7 @@ reset_docstr(
         
         \text{Sigmoid}(x) = \sigma(x) = \frac{1}{1 + \exp(-x)}
 
-    图型：
+    形状：
         - Input: :math:`(N, *)` 其中 `*` 表示任意数量的附加维度
         - Output: :math:`(N, *)` 与输入相同的形状
 
@@ -263,7 +263,7 @@ reset_docstr(
   oneflow.nn.Softmax,
     r"""Softmax(dim = None) -> Tensor
     
-    将 Softmax 函数应用于 n 维输入 tensor 并重新缩放 tensor，以便n 维输出 tensor
+    将 Softmax 函数应用于 n 维输入 tensor 并重新缩放 tensor，以便 n 维输出 tensor
     的元素位于 [0,1] 范围内并且和为 1。
 
     Softmax 的公式为：

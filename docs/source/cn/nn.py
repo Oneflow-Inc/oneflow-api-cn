@@ -595,7 +595,7 @@ reset_docstr(
                         \times (\text{kernel_size}[1] - 1) + \text{output_padding}[1] + 1
 
     Attributes:
-        weight (Tensor): 形状为 :math:`(\text{in_channels}, \frac{\text{out_channels}}{\text{groups}},` :math:`\text{kernel_size[0]}, \text{kernel_size[1]})` 的模块的可学习权重。这些权重的值是由公式 `\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中 :math:`k = \frac{groups}{C_\text{out} * \prod_{i=0}^{1}\text{kernel_size}[i]}`
+        weight (Tensor): 形状为 :math:`(\text{in_channels}, \frac{\text{out_channels}}{\text{groups}},` :math:`\text{kernel_size[0]}, \text{kernel_size[1]})` 的模块的可学习权重。这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中 :math:`k = \frac{groups}{C_\text{out} * \prod_{i=0}^{1}\text{kernel_size}[i]}`
 
         bias (Tensor):   形状为 (out_channels) 的模块的可学习偏置。若 :attr:`bias` 为 ``True`` ，则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中 :math:`k = \frac{groups}{C_\text{out} * \text{kernel_size}}`
 
@@ -684,7 +684,7 @@ reset_docstr(
 
     Attributes:
         weight (Tensor):
-            形状为 :math:`(\text{in_channels}, \frac{\text{out_channels}}{\text{groups}},` :math:`\text{kernel_size[0]}, \text{kernel_size[1]}, \text{kernel_size[2]})` 的模块的可学习权重。这些权重的值是由公式 `\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中 :math:`k = \frac{groups}{C_\text{out} * \prod_{i=0}^{2}\text{kernel_size}[i]}`
+            形状为 :math:`(\text{in_channels}, \frac{\text{out_channels}}{\text{groups}},` :math:`\text{kernel_size[0]}, \text{kernel_size[1]}, \text{kernel_size[2]})` 的模块的可学习权重。这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中 :math:`k = \frac{groups}{C_\text{out} * \prod_{i=0}^{2}\text{kernel_size}[i]}`
 
         bias (Tensor):
             形状为 (out_channels) 的模块的可学习偏置。若 :attr:`bias` 为 ``True`` ，则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中 :math:`k = \frac{groups}{C_\text{out} * \text{kernel_size}}`
@@ -736,10 +736,7 @@ reset_docstr(
     此类也可用于更高维度的输入，例如 2D 图像（见下文）。
 
     参数：
-        - **reduction** (string, 可选的) - 指定应用于输出的 reduction（可以是 ``'none'`` 、 ``'mean'`` 、 ``'sum'`` ，默认值为 ``'mean'``）：
-            - ``'none'`` :不进行简化；
-            - ``'mean'`` :取输出的加权平均值；
-            - ``'sum'`` :取输出的和。
+        - **reduction** (string, 可选的) - 指定应用于输出的 reduction（可以是 ``'none'`` 、 ``'mean'`` 、 ``'sum'`` ，默认值为 ``'mean'``）。其中 ``'none'`` :不进行简化；``'mean'`` :取输出的加权平均值；``'sum'`` :取输出的和。
 
     示例：
 
@@ -2237,5 +2234,44 @@ reset_docstr(
                   [ 0.,  9., 10., 11.,  0.,  0.],
                   [ 0., 12., 13., 14.,  0.,  0.],
                   [ 0., 15., 16., 17.,  0.,  0.]]]], dtype=oneflow.float32)
+    """
+)
+
+reset_docstr(
+    oneflow.nn.SELU,
+    r"""逐元素地应用 SELU 函数，其等式为：
+    
+    .. math::  
+    
+        \text{SELU}(x) = \text{scale} * (\max(0,x) + \min(0, \alpha * (\exp(x) - 1)))
+    
+    其中有 :math:`\alpha = 1.6732632423543772848170429916717` 和
+    
+    :math:`\text{scale} = 1.0507009873554804934193349852946` 
+    
+    .. warning::
+    
+        当使用 ``kaiming_normal`` 或 ``kaiming_normal_`` 进行初始化时，应当设置
+        ``nonlinearity='linear'`` 而非 ``nonlinearity='selu'``，这是为了得到 `Self-Normalizing Neural Networks`_ 。
+        查看 :func:`torch.nn.init.calculate_gain` 获得更多信息。
+    
+    获得更多细节请参考文献 `Self-Normalizing Neural Networks <https://arxiv.org/abs/1706.02515>`_ 。
+    
+    形状：
+        - **Input** - :math:`(N, *)` ，其中 `*` 表示任意数量的附加维度。
+        - **Output** - :math:`(N, *)` ，与输入形状相同。
+    
+    示例：
+    
+    .. code-block:: python
+    
+        >>> import numpy as np
+        >>> import oneflow as flow
+        >>> x = np.array([1, 2, 3]).astype(np.float32)
+        >>> input = flow.Tensor(x)
+        >>> selu = flow.nn.SELU()
+        >>> out = selu(input)
+        >>> out
+        tensor([1.0507, 2.1014, 3.1521], dtype=oneflow.float32)
     """
 )
