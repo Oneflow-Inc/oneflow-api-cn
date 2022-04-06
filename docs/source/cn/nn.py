@@ -2037,7 +2037,7 @@ reset_docstr(
 
     可用于上采样的算法分别是 3D、4D 和 5D 输入张量的最近邻和线性、双线性、双三次和三线性算法。
 
-    可以给出 :attr:`scale_factor` 或目标输出大小来计算输出大小。（不能同时给出，因为这是模棱两可的）。
+    可以用 :attr:`scale_factor` 或目标输出大小来计算输出大小（由于其不确定性，不能同时给出）。
 
     参数：
         - **size** (int or Tuple[int] or Tuple[int, int] or Tuple[int, int, int], optional) - 输出空间大小。
