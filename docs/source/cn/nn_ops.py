@@ -86,10 +86,7 @@ reset_docstr(
     参数：
         - **num_embeddings** (int): 嵌入字典的大小
         - **embedding_dim** (int): 每个嵌入向量的大小
-        - **padding_idx** (int, 可选的): 如果设定了此参数，则 :attr:`padding_idx` 处的元素不会影响梯度；因此，
-                                    在训练期间不会更新 :attr:`padding_idx` 的嵌入向量，它仍然是一个固定的 `pad` 。
-                                    对于新构建的嵌入， :attr:`padding_idx` 处的嵌入向量将默认为全零，
-                                    但可以更新为另一个值以用作填充向量。
+        - **padding_idx** (int, 可选的): 如果设定了此参数，则 :attr:`padding_idx` 处的元素不会影响梯度；因此，在训练期间不会更新 :attr:`padding_idx` 的嵌入向量，它仍然是一个固定的 `pad` 。对于新构建的嵌入， :attr:`padding_idx` 处的嵌入向量将默认为全零，但可以更新为另一个值以用作填充向量。
     
     示例：
 
@@ -113,16 +110,22 @@ reset_docstr(
     若 quantization_scheme == "symmetric":
 
     .. math::
-        & quant\_max = 2^{quantization\_to\_bit - 1} - 1
-        & quant\_min = -quant\_max
-        & clamp(round(x / scale), quant\_min, quant\_max) * scale
+
+        quant\_max = 2^{quantization\_to\_bit - 1} - 1
+
+        quant\_min = -quant\_max
+
+        clamp(round(x / scale), quant\_min, quant\_max) * scale
 
     若 quantization_scheme == "affine":
 
     .. math::
-        & quant\_max = 2^{quantization\_to\_bit} - 1
-        & quant\_min = 0
-        & (clamp(round(x / scale + zero\_point), quant\_min, quant\_max) - zero\_point) * scale
+
+        quant\_max = 2^{quantization\_to\_bit} - 1
+
+        quant\_min = 0
+        
+        (clamp(round(x / scale + zero\_point), quant\_min, quant\_max) - zero\_point) * scale
 
     参数：
         - **quantization_bit** (int): 量化输入为 uintX / intX ， X 可以在范围 [2, 8] 中。默认为 8
@@ -437,7 +440,7 @@ reset_docstr(
     此接口与 PyTorch 对其，可参考以下文档：
     https://pytorch.org/docs/stable/generated/torch.nn.GroupNorm.html
 
-    对小批量输入应用组归一化 (Group Normalization) 的行为按论文 <https://arxiv.org/abs/1803.08494>`__ 中所述。
+    对小批量输入应用组归一化 (Group Normalization) 的行为按 `论文 <https://arxiv.org/abs/1803.08494>`_ 中所述。
 
     公式为：
 

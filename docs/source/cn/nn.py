@@ -115,7 +115,7 @@ reset_docstr(
         - **Input** : :math:`(N, C, W_{in})`
         - **Output** : :math:`(N, C, W_{out})` ，其中
 
-          :math:`W_{out} = W_{in} + \text{padding\_left} + \text{padding\_right}`
+          :math:`W_{out} = W_{in} + \text{padding_left} + \text{padding_right}`
 
     示例：
 
@@ -151,9 +151,9 @@ reset_docstr(
         - **Input** : :math:`(N, C, H_{in}, W_{in})`
         - **Output** : :math:`(N, C, H_{out}, W_{out})` ，其中
 
-            :math:`H_{out} = H_{in} + \text{padding\_top} + \text{padding\_bottom}`
+            :math:`H_{out} = H_{in} + \text{padding_top} + \text{padding_bottom}`
 
-            :math:`W_{out} = W_{in} + \text{padding\_left} + \text{padding\_right}`
+            :math:`W_{out} = W_{in} + \text{padding_left} + \text{padding_right}`
 
     示例：
 
@@ -299,17 +299,14 @@ reset_docstr(
 
           .. math::
               L_{out} = \left\lfloor\frac{L_{in} + 2 \times \text{padding} - \text{dilation}
-                        \times (\text{kernel\_size} - 1) - 1}{\text{stride}} + 1\right\rfloor
+                        \times (\text{kernel_size} - 1) - 1}{\text{stride}} + 1\right\rfloor
 
     Attributes:
-        weight (Tensor) - 形状为 :math:`(\text{out\_channels}, 
-            \frac{\text{in\_channels}}{\text{groups}}, \text{kernel\_size})` 的模块的可学习权重。
-            这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
-            :math:`k = \frac{groups}{C_\text{in} * \text{kernel\_size}}` 
+        weight (Tensor) :
+            形状为 :math:`(\text{out_channels}, \frac{\text{in_channels}}{\text{groups}}, \text{kernel_size})` 的模块的可学习权重。这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中 :math:`k = \frac{groups}{C_\text{in} * \text{kernel_size}}` 
 
-        bias (Tensor) -  形状为 (out_channels) 的模块的可学习权重。若 :attr:`bias` 为 ``True`` ，
-            则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
-            :math:`k = \frac{groups}{C_\text{in} * \text{kernel\_size}}`
+        bias (Tensor) :
+            形状为 (out_channels) 的模块的可学习偏置。若 :attr:`bias` 为 ``True`` ，则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中 :math:`k = \frac{groups}{C_\text{in} * \text{kernel_size}}`
 
     示例：
 
@@ -356,8 +353,7 @@ reset_docstr(
 
     * :attr:`dilation` 控制核心点 (kernel points) 之间的间距，也称为 `à trous algorithm`。这个 `链接 <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>`__ 中有 :attr:`dilation` 的可视化展示。
 
-    * :attr:`groups` 控制输入和输出之间的连接。 :attr:`in_channels` 和 :attr:`out_channels` 都必须能被 :attr:`groups` 整除。
-      例如：
+    * :attr:`groups` 控制输入和输出之间的连接。 :attr:`in_channels` 和 :attr:`out_channels` 都必须能被 :attr:`groups` 整除。例如：
         * 当 groups=1 时，所有输入都卷积到输出。
         * 当 groups=2 时，该操作等效于并排放置两个 conv 层，其中每个层检查一半的输入通道并产生一半的输出通道，然后将两者连接起来。
         * 当 groups= :attr:`in_channels` 时， 每个输入通道都与它自己的一组过滤器(大小为
@@ -377,10 +373,10 @@ reset_docstr(
         - **in_channels** (int) - 输入图像的通道数。
         - **out_channels** (int) - 卷积产生的通道数。
         - **kernel_size** (int 或者 tuple) - 卷积核的大小。
-        - **stride** (int 或者 tuple, 可选的) - 卷积的步幅 (stride)。默认值为： 1。
-        - **padding** (int, tuple 或者 str, 可选的) - 添加到输入两侧的填充值。默认值为： 0。
+        - **stride** (int 或者 tuple, 可选的) - 卷积的步幅 (stride)。默认值为：1。
+        - **padding** (int, tuple 或者 str, 可选的) - 添加到输入两侧的填充值。默认值为：0。
         - **padding_mode** (string, 可选的) - 默认值为： ``'zeros'``。
-        - **dilation** (int 或者 tuple, 可选的) - 核心的元素之间的间距。默认值为： 1。
+        - **dilation** (int 或者 tuple, 可选的) - 核心的元素之间的间距。默认值为：1。
         - **groups** (int, 可选的) - 从输入通道到输出通道的 `blocked connections` 数。默认值为：1。
         - **bias** (bool, 可选的) - 若为 ``True`` ，则向输出添加可学习的偏差。默认值为：``True``。
 
@@ -397,14 +393,11 @@ reset_docstr(
                         \times (\text{kernel_size}[1] - 1) - 1}{\text{stride}[1]} + 1\right\rfloor
 
     Attributes:
-        weight (Tensor) - 形状为 :math:`(\text{out_channels}, \frac{\text{in_channels}}{\text{groups}},`
-            :math:`\text{kernel_size[0]}, \text{kernel_size[1]})` 的模块的可学习权重。
-            这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
-            :math:`k = \frac{groups}{C_\text{in} * \prod_{i=0}^{1}\text{kernel_size}[i]}`
+        weight (Tensor) :
+            形状为 :math:`(\text{out_channels}, \frac{\text{in_channels}}{\text{groups}},\text{kernel_size[0]}, \text{kernel_size[1]})` 的模块的可学习权重。这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中 :math:`k = \frac{groups}{C_\text{in} * \prod_{i=0}^{1}\text{kernel_size}[i]}`
 
-        bias (Tensor) -  形状为 (out_channels) 的模块的可学习权重。若 :attr:`bias` 为 ``True`` ，
-            则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
-            :math:`k = \frac{groups}{C_\text{in} * \prod_{i=0}^{1}\text{kernel_size}[i]}`
+        bias (Tensor) :
+            形状为 (out_channels) 的模块的可学习偏置。若 :attr:`bias` 为 ``True`` ，则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中 :math:`k = \frac{groups}{C_\text{in} * \prod_{i=0}^{1}\text{kernel_size}[i]}`
 
     示例：
 
@@ -463,10 +456,10 @@ reset_docstr(
         - **in_channels** (int) - 输入图像的通道数。
         - **out_channels** (int) - 卷积产生的通道数。
         - **kernel_size** (int 或者 tuple) - 卷积核的大小。
-        - **stride** (int 或者 tuple, 可选的) - 卷积的步幅 (stride)。默认值为： 1。
-        - **padding** (int, tuple 或者 str, 可选的) - 添加到输入两侧的填充值。默认值为： 0。
+        - **stride** (int 或者 tuple, 可选的) - 卷积的步幅 (stride)。默认值为：1。
+        - **padding** (int, tuple 或者 str, 可选的) - 添加到输入两侧的填充值。默认值为：0。
         - **padding_mode** (string, 可选的) - 默认值为： ``'zeros'``。
-        - **dilation** (int 或者 tuple, 可选的) - 核心的元素之间的间距。默认值为： 1。
+        - **dilation** (int 或者 tuple, 可选的) - 核心的元素之间的间距。默认值为：1。
         - **groups** (int, 可选的) - 从输入通道到输出通道的 `blocked connections` 数。默认值为：1。
         - **bias** (bool, 可选的) - 若为 ``True`` ，则向输出添加可学习的偏差。默认值为：``True``。
     
@@ -476,25 +469,22 @@ reset_docstr(
 
           .. math::
               D_{out} = \left\lfloor\frac{D_{in} + 2 \times \text{padding}[0] - \text{dilation}[0]
-                    \times (\text{kernel\_size}[0] - 1) - 1}{\text{stride}[0]} + 1\right\rfloor
+                    \times (\text{kernel_size}[0] - 1) - 1}{\text{stride}[0]} + 1\right\rfloor
 
           .. math::
               H_{out} = \left\lfloor\frac{H_{in} + 2 \times \text{padding}[1] - \text{dilation}[1]
-                    \times (\text{kernel\_size}[1] - 1) - 1}{\text{stride}[1]} + 1\right\rfloor
+                    \times (\text{kernel_size}[1] - 1) - 1}{\text{stride}[1]} + 1\right\rfloor
 
           .. math::
               W_{out} = \left\lfloor\frac{W_{in} + 2 \times \text{padding}[2] - \text{dilation}[2]
-                    \times (\text{kernel\_size}[2] - 1) - 1}{\text{stride}[2]} + 1\right\rfloor
+                    \times (\text{kernel_size}[2] - 1) - 1}{\text{stride}[2]} + 1\right\rfloor
 
     Attributes:
-        weight (Tensor) - 形状为 :math:`(\text{out\_channels}, \frac{\text{in\_channels}}{\text{groups}},`
-                         :math:`\text{kernel\_size[0]}, \text{kernel\_size[1]}, \text{kernel\_size[2]})` 的模块的可学习权重。
-                         这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
-                         :math:`k = \frac{groups}{C_\text{in} * \prod_{i=0}^{2}\text{kernel\_size}[i]}` 
+        weight (Tensor)
+            形状为 :math:`(\text{out_channels}, \frac{\text{in_channels}}{\text{groups}},\text{kernel_size[0]}, \text{kernel_size[1]}, \text{kernel_size[2]})` 的模块的可学习权重。这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中 :math:`k = \frac{groups}{C_\text{in} * \prod_{i=0}^{2}\text{kernel_size}[i]}`
 
-        bias (Tensor) -  形状为 (out_channels) 的模块的可学习权重。若 :attr:`bias` 为 ``True`` ，
-                         则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
-                         :math:`k = \frac{groups}{C_\text{in} * \prod_{i=0}^{2}\text{kernel\_size}[i]}`
+        bias (Tensor):
+            形状为 (out_channels) 的模块的可学习偏置。若 :attr:`bias` 为 ``True`` ，则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中 :math:`k = \frac{groups}{C_\text{in} * \prod_{i=0}^{2}\text{kernel_size}[i]}` 。
 
     示例：
 
@@ -541,15 +531,15 @@ reset_docstr(
         背景请参阅有关随机性 (randomness)  的 notes。
 
     参数：
-        - **in_channels** (int) - 输入图像的通道数
-        - **out_channels** (int) - 卷积产生的通道数
-        - **kernel_size** (int 或 tuple) - 卷积核的大小
-        - **stride** (int 或 tuple, 可选的) - 卷积的步幅 (stride)。默认值为： 1
-        - **padding** (int 或 tuple, 可选的) - 添加到输入每侧的 ``dilation * (kernel_size - 1) - padding`` 大小的 0 填充值。默认值为： 0
-        - **output_padding** (int 或 tuple, 可选的) - 添加到输出形状一侧的大小。默认值为：0
-        - **groups** (int, 可选的) - 从输入通道到输出通道的 `blocked connections` 数。默认值为：1
-        - **bias** (bool, 可选的) - 若为 ``True`` ，则向输出添加可学习的偏差。默认值为：``True``
-        - **dilation** (int 或 tuple, 可选的) - 核心的元素之间的间距。默认值为： 1
+        - **in_channels** (int) - 输入图像的通道数。
+        - **out_channels** (int) - 卷积产生的通道数。
+        - **kernel_size** (int 或 tuple) - 卷积核的大小。
+        - **stride** (int 或 tuple, 可选的) - 卷积的步幅 (stride)。默认值为：1。
+        - **padding** (int 或 tuple, 可选的) - 添加到输入每侧的 ``dilation * (kernel_size - 1) - padding`` 大小的 0 填充值。默认值为：0。
+        - **output_padding** (int 或 tuple, 可选的) - 添加到输出形状一侧的大小。默认值为：0。
+        - **groups** (int, 可选的) - 从输入通道到输出通道的 `blocked connections` 数。默认值为：1。
+        - **bias** (bool, 可选的) - 若为 ``True`` ，则向输出添加可学习的偏差。默认值为：``True``。
+        - **dilation** (int 或 tuple, 可选的) - 核心的元素之间的间距。默认值为：1。
 
     形状：
         - **Input** : :math:`(N, C_{in}, L_{in})`
@@ -560,16 +550,10 @@ reset_docstr(
                         \times (\text{kernel_size} - 1) + \text{output_padding} + 1
 
     Attributes:
-        weight (Tensor): the learnable weights of the module of shape
-                         :math:`(\text{in_channels}, \frac{\text{out_channels}}{\text{groups}},`
-                         :math:`\text{kernel_size})`.
-                         The values of these weights are sampled from
-                         :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` where
-                         :math:`k = \frac{groups}{C_\text{out} * \text{kernel_size}}`
-        bias (Tensor):   the learnable bias of the module of shape (out_channels).
-                         If :attr:`bias` is ``True``, then the values of these weights are
-                         sampled from :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` where
-                         :math:`k = \frac{groups}{C_\text{out} * \text{kernel_size}}`
+        weight (Tensor):
+            形状为 :math:`(\text{in_channels}, \frac{\text{out_channels}}{\text{groups}}, \text{kernel_size})` 的模块的可学习参数。这些参数的值从 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 中采样，其中 :math:`k = \frac{groups}{C_\text{out} * \text{kernel_size}}`
+        bias (Tensor):
+            形状为 (out_channels) 的模块的可学习偏置。如果 :attr:`bias` 为 ``True``，那么这些值从 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 中取样，其中 :math:`k = \frac{groups}{C_\text{out} * \text{kernel_size}}`
 
     .. _cross-correlation:
         https://en.wikipedia.org/wiki/Cross-correlation
@@ -591,12 +575,12 @@ reset_docstr(
         - **in_channels** (int) - 输入图像的通道数。
         - **out_channels** (int) - 卷积产生的通道数。
         - **kernel_size** (int 或 tuple) - 卷积核的大小。
-        - **stride** (int 或 tuple, 可选的) - 卷积的步幅 (stride)。默认值为： 1。
-        - **padding** (int 或 tuple, 可选的) - 添加到输入每侧的 ``dilation * (kernel_size - 1) - padding`` 大小的 0 填充值。默认值为： 0。
+        - **stride** (int 或 tuple, 可选的) - 卷积的步幅 (stride)。默认值为：1。
+        - **padding** (int 或 tuple, 可选的) - 添加到输入每侧的 ``dilation * (kernel_size - 1) - padding`` 大小的 0 填充值。默认值为：0。
         - **output_padding** (int 或 tuple, 可选的) - 添加到输出形状一侧的大小。默认值为：0。
         - **groups** (int, 可选的) - 从输入通道到输出通道的 `blocked connections` 数。默认值为：1。
         - **bias** (bool, 可选的) - 若为 ``True`` ，则向输出添加可学习的偏差。默认值为：``True``。
-        - **dilation** (int 或 tuple, 可选的) - 核心的元素之间的间距。默认值为： 1。
+        - **dilation** (int 或 tuple, 可选的) - 核心的元素之间的间距。默认值为：1。
 
     形状：
         - **Input** : :math:`(N, C_{in}, H_{in}, W_{in})`
@@ -612,14 +596,9 @@ reset_docstr(
                         \times (\text{kernel_size}[1] - 1) + \text{output_padding}[1] + 1
 
     Attributes:
-        weight (Tensor): 形状为 :math:`(\text{in_channels}, \frac{\text{out_channels}}{\text{groups}},`
-                         :math:`\text{kernel_size[0]}, \text{kernel_size[1]})` 的模块的可学习权重。
-                         这些权重的值是由公式 `\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
-                         :math:`k = \frac{groups}{C_\text{out} * \prod_{i=0}^{1}\text{kernel_size}[i]}`
+        weight (Tensor): 形状为 :math:`(\text{in_channels}, \frac{\text{out_channels}}{\text{groups}},` :math:`\text{kernel_size[0]}, \text{kernel_size[1]})` 的模块的可学习权重。这些权重的值是由公式 `\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中 :math:`k = \frac{groups}{C_\text{out} * \prod_{i=0}^{1}\text{kernel_size}[i]}`
 
-        bias (Tensor):   形状为 (out_channels) 的模块的可学习权重。若 :attr:`bias` 为 ``True`` ，
-                         则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
-                         :math:`k = \frac{groups}{C_\text{out} * \text{kernel\_size}}`
+        bias (Tensor):   形状为 (out_channels) 的模块的可学习偏置。若 :attr:`bias` 为 ``True`` ，则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中 :math:`k = \frac{groups}{C_\text{out} * \text{kernel_size}}`
 
 
     示例：
@@ -683,12 +662,12 @@ reset_docstr(
         - **in_channels** (int) - 输入图像的通道数。
         - **out_channels** (int) - 卷积产生的通道数。
         - **kernel_size** (int 或 tuple) - 卷积核的大小。
-        - **stride** (int 或 tuple, 可选的) - 卷积的步幅 (stride)。默认值为： 1。
-        - **padding** (int 或 tuple, 可选的) - 添加到输入每侧的 ``dilation * (kernel_size - 1) - padding`` 大小的 0 填充值。默认值为： 0。
+        - **stride** (int 或 tuple, 可选的) - 卷积的步幅 (stride)。默认值为：1。
+        - **padding** (int 或 tuple, 可选的) - 添加到输入每侧的 ``dilation * (kernel_size - 1) - padding`` 大小的 0 填充值。默认值为：0。
         - **output_padding** (int 或 tuple, 可选的) - 添加到输出形状一侧的大小。默认值为：0。
         - **groups** (int, 可选的) - 从输入通道到输出通道的 `blocked connections` 数。默认值为：1。
         - **bias** (bool, 可选的) - 若为 ``True`` ，则向输出添加可学习的偏差。默认值为：``True``。
-        - **dilation** (int 或 tuple, 可选的) - 核心的元素之间的间距。默认值为： 1。
+        - **dilation** (int 或 tuple, 可选的) - 核心的元素之间的间距。默认值为：1。
 
     形状：
         - **Input** : :math:`(N, C_{in}, D_{in}, H_{in}, W_{in})`
@@ -705,14 +684,11 @@ reset_docstr(
                         \times (\text{kernel_size}[2] - 1) + \text{output_padding}[2] + 1
 
     Attributes:
-        weight (Tensor) - 形状为 :math:`(\text{in_channels}, \frac{\text{out_channels}}{\text{groups}},`
-                         :math:`\text{kernel_size[0]}, \text{kernel_size[1]}, \text{kernel_size[2]})` 的模块的可学习权重。
-                         这些权重的值是由公式 `\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
-                         :math:`k = \frac{groups}{C_\text{out} * \prod_{i=0}^{2}\text{kernel_size}[i]}`
+        weight (Tensor):
+            形状为 :math:`(\text{in_channels}, \frac{\text{out_channels}}{\text{groups}},` :math:`\text{kernel_size[0]}, \text{kernel_size[1]}, \text{kernel_size[2]})` 的模块的可学习权重。这些权重的值是由公式 `\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中 :math:`k = \frac{groups}{C_\text{out} * \prod_{i=0}^{2}\text{kernel_size}[i]}`
 
-        bias (Tensor) -   形状为 (out_channels) 的模块的可学习权重。若 :attr:`bias` 为 ``True`` ，
-                         则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中
-                         :math:`k = \frac{groups}{C_\text{out} * \text{kernel\_size}}`
+        bias (Tensor):
+            形状为 (out_channels) 的模块的可学习偏置。若 :attr:`bias` 为 ``True`` ，则那么这些权重的值是由公式 :math:`\mathcal{U}(-\sqrt{k}, \sqrt{k})` 计算而来，其中 :math:`k = \frac{groups}{C_\text{out} * \text{kernel_size}}`
 
 
     示例：
