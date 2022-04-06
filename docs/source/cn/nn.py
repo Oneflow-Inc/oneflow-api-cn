@@ -1447,7 +1447,7 @@ reset_docstr(
         - Output: :math:`(N, *)` ，与输入的形状相同。
 
     属性：
-        - weight (Tensor) - 形状 (:attr:`num_parameters`) 的可学习权重。
+        - weight (Tensor) - 形状为 (:attr:`num_parameters`) 的可学习权重。
 
     .. code-block:: python
 
