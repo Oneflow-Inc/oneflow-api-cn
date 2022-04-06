@@ -1308,7 +1308,7 @@ reset_docstr(
     oneflow.nn.NLLLoss,
     """
     
-    负对数似然损失。用 `C` 类训练分类问题很有用。
+    负对数似然损失，在 `C` 类训练分类问题中很有效。
 
     通过前向调用给出的输入将包含每个类的对数概率。在 `K` 维情况下，输入必须是
     大小为 :math:`(minibatch, C)` 或 :math:`(minibatch, C, d_1, d_2, ..., d_K)` 的
