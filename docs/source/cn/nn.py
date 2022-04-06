@@ -1469,8 +1469,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.nn.Quantization,
-    """FakeQuantization(quantization_formula: str = 'google', quantization_bit: int = 8, quantization_scheme: str = 'symmetric')
-    
+    """
     在推理时模拟量化操作。
 
     输出将被计算为：
@@ -1716,7 +1715,7 @@ reset_docstr(
 
     此接口与 PyTorch 一致，文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.SmoothL1Loss.html 。
     
-    与 :class:`torch.nn.MSELoss` 相比，它对异常值不太敏感，并在某些场景下可以防止梯度爆炸。比如 Ross Girshick 的论文`Fast R-CNN <https://openaccess.thecvf.com/content_iccv_2015/papers/Girshick_Fast_R-CNN_ICCV_2015_paper.pdf>`__。
+    与 :class:`torch.nn.MSELoss` 相比，它对异常值不太敏感，并在某些场景下可以防止梯度爆炸。比如 Ross Girshick 的论文 `Fast R-CNN <https://openaccess.thecvf.com/content_iccv_2015/papers/Girshick_Fast_R-CNN_ICCV_2015_paper.pdf>`__ 。
 
     对于大小为 :math:`N` 的批次，未减少的损失可以描述为：
 
@@ -1894,7 +1893,7 @@ reset_docstr(
     这对于实现步幅为 :math:`1/r` 的高效亚像素卷积很有用。
 
     更多细节请参考这篇论文：
-    `Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network`_
+    `Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network`_ 。
 
     参数：
         - **upscale_factor** (int, optional) - 增加空间分辨率的因子，仅在空间高度和宽度因子相同时使用。
@@ -2047,8 +2046,8 @@ reset_docstr(
     参数：
         - **size** (int or Tuple[int] or Tuple[int, int] or Tuple[int, int, int], optional) - 输出空间大小。
         - **scale_factor** (float or Tuple[float] or Tuple[float, float] or Tuple[float, float, float], optional) - 空间大小的乘数。若是 tuple 则需要匹配输入大小。
-        - **mode** (str, optional) - 上采样算法： ``'nearest'``,``'linear'``, ``'bilinear'``, ``'bicubic'`` 和 ``'trilinear'``。默认值为： ``'nearest'``。
-        - **align_corners** (bool, optional) - 若设置为 ``True`` ，则若为 True，则输入和输出张量的角像素对齐，从而保留这些像素的值。这仅在模式为 ``'linear'``, ``'bilinear'``, 或 ``'trilinear'`` 时有效。默认值为 False。
+        - **mode** (str, optional) - 上采样算法： ``'nearest'``，``'linear'``，``'bilinear'``，``'bicubic'`` 和 ``'trilinear'``。默认值为：``'nearest'``。
+        - **align_corners** (bool, optional) - 若设置为 ``True`` ，则若为 True，则输入和输出张量的角像素对齐，从而保留这些像素的值。这仅在模式为 ``'linear'``，``'bilinear'`` 或 ``'trilinear'`` 时有效。默认值为 False。
 
     形状：
         - Input: :math:`(N, C, W_{in})`, :math:`(N, C, H_{in}, W_{in})` 或 :math:`(N, C, D_{in}, H_{in}, W_{in})`
