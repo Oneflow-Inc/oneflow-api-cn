@@ -56,3 +56,6 @@ from .multistep_lr import *
 from .polynomial_lr import *
 from .reduce_lr_on_plateau import *
 from .step_lr import *
+from .conv import *
+from .normalization import *
+from .vision import *

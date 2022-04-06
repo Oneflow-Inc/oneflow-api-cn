@@ -288,3 +288,82 @@ reset_docstr(
 
     """
 )
+
+reset_docstr(
+    oneflow._C.adaptive_avg_pool3d,
+    """
+    adaptive_avg_pool3d(input, output_size) -> Tensor
+
+    在单个由几个输入平面组成的输入信号上应用 3D 自适应平均池化。
+
+    更多细节和输出的形状请参考 :class:`~oneflow.nn.AdaptiveAvgPool3d`。
+
+    参数：
+        - **input** - 输入张量。
+        - **output_size** - 目标输出大小（单个整数或三整数元组）。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow         
+        >>> import numpy as np
+
+        >>> input = flow.tensor(np.random.randn(1, 1, 4, 4, 4), dtype=flow.float32)
+        >>> output = flow.nn.functional.adaptive_avg_pool3d(input, (2, 2, 2))
+    """
+)
+
+reset_docstr(
+    oneflow._C.adaptive_avg_pool2d,
+    """
+    adaptive_avg_pool2d(input, output_size) -> Tensor
+
+    在单个由几个输入平面组成的输入信号上应用 2D 自适应平均池化。
+
+    更多细节和输出的形状请参考 :class:`~oneflow.nn.AdaptiveAvgPool2d`。
+
+    参数：
+        - **input** - 输入张量。
+        - **output_size** - 目标输出大小（单个整数或二整数元组）。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+
+        >>> arr = np.array([[[[ 0.1004,  0.0488, -1.0515,  0.9466],[ 0.4538,  0.2361,  1.3437,  0.398 ],[ 0.0558, -0.6875, -1.6544, -0.6226],[ 0.1018,  0.0502, -1.2538,  0.1491]]]])
+        >>> input = flow.tensor(arr, dtype=flow.float32)
+        >>> outputs = flow.nn.functional.adaptive_avg_pool2d(input, (2, 2))
+    """
+)
+
+reset_docstr(
+    oneflow._C.adaptive_avg_pool1d,
+    """
+    adaptive_avg_pool1d(input, output_size) -> Tensor
+
+    在单个由几个输入平面组成的输入信号上应用 1D 自适应平均池化。
+
+    更多细节和输出的形状请参考 :class:`~oneflow.nn.AdaptiveAvgPool1d`。
+
+    参数：
+        - **input** - 输入张量。
+        - **output_size** - 目标输出大小（单个整数）。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+
+        >>> arr = np.array([[[ 0.0558, -0.6875, -1.6544, -0.6226,  0.1018,  0.0502, -1.2538, 0.1491]]])
+        >>> input = flow.tensor(arr, dtype=flow.float32)
+        >>> flow.nn.functional.adaptive_avg_pool1d(input, output_size=[4])
+        tensor([[[-0.3158, -1.1385,  0.0760, -0.5524]]], dtype=oneflow.float32)
+
+    """
+)

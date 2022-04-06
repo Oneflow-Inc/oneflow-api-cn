@@ -470,14 +470,15 @@ reset_docstr(
     .. code-block:: python
 
         >>> import oneflow as flow
+        >>> import numpy as np
 
-        >>> x = flow.rand()
+        >>> x = flow.tensor(np.random.randn(), dtype=flow.float32)
         >>> flow.t(x).shape
         oneflow.Size([])
-        >>> x = flow.rand(3)
+        >>> x = flow.tensor(np.random.randn(3), dtype=flow.float32)
         >>> flow.t(x).shape
         oneflow.Size([3])
-        >>> x = flow.rand(2,3)
+        >>> x = flow.tensor(np.random.randn(2,3), dtype=flow.float32)
         >>> flow.t(x).shape
         oneflow.Size([3, 2])
     
