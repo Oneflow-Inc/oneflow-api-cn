@@ -68,8 +68,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.nn.utils.clip_grad_norm_,
-    r"""clip_grad_norm_(parameters, max_norm, norm_type=2.0, error_if_nonfinite=True) → oneflow._oneflow_internal.Tensor
-
+    r"""
     裁剪可迭代参数的梯度范数。范数是在所有梯度上一起计算的，就像它们被连接成一个向量一样。
 
     参数：

@@ -717,7 +717,7 @@ reset_docstr(
 
     将类 :class:`~flow.nn.LogSoftmax` 和 :class:`~flow.nn.NLLLoss` 组合在一起。
 
-    该类在使用 `C` 类训练分类问题时很有用。
+    该类在使用 `C` 类训练分类问题时很有效。
 
     :attr:`input` 应包含每个类的原始的，非标准化分数。
 
@@ -776,7 +776,7 @@ reset_docstr(
 
     参数：
         - **negative_slope** - 控制负斜率的角度。默认值为 1e-2。
-        - **inplace** - 可以选择就地执行操作。默认值为 ``False``。
+        - **inplace** - 可以选择以 in-place 的方式执行操作。默认值为 ``False``。
 
     形状：
         - **Input** - :math:`(N, *)` ，其中 `*` 表示任意数量的附加维度。
@@ -1310,9 +1310,7 @@ reset_docstr(
     
     负对数似然损失，在 `C` 类训练分类问题中很有效。
 
-    通过前向调用给出的输入将包含每个类的对数概率。在 `K` 维情况下，输入必须是
-    大小为 :math:`(minibatch, C)` 或 :math:`(minibatch, C, d_1, d_2, ..., d_K)` 的
-    张量且 :math:`K \\geq 1` 
+    通过前向调用给出的输入将包含每个类的对数概率。在 `K` 维情况下，输入必须是大小为 :math:`(minibatch, C)` 或 :math:`(minibatch, C, d_1, d_2, ..., d_K)` 的张量且 :math:`K \\geq 1` 
 
     通过在网络的最后一层添加 `LogSoftmax` 层，可以直接得到神经网络中的对数概率。如果不想添加额外的层，可以改用 `CrossEntropyLoss` 
 
@@ -1548,7 +1546,7 @@ reset_docstr(
         \\end{cases}
 
     参数：
-        - **inplace** - 可以选择就地执行操作。默认值为 ``False``。
+        - **inplace** - 可以选择以 in-place 的方式执行操作。默认值为 ``False``。
 
     形状：
         - Input: :math:`(N, *)` ，其中 `*` 表示任意数量的附加维度。
@@ -1733,15 +1731,10 @@ reset_docstr(
         \\end{cases}
 
     .. note::
-        平滑 L1 损失可以看作是 :class:`L1Loss` ，但 :math:`|x - y| < beta` 部分被替
-            换为二次函数，使得它的斜率在 :math:`|x - y| = beta` 处为 1。二次函数的部
-            分平滑了 :math:`|x - y| = 0` 处的 L1 损失。
+        平滑 L1 损失可以看作是 :class:`L1Loss` ，但 :math:`|x - y| < beta` 部分被替换为二次函数，使得它的斜率在 :math:`|x - y| = beta` 处为 1。二次函数的部分平滑了 :math:`|x - y| = 0` 处的 L1 损失。
 
     .. note::
-        平滑 L1 损失与 :class:`HuberLoss` 密切相关，相当
-            于 :math:`huber(x, y) / beta` （注意 Smooth L1 的 beta 超
-            参数相当于 Huber 的 delta）。这导致了以下差异：
-
+        平滑 L1 损失与 :class:`HuberLoss` 密切相关，相当于 :math:`huber(x, y) / beta` （注意 Smooth L1 的 beta 超参数相当于 Huber 的 delta）。这导致了以下差异：
         * 当 beta 趋向 0，平滑 L1 损失收敛到 :class:`L1Loss` ，而 :class:`HuberLoss` 收敛到常数 0 损失。
         * 当 beta 趋向 :math:`+\\infty` ，平滑 L1 损失收敛到常数 0 损失，而 :class:`HuberLoss` 收敛到 :class:`MSELoss`。
         * 对于平滑 L1 损失，随着 beta 的变化，损失的 L1 段的斜率恒为 1。而对于 :class:`HuberLoss` ，斜率是 beta。
@@ -1996,10 +1989,7 @@ reset_docstr(
         - **margin** (float, optional) - 默认值为 :math:`1`
         - **p** (float, optional) - 成对距离的范数，默认值为 :math:`2.0`
         - **swap** (bool, optional) - 默认值为 ``False``.
-        - **reduction** (string, optional) - 指定对输出应用的 reduction ：
-            ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'`` ：不进行 reduction ；
-            ``'mean'`` ：输出的和将会除以输出中的元素数量；
-            ``'sum'`` ：输出将被求和。默认值为 ``'mean'``。注意： :attr:`size_average` 和 :attr:`reduce` 正逐渐被弃用，指定这二者的任何一个都将覆盖 :attr:`reduction`。默认值为 ``'mean'``
+        - **reduction** (string, optional) - 指定对输出应用的 reduction，可以为：``'none'`` | ``'mean'`` | ``'sum'``。其中 ``'none'`` ：不进行 reduction；``'mean'`` ：输出的和将会除以输出中的元素数量；``'sum'`` ：输出将被求和。默认值为 ``'mean'``。注意： :attr:`size_average` 和 :attr:`reduce` 正逐渐被弃用，指定这二者的任何一个都将覆盖 :attr:`reduction`。默认值为 ``'mean'``。
 
     形状：
         - Input: :math:`(N, D)` ，其中 :math:`D` 是向量维度。
@@ -2030,7 +2020,7 @@ reset_docstr(
 
     对给定的多通道 1D（时间）、2D（空间）或 3D（体积）数据进行上采样。
 
-    假定输入数据的形式为 ``批量大小 x 通道 x [可选深度] x [可选高度] x 宽度``。 因此，对于空间输入，我们期待一个 4D 张量；对于体积输入，我们期待一个 5D 张量。
+    假定输入数据的形式为 `批量大小 x 通道 x [可选深度] x [可选高度] x 宽度`。 因此，对于空间输入，我们期待一个 4D 张量；对于体积输入，我们期待一个 5D 张量。
 
     可用于上采样的算法分别是 3D、4D 和 5D 输入张量的最近邻和线性、双线性、双三次和三线性算法。
 

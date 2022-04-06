@@ -412,7 +412,7 @@ reset_docstr(
     
     此接口与 PyTorch 一致。文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.KLDivLoss.html?highlight=kldivloss#torch.nn.KLDivLoss 。
 
-    此算子测量 KL 散度。 `Kullback-Leibler divergence`_ 可用于连续分布中的距离测量，并且在对连续输出分布的空间（离散采样）执行直接回归时通常很有用。与 :class:`~torch.nn.NLLLoss` 一样， :attr:`input` 应包含 *log-probabilities* 并且不限于 2D tensor。默认情况下，目标被解释为 *probabilities* ，但可以将其视为将 :attr:`log_target` 设置为 ``True`` 的 *log-probabilities* 。
+    此算子测量 KL 散度。 `Kullback-Leibler divergence`_ 可用于连续分布中的距离测量，并且在对连续输出分布的空间（离散采样）执行直接回归时通常很有效。与 :class:`~torch.nn.NLLLoss` 一样， :attr:`input` 应包含 *log-probabilities* 并且不限于 2D tensor。默认情况下，目标被解释为 *probabilities* ，但可以将其视为将 :attr:`log_target` 设置为 ``True`` 的 *log-probabilities* 。
 
     此 criterion 要求 `target` 、 `Tensor` 的形状与 `input` 、 `Tensor` 一致。未简化 （即 :attr:`reduction` 设置为 ``'none'`` ） 的损失可以描述为：
 
