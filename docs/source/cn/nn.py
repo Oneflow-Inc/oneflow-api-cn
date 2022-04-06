@@ -1314,8 +1314,7 @@ reset_docstr(
     大小为 :math:`(minibatch, C)` 或 :math:`(minibatch, C, d_1, d_2, ..., d_K)` 的
     张量且 :math:`K \\geq 1` 
 
-    通过在网络的最后一层添加 `LogSoftmax` 层，可以轻松得到
-    神经网络中的对数概率。如果您不想添加额外的层，可以改用 `CrossEntropyLoss` 
+    通过在网络的最后一层添加 `LogSoftmax` 层，可以直接得到神经网络中的对数概率。如果不想添加额外的层，可以改用 `CrossEntropyLoss` 
 
     该函数期望的 `target` 应为 :math:`[0, C-1]` 范围内的索引，其中 `C = number of classes`
 
