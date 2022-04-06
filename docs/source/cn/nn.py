@@ -1886,7 +1886,7 @@ reset_docstr(
 
     将形状为 :math:`(*, C \\times r_h \\times r_w, H, W)` 的张量中的元素重新排列为形状为 :math:`(*, C, H \\times r_h, W \\times r_w)` 的张量，其中 r_h 和 r_w 是放大因子。
 
-    这对于实现步幅为 :math:`1/r` 的高效亚像素卷积很有用。
+    这对于实现步幅为 :math:`1/r` 的高效亚像素卷积很有效。
 
     更多细节请参考这篇论文：
     `Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network`_ 。
