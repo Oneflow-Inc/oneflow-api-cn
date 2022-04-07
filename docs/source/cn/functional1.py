@@ -186,7 +186,7 @@ reset_docstr(
     参数：
         - **theta** (Tensor) - 形状为 (:math:`N, 2, 3`)（2D 场景）或形状为 (:math:`N, 3, 4`)（3D 场景）的仿射矩阵的输入批量。
         - **size** (oneflow.Size) - 目标输出图像大小。形状为 (:math:`N, C, H, W`)（2D 场景）或 (:math:`N, C, D, H, W`)（3D 场景），例如 ``oneflow.Size((32, 3, 24, 24))``。
-        - **align_corners** (bool) - 如果为 ``True``，则考虑 ``-1``和 ``1`` 来指代角像素的中心，而不是图像的角。参考 :func:`grid_sample` 来获得更详细的描述。由 :func:`affine_grid` 生成的网格应使用与此选项相同的设置传递给 :func:`grid_sample`。默认为 ``False``。
+        - **align_corners** (bool) - 如果为 ``True``，则考虑 ``-1`` 和 ``1`` 来指代角像素的中心，而不是图像的角。参考 :func:`grid_sample` 来获得更详细的描述。由 :func:`affine_grid` 生成的网格应使用与此选项相同的设置传递给 :func:`grid_sample`。默认为 ``False``。
 
     返回值：
         output (Tensor) - 形状为 (:math:`N, H, W, 2`) 的输出张量。
