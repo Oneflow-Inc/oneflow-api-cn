@@ -57,7 +57,7 @@ reset_docstr(
     在训练期间，使用来自伯努利分布的样本以概率 :attr:`p` 将输入张量的一些元素随机归零。
 
     参数：      
-        - **x** (Tensor) - 将被实施丢弃操作的张量。
+        - **x** (Tensor) - 将应用 dropout 的张量。
         - **p** (float) - 任一元素被归零的概率，默认为 0.5。
         - **training** (bool) - 若为 True 则将实施丢弃操作，默认为 True。   
         - **generator** (Generator, optional) - 用于采样的伪随机数发生器。
