@@ -59,7 +59,7 @@ reset_docstr(
     参数：      
         - **x** (Tensor) - 将应用 dropout 的张量。
         - **p** (float) - 任一元素被归零的概率，默认为 0.5。
-        - **training** (bool) - 若为 True 则将实施丢弃操作，默认为 True。   
+        - **training** (bool) - 若为 True 则应用 dropout，默认为 True。   
         - **generator** (Generator, optional) - 用于采样的伪随机数发生器。
         - **addend** (Tensor, optional) - 加入到丢弃操作的结果中的张量，它可以用于模型的残差连接结构。默认为 None。
 
