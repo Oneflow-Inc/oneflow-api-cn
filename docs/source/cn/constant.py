@@ -469,16 +469,16 @@ reset_docstr(
 
     .. code-block:: python
 
-        >>> import oneflow as flow
+        > import oneflow as flow
 
-        >>> x = flow.rand()
-        >>> flow.t(x).shape
+        > x = flow.rand()
+        > flow.t(x).shape
         oneflow.Size([])
-        >>> x = flow.rand(3)
-        >>> flow.t(x).shape
+        > x = flow.rand(3)
+        > flow.t(x).shape
         oneflow.Size([3])
-        >>> x = flow.rand(2,3)
-        >>> flow.t(x).shape
+        > x = flow.rand(2,3)
+        > flow.t(x).shape
         oneflow.Size([3, 2])
     
     """,

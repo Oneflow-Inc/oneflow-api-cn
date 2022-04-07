@@ -64,7 +64,7 @@ reset_docstr(
 
     参数：
         - **weight** (oneflow.Tensor, 可选的): 手动重新调整损失的权重。默认为 ``None`` ，对应的权重值为 1
-        - **reduction** (str, 可选的): reduce 的方式，可以是 "none" 、 "mean" 、 "sum" 中的一种。默认为 "mean" 
+        - **reduction** (str, 可选的): 规约的方式，可以是 "none" 、 "mean" 、 "sum" 中的一种。默认为 "mean" 
 
     Attention:
         输入值必须在区间 (0, 1) 内。否则此损失函数可能返回 `nan` 值。
@@ -131,7 +131,7 @@ reset_docstr(
 
     参数：
         - **weight** (Tensor, 可选的): 手动重新调整损失的权重。默认为 ``None``
-        - **reduction** (str, 可选的): reduce 的方式，可以是 ``"none"`` 、 ``"mean"`` 、 ``"sum"`` 中的一种。默认为 "mean" 。如果为 ``'none'`` 则不进行 reduce 。如果为 ``'mean'`` ，输出的值的和除以元素数。如果为 ``'sum'`` ，输出将被求和。默认为 ``"mean"``
+        - **reduction** (str, 可选的): 规约的方式，可以是 ``"none"`` 、 ``"mean"`` 、 ``"sum"`` 中的一种。默认为 "mean" 。如果为 ``'none'`` 则不进行规约。如果为 ``'mean'`` ，输出的值的和除以元素数。如果为 ``'sum'`` ，输出将被求和。默认为 ``"mean"``
         - **pos_weight** (Tensor, 可选的): 手动重新调整正例的权重。
 
     形状：
@@ -246,12 +246,11 @@ reset_docstr(
     因为批归一化 (Batch Normalization) 是在 `C` 维度上完成的，计算 `(N, L)` 切片的统计数据，所以常称其为 Temporal Batch Normalization 。
     
     参数：
-        - **num_features** : :math:`C` 来自于大小为 :math:`(N, C, L)` 的预期输入或 :math:`L` 来自大小为 :math:`(N, L)` 的输入
-        - **eps** : 为数值稳定性而为分母加的值。默认为：1e-5
-        - **momentum** : 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。设定为 ``None`` 则计算移动平均 (Moving average) ，默认：0.1
-        - **affine** : 如果为 ``True`` ，该模块具有可学习的仿射参数。默认为 ``True`` 
-        - **track_running_stats** : 当设置为 ``True`` 时，该模块跟踪运行均值和方差，当设置为 ``False`` 时，此模块不会跟踪此类统计信息，
-            并将统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 初始化为 ``None`` 。当这些缓冲区为“无”时，此模块在训练和评估模式中始终使用批处理统计信息。默认值： ``True``
+        - **num_features** - :math:`C` 来自于大小为 :math:`(N, C, L)` 的预期输入或 :math:`L` 来自大小为 :math:`(N, L)` 的输入
+        - **eps** - 为数值稳定性而为分母加的值。默认为：1e-5
+        - **momentum** - 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。设定为 ``None`` 则计算移动平均 (Moving average) ，默认：0.1
+        - **affine** - 如果为 ``True`` ，该模块具有可学习的仿射参数。默认为 ``True`` 
+        - **track_running_stats** - 当设置为 ``True`` 时，该模块跟踪运行均值和方差，当设置为 ``False`` 时，此模块不会跟踪此类统计信息，并将统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 初始化为 ``None`` 。当这些缓冲区为“无”时，此模块在训练和评估模式中始终使用批处理统计信息。默认值： ``True``
     
     形状：
         - **Input** : :math:`(N, C)` 或 :math:`(N, C, L)`
@@ -296,12 +295,11 @@ reset_docstr(
     因为批归一化 (Batch Normalization) 是在 `C` 维度上完成的，计算 `(N, H, W)` 切片的统计数据，所以常称其为 Spatial Batch Normalization 。
 
     参数：
-        - **num_features** : :math:`C` 来自于大小为 :math:`(N, C, H, W)` 的预期输入
-        - **eps** : 为数值稳定性而为分母加的值。默认为：1e-5
-        - **momentum** : 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。设定为 ``None`` 则计算移动平均 (Moving average) ，默认：0.1
-        - **affine** : 如果为 ``True`` ，该模块具有可学习的仿射参数。默认为 ``True`` 
-        - **track_running_stats** : 当设置为 ``True`` 时，该模块跟踪运行均值和方差，当设置为 ``False`` 时，此模块不会跟踪此类统计信息，
-            并将统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 初始化为 ``None`` 。当这些缓冲区为“无”时，此模块在训练和评估模式中始终使用批处理统计信息。默认值： ``True``
+        - **num_features** - :math:`C` 来自于大小为 :math:`(N, C, H, W)` 的预期输入
+        - **eps** - 为数值稳定性而为分母加的值。默认为：1e-5
+        - **momentum** - 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。设定为 ``None`` 则计算移动平均 (Moving average) ，默认：0.1
+        - **affine** - 如果为 ``True`` ，该模块具有可学习的仿射参数。默认为 ``True`` 
+        - **track_running_stats** - 当设置为 ``True`` 时，该模块跟踪运行均值和方差，当设置为 ``False`` 时，此模块不会跟踪此类统计信息，并将统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 初始化为 ``None`` 。当这些缓冲区为“无”时，此模块在训练和评估模式中始终使用批处理统计信息。默认值： ``True``
 
     形状：
         - **Input** : :math:`(N, C, H, W)` 
@@ -345,12 +343,11 @@ reset_docstr(
     因为批归一化 (Batch Normalization) 是在 `C` 维度上完成的，计算 `(N, H, W)` 切片的统计数据，所以常称其为 Spatial Batch Normalization 。
 
     参数：
-        - **num_features** : :math:`C` 来自于大小为 :math:`(N, C, D, H, W)` 的预期输入
-        - **eps** : 为数值稳定性而为分母加的值。默认为：1e-5
-        - **momentum** : 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。设定为 ``None`` 则计算移动平均 (Moving average) ，默认：0.1
-        - **affine** : 如果为 ``True`` ，该模块具有可学习的仿射参数。默认为 ``True`` 
-        - **track_running_stats** : 当设置为 ``True`` 时，该模块跟踪运行均值和方差，当设置为 ``False`` 时，此模块不会跟踪此类统计信息，
-            并将统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 初始化为 ``None`` 。当这些缓冲区为“无”时，此模块在训练和评估模式中始终使用批处理统计信息。默认值： ``True``
+        - **num_features** - :math:`C` 来自于大小为 :math:`(N, C, D, H, W)` 的预期输入
+        - **eps** - 为数值稳定性而为分母加的值。默认为：1e-5
+        - **momentum** - 用于 :attr:`running_mean` 和 :attr:`running_var` 计算的值。设定为 ``None`` 则计算移动平均 (Moving average) ，默认：0.1
+        - **affine** - 如果为 ``True`` ，该模块具有可学习的仿射参数。默认为 ``True`` 
+        - **track_running_stats** - 当设置为 ``True`` 时，该模块跟踪运行均值和方差，当设置为 ``False`` 时，此模块不会跟踪此类统计信息，并将统计缓冲区 :attr:`running_mean` 和 :attr:`running_var` 初始化为 ``None`` 。当这些缓冲区为“无”时，此模块在训练和评估模式中始终使用批处理统计信息。默认值： ``True``
     
     形状：
         - **Input** : :math:`(N, C, D, H, W)` 
@@ -413,23 +410,11 @@ reset_docstr(
     oneflow.nn.KLDivLoss,
     r"""KLDivLoss(reduction='mean', log_target=False)
     
-    此接口与 PyTorch 一致。
-    文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.KLDivLoss.html?highlight=kldivloss#torch.nn.KLDivLoss
+    此接口与 PyTorch 一致。文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.KLDivLoss.html?highlight=kldivloss#torch.nn.KLDivLoss 。
 
-    测量 KL 散度。 
+    此算子测量 KL 散度。 `Kullback-Leibler divergence`_ 可用于连续分布中的距离测量，并且在对连续输出分布的空间（离散采样）执行直接回归时通常很有效。与 :class:`~torch.nn.NLLLoss` 一样， :attr:`input` 应包含 *log-probabilities* 并且不限于 2D tensor。默认情况下，目标被解释为 *probabilities* ，但可以将其视为将 :attr:`log_target` 设置为 ``True`` 的 *log-probabilities* 。
 
-    `Kullback-Leibler divergence`_ 可用于连续分布中的距离测量，并且在对（离散采样）
-    连续输出分布的空间执行直接回归时通常很有用。
-
-    与 :class:`~torch.nn.NLLLoss` 一样， :attr:`input` 应包含 *log-probabilities* 并且不限于 2D tensor。
-
-    
-    默认情况下，目标被解释为 *probabilities* ，
-    但可以将其视为将 :attr:`log_target` 设置为 ``True`` 的 *log-probabilities* 。
-
-    此 criterion 要求 `target` 、 `Tensor` 的形状与 `input` 、 `Tensor` 一致。
-
-    未简化 （即 :attr:`reduction` 设置为 ``'none'`` ） 的损失可以描述为：
+    此 criterion 要求 `target` 、 `Tensor` 的形状与 `input` 、 `Tensor` 一致。未简化 （即 :attr:`reduction` 设置为 ``'none'`` ） 的损失可以描述为：
 
     .. math::
         l(x,y) = L = \{ l_1,\dots,l_N \}, \quad
