@@ -11,7 +11,7 @@ reset_docstr(
 
     参数：
         - **input** (Tensor): 输入张量
-        - **output_size** (Int64List[1]): 目标输出大小（单个整数）
+        - **output_size** - 目标输出大小（单个整数）
 
     """
 )
@@ -26,7 +26,7 @@ reset_docstr(
 
     参数：
         - **input** (Tensor): 输入张量
-        - **output_size** (Int64List[2]): 目标输出大小（单个整数或包含两个整数的元组）
+        - **output_size** - 目标输出大小（单个整数或包含两个整数的元组）
 
     """
 )
@@ -40,8 +40,8 @@ reset_docstr(
     参考： :mod:`oneflow.nn.AdaptiveAvgPool3d`
 
     参数：
-        - **input** (Tensor): 输入张量
-        - **output_size** (Int64List[3]): 目标输出大小（单个整数或包含三个整数的元组）
+        - **input** (Tensor) - 输入张量
+        - **output_size** - 目标输出大小（单个整数或包含三个整数的元组）
     """,
 )
 
@@ -56,7 +56,7 @@ reset_docstr(
     输出的数量等于输入平面的数量。
 
     参数：
-        - **output_size** (Int64List[1]): 目标输出大小 H（单个整数）
+        - **output_size** - 目标输出大小 H（单个整数）
     
     示例：
 
@@ -85,7 +85,7 @@ reset_docstr(
     输出的数量等于输入平面的数量。
 
     参数：
-        - **output_size** (Int64List[2]): 目标输出大小（单个整数 H 或包含两个整数的元组 (H, W) ）。 H 和 W 可以是 ``int`` 也可以是 ``None`` ，如果为 ``None`` 则大小将和输入大小一致。
+        - **output_size** - 目标输出大小（单个整数 H 或包含两个整数的元组 ``(H, W)`` ）。 H 和 W 可以是 ``int`` 也可以是 ``None`` ，如果为 ``None`` 则大小将和输入大小一致。
 
 
     示例：
@@ -127,7 +127,7 @@ reset_docstr(
     输出的数量等于输入平面的数量。
 
     参数：
-        - **output_size** (Int64List[3]): 目标输出大小（单个整数 D 则为 D x D x D 或包含三个整数的元组 (D, H, W) ）。 H 、 W 和 D 可以是 ``int`` 也可以是 ``None`` ，如果为 ``None`` 则大小将和输入大小一致。
+        - **output_size** - 目标输出大小（单个整数 D 则为 D x D x D 或包含三个整数的元组 (D, H, W) ）。 H 、 W 和 D 可以是 ``int`` 也可以是 ``None`` ，如果为 ``None`` 则大小将和输入大小一致。
 
     示例：
 

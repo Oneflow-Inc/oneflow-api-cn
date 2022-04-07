@@ -1494,7 +1494,7 @@ reset_docstr(
 reset_docstr(
     oneflow.std,
     r"""
-    返回 :attr:`input` 张量在 :attr:`dim` 维度每行的标准差。如果 :attr:`dim` 是一个维度列表，则减少 (reduce) 所有的维度。
+    返回输入张量在 :attr:`dim` 维度上每行的标准差。如果 :attr:`dim` 是一个维度列表，则对所有维度进行规约。
 
     如果 keepdim 为真，输出张量与输入张量大小相同，除了在 :attr:`dim` 维度的大小变为1。否则， :attr:`dim` 将被压缩，导致输出张量拥有 1 (或者 len(dim)) 个更少的维度。
 

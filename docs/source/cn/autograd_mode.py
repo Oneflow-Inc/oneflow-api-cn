@@ -6,7 +6,7 @@ reset_docstr(
     r"""
     禁用梯度计算的上下文管理器。
 
-    当确定不调用 Tensor.backward() 时，禁用梯度计算对于推理很有用，此操作相比 requires_grad=True 
+    当确定不调用 Tensor.backward() 时，禁用梯度计算对于推理很有效，此操作相比 requires_grad=True 
     时可以减少计算的内存消耗。
 
     此模式下，任何计算都会视 requires_grad 为 False ，即便输入有 requires_grad=True。
