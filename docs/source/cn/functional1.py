@@ -137,7 +137,7 @@ reset_docstr(
     参数：
         - **height_scale** (float) - 空间大小的乘数。如果它是元组，则必须匹配输入大小。
         - **width_scale** (float) - 空间大小的乘数。如果它是元组，则必须匹配输入大小。
-        - **align_corners** (bool) - 如果为 ``True``，则输入和输出张量的角像素对齐，从而保留这些像素的值。这仅在模式为“双线性”时有效。  
+        - **align_corners** (bool) - 如果为 ``True``，则输入和输出张量的角像素对齐，从而保留这些像素的值。这仅在 ``mode`` 为 ``'bilinear'`` 时有效。  
         - **interpolation** (str, optional) - 上采样算法，可以为 ``'nearest'`` 或 ``'bilinear'``。
         - **data_format** (str, optional) - 默认为 ``'channels_first'``。
 
