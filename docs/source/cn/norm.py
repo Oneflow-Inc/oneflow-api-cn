@@ -110,3 +110,42 @@ reset_docstr(
 
     """
 )
+
+reset_docstr(
+    oneflow._C.normalize,
+    """nn.functional.normalize(input: Tensor, p: float=2.0, dim: int=0, epsilon: float=1e-12) -> Tensor
+
+    对指定维度的输入进行 :math:`L_p` 规范化处理。
+
+    对于大小为 :math:`(n_0, ..., n_{dim}, ..., n_k)` 的 :attr:`input` 张量，每一个 :math:`n_{dim}` 维向量 :math:`v` 沿维度 :attr:`dim` 被转换为：
+
+    .. math::
+        v = \\frac{v}{\max(\\lVert v \\rVert_p, \\epsilon)}.
+
+    在默认参数下，它使用沿维度 :math:`1` 的向量上的欧几里得准则进行归一化。
+
+    但要注意，当 `input.shape[dim] = 1` 时，输入张量的梯度计算在不同的框架上有不同的结果。
+
+    参数：
+        - **input** (oneflow.Tensor)- 任何形状的输入张量。
+        - **p** (float)- 规范表述中的指数值，默认值：2。
+        - **dim** (int)- 要缩小的尺寸，默认值：1。
+        - **eps** (float)- 以避免被零除的极小值，默认值：1e-12。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> x = flow.tensor([[1, 2], [3, 4]], dtype=flow.float32)
+        >>> out = flow.nn.functional.normalize(x, 2, 0)
+        >>> out
+        tensor([[0.3162, 0.4472],
+                [0.9487, 0.8944]], dtype=oneflow.float32)
+        >>> out = flow.nn.functional.normalize(x, 2, 1)
+        >>> out
+        tensor([[0.4472, 0.8944],
+                [0.6000, 0.8000]], dtype=oneflow.float32)
+
+    """
+)
