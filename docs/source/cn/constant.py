@@ -441,15 +441,15 @@ reset_docstr(
 
     .. code-block:: python
 
-        >>> import oneflow as flow
+        > import oneflow as flow
 
-        >>> input = flow.rand(3,4,5,6)
-        >>> output = flow.vsplit(input,(1,3))
-        >>> output[0].size()
+        > input = flow.rand(3,4,5,6)
+        > output = flow.vsplit(input,(1,3))
+        > output[0].size()
         oneflow.Size([1, 4, 5, 6])
-        >>> output[1].size()
+        > output[1].size()
         oneflow.Size([2, 4, 5, 6])
-        >>> output[2].size()
+        > output[2].size()
         oneflow.Size([1, 4, 5, 6])
     """,
 )
@@ -469,16 +469,16 @@ reset_docstr(
 
     .. code-block:: python
 
-        >>> import oneflow as flow
+        > import oneflow as flow
 
-        >>> x = flow.rand()
-        >>> flow.t(x).shape
+        > x = flow.rand()
+        > flow.t(x).shape
         oneflow.Size([])
-        >>> x = flow.rand(3)
-        >>> flow.t(x).shape
+        > x = flow.rand(3)
+        > flow.t(x).shape
         oneflow.Size([3])
-        >>> x = flow.rand(2,3)
-        >>> flow.t(x).shape
+        > x = flow.rand(2,3)
+        > flow.t(x).shape
         oneflow.Size([3, 2])
     
     """,
