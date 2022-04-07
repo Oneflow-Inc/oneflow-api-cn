@@ -219,12 +219,12 @@ reset_docstr(
 
     .. code-block:: python
 
-        >>> import numpy as np
-        >>> import oneflow as flow
+        > import numpy as np
+        > import oneflow as flow
 
-        >>> x = flow.tensor(np.asarray([[[[1, -2], [3, 4]]]]), dtype=flow.float32)
-        >>> alpha = flow.nn.Parameter(flow.tensor([1], dtype=flow.float32).fill_(0.25))
-        >>> flow.nn.functional.prelu(x, alpha)
+        > x = flow.tensor(np.asarray([[[[1, -2], [3, 4]]]]), dtype=flow.float32)
+        > alpha = flow.nn.Parameter(flow.tensor([1], dtype=flow.float32).fill_(0.25))
+        > flow.nn.functional.prelu(x, alpha)
         tensor([[[[ 1.0000, -0.5000],
                   [ 3.0000,  4.0000]]]], dtype=oneflow.float32, grad_fn=<prelu_backward>)
 
