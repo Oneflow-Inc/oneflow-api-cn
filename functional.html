@@ -390,11 +390,11 @@
 <dl class="py function">
 <dt id="oneflow.nn.functional.celu">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">celu</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.celu" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies the element-wise function:</p>
+<dd><p>逐元素地应用如下等式：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\text{CELU}(x) = \max(0,x) + \min(0, \alpha * (\exp(x/\alpha) - 1))\]</div></div>
-<p>See <a class="reference internal" href="nn.html#oneflow.nn.CELU" title="oneflow.nn.CELU"><code class="xref py py-class docutils literal notranslate"><span class="pre">CELU</span></code></a> for more details.</p>
-<p>For examples:</p>
+<p>更多细节请参考 <a class="reference internal" href="nn.html#oneflow.nn.CELU" title="oneflow.nn.CELU"><code class="xref py py-class docutils literal notranslate"><span class="pre">CELU</span></code></a> 。</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
@@ -529,20 +529,19 @@
 <dl class="py function">
 <dt id="oneflow.nn.functional.log_softmax">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">log_softmax</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.log_softmax" title="Permalink to this definition">¶</a></dt>
-<dd><p>LogSoftmax is defined as:</p>
+<dd><p>LogSoftmax 的公式为：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\text{LogSoftmax}(x_{i}) = \log\left(\frac{\exp(x_i) }{ \sum_j \exp(x_j)} \right) = x_i - \log({ \sum_j \exp(x_j)})\]</div></div>
-<p>See <a class="reference internal" href="nn.html#oneflow.nn.LogSoftmax" title="oneflow.nn.LogSoftmax"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogSoftmax</span></code></a> for more details.</p>
+<p>参考 <a class="reference internal" href="nn.html#oneflow.nn.LogSoftmax" title="oneflow.nn.LogSoftmax"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogSoftmax</span></code></a> 获得更多细节。</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.functional.gelu">
-<code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">gelu</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.gelu" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gelu 激活算子.</p>
-<p>公式为：</p>
+<code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">gelu</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.gelu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gelu 激活算子，其公式为：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[out = 0.5 * x * (1 + tanh(\sqrt{\frac{2}{\pi}} * (x + 0.044715x^{3})))\]</div></div>
 <dl class="simple">
-<dt>参数：</dt><dd><p><strong>x</strong> (oneflow.tensor): 输入张量</p>
+<dt>参数：</dt><dd><p><strong>x</strong> (oneflow.tensor) - 输入张量</p>
 </dd>
 <dt>返回类型：</dt><dd><p>oneflow.tensor</p>
 </dd>
@@ -562,14 +561,14 @@
 <dl class="py function">
 <dt id="oneflow.nn.functional.glu">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">glu</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.glu" title="Permalink to this definition">¶</a></dt>
-<dd><p>The equation is:</p>
+<dd><p>glu 的公式为：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[GLU(input) = GLU(a, b) = a \otimes sigmoid(b)\]</div></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>where input is split in half along dim to form a and b, ⊗ is the element-wise product between matrices.</p>
+<p>其中输入沿维度 dim 被切分成 a 和 b 两半，⊗ 是矩阵间的按元素积。</p>
 </div>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
@@ -579,25 +578,26 @@
 <span class="go">        [4.9954, 5.9980]], dtype=oneflow.float32)</span>
 </pre></div>
 </div>
-<p>See
-<a class="reference internal" href="nn.html#oneflow.nn.GLU" title="oneflow.nn.GLU"><code class="xref py py-class docutils literal notranslate"><span class="pre">GLU</span></code></a> for more details.</p>
+<p>参考 <a class="reference internal" href="nn.html#oneflow.nn.GLU" title="oneflow.nn.GLU"><code class="xref py py-class docutils literal notranslate"><span class="pre">GLU</span></code></a> 获得更多细节。</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.functional.softsign">
-<code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">softsign</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.softsign" title="Permalink to this definition">¶</a></dt>
-<dd><p>公式为：</p>
+<code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">softsign</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.softsign" title="Permalink to this definition">¶</a></dt>
+<dd><p>softsign 的公式为：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[softsign(x) = \frac{x}{1 + |x|}\]</div></div>
 <p>示例：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">softsign</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span>
 <span class="go">tensor([0.5000, 0.6667, 0.7500], dtype=oneflow.float32)</span>
 </pre></div>
 </div>
-<p>更多细节请参考 <a class="reference internal" href="nn.html#oneflow.nn.Softsign" title="oneflow.nn.Softsign"><code class="xref py py-class docutils literal notranslate"><span class="pre">Softsign</span></code></a> 。</p>
+<p>参考 <a class="reference internal" href="nn.html#oneflow.nn.Softsign" title="oneflow.nn.Softsign"><code class="xref py py-class docutils literal notranslate"><span class="pre">Softsign</span></code></a> 获得更多细节。</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.functional.softmax">
@@ -636,7 +636,7 @@
 <dl class="py function">
 <dt id="oneflow.nn.functional.softplus">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">softplus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.softplus" title="Permalink to this definition">¶</a></dt>
-<dd><p>应用此 element-wise 公式：</p>
+<dd><p>逐元素地应用此公式：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\text{Softplus}(x) = \frac{1}{\beta} * \log(1 + \exp(\beta * x))\]</div></div>
 <p>更多细节参考 <a class="reference internal" href="nn.html#oneflow.nn.Softplus" title="oneflow.nn.Softplus"><code class="xref py py-class docutils literal notranslate"><span class="pre">Softplus</span></code></a> 。</p>
@@ -669,7 +669,7 @@
 <dl class="py function">
 <dt id="oneflow.nn.functional.mish">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">mish</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.mish" title="Permalink to this definition">¶</a></dt>
-<dd><p>应用此 element-wise 公式：</p>
+<dd><p>逐元素地应用此公式：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\text{mish}(x) = x * \text{tanh}(\text{softplus}(x))\]</div></div>
 <p>示例：</p>
@@ -687,28 +687,26 @@
 <dl class="py function">
 <dt id="oneflow.nn.functional.one_hot">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">one_hot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">off_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.one_hot" title="Permalink to this definition">¶</a></dt>
-<dd><p>This operator generates a onehot Tensor from input Tensor.</p>
-<p>If input Tensor’s rank is <cite>N</cite>, the corresponding onehot Tensor’s rank is <cite>N+1</cite>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – The input Tensor.</p></li>
-<li><p><strong>num_classes</strong> (<em>int</em>) – The length of onehot Tensor.</p></li>
-<li><p><strong>on_value</strong> (<em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em><em>, </em><em>optional</em>) – The fill value when <cite>x[i] == i</cite>. Defaults to 1.</p></li>
-<li><p><strong>off_value</strong> (<em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em><em>, </em><em>optional</em>) – The fill value when <cite>x[i] != i</cite>. Defaults to 0.</p></li>
+<dd><p>该算子根据输入张量生成一个 onehot 张量。</p>
+<p>如果输入张量的秩为 <cite>N</cite>，相应的 onehot 张量的秩为 <cite>N+1</cite>。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>input</strong> (Tensor) - 输入张量。</p></li>
+<li><p><strong>num_classes</strong> (int) - 输出的 onehot 张量的长度。</p></li>
+<li><p><strong>on_value</strong> (Union[int, float], optional) - 当 <cite>x[i] == i</cite> 时的填充值，默认为 1。</p></li>
+<li><p><strong>off_value</strong> (Union[int, float], optional) - 当 <cite>x[i] != i</cite> 时的填充值，默认为 0。</p></li>
 </ul>
 </dd>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The data type of input tensor should be <cite>int32</cite> or <cite>int64</cite>.</p>
+<p>输入张量的数据类型应为：<cite>int32</cite> 或 <cite>int64</cite>。</p>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>oneflow.Tensor.</p>
+<dl class="simple">
+<dt>返回值：</dt><dd><p>oneflow.Tensor</p>
 </dd>
 </dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
@@ -725,48 +723,30 @@
 <dl class="py function">
 <dt id="oneflow.nn.functional.triplet_margin_loss">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">triplet_margin_loss</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.triplet_margin_loss" title="Permalink to this definition">¶</a></dt>
-<dd><p>The documentation is referenced from: <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.triplet_margin_loss.html?highlight=triplet_margin_loss">https://pytorch.org/docs/stable/generated/torch.nn.functional.triplet_margin_loss.html?highlight=triplet_margin_loss</a></p>
-<p>Creates a criterion that measures the triplet loss given an input
-tensors <span class="math notranslate nohighlight">\(x1\)</span>, <span class="math notranslate nohighlight">\(x2\)</span>, <span class="math notranslate nohighlight">\(x3\)</span> and a margin with a value greater than <span class="math notranslate nohighlight">\(0\)</span>.
-This is used for measuring a relative similarity between samples. A triplet
-is composed by <cite>a</cite>, <cite>p</cite> and <cite>n</cite> (i.e., <cite>anchor</cite>, <cite>positive examples</cite> and <cite>negative
-examples</cite> respectively). The shapes of all input tensors should be
-<span class="math notranslate nohighlight">\((N, D)\)</span>.</p>
-<p>The distance swap is described in detail in the paper <a class="reference external" href="http://www.bmva.org/bmvc/2016/papers/paper119/index.html">Learning shallow
-convolutional feature descriptors with triplet losses</a> by
-V. Balntas, E. Riba et al.</p>
-<p>The loss function for each sample in the mini-batch is:</p>
+<dd><p>文档参考自：<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.triplet_margin_loss.html?highlight=triplet_margin_loss">https://pytorch.org/docs/stable/generated/torch.nn.functional.triplet_margin_loss.html?highlight=triplet_margin_loss</a></p>
+<p>在给定输入张量 <span class="math notranslate nohighlight">\(x1\)</span>, <span class="math notranslate nohighlight">\(x2\)</span>, <span class="math notranslate nohighlight">\(x3\)</span> 和值大于 <span class="math notranslate nohighlight">\(0\)</span> 的边距的情况下，创建一个测量三元组损失的标准。这用于测量样本之间的相对相似性。三元组由 <cite>a</cite>, <cite>p</cite> 和 <cite>n</cite> 组成（即分别为 <cite>锚点</cite>、<cite>正例</cite> 和 <cite>负例</cite> ）。所有输入张量的形状应为 <span class="math notranslate nohighlight">\((N, D)\)</span> 。</p>
+<p>Vassileios Balntas、Edgar Riba 等人的 <a class="reference external" href="http://www.bmva.org/bmvc/2016/papers/paper119/index.html">Learning shallow convolutional feature descriptors with triplet losses</a> 一文中详细描述了距离交换。</p>
+<p>小批量中每个样本的损失函数为：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[L(a, p, n) = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}\]</div></div>
-<p>where</p>
+<p>其中</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[d(x_i, y_i) = \left\lVert {\bf x}_i - {\bf y}_i \right\rVert_p\]</div></div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>margin</strong> (<em>float</em><em>, </em><em>optional</em>) – Default: <span class="math notranslate nohighlight">\(1\)</span>.</p></li>
-<li><p><strong>p</strong> (<em>float</em><em>, </em><em>optional</em>) – The norm degree for pairwise distance. Default: <span class="math notranslate nohighlight">\(2.0\)</span>.</p></li>
-<li><p><strong>swap</strong> (<em>bool</em><em>, </em><em>optional</em>) – The distance swap is described in detail in the paper
-<cite>Learning shallow convolutional feature descriptors with triplet losses</cite> by
-V. Balntas, E. Riba et al. Default: <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>reduction</strong> (<em>string</em><em>, </em><em>optional</em>) – Specifies the reduction to apply to the output:
-<code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction will be applied,
-<code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided by the number of
-elements in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be summed. Note: <code class="xref py py-attr docutils literal notranslate"><span class="pre">size_average</span></code>
-and <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduce</span></code> are in the process of being deprecated, and in the meantime,
-specifying either of those two args will override <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code>. Default: <code class="docutils literal notranslate"><span class="pre">'mean'</span></code></p></li>
-</ul>
-</dd>
-</dl>
 <dl class="simple">
-<dt>Shape:</dt><dd><ul class="simple">
-<li><p>Input: <span class="math notranslate nohighlight">\((N, D)\)</span> where <span class="math notranslate nohighlight">\(D\)</span> is the vector dimension.</p></li>
-<li><p>Output: A Tensor of shape <span class="math notranslate nohighlight">\((N)\)</span> if <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> is <code class="docutils literal notranslate"><span class="pre">'none'</span></code>, or a scalar
-otherwise.</p></li>
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>margin</strong> (float, optional) - 默认为 <span class="math notranslate nohighlight">\(1\)</span></p></li>
+<li><p><strong>p</strong> (float, optional) - 成对距离的范数，默认为 <span class="math notranslate nohighlight">\(2.0\)</span></p></li>
+<li><p><strong>swap</strong> (bool, optional) - 默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code> 。V. Balntas、E. Riba 等人的 <a class="reference external" href="http://www.bmva.org/bmvc/2016/papers/paper119/index.html">Learning shallow convolutional feature descriptors with triplet losses</a> 一文中详细描述了距离交换。</p></li>
+<li><p><strong>reduction</strong> (string, optional) - 指定应用于输出的 reduction：<code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>。若值为 <code class="docutils literal notranslate"><span class="pre">'none'</span></code> ：不进行 reduction；值为 <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> ：输出的和将会除以输出中的元素数量；值为 <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> ：输出将被求和。请注意：<code class="xref py py-attr docutils literal notranslate"><span class="pre">size_average</span></code> 和 <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduce</span></code> 正逐渐被弃用，指定这二者的任何一个都将覆盖 <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code>。默认值为 <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>。</p></li>
+</ul>
+</dd>
+<dt>形状：</dt><dd><ul class="simple">
+<li><p>Input: <span class="math notranslate nohighlight">\((N, D)\)</span> ，其中 <span class="math notranslate nohighlight">\(D\)</span> 是向量维度。</p></li>
+<li><p>Output: 若 <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> == <code class="docutils literal notranslate"><span class="pre">'none'</span></code> 则输出为形状为 <span class="math notranslate nohighlight">\((N)\)</span> 的张量，否则是一个标量。</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">triplet_loss</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">TripletMarginLoss</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -782,31 +762,24 @@ otherwise.</p></li>
 <dl class="py function">
 <dt id="oneflow.nn.functional.dropout">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">dropout</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generator</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Generator</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">addend</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.dropout" title="Permalink to this definition">¶</a></dt>
-<dd><p>The documentation is referenced from:
-<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.dropout.html">https://pytorch.org/docs/stable/generated/torch.nn.functional.dropout.html</a></p>
-<p>During training, randomly zeroes some of the elements of the input
-tensor with probability <code class="xref py py-attr docutils literal notranslate"><span class="pre">p</span></code> using samples from a Bernoulli
-distribution.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – A Tensor which will be applyed dropout.</p></li>
-<li><p><strong>p</strong> (<em>float</em>) – probability of an element to be zeroed. Default: 0.5</p></li>
-<li><p><strong>training</strong> (<em>bool</em>) – If is True it will apply dropout. Default: True</p></li>
-<li><p><strong>generator</strong> (<em>Generator</em><em>, </em><em>optional</em>) – A pseudorandom number generator for sampling</p></li>
-<li><p><strong>addend</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a><em>, </em><em>optional</em>) – A Tensor add in result after dropout, it can be used in model’s residual connection structure. Default: None</p></li>
-</ul>
-</dd>
-</dl>
+<dd><p>文档引用自： <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.dropout.html">https://pytorch.org/docs/stable/generated/torch.nn.functional.dropout.html</a> 。</p>
+<p>在训练期间，使用来自伯努利分布的样本以概率 <code class="xref py py-attr docutils literal notranslate"><span class="pre">p</span></code> 将输入张量的一些元素随机归零。</p>
 <dl class="simple">
-<dt>Shape:</dt><dd><ul class="simple">
-<li><p>Input: <span class="math notranslate nohighlight">\((*)\)</span>. Input can be of any shape</p></li>
-<li><p>Output: <span class="math notranslate nohighlight">\((*)\)</span>. Output is of the same shape as input</p></li>
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>x</strong> (Tensor) - 将应用 dropout 的张量。</p></li>
+<li><p><strong>p</strong> (float) - 任一元素被归零的概率，默认为 0.5。</p></li>
+<li><p><strong>training</strong> (bool) - 若为 True 则应用 dropout，默认为 True。</p></li>
+<li><p><strong>generator</strong> (Generator, optional) - 用于采样的伪随机数发生器。</p></li>
+<li><p><strong>addend</strong> (Tensor, optional) - 加入到 dropout 结果中的张量，它可以用于模型的残差连接结构。默认为 None。</p></li>
+</ul>
+</dd>
+<dt>形状：</dt><dd><ul class="simple">
+<li><p>Input: <span class="math notranslate nohighlight">\((*)\)</span> ，输入可以为任何形状。</p></li>
+<li><p>Output: <span class="math notranslate nohighlight">\((*)\)</span> ，与输入形状相同。</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
-<p>Example 1:</p>
+<p>示例 1：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
@@ -833,7 +806,7 @@ distribution.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">generator</span><span class="o">=</span><span class="n">generator</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Example 2:</p>
+<p>示例 2：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
@@ -854,35 +827,26 @@ distribution.</p>
 <span class="go">        [-0.4115,  2.2183,  0.4497,  1.6520]], dtype=oneflow.float32)</span>
 </pre></div>
 </div>
-<p>See <a class="reference internal" href="nn.html#oneflow.nn.Dropout" title="oneflow.nn.Dropout"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dropout</span></code></a> for details.</p>
+<p>参考 <a class="reference internal" href="nn.html#oneflow.nn.Dropout" title="oneflow.nn.Dropout"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dropout</span></code></a> 获得更多细节。</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.functional.upsample">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">upsample</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height_scale</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width_scale</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'channels_first'</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.upsample" title="Permalink to this definition">¶</a></dt>
-<dd><p>Upsample a given multi-channel 2D (spatial) data.</p>
-<p>The input data is assumed to be of the form
-<cite>minibatch x channels x height x width</cite>.
-Hence, for spatial inputs, we expect a 4D Tensor.</p>
-<p>The algorithms available for upsampling are nearest neighbor,
-bilinear, 4D input Tensor, respectively.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>height_scale</strong> (<em>float</em>) – multiplier for spatial size. Has to match input size if it is a tuple.</p></li>
-<li><p><strong>width_scale</strong> (<em>float</em>) – multiplier for spatial size. Has to match input size if it is a tuple.</p></li>
-<li><p><strong>align_corners</strong> (<em>bool</em>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, the corner pixels of the input
-and output tensors are aligned, and thus preserving the values at
-those pixels. This only has effect when <code class="xref py py-attr docutils literal notranslate"><span class="pre">mode</span></code> is <code class="docutils literal notranslate"><span class="pre">'bilinear'</span></code>.</p></li>
-<li><p><strong>interpolation</strong> (<em>str</em><em>, </em><em>optional</em>) – the upsampling algorithm: one of <code class="docutils literal notranslate"><span class="pre">'nearest'</span></code>,
-<code class="docutils literal notranslate"><span class="pre">'bilinear'</span></code>.</p></li>
-<li><p><strong>data_format</strong> (<em>str</em><em>, </em><em>optional</em>) – Default: <code class="docutils literal notranslate"><span class="pre">'channels_first'</span></code></p></li>
+<dd><p>对给定的多通道 2D（空间）数据进行上采样。</p>
+<p>假设输入数据的形式为 <cite>minibatch x channels x height x width</cite>。因此，对于空间输入，4D 张量是被期待的。</p>
+<p>可用于上采样的算法分别是最近邻、双线性、4D 输入张量。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>height_scale</strong> (float) - 空间大小的乘数。如果它是元组，则必须匹配输入大小。</p></li>
+<li><p><strong>width_scale</strong> (float) - 空间大小的乘数。如果它是元组，则必须匹配输入大小。</p></li>
+<li><p><strong>align_corners</strong> (bool) - 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，则输入和输出张量的角像素对齐，从而保留这些像素的值。这仅在 <code class="docutils literal notranslate"><span class="pre">mode</span></code> 为 <code class="docutils literal notranslate"><span class="pre">'bilinear'</span></code> 时有效。</p></li>
+<li><p><strong>interpolation</strong> (str, optional) - 上采样算法，可以为 <code class="docutils literal notranslate"><span class="pre">'nearest'</span></code> 或 <code class="docutils literal notranslate"><span class="pre">'bilinear'</span></code>。</p></li>
+<li><p><strong>data_format</strong> (str, optional) - 默认为 <code class="docutils literal notranslate"><span class="pre">'channels_first'</span></code>。</p></li>
 </ul>
 </dd>
-</dl>
-<dl class="simple">
-<dt>Shape:</dt><dd><ul class="simple">
+<dt>形状：</dt><dd><ul class="simple">
 <li><p>Input: : <span class="math notranslate nohighlight">\((N, C, H_{in}, W_{in})\)</span></p></li>
-<li><p>Output: <span class="math notranslate nohighlight">\((N, C, H_{out}, W_{out})\)</span> , where</p></li>
+<li><p>Output: <span class="math notranslate nohighlight">\((N, C, H_{out}, W_{out})\)</span> ，其中</p></li>
 </ul>
 </dd>
 </dl>
@@ -890,7 +854,7 @@ those pixels. This only has effect when <code class="xref py py-attr docutils li
 \[H_{out} = \left\lfloor H_{in} \times \text{height_scale} \right\rfloor\]</div></div>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[W_{out} = \left\lfloor W_{in} \times \text{width_scale} \right\rfloor\]</div></div>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
@@ -905,48 +869,29 @@ those pixels. This only has effect when <code class="xref py py-attr docutils li
 <span class="go">          [3., 3., 4., 4.]]]], dtype=oneflow.float32)</span>
 </pre></div>
 </div>
-<p>See <a class="reference internal" href="nn.html#oneflow.nn.Upsample" title="oneflow.nn.Upsample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Upsample</span></code></a> for more details.</p>
+<p>参考 <a class="reference internal" href="nn.html#oneflow.nn.Upsample" title="oneflow.nn.Upsample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Upsample</span></code></a> 获得更多细节。</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.functional.affine_grid">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">affine_grid</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.affine_grid" title="Permalink to this definition">¶</a></dt>
-<dd><p>The interface is consistent with PyTorch.
-The documentation is referenced from:
-<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.affine_grid.html?highlight=affine_grid#torch.nn.functional.affine_grid">https://pytorch.org/docs/stable/generated/torch.nn.functional.affine_grid.html?highlight=affine_grid#torch.nn.functional.affine_grid</a></p>
-<p>Generates a 2D or 3D flow field (sampling grid), given a batch of
-affine matrices <code class="xref py py-attr docutils literal notranslate"><span class="pre">theta</span></code>.</p>
+<dd><p>此接口与 PyTorch 一致。文档参考自： <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.affine_grid.html?highlight=affine_grid#torch.nn.functional.affine_grid">https://pytorch.org/docs/stable/generated/torch.nn.functional.affine_grid.html?highlight=affine_grid#torch.nn.functional.affine_grid</a> 。</p>
+<p>给定一批仿射矩阵 <code class="xref py py-attr docutils literal notranslate"><span class="pre">theta</span></code> ，生成 2D 或 3D 流场（采样网格）。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This function is often used in conjunction with <a class="reference internal" href="#oneflow.nn.functional.grid_sample" title="oneflow.nn.functional.grid_sample"><code class="xref py py-func docutils literal notranslate"><span class="pre">grid_sample()</span></code></a>
-to build <a class="reference external" href="https://arxiv.org/abs/1506.02025">Spatial Transformer Networks</a> .</p>
+<p>此函数通常与 <a class="reference internal" href="#oneflow.nn.functional.grid_sample" title="oneflow.nn.functional.grid_sample"><code class="xref py py-func docutils literal notranslate"><span class="pre">grid_sample()</span></code></a> 结合使用来构建 <a class="reference external" href="https://arxiv.org/abs/1506.02025">Spatial Transformer Networks</a> 。</p>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>theta</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – input batch of affine matrices with shape
-(<span class="math notranslate nohighlight">\(N, 2, 3\)</span>) for 2D or
-(<span class="math notranslate nohighlight">\(N, 3, 4\)</span>) for 3D</p></li>
-<li><p><strong>size</strong> (<em>oneflow.Size</em>) – the target output image size.
-(<span class="math notranslate nohighlight">\(N, C, H, W\)</span> for 2D or
-<span class="math notranslate nohighlight">\(N, C, D, H, W\)</span> for 3D)
-Example: oneflow.Size((32, 3, 24, 24))</p></li>
-<li><p><strong>align_corners</strong> (<em>bool</em>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, consider <code class="docutils literal notranslate"><span class="pre">-1</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code>
-to refer to the centers of the corner pixels rather than the image corners.
-Refer to <a class="reference internal" href="#oneflow.nn.functional.grid_sample" title="oneflow.nn.functional.grid_sample"><code class="xref py py-func docutils literal notranslate"><span class="pre">grid_sample()</span></code></a> for a more complete description.
-A grid generated by <a class="reference internal" href="#oneflow.nn.functional.affine_grid" title="oneflow.nn.functional.affine_grid"><code class="xref py py-func docutils literal notranslate"><span class="pre">affine_grid()</span></code></a> should be passed to <a class="reference internal" href="#oneflow.nn.functional.grid_sample" title="oneflow.nn.functional.grid_sample"><code class="xref py py-func docutils literal notranslate"><span class="pre">grid_sample()</span></code></a>
-with the same setting for this option.
-Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>theta</strong> (Tensor) - 形状为 (<span class="math notranslate nohighlight">\(N, 2, 3\)</span>)（2D 场景）或形状为 (<span class="math notranslate nohighlight">\(N, 3, 4\)</span>)（3D 场景）的仿射矩阵的输入批量。</p></li>
+<li><p><strong>size</strong> (oneflow.Size) - 目标输出图像大小。形状为 (<span class="math notranslate nohighlight">\(N, C, H, W\)</span>)（2D 场景）或 (<span class="math notranslate nohighlight">\(N, C, D, H, W\)</span>)（3D 场景），例如 <code class="docutils literal notranslate"><span class="pre">oneflow.Size((32,</span> <span class="pre">3,</span> <span class="pre">24,</span> <span class="pre">24))</span></code>。</p></li>
+<li><p><strong>align_corners</strong> (bool) - 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，则考虑 <code class="docutils literal notranslate"><span class="pre">-1</span></code> 和 <code class="docutils literal notranslate"><span class="pre">1</span></code> 来指代角像素的中心，而不是图像的角。参考 <a class="reference internal" href="#oneflow.nn.functional.grid_sample" title="oneflow.nn.functional.grid_sample"><code class="xref py py-func docutils literal notranslate"><span class="pre">grid_sample()</span></code></a> 来获得更详细的描述。由 <a class="reference internal" href="#oneflow.nn.functional.affine_grid" title="oneflow.nn.functional.affine_grid"><code class="xref py py-func docutils literal notranslate"><span class="pre">affine_grid()</span></code></a> 生成的网格应使用与此选项相同的设置传递给 <a class="reference internal" href="#oneflow.nn.functional.grid_sample" title="oneflow.nn.functional.grid_sample"><code class="xref py py-func docutils literal notranslate"><span class="pre">grid_sample()</span></code></a>。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>output Tensor of size (<span class="math notranslate nohighlight">\(N, H, W, 2\)</span>)</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>output (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor">Tensor</a>)</p>
+<dt>返回值：</dt><dd><p>output (Tensor) - 形状为 (<span class="math notranslate nohighlight">\(N, H, W, 2\)</span>) 的输出张量。</p>
 </dd>
 </dl>
-<p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
+<p>示例：</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">affine_grid</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">flow</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span> <span class="n">align_corners</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -962,98 +907,44 @@ Default: <code class="docutils literal notranslate"><span class="pre">False</spa
 <dl class="py function">
 <dt id="oneflow.nn.functional.grid_sample">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">grid_sample</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.grid_sample" title="Permalink to this definition">¶</a></dt>
-<dd><p>The interface is consistent with PyTorch.
-The documentation is referenced from:
-<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.grid_sample.html?highlight=grid_sample#torch.nn.functional.grid_sample">https://pytorch.org/docs/stable/generated/torch.nn.functional.grid_sample.html?highlight=grid_sample#torch.nn.functional.grid_sample</a></p>
-<p>Given an <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> and a flow-field <code class="xref py py-attr docutils literal notranslate"><span class="pre">grid</span></code>, computes the
-<code class="docutils literal notranslate"><span class="pre">output</span></code> using <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> values and pixel locations from <code class="xref py py-attr docutils literal notranslate"><span class="pre">grid</span></code>.</p>
-<p>Currently, only spatial (4-D) and volumetric (5-D) <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> are
-supported.</p>
-<p>In the spatial (4-D) case, for <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> with shape
-<span class="math notranslate nohighlight">\((N, C, H_{in}, W_{in})\)</span> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">grid</span></code> with shape
-<span class="math notranslate nohighlight">\((N, H_{out}, W_{out}, 2)\)</span>, the output will have shape
-<span class="math notranslate nohighlight">\((N, C, H_{out}, W_{out})\)</span>.</p>
-<p>For each output location <code class="docutils literal notranslate"><span class="pre">output[n,</span> <span class="pre">:,</span> <span class="pre">h,</span> <span class="pre">w]</span></code>, the size-2 vector
-<code class="docutils literal notranslate"><span class="pre">grid[n,</span> <span class="pre">h,</span> <span class="pre">w]</span></code> specifies <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> pixel locations <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>,
-which are used to interpolate the output value <code class="docutils literal notranslate"><span class="pre">output[n,</span> <span class="pre">:,</span> <span class="pre">h,</span> <span class="pre">w]</span></code>.
-In the case of 5D inputs, <code class="docutils literal notranslate"><span class="pre">grid[n,</span> <span class="pre">d,</span> <span class="pre">h,</span> <span class="pre">w]</span></code> specifies the
-<code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code> pixel locations for interpolating
-<code class="docutils literal notranslate"><span class="pre">output[n,</span> <span class="pre">:,</span> <span class="pre">d,</span> <span class="pre">h,</span> <span class="pre">w]</span></code>. <code class="xref py py-attr docutils literal notranslate"><span class="pre">mode</span></code> argument specifies <code class="docutils literal notranslate"><span class="pre">nearest</span></code> or
-<code class="docutils literal notranslate"><span class="pre">bilinear</span></code> interpolation method to sample the input pixels.</p>
-<p><code class="xref py py-attr docutils literal notranslate"><span class="pre">grid</span></code> specifies the sampling pixel locations normalized by the
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> spatial dimensions. Therefore, it should have most values in
-the range of <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>. For example, values <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-1,</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">-1</span></code> is the
-left-top pixel of <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code>, and values  <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1,</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">1</span></code> is the
-right-bottom pixel of <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code>.</p>
-<p>If <code class="xref py py-attr docutils literal notranslate"><span class="pre">grid</span></code> has values outside the range of <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>, the corresponding
-outputs are handled as defined by <code class="xref py py-attr docutils literal notranslate"><span class="pre">padding_mode</span></code>. Options are</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">padding_mode="zeros"</span></code>: use <code class="docutils literal notranslate"><span class="pre">0</span></code> for out-of-bound grid locations,</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">padding_mode="border"</span></code>: use border values for out-of-bound grid locations,</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">padding_mode="reflection"</span></code>: use values at locations reflected by
-the border for out-of-bound grid locations. For location far away
-from the border, it will keep being reflected until becoming in bound,
-e.g., (normalized) pixel location <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-3.5</span></code> reflects by border <code class="docutils literal notranslate"><span class="pre">-1</span></code>
-and becomes <code class="docutils literal notranslate"><span class="pre">x'</span> <span class="pre">=</span> <span class="pre">1.5</span></code>, then reflects by border <code class="docutils literal notranslate"><span class="pre">1</span></code> and becomes
-<code class="docutils literal notranslate"><span class="pre">x''</span> <span class="pre">=</span> <span class="pre">-0.5</span></code>.</p></li>
+<dd><p>此接口与 PyTorch 一致。文档参考自： <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.grid_sample.html?highlight=grid_sample#torch.nn.functional.grid_sample">https://pytorch.org/docs/stable/generated/torch.nn.functional.grid_sample.html?highlight=grid_sample#torch.nn.functional.grid_sample</a></p>
+<p>给定 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 和流场 <code class="xref py py-attr docutils literal notranslate"><span class="pre">grid</span></code>，使用 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 和 <code class="xref py py-attr docutils literal notranslate"><span class="pre">grid</span></code> 中的像素位置计算输出。目前，仅支持空间 (4-D) 和体积 (5-D) 输入。在空间 (4-D) 情况下，对于形状为 <span class="math notranslate nohighlight">\((N, C, H_{in}, W_{in})\)</span> 的输入和形状为 <span class="math notranslate nohighlight">\((N, H_{out}, W_{out}, 2)\)</span> 的网格，输出将具有形状 <span class="math notranslate nohighlight">\((N, C, H_{out}, W_{out})\)</span>。</p>
+<p>对于每个输出位置 <code class="docutils literal notranslate"><span class="pre">output[n,</span> <span class="pre">:,</span> <span class="pre">h,</span> <span class="pre">w]</span></code>，大小为 2 的向量 <code class="docutils literal notranslate"><span class="pre">grid[n,</span> <span class="pre">h,</span> <span class="pre">w]</span></code> 指定输入像素位置 <code class="docutils literal notranslate"><span class="pre">x</span></code> 和 <code class="docutils literal notranslate"><span class="pre">y</span></code>，用于插值输出值 <code class="docutils literal notranslate"><span class="pre">output[n,</span> <span class="pre">:,</span> <span class="pre">h,</span> <span class="pre">w]</span></code>。在 5D 输入的情况下，<code class="docutils literal notranslate"><span class="pre">grid[n,</span> <span class="pre">d,</span> <span class="pre">h,</span> <span class="pre">w]</span></code> 指定用于插值 <code class="docutils literal notranslate"><span class="pre">output[n,</span> <span class="pre">:,</span> <span class="pre">d,</span> <span class="pre">h,</span> <span class="pre">w]</span></code> 的 <code class="docutils literal notranslate"><span class="pre">x</span></code>、<code class="docutils literal notranslate"><span class="pre">y</span></code>、<code class="docutils literal notranslate"><span class="pre">z</span></code> 像素位置。<code class="xref py py-attr docutils literal notranslate"><span class="pre">mode</span></code> 参数指定对输入像素进行采样的最近或双线性插值方法。网格指定由输入空间维度归一化的采样像素位置。因此，它应该具有 <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code> 范围内的大多数值。例如，<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-1,</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">-1</span></code> 是输入的左上角像素，<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1,</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">1</span></code> 是输入的右下角像素。</p>
+<dl class="simple">
+<dt>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">grid</span></code> 的值在 <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code> 之外，相应的输出按照 <code class="xref py py-attr docutils literal notranslate"><span class="pre">padding_mode</span></code> 的定义进行处理。那么：</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">padding_mode="zeros"</span></code>: 使用 <code class="docutils literal notranslate"><span class="pre">0</span></code> 表示越界网格位置。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">padding_mode="border"</span></code>: 使用边界值表示越界网格位置。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">padding_mode="reflection"</span></code>: 使用边界反映的位置处的值表示越界网格位置。对于远离边界的位置，它将一直被反射直到进入边界。例如（归一化）像素位置 <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-3.5</span></code> 由边界 <code class="docutils literal notranslate"><span class="pre">-1</span></code> 反射并变为 <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1.5</span></code>，然后由边界 <code class="docutils literal notranslate"><span class="pre">1</span></code> 反射并变为 <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-0.5</span></code>。</p></li>
 </ul>
-</div></blockquote>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This function is often used in conjunction with <a class="reference internal" href="#oneflow.nn.functional.affine_grid" title="oneflow.nn.functional.affine_grid"><code class="xref py py-func docutils literal notranslate"><span class="pre">affine_grid()</span></code></a>
-to build <a class="reference external" href="https://arxiv.org/abs/1506.02025">Spatial Transformer Networks</a> .</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>NaN values in <code class="xref py py-attr docutils literal notranslate"><span class="pre">grid</span></code> would be interpreted as <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – input of shape <span class="math notranslate nohighlight">\((N, C, H_{in}, W_{in})\)</span> (4-D case)
-or <span class="math notranslate nohighlight">\((N, C, D_{in}, H_{in}, W_{in})\)</span> (5-D case)</p></li>
-<li><p><strong>grid</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – flow-field of shape <span class="math notranslate nohighlight">\((N, H_{out}, W_{out}, 2)\)</span> (4-D case)
-or <span class="math notranslate nohighlight">\((N, D_{out}, H_{out}, W_{out}, 3)\)</span> (5-D case)</p></li>
-<li><p><strong>mode</strong> (<em>str</em>) – interpolation mode to calculate output values
-<code class="docutils literal notranslate"><span class="pre">'bilinear'</span></code> | <code class="docutils literal notranslate"><span class="pre">'nearest'</span></code> | <code class="docutils literal notranslate"><span class="pre">'bicubic'</span></code>. Default: <code class="docutils literal notranslate"><span class="pre">'bilinear'</span></code>
-Note: <code class="docutils literal notranslate"><span class="pre">mode='bicubic'</span></code> supports only 4-D input.
-When <code class="docutils literal notranslate"><span class="pre">mode='bilinear'</span></code> and the input is 5-D, the interpolation mode
-used internally will actually be trilinear. However, when the input is 4-D,
-the interpolation mode will legitimately be bilinear.</p></li>
-<li><p><strong>padding_mode</strong> (<em>str</em>) – padding mode for outside grid values
-<code class="docutils literal notranslate"><span class="pre">'zeros'</span></code> | <code class="docutils literal notranslate"><span class="pre">'border'</span></code> | <code class="docutils literal notranslate"><span class="pre">'reflection'</span></code>. Default: <code class="docutils literal notranslate"><span class="pre">'zeros'</span></code></p></li>
-<li><p><strong>align_corners</strong> (<em>bool</em>) – Geometrically, we consider the pixels of the
-input  as squares rather than points.
-If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the extrema (<code class="docutils literal notranslate"><span class="pre">-1</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code>) are considered as referring
-to the center points of the input’s corner pixels. If set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, they
-are instead considered as referring to the corner points of the input’s corner
-pixels, making the sampling more resolution agnostic.
-This option parallels the <code class="docutils literal notranslate"><span class="pre">align_corners</span></code> option in
-<a class="reference internal" href="#oneflow.nn.functional.interpolate" title="oneflow.nn.functional.interpolate"><code class="xref py py-func docutils literal notranslate"><span class="pre">interpolate()</span></code></a>, and so whichever option is used here
-should also be used there to resize the input image before grid sampling.
-Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>output Tensor</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>output (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor">Tensor</a>)</p>
 </dd>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">mode='bicubic'</span></code> is implemented using the <a class="reference external" href="https://en.wikipedia.org/wiki/Bicubic_interpolation">cubic convolution algorithm</a> with <span class="math notranslate nohighlight">\(\alpha=-0.75\)</span>.
-The constant <span class="math notranslate nohighlight">\(\alpha\)</span> might be different from packages to packages.
-For example, <a class="reference external" href="https://github.com/python-pillow/Pillow/blob/4634eafe3c695a014267eefdce830b4a825beed7/src/libImaging/Resample.c#L51">PIL</a> and <a class="reference external" href="https://github.com/opencv/opencv/blob/f345ed564a06178670750bad59526cfa4033be55/modules/imgproc/src/resize.cpp#L908">OpenCV</a> use -0.5 and -0.75 respectively.
-This algorithm may “overshoot” the range of values it’s interpolating.
-For example, it may produce negative values or values greater than 255 when interpolating input in [0, 255].
-Clamp the results with :func: <cite>flow.clamp</cite> to ensure they are within the valid range.</p>
+<p>此函数通常与 <a class="reference internal" href="#oneflow.nn.functional.grid_sample" title="oneflow.nn.functional.grid_sample"><code class="xref py py-func docutils literal notranslate"><span class="pre">grid_sample()</span></code></a> 结合使用来构建 <a class="reference external" href="https://arxiv.org/abs/1506.02025">Spatial Transformer Networks</a> 。</p>
 </div>
-<p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="xref py py-attr docutils literal notranslate"><span class="pre">grid</span></code> 中的 NaN 值将被解释为 <code class="docutils literal notranslate"><span class="pre">-1</span></code>。</p>
+</div>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>input</strong> (Tensor) - 形状为 <span class="math notranslate nohighlight">\((N, C, H_{in}, W_{in})\)</span> （4D 情况下）或形状为 <span class="math notranslate nohighlight">\((N, C, D_{in}, H_{in}, W_{in})\)</span> （5D 情况下）的输入张量</p></li>
+<li><p><strong>grid</strong> (Tensor) - 形状为 <span class="math notranslate nohighlight">\((N, H_{out}, W_{out}, 2)\)</span> （4D 情况下）或形状为 <span class="math notranslate nohighlight">\((N, D_{out}, H_{out}, W_{out}, 3)\)</span> （5D 情况下）的流场</p></li>
+<li><p><strong>mode</strong> (str) - 计算输出值的插值模式：<code class="docutils literal notranslate"><span class="pre">'bilinear'</span></code> | <code class="docutils literal notranslate"><span class="pre">'nearest'</span></code> | <code class="docutils literal notranslate"><span class="pre">'bicubic'</span></code>。默认为 <code class="docutils literal notranslate"><span class="pre">'bilinear'</span></code>。注意 <code class="docutils literal notranslate"><span class="pre">mode='bicubic'</span></code> 仅支持 4D 输入。当 <code class="docutils literal notranslate"><span class="pre">mode='bilinear'</span></code> 且输入是 5D 时，内部使用的插值模式实际上是三线性的。然而，当输入是 4D 时，插值模式将是双线性的。</p></li>
+<li><p><strong>padding_mode</strong> (str) - 外部网格值的填充模式：<code class="docutils literal notranslate"><span class="pre">'zeros'</span></code> | <code class="docutils literal notranslate"><span class="pre">'border'</span></code> | <code class="docutils literal notranslate"><span class="pre">'reflection'</span></code>。默认为 <code class="docutils literal notranslate"><span class="pre">'zeros'</span></code>。</p></li>
+<li><p><strong>align_corners</strong> (bool) - 在几何上，我们将输入的像素视为正方形而不是点。如果设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，则极值 （<code class="docutils literal notranslate"><span class="pre">-1</span></code>  和 <code class="docutils literal notranslate"><span class="pre">1</span></code>）被认为指代输入角像素的中心点。如果设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code>，则它们被认为是指输入角像素的角点，从而使采样与分辨率无关。 此选项与 <a class="reference internal" href="#oneflow.nn.functional.interpolate" title="oneflow.nn.functional.interpolate"><code class="xref py py-func docutils literal notranslate"><span class="pre">interpolate()</span></code></a> 中的 <code class="docutils literal notranslate"><span class="pre">align_corners</span></code> 选项一致，因此此处使用的任何选项也应用于在网格采样之前调整输入图像的大小。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
+</ul>
+</dd>
+<dt>返回值：</dt><dd><p>output (Tensor) - 输出张量。</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">mode='bicubic'</span></code> 使用 <span class="math notranslate nohighlight">\(\alpha=-0.75\)</span> 的 <a class="reference external" href="https://en.wikipedia.org/wiki/Bicubic_interpolation">三次卷积算法</a> 实现。常数 <span class="math notranslate nohighlight">\(\alpha\)</span> 可能因包而异。例如 <a class="reference external" href="https://github.com/python-pillow/Pillow/blob/4634eafe3c695a014267eefdce830b4a825beed7/src/libImaging/Resample.c#L51">PIL</a> 和 <a class="reference external" href="https://github.com/opencv/opencv/blob/f345ed564a06178670750bad59526cfa4033be55/modules/imgproc/src/resize.cpp#L908">OpenCV</a> 分别使用 -0.5 和 -0.75。该算法可能会“超出”它的插值范围。例如，输入位于 <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">255]</span></code> 中的插值时，它可能会产生负值或大于 <cite>255</cite> 的值。使用 <code class="xref py py-func docutils literal notranslate"><span class="pre">flow.clamp()</span></code> 钳制结果以确保它们在有效范围内。</p>
+</div>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="p">[[[</span><span class="o">-</span><span class="mf">0.9</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2000</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.333</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]],</span>
@@ -1061,7 +952,7 @@ Clamp the results with :func: <cite>flow.clamp</cite> to ensure they are within 
 <span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">grid</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np_grid</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">grid_sample</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'nearest'</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="s1">'zeros'</span><span class="p">,</span>
-<span class="gp">... </span>                                       <span class="n">align_corners</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">... </span>                                       <span class="n">align_corners</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span>
 <span class="go">tensor([[[[0., 8., 5., 7., 9.],</span>
 <span class="go">          [1., 8., 5., 8., 0.]]]], dtype=oneflow.float32)</span>
@@ -1071,80 +962,42 @@ Clamp the results with :func: <cite>flow.clamp</cite> to ensure they are within 
 <dl class="py function">
 <dt id="oneflow.nn.functional.interpolate">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">interpolate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nearest'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recompute_scale_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.interpolate" title="Permalink to this definition">¶</a></dt>
-<dd><p>The interface is consistent with PyTorch.</p>
-<p>The documentation is referenced from: <a class="reference external" href="https://pytorch.org/docs/1.9.0/_modules/torch/nn/functional.html#interpolate">https://pytorch.org/docs/1.9.0/_modules/torch/nn/functional.html#interpolate</a></p>
-<p>Down/up samples the input to either the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">size</span></code> or the given
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">scale_factor</span></code></p>
-<p>The algorithm used for interpolation is determined by <code class="xref py py-attr docutils literal notranslate"><span class="pre">mode</span></code>.</p>
-<p>Currently temporal, spatial and volumetric sampling are supported, i.e.
-expected inputs are 3-D, 4-D or 5-D in shape.</p>
-<p>The input dimensions are interpreted in the form:
-<cite>mini-batch x channels x [optional depth] x [optional height] x width</cite>.</p>
-<p>The modes available for resizing are: <cite>nearest</cite>, <cite>linear</cite> (3D-only),
-<cite>bilinear</cite>, <cite>bicubic</cite> (4D-only), <cite>trilinear</cite> (5D-only), <cite>area</cite></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – the input tensor</p></li>
-<li><p><strong>size</strong> (<em>int</em><em> or </em><em>Tuple</em><em>[</em><em>int</em><em>] or </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>] or </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em>) – output spatial size.</p></li>
-<li><p><strong>scale_factor</strong> (<em>float</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>]</em>) – multiplier for spatial size. Has to match input size if it is a tuple.</p></li>
-<li><p><strong>mode</strong> (<em>str</em>) – algorithm used for upsampling:
-<code class="docutils literal notranslate"><span class="pre">'nearest'</span></code> | <code class="docutils literal notranslate"><span class="pre">'linear'</span></code> | <code class="docutils literal notranslate"><span class="pre">'bilinear'</span></code> | <code class="docutils literal notranslate"><span class="pre">'bicubic'</span></code> |
-<code class="docutils literal notranslate"><span class="pre">'trilinear'</span></code> | <code class="docutils literal notranslate"><span class="pre">'area'</span></code>. Default: <code class="docutils literal notranslate"><span class="pre">'nearest'</span></code></p></li>
-<li><p><strong>align_corners</strong> (<em>bool</em><em>, </em><em>optional</em>) – Geometrically, we consider the pixels of the
-input and output as squares rather than points.
-If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the input and output tensors are aligned by the
-center points of their corner pixels, preserving the values at the corner pixels.
-If set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, the input and output tensors are aligned by the corner
-points of their corner pixels, and the interpolation uses edge value padding
-for out-of-boundary values, making this operation <em>independent</em> of input size
-when <code class="xref py py-attr docutils literal notranslate"><span class="pre">scale_factor</span></code> is kept the same. This only has an effect when <code class="xref py py-attr docutils literal notranslate"><span class="pre">mode</span></code>
-is <code class="docutils literal notranslate"><span class="pre">'linear'</span></code>, <code class="docutils literal notranslate"><span class="pre">'bilinear'</span></code>, <code class="docutils literal notranslate"><span class="pre">'bicubic'</span></code> or <code class="docutils literal notranslate"><span class="pre">'trilinear'</span></code>.
-Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
-<li><p><strong>recompute_scale_factor</strong> (<em>bool</em><em>, </em><em>optional</em>) – recompute the scale_factor for use in the
-interpolation calculation.  When <cite>scale_factor</cite> is passed as a parameter, it is used
-to compute the <cite>output_size</cite>.  If <cite>recompute_scale_factor</cite> is <code class="docutils literal notranslate"><span class="pre">False</span></code> or not specified,
-the passed-in <cite>scale_factor</cite> will be used in the interpolation computation.
-Otherwise, a new <cite>scale_factor</cite> will be computed based on the output and input sizes for
-use in the interpolation computation (i.e. the computation will be identical to if the computed
-<cite>output_size</cite> were passed-in explicitly).  Note that when <cite>scale_factor</cite> is floating-point,
-the recomputed scale_factor may differ from the one passed in due to rounding and precision
-issues.</p></li>
+<dd><p>此接口与 PyTorch 一致。文档参考自：<a class="reference external" href="https://pytorch.org/docs/1.9.0/_modules/torch/nn/functional.html#interpolate">https://pytorch.org/docs/1.9.0/_modules/torch/nn/functional.html#interpolate</a> 。</p>
+<p>上/下采样输入到给定大小或给定 <code class="xref py py-attr docutils literal notranslate"><span class="pre">scale_factor</span></code>。用于插值的算法由 <code class="xref py py-attr docutils literal notranslate"><span class="pre">mode</span></code> 确定。
+目前支持时间、空间和体积采样，即预期输入为三维、四维或五维形状。</p>
+<p>输入大小解释为：<code class="docutils literal notranslate"><span class="pre">mini-batch</span> <span class="pre">x</span> <span class="pre">channels</span> <span class="pre">x</span> <span class="pre">[optional</span> <span class="pre">depth]</span> <span class="pre">x</span> <span class="pre">[optional</span> <span class="pre">height]</span> <span class="pre">x</span> <span class="pre">width</span></code>。</p>
+<p>可用于调整大小的模式有：<cite>nearest</cite>、<cite>linear</cite> （仅限 3D）、<cite>bilinear</cite>、<cite>bicubic</cite> （仅限 4D）、<cite>trilinear</cite> （仅限 5D）、<cite>area</cite>。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>input</strong> (Tensor) - 输入张量。</p></li>
+<li><p><strong>size</strong> - 输出空间大小，可以为一个、两个或三个 int 组成的 <code class="docutils literal notranslate"><span class="pre">tuple</span></code>。</p></li>
+<li><p><strong>scale_factor</strong> (float or Tuple[float]) - 空间大小的乘数。如果是元组，则必须匹配输入大小。</p></li>
+<li><p><strong>mode</strong> (str) - 选择用于上采样的算法：<code class="docutils literal notranslate"><span class="pre">'nearest'</span></code> | <code class="docutils literal notranslate"><span class="pre">'linear'</span></code> | <code class="docutils literal notranslate"><span class="pre">'bilinear'</span></code> | <code class="docutils literal notranslate"><span class="pre">'bicubic'</span></code> | <code class="docutils literal notranslate"><span class="pre">'trilinear'</span></code> | <code class="docutils literal notranslate"><span class="pre">'area'</span></code>。默认为 <code class="docutils literal notranslate"><span class="pre">'nearest'</span></code></p></li>
+<li><p><strong>align_corners</strong> (bool, optional) - 几何上，我们将输入和输出的像素视为正方形而不是点。如果设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，则输入和输出张量由其角像素的中心点对齐，保留角像素处的值。如果设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code>，则输入和输出张量通过其角像素的角点对齐，并且插值对边界外的值使用边缘值填充，当 <code class="xref py py-attr docutils literal notranslate"><span class="pre">scale_factor</span></code> 保持相同时，此操作与输入大小无关。这仅在模式为 <cite>linear</cite>、<cite>bilinear</cite>、<cite>bicubic</cite> 或 <cite>trilinear</cite> 时有效。默认值：<code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
+<li><p><strong>recompute_scale_factor</strong> (bool, optional) - 重新计算 <code class="docutils literal notranslate"><span class="pre">scale_factor</span></code> 以用于插值计算。当 <code class="docutils literal notranslate"><span class="pre">scale_factor</span></code> 作为参数传递时，它用于计算 <code class="docutils literal notranslate"><span class="pre">output_size</span></code>。如果 <code class="docutils literal notranslate"><span class="pre">recompute_scale_factor</span></code> 为 <code class="docutils literal notranslate"><span class="pre">False</span></code> 或未指定，传入的 <code class="docutils literal notranslate"><span class="pre">scale_factor</span></code> 将用于插值计算。否则，将根据用于插值计算的输出和输入大小计算新的 <code class="docutils literal notranslate"><span class="pre">scale_factor</span></code> （即计算将与显式传入计算的 <code class="docutils literal notranslate"><span class="pre">output_size</span></code> 相同）。请注意，当 <code class="docutils literal notranslate"><span class="pre">scale_factor</span></code> 为浮点数时，由于舍入和精度问题，重新计算的 <code class="docutils literal notranslate"><span class="pre">scale_factor</span></code> 可能与传入的值不同。</p></li>
 </ul>
 </dd>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>With <code class="docutils literal notranslate"><span class="pre">mode='bicubic'</span></code>, it’s possible to cause overshoot, in other words it can produce
-negative values or values greater than 255 for images.
-Explicitly call <code class="docutils literal notranslate"><span class="pre">result.clamp(min=0,</span> <span class="pre">max=255)</span></code> if you want to reduce the overshoot
-when displaying the image.</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">mode='bicubic'</span></code>，可能会导致过冲，也就是它可以为图像产生负值或大于 255 的值。如果要减少显示图像时的过冲，请显式调用 <code class="docutils literal notranslate"><span class="pre">result.clamp(min=0,</span> <span class="pre">max=255)</span></code></p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>With <code class="docutils literal notranslate"><span class="pre">align_corners</span> <span class="pre">=</span> <span class="pre">True</span></code>, the linearly interpolating modes
-(<cite>linear</cite>, <cite>bilinear</cite>, and <cite>trilinear</cite>) don’t proportionally align the
-output and input pixels, and thus the output values can depend on the
-input size. This was the default behavior for these modes up to version
-0.3.1. Since then, the default behavior is <code class="docutils literal notranslate"><span class="pre">align_corners</span> <span class="pre">=</span> <span class="pre">False</span></code>.
-See <code class="xref py py-class docutils literal notranslate"><span class="pre">Upsample</span></code> for concrete examples on how this
-affects the outputs.</p>
+<p>若 <code class="docutils literal notranslate"><span class="pre">align_corners</span> <span class="pre">=</span> <span class="pre">True</span></code>，线性插值模式（线性、双线性和三线性）不会按比例对齐输出和输入像素，因此输出值可能取决于输入大小。这是 0.3.1 之前这些模式的默认行为，此后的默认行为是 <code class="docutils literal notranslate"><span class="pre">align_corners</span> <span class="pre">=</span> <span class="pre">False</span></code>。有关这如何影响输出的具体示例，请参见 <code class="xref py py-class docutils literal notranslate"><span class="pre">Upsample</span></code></p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>When scale_factor is specified, if recompute_scale_factor=True,
-scale_factor is used to compute the output_size which will then
-be used to infer new scales for the interpolation.</p>
+<p>当指定 <code class="docutils literal notranslate"><span class="pre">scale_factor</span></code> 时，如果 <code class="docutils literal notranslate"><span class="pre">recompute_scale_factor=True</span></code>，则 <code class="docutils literal notranslate"><span class="pre">scale_factor</span></code> 用于计算输出大小，然后用于推断插值的新比例。</p>
 </div>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">scale_factor</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"linear"</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span>
-<span class="go">tensor([[[1.0000, 1.2500, 1.7500, 2.2500, 2.7500, 3.2500, 3.7500, 4.0000]]],</span>
-<span class="go">       dtype=oneflow.float32)</span>
+<span class="o">&gt;</span> <span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">output</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">scale_factor</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"linear"</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">output</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="mf">1.0000</span><span class="p">,</span> <span class="mf">1.2500</span><span class="p">,</span> <span class="mf">1.7500</span><span class="p">,</span> <span class="mf">2.2500</span><span class="p">,</span> <span class="mf">2.7500</span><span class="p">,</span> <span class="mf">3.2500</span><span class="p">,</span> <span class="mf">3.7500</span><span class="p">,</span> <span class="mf">4.0000</span><span class="p">]]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">oneflow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1157,24 +1010,21 @@ be used to infer new scales for the interpolation.</p>
 <dl class="py function">
 <dt id="oneflow.nn.functional.ctc_greedy_decoder">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">ctc_greedy_decoder</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.ctc_greedy_decoder" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs greedy decoding on the logits given in input (best path).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>log_probs</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>oneflow.Tensor</em></a>) – A Tensor of shape [input_length, batch_size, num_labels]. The logarithmized probabilities of the outputs (e.g. obtained with flow.nn.logsoftmax()).</p></li>
-<li><p><strong>input_lengths</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>oneflow.Tensor</em></a>) – A Tensor of shape [batch_size]. It represent the lengths of the inputs. And the lengths are specified for each sequence to achieve masking under the assumption that sequences are padded to equal lengths.</p></li>
-<li><p><strong>merge_repeated</strong> (<em>bool</em><em>, </em><em>optional</em>) – If merge_repeated is True, merge repeated classes in output. This means that if consecutive logits’ maximum indices are the same, only the first of these is emitted. Defaults to True.</p></li>
+<dd><p>对输入中给出的 logits 执行贪婪解码（最佳路径）。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>log_probs</strong> (oneflow.Tensor) - 形状为 <code class="docutils literal notranslate"><span class="pre">[input_length,</span> <span class="pre">batch_size,</span> <span class="pre">num_labels]</span></code> 的张量。输出的对数概率（例如，使用 <code class="docutils literal notranslate"><span class="pre">flow.nn.logsoftmax()</span></code> 获得）。</p></li>
+<li><p><strong>input_lengths</strong> (oneflow.Tensor) - 形状为 <code class="docutils literal notranslate"><span class="pre">[batch_size]</span></code> 的张量。它表示输入的长度。并且在序列被填充到相等长度的假设下，为每个序列指定长度以实现掩码。</p></li>
+<li><p><strong>merge_repeated</strong> (bool, optional) - 如果 <code class="docutils literal notranslate"><span class="pre">merge_repeated</span></code> 为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，则合并输出中的重复类。这意味着如果连续 logits 的最大索引相同，则仅发出其中的第一个。默认为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A Tensor of shape [batch_size, input_length], The decoded outputs.
-neg_sum_logits(oneflow.Tensor): A float matrix (batch_size x 1) containing, for the sequence found, the negative of the sum of the greatest logit at each timeframe.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>decoded(<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor">oneflow.Tensor</a>)</p>
+<dt>返回值：</dt><dd><ul class="simple">
+<li><p>decoded(oneflow.Tensor) - 形状为 [batch_size, input_length] 的张量，解码后的输出。</p></li>
+<li><p>neg_sum_logits(oneflow.Tensor) - 一个浮点矩阵 (batch_size x 1)，对于找到的序列，包含每个时间帧最大 logit 总和的负数。</p></li>
+</ul>
 </dd>
 </dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">log_probs</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span>
@@ -1199,43 +1049,21 @@ neg_sum_logits(oneflow.Tensor): A float matrix (batch_size x 1) containing, for 
 <dl class="py function">
 <dt id="oneflow.nn.functional.sparse_softmax_cross_entropy">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">sparse_softmax_cross_entropy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.sparse_softmax_cross_entropy" title="Permalink to this definition">¶</a></dt>
-<dd><p>The interface is consistent with TensorFlow.
-The documentation is referenced from:
-<a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/nn/sparse_softmax_cross_entropy_with_logits">https://www.tensorflow.org/api_docs/python/tf/nn/sparse_softmax_cross_entropy_with_logits</a></p>
-<p>Computes sparse softmax cross entropy between <cite>logits</cite> and <cite>labels</cite>.</p>
-<p>Measures the probability error in discrete classification tasks in which the
-classes are mutually exclusive (each entry is in exactly one class).  For
-example, each CIFAR-10 image is labeled with one and only one label: an image
-can be a dog or a truck, but not both.</p>
-<p>A common use case is to have logits of shape
-<cite>[batch_size, num_classes]</cite> and have labels of shape
-<cite>[batch_size]</cite>, but higher dimensions are supported, in which
-case the <cite>dim</cite>-th dimension is assumed to be of size <cite>num_classes</cite>.
-<cite>logits</cite> must have the dtype of <cite>float16</cite>, <cite>float32</cite>, or <cite>float64</cite>, and
-<cite>labels</cite> must have the dtype of <cite>int32</cite> or <cite>int64</cite>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>labels</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – shape with [d_0, d_1, …, d_{r-1}] (where <cite>r</cite> is rank of
-<cite>labels</cite> and output) and dtype <cite>int32</cite> or <cite>int64</cite>. Each entry in <cite>labels</cite>
-must be an index in [0, num_classes).</p></li>
-<li><p><strong>logits</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – Per-label activations (typically a linear output) of shape
-[d_0, d_1, …, d_{r-1}, num_classes] and dtype <cite>float16</cite>, <cite>float32</cite>, or
-<cite>float64</cite>. These activation energies are interpreted as unnormalized log
-probabilities.</p></li>
+<dd><p>此接口与 TensorFlow 一致。文档参考自：<a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/nn/sparse_softmax_cross_entropy_with_logits">https://www.tensorflow.org/api_docs/python/tf/nn/sparse_softmax_cross_entropy_with_logits</a></p>
+<p>计算 <cite>logits</cite> 和标签之间的稀疏 softmax 交叉熵。</p>
+<p>测量类别互斥（每个条目恰好属于一个类别）的离散分类任务中的概率误差。例如，每张 CIFAR-10 图像都标有一个且只有一个标签：图像可以是狗或卡车，但不能同时是两者。一个常见的用例是具有形状 <cite>[batch_size, num_classes]</cite> 的 <cite>logits</cite> 和具有形状 <cite>[batch_size]</cite> 的标签，但支持更高的维度，在这种情况下，假设第 <cite>dim</cite> 维度的大小为 <cite>num_classes</cite>。<cite>logits</cite> 的数据类型必须为 <cite>float16</cite>、<cite>float32</cite> 或 <cite>float64</cite>，标签的数据类型必须为 <cite>int32</cite> 或 <cite>int64</cite>。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>labels</strong> (Tensor) - 具有 <code class="docutils literal notranslate"><span class="pre">[d_0,</span> <span class="pre">d_1,</span> <span class="pre">...,</span> <span class="pre">d_{r-1}]</span></code> 的形状（其中 <cite>r</cite> 是标签和输出的 rank），其数据类型是 <cite>int32</cite> 或 <cite>int64</cite>。标签中的每个条目必须是 <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">num_classes)</span></code> 中的索引。</p></li>
+<li><p><strong>logits</strong> (Tensor) - 具有 <code class="docutils literal notranslate"><span class="pre">[d_0,</span> <span class="pre">d_1,</span> <span class="pre">...,</span> <span class="pre">d_{r-1},</span> <span class="pre">num_classes]</span></code> 的形状且数据类型是 <cite>float16</cite>、<cite>float32</cite> 或 <cite>float64</cite> 的每个标签激活（通常是线性输出）。这些激活能被解释为非标准化的对数概率。</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A <cite>Tensor</cite> of the same shape as <cite>labels</cite> and of the same type as <cite>logits</cite>
-with the softmax cross entropy loss.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>output (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor">Tensor</a>)</p>
+<dt>返回值：</dt><dd><p>output (Tensor) - 与标签具有相同形状且与 <cite>logits</cite> 相同类型的张量，具有 softmax 交叉熵损失。</p>
 </dd>
 </dl>
-<dl>
-<dt>Examples::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np_logits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
 <span class="gp">... </span>     <span class="p">[</span>
 <span class="gp">... </span>         <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">],</span>
@@ -1253,30 +1081,21 @@ with the softmax cross entropy loss.</p>
 <span class="go">tensor([0.2975, 1.1448, -0.0000], dtype=oneflow.float32)</span>
 </pre></div>
 </div>
-</dd>
-</dl>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.functional.embedding">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">embedding</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad_by_freq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sparse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.embedding" title="Permalink to this definition">¶</a></dt>
-<dd><p>A simple lookup table that looks up embeddings in a fixed dictionary and size.</p>
-<p>This module is often used to retrieve word embeddings using indices.
-The input to the module is a list of indices, and the embedding matrix,
-and the output is the corresponding word embeddings.</p>
-<p>See <a class="reference internal" href="nn.html#oneflow.nn.Embedding" title="oneflow.nn.Embedding"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.nn.Embedding</span></code></a> for more details.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<em>LongTensor</em>) – Tensor containing indices into the embedding matrix</p></li>
-<li><p><strong>weight</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – The embedding matrix with number of rows equal to the maximum possible index + 1,
-and number of columns equal to the embedding size</p></li>
-<li><p><strong>padding_idx</strong> (<em>int</em><em>, </em><em>optional</em>) – If specified, the entries at <code class="xref py py-attr docutils literal notranslate"><span class="pre">padding_idx</span></code> do not contribute to the gradient;
-therefore, the embedding vector at <code class="xref py py-attr docutils literal notranslate"><span class="pre">padding_idx</span></code> is not updated during training,
-i.e. it remains as a fixed “pad”.</p></li>
+<dd><p>一个简单的查找表，可以在固定的字典和大小中查找嵌入项。
+该模块通常用于使用索引检索词嵌入。模块的输入是索引列表和嵌入矩阵，输出是相应的词嵌入。查看 <a class="reference internal" href="nn.html#oneflow.nn.Embedding" title="oneflow.nn.Embedding"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.nn.Embedding</span></code></a> 获得更多细节。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>input</strong> (LongTensor) - 包含嵌入矩阵中的索引的张量。</p></li>
+<li><p><strong>weight</strong> (Tensor) - 行数等于最大可能索引 <code class="docutils literal notranslate"><span class="pre">+1</span></code> 且列数等于嵌入大小的嵌入矩阵。</p></li>
+<li><p><strong>padding_idx</strong> (int, optional) - 如果指定，则 <code class="xref py py-attr docutils literal notranslate"><span class="pre">padding_idx</span></code> 处的条目不会影响梯度；因此 <code class="xref py py-attr docutils literal notranslate"><span class="pre">padding_idx</span></code> 处的嵌入向量在训练期间不会更新，即它仍然是一个固定的 <code class="docutils literal notranslate"><span class="pre">pad</span></code>。</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow.nn.functional</span> <span class="kn">as</span> <span class="nn">F</span>
 
@@ -1298,18 +1117,17 @@ i.e. it remains as a fixed “pad”.</p></li>
 <dl class="py function">
 <dt id="oneflow.nn.functional.linear">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">linear</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.linear" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies a linear transformation to the incoming data: <span class="math notranslate nohighlight">\(y = xA^T + b\)</span>.</p>
-<p>Shape:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Input: <span class="math notranslate nohighlight">\((N, *, in\_features)\)</span> N is the batch size, <cite>*</cite> means any number of
-additional dimensions</p></li>
-<li><p>Weight: <span class="math notranslate nohighlight">\((out\_features, in\_features)\)</span></p></li>
-<li><p>Bias: <span class="math notranslate nohighlight">\((out\_features)\)</span></p></li>
-<li><p>Output: <span class="math notranslate nohighlight">\((N, *, out\_features)\)</span></p></li>
+<dd><p>对输入数据应用线性变换 <span class="math notranslate nohighlight">\(y = xA^T + b\)</span>。</p>
+<dl class="simple">
+<dt>形状：</dt><dd><ul class="simple">
+<li><p>Input - <span class="math notranslate nohighlight">\((N, *, in\_features)\)</span>，其中 <cite>N</cite> 表示 batch size，<cite>*</cite> 表示任意数量的附加维度。</p></li>
+<li><p>Weight - <span class="math notranslate nohighlight">\((out\_features, in\_features)\)</span></p></li>
+<li><p>Bias - <span class="math notranslate nohighlight">\((out\_features)\)</span></p></li>
+<li><p>Output - <span class="math notranslate nohighlight">\((N, *, out\_features)\)</span></p></li>
 </ul>
-</div></blockquote>
-<p>For example:</p>
+</dd>
+</dl>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 

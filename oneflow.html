@@ -2138,13 +2138,12 @@ numpy.int64, numpy.int32, numpy.int8, numpy.uint8.</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.gelu">
-<code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">gelu</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.gelu" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gelu 激活算子.</p>
-<p>公式为：</p>
+<code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">gelu</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.gelu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gelu 激活算子，其公式为：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[out = 0.5 * x * (1 + tanh(\sqrt{\frac{2}{\pi}} * (x + 0.044715x^{3})))\]</div></div>
 <dl class="simple">
-<dt>参数：</dt><dd><p><strong>x</strong> (oneflow.tensor): 输入张量</p>
+<dt>参数：</dt><dd><p><strong>x</strong> (oneflow.tensor) - 输入张量</p>
 </dd>
 <dt>返回类型：</dt><dd><p>oneflow.tensor</p>
 </dd>
@@ -2915,7 +2914,7 @@ The operator will slice the tensor according to the <cite>slice_tup_list</cite>.
 <dl class="py function">
 <dt id="oneflow.mish">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">mish</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.mish" title="Permalink to this definition">¶</a></dt>
-<dd><p>应用此 element-wise 公式：</p>
+<dd><p>逐元素地应用此公式：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\text{mish}(x) = x * \text{tanh}(\text{softplus}(x))\]</div></div>
 <p>示例：</p>
@@ -4105,27 +4104,29 @@ by the framework.</p></li>
 <dl class="py function">
 <dt id="oneflow.softplus">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">softplus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.softplus" title="Permalink to this definition">¶</a></dt>
-<dd><p>应用此 element-wise 公式：</p>
+<dd><p>逐元素地应用此公式：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\text{Softplus}(x) = \frac{1}{\beta} * \log(1 + \exp(\beta * x))\]</div></div>
 <p>更多细节参考 <a class="reference internal" href="nn.html#oneflow.nn.Softplus" title="oneflow.nn.Softplus"><code class="xref py py-class docutils literal notranslate"><span class="pre">Softplus</span></code></a> 。</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.softsign">
-<code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">softsign</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.softsign" title="Permalink to this definition">¶</a></dt>
-<dd><p>公式为：</p>
+<code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">softsign</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.softsign" title="Permalink to this definition">¶</a></dt>
+<dd><p>softsign 的公式为：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[softsign(x) = \frac{x}{1 + |x|}\]</div></div>
 <p>示例：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">softsign</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span>
 <span class="go">tensor([0.5000, 0.6667, 0.7500], dtype=oneflow.float32)</span>
 </pre></div>
 </div>
-<p>更多细节请参考 <a class="reference internal" href="nn.html#oneflow.nn.Softsign" title="oneflow.nn.Softsign"><code class="xref py py-class docutils literal notranslate"><span class="pre">Softsign</span></code></a> 。</p>
+<p>参考 <a class="reference internal" href="nn.html#oneflow.nn.Softsign" title="oneflow.nn.Softsign"><code class="xref py py-class docutils literal notranslate"><span class="pre">Softsign</span></code></a> 获得更多细节。</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.sort">
@@ -4779,16 +4780,16 @@ the indices are the indices of the elements in the original input tensor.</p>
 </dd>
 </dl>
 <p>示例：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">vsplit</span><span class="p">(</span><span class="nb">input</span><span class="p">,(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-<span class="go">oneflow.Size([1, 4, 5, 6])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-<span class="go">oneflow.Size([2, 4, 5, 6])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-<span class="go">oneflow.Size([1, 4, 5, 6])</span>
+<span class="o">&gt;</span> <span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">output</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">vsplit</span><span class="p">(</span><span class="nb">input</span><span class="p">,(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="o">&gt;</span> <span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">oneflow</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="o">&gt;</span> <span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">oneflow</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="o">&gt;</span> <span class="n">output</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">oneflow</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
 </pre></div>
 </div>
 </dd></dl>
