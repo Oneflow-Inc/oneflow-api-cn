@@ -6,7 +6,7 @@ reset_docstr(
     r"""
     文档参考自：https://pytorch.org/docs/stable/generated/torch.nn.functional.triplet_margin_loss.html?highlight=triplet_margin_loss
 
-    在给定输入张量 :math:`x1`, :math:`x2`, :math:`x3` 和值大于 :math:`0` 的边距的情况下，创建一个测量三元组损失的标准。这用于测量样本之间的相对相似性。三元组由 `a`, `p` 和 `n` 组成（即分别为锚点、正例和负例）。所有输入张量的形状应为 :math:`(N, D)` 。
+    在给定输入张量 :math:`x1`, :math:`x2`, :math:`x3` 和值大于 :math:`0` 的边距的情况下，创建一个测量三元组损失的标准。这用于测量样本之间的相对相似性。三元组由 `a`, `p` 和 `n` 组成（即分别为`锚点`、`正例`和`负例`）。所有输入张量的形状应为 :math:`(N, D)` 。
 
     Vassileios Balntas、Edgar Riba 等人的 `Learning shallow convolutional feature descriptors with triplet losses <http://www.bmva.org/bmvc/2016/papers/paper119/index.html>`__ 一文中详细描述了距离交换。
 
@@ -278,14 +278,14 @@ reset_docstr(
 
     输入大小解释为：``mini-batch x channels x [optional depth] x [optional height] x width``。
 
-    可用于调整大小的模式有：最近、线性（仅限 3D）、双线性、双三次（仅限 4D）、三线性（仅限 5D）、面积。
+    可用于调整大小的模式有：`nearest`、`linear`（仅限 3D）、`bilinear`、`bicubic`（仅限 4D）、`trilinear`（仅限 5D）、`area`。
 
     参数：
         - **input** (Tensor) - 输入张量。
         - **size** - 输出空间大小，可以为一个、两个或三个 int 组成的 ``tuple``。
         - **scale_factor** (float or Tuple[float]) - 空间大小的乘数。如果是元组，则必须匹配输入大小。
         - **mode** (str) - 选择用于上采样的算法：``'nearest'`` | ``'linear'`` | ``'bilinear'`` | ``'bicubic'`` | ``'trilinear'`` | ``'area'``。默认为 ``'nearest'``
-        - **align_corners** (bool, optional) - 几何上，我们将输入和输出的像素视为正方形而不是点。如果设置为 ``True``，则输入和输出张量由其角像素的中心点对齐，保留角像素处的值。如果设置为 ``False``，则输入和输出张量通过其角像素的角点对齐，并且插值对边界外的值使用边缘值填充，当 :attr:`scale_factor` 保持相同时，此操作与输入大小无关。这仅在模式为“线性”、“双线性”、“双三次”或“三线性”时有效。默认值：``False``。
+        - **align_corners** (bool, optional) - 几何上，我们将输入和输出的像素视为正方形而不是点。如果设置为 ``True``，则输入和输出张量由其角像素的中心点对齐，保留角像素处的值。如果设置为 ``False``，则输入和输出张量通过其角像素的角点对齐，并且插值对边界外的值使用边缘值填充，当 :attr:`scale_factor` 保持相同时，此操作与输入大小无关。这仅在模式为 `linear`、`bilinear`、`bicubic` 或 `trilinear` 时有效。默认值：``False``。
         - **recompute_scale_factor** (bool, optional) - 重新计算 ``scale_factor`` 以用于插值计算。当 ``scale_factor`` 作为参数传递时，它用于计算 ``output_size``。如果 ``recompute_scale_factor`` 为 ``False`` 或未指定，传入的 ``scale_factor`` 将用于插值计算。否则，将根据用于插值计算的输出和输入大小计算新的 ``scale_factor`` （即计算将与显式传入计算的 ``output_size`` 相同）。请注意，当 ``scale_factor`` 为浮点数时，由于舍入和精度问题，重新计算的 ``scale_factor`` 可能与传入的值不同。
 
     .. note::

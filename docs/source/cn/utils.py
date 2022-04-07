@@ -9,7 +9,7 @@ reset_docstr(
     参数：
         - **sampler** (Sampler or Iterable) - 原采样器。可以是任何可迭代对象。 
         - **batch_size** (int) - mini-batch 的大小 
-        - **drop_last** (bool) - 如果为 ``True`` ，采样器会在最后一个 batch 小于 ``batch_size`` 时将其丢弃。
+        - **drop_last** (bool) - 如果为 ``True`` ，采样器会在最后一个 batch 小于 ``batch_size`` 时将其采取 dropout 操作。
 
     样例：
         >>> import oneflow
@@ -56,7 +56,7 @@ reset_docstr(
         - **batch_sampler** (Sampler or Iterable, 可选) - 类似 :attr:`sampler`, 但每次返回一个 batch 索引。与 :attr:`batch_size`, :attr:`shuffle` , :attr:`sampler`,和 :attr:`drop_last` 互斥
         - **num_workers** (int, 可选) - 被用于加载数据的子线程数量 (默认： ``0``). ``0`` 意味着所有数据都将在主进程加载
         - **collate_fn** (callable, 可选) - 将一个样本列表合并成 mini-batch 张量。在从 map-style 数据集中使用批加载时被调用
-        - **drop_last** (bool, 可选) - 设置为 ``True`` 以在数据集大小无法被 batch 大小整除时将最后一个不完整 batch 丢弃。当为 ``False`` 时，如果数据集大小无法被 batch 大小整除，最后一个 batch 将相对较小 (默认： ``False``)
+        - **drop_last** (bool, 可选) - 设置为 ``True`` 以在数据集大小无法被 batch 大小整除时将最后一个不完整的 batch 采取 dropout 操作。当为 ``False`` 时，如果数据集大小无法被 batch 大小整除，最后一个 batch 将相对较小 (默认： ``False``)
         - **timeout** (numeric, 可选) - 若为正数，该参数为从 worker 处收集 batch 的 timeout 值。应总为非负值 (默认： ``0``)
         - **worker_init_fn** (callable, 可选) - 如果不是 ``None``, 该参数将在 seeding 之后和加载数据前，与 worker id (an int in ``[0, num_workers - 1]``)一起在每个 worker 的子进程被调用，以作为输入 (默认： ``None``)
         - **prefetch_factor** (int, 可选, 键word-only arg) - 在每个 worker 之前就被加载的样本数量 ``2``意味着将会有 2 * num_workers 个样本在所有 worker 之前被预提取。(default: ``2``)
@@ -73,7 +73,7 @@ reset_docstr(
 
                  但是，如果多个 worker 的数据分片有不完全的末尾 batch ，此类估算仍有可能为不准确的，因为
                  (1) 一个原本完整的 batch 可能被分割为多个，且(2) 当 :attr:`drop_last` 被设定时，原本能合成一个以上
-                 batch 的样本将被丢弃。遗憾的是， OneFlow 通常无法检测这类情况。
+                 batch 的样本将被采取 dropout 操作。遗憾的是， OneFlow 通常无法检测这类情况。
     """,
 )
 

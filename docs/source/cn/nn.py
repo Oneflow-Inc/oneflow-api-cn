@@ -1970,7 +1970,7 @@ reset_docstr(
     oneflow.nn.TripletMarginLoss,
     r"""TripletMarginLoss(margin: float = 1.0, p: float = 2.0, eps: float = 1e-06, swap: bool = False, size_average=None, reduce=None, reduction: str = 'mean')
     
-    根据给定的输入张量 :math:`x1`, :math:`x2`, :math:`x3` 以及大于 :math:`0` 的边界值，创建一个测量三元组损失的指标来测量样本之间的相对相似性。三元组由 `a`, `p` 和 `n` 组成（即分别为锚点、正例和负例）。所有输入张量的形状应为 :math:`(N, D)` 。
+    根据给定的输入张量 :math:`x1`, :math:`x2`, :math:`x3` 以及大于 :math:`0` 的边界值，创建一个测量三元组损失的指标来测量样本之间的相对相似性。三元组由 `a`, `p` 和 `n` 组成（即分别为`锚点`、`正例`和`负例`）。所有输入张量的形状应为 :math:`(N, D)` 。
 
     在 V. Balntas, E. Riba 等人的 `Learning local feature descriptors with triplets and shallow convolutional neural networks <http://www.bmva.org/bmvc/2016/papers/paper119/index.html>`__ 中详细描述了距离交换。
 
@@ -2022,7 +2022,7 @@ reset_docstr(
 
     假定输入数据的形式为 `批量大小 x 通道 x [可选深度] x [可选高度] x 宽度`。 因此，对于空间输入，我们期待一个 4D 张量；对于体积输入，我们期待一个 5D 张量。
 
-    可用于上采样的算法分别是 3D、4D 和 5D 输入张量的最近邻和线性、双线性、双三次和三线性算法。
+    可用于上采样的算法分别是 3D、4D 和 5D 输入张量的 `nearest`、`linear`、`bilinear`、`bicubic` 和 `trilinear` 算法。
 
     可以用 :attr:`scale_factor` 或目标输出大小来计算输出大小（由于其不确定性，不能同时给出）。
 
@@ -2047,7 +2047,7 @@ reset_docstr(
         W_{out} = \\left\\lfloor W_{in} \\times \\text{scale_factor} \\right\\rfloor
 
     .. warning::
-        若 ``align_corners = True`` ，线性插值模式（线性、双线性、双三次和三线性）不会按比例对齐输出和输入像素，因此输出值可能取决于输入大小。这是 0.3.1 版本之前这些模式的默认行为。 0.3.1 版本之后的默认值行为是 ``align_corners = False``。有关其如何影响输出的具体示例，请参见下文。
+        若 ``align_corners = True`` ，线性插值模式（`linear`、`bilinear`、`bicubic` 和 `trilinear`）不会按比例对齐输出和输入像素，因此输出值可能取决于输入大小。这是 0.3.1 版本之前这些模式的默认行为。 0.3.1 版本之后的默认值行为是 ``align_corners = False``。有关其如何影响输出的具体示例，请参见下文。
 
     .. note::
         若需要下采样或者一般性的调整大小，应该使用 :func:`~nn.functional.interpolate`。
