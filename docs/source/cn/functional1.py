@@ -6,7 +6,7 @@ reset_docstr(
     r"""
     文档参考自：https://pytorch.org/docs/stable/generated/torch.nn.functional.triplet_margin_loss.html?highlight=triplet_margin_loss
 
-    在给定输入张量 :math:`x1`, :math:`x2`, :math:`x3` 和值大于 :math:`0` 的边距的情况下，创建一个测量三元组损失的标准。这用于测量样本之间的相对相似性。三元组由 `a`, `p` 和 `n` 组成（即分别为`锚点`、`正例`和`负例`）。所有输入张量的形状应为 :math:`(N, D)` 。
+    在给定输入张量 :math:`x1`, :math:`x2`, :math:`x3` 和值大于 :math:`0` 的边距的情况下，创建一个测量三元组损失的标准。这用于测量样本之间的相对相似性。三元组由 `a`, `p` 和 `n` 组成（即分别为 `锚点`、`正例` 和 `负例` ）。所有输入张量的形状应为 :math:`(N, D)` 。
 
     Vassileios Balntas、Edgar Riba 等人的 `Learning shallow convolutional feature descriptors with triplet losses <http://www.bmva.org/bmvc/2016/papers/paper119/index.html>`__ 一文中详细描述了距离交换。
 
@@ -278,7 +278,7 @@ reset_docstr(
 
     输入大小解释为：``mini-batch x channels x [optional depth] x [optional height] x width``。
 
-    可用于调整大小的模式有：`nearest`、`linear`（仅限 3D）、`bilinear`、`bicubic`（仅限 4D）、`trilinear`（仅限 5D）、`area`。
+    可用于调整大小的模式有：`nearest`、`linear` （仅限 3D）、`bilinear`、`bicubic` （仅限 4D）、`trilinear` （仅限 5D）、`area`。
 
     参数：
         - **input** (Tensor) - 输入张量。
