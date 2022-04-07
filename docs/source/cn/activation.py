@@ -383,3 +383,29 @@ reset_docstr(
     """
 )
 
+reset_docstr(
+    oneflow.nn.functional.celu,
+    r"""celu(x: Tensor, alpha: Float=1.0, inplace: bool=False) -> Tensor
+
+    逐元素地应用如下等式：
+
+    .. math::
+
+        \text{CELU}(x) = \max(0,x) + \min(0, \alpha * (\exp(x/\alpha) - 1))
+
+    查看 :class:`~oneflow.nn.CELU` 获得更多细节。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+
+        >>> x = np.array([-0.5, 0, 0.5]).astype(np.float32)
+        >>> input = flow.tensor(x)
+        >>> out = flow.nn.functional.celu(input, alpha=0.5)
+        >>> out
+        tensor([-0.3161,  0.0000,  0.5000], dtype=oneflow.float32)
+    """
+)
