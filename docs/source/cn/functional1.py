@@ -194,7 +194,7 @@ reset_docstr(
     .. _`Spatial Transformer Networks`:
         https://arxiv.org/abs/1506.02025
 
-    Examples::
+    示例：
 
         >>> import oneflow as flow
         >>> import numpy as np
