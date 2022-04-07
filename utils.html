@@ -292,7 +292,7 @@ batch 的样本将被丢弃。遗憾的是， OneFlow 通常无法检测这类�
 <dt id="oneflow.utils.data.IterableDataset">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.data.</span></code><code class="sig-name descname"><span class="pre">IterableDataset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.data.IterableDataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>一个可迭代数据集。</p>
-<p>所有包含可迭代的数据样本的数据集都应作为此类的子类。此类数据集在数据来源为数据流时尤其有用。</p>
+<p>所有包含可迭代的数据样本的数据集都应作为此类的子类。此类数据集在数据来源为数据流时尤其有效。</p>
 <p>所有子类都应替换 <code class="xref py py-meth docutils literal notranslate"><span class="pre">__iter__()</span></code> ，一个用于返回本数据集中迭代器的参数。</p>
 <p>当一个子类和 <code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code> 同时使用时，数据集中的每个内容都将从 <code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code> 中的迭代器中生成。当 <code class="xref py py-attr docutils literal notranslate"><span class="pre">num_workers</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> 时，每个 worker 进程都将拥有一个数据集对象的不同拷贝，所以通常偏好将每个拷贝独立配置以避免 worker 返回重复数据。</p>
 <p>样例1：在 <code class="xref py py-meth docutils literal notranslate"><span class="pre">__iter__()</span></code> 中将负荷分配给所有 worker：</p>

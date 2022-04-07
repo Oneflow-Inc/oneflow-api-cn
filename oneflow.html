@@ -276,7 +276,7 @@ limitations under the License.</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>input</strong> (Tensor): 输入张量</p></li>
-<li><p><strong>output_size</strong> (Int64List[1]): 目标输出大小（单个整数）</p></li>
+<li><p><strong>output_size</strong> - 目标输出大小（单个整数）</p></li>
 </ul>
 </dd>
 </dl>
@@ -289,7 +289,7 @@ limitations under the License.</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>input</strong> (Tensor): 输入张量</p></li>
-<li><p><strong>output_size</strong> (Int64List[2]): 目标输出大小（单个整数或包含两个整数的元组）</p></li>
+<li><p><strong>output_size</strong> - 目标输出大小（单个整数或包含两个整数的元组）</p></li>
 </ul>
 </dd>
 </dl>
@@ -301,8 +301,8 @@ limitations under the License.</p>
 <p>参考： <a class="reference internal" href="nn.html#oneflow.nn.AdaptiveAvgPool3d" title="oneflow.nn.AdaptiveAvgPool3d"><code class="xref py py-mod docutils literal notranslate"><span class="pre">oneflow.nn.AdaptiveAvgPool3d</span></code></a></p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>input</strong> (Tensor): 输入张量</p></li>
-<li><p><strong>output_size</strong> (Int64List[3]): 目标输出大小（单个整数或包含三个整数的元组）</p></li>
+<li><p><strong>input</strong> (Tensor) - 输入张量</p></li>
+<li><p><strong>output_size</strong> - 目标输出大小（单个整数或包含三个整数的元组）</p></li>
 </ul>
 </dd>
 </dl>
@@ -3165,7 +3165,7 @@ are expected to be in <code class="docutils literal notranslate"><span class="pr
 <dt id="oneflow.no_grad">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">no_grad</span></code><a class="headerlink" href="#oneflow.no_grad" title="Permalink to this definition">¶</a></dt>
 <dd><p>禁用梯度计算的上下文管理器。</p>
-<p>当确定不调用 Tensor.backward() 时，禁用梯度计算对于推理很有用，此操作相比 requires_grad=True
+<p>当确定不调用 Tensor.backward() 时，禁用梯度计算对于推理很有效，此操作相比 requires_grad=True
 时可以减少计算的内存消耗。</p>
 <p>此模式下，任何计算都会视 requires_grad 为 False ，即便输入有 requires_grad=True。</p>
 <p>此上下文管理器只会影响本地线程，不会影响其他线程的运算。</p>
@@ -4303,7 +4303,7 @@ by the framework.</p></li>
 <dl class="py function">
 <dt id="oneflow.std">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">std</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.std" title="Permalink to this definition">¶</a></dt>
-<dd><p>返回 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 张量在 <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code> 维度每行的标准差。如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code> 是一个维度列表，则减少 (reduce) 所有的维度。</p>
+<dd><p>返回输入张量在 <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code> 维度上每行的标准差。如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code> 是一个维度列表，则对所有维度进行规约。</p>
 <p>如果 keepdim 为真，输出张量与输入张量大小相同，除了在 <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code> 维度的大小变为1。否则， <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code> 将被压缩，导致输出张量拥有 1 (或者 len(dim)) 个更少的维度。</p>
 <p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">unbiased</span></code> 为 <code class="docutils literal notranslate"><span class="pre">False</span></code> ，则标准差将通过有差估算器计算。否则，贝塞尔校正将被使用。</p>
 <dl class="simple">
@@ -4412,17 +4412,17 @@ by the framework.</p></li>
 </dd>
 </dl>
 <p>示例：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
-<span class="go">oneflow.Size([])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
-<span class="go">oneflow.Size([3])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
-<span class="go">oneflow.Size([3, 2])</span>
+<span class="o">&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+<span class="o">&gt;</span> <span class="n">flow</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">oneflow</span><span class="o">.</span><span class="n">Size</span><span class="p">([])</span>
+<span class="o">&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">flow</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">oneflow</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">3</span><span class="p">])</span>
+<span class="o">&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">flow</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">oneflow</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
 </dd></dl>
