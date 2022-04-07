@@ -233,7 +233,7 @@ reset_docstr(
         - **grid** (Tensor) - 形状为 :math:`(N, H_{out}, W_{out}, 2)` （4D 情况下）或形状为 :math:`(N, D_{out}, H_{out}, W_{out}, 3)` （5D 情况下）的流场
         - **mode** (str) - 计算输出值的插值模式：``'bilinear'`` | ``'nearest'`` | ``'bicubic'``。默认为 ``'bilinear'``。注意 ``mode='bicubic'`` 仅支持 4D 输入。当 ``mode='bilinear'`` 且输入是 5D 时，内部使用的插值模式实际上是三线性的。然而，当输入是 4D 时，插值模式将是双线性的。
         - **padding_mode** (str) - 外部网格值的填充模式：``'zeros'`` | ``'border'`` | ``'reflection'``。默认为 ``'zeros'``。
-        - **align_corners** (bool) - 在几何上，我们将输入的像素视为正方形而不是点。如果设置为 ``True``，则极值 ``（-1 和 1）`` 被认为指代输入角像素的中心点。如果设置为 ``False``，则它们被认为是指输入角像素的角点，从而使采样与分辨率无关。 此选项与 :func:`interpolate` 中的 ``align_corners`` 选项平行，因此此处使用的任何选项也应用于在网格采样之前调整输入图像的大小。默认为 ``False``。
+        - **align_corners** (bool) - 在几何上，我们将输入的像素视为正方形而不是点。如果设置为 ``True``，则极值 （``-1``  和 ``1``）被认为指代输入角像素的中心点。如果设置为 ``False``，则它们被认为是指输入角像素的角点，从而使采样与分辨率无关。 此选项与 :func:`interpolate` 中的 ``align_corners`` 选项一致，因此此处使用的任何选项也应用于在网格采样之前调整输入图像的大小。默认为 ``False``。
 
     返回值：
         output (Tensor) - 输出张量。
