@@ -7,10 +7,10 @@ reset_docstr(
     填充张量。
 
     填充大小：
-        从最后一个维度开始向前推进，描述了某些 :attr:`input` 维度进行填充的尺寸。 ``input`` 的维度将被填充为  :math:`\left\lfloor\frac{\text{len(pad)}}{2}\right\rfloor` 。
-        例如，只对输入张量的最后一个维度进行填充，然后 :attr:`pad` 为 :math:`(\text{padding_left}, \text{padding_right})`；
-        填充输入张量的最后两个维度，会变成 :math:`(\text{padding_left}, \text{padding_right},` :math:`\text{padding_top}, \text{padding_bottom})`；
-        填充最后 3 个维度时会为 :math:`(\text{padding_left}, \text{padding_right},` :math:`\text{padding_top}, \text{padding_bottom}` :math:`\text{padding_front}, \text{padding_back})`。
+        对输入张量某些维度的填充大小的描述从最后一个维度开始，然后是前一个维度，依此类推。``input`` 的维度将被填充为  :math:`\left\lfloor\frac{\text{len(pad)}}{2}\right\rfloor` 。
+        例如，若只对输入张量的最后一个维度进行填充，那么 :attr:`pad` 的参数应为 :math:`(\text{padding_left}, \text{padding_right})` ；
+        若填充输入张量的最后两个维度，则参数变成 :math:`(\text{padding_left}, \text{padding_right},` :math:`\text{padding_top}, \text{padding_bottom})`；
+        填充最后 3 个维度时，参数将为 :math:`(\text{padding_left}, \text{padding_right},` :math:`\text{padding_top}, \text{padding_bottom}` :math:`\text{padding_front}, \text{padding_back})`。
 
     填充模式：
         参考 :class:`oneflow.nn.ConstantPad2d`， :class:`oneflow.nn.ReflectionPad2d`，以及 :class:`oneflow.nn.ReplicationPad2d` 
@@ -48,7 +48,7 @@ reset_docstr(
                   [15., 15., 15., 16., 17., 17., 17.],
                   [15., 15., 15., 16., 17., 17., 17.]]]], dtype=oneflow.float32)
 
-    参考 :class:`oneflow.nn.ConstantPad2d`, :class:`oneflow.nn.ReflectionPad2d`, and :class:`oneflow.nn.ReplicationPad2d` 可以得到每个填充模式是如何工作的具体例子。
+    参考 :class:`oneflow.nn.ConstantPad2d`, :class:`oneflow.nn.ReflectionPad2d` 和 :class:`oneflow.nn.ReplicationPad2d` ，可以得到每个填充模式是如何工作的具体例子。
         
     """
 )

@@ -317,9 +317,8 @@ reset_docstr(
     r"""
     hardswish(x: Tensor)-> Tensor
 
-    按照论文中的描述，应用 hardswish 函数。
+    按照论文 `Searching for MobileNetV3`_ 中的描述，应用 hardswish 函数。
 
-    `Searching for MobileNetV3`_.
 
     .. math::
         \text{Hardswish}(x) = \begin{cases}
