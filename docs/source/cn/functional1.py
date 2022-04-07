@@ -25,7 +25,7 @@ reset_docstr(
         - **margin** (float, optional) - 默认为 :math:`1`
         - **p** (float, optional) - 成对距离的范数，默认为 :math:`2.0`
         - **swap** (bool, optional) - 默认为 ``False`` 。V. Balntas、E. Riba 等人的 `Learning shallow convolutional feature descriptors with triplet losses <http://www.bmva.org/bmvc/2016/papers/paper119/index.html>`__ 一文中详细描述了距离交换。
-        - **reduction** (string, optional) - 指定应用于输出的 reduction：``'none'`` | ``'mean'`` | ``'sum'``。若值为 ``'none'`` ：不进行 reduction；值为 ``'mean'`` ：输出的和将会除以输出中的元素数量；值为``'sum'`` ：输出将被求和。请注意：:attr:`size_average` 和 :attr:`reduce` 正逐渐被弃用，指定这二者的任何一个都将覆盖 :attr:`reduction`。默认值为 ``'mean'``。
+        - **reduction** (string, optional) - 指定应用于输出的 reduction：``'none'`` | ``'mean'`` | ``'sum'``。若值为 ``'none'`` ：不进行 reduction；值为 ``'mean'`` ：输出的和将会除以输出中的元素数量；值为 ``'sum'`` ：输出将被求和。请注意：:attr:`size_average` 和 :attr:`reduce` 正逐渐被弃用，指定这二者的任何一个都将覆盖 :attr:`reduction`。默认值为 ``'mean'``。
 
     形状：
         - Input: :math:`(N, D)` ，其中 :math:`D` 是向量维度。
