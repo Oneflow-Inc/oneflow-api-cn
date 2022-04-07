@@ -393,7 +393,7 @@ reset_docstr(
 
         \text{CELU}(x) = \max(0,x) + \min(0, \alpha * (\exp(x/\alpha) - 1))
 
-    查看 :class:`~oneflow.nn.CELU` 获得更多细节。
+    更多细节请参考 :class:`~oneflow.nn.CELU` 。
 
     示例：
 
