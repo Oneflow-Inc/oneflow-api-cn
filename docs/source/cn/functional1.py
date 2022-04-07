@@ -427,7 +427,7 @@ reset_docstr(
     r"""对输入数据应用线性变换 :math:`y = xA^T + b`。
 
     形状：
-        - Input - :math:`(N, *, in\_features)`，其中 `N` 表示批的大小，`*` 表示任意数量的附加维度。
+        - Input - :math:`(N, *, in\_features)`，其中 `N` 表示 batch size，`*` 表示任意数量的附加维度。
         - Weight - :math:`(out\_features, in\_features)`
         - Bias - :math:`(out\_features)`
         - Output - :math:`(N, *, out\_features)`
