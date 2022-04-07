@@ -25,15 +25,14 @@ reset_docstr(
 
 reset_docstr(
     oneflow.nn.utils.weight_norm,
-    r"""weight_norm(module, name='weight', dim=0) → T_module
-
+    r"""
     对给定模块中的参数应用权重归一化 (Weight Normalization)。
 
     .. math::
         \mathbf{w}=g \frac{\mathbf{v}}{\|\mathbf{v}\|}
 
     权重归一化 (Weight Normalization) 是一种重新参数化 (Reparameterization)，
-    它将权重张量的大小从其方向解耦。此操作将用两个参数替换有 :attr:`name`（例如``'weight'``）指定的参数：
+    它将权重张量的大小从其方向解耦。此操作将用两个参数替换由 :attr:`name` 指定的参数：
     一个指定大小（例如 ``'weight'``），另一个指定方向（例如 ``'weight_v'``)。
     权重归一化 (Weight Normalization) 是通过一个 hook 实现的，该 hook 在每个
     :meth:`~Module.forward` 调用之前从大小和方向重新计算权重张量。
@@ -41,10 +40,7 @@ reset_docstr(
     默认情况下，当 ``dim=0`` 时，每个输出通道/平面独立计算范数。
     要计算整个权重张量的范数，请使用 ``dim=None``。
 
-    参见 https://arxiv.org/abs/1602.07868
-
-    本文档说明参考 Pytorch 文档：
-    https://pytorch.org/docs/stable/generated/torch.nn.utils.weight_norm.html
+    参见 https://arxiv.org/abs/1602.07868 。本文档说明参考 Pytorch 文档：https://pytorch.org/docs/stable/generated/torch.nn.utils.weight_norm.html 。
 
     参数：
         - **module** (Module): 包含模块
@@ -72,20 +68,17 @@ reset_docstr(
 
 reset_docstr(
     oneflow.nn.utils.clip_grad_norm_,
-    r"""clip_grad_norm_(parameters, max_norm, norm_type=2.0, error_if_nonfinite=True) → oneflow._oneflow_internal.Tensor
-
-    裁剪可迭代参数的梯度范数。
-    范数是在所有梯度上一起计算的，就好像它们被连接成一个向量一样。
+    r"""
+    裁剪可迭代参数的梯度范数。范数是在所有梯度上一起计算的，就像它们被连接成一个向量一样。
 
     参数：
-        - **parameters** (Iterable[Tensor] 或 Tensor) - 一个可迭代的张量或一个将梯度归一化的单个张量
-        - **max_norm** (float 或 int) - 梯度的最大范数
+        - **parameters** (Iterable[Tensor] 或 Tensor) - 一个可迭代的张量或一个将梯度归一化的单个张量。
+        - **max_norm** (float 或 int) - 梯度的最大范数。
         - **norm_type** (float 或 int) - 使用的 p-norm 的类型。对于无穷范数，可以是  ``'inf'``。
-        - **error_if_nonfinite** (bool) - 当为 True 时，如果来自 :attr:``parameters`` 的梯度的总范数为 ``nan`` 、 ``inf`` 或 ``-inf`` 会出现 error 。默认：True
+        - **error_if_nonfinite** (bool) - 当为 True 时，如果来自 :attr:``parameters`` 的梯度的总范数为 ``nan`` 、 ``inf`` 或 ``-inf`` 会出现 error 。默认：True。
 
     返回类型：
-        裁剪梯度范数后的参数。
-        参数的总范数（视为单个向量）。
+        裁剪梯度范数后的参数。参数的总范数（视为单个向量）。
 
     示例：
 

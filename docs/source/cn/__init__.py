@@ -7,6 +7,7 @@ from .slice import *
 from .sort import *
 from .array_ops import *
 from .functional1 import *
+from .nn_ops import *
 from .cast import *
 from .comm import *
 from .comparison import *

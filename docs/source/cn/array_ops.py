@@ -927,3 +927,39 @@ reset_docstr(
     """,
 )
 
+reset_docstr(
+    oneflow.nn.Softplus,
+    """逐元素地应用公式：
+
+    .. math::
+        \\text{Softplus}(x) = \\frac{1}{\\beta} * \\log(1 + \\exp(\\beta * x))
+
+    SoftPlus 是 ReLU 函数的平滑近似，可用于将输出约束为始终为正。
+
+    为了数值稳定性，当 :math:`input \\times \\beta > threshold` 时，该函数的实现恢复为线性函数。
+
+    参数：
+        - **beta** - 公式中 :math:`\\beta` 的值，默认为 1
+        - **threshold** - 高于此值的函数将恢复为线性函数，默认为 20
+
+    形状：
+        - Input: :math:`(N, *)` ，其中 `*` 表示任意数量的附加维度。
+        - Output: :math:`(N, *)` ，与输入的形状相同。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+        
+        >>> x = np.array([-0.5, 0, 0.5]).astype(np.float32)
+        >>> input = flow.Tensor(x)
+        >>> softplus = flow.nn.Softplus()
+
+        >>> out = softplus(input)
+        >>> out
+        tensor([0.4741, 0.6931, 0.9741], dtype=oneflow.float32)
+    """
+)
+

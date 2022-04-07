@@ -77,6 +77,42 @@ reset_docstr(
 )
 
 reset_docstr(
+    oneflow.nn.SiLU,
+    r"""Swish 激活函数
+
+    .. math::
+    
+        \text{SiLU}(x) = x * sigmoid(x)
+    
+    .. note::
+        SiLU（Sigmoid Linear Unit）在 `Gaussian Error Linear Units (GELUs) <https://arxiv.org/abs/1606.08415>`_
+        中被提出在`Sigmoid-Weighted Linear Units for Neural Network Function Approximation
+        in Reinforcement Learning <https://arxiv.org/abs/1702.03118>`_ 和 `Swish:
+        a Self-Gated Activation Function <https://arxiv.org/abs/1710.05941v1>`_
+        中被试验。
+    
+    形状：
+        - Input: :math:`(N, *)` ，其中 `*` 表示任意数量的附加维度。
+        - Output: :math:`(N, *)` ，与输入的形状相同。
+
+    示例：
+    
+    .. code-block:: python
+    
+        >>> import numpy as np
+        >>> import oneflow as flow
+
+
+        >>> x = np.array([1, 2, 3]).astype(np.float32)
+        >>> input = flow.Tensor(x)
+        >>> silu = flow.nn.SiLU()
+        >>> out = silu(input)
+        >>> out
+        tensor([0.7311, 1.7616, 2.8577], dtype=oneflow.float32)
+    """
+)
+
+reset_docstr(
     oneflow.silu,
     r"""
     silu(x) -> Tensor
@@ -143,6 +179,35 @@ reset_docstr(
 )
 
 reset_docstr(
+    oneflow.nn.Softsign,
+    r"""SoftSign 激活函数
+    
+    公式为：
+
+    .. math::  
+    
+        SoftSign(x) = \frac{x}{1 + |x|}
+    
+    形状：
+        - Input: :math:`(N, *)` ，其中 `*` 表示任意数量的附加维度。
+        - Output: :math:`(N, *)` ，与输入的形状相同。
+    
+    示例：
+    
+    .. code-block:: python
+    
+        >>> import numpy as np
+        >>> import oneflow as flow
+        >>> x = np.array([1, 2, 3]).astype(np.float32)
+        >>> input = flow.Tensor(x)
+        >>> softsign = flow.nn.Softsign()
+        >>> out = softsign(input)
+        >>> out
+        tensor([0.5000, 0.6667, 0.7500], dtype=oneflow.float32)
+    """
+)
+
+reset_docstr(
     oneflow.softsign,
     r"""
     softsign(x) -> Tensor 
@@ -177,7 +242,7 @@ reset_docstr(
         
         \text{Sigmoid}(x) = \sigma(x) = \frac{1}{1 + \exp(-x)}
 
-    图型：
+    形状：
         - Input: :math:`(N, *)` 其中 `*` 表示任意数量的附加维度
         - Output: :math:`(N, *)` 与输入相同的形状
 
@@ -198,7 +263,7 @@ reset_docstr(
   oneflow.nn.Softmax,
     r"""Softmax(dim = None) -> Tensor
     
-    将 Softmax 函数应用于 n 维输入 tensor 并重新缩放 tensor，以便n 维输出 tensor
+    将 Softmax 函数应用于 n 维输入 tensor 并重新缩放 tensor，以便 n 维输出 tensor
     的元素位于 [0,1] 范围内并且和为 1。
 
     Softmax 的公式为：
