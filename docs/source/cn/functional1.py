@@ -242,7 +242,7 @@ reset_docstr(
         https://arxiv.org/abs/1506.02025
 
     .. note::
-        ``mode='bicubic'`` 使用 :math:`\\alpha=-0.75` 的 `三次卷积算法`_ 实现。常数 :math:`\\alpha` 可能因包而异。例如 `PIL`_ 和 `OpenCV`_ 分别使用 -0.5 和 -0.75。该算法可能会``“超出”``它的插值范围。例如，输入位于 ``[0, 255]`` 中的插值时，它可能会产生负值或大于 `255` 的值。使用 :func:`flow.clamp` 钳制结果以确保它们在有效范围内。
+        ``mode='bicubic'`` 使用 :math:`\\alpha=-0.75` 的 `三次卷积算法`_ 实现。常数 :math:`\\alpha` 可能因包而异。例如 `PIL`_ 和 `OpenCV`_ 分别使用 -0.5 和 -0.75。该算法可能会“超出”它的插值范围。例如，输入位于 ``[0, 255]`` 中的插值时，它可能会产生负值或大于 `255` 的值。使用 :func:`flow.clamp` 钳制结果以确保它们在有效范围内。
     .. _`三次卷积算法`: https://en.wikipedia.org/wiki/Bicubic_interpolation
     .. _`PIL`: https://github.com/python-pillow/Pillow/blob/4634eafe3c695a014267eefdce830b4a825beed7/src/libImaging/Resample.c#L51
     .. _`OpenCV`: https://github.com/opencv/opencv/blob/f345ed564a06178670750bad59526cfa4033be55/modules/imgproc/src/resize.cpp#L908
