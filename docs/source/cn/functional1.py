@@ -61,7 +61,7 @@ reset_docstr(
         - **p** (float) - 任一元素被归零的概率，默认为 0.5。
         - **training** (bool) - 若为 True 则应用 dropout，默认为 True。   
         - **generator** (Generator, optional) - 用于采样的伪随机数发生器。
-        - **addend** (Tensor, optional) - 加入到丢弃操作的结果中的张量，它可以用于模型的残差连接结构。默认为 None。
+        - **addend** (Tensor, optional) - 加入到 dropout 结果中的张量，它可以用于模型的残差连接结构。默认为 None。
 
     形状：
         - Input: :math:`(*)` ，输入可以为任何形状。
