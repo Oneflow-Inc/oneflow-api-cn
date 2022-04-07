@@ -470,7 +470,6 @@ reset_docstr(
     .. code-block:: python
 
         > import oneflow as flow
-
         > x = flow.rand()
         > flow.t(x).shape
         oneflow.Size([])
