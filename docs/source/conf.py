@@ -192,7 +192,7 @@ autodoc_default_options = {
     "exclude-members": "forward",
 }
 
-mathjax_path = "https://cdn.bootcdn.net/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"
+mathjax_path = "https://cdn.jsdelivr.net/npm/mathjax@2.7.8/latest.js?config=TeX-AMS-MML_HTMLorMML"
 
 def should_skip_member(app, what, name, obj, skip, options):
     import collections
