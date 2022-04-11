@@ -37,7 +37,8 @@
   --color-code-foreground: #d0d0d0;
   
   }
-</style><link rel="stylesheet" href="_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+</style><link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" href="_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
   <body dir="">
     
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -2214,9 +2215,9 @@ numpy.int64, numpy.int32, numpy.int8, numpy.uint8.</p>
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">hsplit</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.hsplit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Splits input, a tensor with one or more dimensions, into multiple tensors horizontally according to indices_or_sections.
 Each split is a view of input.
-If input is one dimensional this is equivalent to calling torch.tensor_split(input, indices_or_sections, dim=0)
+If input is one dimensional this is equivalent to calling oneflow.tensor_split(input, indices_or_sections, dim=0)
 (the split dimension is zero), and if input has two or more dimensions it’s equivalent to calling
-torch.tensor_split(input, indices_or_sections, dim=1) (the split dimension is 1), except that if indices_or_sections
+oneflow.tensor_split(input, indices_or_sections, dim=1) (the split dimension is 1), except that if indices_or_sections
 is an integer it must evenly divide the split dimension or a runtime error will be thrown.
 The documentation is referenced from:
 <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.hsplit.html#torch.hsplit">https://pytorch.org/docs/stable/generated/torch.hsplit.html#torch.hsplit</a></p>
@@ -3109,7 +3110,7 @@ The documentation is referenced from:
 <dl class="py function">
 <dt id="oneflow.new_ones">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">new_ones</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sbp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.new_ones" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a Tensor of size size filled with 1. By default, the returned Tensor has the same torch.dtype and torch.device as this tensor.</p>
+<dd><p>Returns a Tensor of size size filled with 1. By default, the returned Tensor has the same oneflow.dtype and oneflow.device as this tensor.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -4978,6 +4979,8 @@ flow.zeros_like(x) 等价于 flow.zeros(x.shape, dtype=x.dtype)</p>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
 </html>
