@@ -38,8 +38,6 @@
   
   }
 </style><link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/katex-math.css" />
     <link rel="stylesheet" href="_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
   <body dir="">
     
@@ -167,12 +165,8 @@ limitations under the License.</p>
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.optim.</span></code><code class="sig-name descname"><span class="pre">Adagrad</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.nn.Parameter</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr_decay</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_decay</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_accumulator_value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1e-10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.Adagrad" title="Permalink to this definition">¶</a></dt>
 <dd><p>实现 Adagrad 优化算法。</p>
 <p>公式是:</p>
-<div class="math-wrapper"><div class="math">
-\[&amp; S_{t} = S_{t-1} + grad \odot grad
-
-&amp; decay\_lr = \frac{learning\_rate}{(1 + (train\_step - 1) * lr\_decay)}
-
-&amp; X_{t} = X_{t-1} - \frac{decay\_lr}{\sqrt{S_{t} + \epsilon}} \odot grad\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}&amp; S_{t} = S_{t-1} + grad \odot grad\\&amp; decay\_lr = \frac{learning\_rate}{(1 + (train\_step - 1) * lr\_decay)}\\&amp; X_{t} = X_{t-1} - \frac{decay\_lr}{\sqrt{S_{t} + \epsilon}} \odot grad\end{aligned}\end{align} \]</div></div>
 <dl class="simple">
 <dt>参数:</dt><dd><ul class="simple">
 <li><p><strong>params</strong> (Union[Iterator[Parameter], List[Dict]])- 待优化参数构成的 iterable 或定义了参数的 dict。</p></li>
@@ -241,14 +235,8 @@ limitations under the License.</p>
 L2 penalty 的实现遵循了 <a class="reference external" href="https://arxiv.org/abs/1711.05101">Decoupled Weight Decay Regularization</a> 中提出的变化。</p>
 <p>该算法可以根据梯度的一阶矩估计和二阶矩估计动态地调整每个参数的学习率。</p>
 <p>参数更新的方程是：</p>
-<div class="math-wrapper"><div class="math">
-\[&amp; V_t = \beta_1*V_{t-1} + (1-\beta_1)*grad
-
-&amp; S_t = \beta_2*S_{t-1} + (1-\beta_2)*{grad} \odot {grad}
-
-&amp; \hat{g} = learning\_rate*\frac{{V_t}}{\sqrt{{S_t}}+\epsilon}
-
-&amp; param_{new} = param_{old} - \hat{g}\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}&amp; V_t = \beta_1*V_{t-1} + (1-\beta_1)*grad\\&amp; S_t = \beta_2*S_{t-1} + (1-\beta_2)*{grad} \odot {grad}\\&amp; \hat{g} = learning\_rate*\frac{{V_t}}{\sqrt{{S_t}}+\epsilon}\\&amp; param_{new} = param_{old} - \hat{g}\end{aligned}\end{align} \]</div></div>
 <dl class="simple">
 <dt>参数:</dt><dd><ul class="simple">
 <li><p><strong>params</strong> (iterable) - 待优化参数构成的 iterable 或定义了参数组的 dict。</p></li>
@@ -323,14 +311,8 @@ L2 penalty 的实现遵循了 <a class="reference external" href="https://arxiv.
 其变式 AdamW 在 <a class="reference external" href="https://arxiv.org/abs/1711.05101">Decoupled Weight Decay Regularization</a> 中被提出。</p>
 <p>所以我们使用 <a class="reference external" href="https://www.fast.ai/2018/07/02/adam-weight-decay/">Adam-weight-decay</a> 算法来解决以下问题。</p>
 <p>参数更新的方程是：</p>
-<div class="math-wrapper"><div class="math">
-\[&amp; V_t = \beta_1*V_{t-1} + (1-\beta_1)*grad
-
-&amp; S_t = \beta_2*S_{t-1} + (1-\beta_2)*{grad} \odot {grad}
-
-&amp; \hat{g} = learning\_rate*(\frac{{V_t}}{\sqrt{{S_t}}+\epsilon}+\lambda*param_{old})
-
-&amp; param_{new} = param_{old} - \hat{g}\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}&amp; V_t = \beta_1*V_{t-1} + (1-\beta_1)*grad\\&amp; S_t = \beta_2*S_{t-1} + (1-\beta_2)*{grad} \odot {grad}\\&amp; \hat{g} = learning\_rate*(\frac{{V_t}}{\sqrt{{S_t}}+\epsilon}+\lambda*param_{old})\\&amp; param_{new} = param_{old} - \hat{g}\end{aligned}\end{align} \]</div></div>
 <dl class="simple">
 <dt>参数:</dt><dd><ul class="simple">
 <li><p><strong>params</strong> (iterable) - 待优化参数构成的 iterable 或定义了参数组的 dict。</p></li>
@@ -403,16 +385,8 @@ L2 penalty 的实现遵循了 <a class="reference external" href="https://arxiv.
 <dd><p>实现 LAMB 优化算法。</p>
 <p>LAMB 在 <a class="reference external" href="https://arxiv.org/abs/1904.00962">Large Batch Optimization for Deep Learning: Training BERT in 76 minutes</a> 中被提出。</p>
 <p>参数更新的方程是：</p>
-<div class="math-wrapper"><div class="math">
-\[&amp; V_t = \beta_1*V_{t-1} + (1-\beta_1)*grad
-
-&amp; S_t = \beta_2*S_{t-1} + (1-\beta_2)*{grad} \odot {grad}
-
-&amp; \hat{u} = \frac{{V_t}}{\sqrt{{S_t}}+\epsilon}
-
-&amp; \hat{r} = learning\_rate * \frac{||param_{old}||_2}{||\hat{u}||_2}
-
-&amp; param_{new} = param_{old} - \hat{r} * \hat{u}\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}&amp; V_t = \beta_1*V_{t-1} + (1-\beta_1)*grad\\&amp; S_t = \beta_2*S_{t-1} + (1-\beta_2)*{grad} \odot {grad}\\&amp; \hat{u} = \frac{{V_t}}{\sqrt{{S_t}}+\epsilon}\\&amp; \hat{r} = learning\_rate * \frac{||param_{old}||_2}{||\hat{u}||_2}\\&amp; param_{new} = param_{old} - \hat{r} * \hat{u}\end{aligned}\end{align} \]</div></div>
 <dl class="simple">
 <dt>参数:</dt><dd><ul class="simple">
 <li><p><strong>params</strong> (iterable) - 待优化参数构成的 iterable 或定义了参数组的 dict。</p></li>
@@ -554,31 +528,19 @@ L2 penalty 的实现遵循了 <a class="reference external" href="https://arxiv.
 <p>Root Mean Squared Propagation (RMSProp) 是一种未发表的、自适应的学习率方法。最先提出了 RMSProp 的构想出现在
 <a class="reference external" href="http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf">http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf</a> 的第29页。</p>
 <p>原始方程如下：</p>
-<div class="math-wrapper"><div class="math">
-\[r(w, t) = \alpha r(w, t-1) + (1 - \alpha)(\nabla Q_{i}(w))^2
-
-W = w - \frac{\eta} {\\sqrt{r(w,t) + \epsilon}} \nabla Q_{i}(w)\]</div></div>
-<p>第一个方程计算了每个权重的梯度平方的移动平均值。然后将梯度除以 <span class="math">\(sqrt{v(w,t)}\)</span>.
-在一些情况下，加入一个动量项 <span class="math">\(\beta\)</span> 是很有效的。OneFlow 的实现中采用了 Nesterov 加速方法：</p>
-<div class="math-wrapper"><div class="math">
-\[r(w, t) = \alpha r(w, t-1) + (1 - \alpha)(\nabla Q_{i}(w))^2
-
-v(w, t) = \beta v(w, t-1) + \frac{\eta} {\\sqrt{r(w,t) +
-    \epsilon}} \nabla Q_{i}(w)
-
-w = w - v(w, t)\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}r(w, t) = \alpha r(w, t-1) + (1 - \alpha)(\nabla Q_{i}(w))^2\\\begin{split}W = w - \frac{\eta} {\\sqrt{r(w,t) + \epsilon}} \nabla Q_{i}(w)\end{split}\end{aligned}\end{align} \]</div></div>
+<p>第一个方程计算了每个权重的梯度平方的移动平均值。然后将梯度除以 <span class="math notranslate nohighlight">\(sqrt{v(w,t)}\)</span>.
+在一些情况下，加入一个动量项 <span class="math notranslate nohighlight">\(\beta\)</span> 是很有效的。OneFlow 的实现中采用了 Nesterov 加速方法：</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}r(w, t) = \alpha r(w, t-1) + (1 - \alpha)(\nabla Q_{i}(w))^2\\\begin{split}v(w, t) = \beta v(w, t-1) + \frac{\eta} {\\sqrt{r(w,t) +
+    \epsilon}} \nabla Q_{i}(w)\end{split}\\w = w - v(w, t)\end{aligned}\end{align} \]</div></div>
 <p>如果 centered 为 True:</p>
-<div class="math-wrapper"><div class="math">
-\[r(w, t) = \alpha r(w, t-1) + (1 - \alpha)(\nabla Q_{i}(w))^2
-
-g(w, t) = \alpha g(w, t-1) + (1 - \alpha)\nabla Q_{i}(w)
-
-v(w, t) = \beta v(w, t-1) + \frac{\eta} {\\sqrt{r(w,t) - (g(w, t))^2 +
-    \epsilon}} \nabla Q_{i}(w)
-
-w = w - v(w, t)\]</div></div>
-<p>其中 <span class="math">\(\alpha\)</span> 是一个超参数，其典型值为 0.99， 0.95 等等。 <span class="math">\(\beta\)</span> 是一个 momentum 项。
-<span class="math">\(\epsilon\)</span> 是一个 smoothing 项，用来避免被零整除，通常设置在 1e-4 到 1e-8 的范围内。</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}r(w, t) = \alpha r(w, t-1) + (1 - \alpha)(\nabla Q_{i}(w))^2\\g(w, t) = \alpha g(w, t-1) + (1 - \alpha)\nabla Q_{i}(w)\\\begin{split}v(w, t) = \beta v(w, t-1) + \frac{\eta} {\\sqrt{r(w,t) - (g(w, t))^2 +
+    \epsilon}} \nabla Q_{i}(w)\end{split}\\w = w - v(w, t)\end{aligned}\end{align} \]</div></div>
+<p>其中 <span class="math notranslate nohighlight">\(\alpha\)</span> 是一个超参数，其典型值为 0.99， 0.95 等等。 <span class="math notranslate nohighlight">\(\beta\)</span> 是一个 momentum 项。
+<span class="math notranslate nohighlight">\(\epsilon\)</span> 是一个 smoothing 项，用来避免被零整除，通常设置在 1e-4 到 1e-8 的范围内。</p>
 <dl class="simple">
 <dt>参数:</dt><dd><ul class="simple">
 <li><p><strong>params</strong> (iterable) - 待优化参数构成的 iterable 或定义了参数组的 dict。</p></li>
@@ -647,15 +609,13 @@ w = w - v(w, t)\]</div></div>
 <p>该算法将随机样本的梯度作为小批量梯度下降中整体梯度的近似估计。</p>
 <p>当 momentum = 0，参数的更新方程为：</p>
 <blockquote>
-<div><div class="math-wrapper"><div class="math">
+<div><div class="math-wrapper"><div class="math notranslate nohighlight">
 \[param_{new} = param_{old} - learning\_rate * grad\]</div></div>
 </div></blockquote>
 <p>当有了 momentum，参数的更新方程为：</p>
 <blockquote>
-<div><div class="math-wrapper"><div class="math">
-\[&amp; V_t = \beta * V_{t-1} - learning\_rate * (g_t + param_{old} * weight\_decay)
-
-&amp; param_{new} = param_{old} + V_t\]</div></div>
+<div><div class="math-wrapper"><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}&amp; V_t = \beta * V_{t-1} - learning\_rate * (g_t + param_{old} * weight\_decay)\\&amp; param_{new} = param_{old} + V_t\end{aligned}\end{align} \]</div></div>
 </div></blockquote>
 <dl class="simple">
 <dt>参数:</dt><dd><ul class="simple">
@@ -736,26 +696,22 @@ limitations under the License.</p>
 <dt id="oneflow.optim.lr_scheduler.CosineAnnealingLR">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.optim.lr_scheduler.</span></code><code class="sig-name descname"><span class="pre">CosineAnnealingLR</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow.nn.optimizer.optimizer.Optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_max</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eta_min</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_step</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.lr_scheduler.CosineAnnealingLR" title="Permalink to this definition">¶</a></dt>
 <dd><p>文档参考自： <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.CosineAnnealingLR.html?highlight=cosine#torch.optim.lr_scheduler.CosineAnnealingLR">https://pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.CosineAnnealingLR.html?highlight=cosine#torch.optim.lr_scheduler.CosineAnnealingLR</a></p>
-<p>使用 cosine annealing schedule 设置每个参数组的学习率，其中 <span class="math">\(\eta_{max}\)</span> 被设置为初始学学习率，
-<span class="math">\(T_{cur}\)</span> 是自 SGDR 中最后一次重启以来的 epoch 数。</p>
-<div class="math-wrapper"><div class="math">
-\[\begin{aligned}
+<p>使用 cosine annealing schedule 设置每个参数组的学习率，其中 <span class="math notranslate nohighlight">\(\eta_{max}\)</span> 被设置为初始学学习率，
+<span class="math notranslate nohighlight">\(T_{cur}\)</span> 是自 SGDR 中最后一次重启以来的 epoch 数。</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
     \eta_t &amp; = \eta_{min} + \frac{1}{2}(\eta_{max} - \eta_{min})\left(1
     + \cos\left(\frac{T_{cur}}{T_{max}}\pi\right)\right),
     &amp; T_{cur} \neq (2k+1)T_{max}; \\
     \eta_{t+1} &amp; = \eta_{t} + \frac{1}{2}(\eta_{max} - \eta_{min})
     \left(1 - \cos\left(\frac{1}{T_{max}}\pi\right)\right),
     &amp; T_{cur} = (2k+1)T_{max}.
-\end{aligned}
-
-\]</div></div>
+\end{aligned}\end{split}\]</div></div>
 <p>当 last_step=-1， 设置初始学习率为 lr。因为调整是递归定义的， 除学习率调整器之外，它也可以同时被其他算子修改。
 如果学习率完全由这个调整器设定，每一步的学习率就变成了：</p>
-<div class="math-wrapper"><div class="math">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\eta_t = \eta_{min} + \frac{1}{2}(\eta_{max} - \eta_{min})\left(1 +
-\cos\left(\frac{T_{cur}}{T_{max}}\pi\right)\right)
-
-\]</div></div>
+\cos\left(\frac{T_{cur}}{T_{max}}\pi\right)\right)\]</div></div>
 <p>这在 <a class="reference external" href="https://arxiv.org/abs/1608.03983">SGDR: Stochastic Gradient Descent with Warm Restarts</a> 中被提出。
 请注意，这只实现了 SGDR 的 cosine annealing 部分，并不包括重新启动。</p>
 <dl class="simple">
@@ -779,14 +735,10 @@ limitations under the License.</p>
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.optim.lr_scheduler.</span></code><code class="sig-name descname"><span class="pre">CosineDecayLR</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow.nn.optimizer.optimizer.Optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay_steps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_step</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.lr_scheduler.CosineDecayLR" title="Permalink to this definition">¶</a></dt>
 <dd><p>此算子构建了一个 Cosine decayed 学习率调整器。</p>
 <p>在用户指定的 decay_steps 之前，学习率被更新为：</p>
-<div class="math-wrapper"><div class="math">
-\[&amp; cos\_decay = 0.5*(1+cos(\pi*\frac{current\_step}{decay\_steps}))
-
-&amp; decay\_factor = (1-\alpha)*cos\_decay+\alpha
-
-&amp; learning\_rate = base\_learning\_rate*decay\_factor\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}&amp; cos\_decay = 0.5*(1+cos(\pi*\frac{current\_step}{decay\_steps}))\\&amp; decay\_factor = (1-\alpha)*cos\_decay+\alpha\\&amp; learning\_rate = base\_learning\_rate*decay\_factor\end{aligned}\end{align} \]</div></div>
 <p>在用户指定的 decay_steps 之后，学习率被更新为：</p>
-<div class="math-wrapper"><div class="math">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[learning\_rate = {base\_learning\_rate}*{\alpha}\]</div></div>
 <p>这在 <a class="reference external" href="https://arxiv.org/abs/1608.03983">SGDR: Stochastic Gradient Descent with Warm Restarts</a> 中被提出。
 请注意，这里只实现了 SGDR 的 cosine annealing 部分，并不包括重新启动。</p>
@@ -794,7 +746,7 @@ limitations under the License.</p>
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>optimizer</strong> (Optimizer) - 被包装的优化器。</p></li>
 <li><p><strong>decay_steps</strong> (int) - 学习率调整器中 decay steps。</p></li>
-<li><p><strong>alpha</strong> (float, optional) - 学习率比例因子( <span class="math">\(\alpha\)</span> )，默认值为 0.0。</p></li>
+<li><p><strong>alpha</strong> (float, optional) - 学习率比例因子( <span class="math notranslate nohighlight">\(\alpha\)</span> )，默认值为 0.0。</p></li>
 <li><p><strong>last_step</strong> (int) - 最后一个 epoch 的索引，默认值：-1。</p></li>
 <li><p><strong>verbose</strong> (bool) - 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code> ，则会在每次更新时打印一条信息到标准输出。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
 </ul>
@@ -841,7 +793,7 @@ limitations under the License.</p>
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.optim.lr_scheduler.</span></code><code class="sig-name descname"><span class="pre">LambdaLR</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr_lambda</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.lr_scheduler.LambdaLR" title="Permalink to this definition">¶</a></dt>
 <dd><p>将每个参数组的学习率设置为给定函数的初始 lr 倍。
 当 last_step = -1 时，设置初始学习率为 lr。</p>
-<div class="math-wrapper"><div class="math">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[learning\_rate = base\_learning\_rate*lambda(last\_step)\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
@@ -924,21 +876,17 @@ limitations under the License.</p>
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.optim.lr_scheduler.</span></code><code class="sig-name descname"><span class="pre">PolynomialLR</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_learning_rate</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cycle</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_step</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.optim.lr_scheduler.PolynomialLR" title="Permalink to this definition">¶</a></dt>
 <dd><p>此算子创建了一个多项式形式的学习率衰减调整器。学习率按如下方式更新：</p>
 <p>如果 cycle 为 <cite>True</cite> ，则等式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\begin{aligned}
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
    &amp; decay\_batch = decay\_batch*ceil(\frac{current\_batch}{decay\_batch}) \\
    &amp; learning\_rate = (base\_lr-end\_lr)*(1-\frac{current\_batch}{decay\_batch})^{power}+end\_lr
-\end{aligned}
-
-\]</div></div>
+\end{aligned}\end{split}\]</div></div>
 <p>如果 cycle 为 <cite>False</cite> ，则等式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\begin{aligned}
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
    &amp; decay\_batch = min(decay\_batch, current\_batch) \\
    &amp; learning\_rate = (base\_lr-end\_lr)*(1-\frac{current\_batch}{decay\_batch})^{power}+end\_lr
-\end{aligned}
-
-\]</div></div>
+\end{aligned}\end{split}\]</div></div>
 <dl class="simple">
 <dt>参数:</dt><dd><ul class="simple">
 <li><p><strong>optimizer</strong> (Optimizer) - 被包装的优化器。</p></li>
@@ -1147,8 +1095,6 @@ limitations under the License.</p>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js"></script>
-    <script src="_static/katex_autorenderer.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
 </html>

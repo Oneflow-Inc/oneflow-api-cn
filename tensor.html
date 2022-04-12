@@ -38,8 +38,6 @@
   
   }
 </style><link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/katex-math.css" />
     <link rel="stylesheet" href="_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
   <body dir="">
     
@@ -179,10 +177,8 @@
 <code class="sig-name descname"><span class="pre">add</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.Tensor.add" title="Permalink to this definition">¶</a></dt>
 <dd><p>计算 <cite>input</cite> 和 <cite>other</cite> 的和。支持 element-wise、标量和广播形式的加法。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[out = input + other
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[out = input + other\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>input</strong> (Tensor): 输入张量</p></li>
@@ -420,10 +416,8 @@
 <code class="sig-name descname"><span class="pre">cos</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.Tensor.cos" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回一个包含 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 中元素的余弦值的新 tensor。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i} = \cos(\text{input}_{i})
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i} = \cos(\text{input}_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入张量</p>
 </dd>
@@ -515,10 +509,8 @@
 <code class="sig-name descname"><span class="pre">div</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.Tensor.div" title="Permalink to this definition">¶</a></dt>
 <dd><p>计算 <cite>input</cite> 除以 <cite>other</cite>，支持 element-wise、标量和广播形式的除法。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[out = \frac{input}{other}
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[out = \frac{input}{other}\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>input</strong> (Union[int, float, oneflow.tensor]): input.</p></li>
@@ -832,7 +824,7 @@ were created by source operations.</p>
 <dl class="py method">
 <dt id="oneflow.Tensor.le">
 <code class="sig-name descname"><span class="pre">le</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.le" title="Permalink to this definition">¶</a></dt>
-<dd><p>返回 <span class="math">\(input &lt;= other\)</span> 的 element-wise 真实值。</p>
+<dd><p>返回 <span class="math notranslate nohighlight">\(input &lt;= other\)</span> 的 element-wise 真实值。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>input</strong> (oneflow.tensor): 输入张量</p></li>
@@ -1335,10 +1327,8 @@ for leaf tensors.</p>
 <code class="sig-name descname"><span class="pre">sub</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.Tensor.sub" title="Permalink to this definition">¶</a></dt>
 <dd><p>计算 <cite>input</cite> 和 <cite>other</cite> 的差，支持 element-wise、标量和广播形式的减法。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[out = input - other
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[out = input - other\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>input</strong> (Tensor): 输入张量</p></li>
@@ -1639,10 +1629,8 @@ for leaf tensors.</p>
 <code class="sig-name descname"><span class="pre">uniform_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.uniform_" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tensor.uniform_(from=0, to=1) → Tensor</p>
 <p>用从连续均匀分布中采样的数字填充 self 张量。</p>
-<div class="math-wrapper"><div class="math">
-\[P(x)=1/(to-from)
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[P(x)=1/(to-from)\]</div></div>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.unsqueeze">
@@ -1661,8 +1649,8 @@ for leaf tensors.</p>
 <p>返回一个新的 tensor ，其数据与 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 相同，但形状 <a class="reference internal" href="#oneflow.Tensor.shape" title="oneflow.Tensor.shape"><code class="xref py py-attr docutils literal notranslate"><span class="pre">shape</span></code></a> 不同。</p>
 <p>返回的 tensor 与 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 共享相同的数据并且必须具有相同数量的元素，但是形状可以不同。
 对于要被查看的 tensor ，新的视图大小必须与其原始大小和 step 兼容，每个新视角的维度必须为原始维度的子空间，
-或者为跨越原始维度 <span class="math">\(d, d+1, \dots, d+k\)</span> 的 span 满足以下类似邻接条件 <span class="math">\(\forall i = d, \dots, d+k-1\)</span> 。</p>
-<div class="math-wrapper"><div class="math">
+或者为跨越原始维度 <span class="math notranslate nohighlight">\(d, d+1, \dots, d+k\)</span> 的 span 满足以下类似邻接条件 <span class="math notranslate nohighlight">\(\forall i = d, \dots, d+k-1\)</span> 。</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\text{stride}[i] = \text{stride}[i+1] \times \text{size}[i+1]\]</div></div>
 <p>否则将无法以视图查看  为形状 <a class="reference internal" href="#oneflow.Tensor.shape" title="oneflow.Tensor.shape"><code class="xref py py-attr docutils literal notranslate"><span class="pre">shape</span></code></a> 且不复制 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> （例如通过 <code class="xref py py-meth docutils literal notranslate"><span class="pre">contiguous()</span></code>）。
 当不清楚是否可以执行 <a class="reference internal" href="#oneflow.Tensor.view" title="oneflow.Tensor.view"><code class="xref py py-meth docutils literal notranslate"><span class="pre">view()</span></code></a> 时，建议使用 <a class="reference internal" href="oneflow.html#oneflow.reshape" title="oneflow.reshape"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reshape()</span></code></a> ，因为 <a class="reference internal" href="oneflow.html#oneflow.reshape" title="oneflow.reshape"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reshape()</span></code></a> 在兼容的时候返回
@@ -1803,8 +1791,6 @@ flow.nonzero(condition, as_tuple=True) 。</p>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js"></script>
-    <script src="_static/katex_autorenderer.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
 </html>

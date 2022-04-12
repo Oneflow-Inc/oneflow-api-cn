@@ -38,8 +38,6 @@
   
   }
 </style><link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/katex-math.css" />
     <link rel="stylesheet" href="_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
   <body dir="">
     
@@ -158,13 +156,13 @@
 <p>请参阅: <a class="reference internal" href="nn.html#oneflow.nn.Conv1d" title="oneflow.nn.Conv1d"><code class="xref py py-class docutils literal notranslate"><span class="pre">Conv1d</span></code></a> 获取有关详细信息和输出形状。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>input</strong>: 形状的量化输入张量: <span class="math">\((\text{minibatch} , \text{in_channels} , iW)\)</span></p></li>
-<li><p><strong>weight</strong>: 形状的量化滤波器: <span class="math">\((\text{out_channels} , \frac{\text{in_channels}}{\text{groups}} , iW)\)</span></p></li>
-<li><p><strong>bias</strong>: 非量化的形状的偏置张量: <span class="math">\((\text{out_channels})\)</span> 。张量类型必须为 <cite>flow.float</cite> 。</p></li>
+<li><p><strong>input</strong>: 形状的量化输入张量: <span class="math notranslate nohighlight">\((\text{minibatch} , \text{in_channels} , iW)\)</span></p></li>
+<li><p><strong>weight</strong>: 形状的量化滤波器: <span class="math notranslate nohighlight">\((\text{out_channels} , \frac{\text{in_channels}}{\text{groups}} , iW)\)</span></p></li>
+<li><p><strong>bias</strong>: 非量化的形状的偏置张量: <span class="math notranslate nohighlight">\((\text{out_channels})\)</span> 。张量类型必须为 <cite>flow.float</cite> 。</p></li>
 <li><p><strong>stride</strong>: 卷积核的步长。可以是单个数字或元组 <cite>(sW,)</cite> 。 默认值: 1</p></li>
 <li><p><strong>padding</strong>: 输入两侧的隐式填充。可以是单个数字或元组 <cite>(padW,)</cite> 。 默认值: 0</p></li>
 <li><p><strong>dilation</strong>: 内核元素之间的间距。可以是单个数字或元组 <cite>(dW,)</cite> 。 默认值: 1</p></li>
-<li><p><strong>groups</strong>: 将输入分成组: <span class="math">\(\text{in_channels}\)</span> 应该可以被组数整除。默认值: 1</p></li>
+<li><p><strong>groups</strong>: 将输入分成组: <span class="math notranslate nohighlight">\(\text{in_channels}\)</span> 应该可以被组数整除。默认值: 1</p></li>
 </ul>
 </dd>
 </dl>
@@ -186,13 +184,13 @@
 <p>请参阅 <a class="reference internal" href="nn.html#oneflow.nn.Conv2d" title="oneflow.nn.Conv2d"><code class="xref py py-class docutils literal notranslate"><span class="pre">Conv2d</span></code></a> 获取有关详细信息和输出形状。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>input</strong> - 形状为 <span class="math">\((\text{minibatch} , \text{in_channels} , iH , iW)\)</span> 的量化输入张量</p></li>
-<li><p><strong>weight</strong> - 形状为 <span class="math">\((\text{out_channels} , \frac{\text{in_channels}}{\text{groups}} , kH , kW)\)</span> 的量化滤波器</p></li>
-<li><p><strong>bias</strong> - 形状为 <span class="math">\((\text{out_channels})\)</span> 的非量化偏置张量，其类型必须为 <cite>flow.float</cite>。</p></li>
+<li><p><strong>input</strong> - 形状为 <span class="math notranslate nohighlight">\((\text{minibatch} , \text{in_channels} , iH , iW)\)</span> 的量化输入张量</p></li>
+<li><p><strong>weight</strong> - 形状为 <span class="math notranslate nohighlight">\((\text{out_channels} , \frac{\text{in_channels}}{\text{groups}} , kH , kW)\)</span> 的量化滤波器</p></li>
+<li><p><strong>bias</strong> - 形状为 <span class="math notranslate nohighlight">\((\text{out_channels})\)</span> 的非量化偏置张量，其类型必须为 <cite>flow.float</cite>。</p></li>
 <li><p><strong>stride</strong> - 卷积核的步长。可以是单个数字或元组 <cite>(sH, sW)</cite>， 默认值：1。</p></li>
 <li><p><strong>padding</strong> - 输入两侧的隐式填充。可以是单个数字或元组 <cite>(padH, padW)</cite>，默认值：0。</p></li>
 <li><p><strong>dilation</strong> - 内核元素之间的间距。可以是单个数字或元组 <cite>(dH, dW)</cite>，默认值：1。</p></li>
-<li><p><strong>groups</strong> - 将输入分成应该可以被组数整除的 <span class="math">\(\text{in_channels}\)</span>，默认值：1。</p></li>
+<li><p><strong>groups</strong> - 将输入分成应该可以被组数整除的 <span class="math notranslate nohighlight">\(\text{in_channels}\)</span>，默认值：1。</p></li>
 </ul>
 </dd>
 </dl>
@@ -205,13 +203,13 @@
 <p>请参阅 <a class="reference internal" href="nn.html#oneflow.nn.Conv3d" title="oneflow.nn.Conv3d"><code class="xref py py-class docutils literal notranslate"><span class="pre">Conv3d</span></code></a> 获取有关详细信息和输出形状。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>input</strong> - 形状为 <span class="math">\((\text{minibatch} , \text{in_channels} , iD , iH , iW)\)</span> 的量化输入张量</p></li>
-<li><p><strong>weight</strong> - 形状为 <span class="math">\((\text{out_channels} , \frac{\text{in_channels}}{\text{groups}} , kD , kH , kW)\)</span> 的量化滤波器</p></li>
-<li><p><strong>bias</strong> - 形状为 <span class="math">\((\text{out_channels})\)</span> 的化偏置张量，其类型必须为 <cite>flow.float</cite>。</p></li>
+<li><p><strong>input</strong> - 形状为 <span class="math notranslate nohighlight">\((\text{minibatch} , \text{in_channels} , iD , iH , iW)\)</span> 的量化输入张量</p></li>
+<li><p><strong>weight</strong> - 形状为 <span class="math notranslate nohighlight">\((\text{out_channels} , \frac{\text{in_channels}}{\text{groups}} , kD , kH , kW)\)</span> 的量化滤波器</p></li>
+<li><p><strong>bias</strong> - 形状为 <span class="math notranslate nohighlight">\((\text{out_channels})\)</span> 的化偏置张量，其类型必须为 <cite>flow.float</cite>。</p></li>
 <li><p><strong>stride</strong> - 卷积核的步长。可以是单个数字或元组 <cite>(sD, sH, sW)</cite>， 默认值：1。</p></li>
 <li><p><strong>padding</strong> - 输入两侧的隐式填充。可以是单个数字或元组 <cite>(padD, padH, padW)</cite>，默认值：0。</p></li>
 <li><p><strong>dilation</strong> - 内核元素之间的间距。可以是单个数字或元组 <cite>(dD, dH, dW)</cite>，默认值：1。</p></li>
-<li><p><strong>groups</strong> - 将输入分成应该可以被组数整除的 <span class="math">\(\text{in_channels}\)</span>，默认值：1。</p></li>
+<li><p><strong>groups</strong> - 将输入分成应该可以被组数整除的 <span class="math notranslate nohighlight">\(\text{in_channels}\)</span>，默认值：1。</p></li>
 </ul>
 </dd>
 </dl>
@@ -307,28 +305,24 @@
 <dt id="oneflow.nn.functional.hardsigmoid">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">hardsigmoid</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.hardsigmoid" title="Permalink to this definition">¶</a></dt>
 <dd><p>逐元素应用以下函数:</p>
-<div class="math-wrapper"><div class="math">
-\[\text{Hardsigmoid}(x) = \begin{cases}
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\begin{split}\text{Hardsigmoid}(x) = \begin{cases}
     0 &amp; \text{if~} x \le -3, \\
     1 &amp; \text{if~} x \ge +3, \\
     x / 6 + 1 / 2 &amp; \text{otherwise}
-\end{cases}
-
-\]</div></div>
+\end{cases}\end{split}\]</div></div>
 <p>更多细节请参考 <a class="reference internal" href="nn.html#oneflow.nn.Hardsigmoid" title="oneflow.nn.Hardsigmoid"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hardsigmoid</span></code></a>。</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.functional.hardswish">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">hardswish</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.hardswish" title="Permalink to this definition">¶</a></dt>
 <dd><p>按照论文 <a class="reference external" href="https://arxiv.org/abs/1905.02244">Searching for MobileNetV3</a> 中的描述，应用 hardswish 函数。</p>
-<div class="math-wrapper"><div class="math">
-\[\text{Hardswish}(x) = \begin{cases}
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\begin{split}\text{Hardswish}(x) = \begin{cases}
     0 &amp; \text{if~} x \le -3, \\
     x &amp; \text{if~} x \ge +3, \\
     x \cdot (x + 3) /6 &amp; \text{otherwise}
-\end{cases}
-
-\]</div></div>
+\end{cases}\end{split}\]</div></div>
 <p>更多细节请参考 <a class="reference internal" href="nn.html#oneflow.nn.Hardswish" title="oneflow.nn.Hardswish"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hardswish</span></code></a>。</p>
 </dd></dl>
 <dl class="py function">
@@ -340,13 +334,11 @@
 <dl class="py function">
 <dt id="oneflow.nn.functional.normalize">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">normalize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1e-12</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.normalize" title="Permalink to this definition">¶</a></dt>
-<dd><p>对指定维度的输入进行 <span class="math">\(L_p\)</span> 规范化处理。</p>
-<p>对于大小为 <span class="math">\((n_0, ..., n_{dim}, ..., n_k)\)</span> 的 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 张量，每一个 <span class="math">\(n_{dim}\)</span> 维向量 <span class="math">\(v\)</span> 沿维度 <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code> 被转换为：</p>
-<div class="math-wrapper"><div class="math">
-\[v = \frac{v}{\max(\lVert v \rVert_p, \epsilon)}.
-
-\]</div></div>
-<p>在默认参数下，它使用沿维度 <span class="math">\(1\)</span> 的向量上的欧几里得准则进行归一化。</p>
+<dd><p>对指定维度的输入进行 <span class="math notranslate nohighlight">\(L_p\)</span> 规范化处理。</p>
+<p>对于大小为 <span class="math notranslate nohighlight">\((n_0, ..., n_{dim}, ..., n_k)\)</span> 的 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 张量，每一个 <span class="math notranslate nohighlight">\(n_{dim}\)</span> 维向量 <span class="math notranslate nohighlight">\(v\)</span> 沿维度 <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code> 被转换为：</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[v = \frac{v}{\max(\lVert v \rVert_p, \epsilon)}.\]</div></div>
+<p>在默认参数下，它使用沿维度 <span class="math notranslate nohighlight">\(1\)</span> 的向量上的欧几里得准则进行归一化。</p>
 <p>但要注意，当 <cite>input.shape[dim] = 1</cite> 时，输入张量的梯度计算在不同的框架上有不同的结果。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
@@ -375,14 +367,14 @@
 <dt id="oneflow.nn.functional.leaky_relu">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">leaky_relu</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Float</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.leaky_relu" title="Permalink to this definition">¶</a></dt>
 <dd><p>逐元素应用以下函数:</p>
-<p><span class="math">\(\text{LeakyReLU}(x) = \max(0, x) + \text{negative_slope} * \min(0, x)\)</span></p>
+<p><span class="math notranslate nohighlight">\(\text{LeakyReLU}(x) = \max(0, x) + \text{negative_slope} * \min(0, x)\)</span></p>
 <p>更多细节请参考 <a class="reference internal" href="nn.html#oneflow.nn.LeakyReLU" title="oneflow.nn.LeakyReLU"><code class="xref py py-class docutils literal notranslate"><span class="pre">LeakyReLU</span></code></a>。</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.functional.elu">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">elu</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Float</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.elu" title="Permalink to this definition">¶</a></dt>
 <dd><p>逐元素应用以下函数:</p>
-<p><span class="math">\(\text{ELU}(x) = \max(0,x) + \min(0, \alpha * (\exp(x) - 1))\)</span></p>
+<p><span class="math notranslate nohighlight">\(\text{ELU}(x) = \max(0,x) + \min(0, \alpha * (\exp(x) - 1))\)</span></p>
 <p>更多细节请参考 <a class="reference internal" href="nn.html#oneflow.nn.ELU" title="oneflow.nn.ELU"><code class="xref py py-class docutils literal notranslate"><span class="pre">ELU</span></code></a>。</p>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -400,7 +392,7 @@
 <dt id="oneflow.nn.functional.celu">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">celu</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.celu" title="Permalink to this definition">¶</a></dt>
 <dd><p>逐元素地应用如下等式：</p>
-<div class="math-wrapper"><div class="math">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\text{CELU}(x) = \max(0,x) + \min(0, \alpha * (\exp(x/\alpha) - 1))\]</div></div>
 <p>更多细节请参考 <a class="reference internal" href="nn.html#oneflow.nn.CELU" title="oneflow.nn.CELU"><code class="xref py py-class docutils literal notranslate"><span class="pre">CELU</span></code></a> 。</p>
 <p>示例：</p>
@@ -419,9 +411,9 @@
 <dt id="oneflow.nn.functional.selu">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">selu</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.selu" title="Permalink to this definition">¶</a></dt>
 <dd><p>应用以下 element-wise 公式：</p>
-<p><span class="math">\(\text{SELU}(x) = scale * (\max(0,x) + \min(0, \alpha * (\exp(x) - 1)))\)</span> ,
-<span class="math">\(\alpha=1.6732632423543772848170429916717\)</span> ,
-<span class="math">\(scale=1.0507009873554804934193349852946\)</span></p>
+<p><span class="math notranslate nohighlight">\(\text{SELU}(x) = scale * (\max(0,x) + \min(0, \alpha * (\exp(x) - 1)))\)</span> ,
+<span class="math notranslate nohighlight">\(\alpha=1.6732632423543772848170429916717\)</span> ,
+<span class="math notranslate nohighlight">\(scale=1.0507009873554804934193349852946\)</span></p>
 <p>更多信息请参考 <a class="reference internal" href="nn.html#oneflow.nn.SELU" title="oneflow.nn.SELU"><code class="xref py py-class docutils literal notranslate"><span class="pre">SELU</span></code></a> 。</p>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
@@ -437,7 +429,7 @@
 <dt id="oneflow.nn.functional.sigmoid">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">sigmoid</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.sigmoid" title="Permalink to this definition">¶</a></dt>
 <dd><p>应用以下 element-wise 公式：
-<span class="math">\(\text{Sigmoid}(x) = \frac{1}{1 + \exp(-x)}\)</span></p>
+<span class="math notranslate nohighlight">\(\text{Sigmoid}(x) = \frac{1}{1 + \exp(-x)}\)</span></p>
 <p>更多信息请参考 <a class="reference internal" href="nn.html#oneflow.nn.Sigmoid" title="oneflow.nn.Sigmoid"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sigmoid</span></code></a> 。</p>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
@@ -454,10 +446,10 @@
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">pad</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.pad" title="Permalink to this definition">¶</a></dt>
 <dd><p>填充张量。</p>
 <dl class="simple">
-<dt>填充大小：</dt><dd><p>对输入张量某些维度的填充大小的描述从最后一个维度开始，然后是前一个维度，依此类推。<code class="docutils literal notranslate"><span class="pre">input</span></code> 的维度将被填充为  <span class="math">\(\left\lfloor\frac{\text{len(pad)}}{2}\right\rfloor\)</span> 。
-例如，若只对输入张量的最后一个维度进行填充，那么 <a class="reference internal" href="#oneflow.nn.functional.pad" title="oneflow.nn.functional.pad"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pad</span></code></a> 的参数应为 <span class="math">\((\text{padding_left}, \text{padding_right})\)</span> ；
-若填充输入张量的最后两个维度，则参数变成 <span class="math">\((\text{padding_left}, \text{padding_right},\)</span> <span class="math">\(\text{padding_top}, \text{padding_bottom})\)</span>；
-填充最后 3 个维度时，参数将为 <span class="math">\((\text{padding_left}, \text{padding_right},\)</span> <span class="math">\(\text{padding_top}, \text{padding_bottom}\)</span> <span class="math">\(\text{padding_front}, \text{padding_back})\)</span>。</p>
+<dt>填充大小：</dt><dd><p>对输入张量某些维度的填充大小的描述从最后一个维度开始，然后是前一个维度，依此类推。<code class="docutils literal notranslate"><span class="pre">input</span></code> 的维度将被填充为  <span class="math notranslate nohighlight">\(\left\lfloor\frac{\text{len(pad)}}{2}\right\rfloor\)</span> 。
+例如，若只对输入张量的最后一个维度进行填充，那么 <a class="reference internal" href="#oneflow.nn.functional.pad" title="oneflow.nn.functional.pad"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pad</span></code></a> 的参数应为 <span class="math notranslate nohighlight">\((\text{padding_left}, \text{padding_right})\)</span> ；
+若填充输入张量的最后两个维度，则参数变成 <span class="math notranslate nohighlight">\((\text{padding_left}, \text{padding_right},\)</span> <span class="math notranslate nohighlight">\(\text{padding_top}, \text{padding_bottom})\)</span>；
+填充最后 3 个维度时，参数将为 <span class="math notranslate nohighlight">\((\text{padding_left}, \text{padding_right},\)</span> <span class="math notranslate nohighlight">\(\text{padding_top}, \text{padding_bottom}\)</span> <span class="math notranslate nohighlight">\(\text{padding_front}, \text{padding_back})\)</span>。</p>
 </dd>
 <dt>填充模式：</dt><dd><p>参考 <a class="reference internal" href="nn.html#oneflow.nn.ConstantPad2d" title="oneflow.nn.ConstantPad2d"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.nn.ConstantPad2d</span></code></a>， <a class="reference internal" href="nn.html#oneflow.nn.ReflectionPad2d" title="oneflow.nn.ReflectionPad2d"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.nn.ReflectionPad2d</span></code></a>，以及 <a class="reference internal" href="nn.html#oneflow.nn.ReplicationPad2d" title="oneflow.nn.ReplicationPad2d"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.nn.ReplicationPad2d</span></code></a>
 可以得到每个填充模式是如何工作的具体例子。对任意的尺寸实现恒定的填充。复制填充的引入是为了填充 5D 输入张量的最后 3 维，
@@ -465,7 +457,7 @@
 </dd>
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>input</strong> (Tensor)- N 维张量。</p></li>
-<li><p><strong>pad</strong> (tuple)- m 个元素的元组，其中 <span class="math">\(\frac{m}{2} \leq\)</span> 输入维度以及 <span class="math">\(m\)</span> 为偶数。</p></li>
+<li><p><strong>pad</strong> (tuple)- m 个元素的元组，其中 <span class="math notranslate nohighlight">\(\frac{m}{2} \leq\)</span> 输入维度以及 <span class="math notranslate nohighlight">\(m\)</span> 为偶数。</p></li>
 <li><p><strong>mode</strong> - <code class="docutils literal notranslate"><span class="pre">'constant'</span></code>， <code class="docutils literal notranslate"><span class="pre">'reflect'</span></code>， <code class="docutils literal notranslate"><span class="pre">'replicate'</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">'circular'</span></code>。默认值： <code class="docutils literal notranslate"><span class="pre">'constant'</span></code>。</p></li>
 <li><p><strong>value</strong> - 填充值为 <code class="docutils literal notranslate"><span class="pre">'constant'</span></code> 的填充。默认值： <code class="docutils literal notranslate"><span class="pre">0</span></code>。</p></li>
 </ul>
@@ -500,10 +492,8 @@
 <dt id="oneflow.nn.functional.prelu">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">prelu</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.prelu" title="Permalink to this definition">¶</a></dt>
 <dd><p>逐元素应用以下函数:</p>
-<div class="math-wrapper"><div class="math">
-\[prelu(x) = max(0,x) + alpha * min(0,x)
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[prelu(x) = max(0,x) + alpha * min(0,x)\]</div></div>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
@@ -521,10 +511,8 @@
 <dt id="oneflow.nn.functional.logsigmoid">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">logsigmoid</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.logsigmoid" title="Permalink to this definition">¶</a></dt>
 <dd><p>逐元素应用函数:</p>
-<div class="math-wrapper"><div class="math">
-\[\text{logsigmoid}(x) = \log\left(\frac{ 1 }{ 1 + \exp(-x)}\right)
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{logsigmoid}(x) = \log\left(\frac{ 1 }{ 1 + \exp(-x)}\right)\]</div></div>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
@@ -543,20 +531,16 @@
 <dt id="oneflow.nn.functional.log_softmax">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">log_softmax</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.log_softmax" title="Permalink to this definition">¶</a></dt>
 <dd><p>LogSoftmax 的公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{LogSoftmax}(x_{i}) = \log\left(\frac{\exp(x_i) }{ \sum_j \exp(x_j)} \right) = x_i - \log({ \sum_j \exp(x_j)})
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{LogSoftmax}(x_{i}) = \log\left(\frac{\exp(x_i) }{ \sum_j \exp(x_j)} \right) = x_i - \log({ \sum_j \exp(x_j)})\]</div></div>
 <p>参考 <a class="reference internal" href="nn.html#oneflow.nn.LogSoftmax" title="oneflow.nn.LogSoftmax"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogSoftmax</span></code></a> 获得更多细节。</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.functional.gelu">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">gelu</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.gelu" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gelu 激活算子，其公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[out = 0.5 * x * (1 + tanh(\sqrt{\frac{2}{\pi}} * (x + 0.044715x^{3})))
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[out = 0.5 * x * (1 + tanh(\sqrt{\frac{2}{\pi}} * (x + 0.044715x^{3})))\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (oneflow.tensor) - 输入张量</p>
 </dd>
@@ -579,10 +563,8 @@
 <dt id="oneflow.nn.functional.glu">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">glu</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.glu" title="Permalink to this definition">¶</a></dt>
 <dd><p>glu 的公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[GLU(input) = GLU(a, b) = a \otimes sigmoid(b)
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[GLU(input) = GLU(a, b) = a \otimes sigmoid(b)\]</div></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>其中输入沿维度 dim 被切分成 a 和 b 两半，⊗ 是矩阵间的按元素积。</p>
@@ -603,7 +585,7 @@
 <dt id="oneflow.nn.functional.softsign">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">softsign</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.softsign" title="Permalink to this definition">¶</a></dt>
 <dd><p>softsign 的公式为：</p>
-<div class="math-wrapper"><div class="math">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[softsign(x) = \frac{x}{1 + |x|}\]</div></div>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -624,15 +606,13 @@
 <dd><p>将 Softmax 函数应用于 n 维 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> tensor 。并且重新缩放，
 使输出 tensor 的元素于 [0,1] 范围内并且总和为 1 。</p>
 <p>Softmax 的公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{Softmax}(x_{i}) = \frac{\exp(x_i)}{\sum_j \exp(x_j)}
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{Softmax}(x_{i}) = \frac{\exp(x_i)}{\sum_j \exp(x_j)}\]</div></div>
 <p>当输入张量是稀疏张量时，未指定的值将被视为 <code class="docutils literal notranslate"><span class="pre">-inf</span></code> 。</p>
 <dl class="simple">
 <dt>形状:</dt><dd><ul class="simple">
-<li><p>Input: <span class="math">\((*)\)</span> ，其中 <cite>*</cite> 表示任意数量的附加维度</p></li>
-<li><p>Output: <span class="math">\((*)\)</span> ，与 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 相同的形状</p></li>
+<li><p>Input: <span class="math notranslate nohighlight">\((*)\)</span> ，其中 <cite>*</cite> 表示任意数量的附加维度</p></li>
+<li><p>Output: <span class="math notranslate nohighlight">\((*)\)</span> ，与 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 相同的形状</p></li>
 </ul>
 </dd>
 <dt>返回类型：</dt><dd><p>与 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 具有相同维度和形状的张量，其值在 [0, 1] 范围内</p>
@@ -658,17 +638,15 @@
 <dt id="oneflow.nn.functional.softplus">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">softplus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.softplus" title="Permalink to this definition">¶</a></dt>
 <dd><p>逐元素地应用此公式：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{Softplus}(x) = \frac{1}{\beta} * \log(1 + \exp(\beta * x))
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{Softplus}(x) = \frac{1}{\beta} * \log(1 + \exp(\beta * x))\]</div></div>
 <p>更多细节参考 <a class="reference internal" href="nn.html#oneflow.nn.Softplus" title="oneflow.nn.Softplus"><code class="xref py py-class docutils literal notranslate"><span class="pre">Softplus</span></code></a> 。</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.functional.tanh">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">tanh</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.tanh" title="Permalink to this definition">¶</a></dt>
 <dd><p>公式为：</p>
-<div class="math-wrapper"><div class="math">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[out = \frac{e^x-e^{-x}}{e^x+e^{-x}}\]</div></div>
 <p>更多信息请参考 <a class="reference internal" href="nn.html#oneflow.nn.Tanh" title="oneflow.nn.Tanh"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tanh</span></code></a> 。</p>
 </dd></dl>
@@ -676,7 +654,7 @@
 <dt id="oneflow.nn.functional.silu">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">silu</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.silu" title="Permalink to this definition">¶</a></dt>
 <dd><p>公式为：</p>
-<div class="math-wrapper"><div class="math">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\text{silu}(x) = x * sigmoid(x)\]</div></div>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
@@ -693,10 +671,8 @@
 <dt id="oneflow.nn.functional.mish">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">mish</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.mish" title="Permalink to this definition">¶</a></dt>
 <dd><p>逐元素地应用此公式：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{mish}(x) = x * \text{tanh}(\text{softplus}(x))
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{mish}(x) = x * \text{tanh}(\text{softplus}(x))\]</div></div>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
@@ -749,29 +725,25 @@
 <dt id="oneflow.nn.functional.triplet_margin_loss">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">triplet_margin_loss</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.triplet_margin_loss" title="Permalink to this definition">¶</a></dt>
 <dd><p>文档参考自：<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.triplet_margin_loss.html?highlight=triplet_margin_loss">https://pytorch.org/docs/stable/generated/torch.nn.functional.triplet_margin_loss.html?highlight=triplet_margin_loss</a></p>
-<p>在给定输入张量 <span class="math">\(x1\)</span>, <span class="math">\(x2\)</span>, <span class="math">\(x3\)</span> 和值大于 <span class="math">\(0\)</span> 的边距的情况下，创建一个测量三元组损失的标准。这用于测量样本之间的相对相似性。三元组由 <cite>a</cite>, <cite>p</cite> 和 <cite>n</cite> 组成（即分别为 <cite>锚点</cite>、<cite>正例</cite> 和 <cite>负例</cite> ）。所有输入张量的形状应为 <span class="math">\((N, D)\)</span> 。</p>
+<p>在给定输入张量 <span class="math notranslate nohighlight">\(x1\)</span>, <span class="math notranslate nohighlight">\(x2\)</span>, <span class="math notranslate nohighlight">\(x3\)</span> 和值大于 <span class="math notranslate nohighlight">\(0\)</span> 的边距的情况下，创建一个测量三元组损失的标准。这用于测量样本之间的相对相似性。三元组由 <cite>a</cite>, <cite>p</cite> 和 <cite>n</cite> 组成（即分别为 <cite>锚点</cite>、<cite>正例</cite> 和 <cite>负例</cite> ）。所有输入张量的形状应为 <span class="math notranslate nohighlight">\((N, D)\)</span> 。</p>
 <p>Vassileios Balntas、Edgar Riba 等人的 <a class="reference external" href="http://www.bmva.org/bmvc/2016/papers/paper119/index.html">Learning shallow convolutional feature descriptors with triplet losses</a> 一文中详细描述了距离交换。</p>
 <p>小批量中每个样本的损失函数为：</p>
-<div class="math-wrapper"><div class="math">
-\[L(a, p, n) = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[L(a, p, n) = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}\]</div></div>
 <p>其中</p>
-<div class="math-wrapper"><div class="math">
-\[d(x_i, y_i) = \left\lVert {\bf x}_i - {\bf y}_i \right\rVert_p
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[d(x_i, y_i) = \left\lVert {\bf x}_i - {\bf y}_i \right\rVert_p\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>margin</strong> (float, optional) - 默认为 <span class="math">\(1\)</span></p></li>
-<li><p><strong>p</strong> (float, optional) - 成对距离的范数，默认为 <span class="math">\(2.0\)</span></p></li>
+<li><p><strong>margin</strong> (float, optional) - 默认为 <span class="math notranslate nohighlight">\(1\)</span></p></li>
+<li><p><strong>p</strong> (float, optional) - 成对距离的范数，默认为 <span class="math notranslate nohighlight">\(2.0\)</span></p></li>
 <li><p><strong>swap</strong> (bool, optional) - 默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code> 。V. Balntas、E. Riba 等人的 <a class="reference external" href="http://www.bmva.org/bmvc/2016/papers/paper119/index.html">Learning shallow convolutional feature descriptors with triplet losses</a> 一文中详细描述了距离交换。</p></li>
 <li><p><strong>reduction</strong> (string, optional) - 指定应用于输出的 reduction：<code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>。若值为 <code class="docutils literal notranslate"><span class="pre">'none'</span></code> ：不进行 reduction；值为 <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> ：输出的和将会除以输出中的元素数量；值为 <code class="docutils literal notranslate"><span class="pre">'sum'</span></code> ：输出将被求和。请注意：<code class="xref py py-attr docutils literal notranslate"><span class="pre">size_average</span></code> 和 <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduce</span></code> 正逐渐被弃用，指定这二者的任何一个都将覆盖 <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code>。默认值为 <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>。</p></li>
 </ul>
 </dd>
 <dt>形状：</dt><dd><ul class="simple">
-<li><p>Input: <span class="math">\((N, D)\)</span> ，其中 <span class="math">\(D\)</span> 是向量维度。</p></li>
-<li><p>Output: 若 <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> == <code class="docutils literal notranslate"><span class="pre">'none'</span></code> 则输出为形状为 <span class="math">\((N)\)</span> 的张量，否则是一个标量。</p></li>
+<li><p>Input: <span class="math notranslate nohighlight">\((N, D)\)</span> ，其中 <span class="math notranslate nohighlight">\(D\)</span> 是向量维度。</p></li>
+<li><p>Output: 若 <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> == <code class="docutils literal notranslate"><span class="pre">'none'</span></code> 则输出为形状为 <span class="math notranslate nohighlight">\((N)\)</span> 的张量，否则是一个标量。</p></li>
 </ul>
 </dd>
 </dl>
@@ -803,8 +775,8 @@
 </ul>
 </dd>
 <dt>形状：</dt><dd><ul class="simple">
-<li><p>Input: <span class="math">\((*)\)</span> ，输入可以为任何形状。</p></li>
-<li><p>Output: <span class="math">\((*)\)</span> ，与输入形状相同。</p></li>
+<li><p>Input: <span class="math notranslate nohighlight">\((*)\)</span> ，输入可以为任何形状。</p></li>
+<li><p>Output: <span class="math notranslate nohighlight">\((*)\)</span> ，与输入形状相同。</p></li>
 </ul>
 </dd>
 </dl>
@@ -874,19 +846,15 @@
 </ul>
 </dd>
 <dt>形状：</dt><dd><ul class="simple">
-<li><p>Input: : <span class="math">\((N, C, H_{in}, W_{in})\)</span></p></li>
-<li><p>Output: <span class="math">\((N, C, H_{out}, W_{out})\)</span> ，其中</p></li>
+<li><p>Input: : <span class="math notranslate nohighlight">\((N, C, H_{in}, W_{in})\)</span></p></li>
+<li><p>Output: <span class="math notranslate nohighlight">\((N, C, H_{out}, W_{out})\)</span> ，其中</p></li>
 </ul>
 </dd>
 </dl>
-<div class="math-wrapper"><div class="math">
-\[H_{out} = \left\lfloor H_{in} \times \text{height_scale} \right\rfloor
-
-\]</div></div>
-<div class="math-wrapper"><div class="math">
-\[W_{out} = \left\lfloor W_{in} \times \text{width_scale} \right\rfloor
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[H_{out} = \left\lfloor H_{in} \times \text{height_scale} \right\rfloor\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[W_{out} = \left\lfloor W_{in} \times \text{width_scale} \right\rfloor\]</div></div>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
@@ -915,12 +883,12 @@
 </div>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>theta</strong> (Tensor) - 形状为 (<span class="math">\(N, 2, 3\)</span>)（2D 场景）或形状为 (<span class="math">\(N, 3, 4\)</span>)（3D 场景）的仿射矩阵的输入批量。</p></li>
-<li><p><strong>size</strong> (oneflow.Size) - 目标输出图像大小。形状为 (<span class="math">\(N, C, H, W\)</span>)（2D 场景）或 (<span class="math">\(N, C, D, H, W\)</span>)（3D 场景），例如 <code class="docutils literal notranslate"><span class="pre">oneflow.Size((32,</span> <span class="pre">3,</span> <span class="pre">24,</span> <span class="pre">24))</span></code>。</p></li>
+<li><p><strong>theta</strong> (Tensor) - 形状为 (<span class="math notranslate nohighlight">\(N, 2, 3\)</span>)（2D 场景）或形状为 (<span class="math notranslate nohighlight">\(N, 3, 4\)</span>)（3D 场景）的仿射矩阵的输入批量。</p></li>
+<li><p><strong>size</strong> (oneflow.Size) - 目标输出图像大小。形状为 (<span class="math notranslate nohighlight">\(N, C, H, W\)</span>)（2D 场景）或 (<span class="math notranslate nohighlight">\(N, C, D, H, W\)</span>)（3D 场景），例如 <code class="docutils literal notranslate"><span class="pre">oneflow.Size((32,</span> <span class="pre">3,</span> <span class="pre">24,</span> <span class="pre">24))</span></code>。</p></li>
 <li><p><strong>align_corners</strong> (bool) - 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，则考虑 <code class="docutils literal notranslate"><span class="pre">-1</span></code> 和 <code class="docutils literal notranslate"><span class="pre">1</span></code> 来指代角像素的中心，而不是图像的角。参考 <a class="reference internal" href="#oneflow.nn.functional.grid_sample" title="oneflow.nn.functional.grid_sample"><code class="xref py py-func docutils literal notranslate"><span class="pre">grid_sample()</span></code></a> 来获得更详细的描述。由 <a class="reference internal" href="#oneflow.nn.functional.affine_grid" title="oneflow.nn.functional.affine_grid"><code class="xref py py-func docutils literal notranslate"><span class="pre">affine_grid()</span></code></a> 生成的网格应使用与此选项相同的设置传递给 <a class="reference internal" href="#oneflow.nn.functional.grid_sample" title="oneflow.nn.functional.grid_sample"><code class="xref py py-func docutils literal notranslate"><span class="pre">grid_sample()</span></code></a>。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
 </ul>
 </dd>
-<dt>返回值：</dt><dd><p>output (Tensor) - 形状为 (<span class="math">\(N, H, W, 2\)</span>) 的输出张量。</p>
+<dt>返回值：</dt><dd><p>output (Tensor) - 形状为 (<span class="math notranslate nohighlight">\(N, H, W, 2\)</span>) 的输出张量。</p>
 </dd>
 </dl>
 <p>示例：</p>
@@ -941,7 +909,7 @@
 <dt id="oneflow.nn.functional.grid_sample">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">grid_sample</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.grid_sample" title="Permalink to this definition">¶</a></dt>
 <dd><p>此接口与 PyTorch 一致。文档参考自： <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.grid_sample.html?highlight=grid_sample#torch.nn.functional.grid_sample">https://pytorch.org/docs/stable/generated/torch.nn.functional.grid_sample.html?highlight=grid_sample#torch.nn.functional.grid_sample</a></p>
-<p>给定 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 和流场 <code class="xref py py-attr docutils literal notranslate"><span class="pre">grid</span></code>，使用 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 和 <code class="xref py py-attr docutils literal notranslate"><span class="pre">grid</span></code> 中的像素位置计算输出。目前，仅支持空间 (4-D) 和体积 (5-D) 输入。在空间 (4-D) 情况下，对于形状为 <span class="math">\((N, C, H_{in}, W_{in})\)</span> 的输入和形状为 <span class="math">\((N, H_{out}, W_{out}, 2)\)</span> 的网格，输出将具有形状 <span class="math">\((N, C, H_{out}, W_{out})\)</span>。</p>
+<p>给定 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 和流场 <code class="xref py py-attr docutils literal notranslate"><span class="pre">grid</span></code>，使用 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 和 <code class="xref py py-attr docutils literal notranslate"><span class="pre">grid</span></code> 中的像素位置计算输出。目前，仅支持空间 (4-D) 和体积 (5-D) 输入。在空间 (4-D) 情况下，对于形状为 <span class="math notranslate nohighlight">\((N, C, H_{in}, W_{in})\)</span> 的输入和形状为 <span class="math notranslate nohighlight">\((N, H_{out}, W_{out}, 2)\)</span> 的网格，输出将具有形状 <span class="math notranslate nohighlight">\((N, C, H_{out}, W_{out})\)</span>。</p>
 <p>对于每个输出位置 <code class="docutils literal notranslate"><span class="pre">output[n,</span> <span class="pre">:,</span> <span class="pre">h,</span> <span class="pre">w]</span></code>，大小为 2 的向量 <code class="docutils literal notranslate"><span class="pre">grid[n,</span> <span class="pre">h,</span> <span class="pre">w]</span></code> 指定输入像素位置 <code class="docutils literal notranslate"><span class="pre">x</span></code> 和 <code class="docutils literal notranslate"><span class="pre">y</span></code>，用于插值输出值 <code class="docutils literal notranslate"><span class="pre">output[n,</span> <span class="pre">:,</span> <span class="pre">h,</span> <span class="pre">w]</span></code>。在 5D 输入的情况下，<code class="docutils literal notranslate"><span class="pre">grid[n,</span> <span class="pre">d,</span> <span class="pre">h,</span> <span class="pre">w]</span></code> 指定用于插值 <code class="docutils literal notranslate"><span class="pre">output[n,</span> <span class="pre">:,</span> <span class="pre">d,</span> <span class="pre">h,</span> <span class="pre">w]</span></code> 的 <code class="docutils literal notranslate"><span class="pre">x</span></code>、<code class="docutils literal notranslate"><span class="pre">y</span></code>、<code class="docutils literal notranslate"><span class="pre">z</span></code> 像素位置。<code class="xref py py-attr docutils literal notranslate"><span class="pre">mode</span></code> 参数指定对输入像素进行采样的最近或双线性插值方法。网格指定由输入空间维度归一化的采样像素位置。因此，它应该具有 <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code> 范围内的大多数值。例如，<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-1,</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">-1</span></code> 是输入的左上角像素，<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1,</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">1</span></code> 是输入的右下角像素。</p>
 <dl class="simple">
 <dt>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">grid</span></code> 的值在 <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code> 之外，相应的输出按照 <code class="xref py py-attr docutils literal notranslate"><span class="pre">padding_mode</span></code> 的定义进行处理。那么：</dt><dd><ul class="simple">
@@ -961,8 +929,8 @@
 </div>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>input</strong> (Tensor) - 形状为 <span class="math">\((N, C, H_{in}, W_{in})\)</span> （4D 情况下）或形状为 <span class="math">\((N, C, D_{in}, H_{in}, W_{in})\)</span> （5D 情况下）的输入张量</p></li>
-<li><p><strong>grid</strong> (Tensor) - 形状为 <span class="math">\((N, H_{out}, W_{out}, 2)\)</span> （4D 情况下）或形状为 <span class="math">\((N, D_{out}, H_{out}, W_{out}, 3)\)</span> （5D 情况下）的流场</p></li>
+<li><p><strong>input</strong> (Tensor) - 形状为 <span class="math notranslate nohighlight">\((N, C, H_{in}, W_{in})\)</span> （4D 情况下）或形状为 <span class="math notranslate nohighlight">\((N, C, D_{in}, H_{in}, W_{in})\)</span> （5D 情况下）的输入张量</p></li>
+<li><p><strong>grid</strong> (Tensor) - 形状为 <span class="math notranslate nohighlight">\((N, H_{out}, W_{out}, 2)\)</span> （4D 情况下）或形状为 <span class="math notranslate nohighlight">\((N, D_{out}, H_{out}, W_{out}, 3)\)</span> （5D 情况下）的流场</p></li>
 <li><p><strong>mode</strong> (str) - 计算输出值的插值模式：<code class="docutils literal notranslate"><span class="pre">'bilinear'</span></code> | <code class="docutils literal notranslate"><span class="pre">'nearest'</span></code> | <code class="docutils literal notranslate"><span class="pre">'bicubic'</span></code>。默认为 <code class="docutils literal notranslate"><span class="pre">'bilinear'</span></code>。注意 <code class="docutils literal notranslate"><span class="pre">mode='bicubic'</span></code> 仅支持 4D 输入。当 <code class="docutils literal notranslate"><span class="pre">mode='bilinear'</span></code> 且输入是 5D 时，内部使用的插值模式实际上是三线性的。然而，当输入是 4D 时，插值模式将是双线性的。</p></li>
 <li><p><strong>padding_mode</strong> (str) - 外部网格值的填充模式：<code class="docutils literal notranslate"><span class="pre">'zeros'</span></code> | <code class="docutils literal notranslate"><span class="pre">'border'</span></code> | <code class="docutils literal notranslate"><span class="pre">'reflection'</span></code>。默认为 <code class="docutils literal notranslate"><span class="pre">'zeros'</span></code>。</p></li>
 <li><p><strong>align_corners</strong> (bool) - 在几何上，我们将输入的像素视为正方形而不是点。如果设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，则极值 （<code class="docutils literal notranslate"><span class="pre">-1</span></code>  和 <code class="docutils literal notranslate"><span class="pre">1</span></code>）被认为指代输入角像素的中心点。如果设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code>，则它们被认为是指输入角像素的角点，从而使采样与分辨率无关。 此选项与 <a class="reference internal" href="#oneflow.nn.functional.interpolate" title="oneflow.nn.functional.interpolate"><code class="xref py py-func docutils literal notranslate"><span class="pre">interpolate()</span></code></a> 中的 <code class="docutils literal notranslate"><span class="pre">align_corners</span></code> 选项一致，因此此处使用的任何选项也应用于在网格采样之前调整输入图像的大小。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
@@ -973,7 +941,7 @@
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">mode='bicubic'</span></code> 使用 <span class="math">\(\alpha=-0.75\)</span> 的 <a class="reference external" href="https://en.wikipedia.org/wiki/Bicubic_interpolation">三次卷积算法</a> 实现。常数 <span class="math">\(\alpha\)</span> 可能因包而异。例如 <a class="reference external" href="https://github.com/python-pillow/Pillow/blob/4634eafe3c695a014267eefdce830b4a825beed7/src/libImaging/Resample.c#L51">PIL</a> 和 <a class="reference external" href="https://github.com/opencv/opencv/blob/f345ed564a06178670750bad59526cfa4033be55/modules/imgproc/src/resize.cpp#L908">OpenCV</a> 分别使用 -0.5 和 -0.75。该算法可能会“超出”它的插值范围。例如，输入位于 <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">255]</span></code> 中的插值时，它可能会产生负值或大于 <cite>255</cite> 的值。使用 <code class="xref py py-func docutils literal notranslate"><span class="pre">flow.clamp()</span></code> 钳制结果以确保它们在有效范围内。</p>
+<p><code class="docutils literal notranslate"><span class="pre">mode='bicubic'</span></code> 使用 <span class="math notranslate nohighlight">\(\alpha=-0.75\)</span> 的 <a class="reference external" href="https://en.wikipedia.org/wiki/Bicubic_interpolation">三次卷积算法</a> 实现。常数 <span class="math notranslate nohighlight">\(\alpha\)</span> 可能因包而异。例如 <a class="reference external" href="https://github.com/python-pillow/Pillow/blob/4634eafe3c695a014267eefdce830b4a825beed7/src/libImaging/Resample.c#L51">PIL</a> 和 <a class="reference external" href="https://github.com/opencv/opencv/blob/f345ed564a06178670750bad59526cfa4033be55/modules/imgproc/src/resize.cpp#L908">OpenCV</a> 分别使用 -0.5 和 -0.75。该算法可能会“超出”它的插值范围。例如，输入位于 <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">255]</span></code> 中的插值时，它可能会产生负值或大于 <cite>255</cite> 的值。使用 <code class="xref py py-func docutils literal notranslate"><span class="pre">flow.clamp()</span></code> 钳制结果以确保它们在有效范围内。</p>
 </div>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
@@ -1150,13 +1118,13 @@
 <dl class="py function">
 <dt id="oneflow.nn.functional.linear">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">linear</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.linear" title="Permalink to this definition">¶</a></dt>
-<dd><p>对输入数据应用线性变换 <span class="math">\(y = xA^T + b\)</span>。</p>
+<dd><p>对输入数据应用线性变换 <span class="math notranslate nohighlight">\(y = xA^T + b\)</span>。</p>
 <dl class="simple">
 <dt>形状：</dt><dd><ul class="simple">
-<li><p>Input - <span class="math">\((N, *, in\_features)\)</span>，其中 <cite>N</cite> 表示 batch size，<cite>*</cite> 表示任意数量的附加维度。</p></li>
-<li><p>Weight - <span class="math">\((out\_features, in\_features)\)</span></p></li>
-<li><p>Bias - <span class="math">\((out\_features)\)</span></p></li>
-<li><p>Output - <span class="math">\((N, *, out\_features)\)</span></p></li>
+<li><p>Input - <span class="math notranslate nohighlight">\((N, *, in\_features)\)</span>，其中 <cite>N</cite> 表示 batch size，<cite>*</cite> 表示任意数量的附加维度。</p></li>
+<li><p>Weight - <span class="math notranslate nohighlight">\((out\_features, in\_features)\)</span></p></li>
+<li><p>Bias - <span class="math notranslate nohighlight">\((out\_features)\)</span></p></li>
+<li><p>Output - <span class="math notranslate nohighlight">\((N, *, out\_features)\)</span></p></li>
 </ul>
 </dd>
 </dl>
@@ -1249,8 +1217,6 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js"></script>
-    <script src="_static/katex_autorenderer.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
 </html>

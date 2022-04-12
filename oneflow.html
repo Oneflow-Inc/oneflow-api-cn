@@ -38,8 +38,6 @@
   
   }
 </style><link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/katex-math.css" />
     <link rel="stylesheet" href="_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
   <body dir="">
     
@@ -226,10 +224,8 @@ limitations under the License.</p>
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">acos</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.acos" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回一个包含 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 中元素的反余弦值的新 tensor。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i} = \arccos(\text{input}_{i})
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i} = \arccos(\text{input}_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入张量</p>
 </dd>
@@ -251,7 +247,7 @@ limitations under the License.</p>
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">acosh</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.acosh" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回具有 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 中元素的反双曲余弦的新 tensor。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\text{out}_{i} = \cosh^{-1}(\text{input}_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入张量</p>
@@ -317,10 +313,8 @@ limitations under the License.</p>
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">add</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">oneflow.Tensor</span></a><a class="headerlink" href="#oneflow.add" title="Permalink to this definition">¶</a></dt>
 <dd><p>计算 <cite>input</cite> 和 <cite>other</cite> 的和。支持 element-wise 、标量和广播形式的加法。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[out = input + other
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[out = input + other\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>input</strong> (Tensor) - 输入张量</p></li>
@@ -360,22 +354,20 @@ limitations under the License.</p>
 <dt id="oneflow.addmm">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">addmm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">beta=1</span></em>, <em class="sig-param"><span class="pre">input</span></em>, <em class="sig-param"><span class="pre">alpha=1</span></em>, <em class="sig-param"><span class="pre">mat1</span></em>, <em class="sig-param"><span class="pre">mat2</span></em>, <em class="sig-param"><span class="pre">out=None</span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.addmm" title="Permalink to this definition">¶</a></dt>
 <dd><p>对 <code class="xref py py-attr docutils literal notranslate"><span class="pre">mat1</span></code> 和 <code class="xref py py-attr docutils literal notranslate"><span class="pre">mat2</span></code> 进行矩阵乘法，并且将结果与 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 相加求和后，返回计算结果。</p>
-<p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">mat1</span></code> 是一个 <span class="math">\((n \times m)\)</span> 张量，同时 <code class="xref py py-attr docutils literal notranslate"><span class="pre">mat2</span></code> 是一个 <span class="math">\((m \times p)\)</span> 张量，
-则 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 必须是可广播为 <cite>(n times p)</cite> 的张量，<code class="xref py py-attr docutils literal notranslate"><span class="pre">out</span></code> 也必须为 <span class="math">\((n \times p)\)</span> 的张量。</p>
+<p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">mat1</span></code> 是一个 <span class="math notranslate nohighlight">\((n \times m)\)</span> 张量，同时 <code class="xref py py-attr docutils literal notranslate"><span class="pre">mat2</span></code> 是一个 <span class="math notranslate nohighlight">\((m \times p)\)</span> 张量，
+则 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 必须是可广播为 <cite>(n times p)</cite> 的张量，<code class="xref py py-attr docutils literal notranslate"><span class="pre">out</span></code> 也必须为 <span class="math notranslate nohighlight">\((n \times p)\)</span> 的张量。</p>
 <p>公式为：</p>
 <p><code class="xref py py-attr docutils literal notranslate"><span class="pre">alpha</span></code> 是 <code class="xref py py-attr docutils literal notranslate"><span class="pre">mat1</span></code> 和 <code class="xref py py-attr docutils literal notranslate"><span class="pre">mat2</span></code> 的矩阵向量乘积的缩放比例因数，
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">beta</span></code> 是 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 的因数</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out} = \beta\ \text{input} + \alpha\ (\text{mat1}_i \mathbin{@} \text{mat2}_i)
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out} = \beta\ \text{input} + \alpha\ (\text{mat1}_i \mathbin{@} \text{mat2}_i)\]</div></div>
 <p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 的类型为 <cite>float</cite> 或 <cite>double</cite>，
 参数 <code class="xref py py-attr docutils literal notranslate"><span class="pre">beta</span></code> 和 <code class="xref py py-attr docutils literal notranslate"><span class="pre">alpha</span></code> 应为实数，否则只能是整数(integers)。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>beta</strong> (Number, 可选): <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 的因数 (<span class="math">\(\beta\)</span>)</p></li>
+<li><p><strong>beta</strong> (Number, 可选): <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 的因数 (<span class="math notranslate nohighlight">\(\beta\)</span>)</p></li>
 <li><p><strong>input</strong> (Tensor): 作为加数的矩阵</p></li>
-<li><p><strong>alpha</strong> (Number, 可选): <span class="math">\(mat1 \mathbin{@} mat2\)</span> 的因数 (<span class="math">\(\alpha\)</span>)</p></li>
+<li><p><strong>alpha</strong> (Number, 可选): <span class="math notranslate nohighlight">\(mat1 \mathbin{@} mat2\)</span> 的因数 (<span class="math notranslate nohighlight">\(\alpha\)</span>)</p></li>
 <li><p><strong>mat1</strong> (Tensor): 作为第一个乘数的矩阵</p></li>
 <li><p><strong>mat2</strong> (Tensor): 作为第二个乘数的矩阵</p></li>
 <li><p><strong>out</strong> (Tensor, 可选): 输出张量</p></li>
@@ -413,13 +405,11 @@ limitations under the License.</p>
 <dl class="py function">
 <dt id="oneflow.arange">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">arange</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">start=0</span></em>, <em class="sig-param"><span class="pre">end</span></em>, <em class="sig-param"><span class="pre">step=1</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">dtype=kInt64</span></em>, <em class="sig-param"><span class="pre">device=None</span></em>, <em class="sig-param"><span class="pre">requires_grad=Flase</span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.arange" title="Permalink to this definition">¶</a></dt>
-<dd><p>返回一个大小为 <span class="math">\(\left\lfloor \frac{\text{end} - \text{start}}{\text{step}} \right\rfloor + 1\)</span>
+<dd><p>返回一个大小为 <span class="math notranslate nohighlight">\(\left\lfloor \frac{\text{end} - \text{start}}{\text{step}} \right\rfloor + 1\)</span>
 ， 其元素为从 <code class="xref py py-attr docutils literal notranslate"><span class="pre">start</span></code> （包括）到 <code class="xref py py-attr docutils literal notranslate"><span class="pre">end</span></code> （不包括）跨度为 <code class="xref py py-attr docutils literal notranslate"><span class="pre">step</span></code> 的所有整数。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i+1} = \text{out}_i + \text{step}.
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i+1} = \text{out}_i + \text{step}.\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>start</strong> (int): 返回的集合的起始值。默认为 0。</p></li>
@@ -449,10 +439,8 @@ limitations under the License.</p>
 <dd><p>acos(x) -&gt; Tensor</p>
 <p>返回一个包含 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 中元素的反余弦值的新 tensor。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i} = \arccos(\text{input}_{i})
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i} = \arccos(\text{input}_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入张量</p>
 </dd>
@@ -475,7 +463,7 @@ limitations under the License.</p>
 <dd><p>acosh(x) -&gt; Tensor</p>
 <p>返回具有 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 中元素的反双曲余弦的新 tensor。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\text{out}_{i} = \cosh^{-1}(\text{input}_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入张量</p>
@@ -502,10 +490,8 @@ limitations under the License.</p>
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">arcsin</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.arcsin" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回一个新的 tensor 包含 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 中每个元素的反正弦。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i} = \sin^{-1}(\text{input}_{i})
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i} = \sin^{-1}(\text{input}_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入张量</p>
 </dd>
@@ -536,10 +522,8 @@ limitations under the License.</p>
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">arcsinh</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.arcsinh" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回一个包含 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 中每个元素的反双曲正弦的新 tensor。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i} = \sinh^{-1}(\text{input}_{i})
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i} = \sinh^{-1}(\text{input}_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入张量</p>
 </dd>
@@ -573,10 +557,8 @@ limitations under the License.</p>
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">arctan</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.arctan" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回一个包含 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 中所有元素的反正切的新 tensor。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i} = \tan^{-1}(\text{input}_{i})
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i} = \tan^{-1}(\text{input}_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入张量</p>
 </dd>
@@ -598,10 +580,8 @@ limitations under the License.</p>
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">arctanh</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.arctanh" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回一个包含 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 中元素的反双曲正切值的新 tensor。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i} = \tanh^{-1}(\text{input}_{i})
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i} = \tanh^{-1}(\text{input}_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入张量</p>
 </dd>
@@ -777,10 +757,8 @@ The documentation is referenced from:
 <dd><p>arcsin(x) -&gt; Tensor</p>
 <p>返回一个新的 tensor 包含 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 中每个元素的反正弦。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i} = \sin^{-1}(\text{input}_{i})
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i} = \sin^{-1}(\text{input}_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入张量</p>
 </dd>
@@ -812,10 +790,8 @@ The documentation is referenced from:
 <dd><p>arcsinh(x) -&gt; Tensor</p>
 <p>返回一个包含 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 中每个元素的反双曲正弦的新 tensor。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i} = \sinh^{-1}(\text{input}_{i})
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i} = \sinh^{-1}(\text{input}_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入张量</p>
 </dd>
@@ -850,10 +826,8 @@ The documentation is referenced from:
 <dd><p>arctan(x) -&gt; Tensor</p>
 <p>返回一个包含 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 中所有元素的反正切的新 tensor。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i} = \tan^{-1}(\text{input}_{i})
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i} = \tan^{-1}(\text{input}_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入张量</p>
 </dd>
@@ -873,8 +847,8 @@ The documentation is referenced from:
 <dl class="py function">
 <dt id="oneflow.atan2">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">atan2</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.atan2" title="Permalink to this definition">¶</a></dt>
-<dd><p>考虑象限的 <span class="math">\(input_{i}/other_{i}\)</span>
-的按元素反正切。返回元素为向量 <span class="math">\((other_{i},input_{i})\)</span>
+<dd><p>考虑象限的 <span class="math notranslate nohighlight">\(input_{i}/other_{i}\)</span>
+的按元素反正切。返回元素为向量 <span class="math notranslate nohighlight">\((other_{i},input_{i})\)</span>
 和向量 (1, 0) 之间的按元素夹角（以弧度表示并带符号）的新张量。</p>
 <p><cite>input</cite> 和 <cite>other</cite> 的形状必须是可广播的。</p>
 <dl class="simple">
@@ -909,10 +883,8 @@ The documentation is referenced from:
 <dd><p>arctanh(x) -&gt; Tensor</p>
 <p>返回一个包含 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 中元素的反双曲正切值的新 tensor。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i} = \tanh^{-1}(\text{input}_{i})
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i} = \tanh^{-1}(\text{input}_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入张量</p>
 </dd>
@@ -979,8 +951,8 @@ The documentation is referenced from:
 </ul>
 </dd>
 <dt>形状：</dt><dd><ul class="simple">
-<li><p><strong>Input</strong> <span class="math">\((*)\)</span>： 输入可以是任何形状</p></li>
-<li><p><strong>Output</strong> <span class="math">\((*)\)</span>： 输出与输入的形状相同</p></li>
+<li><p><strong>Input</strong> <span class="math notranslate nohighlight">\((*)\)</span>： 输入可以是任何形状</p></li>
+<li><p><strong>Output</strong> <span class="math notranslate nohighlight">\((*)\)</span>： 输出与输入的形状相同</p></li>
 </ul>
 </dd>
 </dl>
@@ -1100,10 +1072,8 @@ The documentation is referenced from:
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">ceil</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.ceil" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回一个新的 tensor，tensor 中元素为大于或等于 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 中元素的最小整数。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i} = \left\lceil \text{input}_{i} \right\rceil = \left\lfloor \text{input}_{i} \right\rfloor + 1
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i} = \left\lceil \text{input}_{i} \right\rceil = \left\lfloor \text{input}_{i} \right\rfloor + 1\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (oneflow.tensor): 张量</p>
 </dd>
@@ -1185,14 +1155,12 @@ The documentation is referenced from:
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">clamp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.clamp" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回新的结果 tensor，结果 tensor 中将 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 中元素限制在范围 <cite>[</cite> <a class="reference internal" href="#oneflow.min" title="oneflow.min"><code class="xref py py-attr docutils literal notranslate"><span class="pre">min</span></code></a>, <a class="reference internal" href="#oneflow.max" title="oneflow.max"><code class="xref py py-attr docutils literal notranslate"><span class="pre">max</span></code></a> <cite>]</cite> 中。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[y_i = \begin{cases}
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\begin{split}y_i = \begin{cases}
     \text{min} &amp; \text{if } x_i &lt; \text{min} \\
     x_i &amp; \text{if } \text{min} \leq x_i \leq \text{max} \\
     \text{max} &amp; \text{if } x_i &gt; \text{max}
-\end{cases}
-
-\]</div></div>
+\end{cases}\end{split}\]</div></div>
 <p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 的类型是 <cite>FloatTensor</cite> 或 <cite>FloatTensor</cite>，参数 <a class="reference internal" href="#oneflow.min" title="oneflow.min"><code class="xref py py-attr docutils literal notranslate"><span class="pre">min</span></code></a>
 和 <a class="reference internal" href="#oneflow.max" title="oneflow.max"><code class="xref py py-attr docutils literal notranslate"><span class="pre">max</span></code></a> 必须为实数， 如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 为其它类型的 tensor，参数
 <a class="reference internal" href="#oneflow.min" title="oneflow.min"><code class="xref py py-attr docutils literal notranslate"><span class="pre">min</span></code></a> 和 <a class="reference internal" href="#oneflow.max" title="oneflow.max"><code class="xref py py-attr docutils literal notranslate"><span class="pre">max</span></code></a> 必须为 <cite>integer</cite>。</p>
@@ -1263,10 +1231,8 @@ The documentation is referenced from:
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">cos</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.cos" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回一个包含 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 中元素的余弦值的新 tensor。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i} = \cos(\text{input}_{i})
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i} = \cos(\text{input}_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入张量</p>
 </dd>
@@ -1286,10 +1252,8 @@ The documentation is referenced from:
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">cosh</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.cosh" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回一个包含 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 中元素的双曲余弦值的新 tensor。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i} = \cosh(\text{input}_{i})
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i} = \cosh(\text{input}_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入张量</p>
 </dd>
@@ -1472,10 +1436,8 @@ appended as a dimension at the end of the shape.</p>
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">div</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.div" title="Permalink to this definition">¶</a></dt>
 <dd><p>计算 <cite>input</cite> 除以 <cite>other</cite>，支持 element-wise、标量和广播形式的除法。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[out = \frac{input}{other}
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[out = \frac{input}{other}\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>input</strong> (Union[int, float, oneflow.tensor]): input.</p></li>
@@ -1673,7 +1635,7 @@ can optimize the formula for you.</p>
 <dl class="py function">
 <dt id="oneflow.eq">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">eq</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.eq" title="Permalink to this definition">¶</a></dt>
-<dd><p>返回 <span class="math">\(input == other\)</span> 的 element-wise 真实值。</p>
+<dd><p>返回 <span class="math notranslate nohighlight">\(input == other\)</span> 的 element-wise 真实值。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>input</strong> (oneflow.tensor): 要去对比的张量</p></li>
@@ -1701,7 +1663,7 @@ can optimize the formula for you.</p>
 <dt id="oneflow.equal">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">equal</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.equal" title="Permalink to this definition">¶</a></dt>
 <dd><p>oneflow.eq(input, other) -&gt; Tensor</p>
-<p>返回 <span class="math">\(input == other\)</span> 的 element-wise 真实值。</p>
+<p>返回 <span class="math notranslate nohighlight">\(input == other\)</span> 的 element-wise 真实值。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>input</strong> (oneflow.tensor): 要去对比的张量</p></li>
@@ -1729,10 +1691,8 @@ can optimize the formula for you.</p>
 <dt id="oneflow.erf">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">erf</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.erf" title="Permalink to this definition">¶</a></dt>
 <dd><p>计算每个元素的误差函数。误差函数定义如下：</p>
-<div class="math-wrapper"><div class="math">
-\[\operatorname{erf}(x)=\frac{2}{\sqrt{\pi}} \int_{0}^{x} e^{-t^{2}} d t
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\operatorname{erf}(x)=\frac{2}{\sqrt{\pi}} \int_{0}^{x} e^{-t^{2}} d t\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (oneflow.tensor): 输入张量</p>
 </dd>
@@ -1770,10 +1730,8 @@ can optimize the formula for you.</p>
 <dt id="oneflow.erfc">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">erfc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.erfc" title="Permalink to this definition">¶</a></dt>
 <dd><p>计算 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 的每个元素的互补误差函数。互补误差函数定义如下：</p>
-<div class="math-wrapper"><div class="math">
-\[\operatorname{erfc}(x)=1-\frac{2}{\sqrt{\pi}} \int_{0}^{x} e^{-t^{2}} d t
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\operatorname{erfc}(x)=1-\frac{2}{\sqrt{\pi}} \int_{0}^{x} e^{-t^{2}} d t\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (oneflow.tensor): 输入张量</p>
 </dd>
@@ -1799,11 +1757,9 @@ can optimize the formula for you.</p>
 <dl class="py function">
 <dt id="oneflow.erfinv">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">erfinv</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.erfinv" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the inverse error function of <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code>. The inverse error function is defined in the range <span class="math">\((-1, 1)\)</span> as:</p>
-<div class="math-wrapper"><div class="math">
-\[\mathrm{erfinv}(\mathrm{erf}(x)) = x
-
-\]</div></div>
+<dd><p>Computes the inverse error function of <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code>. The inverse error function is defined in the range <span class="math notranslate nohighlight">\((-1, 1)\)</span> as:</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\mathrm{erfinv}(\mathrm{erf}(x)) = x\]</div></div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>input</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>oneflow.Tensor</em></a>) – the input tensor.</p>
@@ -1825,7 +1781,7 @@ can optimize the formula for you.</p>
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">exp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.exp" title="Permalink to this definition">¶</a></dt>
 <dd><p>此运算符计算 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 的指数。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[out = e^x\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 张量</p>
@@ -1878,10 +1834,8 @@ Tensor <code class="xref py py-attr docutils literal notranslate"><span class="p
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">expm1</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.expm1" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回一个新的张量，其元素为 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 的元素指数减去 1。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[y_{i} = e^{x_{i}} - 1
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[y_{i} = e^{x_{i}} - 1\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (oneflow.tensor): 输入张量</p>
 </dd>
@@ -2000,10 +1954,8 @@ Tensor <code class="xref py py-attr docutils literal notranslate"><span class="p
 <dt id="oneflow.floor">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">floor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.floor" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回一个新 tensor ，其元素为对 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 向下取整的结果。</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i} = \lfloor \text{input}_{i} \rfloor
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i} = \lfloor \text{input}_{i} \rfloor\]</div></div>
 <dl class="simple">
 <dt>参数:</dt><dd><p><strong>input</strong> (Tensor): 输入张量</p>
 </dd>
@@ -2189,10 +2141,8 @@ numpy.int64, numpy.int32, numpy.int8, numpy.uint8.</p>
 <dt id="oneflow.gelu">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">gelu</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.gelu" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gelu 激活算子，其公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[out = 0.5 * x * (1 + tanh(\sqrt{\frac{2}{\pi}} * (x + 0.044715x^{3})))
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[out = 0.5 * x * (1 + tanh(\sqrt{\frac{2}{\pi}} * (x + 0.044715x^{3})))\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (oneflow.tensor) - 输入张量</p>
 </dd>
@@ -2238,7 +2188,7 @@ numpy.int64, numpy.int32, numpy.int8, numpy.uint8.</p>
 <dl class="py function">
 <dt id="oneflow.gt">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">gt</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.gt" title="Permalink to this definition">¶</a></dt>
-<dd><p>返回 <span class="math">\(input &gt; other\)</span> 的 element-wise 真实值。</p>
+<dd><p>返回 <span class="math notranslate nohighlight">\(input &gt; other\)</span> 的 element-wise 真实值。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>input</strong> (oneflow.tensor): 输入张量</p></li>
@@ -2467,7 +2417,7 @@ and more explicit - so it’s recommended to use that instead of
 <dl class="py function">
 <dt id="oneflow.le">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">le</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.le" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the truth value of <span class="math">\(input &lt;= other\)</span> element-wise.</p>
+<dd><p>Returns the truth value of <span class="math notranslate nohighlight">\(input &lt;= other\)</span> element-wise.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2500,14 +2450,12 @@ and more explicit - so it’s recommended to use that instead of
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">linspace</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow._oneflow_internal.dtype</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">oneflow.float32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.device</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placement</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.placement</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sbp</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.sbp.sbp</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.sbp.sbp</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.linspace" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a one-dimensional tensor of size <code class="xref py py-attr docutils literal notranslate"><span class="pre">steps</span></code> whose values are evenly
 spaced from <code class="xref py py-attr docutils literal notranslate"><span class="pre">start</span></code> to <code class="xref py py-attr docutils literal notranslate"><span class="pre">end</span></code>, inclusive. That is, the value are:</p>
-<div class="math-wrapper"><div class="math">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[(\text{start},
 \text{start} + \frac{\text{end} - \text{start}}{\text{steps} - 1},
 \ldots,
 \text{start} + (\text{steps} - 2) * \frac{\text{end} - \text{start}}{\text{steps} - 1},
-\text{end})
-
-\]</div></div>
+\text{end})\]</div></div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2552,10 +2500,8 @@ spaced from <code class="xref py py-attr docutils literal notranslate"><span cla
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">log</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.log" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回一个新 tensor 包含 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 中元素的自然对数。
 公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[y_{i} = \log_{e} (x_{i})
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[y_{i} = \log_{e} (x_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入张量</p>
 </dd>
@@ -2574,10 +2520,8 @@ spaced from <code class="xref py py-attr docutils literal notranslate"><span cla
 <dt id="oneflow.log1p">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">log1p</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.log1p" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回一个新的 tensor，其自然对数的公式为 (1 + x)。</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i}=\log_e(1+\text{input}_{i})
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i}=\log_e(1+\text{input}_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 张量</p>
 </dd>
@@ -2598,10 +2542,8 @@ spaced from <code class="xref py py-attr docutils literal notranslate"><span cla
 <dt id="oneflow.log2">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">log2</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.log2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a new tensor with the natural logarithm to the base 2 of the elements of <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code>.</p>
-<div class="math-wrapper"><div class="math">
-\[y_{i} = \log2_{e} (x_{i})
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[y_{i} = \log2_{e} (x_{i})\]</div></div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>input</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>Tensor</em></a>) – the input tensor.</p>
@@ -2748,7 +2690,7 @@ The operator will slice the tensor according to the <cite>slice_tup_list</cite>.
 <dl class="py function">
 <dt id="oneflow.lt">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">lt</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.lt" title="Permalink to this definition">¶</a></dt>
-<dd><p>返回 <span class="math">\(input &lt; other\)</span> 的 element-wise 真实值。</p>
+<dd><p>返回 <span class="math notranslate nohighlight">\(input &lt; other\)</span> 的 element-wise 真实值。</p>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>input</strong> (oneflow.tensor): 输入张量</p></li>
@@ -2914,13 +2856,13 @@ The operator will slice the tensor according to the <cite>slice_tup_list</cite>.
 <dd><p>此接口与 PyTorch 一致。
 文档参考自：
 <a class="reference external" href="https://pytorch.org/docs/stable/_modules/torch/functional.html#meshgrid">https://pytorch.org/docs/stable/_modules/torch/functional.html#meshgrid</a></p>
-<p>取 <span class="math">\(N\)</span> 个 tensor ，可以是标量或者 1 维张量，并创建 <span class="math">\(N\)</span> 个 N-D 网格，
+<p>取 <span class="math notranslate nohighlight">\(N\)</span> 个 tensor ，可以是标量或者 1 维张量，并创建 <span class="math notranslate nohighlight">\(N\)</span> 个 N-D 网格，
 第 i 个网格是通过扩展第 i 个输入并且其维度由其他的输入决定。</p>
 <dl class="simple">
-<dt>参数：</dt><dd><p><strong>tensors</strong> (list of Tensor): 标量或一维张量列表。标量将被自动视为大小为 <span class="math">\((1,)\)</span> 的张量</p>
+<dt>参数：</dt><dd><p><strong>tensors</strong> (list of Tensor): 标量或一维张量列表。标量将被自动视为大小为 <span class="math notranslate nohighlight">\((1,)\)</span> 的张量</p>
 </dd>
-<dt>返回类型：</dt><dd><p><strong>seq</strong> (sequence of Tensors): 如果输入有 <span class="math">\(k\)</span> 个张量，大小分别为 <span class="math">\((N_1,), (N_2,), ... , (N_k,)\)</span> ，
-则输出也有 <span class="math">\(k\)</span> 个张量，其中所有张量的大小为 <span class="math">\((N_1, N_2, ... , N_k)\)</span> 。</p>
+<dt>返回类型：</dt><dd><p><strong>seq</strong> (sequence of Tensors): 如果输入有 <span class="math notranslate nohighlight">\(k\)</span> 个张量，大小分别为 <span class="math notranslate nohighlight">\((N_1,), (N_2,), ... , (N_k,)\)</span> ，
+则输出也有 <span class="math notranslate nohighlight">\(k\)</span> 个张量，其中所有张量的大小为 <span class="math notranslate nohighlight">\((N_1, N_2, ... , N_k)\)</span> 。</p>
 </dd>
 </dl>
 <p>示例：</p>
@@ -2974,10 +2916,8 @@ The operator will slice the tensor according to the <cite>slice_tup_list</cite>.
 <dt id="oneflow.mish">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">mish</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.mish" title="Permalink to this definition">¶</a></dt>
 <dd><p>逐元素地应用此公式：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{mish}(x) = x * \text{tanh}(\text{softplus}(x))
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{mish}(x) = x * \text{tanh}(\text{softplus}(x))\]</div></div>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
@@ -3031,10 +2971,8 @@ The documentation is referenced from:
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">mul</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.mul" title="Permalink to this definition">¶</a></dt>
 <dd><p>计算 <cite>input</cite> 与 <cite>other</cite> 相乘，支持 element-wise、标量和广播形式的乘法。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[out = input \times other
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[out = input \times other\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>input</strong> (Tensor): 输入张量。</p></li>
@@ -3261,12 +3199,12 @@ are expected to be in <code class="docutils literal notranslate"><span class="pr
 <p><strong>当</strong> <code class="xref py py-attr docutils literal notranslate"><span class="pre">as_tuple</span></code> <strong>为</strong> <code class="docutils literal notranslate"><span class="pre">False</span></code> <strong>时（默认）</strong> ：</p>
 <p>返回一个 tensor 包含所有 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 中非 0 元素的索引（index）。结果中的每一行包含 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 中一个
 非 0 元素的索引，结果按字典顺序排序，对最后一个索引的改变最快（C-style）。</p>
-<p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 的维度数为 <span class="math">\(n\)</span> ，则结果索引张量 <code class="xref py py-attr docutils literal notranslate"><span class="pre">out</span></code> 的形状为 <span class="math">\((z \\times n)\)</span> ，
-<span class="math">\(z\)</span> 是 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 中非 0 元素的数量。</p>
+<p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 的维度数为 <span class="math notranslate nohighlight">\(n\)</span> ，则结果索引张量 <code class="xref py py-attr docutils literal notranslate"><span class="pre">out</span></code> 的形状为 <span class="math notranslate nohighlight">\((z \\times n)\)</span> ，
+<span class="math notranslate nohighlight">\(z\)</span> 是 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 中非 0 元素的数量。</p>
 <p><strong>当</strong> <code class="xref py py-attr docutils literal notranslate"><span class="pre">as_tuple</span></code> <strong>为</strong> <code class="docutils literal notranslate"><span class="pre">True</span></code> <strong>时</strong>：</p>
 <p>返回一个包含 1-D 张量的元组，每个张量分别对应 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 的每个维度，并包含 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 当前维度中所有非
 0 元素的索引。</p>
-<p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 的维度数为 <span class="math">\(n\)</span> ，则此返回元组包含 <span class="math">\(n\)</span> 个大小为 <span class="math">\(z\)</span> 的张量， <span class="math">\(z\)</span>
+<p>如果 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 的维度数为 <span class="math notranslate nohighlight">\(n\)</span> ，则此返回元组包含 <span class="math notranslate nohighlight">\(n\)</span> 个大小为 <span class="math notranslate nohighlight">\(z\)</span> 的张量， <span class="math notranslate nohighlight">\(z\)</span>
 为 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 中非 0 元素的总数。</p>
 <p>有一种特殊情况是，当 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 是 0 维张量并且有一个非 0 的标量值，则被视为一个只有一个元素的 1 维张量</p>
 <dl class="simple">
@@ -3403,15 +3341,11 @@ flow.ones_like(x) 等价于 flow.ones(x.shape, dtype=x.dtype)</p>
 每​​个元素的幂。<cite>exponent</cite> 可以是单个浮点数，整数或者与
 <cite>input</cite> 具有相同形状的 tensor。</p>
 <p>当指数是标量时，操作为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_i = x_i ^ \text{exponent}
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_i = x_i ^ \text{exponent}\]</div></div>
 <p>当指数是张量时：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_i = x_i ^ {\text{exponent}_i}
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_i = x_i ^ {\text{exponent}_i}\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>input</strong> (Tensor): 输入张量</p></li>
@@ -3767,10 +3701,8 @@ flow.ones_like(x) 等价于 flow.ones(x.shape, dtype=x.dtype)</p>
 <dt id="oneflow.rsqrt">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">rsqrt</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.rsqrt" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回一个新的张量，它的元素是 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 的每个元素的平方根的倒数。</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i} = \frac{1}{\sqrt{\text{input}_{i}}}
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i} = \frac{1}{\sqrt{\text{input}_{i}}}\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>input</strong> (Tensor): 输入张量</p></li>
@@ -3929,9 +3861,9 @@ index.shape(d) &lt;= src.shape(d) 。当维度 d != dim 时， index.shape(d) &l
 <dt id="oneflow.selu">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">selu</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.selu" title="Permalink to this definition">¶</a></dt>
 <dd><p>应用以下 element-wise 公式：</p>
-<p><span class="math">\(\text{SELU}(x) = scale * (\max(0,x) + \min(0, \alpha * (\exp(x) - 1)))\)</span> ,
-<span class="math">\(\alpha=1.6732632423543772848170429916717\)</span> ,
-<span class="math">\(scale=1.0507009873554804934193349852946\)</span></p>
+<p><span class="math notranslate nohighlight">\(\text{SELU}(x) = scale * (\max(0,x) + \min(0, \alpha * (\exp(x) - 1)))\)</span> ,
+<span class="math notranslate nohighlight">\(\alpha=1.6732632423543772848170429916717\)</span> ,
+<span class="math notranslate nohighlight">\(scale=1.0507009873554804934193349852946\)</span></p>
 <p>更多信息请参考 <a class="reference internal" href="nn.html#oneflow.nn.SELU" title="oneflow.nn.SELU"><code class="xref py py-class docutils literal notranslate"><span class="pre">SELU</span></code></a> 。</p>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
@@ -3976,7 +3908,7 @@ by the framework.</p></li>
 <dt id="oneflow.sigmoid">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">sigmoid</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.sigmoid" title="Permalink to this definition">¶</a></dt>
 <dd><p>应用以下 element-wise 公式：
-<span class="math">\(\text{Sigmoid}(x) = \frac{1}{1 + \exp(-x)}\)</span></p>
+<span class="math notranslate nohighlight">\(\text{Sigmoid}(x) = \frac{1}{1 + \exp(-x)}\)</span></p>
 <p>更多信息请参考 <a class="reference internal" href="nn.html#oneflow.nn.Sigmoid" title="oneflow.nn.Sigmoid"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sigmoid</span></code></a> 。</p>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
@@ -3993,7 +3925,7 @@ by the framework.</p></li>
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">sign</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.sign" title="Permalink to this definition">¶</a></dt>
 <dd><p>求 <cite>x</cite> 中元素的正负。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\text{out}_{i}  = \text{sgn}(\text{input}_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入张量</p>
@@ -4019,7 +3951,7 @@ by the framework.</p></li>
 <dt id="oneflow.silu">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">silu</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.silu" title="Permalink to this definition">¶</a></dt>
 <dd><p>公式为：</p>
-<div class="math-wrapper"><div class="math">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\text{silu}(x) = x * sigmoid(x)\]</div></div>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
@@ -4036,10 +3968,8 @@ by the framework.</p></li>
 <dt id="oneflow.sin">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">sin</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.sin" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回一个元素为 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 正弦值的新张量。</p>
-<div class="math-wrapper"><div class="math">
-\[\text{y}_{i} = \sin(\text{x}_{i})
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{y}_{i} = \sin(\text{x}_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>input</strong> (Tensor): 输入张量</p>
 </dd>
@@ -4067,10 +3997,8 @@ by the framework.</p></li>
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">sinh</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.sinh" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回一个包含 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 中元素的双曲正弦值的新 tensor。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i} = \sinh(\text{input}_{i})
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i} = \sinh(\text{input}_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入张量</p>
 </dd>
@@ -4146,15 +4074,13 @@ by the framework.</p></li>
 <dd><p>将 Softmax 函数应用于 n 维 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> tensor 。并且重新缩放，
 使输出 tensor 的元素于 [0,1] 范围内并且总和为 1 。</p>
 <p>Softmax 的公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{Softmax}(x_{i}) = \frac{\exp(x_i)}{\sum_j \exp(x_j)}
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{Softmax}(x_{i}) = \frac{\exp(x_i)}{\sum_j \exp(x_j)}\]</div></div>
 <p>当输入张量是稀疏张量时，未指定的值将被视为 <code class="docutils literal notranslate"><span class="pre">-inf</span></code> 。</p>
 <dl class="simple">
 <dt>形状:</dt><dd><ul class="simple">
-<li><p>Input: <span class="math">\((*)\)</span> ，其中 <cite>*</cite> 表示任意数量的附加维度</p></li>
-<li><p>Output: <span class="math">\((*)\)</span> ，与 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 相同的形状</p></li>
+<li><p>Input: <span class="math notranslate nohighlight">\((*)\)</span> ，其中 <cite>*</cite> 表示任意数量的附加维度</p></li>
+<li><p>Output: <span class="math notranslate nohighlight">\((*)\)</span> ，与 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 相同的形状</p></li>
 </ul>
 </dd>
 <dt>返回类型：</dt><dd><p>与 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 具有相同维度和形状的张量，其值在 [0, 1] 范围内</p>
@@ -4180,17 +4106,15 @@ by the framework.</p></li>
 <dt id="oneflow.softplus">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">softplus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.softplus" title="Permalink to this definition">¶</a></dt>
 <dd><p>逐元素地应用此公式：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{Softplus}(x) = \frac{1}{\beta} * \log(1 + \exp(\beta * x))
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{Softplus}(x) = \frac{1}{\beta} * \log(1 + \exp(\beta * x))\]</div></div>
 <p>更多细节参考 <a class="reference internal" href="nn.html#oneflow.nn.Softplus" title="oneflow.nn.Softplus"><code class="xref py py-class docutils literal notranslate"><span class="pre">Softplus</span></code></a> 。</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.softsign">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">softsign</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.softsign" title="Permalink to this definition">¶</a></dt>
 <dd><p>softsign 的公式为：</p>
-<div class="math-wrapper"><div class="math">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[softsign(x) = \frac{x}{1 + |x|}\]</div></div>
 <p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -4284,10 +4208,8 @@ by the framework.</p></li>
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">sqrt</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.sqrt" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回一个元素为 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 元素平方根的新 tensor 。
 公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i} = \sqrt{\text{input}_{i}}
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i} = \sqrt{\text{input}_{i}}\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>input</strong> (Tensor): 输入张量</p></li>
@@ -4308,10 +4230,8 @@ by the framework.</p></li>
 <dt id="oneflow.square">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">square</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.square" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回一个新的张量，其元素为 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 中元素的的平方。</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i} = \sqrt{\text{input}_{i}}
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i} = \sqrt{\text{input}_{i}}\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入张量</p>
 </dd>
@@ -4412,10 +4332,8 @@ by the framework.</p></li>
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">sub</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.sub" title="Permalink to this definition">¶</a></dt>
 <dd><p>计算 <cite>input</cite> 和 <cite>other</cite> 的差，支持 element-wise、标量和广播形式的减法。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[out = input - other
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[out = input - other\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>input</strong> (Tensor): 输入张量</p></li>
@@ -4514,10 +4432,8 @@ by the framework.</p></li>
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">tan</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.tan" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回一个包含 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 中元素的正切值的新 tensor。</p>
 <p>公式为：</p>
-<div class="math-wrapper"><div class="math">
-\[\text{out}_{i} = \tan(\text{input}_{i})
-
-\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\text{out}_{i} = \tan(\text{input}_{i})\]</div></div>
 <dl class="simple">
 <dt>参数：</dt><dd><p><strong>x</strong> (Tensor): 输入张量</p>
 </dd>
@@ -4539,7 +4455,7 @@ by the framework.</p></li>
 <dt id="oneflow.tanh">
 <code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">tanh</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.tanh" title="Permalink to this definition">¶</a></dt>
 <dd><p>公式为：</p>
-<div class="math-wrapper"><div class="math">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[out = \frac{e^x-e^{-x}}{e^x+e^{-x}}\]</div></div>
 <p>更多信息请参考 <a class="reference internal" href="nn.html#oneflow.nn.Tanh" title="oneflow.nn.Tanh"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tanh</span></code></a> 。</p>
 </dd></dl>
@@ -4823,7 +4739,7 @@ the indices are the indices of the elements in the original input tensor.</p>
 <dt>参数：</dt><dd><ul class="simple">
 <li><p><strong>input</strong> (Tensor): 输入张量</p></li>
 <li><p><strong>dim</strong> (int 或者 tuple of python:ints): 要减少的一个或多个维度。默认为None</p></li>
-<li><p><strong>unbiased</strong> (bool, 可选): 是否使用贝塞尔校正 (<span class="math">\(\delta N = 1\)</span>) 。 默认为 True</p></li>
+<li><p><strong>unbiased</strong> (bool, 可选): 是否使用贝塞尔校正 (<span class="math notranslate nohighlight">\(\delta N = 1\)</span>) 。 默认为 True</p></li>
 <li><p><strong>keepdim</strong> (bool, 可选): 输出张量是否保留了 <code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code> 的维度。 默认为 False</p></li>
 </ul>
 </dd>
@@ -5065,8 +4981,6 @@ flow.zeros_like(x) 等价于 flow.zeros(x.shape, dtype=x.dtype)</p>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js"></script>
-    <script src="_static/katex_autorenderer.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
 </html>
