@@ -61,3 +61,4 @@ from .step_lr import *
 from .conv import *
 from .normalization import *
 from .vision import *
+from .one_embedding import *
