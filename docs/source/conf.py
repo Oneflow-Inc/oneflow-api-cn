@@ -44,7 +44,7 @@ release = u""
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
-    "sphinxcontrib.katex",
+    #"sphinxcontrib.katex",
     "recommonmark",
     "sphinx_copybutton",
 ]
@@ -198,7 +198,6 @@ autodoc_default_options = {
     "exclude-members": "forward",
 }
 
-mathjax_path = "https://cdn.jsdelivr.net/npm/mathjax@2.7.8/latest.js?config=TeX-AMS-MML_HTMLorMML"
 
 def should_skip_member(app, what, name, obj, skip, options):
     import collections
