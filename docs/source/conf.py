@@ -44,7 +44,7 @@ release = u""
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
-    #"sphinxcontrib.katex",
+    "sphinxcontrib.katex",
     "recommonmark",
     "sphinx_copybutton",
 ]
