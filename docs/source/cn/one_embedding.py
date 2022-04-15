@@ -88,14 +88,14 @@ reset_docstr(
     
     示例：
 
-        .. code-block:: python
+    .. code-block:: python
 
-            > import oneflow as flow
-            > # 使用由 flow.one_embedding.MultiTableEmbedding 创建的 embedding
-            > embedding.save_snapshot("my_snapshot1")
-            > # 一个名为 "my_snapshot1" 的快照已经被保存在 "snapshots "目录下，可以在 
-            > # your_configed_persistent_path 目录下，通过 flow.one_embedding.load_snapshot重新加载。
-        """
+        > import oneflow as flow
+        > # 使用由 flow.one_embedding.MultiTableEmbedding 创建的 embedding
+        > embedding.save_snapshot("my_snapshot1")
+        > # 一个名为 "my_snapshot1" 的快照已经被保存在 "snapshots "目录下，可以在 
+        > # your_configed_persistent_path 目录下，通过 flow.one_embedding.load_snapshot重新加载。
+    """
 )
 
 reset_docstr(
@@ -165,12 +165,12 @@ reset_docstr(
 
     .. code-block:: python
 
-        >>> import oneflow as flow    
-        >>> store_options = flow.one_embedding.make_cached_ssd_store_options(
-        >>>     cache_budget_mb=8192, persistent_path="/your_path_to_ssd", capacity=vocab_size,
-        >>> )
-        >>> # pass the store_options to the "store_options" param of flow.one_embedding.MultiTableEmbedding
-        >>> # ...
+        > import oneflow as flow    
+        > store_options = flow.one_embedding.make_cached_ssd_store_options(
+        >     cache_budget_mb=8192, persistent_path="/your_path_to_ssd", capacity=vocab_size,
+        > )
+        > # pass the store_options to the "store_options" param of flow.one_embedding.MultiTableEmbedding
+        > # ...
     """
 )
 
@@ -207,10 +207,10 @@ reset_docstr(
 
     .. code-block:: python
 
-        >>> import oneflow as flow
-        >>> initializer = flow.one_embedding.make_uniform_initializer(low=-scale, high=scale)
-        >>> # pass the initializer to flow.one_embedding.make_table_options
-        >>> # ...
+        > import oneflow as flow
+        > initializer = flow.one_embedding.make_uniform_initializer(low=-scale, high=scale)
+        > # pass the initializer to flow.one_embedding.make_table_options
+        > # ...
     """
 )
 
@@ -229,10 +229,10 @@ reset_docstr(
 
     .. code-block:: python
 
-        >>> import oneflow as flow
-        >>> initializer = flow.one_embedding.make_normal_initializer(mean=0, std=0.01)
-        >>> # pass the initializer to flow.one_embedding.make_table_options
-        >>> # ...
+        > import oneflow as flow
+        > initializer = flow.one_embedding.make_normal_initializer(mean=0, std=0.01)
+        > # pass the initializer to flow.one_embedding.make_table_options
+        > # ...
     """
 )
 
@@ -250,13 +250,13 @@ reset_docstr(
 
     .. code-block:: python
 
-        >>> import oneflow as flow
-        >>> initializer = flow.one_embedding.make_uniform_initializer(low=-scale, high=scale)
-        >>> table1 = flow.one_embedding.make_table_options(initializer)
-        >>> table2 = flow.one_embedding.make_table_options(initializer)
-        >>> tables = [table1, table2]
-        >>> # pass the tables to the "tables" param of flow.one_embedding.MultiTableEmbedding
-        >>> # ...
+        > import oneflow as flow
+        > initializer = flow.one_embedding.make_uniform_initializer(low=-scale, high=scale)
+        > table1 = flow.one_embedding.make_table_options(initializer)
+        > table2 = flow.one_embedding.make_table_options(initializer)
+        > tables = [table1, table2]
+        > # pass the tables to the "tables" param of flow.one_embedding.MultiTableEmbedding
+        > # ...
         
     """
 )
