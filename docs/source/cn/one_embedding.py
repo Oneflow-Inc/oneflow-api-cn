@@ -129,3 +129,142 @@ reset_docstr(
             
         """
 )
+
+reset_docstr(
+    oneflow.one_embedding.make_device_mem_store_options,
+    """将 MultiTableEmbedding 的参数 store_options 配置为（词表使用）纯 GPU 存储。
+
+    参数：
+        - **persistent_path** (str, list) - Embedding 词表的持久化存储路径。如果传入一个 str，当前 rank 中的 Embedding 词表将被存储在路径 path/rank_id-num_ranks 下；如果传入一个 list，则列表长度必须等于 rank 的数量，列表中的每个元素代表着对应 rank_id 中的 Embedding 词表的存储路径。
+        - **capacity** (int) - Embedding 词表的总容量。
+        - **size_factor** (int, optional) - embedding_dim 的存储大小因子。如果使用 SGD 优化器且 momentum = 0，其值应为 1；如果 momentum > 0，其值应为 2；如果使用 Adam 优化器，其值应为 3。默认值为 1。
+        - **physical_block_size** (int, optional) - 是扇区大小。默认为 512。
+
+    返回值类型：
+        dict
+
+    查看 :func:`oneflow.one_embedding.make_cached_ssd_store_options` 来获得其他信息。
+    """
+)
+
+reset_docstr(
+    oneflow.one_embedding.make_cached_ssd_store_options,
+    """将 MultiTableEmbedding 的参数 store_options 配置为（词表使用）SSD 存储，且使用 GPU 作为高速缓存。
+
+    参数：
+        - **cache_budget_mb** (int) - 单个 GPU 显存作为缓存的预算，单位为 MB。
+        - **persistent_path** (str, list) - Embedding 词表的持久化存储路径。必须使用高速 SSD 由于训练期间频繁的随机磁盘访问。如果传入一个 str，当前 rank 中的 Embedding 词表将被存储在路径 path/rank_id-num_ranks 下；如果传入一个 list，则列表长度必须等于 rank 的数量，列表中的每个元素代表着对应 rank_id 中的 Embedding 词表的存储路径。
+        - **capacity** (int) - Embedding 词表的总容量
+        - **size_factor** (int, optional) - embedding_dim 的存储大小因子。如果使用 SGD 优化器且 momentum = 0，其值应为 1；如果 momentum > 0，其值应为 2；如果使用 Adam 优化器，其值应为 3。默认值为 1。
+        - **physical_block_size** (int, optional) - 是扇区大小。默认为 512。
+
+    返回值类型：
+        dict
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow    
+        >>> store_options = flow.one_embedding.make_cached_ssd_store_options(
+        >>>     cache_budget_mb=8192, persistent_path="/your_path_to_ssd", capacity=vocab_size,
+        >>> )
+        >>> # pass the store_options to the "store_options" param of flow.one_embedding.MultiTableEmbedding
+        >>> # ...
+    """
+)
+
+reset_docstr(
+    oneflow.one_embedding.make_cached_host_mem_store_options,
+    """将 MultiTableEmbedding 的参数 store_options 配置为（词表使用）CPU 内存存储，且使用 GPU 作为高速缓存。
+
+    参数：
+        - **cache_budget_mb** (int) - 单个 GPU 显存作为缓存的预算，单位为 MB。
+        - **persistent_path** (str, list) - Embedding 词表的持久化存储路径。如果传入一个 str，当前 rank 中的 Embedding 词表将被存储在路径 path/rank_id-num_ranks 下；如果传入一个 list，则列表长度必须等于 rank 的数量，列表中的每个元素代表着对应 rank_id 中的 Embedding 词表的存储路径。
+        - **capacity** (int) - Embedding 词表的总容量。
+        - **size_factor** (int, optional) - embedding_dim 的存储大小因子。如果使用 SGD 优化器且 momentum = 0，其值应为 1；如果 momentum > 0，其值应为 2；如果使用 Adam 优化器，其值应为 3。默认值为 1。
+        - **physical_block_size** (int, optional) - 是扇区大小。默认为 512。
+
+    返回值类型：
+        dict
+
+    查看 :func:`oneflow.one_embedding.make_cached_ssd_store_options` 来获得其他信息。
+    """
+)
+
+reset_docstr(
+    oneflow.one_embedding.make_uniform_initializer,
+    """生成函数 make_table_options 所需的均匀分布初始化器参数。
+
+    参数：
+        - **low** (float) - 要生成的随机数范围的下限，应为标量。
+        - **high** (float) - 要生成的随机数范围的上限，应为标量。
+
+    返回值类型：
+        dict
+    
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> initializer = flow.one_embedding.make_uniform_initializer(low=-scale, high=scale)
+        >>> # pass the initializer to flow.one_embedding.make_table_options
+        >>> # ...
+    """
+)
+
+reset_docstr(
+    oneflow.one_embedding.make_normal_initializer,
+    """生成函数 make_table_options 所需的正态分布初始化器参数。
+
+    参数：
+        - **mean** (float) - 要生成的随机数的平均值，应为标量。
+        - **std** (float) - 要生成的随机数的标准差，应为标量。
+
+    返回值类型：
+        dict
+    
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> initializer = flow.one_embedding.make_normal_initializer(mean=0, std=0.01)
+        >>> # pass the initializer to flow.one_embedding.make_table_options
+        >>> # ...
+    """
+)
+
+reset_docstr(
+    oneflow.one_embedding.make_table_options,
+    """生成 MultiTableEmbedding 的参数 tables 中的元素 table。
+
+    参数：
+        - **initializer** (dict) - 初始化器，由 make_uniform_initializer 或 make_normal_initializer 生成。
+
+    返回值类型：
+        dict
+    
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> initializer = flow.one_embedding.make_uniform_initializer(low=-scale, high=scale)
+        >>> table1 = flow.one_embedding.make_table_options(initializer)
+        >>> table2 = flow.one_embedding.make_table_options(initializer)
+        >>> tables = [table1, table2]
+        >>> # pass the tables to the "tables" param of flow.one_embedding.MultiTableEmbedding
+        >>> # ...
+        
+    """
+)
+
+reset_docstr(
+    oneflow.one_embedding.make_table,
+    """`oneflow.one_embedding.make_table_options` 的别名函数。
+
+    查看 :func:`oneflow.one_embedding.make_table_options` 来获得更多细节。
+    """
+)
