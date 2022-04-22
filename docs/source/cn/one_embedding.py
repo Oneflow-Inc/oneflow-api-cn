@@ -131,6 +131,88 @@ reset_docstr(
 )
 
 reset_docstr(
+    oneflow.one_embedding.MultiTableMultiColumnEmbedding,
+    r"""MultiTableMultiColumnEmbedding 表示多个 embedding 表，它们具有多个 embedding_dim，且 dtype、key_type 均相同。
+
+    参数：
+        - **name** (str) - 实例化的 Embedding 层的名字。
+        - **embedding_dim** (list) - 每一个 embedding 向量的大小构成的列表。
+        - **dtype** (flow.dtype) - embedding 的数据类型。
+        - **key_type** (flow.dtype) - 特征 ID 的数据类型。
+        - **tables** (list) - 由 flow.one_embedding.make_table_options 生成的列表中的表格参数。
+        - **store_options** (dict) - Embedding 的存储选项。
+        - **default_initializer** (dict, optional) - 如果参数 tables 为 None，则使用 default_initializer 来初始化表。默认为 None。
+    
+    示例：
+
+    .. code-block:: python
+
+        > import oneflow as flow
+        > import numpy as np
+        > import oneflow.nn as nn
+        > # a simple example with 3 table, every table has two column, the first column embedding_size is 10 and the second is 1.
+        > # every table's first column initialize with uniform(-1/sqrt(table_size), 1/sqrt(table_size)), second column initialize with normal(0, 1/sqrt(table_size))
+        > table_size_array = [39884407, 39043, 17289]
+        > vocab_size = sum(table_size_array)
+        > num_tables = len(table_size_array)
+        > embedding_size_list = [10, 1]
+        > scales = np.sqrt(1 / np.array(table_size_array))
+        > tables = [
+        >     flow.one_embedding.make_table_options(
+        >       [flow.one_embedding.make_column_options(    
+        >         flow.one_embedding.make_uniform_initializer(low=-scale, high=scale)), 
+        >        flow.one_embedding.make_column_options(    
+        >         flow.one_embedding.make_normal_initializer(mean=0, std=scale))]
+        >     )
+        >     for scale in scales
+        > ]
+        > store_options = flow.one_embedding.make_cached_ssd_store_options(
+        >     cache_budget_mb=8192, persistent_path="/your_path_to_ssd", capacity=vocab_size,
+        > )
+        > embedding = flow.one_embedding.MultiTableMultiColumnEmbedding(
+        >     name="my_embedding",
+        >     embedding_dim=embedding_size_list,
+        >     dtype=flow.float,
+        >     key_type=flow.int64,
+        >     tables=tables,
+        >     store_options=store_options,
+        > )
+        > embedding.to("cuda")
+        > mlp = flow.nn.FusedMLP(
+        >     in_features=sum(embedding_size_list) * num_tables,
+        >     hidden_features=[512, 256, 128],
+        >     out_features=1,
+        >     skip_final_activation=True,
+        > )
+        > mlp.to("cuda")
+        >
+        > class TrainGraph(flow.nn.Graph):
+        >     def __init__(self,):
+        >         super().__init__()
+        >         self.embedding_lookup = embedding
+        >         self.mlp = mlp
+        >         self.add_optimizer(
+        >             flow.optim.SGD(self.embedding_lookup.parameters(), lr=0.1, momentum=0.0)
+        >         )
+        >         self.add_optimizer(
+        >             flow.optim.SGD(self.mlp.parameters(), lr=0.1, momentum=0.0)
+        >         ) 
+        >     def build(self, ids):
+        >         embedding = self.embedding_lookup(ids)
+        >         loss = self.mlp(flow.reshape(embedding, (-1, num_tables * sum(embedding_size_list))))
+        >         loss = loss.sum()
+        >         loss.backward()
+        >         return loss 
+        > ids = np.random.randint(0, 1000, (100, num_tables), dtype=np.int64)
+        > ids_tensor = flow.tensor(ids, requires_grad=False).to("cuda")
+        > graph = TrainGraph()
+        > loss = graph(ids_tensor)
+        > print(loss)
+
+    """
+)
+
+reset_docstr(
     oneflow.one_embedding.make_device_mem_store_options,
     """将 MultiTableEmbedding 的参数 store_options 配置为（词表使用）纯 GPU 存储。
 

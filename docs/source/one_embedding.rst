@@ -4,11 +4,15 @@ OneFlow one_embedding operations.
 ----------------------------------
 .. currentmodule:: oneflow.one_embedding
 .. autoclass:: MultiTableEmbedding
-    :members: forward,
-              save_snapshot,
+    :members: save_snapshot,
+              load_snapshot,
+
+.. autoclass:: MultiTableMultiColumnEmbedding
+    :members: save_snapshot,
               load_snapshot,
 
 .. autofunction:: oneflow.one_embedding.MultiTableEmbedding.forward
+.. autofunction:: oneflow.one_embedding.MultiTableMultiColumnEmbedding.forward
 .. autofunction:: oneflow.one_embedding.make_device_mem_store_options
 .. autofunction:: oneflow.one_embedding.make_cached_ssd_store_options       
 .. autofunction:: oneflow.one_embedding.make_cached_host_mem_store_options
