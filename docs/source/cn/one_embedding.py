@@ -118,7 +118,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.one_embedding.MultiTableEmbedding.forward,
-    """MultiTableEmbedding 的前向计算。
+    """Embedding（基类）及其子类的前向计算。
 
         参数：
             - **ids** (flow.tensor) - 特征 id。
