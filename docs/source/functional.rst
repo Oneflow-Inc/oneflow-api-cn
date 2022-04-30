@@ -112,4 +112,3 @@ Vision functions
     upsample
     grid_sample
     affine_grid
-
