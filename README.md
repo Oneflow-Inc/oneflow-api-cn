@@ -80,5 +80,5 @@ reset_docstr(
 可以在本地编译文档，查看效果：
 
 ```shell
-cd docs && make html_cn
+cd docs && make html
 ```
