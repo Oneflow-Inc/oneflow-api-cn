@@ -27,28 +27,3 @@ reset_docstr(
         oneflow.Size([3, 3, 2])
     """
 )
-
-reset_docstr(
-    oneflow.slice_update,
-    r"""slice_update(input, update, slice_tup_list) -> Tensor
-
-    按 `input[start:stop:step] = update` 更新 :attr:`input` 中的切片。
-
-    参数：
-        - **input** (Tensor): 要更新切片的 tensor
-        - **update** (Tensor): 要更新的内容。
-        - **slice_tup_list** (Sequence[Tuple[int, int, int]]): 指定每个维度的切片 (start, stop, step) 
-
-    示例：
-
-    .. code-block:: python
-
-        >>> import oneflow as flow
-
-        >>> input = flow.tensor([1, 1, 1, 1, 1], dtype=flow.float32)
-        >>> update = flow.tensor([2, 3, 4], dtype=flow.float32)
-        >>> y = flow.slice_update(input, update, slice_tup_list=[[1, 4, 1]])
-        >>> y.numpy()
-        array([1., 2., 3., 4., 1.], dtype=float32)
-    """
-)
