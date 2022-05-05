@@ -5,8 +5,6 @@ name: DocTest
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [master]
   pull_request:
     branches: [master]
 
@@ -27,7 +25,8 @@ jobs:
       - name: Fix permissions
         run: |
           set -x
-          docker run --rm -v $PWD:/p -w /p busybox chown -R $(id -u):$(id -g) .
+          docker run --rm -v $PWD:/p -w /p busybox rm -rf *
+          docker run --rm -v $PWD:/p -w /p busybox rm -rf .git
       - name: Remove container
         timeout-minutes: 45
         run: |
@@ -40,6 +39,8 @@ jobs:
           all_but_latest: true
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+        with:
+          submodules: false
       # Runs a set of commands using the runners shell
       - name: Start container
         timeout-minutes: 45
@@ -55,19 +56,22 @@ jobs:
             --name ${TEST_CONTAINER_NAME} \
             ${{ env.TEST_IMG_TAG }} \
             sleep 3600
-      # TODO: remove submodule. It often fails on self-hosted hosts
-      - name: Install docreset
+      - name: Install doc test requirements
         timeout-minutes: 45
         run: |
-          git submodule update --init --recursive
           docker exec ${TEST_CONTAINER_NAME} python3 -m pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
-          docker exec ${{ env.TEST_CONTAINER_NAME }} python3 -m pip install -f https://staging.oneflow.info/branch/master/cu102 oneflow
+          docker exec ${{ env.TEST_CONTAINER_NAME }} python3 -m pip install -f https://staging.oneflow.info/branch/master/cu102 --pre oneflow
           docker exec ${{ env.TEST_CONTAINER_NAME }} python3 -m pip install -r dev-requirements.txt --user
           docker exec ${{ env.TEST_CONTAINER_NAME }} bash ci/install.sh
       - name: DocTest
         timeout-minutes: 45
         run: |
           docker exec -w $PWD/docs ${{ env.TEST_CONTAINER_NAME }} make test_cn
+      - name: DocBuildTest
+        timeout-minutes: 45
+        run: |
+          docker exec -w $PWD/docs ${{ env.TEST_CONTAINER_NAME }} python3 -m pip install -r requirements.txt --user
+          docker exec -w $PWD/docs ${{ env.TEST_CONTAINER_NAME }} make html_cn SPHINXOPTS="-W --keep-going"
       - name: Remove container
         timeout-minutes: 45
         if: ${{ always() }}
