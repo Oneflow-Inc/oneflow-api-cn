@@ -809,7 +809,7 @@ reset_docstr(
 )
 
 reset_docstr(
-    oneflow.grad_enable,
+    oneflow.enable_grad,
     r"""
     启用梯度计算的上下文管理模式。
 
