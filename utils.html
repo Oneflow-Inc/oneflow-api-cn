@@ -130,6 +130,7 @@
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">oneflow.utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="env.html">oneflow.env</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comm.html">oneflow.comm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_embedding.html">oneflow.one_embedding</a></li>
 </ul>
 
 </div>
@@ -448,7 +449,7 @@ batch 的样本将被采取 dropout 操作。遗憾的是， OneFlow 通常无�
 </dd></dl>
 <dl class="py class">
 <dt id="oneflow.utils.data.TensorDataset">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.data.</span></code><code class="sig-name descname"><span class="pre">TensorDataset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">tensors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow._oneflow_internal.Tensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.data.TensorDataset" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.data.</span></code><code class="sig-name descname"><span class="pre">TensorDataset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">tensors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">oneflow.Tensor</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.data.TensorDataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>包装张量的数据集。</p>
 <p>每个样本都将通过索引张量的第一个维度来提取。</p>
 <dl class="simple">
@@ -532,6 +533,61 @@ limitations under the License.</p>
 </dd>
 </dl>
 </dd></dl>
+</dd></dl>
+<dl class="py function">
+<dt id="oneflow.utils.from_torch">
+<code class="sig-prename descclassname"><span class="pre">oneflow.utils.</span></code><code class="sig-name descname"><span class="pre">from_torch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">torch_tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.utils.from_torch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a oneflow tensor from torch tensor.</p>
+<p>The returned tensor and torch tensor share the same memory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently only cpu tensor, local tensor is supported.</p>
+<p>This function can be used in special data processing stages, torch’s some cpu ops can be used.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>input</strong> (<em>torch.Tensor</em>) – Input Tensor</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>oneflow.Tensor</p>
+</dd>
+</dl>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">torch_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="n">flow_t</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This feature <code class="docutils literal notranslate"><span class="pre">from_torch</span></code> is at Alpha Stage.</p>
+</dd></dl>
+<dl class="py function">
+<dt id="oneflow.utils.to_torch">
+<code class="sig-prename descclassname"><span class="pre">oneflow.utils.</span></code><code class="sig-name descname"><span class="pre">to_torch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow_tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.utils.to_torch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a torch tensor from oneflow tensor.</p>
+<p>The returned tensor and oneflow tensor share the same memory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently only cpu tensor, local tensor is supported.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>input</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>oneflow.Tensor</em></a>) – Input Tensor</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>torch.Tensor</p>
+</dd>
+</dl>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">flow_t</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="n">torch_t</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="n">flow_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This feature <code class="docutils literal notranslate"><span class="pre">to_torch</span></code> is at Alpha Stage.</p>
 </dd></dl>
 </div>
 </div>

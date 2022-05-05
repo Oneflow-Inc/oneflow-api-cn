@@ -31,12 +31,13 @@ OneFlow API Reference
     utils
     env
     comm
+    one_embedding
 
 
-索引和表格
+
+Indices and tables
 ==================
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-

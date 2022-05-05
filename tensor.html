@@ -130,6 +130,7 @@
 <li class="toctree-l1"><a class="reference internal" href="utils.html">oneflow.utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="env.html">oneflow.env</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comm.html">oneflow.comm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_embedding.html">oneflow.one_embedding</a></li>
 </ul>
 
 </div>
@@ -220,9 +221,29 @@
 <dd><p><a class="reference internal" href="#oneflow.Tensor.add" title="oneflow.Tensor.add"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.Tensor.add()</span></code></a> 的 Inplace 版本。</p>
 </dd></dl>
 <dl class="py method">
+<dt id="oneflow.Tensor.addcmul">
+<code class="sig-name descname"><span class="pre">addcmul</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tensor2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.addcmul" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="oneflow.html#oneflow.addcmul" title="oneflow.addcmul"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.addcmul()</span></code></a></p>
+</dd></dl>
+<dl class="py method">
+<dt id="oneflow.Tensor.addcmul_">
+<code class="sig-name descname"><span class="pre">addcmul_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tensor2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.addcmul_" title="Permalink to this definition">¶</a></dt>
+<dd><p>In-place version of <a class="reference internal" href="#oneflow.Tensor.addcmul" title="oneflow.Tensor.addcmul"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.Tensor.addcmul()</span></code></a>.</p>
+</dd></dl>
+<dl class="py method">
 <dt id="oneflow.Tensor.addmm">
 <code class="sig-name descname"><span class="pre">addmm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.addmm" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="oneflow.html#oneflow.addmm" title="oneflow.addmm"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.addmm()</span></code></a></p>
+</dd></dl>
+<dl class="py method">
+<dt id="oneflow.Tensor.amax">
+<code class="sig-name descname"><span class="pre">amax</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.amax" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="oneflow.html#oneflow.amax" title="oneflow.amax"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.amax()</span></code></a></p>
+</dd></dl>
+<dl class="py method">
+<dt id="oneflow.Tensor.amin">
+<code class="sig-name descname"><span class="pre">amin</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.amin" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="oneflow.html#oneflow.amin" title="oneflow.amin"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.amin()</span></code></a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.arccos">
@@ -358,6 +379,12 @@
 <dd><p>参考 <a class="reference internal" href="oneflow.html#oneflow.bmm" title="oneflow.bmm"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.bmm()</span></code></a></p>
 </dd></dl>
 <dl class="py method">
+<dt id="oneflow.Tensor.byte">
+<code class="sig-name descname"><span class="pre">byte</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.byte" title="Permalink to this definition">¶</a></dt>
+<dd><p>self.byte() is equivalent to self.to(oneflow.uint8).
+See <a class="reference internal" href="#oneflow.Tensor.to" title="oneflow.Tensor.to"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.Tensor.to()</span></code></a></p>
+</dd></dl>
+<dl class="py method">
 <dt id="oneflow.Tensor.cast">
 <code class="sig-name descname"><span class="pre">cast</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.cast" title="Permalink to this definition">¶</a></dt>
 <dd><p>参考 <a class="reference internal" href="oneflow.html#oneflow.cast" title="oneflow.cast"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.cast()</span></code></a></p>
@@ -394,11 +421,11 @@
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.clone">
-<code class="sig-name descname"><span class="pre">clone</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow._oneflow_internal.Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Maybe</span><span class="p"><span class="pre">[</span></span><span class="pre">void</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#oneflow.Tensor.clone" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">clone</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.clone" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.copy_">
-<code class="sig-name descname"><span class="pre">copy_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">oneflow._oneflow_internal.Tensor</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.copy_" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">copy_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">oneflow.Tensor</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.copy_" title="Permalink to this definition">¶</a></dt>
 <dd><p>该接口与 PyTorch 一致。</p>
 <p>Tensor.copy_(src, non_blocking=False) → Tensor</p>
 <p>将 src 中的元素复制到 self 张量中，并返回 self 。</p>
@@ -473,19 +500,19 @@
 </pre></div>
 </div>
 </dd></dl>
-<dl class="py method">
+<dl class="py attribute">
 <dt id="oneflow.Tensor.data">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">data</span></code><a class="headerlink" href="#oneflow.Tensor.data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">data</span></code><a class="headerlink" href="#oneflow.Tensor.data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.detach">
-<code class="sig-name descname"><span class="pre">detach</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow._oneflow_internal.Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Maybe</span><span class="p"><span class="pre">[</span></span><span class="pre">void</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#oneflow.Tensor.detach" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">detach</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.detach" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-<dl class="py method">
+<dl class="py attribute">
 <dt id="oneflow.Tensor.device">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">device</span></code><a class="headerlink" href="#oneflow.Tensor.device" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">device</span></code><a class="headerlink" href="#oneflow.Tensor.device" title="Permalink to this definition">¶</a></dt>
 <dd><p>The documentation is referenced from:
-<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.Tensor.device.html#torch.Tensor.device">https://pytorch.org/docs/stable/generated/torch.Tensor.device.html#torch.Tensor.device</a></p>
+<a class="reference external" href="https://pytorch.org/docs/1.10/generated/torch.Tensor.device.html">https://pytorch.org/docs/1.10/generated/torch.Tensor.device.html</a>.</p>
 <p>Is the <a class="reference internal" href="tensor_attributes.html#oneflow.device" title="oneflow.device"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.device</span></code></a> where this Tensor is, which is invalid for global tensor.</p>
 </dd></dl>
 <dl class="py method">
@@ -571,9 +598,9 @@
 </pre></div>
 </div>
 </dd></dl>
-<dl class="py method">
+<dl class="py attribute">
 <dt id="oneflow.Tensor.dtype">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">dtype</span></code><a class="headerlink" href="#oneflow.Tensor.dtype" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">dtype</span></code><a class="headerlink" href="#oneflow.Tensor.dtype" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.element_size">
@@ -706,19 +733,70 @@
 <dd><p>对于 CUDA 张量，该函数返回张量所在 GPU 的设备序号。对于 CPU 张量，会产生一个错误。</p>
 </dd></dl>
 <dl class="py method">
+<dt id="oneflow.Tensor.global_to_global">
+<code class="sig-name descname"><span class="pre">global_to_global</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">placement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sbp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_sbp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_meta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.Tensor.global_to_global" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs Tensor placement and/or sbp conversion.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tensor must be global tensor.</p>
+<p>At least one of placement and sbp is required.</p>
+<p>If placement and sbp are all the same as this tensor’s own placement and sbp, then returns this tensor own.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>placement</strong> (<em>flow.placement</em><em>, </em><em>optional</em>) – the desired placement of returned global tensor. Default: None</p></li>
+<li><p><strong>sbp</strong> (<em>flow.sbp.sbp</em><em> or </em><em>tuple of flow.sbp.sbp</em><em>, </em><em>optional</em>) – the desired sbp of returned global tensor. Default: None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>grad_sbp</strong> (<em>flow.sbp.sbp</em><em> or </em><em>tuple of flow.sbp.sbp</em><em>, </em><em>optional</em>) – manually specify the sbp of this tensor’s grad
+tensor in the backward pass. If None, the grad tensor sbp will be infered automatically. Default: None</p></li>
+<li><p><strong>check_meta</strong> (<em>bool</em><em>, </em><em>optional</em>) – indicates whether to check meta information. If set to True, check the consistency
+of the input meta information (placement and sbp) on each rank. Default: False</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Run on 2 ranks respectively</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">placement</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">,</span> <span class="n">ranks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">sbp</span><span class="o">=</span><span class="p">[</span><span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">broadcast</span><span class="p">])</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">global_to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">,</span> <span class="n">ranks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">sbp</span><span class="o">=</span><span class="p">[</span><span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">0</span><span class="p">)])</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">size</span><span class="p">())</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> 
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># results on rank 0</span>
+<span class="go">oneflow.Size([2])</span>
+<span class="go">tensor([0., 1.], placement=oneflow.placement(type="cpu", ranks=[0, 1]), sbp=(oneflow.sbp.split(axis=0),), dtype=oneflow.float32)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># results on rank 1</span>
+<span class="go">oneflow.Size([2])</span>
+<span class="go">tensor([0., 1.], placement=oneflow.placement(type="cpu", ranks=[0, 1]), sbp=(oneflow.sbp.split(axis=0),), dtype=oneflow.float32)</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py attribute">
 <dt id="oneflow.Tensor.grad">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">grad</span></code><a class="headerlink" href="#oneflow.Tensor.grad" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">grad</span></code><a class="headerlink" href="#oneflow.Tensor.grad" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the gradient calculated by autograd functions. This property is None by default.</p>
 </dd></dl>
-<dl class="py method">
+<dl class="py attribute">
 <dt id="oneflow.Tensor.grad_fn">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">grad_fn</span></code><a class="headerlink" href="#oneflow.Tensor.grad_fn" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">grad_fn</span></code><a class="headerlink" href="#oneflow.Tensor.grad_fn" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the function that created this tensor if it’s <code class="docutils literal notranslate"><span class="pre">requires_grad</span></code> is True.</p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.gt">
 <code class="sig-name descname"><span class="pre">gt</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.gt" title="Permalink to this definition">¶</a></dt>
 <dd><p>参考 <a class="reference internal" href="oneflow.html#oneflow.gt" title="oneflow.gt"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.gt()</span></code></a></p>
+</dd></dl>
+<dl class="py method">
+<dt id="oneflow.Tensor.half">
+<code class="sig-name descname"><span class="pre">half</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.half" title="Permalink to this definition">¶</a></dt>
+<dd><p>self.half() is equivalent to self.to(dtype=oneflow.float16).</p>
+<p>See <a class="reference internal" href="#oneflow.Tensor.to" title="oneflow.Tensor.to"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.Tensor.to()</span></code></a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.in_top_k">
@@ -755,9 +833,9 @@
 <code class="sig-name descname"><span class="pre">is_contiguous</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">bool</span><a class="headerlink" href="#oneflow.Tensor.is_contiguous" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns True if <cite>self</cite> tensor is contiguous in memory.</p>
 </dd></dl>
-<dl class="py method">
+<dl class="py attribute">
 <dt id="oneflow.Tensor.is_cuda">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">is_cuda</span></code><a class="headerlink" href="#oneflow.Tensor.is_cuda" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">is_cuda</span></code><a class="headerlink" href="#oneflow.Tensor.is_cuda" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is <cite>True</cite> if the Tensor is stored on the GPU, <cite>False</cite> otherwise.</p>
 </dd></dl>
 <dl class="py method">
@@ -765,19 +843,19 @@
 <code class="sig-name descname"><span class="pre">is_floating_point</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.is_floating_point" title="Permalink to this definition">¶</a></dt>
 <dd><p>参考 <a class="reference internal" href="oneflow.html#oneflow.is_floating_point" title="oneflow.is_floating_point"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.is_floating_point()</span></code></a></p>
 </dd></dl>
-<dl class="py method">
+<dl class="py attribute">
 <dt id="oneflow.Tensor.is_global">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">is_global</span></code><a class="headerlink" href="#oneflow.Tensor.is_global" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">is_global</span></code><a class="headerlink" href="#oneflow.Tensor.is_global" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return whether this Tensor is a global tensor.</p>
 </dd></dl>
-<dl class="py method">
+<dl class="py attribute">
 <dt id="oneflow.Tensor.is_lazy">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">is_lazy</span></code><a class="headerlink" href="#oneflow.Tensor.is_lazy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">is_lazy</span></code><a class="headerlink" href="#oneflow.Tensor.is_lazy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return whether this Tensor is a lazy tensor.</p>
 </dd></dl>
-<dl class="py method">
+<dl class="py attribute">
 <dt id="oneflow.Tensor.is_leaf">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">is_leaf</span></code><a class="headerlink" href="#oneflow.Tensor.is_leaf" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">is_leaf</span></code><a class="headerlink" href="#oneflow.Tensor.is_leaf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compatible with PyTorch.</p>
 <p>All Tensors that have <code class="docutils literal notranslate"><span class="pre">requires_grad</span></code> which is <code class="docutils literal notranslate"><span class="pre">False</span></code> will be leaf Tensors by convention.</p>
 <p>For Tensor that have <code class="docutils literal notranslate"><span class="pre">requires_grad</span></code> which is <code class="docutils literal notranslate"><span class="pre">True</span></code>, they will be leaf Tensors if they
@@ -843,6 +921,49 @@ were created by source operations.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">le</span><span class="p">(</span><span class="n">input1</span><span class="p">,</span> <span class="n">input2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span>
 <span class="go">tensor([ True, False,  True], dtype=oneflow.bool)</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="oneflow.Tensor.local_to_global">
+<code class="sig-name descname"><span class="pre">local_to_global</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">placement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sbp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_meta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Ture</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.Tensor.local_to_global" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a global tensor from a local tensor.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tensor must be local tensor.</p>
+<p>Both placement and sbp are required.</p>
+<p>The returned global tensor takes this tensor as its local component in the current rank.</p>
+<p>There is no data communication usually, but when sbp is <code class="docutils literal notranslate"><span class="pre">oneflow.sbp.broadcast</span></code>, the data on rank 0 will be broadcast to other ranks.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>placement</strong> (<em>flow.placement</em><em>, </em><em>optional</em>) – the desired placement of returned global tensor. Default: None</p></li>
+<li><p><strong>sbp</strong> (<em>flow.sbp.sbp</em><em> or </em><em>tuple of flow.sbp.sbp</em><em>, </em><em>optional</em>) – the desired sbp of returned global tensor. Default: None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments</dt>
+<dd class="field-even"><p><strong>check_meta</strong> (<em>bool</em><em>, </em><em>optional</em>) – indicates whether to check meta information when createing global tensor from local
+tensor. Only can be set to False when the shape and dtype of the input local tensor on each rank are the same. If set to False, the
+execution of local_to_global can be accelerated. Default: True</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Run on 2 ranks respectively</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">local_to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">,</span> <span class="n">ranks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">sbp</span><span class="o">=</span><span class="p">[</span><span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">0</span><span class="p">)],</span> <span class="n">check_meta</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">size</span><span class="p">())</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> 
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># results on rank 0</span>
+<span class="go">oneflow.Size([4])</span>
+<span class="go">tensor([0., 1., 0., 1.], placement=oneflow.placement(type="cpu", ranks=[0, 1]), sbp=(oneflow.sbp.split(axis=0),), dtype=oneflow.float32)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># results on rank 1</span>
+<span class="go">oneflow.Size([4])</span>
+<span class="go">tensor([0., 1., 0., 1.], placement=oneflow.placement(type="cpu", ranks=[0, 1]), sbp=(oneflow.sbp.split(axis=0),), dtype=oneflow.float32)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -979,9 +1100,63 @@ were created by source operations.</p>
 <p>numel() 的别名。</p>
 </dd></dl>
 <dl class="py method">
+<dt id="oneflow.Tensor.new_empty">
+<code class="sig-name descname"><span class="pre">new_empty</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sbp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.Tensor.new_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a Tensor of size <a class="reference internal" href="#oneflow.Tensor.size" title="oneflow.Tensor.size"><code class="xref py py-attr docutils literal notranslate"><span class="pre">size</span></code></a> filled with uninitialized data. By default, the returned Tensor has the same <code class="xref py py-attr docutils literal notranslate"><span class="pre">flow.dtype</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">flow.device</span></code> as this tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<em>int...</em>) – a list, tuple, or flow.Size of integers defining the shape of the output tensor.</p></li>
+<li><p><strong>dtype</strong> (<em>flow.dtype</em><em>, </em><em>optional</em>) – the desired type of returned tensor. Default: if None, same flow.dtype as this tensor.</p></li>
+<li><p><strong>device</strong> (<em>flow.device</em><em>, </em><em>optional</em>) – the desired device of returned tensor. Default: if None, same flow.device as this tensor.</p></li>
+<li><p><strong>placement</strong> (<em>flow.placement</em><em>, </em><em>optional</em>) – the desired placement of returned global tensor. Default: if None, the returned tensor is local one using the argument <cite>device</cite>.</p></li>
+<li><p><strong>sbp</strong> (<em>flow.sbp.sbp</em><em> or </em><em>tuple of flow.sbp.sbp</em><em>, </em><em>optional</em>) – the desired sbp descriptor of returned global tensor. Default: if None, the returned tensor is local one using the argument <cite>device</cite>.</p></li>
+<li><p><strong>requires_grad</strong> (<em>bool</em><em>, </em><em>optional</em>) – If autograd should record operations on the returned tensor. Default: False.</p></li>
+</ul>
+</dd>
+</dl>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">ones</span><span class="p">(())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">new_empty</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">oneflow.Size([2, 2])</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py method">
 <dt id="oneflow.Tensor.new_ones">
 <code class="sig-name descname"><span class="pre">new_ones</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.Tensor.new_ones" title="Permalink to this definition">¶</a></dt>
 <dd><p>参考 <a class="reference internal" href="oneflow.html#oneflow.new_ones" title="oneflow.new_ones"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.new_ones()</span></code></a></p>
+</dd></dl>
+<dl class="py method">
+<dt id="oneflow.Tensor.new_zeros">
+<code class="sig-name descname"><span class="pre">new_zeros</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sbp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.Tensor.new_zeros" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a Tensor of size size filled with 0. By default, the returned Tensor has the same torch.dtype and torch.device as this tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<em>int...</em>) – a list, tuple, or flow.Size of integers defining the shape of the output tensor.</p></li>
+<li><p><strong>dtype</strong> (<em>flow.dtype</em><em>, </em><em>optional</em>) – the desired type of returned tensor. Default: if None, same flow.dtype as this tensor.</p></li>
+<li><p><strong>device</strong> (<em>flow.device</em><em>, </em><em>optional</em>) – the desired device of returned tensor. Default: if None, same flow.device as this tensor.</p></li>
+<li><p><strong>placement</strong> (<em>flow.placement</em><em>, </em><em>optional</em>) – the desired placement of returned global tensor. Default: if None, the returned tensor is local one using the argument <cite>device</cite>.</p></li>
+<li><p><strong>sbp</strong> (<em>flow.sbp.sbp</em><em> or </em><em>tuple of flow.sbp.sbp</em><em>, </em><em>optional</em>) – the desired sbp descriptor of returned global tensor. Default: if None, the returned tensor is local one using the argument <cite>device</cite>.</p></li>
+<li><p><strong>requires_grad</strong> (<em>bool</em><em>, </em><em>optional</em>) – If autograd should record operations on the returned tensor. Default: False.</p></li>
+</ul>
+</dd>
+</dl>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">new_zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
+<span class="go">tensor([[0., 0.],</span>
+<span class="go">        [0., 0.]], dtype=oneflow.float32)</span>
+</pre></div>
+</div>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.nms">
@@ -1018,9 +1193,9 @@ were created by source operations.</p>
 <code class="sig-name descname"><span class="pre">permute</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">dims</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.permute" title="Permalink to this definition">¶</a></dt>
 <dd><p>参考 <a class="reference internal" href="oneflow.html#oneflow.permute" title="oneflow.permute"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.permute()</span></code></a></p>
 </dd></dl>
-<dl class="py method">
+<dl class="py attribute">
 <dt id="oneflow.Tensor.placement">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">placement</span></code><a class="headerlink" href="#oneflow.Tensor.placement" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">placement</span></code><a class="headerlink" href="#oneflow.Tensor.placement" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is the <a class="reference internal" href="tensor_attributes.html#oneflow.placement" title="oneflow.placement"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.placement</span></code></a> where this Tensor is, which is invalid for local tensor.</p>
 </dd></dl>
 <dl class="py method">
@@ -1080,7 +1255,7 @@ will be used in place of <code class="docutils literal notranslate"><span class=
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.relu">
-<code class="sig-name descname"><span class="pre">relu</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.relu" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">relu</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.relu" title="Permalink to this definition">¶</a></dt>
 <dd><p>参考 <a class="reference internal" href="oneflow.html#oneflow.relu" title="oneflow.relu"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.relu()</span></code></a></p>
 </dd></dl>
 <dl class="py method">
@@ -1088,9 +1263,9 @@ will be used in place of <code class="docutils literal notranslate"><span class=
 <code class="sig-name descname"><span class="pre">repeat</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.Tensor.repeat" title="Permalink to this definition">¶</a></dt>
 <dd><p>参考 <a class="reference internal" href="oneflow.html#oneflow.repeat" title="oneflow.repeat"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.repeat()</span></code></a></p>
 </dd></dl>
-<dl class="py method">
+<dl class="py attribute">
 <dt id="oneflow.Tensor.requires_grad">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">requires_grad</span></code><a class="headerlink" href="#oneflow.Tensor.requires_grad" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">requires_grad</span></code><a class="headerlink" href="#oneflow.Tensor.requires_grad" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compatible with PyTorch.</p>
 <p>Is <code class="docutils literal notranslate"><span class="pre">True</span></code> if gradient need to be computed for this Tensor, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
 </dd></dl>
@@ -1141,9 +1316,9 @@ for leaf tensors.</p>
 <code class="sig-name descname"><span class="pre">rsqrt</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.rsqrt" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="oneflow.html#oneflow.rsqrt" title="oneflow.rsqrt"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.rsqrt()</span></code></a></p>
 </dd></dl>
-<dl class="py method">
+<dl class="py attribute">
 <dt id="oneflow.Tensor.sbp">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">sbp</span></code><a class="headerlink" href="#oneflow.Tensor.sbp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">sbp</span></code><a class="headerlink" href="#oneflow.Tensor.sbp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is the <code class="docutils literal notranslate"><span class="pre">oneflow.sbp</span></code> representing that how the data of the global tensor is distributed, which is invalid for local tensor.</p>
 </dd></dl>
 <dl class="py method">
@@ -1151,9 +1326,9 @@ for leaf tensors.</p>
 <code class="sig-name descname"><span class="pre">selu</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.selu" title="Permalink to this definition">¶</a></dt>
 <dd><p>参考 <a class="reference internal" href="oneflow.html#oneflow.selu" title="oneflow.selu"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.selu()</span></code></a></p>
 </dd></dl>
-<dl class="py method">
+<dl class="py attribute">
 <dt id="oneflow.Tensor.shape">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">shape</span></code><a class="headerlink" href="#oneflow.Tensor.shape" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">shape</span></code><a class="headerlink" href="#oneflow.Tensor.shape" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.sigmoid">
@@ -1320,7 +1495,7 @@ for leaf tensors.</p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.stride">
-<code class="sig-name descname"><span class="pre">stride</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow._oneflow_internal.Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Maybe</span><span class="p"><span class="pre">[</span></span><span class="pre">void</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#oneflow.Tensor.stride" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">stride</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.stride" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.sub">
@@ -1378,6 +1553,11 @@ for leaf tensors.</p>
 <dt id="oneflow.Tensor.swapaxes">
 <code class="sig-name descname"><span class="pre">swapaxes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.swapaxes" title="Permalink to this definition">¶</a></dt>
 <dd><p>参考 <a class="reference internal" href="oneflow.html#oneflow.swapaxes" title="oneflow.swapaxes"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.swapaxes()</span></code></a></p>
+</dd></dl>
+<dl class="py method">
+<dt id="oneflow.Tensor.swapdims">
+<code class="sig-name descname"><span class="pre">swapdims</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.swapdims" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="oneflow.html#oneflow.swapdims" title="oneflow.swapdims"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.swapdims()</span></code></a></p>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.Tensor.t">
@@ -1587,6 +1767,11 @@ for leaf tensors.</p>
 </div>
 </dd></dl>
 <dl class="py method">
+<dt id="oneflow.Tensor.unbind">
+<code class="sig-name descname"><span class="pre">unbind</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.unbind" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="oneflow.html#oneflow.unbind" title="oneflow.unbind"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.unbind()</span></code></a></p>
+</dd></dl>
+<dl class="py method">
 <dt id="oneflow.Tensor.unfold">
 <code class="sig-name descname"><span class="pre">unfold</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dimension</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.Tensor.unfold" title="Permalink to this definition">¶</a></dt>
 <dd><p>该接口与PyTorch一致。
@@ -1676,6 +1861,19 @@ for leaf tensors.</p>
 </div>
 </dd></dl>
 <dl class="py method">
+<dt id="oneflow.Tensor.view_as">
+<code class="sig-name descname"><span class="pre">view_as</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.Tensor.view_as" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expand this tensor to the same size as <code class="xref py py-attr docutils literal notranslate"><span class="pre">other</span></code>.
+<code class="docutils literal notranslate"><span class="pre">self.view_as(other)</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">self.view(other.size())</span></code>.</p>
+<p>Please see <a class="reference internal" href="#oneflow.Tensor.view" title="oneflow.Tensor.view"><code class="xref py py-meth docutils literal notranslate"><span class="pre">view()</span></code></a> for more information about <code class="docutils literal notranslate"><span class="pre">view</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneflow.Tensor</span></code></a>) – The result tensor has the same size
+as <code class="xref py py-attr docutils literal notranslate"><span class="pre">other</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
 <dt id="oneflow.Tensor.where">
 <code class="sig-name descname"><span class="pre">where</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.Tensor.where" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回一个 tensor 其元素为从 <code class="xref py py-attr docutils literal notranslate"><span class="pre">x</span></code> 或 <code class="xref py py-attr docutils literal notranslate"><span class="pre">y</span></code> 中依据 <code class="xref py py-attr docutils literal notranslate"><span class="pre">condition</span></code> 的真实值选择的元素，
@@ -1710,9 +1908,10 @@ flow.nonzero(condition, as_tuple=True) 。</p>
 </div>
 </dd></dl>
 <dl class="py method">
-<dt id="oneflow.Tensor.zeros_">
-<code class="sig-name descname"><span class="pre">zeros_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">oneflow._oneflow_internal.Tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Maybe</span><span class="p"><span class="pre">[</span></span><span class="pre">void</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#oneflow.Tensor.zeros_" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="oneflow.Tensor.zero_">
+<code class="sig-name descname"><span class="pre">zero_</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <a class="reference internal" href="#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.Tensor.zero_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills <cite>self</cite> tensor with zeros.</p>
+</dd></dl>
 </dd></dl>
 </div>
 </div>
