@@ -30,7 +30,4 @@ python:
     - requirements: docs/requirements.txt
     - method: setuptools
       path: .
-      extra_requirements: 
-        - pybind11
-        - cmake
      
