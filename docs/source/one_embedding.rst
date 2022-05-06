@@ -12,7 +12,6 @@ OneFlow one_embedding operations.
     :members: forward,
               save_snapshot,
               load_snapshot,
-
 .. autofunction:: oneflow.one_embedding.MultiTableMultiColumnEmbedding.forward
 .. autofunction:: oneflow.one_embedding.make_device_mem_store_options
 .. autofunction:: oneflow.one_embedding.make_cached_ssd_store_options       
