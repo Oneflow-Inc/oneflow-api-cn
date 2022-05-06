@@ -440,7 +440,7 @@ reset_docstr(
         tensor([[0],
                 [1],
                 [2],
-                [4]], dtype=oneflow.int32)
+                [4]], dtype=oneflow.int64)
         >>> flow.nonzero(flow.tensor([[0.6, 0.0, 0.0, 0.0],
         ...                             [0.0, 0.4, 0.0, 0.0],
         ...                             [0.0, 0.0, 1.2, 0.0],
@@ -448,16 +448,16 @@ reset_docstr(
         tensor([[0, 0],
                 [1, 1],
                 [2, 2],
-                [3, 3]], dtype=oneflow.int32)
+                [3, 3]], dtype=oneflow.int64)
         >>> flow.nonzero(flow.tensor([1, 1, 1, 0, 1]), as_tuple=True)
-        (tensor([0, 1, 2, 4], dtype=oneflow.int32),)
+        (tensor([0, 1, 2, 4], dtype=oneflow.int64),)
         >>> flow.nonzero(flow.tensor([[0.6, 0.0, 0.0, 0.0],
         ...                             [0.0, 0.4, 0.0, 0.0],
         ...                             [0.0, 0.0, 1.2, 0.0],
         ...                             [0.0, 0.0, 0.0,-0.4]]), as_tuple=True)
-        (tensor([0, 1, 2, 3], dtype=oneflow.int32), tensor([0, 1, 2, 3], dtype=oneflow.int32))
+        (tensor([0, 1, 2, 3], dtype=oneflow.int64), tensor([0, 1, 2, 3], dtype=oneflow.int64))
         >>> flow.nonzero(flow.tensor(5), as_tuple=True)
-        (tensor([0], dtype=oneflow.int32),)
+        (tensor([0], dtype=oneflow.int64),)
 
     """
 )
@@ -809,7 +809,7 @@ reset_docstr(
 )
 
 reset_docstr(
-    oneflow.grad_enable,
+    oneflow.enable_grad,
     r"""
     启用梯度计算的上下文管理模式。
 
@@ -824,11 +824,11 @@ reset_docstr(
         >>> import oneflow as flow
         >>> x = flow.ones(2, 3, requires_grad=True)
         >>> with flow.no_grad():
-        ...     with flow.grad_enable():
+        ...     with flow.enable_grad():
         ...         y = x * x
         >>> y.requires_grad
         True
-        >>> @flow.grad_enable()
+        >>> @flow.enable_grad()
         ... def no_grad_func(x):
         ...     return x * x
         >>> with flow.no_grad():
