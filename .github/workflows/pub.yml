@@ -27,7 +27,7 @@ jobs:
 
       - name: DocTest
         run: |
-          cd docs && make html_cn SPHINXOPTS="-W --keep-going"
+          cd docs && make html SPHINXOPTS="-W --keep-going"
           cd ../
           mkdir _site
           cp -r docs/build-cn/html/* ./_site/
