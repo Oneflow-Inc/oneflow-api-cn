@@ -13,14 +13,11 @@ help:
 
 .PHONY: help Makefile
 
-test_cn: Makefile
+test: Makefile
 	@cd source && DOCTEST=1 python3 -c "import cn"
 
-html_cn: Makefile
-	@rm -rf "$(BUILDDIR)-cn" && CN_DOCS=1 DOCBUILD=1  $(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)-cn" $(SPHINXOPTS) $(O)
-
 html: Makefile
-	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	@rm -rf "$(BUILDDIR)-cn" && $(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)-cn" $(SPHINXOPTS) $(O)
 
 clean: Makefile
 	@rm -rf build build-cn

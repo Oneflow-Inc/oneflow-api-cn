@@ -9,17 +9,16 @@ cd oneflow-api-cn
 
 如果是首次进行翻译工作，需要运行以下命令（只需运行一次，之后不需要运行）：
 
-1. 安装可以重置 `docstr` 的 Python 包：
+1. 安装相关依赖：
 
 ```shell
-python3 -m pip install -r dev-requirements.txt
-python3 setup.py install
+python3 -m pip install -r docs/requirements.txt
 ```
 
-2. 切换到 `docs` 目录，安装相关依赖：
+2. 运行 `setup.py`，安装中文版需要的 `docreset` 包
 
 ```shell
-cd docs && python3 -m pip install -r requirements.txt
+python3 setup.py install
 ```
 
 3. [安装](https://start.oneflow.org) OneFlow
@@ -80,5 +79,5 @@ reset_docstr(
 可以在本地编译文档，查看效果：
 
 ```shell
-cd docs && make html_cn
+cd docs && make html
 ```

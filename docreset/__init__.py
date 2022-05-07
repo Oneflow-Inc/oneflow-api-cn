@@ -4,8 +4,6 @@ from ._docreset import _reset_docstr
 
 
 FLAG_TEST = os.getenv("DOCTEST")
-FLAG_BUILD = os.getenv("DOCBUILD")
-
 
 def _test_docstr(docstr, verbose=True, optionflags=0, raise_on_error=True):
     parser = DocTestParser()
@@ -19,12 +17,10 @@ def _test_docstr(docstr, verbose=True, optionflags=0, raise_on_error=True):
 
 def reset_docstr(o, docstr):
     global FLAG_TEST
-    global FLAG_BUILD
 
     if FLAG_TEST:
         _test_docstr(docstr)
-
-    if FLAG_BUILD:
+    else:
         if type(o) == type:
             assert hasattr(o, "__doc__"), str(o) + " does not have a docstring!"
             setattr(o, "__doc__", docstr)
