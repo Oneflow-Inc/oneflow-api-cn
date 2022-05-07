@@ -444,8 +444,9 @@ The documentation is referenced from:
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.all">
-<code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">all</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.all" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes if all elements in the input tensor to true.</p>
+<code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">all</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.all" title="Permalink to this definition">¶</a></dt>
+<dd><p>For each row of <cite>input</cite> in the given dimension <cite>dim</cite>, returns True if all element in the row evaluate to True and False otherwise. If the dimension is None, compute if all elements in the input tensor to true.</p>
+<p>If <cite>keepdim</cite> is <cite>True</cite>, the output tensor is of the same size as <cite>input</cite> except in the dimension(s) <cite>dim</cite> where it is of size 1. Otherwise, <cite>dim</cite> is squeezed <a class="reference internal" href="#oneflow.squeeze" title="oneflow.squeeze"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.squeeze()</span></code></a>, resulting in the output tensor having 1 (or <cite>len(dim)</cite>) fewer dimension(s).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -454,19 +455,21 @@ The documentation is referenced from:
 <li><p><strong>keepdim</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether the output tensor has dim retained or not. Default: <cite>False</cite></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>If <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code> is <cite>None</cite>, returns
-the logical all value of all elements in the <cite>input</cite> tensor.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor">Tensor</a>(<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor">oneflow.Tensor</a>(dtype=int8))</p>
-</dd>
 </dl>
 <p>For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span> <span class="o">&lt;</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span>
+<span class="go">tensor([[ True,  True,  True],</span>
+<span class="go">        [False, False, False]], dtype=oneflow.bool)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="go">tensor(False, dtype=oneflow.bool)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">tensor([ True, False], dtype=oneflow.bool)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span class="go">tensor([[ True],</span>
+<span class="go">        [False]], dtype=oneflow.bool)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -543,8 +546,9 @@ The documentation is referenced from: <a class="reference external" href="https:
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.any">
-<code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">any</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.any" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes if any elements in the input tensor to true.</p>
+<code class="sig-prename descclassname"><span class="pre">oneflow.</span></code><code class="sig-name descname"><span class="pre">any</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> → <a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><span class="pre">Tensor</span></a><a class="headerlink" href="#oneflow.any" title="Permalink to this definition">¶</a></dt>
+<dd><p>For each row of <cite>input</cite> in the given dimension <cite>dim</cite>, returns True if any element in the row evaluate to True and False otherwise. If the dimension is None, compute if any elements in the input tensor to true.</p>
+<p>If <cite>keepdim</cite> is <cite>True</cite>, the output tensor is of the same size as <cite>input</cite> except in the dimension(s) <cite>dim</cite> where it is of size 1. Otherwise, <cite>dim</cite> is squeezed <a class="reference internal" href="#oneflow.squeeze" title="oneflow.squeeze"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.squeeze()</span></code></a>, resulting in the output tensor having 1 (or <cite>len(dim)</cite>) fewer dimension(s).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -553,19 +557,20 @@ The documentation is referenced from: <a class="reference external" href="https:
 <li><p><strong>keepdim</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether the output tensor has dim retained or not. Default: <cite>False</cite></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>If <code class="xref py py-attr docutils literal notranslate"><span class="pre">dim</span></code> is <cite>None</cite>, returns
-the logical any value of all elements in the <cite>input</cite> tensor.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor">Tensor</a>(<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor">oneflow.Tensor</a>(dtype=int8))</p>
-</dd>
 </dl>
 <p>For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span> <span class="o">&lt;</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span>
+<span class="go">tensor([[ True,  True,  True],</span>
+<span class="go">        [False, False, False]], dtype=oneflow.bool)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="go">tensor(True, dtype=oneflow.bool)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">tensor([True, True, True], dtype=oneflow.bool)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span class="go">tensor([[True, True, True]], dtype=oneflow.bool)</span>
 </pre></div>
 </div>
 </dd></dl>
