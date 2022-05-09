@@ -409,3 +409,90 @@ reset_docstr(
         tensor([-0.3161,  0.0000,  0.5000], dtype=oneflow.float32)
     """
 )
+
+reset_docstr(
+    oneflow.nn.Softshrink,
+    r"""
+    该接口与 PyTorch 一致。
+    文档参考自： https://pytorch.org/docs/1.10/generated/torch.nn.Softshrink.html.
+
+    Softshrink 激活函数。
+
+    公式为：
+    
+    .. math::
+
+        \text{Softshrink}(x) =
+        \begin{cases}
+        x - \lambda, & \text{ if } x > \lambda \\
+        x + \lambda, & \text{ if } x < -\lambda \\
+        0, & \text{ otherwise }
+        \end{cases}
+
+    参数：
+        - **lambd** - Softshrink 公式的 :math:`\lambda` 值，默认值为 0.5。
+        - **inplace** - can optionally do the operation in-place. Default: ``False``
+    
+    形状：
+        - **Input** - :math:`(N, *)` 中的 `*` 表示额外维度的数量。
+        - **Output** - :math:`(N, *)` 与 input 的形状相同。
+
+    示例：
+    
+    .. code-block:: python
+    
+        >>> import numpy as np
+        >>> import oneflow as flow
+        >>> x = np.array([-1, 0, 0.2, 0.5]).astype(np.float32)
+        >>> input = flow.Tensor(x)
+        >>> softshrink = flow.nn.Softshrink(lambd=0.5)
+        >>> out = softshrink(input)
+        >>> out
+        tensor([-0.5000,  0.0000,  0.0000,  0.0000], dtype=oneflow.float32)
+    """
+)
+
+reset_docstr(
+    oneflow.nn.Threshold,
+    r"""Threshold 激活函数。
+    如果 ``x`` 比 ``threshold`` 大，返回 ``x``，否则返回 ``value``。
+
+    该接口与 PyTorch 一致。
+    文档参考自：https://pytorch.org/docs/1.10/generated/torch.nn.Threshold.html.
+
+    公式是：
+
+    .. math::
+
+        \text{Threshold}(x) =
+        \begin{cases}
+        x, & \text{ if } x > \text{ threshold } \\
+        \text{value }, & \text{ otherwise }
+        \end{cases}
+
+    参数：
+        - **threshold** (float) - Threshold 公式的 ``threshold`` 值。
+        - **value** (float) - Threshold 公式的 ``value`` 值。
+
+    形状：
+        - **Input** - :math:`(N, *)` 中的 `*` 表示额外维度的数量。
+        - **Output** - :math:`(N, *)` 与 input 的形状相同。
+
+    返回：
+        Oneflow.Tensor：结果向量。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        >>> x = np.array([-1, 0, 0.5, 1]).astype(np.float32)
+        >>> input = flow.Tensor(x)
+        >>> th = flow.nn.Threshold(threshold=0.5, value=0.2)
+        >>> out = th(input)
+        >>> out
+        tensor([0.2000, 0.2000, 0.2000, 1.0000], dtype=oneflow.float32)
+
+    """
+)

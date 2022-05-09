@@ -1215,7 +1215,7 @@ reset_docstr(
 
     首先计算输入张量的 moving\\_max 和 moving\\_min：
 
-        若 quantization_scheme 为 "symmetric":
+    若 quantization_scheme 为 "symmetric":
 
         .. math::
 
@@ -1223,7 +1223,7 @@ reset_docstr(
 
             & moving\\_min = moving\\_max
 
-        若 quantization_scheme 为 "affine":
+    若 quantization_scheme 为 "affine":
 
         .. math::
 
@@ -1235,7 +1235,7 @@ reset_docstr(
 
     然后用以下等式计算 scale 和 zero_point：
 
-        若 quantization_scheme 为 "symmetric":
+    若 quantization_scheme 为 "symmetric":
 
         .. math::
 
@@ -1245,7 +1245,7 @@ reset_docstr(
 
             & zero\\_point = 0
 
-        若 quantization_scheme 为 "affine":
+    若 quantization_scheme 为 "affine":
 
         .. math::
 
