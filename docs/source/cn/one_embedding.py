@@ -118,7 +118,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.one_embedding.MultiTableEmbedding.forward,
-    """Embedding（基类）及其子类的前向计算。
+    """Embedding lookup 操作。
 
         参数：
             - **ids** (flow.tensor) - 特征 id。
@@ -150,8 +150,8 @@ reset_docstr(
         > import oneflow as flow
         > import numpy as np
         > import oneflow.nn as nn
-        > # a simple example with 3 table, every table has two column, the first column embedding_size is 10 and the second is 1.
-        > # every table's first column initialize with uniform(-1/sqrt(table_size), 1/sqrt(table_size)), second column initialize with normal(0, 1/sqrt(table_size))
+        > # 一个使用三个表的简单例子，每个表有两列，第一列 embedding_size 是 10，第二列是 1。
+        > # 每个表的第一列初始化为 uniform(-1/sqrt(table_size), 1/sqrt(table_size))，第二列初始化为 normal(0, 1/sqrt(table_size))
         > table_size_array = [39884407, 39043, 17289]
         > vocab_size = sum(table_size_array)
         > num_tables = len(table_size_array)
@@ -251,7 +251,7 @@ reset_docstr(
         > store_options = flow.one_embedding.make_cached_ssd_store_options(
         >     cache_budget_mb=8192, persistent_path="/your_path_to_ssd", capacity=vocab_size,
         > )
-        > # pass the store_options to the "store_options" param of flow.one_embedding.MultiTableEmbedding
+        > # 将 store_options 传递给 flow.one_embedding.MultiTableEmbedding 中的 "store_options" 参数。
         > # ...
     """
 )
@@ -313,7 +313,7 @@ reset_docstr(
 
         > import oneflow as flow
         > initializer = flow.one_embedding.make_normal_initializer(mean=0, std=0.01)
-        > # pass the initializer to flow.one_embedding.make_table_options
+        > # 将初始化器传递给 flow.one_embedding.make_table_options
         > # ...
     """
 )
@@ -348,5 +348,68 @@ reset_docstr(
     """`oneflow.one_embedding.make_table_options` 的别名函数。
 
     查看 :func:`oneflow.one_embedding.make_table_options` 来获得更多细节。
+    """
+)
+
+reset_docstr(
+    oneflow.one_embedding.Ftrl,
+    r"""FTRL 优化器。
+
+    公式为： 
+
+        .. math:: 
+
+            & accumlator_{i+1} = accumlator_{i} + grad * grad
+            
+            & sigma = (accumulator_{i+1}^{lr\_power} - accumulator_{i}^{lr\_power}) / learning\_rate
+            
+            & z_{i+1} = z_{i} + grad - sigma * param_{i}
+
+            \text{}
+                param_{i+1} = \begin{cases}
+            0 & \text{ if } |z_{i+1}| < \lambda_1 \\
+            -(\frac{\beta+accumlator_{i+1}^{lr\_power}}{learning\_rate} + \lambda_2)*(z_{i+1} - sign(z_{i+1})*\lambda_1) & \text{ otherwise } \\
+            \end{cases}
+    
+    示例1: 
+
+    .. code-block:: python 
+
+        # 假设 net 是一个自定义模型。 
+        adam = flow.one_embedding.FTRL(net.parameters(), lr=1e-3)
+
+        for epoch in range(epochs):
+            # 读取数据，计算损失等。
+            # ...
+            loss.backward()
+            adam.step()
+            adam.zero_grad()
+
+    参数：
+        - **params** (Union[Iterator[Parameter], List[Dict]]) - _description_
+        - **lr** (float, optional) - _description_. Defaults to 0.001.
+        - **weight_decay** (float, optional) - _description_. Defaults to 0.0.
+        - **lr_power** (float, optional) - _description_. Defaults to -0.5.
+        - **initial_accumulator_value** (float, optional) - _description_. Defaults to 0.1.
+        - **lambda1** (float, optional) - _description_. Defaults to 0.0.
+        - **lambda2** (float, optional) - _description_. Defaults to 0.0.
+        - **beta** (float, optional) - _description_. Defaults to 0.0.
+    （源码中还没有补充完具体内容）
+    """
+)
+
+reset_docstr(
+    oneflow.one_embedding.Ftrl.step,
+    """执行一个优化步骤。
+        
+        参数：
+            - **closure** (callable, optional) - 重新测试模型并返回损失的闭包。
+        """
+)
+
+reset_docstr(
+    oneflow.one_embedding.Ftrl.support_sparse,
+    """
+    优化器是否支持 sparse 更新。
     """
 )
