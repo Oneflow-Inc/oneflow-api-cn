@@ -1304,3 +1304,289 @@ reset_docstr(
             >>> x = flow.randn(2,3, device='cuda:0')
     """
 )
+
+reset_docstr(
+    oneflow.Tensor.addcmul,
+    """
+    参考 :func:`oneflow.addcmul`
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.addcmul_,
+    """
+    :func:`oneflow.Tensor.addcmul` 的 In-place 版本。
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.addmm,
+    """
+    参考 :func:`oneflow.addmm`
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.amax,
+    """
+    参考 :func:`oneflow.amax`
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.amin,
+    """
+    参考 :func:`oneflow.amin`
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.asinh,
+    """
+    参考 :func:`oneflow.asinh`
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.byte,
+    """
+    self.byte() 和 self.to(oneflow.uint8) 是等价的。
+    参考 :func:`oneflow.Tensor.to`
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.cosh,
+    """
+    参考 :func:`oneflow.cosh`
+    """
+)
+
+
+
+reset_docstr(
+    oneflow.Tensor.global_to_global,
+    """
+    Tensor.global_to_global(placement=None, sbp=None, *, grad_sbp=None, check_meta=False) -> Tensor
+
+    执行张量 placement 和/或 sbp 转换。
+
+    Note:
+        这个张量必须是全局张量。
+
+        至少需要 placement 和 sbp 中的一个操作。
+
+        如果 placement 和 sbp 都与这个张量的 placement 和 sbp 相同，那么返回自己的这个张量。
+    
+    参数：
+        - **placement** (flow.placement, optional) - 返回全局张量的所需 placement，默认值：None。
+        - **sbp** (flow.sbp.sbp or tuple of flow.sbp.sbp, optional) - 返回全局张量的所需 sbp，默认值：None。
+    关键参数：
+        - **grad_sbp** (flow.sbp.sbp or tuple of flow.sbp.sbp, optional) - 手动指定在后向传播中该张量梯度张量的 sbp。
+            如果为 None，将自动推断出梯度张量的 sbp。默认值：None。
+        - **check_meta** (bool, optional) - 注明是否要检查元信息。如果设置为 True，则检查每个 rank 上的输入元信息
+           （placement 和 sbp）的一致性。默认值：False。
+
+    .. code-block:: python
+
+        >>> # 在 2 个 rank 上各自运行。
+        >>> import oneflow as flow
+        >>> input = flow.tensor([0., 1.], dtype=flow.float32, placement=flow.placement("cpu", ranks=[0, 1]), sbp=[flow.sbp.broadcast]) # doctest: +SKIP
+        >>> output = input.global_to_global(placement=flow.placement("cpu", ranks=[0, 1]), sbp=[flow.sbp.split(0)]) # doctest: +SKIP
+        >>> print(output.size()) # doctest: +SKIP
+        >>> print(output) # doctest: +SKIP
+
+    .. code-block:: python
+
+        >>> # 在 rank 0 上运行的结果。
+        oneflow.Size([2])
+        tensor([0., 1.], placement=oneflow.placement(type="cpu", ranks=[0, 1]), sbp=(oneflow.sbp.split(axis=0),), dtype=oneflow.float32)
+
+    .. code-block:: python
+
+        >>> # 在 rank 1 上运行的结果。
+        oneflow.Size([2])
+        tensor([0., 1.], placement=oneflow.placement(type="cpu", ranks=[0, 1]), sbp=(oneflow.sbp.split(axis=0),), dtype=oneflow.float32)
+    """
+)
+
+
+reset_docstr(
+    oneflow.Tensor.half,
+    """
+    self.half() 和 self.to(dtype=oneflow.float16) 是等价的。
+
+    参考 :func:`oneflow.Tensor.to`
+
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.local_to_global,
+    """
+    Tensor.local_to_global(placement=None, sbp=None, *, check_meta=Ture) -> Tensor
+
+    从一个局部张量构造一个全局张量。
+
+    Note:
+        这个张量必须是局部张量。
+
+        placement 和 sbp 属性都需要。
+
+        返回的全局张量将该张量作为其在当前 rank 中的局部分量。
+
+        通常数据是不会被广播的，但是当 sbp 为 ``oneflow.sbp.broadcast`` 时，rank 0 的数据将被广播到其他等级。
+    
+    参数：
+        - **placement** (flow.placement, optional) - 返回全局张量的所需 placement，默认值：None。
+        - **sbp** (flow.sbp.sbp or tuple of flow.sbp.sbp, optional) - 返回全局张量的所需 sbp，默认值：None。
+    关键参数：
+        - **check_meta** (bool, optional) - 注明当从局部张量构建全局张量时是否要检查元信息。只有设置为 False 时，每
+            个 rank 上输入的局部张量的形状和类型都相同，如果设置为 False，则加速执行 local_to_global。默认值：True。
+
+    .. code-block:: python
+
+        >>> # 在 2 个 rank 上各自运行。
+        >>> import oneflow as flow
+        >>> input = flow.tensor([0., 1.], dtype=flow.float32) # doctest: +SKIP
+        >>> output = input.local_to_global(placement=flow.placement("cpu", ranks=[0, 1]), sbp=[flow.sbp.split(0)], check_meta=False) # doctest: +SKIP
+        >>> print(output.size()) # doctest: +SKIP
+        >>> print(output) # doctest: +SKIP
+
+    .. code-block:: python
+
+        >>> # 在 rank 0 上运行的结果。
+        oneflow.Size([4])
+        tensor([0., 1., 0., 1.], placement=oneflow.placement(type="cpu", ranks=[0, 1]), sbp=(oneflow.sbp.split(axis=0),), dtype=oneflow.float32) 
+ 
+    .. code-block:: python
+
+        >>> # 在 rank 1 上运行的结果。
+        oneflow.Size([4])
+        tensor([0., 1., 0., 1.], placement=oneflow.placement(type="cpu", ranks=[0, 1]), sbp=(oneflow.sbp.split(axis=0),), dtype=oneflow.float32)
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.log,
+    """
+    参考 :func:`oneflow.log`
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.new_empty,
+    """
+    Tensor.new_empty(*size, dtype=None, device=None, placement=None, sbp=None, requires_grad=False) -> Tensor
+
+    返回一个充满未初始化数据大小为 :attr:`size` 的张量。默认情况下，返回的张量具有与此张量相同的 :attr:`flow.dtype` 和 :attr:`flow.device`。
+
+    参数：
+        - **size** (int...) - 一个 list，tuple 或整数的 flow.Size，定义输出张量的形状。
+        - **dtype** (flow.dtype, optional) - 返回张量的所需类型，默认值如果为 None，则返回与此张量相同的 flow.dtype。
+        - **device** (flow.device, optional) - 返回张量的所需设备，默认值如果为 None，则返回与此张量相同的 flow.device。
+        - **placement** (flow.placement, optional) - 返回的全局张量的所需的 placement，默认值如果为 None，则返回的张量是使用参数 `device` 的本地张量。
+        - **sbp** (flow.sbp.sbp or tuple of flow.sbp.sbp, optional) -返回的全局张量所需的 sbp 描述，默认值如果为 None，则返回的张量是使用参数 `device` 的本地张量。
+        - **requires_grad** (bool, optional) - 如果 autograd 应该在返回的张量上记录算子，默认值：None。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> x = flow.ones(())
+        >>> y = x.new_empty((2, 2))
+        >>> y.shape
+        oneflow.Size([2, 2])
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.new_zeros,
+    """
+    Tensor.new_zeros(size=None, dtype=None, device=None, placement=None, sbp=None, requires_grad=False) -> Tensor
+
+    返回一个大小为 0 的张量。默认情况下，返回的张量与该张量具有相同的 flow.dtype 和 flow.device。
+
+    参数：
+        - **size** (int...) - 一个 list，tuple 或整数的 flow.Size，定义输出张量的形状。
+        - **dtype** (flow.dtype, optional) - 返回张量的所需类型，默认值如果为 None，则返回与此张量相同的 flow.dtype。
+        - **device** (flow.device, optional) - 返回张量的所需设备，默认值如果为 None，则返回与此张量相同的 flow.device。
+        - **placement** (flow.placement, optional) - 返回的全局张量的所需的 placement，默认值如果为 None，则返回的张量是使用参数 `device` 的本地张量。
+        - **sbp** (flow.sbp.sbp or tuple of flow.sbp.sbp, optional) -返回的全局张量所需的 sbp 描述，默认值如果为 None，则返回的张量是使用参数 `device` 的本地张量。
+        - **requires_grad** (bool, optional) - 如果 autograd 应该在返回的张量上记录算子，默认值：None。
+
+    For example:
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+
+        >>> x = flow.Tensor(np.ones((1, 2, 3)))
+        >>> y = x.new_zeros((2, 2))
+        >>> y
+        tensor([[0., 0.],
+                [0., 0.]], dtype=oneflow.float32)
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.sin_,
+    r"""
+    :func:`oneflow.sin` 的 In-place 版本。
+
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.sqrt,
+    """
+    参考 :func:`oneflow.sqrt`
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.square,
+    """
+    参考 :func:`oneflow.square`
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.swapdims,
+    """
+    参考 :func:`oneflow.swapdims`
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.to_consistent,
+    """
+    这个接口将不再有效，请使用 :func:`oneflow.Tensor.to_global`。
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.unbind,
+    """
+    参考 :func:`oneflow.unbind`
+    """
+)
+
+reset_docstr(
+    oneflow.Tensor.view_as,
+    """
+    Tensor.view_as(other) -> Tensor
+
+    将这个张量扩大到与 :attr:`other` 相同的大小。
+    ``self.view_as(other)`` 与 ``self.view(other.size())`` 是等价的。
+    
+    查阅 :meth:`~Tensor.view` 来获得更多关于 ``view`` 的信息。
+
+    参数：
+        - **other** (:class:`oneflow.Tensor`) - 结果张量与 :attr:`other` 的大小相同。
+    """
+)
+
