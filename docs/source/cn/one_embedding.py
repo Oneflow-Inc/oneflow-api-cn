@@ -406,9 +406,3 @@ reset_docstr(
         """
 )
 
-reset_docstr(
-    oneflow.one_embedding.Ftrl.support_sparse,
-    """
-    优化器是否支持 sparse 更新。
-    """
-)
