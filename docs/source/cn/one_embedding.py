@@ -386,15 +386,14 @@ reset_docstr(
             adam.zero_grad()
 
     参数：
-        - **params** (Union[Iterator[Parameter], List[Dict]]) - _description_
-        - **lr** (float, optional) - _description_. Defaults to 0.001.
-        - **weight_decay** (float, optional) - _description_. Defaults to 0.0.
-        - **lr_power** (float, optional) - _description_. Defaults to -0.5.
-        - **initial_accumulator_value** (float, optional) - _description_. Defaults to 0.1.
-        - **lambda1** (float, optional) - _description_. Defaults to 0.0.
-        - **lambda2** (float, optional) - _description_. Defaults to 0.0.
-        - **beta** (float, optional) - _description_. Defaults to 0.0.
-    （源码中还没有补充完具体内容）
+        - **params** (Union[Iterator[Parameter], List[Dict]]) - 待优化参数构成的 iterable 或定义了参数组的 dict。
+        - **lr** (float, optional) - 学习率，默认值：1e-3。
+        - **weight_decay** (float, optional) - 权重衰减（L2 penalty），默认值：0.0。
+        - **lr_power** (float, optional) - 学习率下降系数，默认值：-0.5。
+        - **initial_accumulator_value** (float, optional) - accumlator 的初始值，默认值：0.1。
+        - **lambda1** (float, optional) - L1 正则化强度，默认值：0.0。
+        - **lambda2** (float, optional) - L2 正则化强度，默认值：0.0。
+        - **beta** (float, optional) - beta 的值，默认值：0.0。
     """
 )
 
