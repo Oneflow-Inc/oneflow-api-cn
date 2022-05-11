@@ -1665,7 +1665,7 @@ reset_docstr(
     方程是：
 
 	.. math::
-        \\sum_{i=1}^{n}(x[i] * y[i])
+        sum_{i=1}^{n}(x[i] * y[i])
         
     参数:
         - **input** (Tensor) - 点积中的第一个张量。
@@ -1780,5 +1780,83 @@ reset_docstr(
         >>> out = flow.logical_not(input)
         >>> out
         tensor([False,  True, False], dtype=oneflow.bool)
+    """,
+)
+
+reset_docstr(
+    oneflow.movedim,
+    r"""
+    将源中的输入尺寸移动到目标中的位置。
+    其他没有明确移动的输入维度保持原来的顺序，并出现在目的地未指定的位置上。
+    该文件引用自:
+    https://pytorch.org/docs/1.10/generated/torch.movedim.html。
+    计算给定输入张量的元素的逻辑非。零被视为假，非零被视为真。
+    
+    参数：
+        - **input** (Tensor) -输入张量。
+        - **source** (int or a list) - 要移动的数据的原始位置。这必须是唯一的。
+        - **destination** (int or a list) - 要移动的数据的目标位置。这必须是唯一的。
+
+    返回类型：
+        oneflow.Tensor: 输出张量
+    
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+
+        >>> input = flow.tensor(np.random.randn(2, 3, 4, 5), dtype=flow.float32)
+        >>> output = flow.movedim(input, 1, 0)
+        >>> output.shape
+        oneflow.Size([3, 2, 4, 5])
+        >>> output = flow.movedim(input, (1, 2), (0, 1))
+        >>> output.shape
+        oneflow.Size([3, 4, 2, 5])
+    """,
+)
+
+reset_docstr(
+    oneflow.sin_,
+    r"""
+    函数 :func:`oneflow.sin` 的本地版本。
+    """,
+)
+
+reset_docstr(
+    oneflow.tensor_split,
+    r"""
+    将一个张量分割成多个子张量，这些子张量都是输入的展开，按照 :attr:`indices_or_sections` 指定的索引或节数沿维度 dim 分割。
+    该文档参考了:
+    https://pytorch.org/docs/1.10/generated/torch.tensor_split.html。
+    
+    参数：
+        - **input** (Tensor) -输入张量。
+        - **indices_or_sections** (int or a list) - 如果 :attr:`indices_or_sections` 是一个整数 n，那么输入将沿着 dim 维度被分割成 n 个部分。
+                                                    如果输入沿维度 dim 可被 n 整除，则每个部分的大小相等，即 input.size(dim) / n。
+                                                    如果输入不被 n 整除，第一个 int(input.size(dim)% n).部分的大小将是int(input.size(dim) / n)+1，其余部分的大小将是 int(input.size(dim) / n)。
+                                                    如果 :attr:`indices_or_sections` 是一个 ints 的列表或元组，那么输入将在列表、元组或张量中的每个索引处沿 dim 维度进行分割。
+                                                    例如，indices_or_sections=[2, 3]，dim=0，将产生张量 input[:2]，input[2:3] 和 input[3:]。
+                                                    如果 indices_or_sections 是一个张量，它在 CPU 上必须是一个零维或一维的长张量。
+        - **dim** (int) - 用来分割张量的维度。
+
+    返回类型：
+        oneflow.TensorTuple: 输出TensorTuple.
+    
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> input = flow.rand(3,4,5)
+        >>> output = flow.tensor_split(input,(2,3),2)
+        >>> output[0].size()
+        oneflow.Size([3, 4, 2])
+        >>> output[1].size()
+        oneflow.Size([3, 4, 1])
+        >>> output[2].size()
+        oneflow.Size([3, 4, 2])
     """,
 )

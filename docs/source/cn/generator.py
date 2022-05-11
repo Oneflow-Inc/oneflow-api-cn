@@ -32,7 +32,27 @@ reset_docstr(
     设置生成随机数的种子。返回一个 `oneflow.Generator` 对象。
 
     参数:
-        - **seed** (int) - 所需的 seed。该值必须在以下范围内 `[-0x8000_0000_0000_0000, 0xffff_ffff_ffff_ffff]` 。否则，会产生一个 RuntimeError 会被提出。负的输入被重新映射为正值，公式为 `0xffff_ffff_ffff_ffff + seed` 。
+        - **seed** (int) - 所需的 seed。该值必须在以下范围内 ` [ -0x8000_0000_0000_0000, 0xffff_ffff_ffff_ffff ] ` 。否则，会产生一个 RuntimeError 会被提出。负的输入被重新映射为正值，公式为 ` 0xffff_ffff_ffff_ffff + seed ` 。
+
+    """
+)
+
+reset_docstr(
+    oneflow.seed,
+    r"""该文档引用自：
+    https://pytorch.org/docs/1.10/generated/torch.seed.html.
+
+    将生成随机数的种子设置为一个非决定性的随机数。返回一个用于 RNG 种子的64位数字。
+
+    """
+)
+
+reset_docstr(
+    oneflow.set_rng_state,
+    r"""该文档引用自：
+    https://pytorch.org/docs/1.10/generated/torch.set_rng_state.html.
+
+    返回随机数发生器的状态为 `oneflow.ByteTensor`。
 
     """
 )

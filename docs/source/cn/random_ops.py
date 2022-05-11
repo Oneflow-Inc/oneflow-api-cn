@@ -177,3 +177,36 @@ reset_docstr(
 
     """
 )
+
+reset_docstr(
+    oneflow.normal,
+    r"""
+    返回一个从独立的正态分布中抽取的随机数的张量，其平均值和标准差已给定。
+
+    参数：
+        - **mean** (float) -  所有分布的均值。
+        - **std** (float) -  所有分布的方差。
+        - **size** (int...) -  一系列定义输出张量形状的整数。
+
+    关键词参数：
+        - **out** (Tensor, 可选) - 用于采样的伪随机数生成器。
+        - **placement** (flow.placement,可选) - 返回的全局张量的所需设备。如果没有，将构建局部张量。
+        - **sbp** (flow.sbp, 可选) - 返回的全局张量所需的 sbp。它必须与 :attr:`placement` 的数量相等。
+        - **generator** (:class:`oneflow.Generator`, 可选) - 用于采样的伪随机数生成器。
+        - **dtype** (:class:`oneflow.dtype`, 可选) - 返回张量的所需数据类型。默认使用当前设备。
+        - **device** - 返回张量的所需设备。默认值：CPU。
+        - **requires_grad** (bool, 可选) - 如果 autograd 应该在返回的张量上记录操作。默认值：False。
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> generator = flow.Generator()
+        >>> generator.manual_seed(0)
+        >>> y = flow.normal(0, 1, 5, generator=generator)
+        >>> y
+        tensor([2.2122, 1.1631, 0.7740, 0.4838, 1.0434], dtype=oneflow.float32)
+
+    """
+)

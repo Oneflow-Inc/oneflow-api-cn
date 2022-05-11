@@ -74,3 +74,9 @@ from .comparison import *
 from .dataset import *
 from .linspace import *
 from .util_ops import *
+from .nms import *
+from .searchsorted import *
+from .tensor_str import *
+from .swapdims import *
+from .unbind import *
+from .topk import *
