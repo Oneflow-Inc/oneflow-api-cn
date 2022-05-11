@@ -291,7 +291,7 @@ reset_docstr(
 
         > import oneflow as flow
         > initializer = flow.one_embedding.make_uniform_initializer(low=-scale, high=scale)
-        > # pass the initializer to flow.one_embedding.make_table_options
+        > # 将初始化器传给 flow.one_embedding.make_table_options
         > # ...
     """
 )
@@ -337,7 +337,7 @@ reset_docstr(
         > table1 = flow.one_embedding.make_table_options(initializer)
         > table2 = flow.one_embedding.make_table_options(initializer)
         > tables = [table1, table2]
-        > # pass the tables to the "tables" param of flow.one_embedding.MultiTableEmbedding
+        > # 将表传递给 flow.one_embedding.MultiTableEmbedding 的 ``tables`` 参数。
         > # ...
         
     """
@@ -357,19 +357,19 @@ reset_docstr(
 
     公式为： 
 
-        .. math:: 
+    .. math:: 
 
-            & accumlator_{i+1} = accumlator_{i} + grad * grad
+        & accumlator_{i+1} = accumlator_{i} + grad * grad
             
-            & sigma = (accumulator_{i+1}^{lr\_power} - accumulator_{i}^{lr\_power}) / learning\_rate
+        & sigma = (accumulator_{i+1}^{lr\_power} - accumulator_{i}^{lr\_power}) / learning\_rate
             
-            & z_{i+1} = z_{i} + grad - sigma * param_{i}
+        & z_{i+1} = z_{i} + grad - sigma * param_{i}
 
-            \text{}
-                param_{i+1} = \begin{cases}
-            0 & \text{ if } |z_{i+1}| < \lambda_1 \\
-            -(\frac{\beta+accumlator_{i+1}^{lr\_power}}{learning\_rate} + \lambda_2)*(z_{i+1} - sign(z_{i+1})*\lambda_1) & \text{ otherwise } \\
-            \end{cases}
+        \text{}
+            param_{i+1} = \begin{cases}
+        0 & \text{ if } |z_{i+1}| < \lambda_1 \\
+        -(\frac{\beta+accumlator_{i+1}^{lr\_power}}{learning\_rate} + \lambda_2)*(z_{i+1} - sign(z_{i+1})*\lambda_1) & \text{ otherwise } \\
+        \end{cases}
     
     示例1: 
 
