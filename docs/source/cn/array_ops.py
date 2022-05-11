@@ -963,3 +963,31 @@ reset_docstr(
     """
 )
 
+reset_docstr(
+    oneflow.diagonal,
+    r"""
+    oneflow.diagonal(input, offset, dim1, dim2) -> Tensor 
+
+    返回输入的部分视图，其对角线元素与dim1和dim2的关系 的对角线元素作为一个维度附加在形状的最后。
+
+    参数:
+        - **input** (Tensor) - 输入张量。必须至少是二维的。
+        - **offset** (Optional[int], 0) - 要考虑的对角线。默认值：0（主对角线）。
+        - **dim1** (Optional[int], 0) - 对角线的第一个维度。默认值：0。
+        - **dim2** (Optional[int], 1) - 第二维度，相对于它取对角线。默认值：1。
+
+    返回值：
+        oneflow.Tensor: 输出张量。
+
+    示例:
+    
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.randn(2,  3,  4)
+        >>> output = flow.diagonal(input, offset=1, dim1=1, dim2=0)
+        >>> output.shape
+        oneflow.Size([4, 1])
+    """,
+)

@@ -62,3 +62,15 @@ from .conv import *
 from .normalization import *
 from .vision import *
 from .type_tensor import *
+from .amax import *
+from .amin import *
+from .argsort import *
+from .as_tensor import *
+from .bmm import *
+from .erfinv import *
+from .generator import *
+from .is_tensor import *
+from .comparison import *
+from .dataset import *
+from .linspace import *
+from .util_ops import *

@@ -724,6 +724,14 @@ reset_docstr(
 )
 
 reset_docstr(
+    oneflow.clip,
+    r"""
+    函数 :func:`oneflow.clamp` 的别名. 
+    """,
+)
+
+
+reset_docstr(
     oneflow.cos,
     r"""cos(x) -> Tensor
     返回一个包含 :attr:`x` 中元素的余弦值的新 tensor。
@@ -1520,3 +1528,257 @@ reset_docstr(
     """,
 )
 
+reset_docstr(
+    oneflow.addcmul,
+    r"""
+    oneflow.addcmul(input, tensor1, tensor2, *, value=1) -> Tensor
+
+    执行张量1与张量2的逐元乘法，将结果与标量值相乘并加到输入中。
+
+    该文档引用自：
+    https://pytorch.org/docs/stable/generated/torch.addcmul.html
+    
+    .. math::
+        \text{out}_i = \text{input}_i + value \times\  \text{tensor1}_i \times\ \text{tensor2}_i
+        
+    参数:
+        - **input** (Tensor) - 被添加的张量
+        - **tensor1** (Tensor) - 被乘的张量
+        - **tensor2** (Tensor) - 被乘的张量
+    
+    关键字参数:
+        value (Number, optional): 乘法器 :math:`tensor1 * tensor2`.
+
+    返回类型:
+        oneflow.Tensor: 输出张量
+
+    示例:
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.rand(2, 3, 4)
+        >>> tensor1 = flow.rand(2, 3, 4)
+        >>> tensor2 = flow.rand(2, 3, 4)
+        >>> out = flow.addcmul(input, tensor1, tensor2, value=2)
+        >>> out.size()
+        oneflow.Size([2, 3, 4])
+    """,
+)
+
+reset_docstr(
+    oneflow.as_strided,
+    r"""
+    创建具有指定大小、步幅和存储偏移的现有 oneflow.Tensor 输入的视图。
+
+    该文档引用自：
+    https://pytorch.org/docs/1.10/generated/torch.as_strided.html
+        
+    参数:
+        - **input** (Tensor) - 被添加的张量。
+        - **size** (tuple or ints) - 输出张量的形状。
+        - **stride** (tuple or ints) - 输出张量的步长。
+        - **storage_offset** (int) - 输出张量的底层存储中的偏移量。
+
+    返回类型:
+        oneflow.Tensor: 输出张量
+
+    示例:
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> input = flow.rand(2,3,5)
+        >>> output = flow.as_strided(input, (2,3,3), (1,2,3), 1)
+        >>> output.size()
+        oneflow.Size([2, 3, 3])
+    """,
+)
+
+reset_docstr(
+    oneflow.cumprod,
+    r"""oneflow.cumprod(input, dim) -> Tensor
+
+    此运算符计算给定维度中输入元素的累积乘积。
+
+    方程是：
+
+    .. math::
+        y_{i}=x_{0}*x_{1}*...*x_{i}
+        
+    参数:
+        - **input** (Tensor) - 输入张量。
+        - **dim** (int) - 进行 cumsum 的维度，其有效范围为 [-N, N-1)，N 是张量的维度。
+
+    返回类型:
+        oneflow.Tensor: 带有 cumprod 结果的张量
+
+    示例:
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> input=flow.tensor([1, 2, 3])
+        >>> flow.cumprod(input, dim=0)
+        tensor([1, 2, 6], dtype=oneflow.int64)
+    """,
+)
+
+reset_docstr(
+    oneflow.cumsum,
+    r"""oneflow.cumsum(input, dim) -> Tensor
+
+    此运算符计算给定维度中输入元素的累积和。
+
+    方程是：
+
+    .. math::
+        y_{i}=x_{0}+x_{1}+...+x_{i}
+        
+    参数:
+        - **input** (Tensor) - 输入张量。
+        - **dim** (int) - 进行 cumsum 的维度，其有效范围为 [-N, N-1)，N 是张量的维度。
+
+    返回类型:
+        oneflow.Tensor: 带有 cumsum 结果的张量
+
+    示例:
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> input = flow.ones(3, 3)
+        >>> dim = 1
+        >>> flow.cumsum(input, dim)
+        tensor([[1., 2., 3.],
+                [1., 2., 3.],
+                [1., 2., 3.]], dtype=oneflow.float32)
+    """,
+)
+
+reset_docstr(
+    oneflow.dot,
+    r"""该运算符计算张量输入和其他的点积。
+
+    方程是：
+
+	.. math::
+        \\sum_{i=1}^{n}(x[i] * y[i])
+        
+    参数:
+        - **input** (Tensor) - 点积中的第一个张量。
+        - **other** (Tensor) - 点积中的第二个张量。
+
+    形状：
+        - input：输入必须是一维的。
+        - other：其他必须是一维的。
+
+    示例:
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> flow.dot(flow.Tensor([2, 3]), flow.Tensor([2, 1]))
+        tensor(7., dtype=oneflow.float32)
+    """,
+)
+
+reset_docstr(
+    oneflow.floor_,
+    r"""
+    函数 :func:`oneflow.floor` 的本地版本。
+    """,
+)
+
+reset_docstr(
+    oneflow.hsplit,
+    r"""
+    将输入（一个或多个维度的张量）按照 indices_or_sections 水平地分割成多个张量。
+    每个分割都是输入的一个视图。
+    如果输入是一维的，就相当于调用 oneflow.tensor_split(input, indices_or_sections, dim=0) 
+    (分割的维度为0)，如果输入有两个或更多维度，则相当于调用 oneflow.tensor_split(input, indices_or_sections, dim=1)（分割维度为1），但如果 indices_or_sections
+    是一个整数，它必须均匀地除以分割维度，否则会产生一个运行时错误。
+    该文档参考自:
+    https://pytorch.org/docs/1.10/generated/torch.hsplit.html.
+
+    参数：
+        - **input** (Tensor) - 输入张量。
+        - **indices_or_sections** (int or a list) - 如果 indices_or_sections 是一个整数 n ，那么输入将沿着 dim 维度被分成 n 个部分。如果输入沿维度 dim 可被n整除，则每个部分的大小都相同。
+        如果输入不能被 n 整除，那么第一个 int(input.size(dim)%n) 的大小。
+        部分的大小为 int(input.size(dim) / n)+1，其余部分的大小为 int(input.size(dim) / n)。
+        如果 indices_or_sections 是一个 ints 的列表或元组，那么输入将沿着 dim 的维度在列表、元组或元组中的每个索引处进行分割。
+        列表、元组或张量中的每一个索引进行分割。例如，indices_or_sections=[2, 3]，dim=0，将导致张量的出现 
+        input[:2], input[2:3], and input[3:]。如果 indices_or_sections 是一个张量，它必须是一个零维或
+        如果indices_or_sections是一个张量，它在 CPU 上必须是一个零维或一维的长张量。
+
+    返回类型：
+        oneflow.TensorTuple: 输出的TensorTuple
+    
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> input = flow.rand(3,4,5,6)
+        >>> output = flow.hsplit(input,(1,3))
+        >>> output[0].size()
+        oneflow.Size([3, 1, 5, 6])
+        >>> output[1].size()
+        oneflow.Size([3, 2, 5, 6])
+        >>> output[2].size()
+        oneflow.Size([3, 1, 5, 6])
+    """,
+)
+
+reset_docstr(
+    oneflow.log2,
+    r"""
+    oneflow.log2(input) -> Tensor
+
+    返回一个新的张量，张量中的元素是以2为底的自然对数 :attr:`input`。
+
+    .. math::
+        y_{i} = \\log2_{e} (x_{i})
+    
+    参数：
+        - **input** (Tensor) - 输入向量。
+    
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import numpy as np
+        >>> arr = np.random.randn(2, 3, 4, 5)
+        >>> input = flow.tensor(arr, dtype=flow.float32)
+        >>> output = flow.log2(input)
+    """,
+)
+
+reset_docstr(
+    oneflow.logical_not,
+    r"""
+    计算给定输入张量的元素的逻辑非。零被视为假，非零被视为真。
+    
+    参数：
+        - **input** (oneflow.Tensor): 输入张量。
+        - **other** (oneflow.Tensor): 与之计算逻辑非的张量。
+
+    返回类型：
+        oneflow.Tensor: 输出张量
+    
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> input = flow.tensor([1, 0, -1], dtype=flow.float32)
+        >>> out = flow.logical_not(input)
+        >>> out
+        tensor([False,  True, False], dtype=oneflow.bool)
+    """,
+)

@@ -144,3 +144,70 @@ reset_docstr(
         tensor([ 6., 15.], dtype=oneflow.float32)
 """
 )
+
+reset_docstr(
+    oneflow.all,
+    r"""
+    oneflow.all(input, dim=None, keepdim=False) -> Tensor
+
+    对于给定维度 `dim`的 `input`的每一行，如果该行的所有元素都为 True，则返回 True，否则返回 False。如果维度是无，则计算输入张量中的所有元素是否为真。
+    
+    如果 `keepdim`为 `True`，输出张量与 `input`大小相同，只有 `dim'的维度大小为1。否则， `dim`被挤压 :func: `oneflow.squeeze()`，导致输出张量的尺寸减少1（或 `len(dim)`）。
+
+    参数:
+        - **input** (oneflow.Tensor) - 输入张量
+        - **dim** (int, optional) - 缩小的维度。 默认值: `None`
+        - **keepdim** (bool, optional) - 输出张量是否有 dim 的保留. 默认值: `False`
+
+    示例:
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+
+        >>> input = flow.Tensor([[1, 2, 3], [4, 5, 6]]) < 4
+        >>> input
+        tensor([[ True,  True,  True],
+                [False, False, False]], dtype=oneflow.bool)
+        >>> flow.all(input)
+        tensor(False, dtype=oneflow.bool)
+        >>> flow.all(input, 1)
+        tensor([ True, False], dtype=oneflow.bool)
+        >>> flow.all(input, 1, True)
+        tensor([[ True],
+                [False]], dtype=oneflow.bool)
+"""
+)
+
+reset_docstr(
+    oneflow.any,
+    r"""
+    oneflow.any(input, dim=None, keepdim=False) -> Tensor
+
+    对于给定维度 `dim`中的每一行输入，如果该行中的任何元素评估为 True，则返回 True，否则返回 False。如果维度为无，则计算输入张量中的任何元素是否为真。
+
+    如果 `keepdim` 为 True，则输出张量的大小与输入相同，但尺寸为1的维度 `dim` 除外。否则，`dim` 被挤压 :func: `oneflow.squeeze()` ，导致输出张量具有1（或len(dim)）更少的维度。
+
+    参数:
+        - **input** (oneflow.Tensor) - 输入张量
+        - **dim** (int, optional) - 缩小的维度。 默认值: `None`
+        - **keepdim** (bool, optional) - 输出张量是否有 dim 的保留. 默认值: `False`
+
+    示例:
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        
+        >>> input = flow.Tensor([[1, 2, 3], [4, 5, 6]]) < 4
+        >>> input
+        tensor([[ True,  True,  True],
+                [False, False, False]], dtype=oneflow.bool)
+        >>> flow.any(input)
+        tensor(True, dtype=oneflow.bool)
+        >>> flow.any(input, 0)
+        tensor([True, True, True], dtype=oneflow.bool)
+        >>> flow.any(input, 0, True)
+        tensor([[True, True, True]], dtype=oneflow.bool)
+"""
+)
