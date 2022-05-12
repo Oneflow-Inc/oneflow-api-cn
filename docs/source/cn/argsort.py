@@ -6,7 +6,7 @@ reset_docstr(
     r"""
     argsort() -> Tensor
 
-    此运算符以指定的 dim 对输入张量进行排序，并返回排序张量的索引。
+    此算子以指定的 dim 对输入张量进行排序，并返回排序张量的索引。
 
     参数:
         - **input** (oneflow.Tensor) - 输入张量。
