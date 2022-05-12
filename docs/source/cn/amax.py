@@ -6,7 +6,7 @@ reset_docstr(
     r"""
     oneflow.amax(input, dim=None, keepdim=False) -> Tensor
 
-    这个函数相当于 PyTorch 的 amax 函数。它返回沿维度的最大值。
+    这个函数与 PyTorch 的 amax 函数等价，它返回沿维度的最大值。
 
     参数:
         - **input** (oneflow.Tensor) - 输入张量。
