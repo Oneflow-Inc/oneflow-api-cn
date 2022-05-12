@@ -1689,7 +1689,7 @@ reset_docstr(
 reset_docstr(
     oneflow.floor_,
     r"""
-    函数 :func:`oneflow.floor` 的本地版本。
+    函数 :func:`oneflow.floor` 的 In-place 版本。
     """,
 )
 
