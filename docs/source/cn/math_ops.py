@@ -1533,7 +1533,7 @@ reset_docstr(
     r"""
     oneflow.addcmul(input, tensor1, tensor2, *, value=1) -> Tensor
 
-    执行张量1与张量2的逐元乘法，将结果与标量值相乘并加到输入中。
+    执行 tensor1 与 tensor2 的逐元乘法，将结果与标量值相乘并加到输入中。
 
     该文档引用自：
     https://pytorch.org/docs/stable/generated/torch.addcmul.html
