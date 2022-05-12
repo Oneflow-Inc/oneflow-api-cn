@@ -4,7 +4,7 @@ from docreset import reset_docstr
 reset_docstr(
     oneflow.unbind,
     r"""
-    这个函数等同于 PyTorch 的 unbind 函数。移除一个张量维度。
+    这个函数与 PyTorch 的 unbind 函数等价，可移除一个张量维度。
 
     返回沿给定维度的所有切片的一个元组，已经被移除。
     
