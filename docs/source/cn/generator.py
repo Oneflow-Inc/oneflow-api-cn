@@ -42,7 +42,7 @@ reset_docstr(
     r"""该文档引用自：
     https://pytorch.org/docs/1.10/generated/torch.seed.html.
 
-    将生成随机数的种子设置为一个非决定性的随机数。返回一个用于 RNG 种子的64位数字。
+    将生成随机数的种子设置为一个非决定性的随机数。返回一个用于 RNG 种子的 64 位数字。
 
     """
 )
