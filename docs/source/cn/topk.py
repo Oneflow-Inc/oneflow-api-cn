@@ -14,7 +14,7 @@ reset_docstr(
         - **sorted** (bool,可选) - 控制是否按排序顺序返回元素（现在只支持 True！）。
 
     返回类型：
-        Tuple(oneflow.Tensor, oneflow.Tensor(dtype=int32)):一个(values, indices)的元组，其中 indices 是原始输入张量中的元素的索引。
+        - **Tuple** (oneflow.Tensor, oneflow.Tensor(dtype=int32)) - 一个(values, indices)的元组，其中 indices 是原始输入张量中的元素的索引。
     
     示例：
 

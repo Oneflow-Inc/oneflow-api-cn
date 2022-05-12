@@ -1664,8 +1664,9 @@ reset_docstr(
 
     方程是：
 
-	.. math::
+    .. math::
         sum_{i=1}^{n}(x[i] * y[i])
+        
         
     参数:
         - **input** (Tensor) - 点积中的第一个张量。
@@ -1741,7 +1742,7 @@ reset_docstr(
     返回一个新的张量，张量中的元素是以2为底的自然对数 :attr:`input`。
 
     .. math::
-        y_{i} = \\log2_{e} (x_{i})
+        y_{i} = log2_{e} (x_{i})
     
     参数：
         - **input** (Tensor) - 输入向量。
@@ -1788,8 +1789,10 @@ reset_docstr(
     r"""
     将源中的输入尺寸移动到目标中的位置。
     其他没有明确移动的输入维度保持原来的顺序，并出现在目的地未指定的位置上。
+
     该文件引用自:
     https://pytorch.org/docs/1.10/generated/torch.movedim.html。
+
     计算给定输入张量的元素的逻辑非。零被视为假，非零被视为真。
     
     参数：
@@ -1828,17 +1831,22 @@ reset_docstr(
     oneflow.tensor_split,
     r"""
     将一个张量分割成多个子张量，这些子张量都是输入的展开，按照 :attr:`indices_or_sections` 指定的索引或节数沿维度 dim 分割。
+    
     该文档参考了:
     https://pytorch.org/docs/1.10/generated/torch.tensor_split.html。
     
     参数：
         - **input** (Tensor) -输入张量。
         - **indices_or_sections** (int or a list) - 如果 :attr:`indices_or_sections` 是一个整数 n，那么输入将沿着 dim 维度被分割成 n 个部分。
-                                                    如果输入沿维度 dim 可被 n 整除，则每个部分的大小相等，即 input.size(dim) / n。
-                                                    如果输入不被 n 整除，第一个 int(input.size(dim)% n).部分的大小将是int(input.size(dim) / n)+1，其余部分的大小将是 int(input.size(dim) / n)。
-                                                    如果 :attr:`indices_or_sections` 是一个 ints 的列表或元组，那么输入将在列表、元组或张量中的每个索引处沿 dim 维度进行分割。
-                                                    例如，indices_or_sections=[2, 3]，dim=0，将产生张量 input[:2]，input[2:3] 和 input[3:]。
-                                                    如果 indices_or_sections 是一个张量，它在 CPU 上必须是一个零维或一维的长张量。
+            如果输入沿维度 dim 可被 n 整除，则每个部分的大小相等，即 input.size(dim) / n。
+
+            如果输入不被 n 整除，第一个 int(input.size(dim)% n).部分的大小将是int(input.size(dim) / n)+1，其余部分的大小将是 int(input.size(dim) / n)。
+
+            如果 :attr:`indices_or_sections` 是一个 ints 的列表或元组，那么输入将在列表、元组或张量中的每个索引处沿 dim 维度进行分割。
+            
+            例如，indices_or_sections=[2, 3]，dim=0，将产生张量 input[:2]，input[2:3] 和 input[3:]。
+            
+            如果 indices_or_sections 是一个张量，它在 CPU 上必须是一个零维或一维的长张量。
         - **dim** (int) - 用来分割张量的维度。
 
     返回类型：

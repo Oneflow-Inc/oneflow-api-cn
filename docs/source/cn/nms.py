@@ -3,7 +3,7 @@ from docreset import reset_docstr
 
 reset_docstr(
     oneflow.nms,
-    r"""narrow(x, dim, start, length) -> Tensor
+    r"""
 
     根据盒子的交叉联合（IoU），对盒子执行非最大抑制（NMS）。
 
