@@ -1851,7 +1851,7 @@ reset_docstr(
         - **dim** (int) - 用来分割张量的维度。
 
     返回类型：
-        oneflow.TensorTuple: 输出TensorTuple.
+        oneflow.TensorTuple: 输出 TensorTuple
     
     示例：
 
