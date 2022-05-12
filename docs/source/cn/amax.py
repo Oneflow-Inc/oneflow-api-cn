@@ -10,7 +10,7 @@ reset_docstr(
 
     参数:
         - **input** (oneflow.Tensor) - 输入张量。
-        - **dim** (int or List of int, optional) - 要减少的维度。dim 的默认值为 None. 
+        - **dim** (int or List of int, optional) - 维度或要减少的维度，dim 的默认值为 None. 
         - **keepdim** (bool, optional) - 是否保留维度。keepdim 默认为 False。
 
     返回值类型:
