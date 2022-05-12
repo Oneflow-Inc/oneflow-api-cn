@@ -968,7 +968,7 @@ reset_docstr(
     r"""
     oneflow.diagonal(input, offset, dim1, dim2) -> Tensor 
 
-    返回输入的部分视图，其对角线元素与dim1和dim2的关系 的对角线元素作为一个维度附加在形状的最后。
+    返回输入的部分视图，其对角线元素与 dim1 和 dim2 的关系的对角线元素作为一个维度附加在形状的最后。
 
     参数:
         - **input** (Tensor) - 输入张量。必须至少是二维的。
