@@ -31,15 +31,12 @@ reset_docstr(
 reset_docstr(
     oneflow.logical_slice,
     r"""
-    从全局张量中提取切片。 `slice_tup_list` 指定了每个维度的分片索引，格式是（start, stop, step）。
-    操作者将根据 `slice_tup_list` 对张量进行分割。
-
-    从张量中提取切片。
-    以格式为 (start, stop, step) 的 :attr:`slice_tup_list` 为切片索引，在每个维度进行切片。
+    从 global tensor 中提取切片。 `slice_tup_list` 指定了每个维度的分片索引，格式是（start, stop, step）。
+    该算子将根据 `slice_tup_list` 对张量进行分割。
 
     参数：
-        - **input** (Tensor) - 一个张量
-        - **slice_tup_list**  - 一个分片元组列表，表示每个维度分片 (start, stop, step)。
+        - **input** (Tensor) - 输入张量
+        - **slice_tup_list**  - 分片元组列表，表示每个维度分片 (start, stop, step)。
 
     示例：
 
