@@ -6,7 +6,7 @@ reset_docstr(
     r"""
     oneflow.amin(input, dim=None, keepdim=False) -> Tensor
 
-    这个函数相当于 PyTorch 的 amin 函数。
+    这个函数与 PyTorch 的 amin 函数等价。
 
     该文档引用自: https://pytorch.org/docs/stable/generated/torch.amin.html 
     
