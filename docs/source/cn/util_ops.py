@@ -10,7 +10,7 @@ reset_docstr(
         - **input** (Tensor) - 输入张量。
     
     返回类型：
-        一个布尔类型的张量，当输入为 infinite为 True，否则为 False。
+        一个布尔类型的张量，当输入为 infinite 为 True，否则为 False。
 
     示例：
 
