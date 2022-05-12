@@ -17,7 +17,7 @@ reset_docstr(
     参数:
         - **data** (array_like) - 张量的初始数据。可以是 list, tuple, NumPy,``ndarray``, scalar和其他类型。
         - **dtype** (oneflow.dtype, optional) - 返回张量的所需数据类型。默认值：如果为 ``None``，从数据推断数据类型。
-        - **device** (oneflow.device, optional) - 构造张量的设备。如果``None`` 并且 :attr:`data` 是张量，则使用 :attr:`data` 的设备。如果 None 并且 :attr:`data` 不是张量，则在 CPU 上构建结果张量。
+        - **device** (oneflow.device, optional) - 构造张量的设备。如果为 ``None`` 并且 :attr:`data` 是张量，则使用 :attr:`data` 的设备。如果为 ``None`` 且 :attr:`data` 不是张量，则在 CPU 上构建结果张量。
 
     示例:
 
