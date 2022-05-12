@@ -16,7 +16,7 @@ reset_docstr(
 
     参数:
         - **input** (oneflow.Tensor) - 输入张量。
-        - **dim** (int, Tuple[int]) - 减少的维度。
+        - **dim** (int, Tuple[int]) - 维度或减少的维度。
         - **keepdim** (bool) - 输出张量是否保留了`dim`
 
     示例:
