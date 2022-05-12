@@ -634,7 +634,7 @@ reset_docstr(
     r"""
     new_ones(x, size=None, dtype=None, device=None, placement=None, sbp=None, requires_grad=False) -> Tensor
 
-    返回一个大小为1的张量，默认情况下，返回的张量具有与此张量相同的 oneflow.dtype 和 oneflow.device。
+    返回一个大小为 1 的张量，默认情况下，返回的张量具有与此张量相同的 oneflow.dtype 和 oneflow.device。
 
     参数：
         - **size** (int...) - 一个 list, tuple, 或者 flow，定义输出张量形状的整数的大小。
