@@ -1308,11 +1308,11 @@ reset_docstr(
 reset_docstr(
     oneflow.from_numpy,
     r"""
-    从一个 `numpy.ndarray` 创建一个 `Tensor`
+    从一个 :attr:`numpy.ndarray` 创建一个 :attr:`Tensor`
     
     返回的 tensor 和 ndarray 共享相同的内存。对 tensor 的修改将反映在 ndarray 中，反之亦然。
 
-    它目前所接受 ndarray 的数据类型为numpy.float64、numpy.float32、numpy.float16、numpy.int64、numpy.int32、numpy.int8、numpy.uint8。
+    它目前所接受 ndarray 的数据类型为 numpy.float64、numpy.float32、numpy.float16、numpy.int64、numpy.int32、numpy.int8、numpy.uint8。
 
     例如:
 
