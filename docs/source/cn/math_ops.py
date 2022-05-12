@@ -1716,7 +1716,7 @@ reset_docstr(
                                                     如果indices_or_sections是一个张量，它在 CPU 上必须是一个零维或一维的长张量。
 
     返回类型：
-        oneflow.TensorTuple: 输出的TensorTuple
+        oneflow.TensorTuple: 输出的 TensorTuple
     
     示例：
 
