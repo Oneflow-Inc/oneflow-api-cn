@@ -6,7 +6,7 @@ reset_docstr(
     r"""
     swapdims(input, dim0, dim1) -> Tensor
 
-    这个函数与 torch 的 swapdims 函数相同
+    这个函数与 torch 的 swapdims 函数等价
 
     示例：
 
