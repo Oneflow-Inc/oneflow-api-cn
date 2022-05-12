@@ -1841,7 +1841,7 @@ reset_docstr(
         - **indices_or_sections** (int or a list) - 如果 :attr:`indices_or_sections` 是一个整数 n，那么输入将沿着 dim 维度被分割成 n 个部分。
             如果输入沿维度 dim 可被 n 整除，则每个部分的大小相等，即 input.size(dim) / n。
 
-            如果输入不被 n 整除，第一个 int(input.size(dim)% n).部分的大小将是int(input.size(dim) / n)+1，其余部分的大小将是 int(input.size(dim) / n)。
+            如果输入不被 n 整除，第一个 int(input.size(dim)% n) 部分的大小将是 int(input.size(dim) / n)+1，其余部分的大小将是 int(input.size(dim) / n)。
 
             如果 :attr:`indices_or_sections` 是一个 ints 的列表或元组，那么输入将在列表、元组或张量中的每个索引处沿 dim 维度进行分割。
             
