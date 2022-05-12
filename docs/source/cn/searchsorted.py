@@ -8,7 +8,7 @@ reset_docstr(
 
     该文档引用自：https://pytorch.org/docs/1.10/generated/torch.searchsorted.html?highlight=searchsorted
     
-    从sorted_sequence的最内层维度中找到索引，如果在这些索引之前插入values中的相应值，那么sorted_sequence中相应的最内层维度的顺序将被保留下来。返回一个新的张量，其大小与value相同。如果right是False（默认），那么sorted_sequence的左边边界将被关闭。更正式地说，返回的索引满足以下规则：
+    从 sorted_sequence 的最内层维度中找到索引，如果在这些索引之前插入 values 中的相应值，那么 sorted_sequence 中相应的最内层维度的顺序将被保留下来。返回一个新的张量，其大小与 value 相同。如果 right 是 False（默认），那么 sorted_sequence 的左边边界将被关闭。更正式地说，返回的索引满足以下规则：
 
     =================  =========  ==========================================================================
     sorted_sequence     right      returned index satisfies
@@ -23,9 +23,9 @@ reset_docstr(
 
     参数：
         - **sorted_sequence** (Tensor) - N-D 或1-D 张量，包含最内侧维度上的单调增加序列。
-        - **values** (Tensor or Scalar) - N-D张量或包含搜索值的标量。
+        - **values** (Tensor or Scalar) - N-D 张量或包含搜索值的标量。
         - **out_int32** (bool 可选) - 指示输出数据类型。如果为 True，则为 torch.int32，否则为 torch.int64。默认值为 False，即默认输出数据类型为 torch.int64。
-        - **right** (bool 可选) - 如果是 False，返回找到的第一个合适的位置。如果为 True，则返回最后一个这样的索引。如果没有找到合适的索引，返回0的非数字值 (例如：Nan, inf)，或者在排序_序列中的最内层维度的大小（一个传递最内层维度的最后一个索引）。换句话说，如果是 False，则得到获得每个值的下限索引，这些值是在排序_序列的相应最内层维度上的维度上的每个值的下限索引。如果是 True，则获得上界的索引。默认值是 False。
+        - **right** (bool 可选) - 如果是 False，返回找到的第一个合适的位置。如果为 True，则返回最后一个这样的索引。如果没有找到合适的索引，返回0的非数字值 (例如：Nan, inf)，或者在 sorted_sequence 中的最内层维度的大小（一个传递最内层维度的最后一个索引）。换句话说，如果是 False，则得到获得每个值的下限索引，这些值是在排序_序列的相应最内层维度上的维度上的每个值的下限索引。如果是 True，则获得上界的索引。默认值是 False。
 
     示例：
 
