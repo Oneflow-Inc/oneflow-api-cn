@@ -4,7 +4,7 @@ from docreset import reset_docstr
 reset_docstr(
     oneflow.topk,
     r"""
-    查找指定轴上的k个最大条目的值和索引。
+    查找指定轴上的 k 个最大条目的值和索引。
 
     参数：
         - **input** (oneflow.Tensor) - 输入张量。
