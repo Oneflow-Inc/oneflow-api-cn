@@ -6,7 +6,7 @@ reset_docstr(
     r"""
     as_tensor(data, dtype=None, device=None) -> Tensor
 
-    界面与 PyTorch 一致。
+    该接口与 PyTorch 一致。
 
     如果可能，将数据转换为张量，共享数据并保留 autograd 历史记录
 
