@@ -1372,15 +1372,15 @@ reset_docstr(
     执行张量 placement 和/或 sbp 转换。
 
     Note:
-        这个张量必须是全局张量。
+        这个张量必须是 global tensor。
 
         至少需要 placement 和 sbp 中的一个操作。
 
         如果 placement 和 sbp 都与这个张量的 placement 和 sbp 相同，那么返回自己的这个张量。
     
     参数：
-        - **placement** (flow.placement, optional) - 返回全局张量的所需 placement，默认值：None。
-        - **sbp** (flow.sbp.sbp or tuple of flow.sbp.sbp, optional) - 返回全局张量的所需 sbp，默认值：None。
+        - **placement** (flow.placement, optional) - 返回 global tensor 的所需 placement，默认值：None。
+        - **sbp** (flow.sbp.sbp or tuple of flow.sbp.sbp, optional) - 返回 global tensor 的所需 sbp，默认值：None。
     关键参数：
         - **grad_sbp** (flow.sbp.sbp or tuple of flow.sbp.sbp, optional) - 手动指定在后向传播中该张量梯度张量的 sbp。
             如果为 None，将自动推断出梯度张量的 sbp。默认值：None。
@@ -1426,23 +1426,23 @@ reset_docstr(
     """
     Tensor.local_to_global(placement=None, sbp=None, *, check_meta=Ture) -> Tensor
 
-    从一个局部张量构造一个全局张量。
+    从一个 local tensor 构造一个 global tensor。
 
     Note:
-        这个张量必须是局部张量。
+        这个张量必须是 local tensor。
 
         placement 和 sbp 属性都需要。
 
-        返回的全局张量将该张量作为其在当前 rank 中的局部分量。
+        返回的 global tensor 将该张量作为其在当前 rank 中的 local tensor。
 
         通常数据是不会被广播的，但是当 sbp 为 ``oneflow.sbp.broadcast`` 时，rank 0 的数据将被广播到其他等级。
     
     参数：
-        - **placement** (flow.placement, optional) - 返回全局张量的所需 placement，默认值：None。
-        - **sbp** (flow.sbp.sbp or tuple of flow.sbp.sbp, optional) - 返回全局张量的所需 sbp，默认值：None。
+        - **placement** (flow.placement, optional) - 返回 global tensor 的所需 placement，默认值：None。
+        - **sbp** (flow.sbp.sbp or tuple of flow.sbp.sbp, optional) - 返回 global tensor 的所需 sbp，默认值：None。
     关键参数：
-        - **check_meta** (bool, optional) - 注明当从局部张量构建全局张量时是否要检查元信息。只有设置为 False 时，每
-            个 rank 上输入的局部张量的形状和类型都相同，如果设置为 False，则加速执行 local_to_global。默认值：True。
+        - **check_meta** (bool, optional) - 注明当从 local tensor 构建 global tensor 时是否要检查元信息。只有设置为 False 时，每
+            个 rank 上输入的 local tensor的形状和类型都相同，如果设置为 False，则加速执行 local_to_global。默认值：True。
 
     .. code-block:: python
 
@@ -1485,8 +1485,8 @@ reset_docstr(
         - **size** (int...) - 一个 list，tuple 或整数的 flow.Size，定义输出张量的形状。
         - **dtype** (flow.dtype, optional) - 返回张量的所需类型，默认值如果为 None，则返回与此张量相同的 flow.dtype。
         - **device** (flow.device, optional) - 返回张量的所需设备，默认值如果为 None，则返回与此张量相同的 flow.device。
-        - **placement** (flow.placement, optional) - 返回的全局张量的所需的 placement，默认值如果为 None，则返回的张量是使用参数 `device` 的本地张量。
-        - **sbp** (flow.sbp.sbp or tuple of flow.sbp.sbp, optional) -返回的全局张量所需的 sbp 描述，默认值如果为 None，则返回的张量是使用参数 `device` 的本地张量。
+        - **placement** (flow.placement, optional) - 返回的 global tensor 的所需的 placement，默认值如果为 None，则返回的张量是使用参数 `device` 的 local tensor。
+        - **sbp** (flow.sbp.sbp or tuple of flow.sbp.sbp, optional) -返回的 global tensor 所需的 sbp 描述，默认值如果为 None，则返回的张量是使用参数 `device` 的 local tensor。
         - **requires_grad** (bool, optional) - 如果 autograd 应该在返回的张量上记录算子，默认值：None。
 
     示例：
@@ -1513,8 +1513,8 @@ reset_docstr(
         - **size** (int...) - 一个 list，tuple 或整数的 flow.Size，定义输出张量的形状。
         - **dtype** (flow.dtype, optional) - 返回张量的所需类型，默认值如果为 None，则返回与此张量相同的 flow.dtype。
         - **device** (flow.device, optional) - 返回张量的所需设备，默认值如果为 None，则返回与此张量相同的 flow.device。
-        - **placement** (flow.placement, optional) - 返回的全局张量的所需的 placement，默认值如果为 None，则返回的张量是使用参数 `device` 的本地张量。
-        - **sbp** (flow.sbp.sbp or tuple of flow.sbp.sbp, optional) -返回的全局张量所需的 sbp 描述，默认值如果为 None，则返回的张量是使用参数 `device` 的本地张量。
+        - **placement** (flow.placement, optional) - 返回的 global tensor 的所需的 placement，默认值如果为 None，则返回的张量是使用参数 `device` 的 local tensor。
+        - **sbp** (flow.sbp.sbp or tuple of flow.sbp.sbp, optional) -返回的 global tensor 所需的 sbp 描述，默认值如果为 None，则返回的张量是使用参数 `device` 的 local tensor。
         - **requires_grad** (bool, optional) - 如果 autograd 应该在返回的张量上记录算子，默认值：None。
 
     For example:
