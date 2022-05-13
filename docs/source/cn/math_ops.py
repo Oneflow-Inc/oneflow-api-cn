@@ -1570,7 +1570,7 @@ reset_docstr(
 reset_docstr(
     oneflow.as_strided,
     r"""
-    创建具有指定大小、步幅和存储偏移的现有 oneflow.Tensor 输入的视图。
+    创建具有指定大小、步幅和存储偏移的 oneflow.Tensor 输入的视图。
 
     该文档引用自：
     https://pytorch.org/docs/1.10/generated/torch.as_strided.html
@@ -1662,10 +1662,12 @@ reset_docstr(
     oneflow.dot,
     r"""该算子计算张量输入和其他的点积。
 
-    方程是：
+    公式为：
 
-    .. math::
-        sum_{i=1}^{n}(x[i] * y[i])
+	$$
+        \\sum_{i=1}^{n}(x[i] * y[i])
+	$$
+
         
         
     参数:
@@ -1737,7 +1739,7 @@ reset_docstr(
     r"""
     oneflow.log2(input) -> Tensor
 
-    返回一个新的张量，张量中的元素是以2为底的自然对数 :attr:`input`。
+    返回一个新的张量，张量中的元素是 :attr:`input` 以2为底的自然对数。
 
     .. math::
         y_{i} = log2_{e} (x_{i})

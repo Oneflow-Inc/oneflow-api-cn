@@ -32,7 +32,7 @@ reset_docstr(
     设置生成随机数的种子。返回一个 `oneflow.Generator` 对象。
 
     参数:
-        - **seed** (int) - 所需的 seed。该值必须在以下范围内 ` [ -0x8000_0000_0000_0000, 0xffff_ffff_ffff_ffff ] ` 。否则，会产生一个 RuntimeError，负的输入被重新映射为正值，公式为 ` 0xffff_ffff_ffff_ffff + seed ` 。
+        - **seed** (int) - 所需的 seed。该值必须在以下范围内 `[ -0x8000_0000_0000_0000, 0xffff_ffff_ffff_ffff ]` 。否则，会产生一个 RuntimeError，负的输入被重新映射为正值，公式为 `0xffff_ffff_ffff_ffff + seed` 。
 
     """
 )

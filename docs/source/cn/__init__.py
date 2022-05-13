@@ -80,3 +80,4 @@ from .tensor_str import *
 from .swapdims import *
 from .unbind import *
 from .topk import *
+from .einsum import *

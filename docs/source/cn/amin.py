@@ -12,7 +12,7 @@ reset_docstr(
     
     返回给定维度 dim 中输入张量的每个切片的最小值。
 
-    如果 :attr: `keepdim` 为 `True`，则输出张量的大小与输入的大小相同，但维度 dim 大小为 1 的除外。否则，dim 被压缩（参考 :func:`oneflow.squeeze`），导致输出张量具有1（或 `len(dim)` ）更少的维度。
+    如果 :attr:`keepdim` 为 `True`，则输出张量的大小与输入的大小相同，但维度 dim 大小为 1 的除外。否则，dim 被压缩（参考 :func:`oneflow.squeeze`），导致输出张量具有1（或 `len(dim)` ）更少的维度。
 
     参数:
         - **input** (oneflow.Tensor) - 输入张量。

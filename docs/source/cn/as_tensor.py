@@ -15,7 +15,7 @@ reset_docstr(
     如果 data 是具有相同 dtype  和 device  的 NumPy 数组（一个 ndarray），则使用 oneflow.from_numpy 构造一个张量。
 
     参数:
-        - **data** (array_like) - 张量的初始数据。可以是 list, tuple, NumPy,``ndarray``, scalar和其他类型。
+        - **data** (array_like) - 张量的初始数据。可以是 list, tuple, NumPy, `ndarray`, scalar和其他类型。
         - **dtype** (oneflow.dtype, optional) - 返回张量的所需数据类型。默认值：如果为 ``None``，从数据推断数据类型。
         - **device** (oneflow.device, optional) - 构造张量的设备。如果为 ``None`` 并且 :attr:`data` 是张量，则使用 :attr:`data` 的设备。如果为 ``None`` 且 :attr:`data` 不是张量，则在 CPU 上构建结果张量。
 
