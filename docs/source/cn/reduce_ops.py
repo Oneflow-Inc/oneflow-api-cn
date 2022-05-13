@@ -184,7 +184,7 @@ reset_docstr(
 
     r"""oneflow.any(input, dim=None, keepdim=False) -> Tensor
 
-    对于给定维度 `dim` 中的每一行输入，如果该行中的任何元素评估为 True，则返回 True，否则返回 False。如果维度为无，则计算输入张量中的任何元素是否为真。
+    对于给定维度 `dim` 中的每一行输入，如果该行中的任何元素评估为 True，则返回 True，否则返回 False。如果维度为 None，则计算输入张量中的元素是否都为真。
 
     如果 `keepdim` 为 True，则输出张量的大小与输入相同，但尺寸为1的维度 `dim` 除外。否则，`dim` 被挤压 :func: `oneflow.squeeze()` ，导致输出张量具有1（或 `len(dim)`）更少的维度。
 
