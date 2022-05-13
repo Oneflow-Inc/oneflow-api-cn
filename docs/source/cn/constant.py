@@ -701,7 +701,7 @@ reset_docstr(
     此文档参考自： https://pytorch.org/docs/stable/nn.init.html.
     根据 `Exact solutions to the nonlinear dynamics of learning in deep
     linear neural networks` - Saxe, A. et al. (2013) 的描述，将输入 `Tensor` 用一个（半）正交矩阵填充。
-    输入张量必须拥有之少两个维度，对于多于两个维度的张量，多余的张量将被扁平化。
+    输入张量必须拥有至少两个维度，对于多于两个维度的张量，多余的张量将被扁平化。
 
     参数：
         - **tensor:** 一个 n 维的 `torch.Tensor`，其中 :math:`n \geq 2`
