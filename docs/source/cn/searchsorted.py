@@ -24,7 +24,7 @@ reset_docstr(
     参数：
         - **sorted_sequence** (Tensor) - N-D 或1-D 张量，包含最内侧维度上的单调增加序列。
         - **values** (Tensor or Scalar) - N-D 张量或包含搜索值的标量。
-        - **out_int32** (bool 可选) - 指示输出数据类型。如果为 True，则为 torch.int32，否则为 torch.int64。默认值为 False，即默认输出数据类型为 torch.int64。
+        - **out_int32** (bool 可选) - 标明输出数据类型。如果为 True，则为 torch.int32，否则为 torch.int64。默认值为 False，即默认输出数据类型为 torch.int64。
         - **right** (bool 可选) - 如果是 False，返回找到的第一个合适的位置。如果为 True，则返回最后一个这样的索引。如果没有找到合适的索引，返回0的非数字值 (例如：Nan, inf)，或者在 sorted_sequence 中的最内层维度的大小（一个传递最内层维度的最后一个索引）。换句话说，如果是 False，则得到获得每个值的下限索引，这些值是在排序_序列的相应最内层维度上的维度上的每个值的下限索引。如果是 True，则获得上界的索引。默认值是 False。
 
     示例：
