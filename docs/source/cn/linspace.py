@@ -11,8 +11,8 @@ reset_docstr(
         - **key** (str) - 要解码的张量的字段名称。
         - **shape** (bool) - 要解码的张量的形状。
         - **is_dynamic** (bool) - 张量形状是否是动态的。
-        - **reshape** (tuple) - 如果你想重塑张量，请设置它。
-        - **batch_padding** (tuple) - 如果需要批量填充，请设置它。
+        - **reshape** (tuple) - 设置该参数重塑张量。
+        - **batch_padding** (tuple) - 设置该参数进行批量填充。
 
     示例:
 
