@@ -1700,7 +1700,7 @@ reset_docstr(
     每个分割都是输入的一个视图。
     如果输入是一维的，就相当于调用 oneflow.tensor_split(input, indices_or_sections, dim=0) 
     (分割的维度为0)，如果输入有两个或更多维度，则相当于调用 oneflow.tensor_split(input, indices_or_sections, dim=1)（分割维度为1），但如果 indices_or_sections
-    是一个整数，它必须均匀地除以分割维度，否则会产生一个运行时错误。
+    是一个整数，它必须均匀地除以分割维度，否则会产生一个 Runtime Error。
     
     该文档参考自:
     https://pytorch.org/docs/1.10/generated/torch.hsplit.html.
