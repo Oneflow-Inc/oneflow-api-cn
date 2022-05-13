@@ -8,7 +8,7 @@ reset_docstr(
 
     该文档引用自：https://pytorch.org/docs/1.10/generated/torch.searchsorted.html?highlight=searchsorted
     
-    从 sorted_sequence 的最内层维度中找到索引，如果在这些索引之前插入 values 中的相应值，那么 sorted_sequence 中相应的最内层维度的顺序将被保留下来。返回一个新的张量，其大小与 value 相同。如果 right 是 False（默认），那么 sorted_sequence 的左边边界将被关闭。更正式地说，返回的索引满足以下规则：
+    从 sorted_sequence 的最内层维度中找到索引，如果在这些索引之前插入 values 中的相应值，那么 sorted_sequence 中相应的最内层维度的顺序将被保留下来。返回一个大小与 value 相同的新张量。如果 right 是 False（默认），那么 sorted_sequence 的左边边界将被关闭。即，返回的索引满足以下规则：
 
     =================  =========  ==========================================================================
     sorted_sequence     right      returned index satisfies
