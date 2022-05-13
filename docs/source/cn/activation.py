@@ -178,7 +178,7 @@ reset_docstr(
 
     文档引用自: https://pytorch.org/docs/stable/generated/torch.nn.functional.conv1d.html?highlight=conv1d
 
-    对由多个输入平面组成的输入信号应用一维卷积。
+    对由多个输入平面组成的输入信号应用一维卷积。ddd
 
     请参阅: :class:`~oneflow.nn.Conv1d` 获取有关详细信息和输出形状。
 
