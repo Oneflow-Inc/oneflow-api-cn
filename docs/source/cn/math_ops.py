@@ -1743,7 +1743,7 @@ reset_docstr(
         y_{i} = log2_{e} (x_{i})
     
     参数：
-        - **input** (Tensor) - 输入向量。
+        - **input** (Tensor) - 输入张量。
     
     示例：
 
@@ -1785,13 +1785,11 @@ reset_docstr(
 reset_docstr(
     oneflow.movedim,
     r"""
-    将源中的输入尺寸移动到目标中的位置。
-    其他没有明确移动的输入维度保持原来的顺序，并出现在目的地未指定的位置上。
+    将 :attr:`source` 中的的维度移动到 :attr:`destination` 的位置。
+    其他没有明确移动的 :attr:`source` 维度保持原来的顺序，并出现在 :attr:`destination` 未指定的位置上。
 
     该文档引用自：
     https://pytorch.org/docs/1.10/generated/torch.movedim.html。
-
-    计算给定输入张量的元素的逻辑非。零被视为假，非零被视为真。
     
     参数：
         - **input** (Tensor) -输入张量。
