@@ -31,18 +31,18 @@ reset_docstr(
 
     .. note::
 
-        `flow.einsum`处理省略号('...')的方式与NumPy不同，它允许省略号覆盖的维度被求和。
+        `flow.einsum`处理省略号('...')的方式与 NumPy 不同，它允许省略号覆盖的维度被求和。
         省略号所覆盖的维度进行求和，也就是说，省略号不需要成为输出的一部分。
 
     .. note::
 
-        This function does not optimize the given expression, so a different formula for the same computation may
-        run faster or consume less memory. Projects like opt_einsum (https://optimized-einsum.readthedocs.io/en/stable/)
-        can optimize the formula for you.
+        这个函数没有对给定的表达式进行优化，所以相同计算的不同公式可能会
+        运行得更快或消耗更少的内存。使用 opt_einsum（https://optimized-einsum.readthedocs.io/en/stable/）可以优化公式。
 
     参数:
-        这个函数没有对给定的表达式进行优化，所以相同计算的不同公式可能会
-        运行得更快或消耗更少的内存。使用opt_einsum（https://optimized-einsum.readthedocs.io/en/stable/）可以优化公式。
+        - **equation* (String): 爱因斯坦求和法的标号。
+        - **operands** (oneflow.Tensor): 计算爱因斯坦求和的张量。
+        
 
     示例:
 
