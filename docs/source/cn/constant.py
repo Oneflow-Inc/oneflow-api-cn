@@ -708,7 +708,7 @@ reset_docstr(
         - **gain:** 可选的缩放因子
 
     示例：
-        >>> w = flow.empty(3, 5)
-        >>> nn.init.orthogonal_(w)
+        > w = flow.empty(3, 5)
+        > nn.init.orthogonal_(w)
     """
 )
