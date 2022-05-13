@@ -6,11 +6,11 @@ reset_docstr(
     r"""
     使用基于爱因斯坦求和惯例的符号，沿指定维度对输入 :attr:`operands` 的元素的乘积进行求和。
 
-    通过基于爱因斯坦求和惯例的简短格式，详见 :attr:`equation` ，einsum 允许计算许多常见的多维线性代数数组操作。 :attr:`equation`` 格式的细节将在下面描述，但通常是用一些下标来标记输入 :attr:`operands` 的每个维度，并定义哪些下标是输出的一部分。然后沿着元素下标不属于输出的一部分的维度，对 :attr:`operands` 元素的乘积进行计算。例如，矩阵乘法可以用 einsum 计算，如 `flow.einsum("ij,jk->ik", A, B)`。这里 j 是求和的下标，i 和 k 是输出的下标（详见下面的章节）。
+    通过基于爱因斯坦求和惯例的简短格式，详见 :attr:`equation` ，einsum 允许计算许多常见的多维线性代数数组操作。 :attr:`equation` 格式的细节将在下面描述，但通常是用一些下标来标记输入 :attr:`operands` 的每个维度，并定义哪些下标是输出的一部分。然后沿着元素下标不属于输出的一部分的维度，对 :attr:`operands` 元素的乘积进行计算。例如，矩阵乘法可以用 einsum 计算，如 `flow.einsum("ij,jk->ik", A, B)`。这里 j 是求和的下标，i 和 k 是输出的下标（详见下面的章节）。
 
     Equation:
-        :attr:`equation` 字符串指定了每个输入的 :attr:`operands` 维度的标号（字母`[a-zA-Z]`），顺序与维度相同，每个 :attr:`operands` 的标号之间用逗号（','）隔开。
-        例如:"'ij,jk'"指定两个二维 :attr:`operands` 的标号。用同一标号标注的维度的尺寸必须是 `broadcastable`，也就是说，它们的尺寸必须匹配或为`1'。例外的情况是，如果一个标号在同一个输入 :attr:`operands` 上重复出现，这个 :attr:`operands` 用这个下标标注的尺寸必须匹配，并且该 :attr:`operands` 将被其沿这个尺寸的对角线所取代。
+        :attr:`equation` 字符串指定了每个输入的 :attr:`operands` 维度的标号（字母 `[a-zA-Z]`），顺序与维度相同，每个 :attr:`operands` 的标号之间用逗号（','）隔开。
+        例如:"'ij,jk'"指定两个二维 :attr:`operands` 的标号。用同一标号标注的维度的尺寸必须是 `broadcastable`，也就是说，它们的尺寸必须匹配或为 1。例外的情况是，如果一个标号在同一个输入 :attr:`operands` 上重复出现，这个 :attr:`operands` 用这个下标标注的尺寸必须匹配，并且该 :attr:`operands` 将被其沿这个尺寸的对角线所取代。
         在 :attr:`equation` 中出现一次的标号将是输出的一部分，按字母顺序递增排序。
         输出是通过将输入的 :attr:`operands` 元素相乘来计算的，然后将子标不属于输出的尺寸相加。
         也可以通过在 :attr:`equation` 末尾添加一个箭头（'->'）来明确定义输出下标号。
@@ -31,7 +31,7 @@ reset_docstr(
 
     .. note::
 
-        `flow.einsum`处理省略号('...')的方式与 NumPy 不同，它允许省略号覆盖的维度被求和。
+        `flow.einsum` 处理省略号('...')的方式与 NumPy 不同，它允许省略号覆盖的维度被求和。
         省略号所覆盖的维度进行求和，也就是说，省略号不需要成为输出的一部分。
 
     .. note::
@@ -40,8 +40,8 @@ reset_docstr(
         运行得更快或消耗更少的内存。使用 opt_einsum（https://optimized-einsum.readthedocs.io/en/stable/）可以优化公式。
 
     参数:
-        - **equation* (String): 爱因斯坦求和法的标号。
-        - **operands** (oneflow.Tensor): 计算爱因斯坦求和的张量。
+        - **equation** (String) - 爱因斯坦求和法的标号。
+        - **operands** (oneflow.Tensor) - 计算爱因斯坦求和的张量。
         
 
     示例:
