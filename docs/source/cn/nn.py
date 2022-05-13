@@ -979,7 +979,7 @@ reset_docstr(
         - **stride** - 滑动窗口的步长，必须为正。默认值为 :attr:`kernel_size`。
         - **padding** - 填充在输入张量两侧的隐式负无穷，该值必须非负且不大于 kernel_size / 2。
         - **dilation** - 滑动窗口中元素之间的步幅，必须为正。
-        - **return_indices** - 若设置为 ``True`` 则返回 argmax 以及最大值，在后续的 :class:`torch.nn.MaxUnpool1d` 中使用。
+        - **return_indices** - 若设置为 ``True`` 则返回 argmax 以及最大值。
         - **ceil_mode** - 若设置为 ``True`` 则使用 `ceil` 而非 `floor` 来计算输出形状，这确保了输入张量中的每个元素都被滑动窗口覆盖。
 
     形状：
