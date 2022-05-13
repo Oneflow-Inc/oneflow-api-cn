@@ -1819,7 +1819,7 @@ reset_docstr(
 reset_docstr(
     oneflow.sin_,
     r"""
-    函数 :func:`oneflow.sin` 的本地版本。
+    函数 :func:`oneflow.sin` 的 In-place 版本。
     """,
 )
 
@@ -1835,13 +1835,9 @@ reset_docstr(
         - **input** (Tensor) -输入张量。
         - **indices_or_sections** (int or a list) - 如果 :attr:`indices_or_sections` 是一个整数 n，那么输入将沿着 dim 维度被分割成 n 个部分。
             如果输入沿维度 dim 可被 n 整除，则每个部分的大小相等，即 input.size(dim) / n。
-
             如果输入不被 n 整除，第一个 int(input.size(dim)% n) 部分的大小将是 int(input.size(dim) / n)+1，其余部分的大小将是 int(input.size(dim) / n)。
-
             如果 :attr:`indices_or_sections` 是一个 ints 的列表或元组，那么输入将在列表、元组或张量中的每个索引处沿 dim 维度进行分割。
-            
             例如，indices_or_sections=[2, 3]，dim=0，将产生张量 input[:2]，input[2:3] 和 input[3:]。
-            
             如果 indices_or_sections 是一个张量，它在 CPU 上必须是一个零维或一维的长张量。
         - **dim** (int) - 用来分割张量的维度。
 

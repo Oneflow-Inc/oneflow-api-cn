@@ -190,7 +190,7 @@ reset_docstr(
 
     关键词参数：
         - **out** (Tensor, 可选) - 用于采样的伪随机数生成器。
-        - **placement** (flow.placement,可选) - 返回的全局张量的所需设备。如果没有，将构建局部张量。
+        - **placement** (flow.placement,可选) - 返回的全局张量的所需设备。如果为 None，将构建局部张量。
         - **sbp** (flow.sbp, 可选) - 返回的全局张量所需的 sbp。它必须与 :attr:`placement` 的数量相等。
         - **generator** (:class:`oneflow.Generator`, 可选) - 用于采样的伪随机数生成器。
         - **dtype** (:class:`oneflow.dtype`, 可选) - 返回张量的所需数据类型。默认使用当前设备。

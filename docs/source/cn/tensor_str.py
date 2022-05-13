@@ -8,7 +8,7 @@ reset_docstr(
 
     参数：
         - **precision** - 输出浮点数的精度位数 (默认=4)。
-        - **threshold** - 触发总结的数组元素的总数而不是完全 ``repr`` （默认值=1000）。
+        - **threshold** - 触发总结的数组元素的总数而不是完全 `repr` （默认值=1000）。
         - **edgeitems** - 在每个维度的开始和结束时，汇总的数组的数量（默认值=3）。
         - **linewidth** - 每行插入换行符的字符数（默认 =  terminal_columns ）。
         - **profile** - 默认为  pretty printing，可以用上述任何一个选项来覆盖。(`default`, `short`, `full` 中的任何一个)

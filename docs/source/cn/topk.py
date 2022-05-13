@@ -8,7 +8,7 @@ reset_docstr(
 
     参数：
         - **input** (oneflow.Tensor) - 输入张量。
-        - **k** (int) - top-k 的 k。
+        - **k** (int) - “top-k” 的 k。
         - **dim** (int,可选) - 要排序用的维度。默认为最后一个维度（-1）。
         - **largest** (bool,可选) - 控制是否返回最大或最小的元素
         - **sorted** (bool,可选) - 控制是否按排序顺序返回元素（现在只支持 True！）。
