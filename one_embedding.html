@@ -152,112 +152,113 @@
 <dl class="py class">
 <dt id="oneflow.one_embedding.MultiTableEmbedding">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.one_embedding.</span></code><code class="sig-name descname"><span class="pre">MultiTableEmbedding</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">store_options</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_initializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.one_embedding.MultiTableEmbedding" title="Permalink to this definition">¶</a></dt>
-<dd><p>MultiTableEmbedding represent multi Embedding tables with same embedding_dim, dtype, and key_type.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<em>str</em>) – The name of Embedding</p></li>
-<li><p><strong>embedding_dim</strong> (<em>int</em>) – the size of each embedding vector</p></li>
-<li><p><strong>dtype</strong> (<em>flow.dtype</em>) – the data type of embeddings</p></li>
-<li><p><strong>key_type</strong> (<em>flow.dtype</em>) – the data type of feature ids</p></li>
-<li><p><strong>tables</strong> (<em>list</em>) – list of table param which can be made by flow.one_embedding.make_table_options</p></li>
-<li><p><strong>store_options</strong> (<em>dict</em>) – store option of Embedding</p></li>
-<li><p><strong>default_initializer</strong> (<em>dict</em><em>, </em><em>optional</em>) – if tables param is None, use default_initializer to initialize table. Defaults to None.</p></li>
+<dd><p>MultiTableEmbedding 表示具有相同 embedding_dim、dtype 和 key_type 的多个 embedding 表。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>name</strong> (str) - 实例化的 Embedding 层的名字。</p></li>
+<li><p><strong>embedding_dim</strong> (int) - 每一个 embedding 向量的大小。</p></li>
+<li><p><strong>dtype</strong> (flow.dtype) - embedding 的数据类型。</p></li>
+<li><p><strong>key_type</strong> (flow.dtype) - 特征 ID 的数据类型。</p></li>
+<li><p><strong>tables</strong> (list) - 由 flow.one_embedding.make_table_options 生成的列表中的表格参数。</p></li>
+<li><p><strong>store_options</strong> (dict) - Embedding 的存储选项。</p></li>
+<li><p><strong>default_initializer</strong> (dict, optional) - 如果参数 tables 为 None，则使用 default_initializer 来初始化表。默认为 None。</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># a simple example with 3 table</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">table_size_array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">39884407</span><span class="p">,</span> <span class="mi">39043</span><span class="p">,</span> <span class="mi">17289</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">vocab_size</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">table_size_array</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">num_tables</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table_size_array</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">embedding_size</span> <span class="o">=</span> <span class="mi">128</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">scales</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">table_size_array</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tables</span> <span class="o">=</span> <span class="p">[</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_table_options</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_uniform_initializer</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="n">scale</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">for</span> <span class="n">scale</span> <span class="ow">in</span> <span class="n">scales</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">store_options</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_cached_ssd_store_options</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">cache_budget_mb</span><span class="o">=</span><span class="mi">8192</span><span class="p">,</span> <span class="n">persistent_path</span><span class="o">=</span><span class="s2">"/your_path_to_ssd"</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">embedding</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">MultiTableEmbedding</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">name</span><span class="o">=</span><span class="s2">"my_embedding"</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">embedding_dim</span><span class="o">=</span><span class="n">embedding_size</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">key_type</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">tables</span><span class="o">=</span><span class="n">tables</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">store_options</span><span class="o">=</span><span class="n">store_options</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">embedding</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mlp</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">FusedMLP</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">in_features</span><span class="o">=</span><span class="n">embedding_size</span> <span class="o">*</span> <span class="n">num_tables</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">hidden_features</span><span class="o">=</span><span class="p">[</span><span class="mi">512</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">128</span><span class="p">],</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">out_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">skip_final_activation</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mlp</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">TrainGraph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_lookup</span> <span class="o">=</span> <span class="n">embedding</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span> <span class="o">=</span> <span class="n">mlp</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_optimizer</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>            <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">embedding_lookup</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_optimizer</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>            <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mlp</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ids</span><span class="p">):</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="n">embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_lookup</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">embedding</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_tables</span> <span class="o">*</span> <span class="n">embedding_size</span><span class="p">)))</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="n">loss</span> <span class="o">=</span> <span class="n">loss</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="k">return</span> <span class="n">loss</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">num_tables</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ids_tensor</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span> <span class="o">=</span> <span class="n">TrainGraph</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">loss</span> <span class="o">=</span> <span class="n">graph</span><span class="p">(</span><span class="n">ids_tensor</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">oneflow.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
+<span class="o">&gt;</span> <span class="c1"># 一个使用三个表的简单样例</span>
+<span class="o">&gt;</span> <span class="n">table_size_array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">39884407</span><span class="p">,</span> <span class="mi">39043</span><span class="p">,</span> <span class="mi">17289</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">vocab_size</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">table_size_array</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">num_tables</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table_size_array</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">embedding_size</span> <span class="o">=</span> <span class="mi">128</span>
+<span class="o">&gt;</span> <span class="n">scales</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">table_size_array</span><span class="p">))</span>
+<span class="o">&gt;</span> <span class="n">tables</span> <span class="o">=</span> <span class="p">[</span>
+<span class="o">&gt;</span>     <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_table_options</span><span class="p">(</span>
+<span class="o">&gt;</span>         <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_uniform_initializer</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="n">scale</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
+<span class="o">&gt;</span>     <span class="p">)</span>
+<span class="o">&gt;</span>     <span class="k">for</span> <span class="n">scale</span> <span class="ow">in</span> <span class="n">scales</span>
+<span class="o">&gt;</span> <span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">store_options</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_cached_ssd_store_options</span><span class="p">(</span>
+<span class="o">&gt;</span>     <span class="n">cache_budget_mb</span><span class="o">=</span><span class="mi">8192</span><span class="p">,</span> <span class="n">persistent_path</span><span class="o">=</span><span class="s2">"/your_path_to_ssd"</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">,</span>
+<span class="o">&gt;</span> <span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">embedding</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">MultiTableEmbedding</span><span class="p">(</span>
+<span class="o">&gt;</span>     <span class="n">name</span><span class="o">=</span><span class="s2">"my_embedding"</span><span class="p">,</span>
+<span class="o">&gt;</span>     <span class="n">embedding_dim</span><span class="o">=</span><span class="n">embedding_size</span><span class="p">,</span>
+<span class="o">&gt;</span>     <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float</span><span class="p">,</span>
+<span class="o">&gt;</span>     <span class="n">key_type</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span>
+<span class="o">&gt;</span>     <span class="n">tables</span><span class="o">=</span><span class="n">tables</span><span class="p">,</span>
+<span class="o">&gt;</span>     <span class="n">store_options</span><span class="o">=</span><span class="n">store_options</span><span class="p">,</span>
+<span class="o">&gt;</span> <span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">embedding</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">mlp</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">FusedMLP</span><span class="p">(</span>
+<span class="o">&gt;</span>     <span class="n">in_features</span><span class="o">=</span><span class="n">embedding_size</span> <span class="o">*</span> <span class="n">num_tables</span><span class="p">,</span>
+<span class="o">&gt;</span>     <span class="n">hidden_features</span><span class="o">=</span><span class="p">[</span><span class="mi">512</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">128</span><span class="p">],</span>
+<span class="o">&gt;</span>     <span class="n">out_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="o">&gt;</span>     <span class="n">skip_final_activation</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="o">&gt;</span> <span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">mlp</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">)</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span> <span class="k">class</span> <span class="nc">TrainGraph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
+<span class="o">&gt;</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
+<span class="o">&gt;</span>         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<span class="o">&gt;</span>         <span class="bp">self</span><span class="o">.</span><span class="n">embedding_lookup</span> <span class="o">=</span> <span class="n">embedding</span>
+<span class="o">&gt;</span>         <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span> <span class="o">=</span> <span class="n">mlp</span>
+<span class="o">&gt;</span>         <span class="bp">self</span><span class="o">.</span><span class="n">add_optimizer</span><span class="p">(</span>
+<span class="o">&gt;</span>             <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">embedding_lookup</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="o">&gt;</span>         <span class="p">)</span>
+<span class="o">&gt;</span>         <span class="bp">self</span><span class="o">.</span><span class="n">add_optimizer</span><span class="p">(</span>
+<span class="o">&gt;</span>             <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mlp</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="o">&gt;</span>         <span class="p">)</span>
+<span class="o">&gt;</span>     <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ids</span><span class="p">):</span>
+<span class="o">&gt;</span>         <span class="n">embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_lookup</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span>
+<span class="o">&gt;</span>         <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">embedding</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_tables</span> <span class="o">*</span> <span class="n">embedding_size</span><span class="p">)))</span>
+<span class="o">&gt;</span>         <span class="n">loss</span> <span class="o">=</span> <span class="n">loss</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="o">&gt;</span>         <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<span class="o">&gt;</span>         <span class="k">return</span> <span class="n">loss</span>
+<span class="o">&gt;</span> <span class="n">ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">num_tables</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">ids_tensor</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">graph</span> <span class="o">=</span> <span class="n">TrainGraph</span><span class="p">()</span>
+<span class="o">&gt;</span> <span class="n">loss</span> <span class="o">=</span> <span class="n">graph</span><span class="p">(</span><span class="n">ids_tensor</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="py method">
 <dt id="oneflow.one_embedding.MultiTableEmbedding.load_snapshot">
 <code class="sig-name descname"><span class="pre">load_snapshot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">snapshot_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.one_embedding.MultiTableEmbedding.load_snapshot" title="Permalink to this definition">¶</a></dt>
-<dd><p>load snapshot</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>snapshot_name</strong> (<em>str</em>) – the snapshot_name, snapshot will be load from your_configed_persistent_path</p>
+<dd><p>加载快照。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>snapshot_name</strong> (str) - 快照的名称。快照将从路径 your_configed_persistent_path 下加载。</p></li>
+</ul>
 </dd>
 </dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># use embedding create by flow.one_embedding.MultiTableEmbedding</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">embedding</span><span class="o">.</span><span class="n">load_snapshot</span><span class="p">(</span><span class="s2">"my_snapshot1"</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># load a snapshot named "my_snapshot1" from your_configed_persistent_path</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="o">&gt;</span> <span class="c1"># 使用由 flow.one_embedding.MultiTableEmbedding 创建的 embedding</span>
+<span class="o">&gt;</span> <span class="n">embedding</span><span class="o">.</span><span class="n">load_snapshot</span><span class="p">(</span><span class="s2">"my_snapshot1"</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="c1"># 在 your_configed_persistent_path 目录下，加载名为 "my_snapshot1" 的快照。</span>
 </pre></div>
 </div>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.one_embedding.MultiTableEmbedding.save_snapshot">
 <code class="sig-name descname"><span class="pre">save_snapshot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">snapshot_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.one_embedding.MultiTableEmbedding.save_snapshot" title="Permalink to this definition">¶</a></dt>
-<dd><p>save snapshot</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>snapshot_name</strong> (<em>str</em>) – the snapshot_name, snapshot will be saved in the snapshots dir under your_configed_persistent_path</p>
+<dd><p>保存快照。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>snapshot_name</strong> (str) - 快照的名称。快照将被保存在路径 your_configed_persistent_path 下的 snapshots 目录中。</p></li>
+</ul>
 </dd>
 </dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># use embedding create by flow.one_embedding.MultiTableEmbedding</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">embedding</span><span class="o">.</span><span class="n">save_snapshot</span><span class="p">(</span><span class="s2">"my_snapshot1"</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># a snapshot named "my_snapshot1" have been saved in the "snapshots" dir under your_configed_persistent_path</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># which can be reload by flow.one_embedding.load_snapshot</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="o">&gt;</span> <span class="c1"># 使用由 flow.one_embedding.MultiTableEmbedding 创建的 embedding</span>
+<span class="o">&gt;</span> <span class="n">embedding</span><span class="o">.</span><span class="n">save_snapshot</span><span class="p">(</span><span class="s2">"my_snapshot1"</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="c1"># 一个名为 "my_snapshot1" 的快照已经被保存在 "snapshots "目录下，可以在</span>
+<span class="o">&gt;</span> <span class="c1"># your_configed_persistent_path 目录下，通过 flow.one_embedding.load_snapshot重新加载。</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -265,135 +266,133 @@
 <dl class="py function">
 <dt id="oneflow.one_embedding.MultiTableEmbedding.forward">
 <code class="sig-prename descclassname"><span class="pre">oneflow.one_embedding.MultiTableEmbedding.</span></code><code class="sig-name descname"><span class="pre">forward</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.one_embedding.MultiTableEmbedding.forward" title="Permalink to this definition">¶</a></dt>
-<dd><p>Embedding lookup operation</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ids</strong> (<em>flow.tensor</em>) – the feature ids</p></li>
-<li><p><strong>table_ids</strong> (<em>flow.tensor</em><em>, </em><em>optional</em>) – the table_id of each id, must be same shape as ids. There is no need to pass table_ids, if has config only one table or the ids has shape (batch_size, num_tables), and each column’s id belongs to the column_id th table, otherwise, you should pass the tensor_ids.</p></li>
+<dd><p>Embedding lookup 操作。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>ids</strong> (flow.tensor) - 特征 id。</p></li>
+<li><p><strong>table_ids</strong> (flow.tensor, optional) - 每个 id 的 table_id 必须与 ids 的形状相同。如果只配置了一个表或者 id 的形状为（batch_size, num_tables），并且每个列的 id 都属于表的 column_id，就无需传递 table_ids，否则，应该传递 tensor_ids。</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the result of embedding lookup</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>flow.tensor</p>
+<dt>返回：</dt><dd><ul class="simple">
+<li><p><strong>flow.tensor</strong> - embedding 查询的结果。</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py class">
 <dt id="oneflow.one_embedding.MultiTableMultiColumnEmbedding">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.one_embedding.</span></code><code class="sig-name descname"><span class="pre">MultiTableMultiColumnEmbedding</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">store_options</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_initializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.one_embedding.MultiTableMultiColumnEmbedding" title="Permalink to this definition">¶</a></dt>
-<dd><p>MultiTableMultiColumnEmbedding represent multi Embedding tables with multi embedding_dim, same dtype, and key_type.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<em>str</em>) – The name of Embedding</p></li>
-<li><p><strong>embedding_dim</strong> (<em>list</em>) – list of the size of each embedding vector</p></li>
-<li><p><strong>dtype</strong> (<em>flow.dtype</em>) – the data type of embeddings</p></li>
-<li><p><strong>key_type</strong> (<em>flow.dtype</em>) – the data type of feature ids</p></li>
-<li><p><strong>tables</strong> (<em>list</em>) – list of table param which can be made by flow.one_embedding.make_table_options</p></li>
-<li><p><strong>store_options</strong> (<em>dict</em>) – store option of Embedding</p></li>
-<li><p><strong>default_initializer</strong> (<em>dict</em><em>, </em><em>optional</em>) – if tables param is None, use default_initializer to initialize table. Defaults to None.</p></li>
+<dd><p>MultiTableMultiColumnEmbedding 表示多个 embedding 表，它们具有多个 embedding_dim，且 dtype、key_type 均相同。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>name</strong> (str) - 实例化的 Embedding 层的名字。</p></li>
+<li><p><strong>embedding_dim</strong> (list) - 每一个 embedding 向量的大小构成的列表。</p></li>
+<li><p><strong>dtype</strong> (flow.dtype) - embedding 的数据类型。</p></li>
+<li><p><strong>key_type</strong> (flow.dtype) - 特征 ID 的数据类型。</p></li>
+<li><p><strong>tables</strong> (list) - 由 flow.one_embedding.make_table_options 生成的列表中的表格参数。</p></li>
+<li><p><strong>store_options</strong> (dict) - Embedding 的存储选项。</p></li>
+<li><p><strong>default_initializer</strong> (dict, optional) - 如果参数 tables 为 None，则使用 default_initializer 来初始化表。默认为 None。</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># a simple example with 3 table, every table has two column, the first column embedding_size is 10 and the second is 1.</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># every table's first column initialize with uniform(-1/sqrt(table_size), 1/sqrt(table_size)), second column initialize with normal(0, 1/sqrt(table_size))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">table_size_array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">39884407</span><span class="p">,</span> <span class="mi">39043</span><span class="p">,</span> <span class="mi">17289</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">vocab_size</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">table_size_array</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">num_tables</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table_size_array</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">embedding_size_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">scales</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">table_size_array</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tables</span> <span class="o">=</span> <span class="p">[</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_table_options</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>      <span class="p">[</span><span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_column_options</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_uniform_initializer</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="n">scale</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">scale</span><span class="p">)),</span>
-<span class="gp">&gt;&gt;&gt; </span>       <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_column_options</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_normal_initializer</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="n">scale</span><span class="p">))]</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">for</span> <span class="n">scale</span> <span class="ow">in</span> <span class="n">scales</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">store_options</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_cached_ssd_store_options</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">cache_budget_mb</span><span class="o">=</span><span class="mi">8192</span><span class="p">,</span> <span class="n">persistent_path</span><span class="o">=</span><span class="s2">"/your_path_to_ssd"</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">embedding</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">MultiTableMultiColumnEmbedding</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">name</span><span class="o">=</span><span class="s2">"my_embedding"</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">embedding_dim</span><span class="o">=</span><span class="n">embedding_size_list</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">key_type</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">tables</span><span class="o">=</span><span class="n">tables</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">store_options</span><span class="o">=</span><span class="n">store_options</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">embedding</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mlp</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">FusedMLP</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">in_features</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">embedding_size_list</span><span class="p">)</span> <span class="o">*</span> <span class="n">num_tables</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">hidden_features</span><span class="o">=</span><span class="p">[</span><span class="mi">512</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">128</span><span class="p">],</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">out_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">skip_final_activation</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mlp</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">TrainGraph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_lookup</span> <span class="o">=</span> <span class="n">embedding</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span> <span class="o">=</span> <span class="n">mlp</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_optimizer</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>            <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">embedding_lookup</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_optimizer</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>            <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mlp</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ids</span><span class="p">):</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="n">embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_lookup</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">embedding</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_tables</span> <span class="o">*</span> <span class="nb">sum</span><span class="p">(</span><span class="n">embedding_size_list</span><span class="p">))))</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="n">loss</span> <span class="o">=</span> <span class="n">loss</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="k">return</span> <span class="n">loss</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">num_tables</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ids_tensor</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span> <span class="o">=</span> <span class="n">TrainGraph</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">loss</span> <span class="o">=</span> <span class="n">graph</span><span class="p">(</span><span class="n">ids_tensor</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">oneflow.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
+<span class="o">&gt;</span> <span class="c1"># 一个使用三个表的简单例子，每个表有两列，第一列 embedding_size 是 10，第二列是 1。</span>
+<span class="o">&gt;</span> <span class="c1"># 每个表的第一列初始化为 uniform(-1/sqrt(table_size), 1/sqrt(table_size))，第二列初始化为 normal(0, 1/sqrt(table_size))</span>
+<span class="o">&gt;</span> <span class="n">table_size_array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">39884407</span><span class="p">,</span> <span class="mi">39043</span><span class="p">,</span> <span class="mi">17289</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">vocab_size</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">table_size_array</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">num_tables</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table_size_array</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">embedding_size_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">scales</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">table_size_array</span><span class="p">))</span>
+<span class="o">&gt;</span> <span class="n">tables</span> <span class="o">=</span> <span class="p">[</span>
+<span class="o">&gt;</span>     <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_table_options</span><span class="p">(</span>
+<span class="o">&gt;</span>       <span class="p">[</span><span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_column_options</span><span class="p">(</span>
+<span class="o">&gt;</span>         <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_uniform_initializer</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="n">scale</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">scale</span><span class="p">)),</span>
+<span class="o">&gt;</span>        <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_column_options</span><span class="p">(</span>
+<span class="o">&gt;</span>         <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_normal_initializer</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="n">scale</span><span class="p">))]</span>
+<span class="o">&gt;</span>     <span class="p">)</span>
+<span class="o">&gt;</span>     <span class="k">for</span> <span class="n">scale</span> <span class="ow">in</span> <span class="n">scales</span>
+<span class="o">&gt;</span> <span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">store_options</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_cached_ssd_store_options</span><span class="p">(</span>
+<span class="o">&gt;</span>     <span class="n">cache_budget_mb</span><span class="o">=</span><span class="mi">8192</span><span class="p">,</span> <span class="n">persistent_path</span><span class="o">=</span><span class="s2">"/your_path_to_ssd"</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">,</span>
+<span class="o">&gt;</span> <span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">embedding</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">MultiTableMultiColumnEmbedding</span><span class="p">(</span>
+<span class="o">&gt;</span>     <span class="n">name</span><span class="o">=</span><span class="s2">"my_embedding"</span><span class="p">,</span>
+<span class="o">&gt;</span>     <span class="n">embedding_dim</span><span class="o">=</span><span class="n">embedding_size_list</span><span class="p">,</span>
+<span class="o">&gt;</span>     <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float</span><span class="p">,</span>
+<span class="o">&gt;</span>     <span class="n">key_type</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span>
+<span class="o">&gt;</span>     <span class="n">tables</span><span class="o">=</span><span class="n">tables</span><span class="p">,</span>
+<span class="o">&gt;</span>     <span class="n">store_options</span><span class="o">=</span><span class="n">store_options</span><span class="p">,</span>
+<span class="o">&gt;</span> <span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">embedding</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">mlp</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">FusedMLP</span><span class="p">(</span>
+<span class="o">&gt;</span>     <span class="n">in_features</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">embedding_size_list</span><span class="p">)</span> <span class="o">*</span> <span class="n">num_tables</span><span class="p">,</span>
+<span class="o">&gt;</span>     <span class="n">hidden_features</span><span class="o">=</span><span class="p">[</span><span class="mi">512</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">128</span><span class="p">],</span>
+<span class="o">&gt;</span>     <span class="n">out_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="o">&gt;</span>     <span class="n">skip_final_activation</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="o">&gt;</span> <span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">mlp</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">)</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span> <span class="k">class</span> <span class="nc">TrainGraph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
+<span class="o">&gt;</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
+<span class="o">&gt;</span>         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<span class="o">&gt;</span>         <span class="bp">self</span><span class="o">.</span><span class="n">embedding_lookup</span> <span class="o">=</span> <span class="n">embedding</span>
+<span class="o">&gt;</span>         <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span> <span class="o">=</span> <span class="n">mlp</span>
+<span class="o">&gt;</span>         <span class="bp">self</span><span class="o">.</span><span class="n">add_optimizer</span><span class="p">(</span>
+<span class="o">&gt;</span>             <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">embedding_lookup</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="o">&gt;</span>         <span class="p">)</span>
+<span class="o">&gt;</span>         <span class="bp">self</span><span class="o">.</span><span class="n">add_optimizer</span><span class="p">(</span>
+<span class="o">&gt;</span>             <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mlp</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="o">&gt;</span>         <span class="p">)</span>
+<span class="o">&gt;</span>     <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ids</span><span class="p">):</span>
+<span class="o">&gt;</span>         <span class="n">embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_lookup</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span>
+<span class="o">&gt;</span>         <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">embedding</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_tables</span> <span class="o">*</span> <span class="nb">sum</span><span class="p">(</span><span class="n">embedding_size_list</span><span class="p">))))</span>
+<span class="o">&gt;</span>         <span class="n">loss</span> <span class="o">=</span> <span class="n">loss</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="o">&gt;</span>         <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<span class="o">&gt;</span>         <span class="k">return</span> <span class="n">loss</span>
+<span class="o">&gt;</span> <span class="n">ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">num_tables</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">ids_tensor</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">graph</span> <span class="o">=</span> <span class="n">TrainGraph</span><span class="p">()</span>
+<span class="o">&gt;</span> <span class="n">loss</span> <span class="o">=</span> <span class="n">graph</span><span class="p">(</span><span class="n">ids_tensor</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="py method">
 <dt id="oneflow.one_embedding.MultiTableMultiColumnEmbedding.load_snapshot">
 <code class="sig-name descname"><span class="pre">load_snapshot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">snapshot_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.one_embedding.MultiTableMultiColumnEmbedding.load_snapshot" title="Permalink to this definition">¶</a></dt>
-<dd><p>load snapshot</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>snapshot_name</strong> (<em>str</em>) – the snapshot_name, snapshot will be load from your_configed_persistent_path</p>
+<dd><p>加载快照。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>snapshot_name</strong> (str) - 快照的名称。快照将从路径 your_configed_persistent_path 下加载。</p></li>
+</ul>
 </dd>
 </dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># use embedding create by flow.one_embedding.MultiTableEmbedding</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">embedding</span><span class="o">.</span><span class="n">load_snapshot</span><span class="p">(</span><span class="s2">"my_snapshot1"</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># load a snapshot named "my_snapshot1" from your_configed_persistent_path</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="o">&gt;</span> <span class="c1"># 使用由 flow.one_embedding.MultiTableEmbedding 创建的 embedding</span>
+<span class="o">&gt;</span> <span class="n">embedding</span><span class="o">.</span><span class="n">load_snapshot</span><span class="p">(</span><span class="s2">"my_snapshot1"</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="c1"># 在 your_configed_persistent_path 目录下，加载名为 "my_snapshot1" 的快照。</span>
 </pre></div>
 </div>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.one_embedding.MultiTableMultiColumnEmbedding.save_snapshot">
 <code class="sig-name descname"><span class="pre">save_snapshot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">snapshot_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.one_embedding.MultiTableMultiColumnEmbedding.save_snapshot" title="Permalink to this definition">¶</a></dt>
-<dd><p>save snapshot</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>snapshot_name</strong> (<em>str</em>) – the snapshot_name, snapshot will be saved in the snapshots dir under your_configed_persistent_path</p>
+<dd><p>保存快照。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>snapshot_name</strong> (str) - 快照的名称。快照将被保存在路径 your_configed_persistent_path 下的 snapshots 目录中。</p></li>
+</ul>
 </dd>
 </dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># use embedding create by flow.one_embedding.MultiTableEmbedding</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">embedding</span><span class="o">.</span><span class="n">save_snapshot</span><span class="p">(</span><span class="s2">"my_snapshot1"</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># a snapshot named "my_snapshot1" have been saved in the "snapshots" dir under your_configed_persistent_path</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># which can be reload by flow.one_embedding.load_snapshot</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="o">&gt;</span> <span class="c1"># 使用由 flow.one_embedding.MultiTableEmbedding 创建的 embedding</span>
+<span class="o">&gt;</span> <span class="n">embedding</span><span class="o">.</span><span class="n">save_snapshot</span><span class="p">(</span><span class="s2">"my_snapshot1"</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="c1"># 一个名为 "my_snapshot1" 的快照已经被保存在 "snapshots "目录下，可以在</span>
+<span class="o">&gt;</span> <span class="c1"># your_configed_persistent_path 目录下，通过 flow.one_embedding.load_snapshot重新加载。</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -401,182 +400,150 @@
 <dl class="py function">
 <dt id="oneflow.one_embedding.MultiTableMultiColumnEmbedding.forward">
 <code class="sig-prename descclassname"><span class="pre">oneflow.one_embedding.MultiTableMultiColumnEmbedding.</span></code><code class="sig-name descname"><span class="pre">forward</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.one_embedding.MultiTableMultiColumnEmbedding.forward" title="Permalink to this definition">¶</a></dt>
-<dd><p>Embedding lookup operation</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ids</strong> (<em>flow.tensor</em>) – the feature ids</p></li>
-<li><p><strong>table_ids</strong> (<em>flow.tensor</em><em>, </em><em>optional</em>) – the table_id of each id, must be same shape as ids. There is no need to pass table_ids, if has config only one table or the ids has shape (batch_size, num_tables), and each column’s id belongs to the column_id th table, otherwise, you should pass the tensor_ids.</p></li>
+<dd><p>Embedding lookup 操作。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>ids</strong> (flow.tensor) - 特征 id。</p></li>
+<li><p><strong>table_ids</strong> (flow.tensor, optional) - 每个 id 的 table_id 必须与 ids 的形状相同。如果只配置了一个表或者 id 的形状为（batch_size, num_tables），并且每个列的 id 都属于表的 column_id，就无需传递 table_ids，否则，应该传递 tensor_ids。</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the result of embedding lookup</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>flow.tensor</p>
+<dt>返回：</dt><dd><ul class="simple">
+<li><p><strong>flow.tensor</strong> - embedding 查询的结果。</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.one_embedding.make_device_mem_store_options">
 <code class="sig-prename descclassname"><span class="pre">oneflow.one_embedding.</span></code><code class="sig-name descname"><span class="pre">make_device_mem_store_options</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">persistent_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">physical_block_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">512</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.one_embedding.make_device_mem_store_options" title="Permalink to this definition">¶</a></dt>
-<dd><p>make GPU only store_options param of MultiTableEmbedding</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>persistent_path</strong> (<em>str</em><em>, </em><em>list</em>) – persistent storage path of Embedding. If passed a str, current rank Embedding will be saved in path/rank_id-num_ranks path. If passed a list, the list length must equals num_ranks, each elem of list represent the path of rank_id Embedding.</p></li>
-<li><p><strong>capacity</strong> (<em>int</em>) – total capacity of Embedding</p></li>
-<li><p><strong>size_factor</strong> (<em>int</em><em>, </em><em>optional</em>) – store size factor of embedding_dim, if SGD update, and momentum = 0, should be 1, if momentum &gt; 0, it should be 2. if Adam, should be 3. Defaults to 1.</p></li>
-<li><p><strong>physical_block_size</strong> (<em>int</em><em>, </em><em>optional</em>) – physical_block_size should be sector size. Defaults to 512.</p></li>
+<dd><p>将 MultiTableEmbedding 的参数 store_options 配置为（词表使用）纯 GPU 存储。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>persistent_path</strong> (str, list) - Embedding 词表的持久化存储路径。如果传入一个 str，当前 rank 中的 Embedding 词表将被存储在路径 path/rank_id-num_ranks 下；如果传入一个 list，则列表长度必须等于 rank 的数量，列表中的每个元素代表着对应 rank_id 中的 Embedding 词表的存储路径。</p></li>
+<li><p><strong>capacity</strong> (int) - Embedding 词表的总容量。</p></li>
+<li><p><strong>size_factor</strong> (int, optional) - embedding_dim 的存储大小因子。如果使用 SGD 优化器且 momentum = 0，其值应为 1；如果 momentum &gt; 0，其值应为 2；如果使用 Adam 优化器，其值应为 3。默认值为 1。</p></li>
+<li><p><strong>physical_block_size</strong> (int, optional) - 是扇区大小。默认为 512。</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>GPU only store_options param of MultiTableEmbedding</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>dict</p>
+<dt>返回值类型：</dt><dd><p>dict</p>
 </dd>
 </dl>
-<p>See also <a class="reference internal" href="#oneflow.one_embedding.make_cached_ssd_store_options" title="oneflow.one_embedding.make_cached_ssd_store_options"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.one_embedding.make_cached_ssd_store_options()</span></code></a></p>
+<p>查看 <a class="reference internal" href="#oneflow.one_embedding.make_cached_ssd_store_options" title="oneflow.one_embedding.make_cached_ssd_store_options"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.one_embedding.make_cached_ssd_store_options()</span></code></a> 来获得其他信息。</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.one_embedding.make_cached_ssd_store_options">
 <code class="sig-prename descclassname"><span class="pre">oneflow.one_embedding.</span></code><code class="sig-name descname"><span class="pre">make_cached_ssd_store_options</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cache_budget_mb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">physical_block_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">512</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host_cache_budget_mb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.one_embedding.make_cached_ssd_store_options" title="Permalink to this definition">¶</a></dt>
-<dd><p>make SSD use GPU and host as cache store_options param of MultiTableEmbedding. If cache_budget_mb &gt; 0 and host_cache_budget_mb &gt; 0, use GPU and host memory as multi-level cache.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>cache_budget_mb</strong> (<em>int</em>) – the MB budget of per GPU as cache.</p></li>
-<li><p><strong>persistent_path</strong> (<em>str</em><em>, </em><em>list</em>) – persistent storage path of Embedding, must use fast SSD because of frequently random disk access during training. If passed a str, current rank Embedding will be saved in path/rank_id-num_ranks path. If passed a list, the list length must equals num_ranks, each elem of list represent the path of rank_id Embedding.</p></li>
-<li><p><strong>capacity</strong> (<em>int</em>) – total capacity of Embedding</p></li>
-<li><p><strong>size_factor</strong> (<em>int</em><em>, </em><em>optional</em>) – store size factor of embedding_dim, if SGD update, and momentum = 0, should be 1, if momentum &gt; 0, it should be 2. if Adam, should be 3. Defaults to 1.</p></li>
-<li><p><strong>physical_block_size</strong> (<em>int</em><em>, </em><em>optional</em>) – physical_block_size should be sector size. Defaults to 512.</p></li>
-<li><p><strong>host_cache_budget_mb</strong> (<em>int</em>) – the MB budget of host memory as cache per rank. Defaults to 0.</p></li>
+<dd><p>将 MultiTableEmbedding 的参数 store_options 配置为（词表使用）SSD 存储，且使用 GPU 作为高速缓存。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>cache_budget_mb</strong> (int) - 单个 GPU 显存作为缓存的预算，单位为 MB。</p></li>
+<li><p><strong>persistent_path</strong> (str, list) - Embedding 词表的持久化存储路径。必须使用高速 SSD 由于训练期间频繁的随机磁盘访问。如果传入一个 str，当前 rank 中的 Embedding 词表将被存储在路径 path/rank_id-num_ranks 下；如果传入一个 list，则列表长度必须等于 rank 的数量，列表中的每个元素代表着对应 rank_id 中的 Embedding 词表的存储路径。</p></li>
+<li><p><strong>capacity</strong> (int) - Embedding 词表的总容量</p></li>
+<li><p><strong>size_factor</strong> (int, optional) - embedding_dim 的存储大小因子。如果使用 SGD 优化器且 momentum = 0，其值应为 1；如果 momentum &gt; 0，其值应为 2；如果使用 Adam 优化器，其值应为 3。默认值为 1。</p></li>
+<li><p><strong>physical_block_size</strong> (int, optional) - 是扇区大小。默认为 512。</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>SSD use GPU and host as cache store_options param of MultiTableEmbedding</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>dict</p>
+<dt>返回值类型：</dt><dd><p>dict</p>
 </dd>
 </dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">store_options</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_cached_ssd_store_options</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">cache_budget_mb</span><span class="o">=</span><span class="mi">8192</span><span class="p">,</span> <span class="n">persistent_path</span><span class="o">=</span><span class="s2">"/your_path_to_ssd"</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># pass the store_options to the "store_options" param of flow.one_embedding.MultiTableEmbedding</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># ...</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="o">&gt;</span> <span class="n">store_options</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_cached_ssd_store_options</span><span class="p">(</span>
+<span class="o">&gt;</span>     <span class="n">cache_budget_mb</span><span class="o">=</span><span class="mi">8192</span><span class="p">,</span> <span class="n">persistent_path</span><span class="o">=</span><span class="s2">"/your_path_to_ssd"</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">,</span>
+<span class="o">&gt;</span> <span class="p">)</span>
+<span class="o">&gt;</span> <span class="c1"># 将 store_options 传递给 flow.one_embedding.MultiTableEmbedding 中的 "store_options" 参数。</span>
+<span class="o">&gt;</span> <span class="c1"># ...</span>
 </pre></div>
 </div>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.one_embedding.make_cached_host_mem_store_options">
 <code class="sig-prename descclassname"><span class="pre">oneflow.one_embedding.</span></code><code class="sig-name descname"><span class="pre">make_cached_host_mem_store_options</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cache_budget_mb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">physical_block_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">512</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.one_embedding.make_cached_host_mem_store_options" title="Permalink to this definition">¶</a></dt>
-<dd><p>make host use GPU as cache store_options param of MultiTableEmbedding</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>cache_budget_mb</strong> (<em>int</em>) – the MB budget of per GPU as cache.</p></li>
-<li><p><strong>persistent_path</strong> (<em>str</em><em>, </em><em>list</em>) – persistent storage path of Embedding. If passed a str, current rank Embedding will be saved in path/rank_id-num_ranks path. If passed a list, the list length must equals num_ranks, each elem of list represent the path of rank_id Embedding.</p></li>
-<li><p><strong>capacity</strong> (<em>int</em>) – total capacity of Embedding</p></li>
-<li><p><strong>size_factor</strong> (<em>int</em><em>, </em><em>optional</em>) – store size factor of embedding_dim, if SGD update, and momentum = 0, should be 1, if momentum &gt; 0, it should be 2. if Adam, should be 3. Defaults to 1.</p></li>
-<li><p><strong>physical_block_size</strong> (<em>int</em><em>, </em><em>optional</em>) – physical_block_size should be sector size. Defaults to 512.</p></li>
+<dd><p>将 MultiTableEmbedding 的参数 store_options 配置为（词表使用）CPU 内存存储，且使用 GPU 作为高速缓存。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>cache_budget_mb</strong> (int) - 单个 GPU 显存作为缓存的预算，单位为 MB。</p></li>
+<li><p><strong>persistent_path</strong> (str, list) - Embedding 词表的持久化存储路径。如果传入一个 str，当前 rank 中的 Embedding 词表将被存储在路径 path/rank_id-num_ranks 下；如果传入一个 list，则列表长度必须等于 rank 的数量，列表中的每个元素代表着对应 rank_id 中的 Embedding 词表的存储路径。</p></li>
+<li><p><strong>capacity</strong> (int) - Embedding 词表的总容量。</p></li>
+<li><p><strong>size_factor</strong> (int, optional) - embedding_dim 的存储大小因子。如果使用 SGD 优化器且 momentum = 0，其值应为 1；如果 momentum &gt; 0，其值应为 2；如果使用 Adam 优化器，其值应为 3。默认值为 1。</p></li>
+<li><p><strong>physical_block_size</strong> (int, optional) - 是扇区大小。默认为 512。</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>host use GPU as cache store_options param of MultiTableEmbedding</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>dict</p>
+<dt>返回值类型：</dt><dd><p>dict</p>
 </dd>
 </dl>
-<p>See also <a class="reference internal" href="#oneflow.one_embedding.make_cached_ssd_store_options" title="oneflow.one_embedding.make_cached_ssd_store_options"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.one_embedding.make_cached_ssd_store_options()</span></code></a></p>
+<p>查看 <a class="reference internal" href="#oneflow.one_embedding.make_cached_ssd_store_options" title="oneflow.one_embedding.make_cached_ssd_store_options"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.one_embedding.make_cached_ssd_store_options()</span></code></a> 来获得其他信息。</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.one_embedding.make_uniform_initializer">
 <code class="sig-prename descclassname"><span class="pre">oneflow.one_embedding.</span></code><code class="sig-name descname"><span class="pre">make_uniform_initializer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">low</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.one_embedding.make_uniform_initializer" title="Permalink to this definition">¶</a></dt>
-<dd><p>make uniform initializer param of make_table_options</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>low</strong> (<em>float</em>) – A python scalar. Lower bound of the range of random values to generate.</p></li>
-<li><p><strong>high</strong> (<em>float</em>) – A python scalar. Upper bound of the range of random values to generate.</p></li>
+<dd><p>生成函数 make_table_options 所需的均匀分布初始化器参数。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>low</strong> (float) - 要生成的随机数范围的下限，应为标量。</p></li>
+<li><p><strong>high</strong> (float) - 要生成的随机数范围的上限，应为标量。</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>initializer param of make_table_options</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>dict</p>
+<dt>返回值类型：</dt><dd><p>dict</p>
 </dd>
 </dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">initializer</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_uniform_initializer</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="n">scale</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># pass the initializer to flow.one_embedding.make_table_options</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># ...</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="o">&gt;</span> <span class="n">initializer</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_uniform_initializer</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="n">scale</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="c1"># 将初始化器传给 flow.one_embedding.make_table_options</span>
+<span class="o">&gt;</span> <span class="c1"># ...</span>
 </pre></div>
 </div>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.one_embedding.make_normal_initializer">
 <code class="sig-prename descclassname"><span class="pre">oneflow.one_embedding.</span></code><code class="sig-name descname"><span class="pre">make_normal_initializer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.one_embedding.make_normal_initializer" title="Permalink to this definition">¶</a></dt>
-<dd><p>make normal initializer param of make_table_options</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>mean</strong> (<em>float</em>) – A python scalar. Mean of the random values to generate.</p></li>
-<li><p><strong>std</strong> (<em>float</em>) – A python scalar. Standard deviation of the random values to generate.</p></li>
+<dd><p>生成函数 make_table_options 所需的正态分布初始化器参数。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>mean</strong> (float) - 要生成的随机数的平均值，应为标量。</p></li>
+<li><p><strong>std</strong> (float) - 要生成的随机数的标准差，应为标量。</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>initializer param of make_table_options</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>dict</p>
+<dt>返回值类型：</dt><dd><p>dict</p>
 </dd>
 </dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">initializer</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_normal_initializer</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># pass the initializer to flow.one_embedding.make_table_options</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># ...</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="o">&gt;</span> <span class="n">initializer</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_normal_initializer</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="c1"># 将初始化器传递给 flow.one_embedding.make_table_options</span>
+<span class="o">&gt;</span> <span class="c1"># ...</span>
 </pre></div>
 </div>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.one_embedding.make_table_options">
 <code class="sig-prename descclassname"><span class="pre">oneflow.one_embedding.</span></code><code class="sig-name descname"><span class="pre">make_table_options</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.one_embedding.make_table_options" title="Permalink to this definition">¶</a></dt>
-<dd><p>make table param of Embedding tables</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>param</strong> (<em>dict</em><em> or </em><em>list</em>) – param can be initializer or list of column_option. initializer can be made by make_uniform_initializer or make_normal_initializer, column options can be made by make_column_options</p>
+<dd><p>生成 MultiTableEmbedding 的参数 tables 中的元素 table。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>initializer</strong> (dict) - 初始化器，由 make_uniform_initializer 或 make_normal_initializer 生成。</p></li>
+</ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>table param of Embedding tables</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>dict</p>
+<dt>返回值类型：</dt><dd><p>dict</p>
 </dd>
 </dl>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">initializer</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_uniform_initializer</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="n">scale</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">table1</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_table_options</span><span class="p">(</span><span class="n">initializer</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">table2</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_table_options</span><span class="p">(</span><span class="n">initializer</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tables</span> <span class="o">=</span> <span class="p">[</span><span class="n">table1</span><span class="p">,</span> <span class="n">table2</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># pass the tables to the "tables" param of flow.one_embedding.MultiTableEmbedding or flow.one_embedding.MultiTableMultiColumnEmbedding</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># ...</span>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
+<span class="o">&gt;</span> <span class="n">initializer</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_uniform_initializer</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="n">scale</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">table1</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_table_options</span><span class="p">(</span><span class="n">initializer</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">table2</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">make_table_options</span><span class="p">(</span><span class="n">initializer</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">tables</span> <span class="o">=</span> <span class="p">[</span><span class="n">table1</span><span class="p">,</span> <span class="n">table2</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="c1"># 将表传递给 flow.one_embedding.MultiTableEmbedding 的 ``tables`` 参数。</span>
+<span class="o">&gt;</span> <span class="c1"># ...</span>
 </pre></div>
 </div>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.one_embedding.make_table">
 <code class="sig-prename descclassname"><span class="pre">oneflow.one_embedding.</span></code><code class="sig-name descname"><span class="pre">make_table</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.one_embedding.make_table" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <cite>oneflow.one_embedding.make_table_options</cite></p>
-<p>See also <a class="reference internal" href="#oneflow.one_embedding.make_table_options" title="oneflow.one_embedding.make_table_options"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.one_embedding.make_table_options()</span></code></a></p>
+<dd><p><cite>oneflow.one_embedding.make_table_options</cite> 的别名函数。</p>
+<p>查看 <a class="reference internal" href="#oneflow.one_embedding.make_table_options" title="oneflow.one_embedding.make_table_options"><code class="xref py py-func docutils literal notranslate"><span class="pre">oneflow.one_embedding.make_table_options()</span></code></a> 来获得更多细节。</p>
 </dd></dl>
 <span class="target" id="module-oneflow.one_embedding"></span><p>Copyright 2020 The OneFlow Authors. All rights reserved.</p>
 <p>Licensed under the Apache License, Version 2.0 (the “License”);
@@ -593,50 +560,47 @@ limitations under the License.</p>
 <dl class="py class">
 <dt id="oneflow.one_embedding.Ftrl">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.one_embedding.</span></code><code class="sig-name descname"><span class="pre">Ftrl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="nn.html#oneflow.nn.Parameter" title="oneflow.nn.Parameter"><span class="pre">oneflow.nn.Parameter</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_decay</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr_power</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">-</span> <span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_accumulator_value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.one_embedding.Ftrl" title="Permalink to this definition">¶</a></dt>
-<dd><p>FTRL Optimizer.</p>
-<p>The formula is:</p>
-<blockquote>
-<div><div class="math-wrapper"><div class="math notranslate nohighlight">
+<dd><p>FTRL 优化器。</p>
+<p>公式为：</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}&amp; accumlator_{i+1} = accumlator_{i} + grad * grad\\&amp; sigma = (accumulator_{i+1}^{lr\_power} - accumulator_{i}^{lr\_power}) / learning\_rate\\&amp; z_{i+1} = z_{i} + grad - sigma * param_{i}\\\begin{split}\text{}
     param_{i+1} = \begin{cases}
 0 &amp; \text{ if } |z_{i+1}| &lt; \lambda_1 \\
 -(\frac{\beta+accumlator_{i+1}^{lr\_power}}{learning\_rate} + \lambda_2)*(z_{i+1} - sign(z_{i+1})*\lambda_1) &amp; \text{ otherwise } \\
 \end{cases}\end{split}\end{aligned}\end{align} \]</div></div>
-</div></blockquote>
-<p>Example 1:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume net is a custom model.</span>
+<p>示例1:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 假设 net 是一个自定义模型。</span>
 <span class="n">adam</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">one_embedding</span><span class="o">.</span><span class="n">FTRL</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-    <span class="c1"># Read data, Compute the loss and so on.</span>
+    <span class="c1"># 读取数据，计算损失等。</span>
     <span class="c1"># ...</span>
     <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
     <span class="n">adam</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
     <span class="n">adam</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>params</strong> (<em>Union</em><em>[</em><em>Iterator</em><em>[</em><a class="reference internal" href="nn.html#oneflow.nn.Parameter" title="oneflow.nn.Parameter"><em>Parameter</em></a><em>]</em><em>, </em><em>List</em><em>[</em><em>Dict</em><em>]</em><em>]</em>) – _description_</p></li>
-<li><p><strong>lr</strong> (<em>float</em><em>, </em><em>optional</em>) – _description_. Defaults to 0.001.</p></li>
-<li><p><strong>weight_decay</strong> (<em>float</em><em>, </em><em>optional</em>) – _description_. Defaults to 0.0.</p></li>
-<li><p><strong>lr_power</strong> (<em>float</em><em>, </em><em>optional</em>) – _description_. Defaults to -0.5.</p></li>
-<li><p><strong>initial_accumulator_value</strong> (<em>float</em><em>, </em><em>optional</em>) – _description_. Defaults to 0.1.</p></li>
-<li><p><strong>lambda1</strong> (<em>float</em><em>, </em><em>optional</em>) – _description_. Defaults to 0.0.</p></li>
-<li><p><strong>lambda2</strong> (<em>float</em><em>, </em><em>optional</em>) – _description_. Defaults to 0.0.</p></li>
-<li><p><strong>beta</strong> (<em>float</em><em>, </em><em>optional</em>) – _description_. Defaults to 0.0.</p></li>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>params</strong> (Union[Iterator[Parameter], List[Dict]]) - 待优化参数构成的 iterable 或定义了参数组的 dict。</p></li>
+<li><p><strong>lr</strong> (float, optional) - 学习率，默认值：1e-3。</p></li>
+<li><p><strong>weight_decay</strong> (float, optional) - 权重衰减（L2 penalty），默认值：0.0。</p></li>
+<li><p><strong>lr_power</strong> (float, optional) - 学习率下降系数，默认值：-0.5。</p></li>
+<li><p><strong>initial_accumulator_value</strong> (float, optional) - accumlator 的初始值，默认值：0.1。</p></li>
+<li><p><strong>lambda1</strong> (float, optional) - L1 正则化强度，默认值：0.0。</p></li>
+<li><p><strong>lambda2</strong> (float, optional) - L2 正则化强度，默认值：0.0。</p></li>
+<li><p><strong>beta</strong> (float, optional) - beta 的值，默认值：0.0。</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py method">
 <dt id="oneflow.one_embedding.Ftrl.step">
 <code class="sig-name descname"><span class="pre">step</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">closure</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.one_embedding.Ftrl.step" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs a single optimization step.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>closure</strong> (<em>callable</em><em>, </em><em>optional</em>) – A closure that reevaluates the model
-and returns the loss.</p>
+<dd><p>执行一个优化步骤。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>closure</strong> (callable, optional) - 重新测试模型并返回损失的闭包。</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
