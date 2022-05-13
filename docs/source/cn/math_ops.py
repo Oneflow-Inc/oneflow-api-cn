@@ -1630,7 +1630,7 @@ reset_docstr(
     oneflow.cumsum,
     r"""oneflow.cumsum(input, dim) -> Tensor
 
-    此运算符计算给定维度中输入元素的累积和。
+    此算子计算给定维度中输入元素的累积和。
 
     方程是：
 
