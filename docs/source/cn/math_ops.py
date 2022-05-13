@@ -1707,13 +1707,10 @@ reset_docstr(
 
     参数：
         - **input** (Tensor) - 输入张量。
-        - **indices_or_sections** (int or a list) - 如果 indices_or_sections 是一个整数 n ，那么输入将沿着 dim 维度被分成 n 个部分。如果输入沿维度 dim 可被n整除，则每个部分的大小都相同。
-                                                    如果输入不能被 n 整除，那么第一个 int(input.size(dim)%n) 的大小。
-                                                    部分的大小为 int(input.size(dim) / n)+1，其余部分的大小为 int(input.size(dim) / n)。
-                                                    如果 indices_or_sections 是一个 ints 的列表或元组，那么输入将沿着 dim 的维度在列表、元组或元组中的每个索引处进行分割。
-                                                    列表、元组或张量中的每一个索引进行分割。例如，indices_or_sections=[2, 3]，dim=0，将导致张量的出现 
-                                                    input[:2], input[2:3], and input[3:]。如果 indices_or_sections 是一个张量，它必须是一个零维或
-                                                    如果indices_or_sections是一个张量，它在 CPU 上必须是一个零维或一维的长张量。
+        - **indices_or_sections** (int or a list) - 如果 indices_or_sections 是一个整数 n ，那么会沿着 dim 维度将输入分成 n 个部分。如果沿维度 dim 输入可被n整除，则每个部分的大小都相同。
+                                                    如果输入不能被 n 整除，那么第一个 int(input.size(dim)%n) 部分的大小为 int(input.size(dim) / n)+1，其余部分的大小为 int(input.size(dim) / n)。
+                                                    如果 indices_or_sections 是一个 ints 的列表或元组，那么将输入沿着 dim 的维度在列表、元组或元组中的每个索引处进行分割。
+                                                    例如，indices_or_sections=[2, 3]，dim=0，将导致张量input[:2], input[2:3], and input[3:]的出现 。如果 indices_or_sections 是一个张量，它必须在 CPU 上必须是一个零维或一维的长张量。
 
     返回类型：
         oneflow.TensorTuple: 输出的 TensorTuple
