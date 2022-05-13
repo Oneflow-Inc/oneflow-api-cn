@@ -10,7 +10,7 @@ reset_docstr(
 
     Equation:
         :attr:`equation` 字符串指定了每个输入的 :attr:`operands` 维度的标号（字母 `[a-zA-Z]`），顺序与维度相同，每个 :attr:`operands` 的标号之间用逗号（','）隔开。
-        例如:"'ij,jk'"指定两个二维 :attr:`operands` 的标号。用同一标号标注的维度的尺寸必须是 `broadcastable`，也就是说，它们的尺寸必须匹配或为 1。例外的情况是，如果一个标号在同一个输入 :attr:`operands` 上重复出现，这个 :attr:`operands` 用这个下标标注的尺寸必须匹配，并且该 :attr:`operands` 将被其沿这个尺寸的对角线所取代。
+        例如: ``'ij,jk'`` 指定两个二维 :attr:`operands` 的标号。用同一标号标注的维度的尺寸必须是 `broadcastable`，也就是说，它们的尺寸必须匹配或为 1。例外的情况是，如果一个标号在同一个输入 :attr:`operands` 上重复出现，这个 :attr:`operands` 用这个下标标注的尺寸必须匹配，并且该 :attr:`operands` 将被其沿这个尺寸的对角线所取代。
         在 :attr:`equation` 中出现一次的标号将是输出的一部分，按字母顺序递增排序。
         输出是通过将输入的 :attr:`operands` 元素相乘来计算的，然后将子标不属于输出的尺寸相加。
         也可以通过在 :attr:`equation` 末尾添加一个箭头（'->'）来明确定义输出下标号。
