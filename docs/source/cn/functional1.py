@@ -686,7 +686,7 @@ reset_docstr(
     r"""
     此文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose3d.html
 
-    对多个输入面信号应用一个 3D 转置卷积算子，有时也被称为“反卷积”。
+    对多个输入面信号应用一个 3D 转置卷积算子，有时也被称为 ``反卷积``。
 
     关于输出形状和更多细节，见 :class:`~oneflow.nn.ConvTranspose3d` 
 
