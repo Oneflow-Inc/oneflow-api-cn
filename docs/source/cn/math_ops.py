@@ -1660,7 +1660,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.dot,
-    r"""该运算符计算张量输入和其他的点积。
+    r"""该算子计算张量输入和其他的点积。
 
     方程是：
 
