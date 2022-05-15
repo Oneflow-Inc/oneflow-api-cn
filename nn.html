@@ -2648,7 +2648,7 @@ l_n = \left( x_n - y_n \right)^2,\]</div></div>
 <li><p><strong>stride</strong> - 滑动窗口的步长，必须为正。默认值为 <code class="xref py py-attr docutils literal notranslate"><span class="pre">kernel_size</span></code>。</p></li>
 <li><p><strong>padding</strong> - 填充在输入张量两侧的隐式负无穷，该值必须非负且不大于 kernel_size / 2。</p></li>
 <li><p><strong>dilation</strong> - 滑动窗口中元素之间的步幅，必须为正。</p></li>
-<li><p><strong>return_indices</strong> - 若设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 则返回 argmax 以及最大值，在后续的 <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.MaxUnpool1d</span></code> 中使用。</p></li>
+<li><p><strong>return_indices</strong> - 若设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 则返回 argmax 以及最大值。</p></li>
 <li><p><strong>ceil_mode</strong> - 若设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 则使用 <cite>ceil</cite> 而非 <cite>floor</cite> 来计算输出形状，这确保了输入张量中的每个元素都被滑动窗口覆盖。</p></li>
 </ul>
 </dd>
