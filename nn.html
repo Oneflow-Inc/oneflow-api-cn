@@ -1508,12 +1508,14 @@ InsightFace 中 margin_softmax 的实现是由多个算子组成的。
 <dt id="oneflow.nn.FakeQuantization">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">FakeQuantization</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quantization_formula</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'google'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantization_bit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantization_scheme</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'symmetric'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.FakeQuantization" title="Permalink to this definition">¶</a></dt>
 <dd><p>在训练时间内模拟量化 (quantize) 和反量化 (dequantize) 操作。输出将被计算为：</p>
+<p>若 quantization_scheme == “symmetric”:</p>
 <blockquote>
-<div><p>若 quantization_scheme == “symmetric”:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div><div class="math-wrapper"><div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}&amp; quant\_max = 2^{quantization\_to\_bit - 1} - 1\\&amp; quant\_min = -quant\_max\\&amp; clamp(round(x / scale), quant\_min, quant\_max) * scale\end{aligned}\end{align} \]</div></div>
+</div></blockquote>
 <p>若 quantization_scheme == “affine”:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<blockquote>
+<div><div class="math-wrapper"><div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}&amp; quant\_max = 2^{quantization\_to\_bit} - 1\\&amp; quant\_min = 0\\&amp; (clamp(round(x / scale + zero\_point), quant\_min, quant\_max) - zero\_point) * scale\end{aligned}\end{align} \]</div></div>
 </div></blockquote>
 <dl class="simple">
@@ -2341,11 +2343,10 @@ l_n = y_n \cdot \left( \log y_n - x_n \right)\]</div></div>
 <p>该层在训练和评估模式下都使用从输入数据计算的统计信息。</p>
 <dl>
 <dt>参数：</dt><dd><ul>
-<li><p><strong>normalized_shape</strong> (int 或 list 或 oneflow.Size): 来自预期大小输入的输入形状</p>
+<li><p><strong>normalized_shape</strong> (int 或 list 或 oneflow.Size): 来自预期大小输入的输入形状，如果使用单个整数，则将其视为单例列表，并且此模块将对最后一个维度进行标准化，该维度预计具有该特定大小。</p>
 <blockquote>
 <div><div class="math-wrapper"><div class="math notranslate nohighlight">
 \[[* \times \text{normalized_shape}[0] \times \text{normalized_shape}[1] \times \ldots \times \text{normalized_shape}[-1]]\]</div></div>
-<p>如果使用单个整数，则将其视为单例列表，并且此模块将对最后一个维度进行标准化，该维度预计具有该特定大小。</p>
 </div></blockquote>
 </li>
 <li><p><strong>eps</strong> (float, 可选的): 为数值稳定性而添加到分母的值。默认：1e-5</p></li>
@@ -2886,22 +2887,26 @@ l_n = \left( x_n - y_n \right)^2,\]</div></div>
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">MovingAverageMinMaxObserver</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">training</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantization_formula</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'google'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop_update_after_iters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantization_bit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantization_scheme</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'symmetric'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentum</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.MovingAverageMinMaxObserver" title="Permalink to this definition">¶</a></dt>
 <dd><p>根据输入张量的最小值和最大值的移动平均计算量化参数。</p>
 <p>首先计算输入张量的 moving_max 和 moving_min：</p>
+<p>若 quantization_scheme 为 “symmetric”:</p>
 <blockquote>
-<div><p>若 quantization_scheme 为 “symmetric”:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div><div class="math-wrapper"><div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}&amp; moving\_max = moving\_max * momentum + |max(input)| * (1 - momentum)\\&amp; moving\_min = moving\_max\end{aligned}\end{align} \]</div></div>
+</div></blockquote>
 <p>若 quantization_scheme 为 “affine”:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<blockquote>
+<div><div class="math-wrapper"><div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}&amp; moving\_max = moving\_max * momentum + max(input) * (1 - momentum)\\&amp; moving\_min = moving\_min * momentum + min(input) * (1 - momentum)\end{aligned}\end{align} \]</div></div>
 </div></blockquote>
 <p>最小值和最大值的移动平均值被初始化为第一批输入 <cite>Blob</cite> 的最小值和最大值。</p>
 <p>然后用以下等式计算 scale 和 zero_point：</p>
+<p>若 quantization_scheme 为 “symmetric”:</p>
 <blockquote>
-<div><p>若 quantization_scheme 为 “symmetric”:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div><div class="math-wrapper"><div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}&amp; denom = 2^{quantization\_to\_bit - 1} - 1\\&amp; scale = moving\_max / denom\\&amp; zero\_point = 0\end{aligned}\end{align} \]</div></div>
+</div></blockquote>
 <p>若 quantization_scheme 为 “affine”:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<blockquote>
+<div><div class="math-wrapper"><div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}&amp; denom = 2^{quantization\_to\_bit} - 1\\&amp; scale = (moving\_max - moving\_min) / denom\\&amp; zero\_point = -moving\_min / scale\end{aligned}\end{align} \]</div></div>
 </div></blockquote>
 <div class="admonition note">
@@ -3590,34 +3595,30 @@ a Self-Gated Activation Function</a>
 <dl class="py class">
 <dt id="oneflow.nn.Softshrink">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">Softshrink</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambd</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Softshrink" title="Permalink to this definition">¶</a></dt>
-<dd><p>The interface is consistent with PyTorch.
-The documentation is referenced from: <a class="reference external" href="https://pytorch.org/docs/1.10/generated/torch.nn.Softshrink.html">https://pytorch.org/docs/1.10/generated/torch.nn.Softshrink.html</a>.</p>
-<p>The Softshrink activation.</p>
-<p>The formula is:</p>
+<dd><p>该接口与 PyTorch 一致。
+文档参考自： <a class="reference external" href="https://pytorch.org/docs/1.10/generated/torch.nn.Softshrink.html">https://pytorch.org/docs/1.10/generated/torch.nn.Softshrink.html</a>.</p>
+<p>Softshrink 激活函数。</p>
+<p>公式为：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}\text{Softshrink}(x) =
 \begin{cases}
-x - \lambd, &amp; \text{ if } x &gt; \lambda \\
-x + \lambd, &amp; \text{ if } x &lt; -\lambda \\
+x - \lambda, &amp; \text{ if } x &gt; \lambda \\
+x + \lambda, &amp; \text{ if } x &lt; -\lambda \\
 0, &amp; \text{ otherwise }
 \end{cases}\end{split}\]</div></div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lambd</strong> – the <span class="math notranslate nohighlight">\(\lambda\)</span> value for the Softshrink formulation. Default: 0.5</p></li>
-<li><p><strong>inplace</strong> – can optionally do the operation in-place. Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
-</ul>
-</dd>
-</dl>
 <dl class="simple">
-<dt>Shape:</dt><dd><ul class="simple">
-<li><p>Input: <span class="math notranslate nohighlight">\((N, *)\)</span> where <cite>*</cite> means, any number of additional
-dimensions</p></li>
-<li><p>Output: <span class="math notranslate nohighlight">\((N, *)\)</span>, same shape as the input</p></li>
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>lambd</strong> - Softshrink 公式的 <span class="math notranslate nohighlight">\(\lambda\)</span> 值，默认值为 0.5。</p></li>
+<li><p><strong>inplace</strong> - can optionally do the operation in-place. Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+</dd>
+<dt>形状：</dt><dd><ul class="simple">
+<li><p><strong>Input</strong> - <span class="math notranslate nohighlight">\((N, *)\)</span> 中的 <cite>*</cite> 表示额外维度的数量。</p></li>
+<li><p><strong>Output</strong> - <span class="math notranslate nohighlight">\((N, *)\)</span> 与 input 的形状相同。</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
@@ -3686,40 +3687,32 @@ dimensions</p></li>
 <dl class="py class">
 <dt id="oneflow.nn.Threshold">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.</span></code><code class="sig-name descname"><span class="pre">Threshold</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.Threshold" title="Permalink to this definition">¶</a></dt>
-<dd><p>The Threshold Activation. Return <code class="docutils literal notranslate"><span class="pre">x</span></code> if <code class="docutils literal notranslate"><span class="pre">x</span></code> is greater than <code class="docutils literal notranslate"><span class="pre">threshold</span></code>, else return <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
-<p>The interface is consistent with PyTorch.
-The documentation is referenced from <a class="reference external" href="https://pytorch.org/docs/1.10/generated/torch.nn.Threshold.html">https://pytorch.org/docs/1.10/generated/torch.nn.Threshold.html</a>.</p>
-<p>The formula is:</p>
+<dd><p>Threshold 激活函数。
+如果 <code class="docutils literal notranslate"><span class="pre">x</span></code> 比 <code class="docutils literal notranslate"><span class="pre">threshold</span></code> 大，返回 <code class="docutils literal notranslate"><span class="pre">x</span></code>，否则返回 <code class="docutils literal notranslate"><span class="pre">value</span></code>。</p>
+<p>该接口与 PyTorch 一致。
+文档参考自：<a class="reference external" href="https://pytorch.org/docs/1.10/generated/torch.nn.Threshold.html">https://pytorch.org/docs/1.10/generated/torch.nn.Threshold.html</a>.</p>
+<p>公式是：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}\text{Threshold}(x) =
 \begin{cases}
 x, &amp; \text{ if } x &gt; \text{ threshold } \\
 \text{value }, &amp; \text{ otherwise }
 \end{cases}\end{split}\]</div></div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>threshold</strong> (<em>float</em>) – The <code class="docutils literal notranslate"><span class="pre">threshold</span></code> value for the Threshold formulation</p></li>
-<li><p><strong>value</strong> (<em>float</em>) – The <code class="docutils literal notranslate"><span class="pre">value</span></code> value for the Threshold formulation</p></li>
-</ul>
-</dd>
-</dl>
 <dl class="simple">
-<dt>Shapes:</dt><dd><ul class="simple">
-<li><p>Input: <span class="math notranslate nohighlight">\((N, *)\)</span> where <cite>*</cite> means, any number of additional dimensions</p></li>
-<li><p>Output: <span class="math notranslate nohighlight">\((N, *)\)</span>, same shape as the input</p></li>
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>threshold</strong> (float) - Threshold 公式的 <code class="docutils literal notranslate"><span class="pre">threshold</span></code> 值。</p></li>
+<li><p><strong>value</strong> (float) - Threshold 公式的 <code class="docutils literal notranslate"><span class="pre">value</span></code> 值。</p></li>
 </ul>
 </dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The result tensor</p>
+<dt>形状：</dt><dd><ul class="simple">
+<li><p><strong>Input</strong> - <span class="math notranslate nohighlight">\((N, *)\)</span> 中的 <cite>*</cite> 代表任意数目附加维度。</p></li>
+<li><p><strong>Output</strong> - <span class="math notranslate nohighlight">\((N, *)\)</span> 与 input 的形状相同。</p></li>
+</ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>Oneflow.Tensor</p>
+<dt>返回：</dt><dd><p>Oneflow.Tensor：结果向量。</p>
 </dd>
 </dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
