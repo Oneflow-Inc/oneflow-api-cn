@@ -475,7 +475,7 @@ reset_docstr(
         - **value** (float) - Threshold 公式的 ``value`` 值。
 
     形状：
-        - **Input** - :math:`(N, *)` 中的 `*` 表示额外维度的数量。
+        - **Input** - :math:`(N, *)` 中的 `*` 代表任意数目附加维度。
         - **Output** - :math:`(N, *)` 与 input 的形状相同。
 
     返回：
