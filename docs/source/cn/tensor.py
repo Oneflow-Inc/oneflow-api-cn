@@ -1600,6 +1600,7 @@ reset_docstr(
     它目前所接受 ndarray 的数据类型为 numpy.float64、numpy.float32、numpy.float16、numpy.int64、numpy.int32、numpy.int8、numpy.uint8。
 
     例如:
+        >>> import oneflow as flow
         >>> import numpy as np
         >>> np_arr = np.arange(6).reshape(2, 3)
         >>> t = flow.from_numpy(np_arr)
