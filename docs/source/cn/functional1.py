@@ -620,6 +620,8 @@ reset_docstr(
 reset_docstr(
     oneflow.nn.functional.conv_transpose1d,
     r"""
+    conv_transpose1d(input,weight,bias,stride,padding,output_padding,froups,dilation)
+
     此文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose1d.html
 
     对多个输入面信号应用一个 1D 转置卷积算子，有时也被称为“反卷积”。
@@ -652,6 +654,8 @@ reset_docstr(
 reset_docstr(
     oneflow.nn.functional.conv_transpose2d,
     r"""
+    conv_transpose2d(input,weight,bias,stride,padding,output_padding,groups,dilation)
+
     此文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose2d.html
 
     对多个输入面信号应用一个 2D 转置卷积算子，有时也被称为 ``反卷积``。
@@ -684,6 +688,8 @@ reset_docstr(
 reset_docstr(
     oneflow.nn.functional.conv_transpose3d,
     r"""
+    conv_transpose3d(input,weight,bias,stride,padding,output_padding,groups,dilation)
+
     此文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose3d.html
 
     对多个输入面信号应用一个 3D 转置卷积算子，有时也被称为 ``反卷积``。

@@ -632,6 +632,7 @@ reset_docstr(
 reset_docstr(
     oneflow.utils.from_torch,
     r"""
+    from_torch(input) -> Tensor
 
     从 torch 张量新建一个 oneflow 张量。
     返回的张量和 torch 张量共享内存。
@@ -666,6 +667,7 @@ reset_docstr(
 reset_docstr(
     oneflow.utils.to_torch,
     r"""
+    to_torch(input) -> Tensor
 
     从 oneflow 张量新建一个 torch 张量。
 
@@ -698,6 +700,8 @@ reset_docstr(
 reset_docstr(
     oneflow.nn.init.orthogonal_,
     r"""
+    orthogonal_(tensor,gain)
+    
     此接口与 PyTorch 一致。
     此文档参考自： https://pytorch.org/docs/stable/nn.init.html.
     根据 `Exact solutions to the nonlinear dynamics of learning in deep
