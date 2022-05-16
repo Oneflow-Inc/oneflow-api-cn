@@ -120,6 +120,36 @@ reset_docstr(
 )
 
 reset_docstr(
+    oneflow.le,
+    r"""le(input, other) -> Tensor
+
+    返回 :math:`input <=other` 的 element-wise 真实值。
+
+    参数：
+        - **input** (oneflow.tensor): 输入张量
+        - **other** (oneflow.tensor): 输入张量
+
+    返回类型：
+        oneflow.tensor: 数据类型为 bool 的张量
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+        
+        >>> input1 = flow.tensor(np.array([1, 2, 3]).astype(np.float32), dtype=flow.float32)
+        >>> input2 = flow.tensor(np.array([1, 1, 4]).astype(np.float32), dtype=flow.float32)
+
+        >>> out = flow.le(input1, input2)
+        >>> out
+        tensor([ True, False,  True], dtype=oneflow.bool)
+    
+    """
+)
+
+reset_docstr(
     oneflow.Tensor.ne,
     r"""ne(inout, other) -> Tensor
 
