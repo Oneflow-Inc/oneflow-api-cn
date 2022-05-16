@@ -555,12 +555,10 @@ reset_docstr(
     该层在训练和评估模式下都使用从输入数据计算的统计信息。
 
     参数：
-        - **normalized_shape** (int 或 list 或 oneflow.Size): 来自预期大小输入的输入形状
+        - **normalized_shape** (int 或 list 或 oneflow.Size): 来自预期大小输入的输入形状，如果使用单个整数，则将其视为单例列表，并且此模块将对最后一个维度进行标准化，该维度预计具有该特定大小。
 
             .. math::
                 [* \times \text{normalized_shape}[0] \times \text{normalized_shape}[1] \times \ldots \times \text{normalized_shape}[-1]]
-
-            如果使用单个整数，则将其视为单例列表，并且此模块将对最后一个维度进行标准化，该维度预计具有该特定大小。
 
         - **eps** (float, 可选的): 为数值稳定性而添加到分母的值。默认：1e-5
         - **elementwise_affine** (bool, 可选的): 如果为 ``True`` ，该模块具有可学习的逐元素仿射参数，

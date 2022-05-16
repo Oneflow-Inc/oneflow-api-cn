@@ -107,7 +107,7 @@ reset_docstr(
     
     在训练时间内模拟量化 (quantize) 和反量化 (dequantize) 操作。输出将被计算为：
 
-        若 quantization_scheme == "symmetric":
+    若 quantization_scheme == "symmetric":
 
         .. math::
 
@@ -117,7 +117,7 @@ reset_docstr(
 
             & clamp(round(x / scale), quant\\_min, quant\\_max) * scale
 
-        若 quantization_scheme == "affine":
+    若 quantization_scheme == "affine":
 
         .. math::
 
