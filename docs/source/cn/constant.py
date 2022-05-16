@@ -680,6 +680,7 @@ reset_docstr(
     返回值：
         torch.Tensor
 
+
     示例：
 
     .. code-block:: python
@@ -711,4 +712,35 @@ reset_docstr(
         > w = flow.empty(3, 5)
         > nn.init.orthogonal_(w)
     """
+)
+
+
+reset_docstr(
+  oneflow.new_ones,
+    r"""
+    new_ones(x, size=None, dtype=None, device=None, placement=None, sbp=None, requires_grad=False) -> Tensor
+
+    返回一个大小为 1 的张量，默认情况下，返回的张量具有与此张量相同的 oneflow.dtype 和 oneflow.device。
+
+    参数：
+        - **size** (int...) - 一个 list, tuple, 或者 flow，定义输出张量形状的大小。
+        - **dtype** (flow.dtype, optional) - 返回张量的所需类型。默认值：如果为 None，则与此张量相同的 flow.dtype。
+        - **device** (flow.device, optional) - 返回张量的所需设备。默认值：如果为 None，则与此张量相同的 flow.device。
+        - **placement** (flow.placement, optional) - 返回的全局张量的期望位置。默认值：如果为 None，则返回的张量是使用参数 device 的本地张量。
+        - **sbp** (flow.sbp.sbp or tuple of flow.sbp.sbp, optional) - 返回的全局张量所需的 sbp 描述符。默认值：如果为 None，则返回的张量是使用参数device的本地张量
+        - **requires_grad** (flow.bool, optional) - 如果 autograd 在返回的张量上记录操作。默认值：False。        >>> import numpy as np
+
+    示例：
+
+    .. code-block:: python
+    
+        >>> import oneflow as flow
+
+        >>> x = flow.Tensor(np.ones((1, 2, 3)))
+        >>> y = x.new_ones((2, 2))
+        >>> y
+        tensor([[1., 1.],
+                [1., 1.]], dtype=oneflow.float32)
+
+    """,
 )
