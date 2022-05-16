@@ -734,6 +734,7 @@ reset_docstr(
 
     .. code-block:: python
     
+        >>> import numpy as np
         >>> import oneflow as flow
 
         >>> x = flow.Tensor(np.ones((1, 2, 3)))
