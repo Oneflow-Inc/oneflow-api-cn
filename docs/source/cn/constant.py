@@ -700,7 +700,7 @@ reset_docstr(
 reset_docstr(
     oneflow.nn.init.orthogonal_,
     r"""
-    orthogonal_(tensor,gain)
+    orthogonal_(tensor, gain)
     
     此接口与 PyTorch 一致。
     此文档参考自： https://pytorch.org/docs/stable/nn.init.html.
@@ -737,7 +737,7 @@ reset_docstr(
     示例：
 
     .. code-block:: python
-    
+
         >>> import numpy as np
         >>> import oneflow as flow
 

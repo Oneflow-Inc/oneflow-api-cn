@@ -1,4 +1,3 @@
-from cgitb import reset
 import oneflow
 from docreset import reset_docstr
 
@@ -305,7 +304,7 @@ reset_docstr(
     r"""
     allow_fuse_model_update_ops(mode)
 
-    如果设置为 True ，将尝试融合 cast + scale + l1_l2_regularize_gradient + model_update 为一次操作以提升性能。
+        如果设置为 True ，将尝试融合 cast + scale + l1_l2_regularize_gradient + model_update 为一次操作以提升性能。
 
         示例：
 
@@ -333,7 +332,7 @@ reset_docstr(
     r"""
     allow_fuse_add_to_output(mode)
 
-    如果设置为 True，将尝试融合一个二进制 element-wise add 运算符进入前置算子以提升性能。
+        如果设置为 True，将尝试融合一个二进制 element-wise add 运算符进入前置算子以提升性能。
 
         示例：
 
@@ -363,7 +362,7 @@ reset_docstr(
     r"""
     allow_fuse_cast_scale(mode)
 
-    如果设置为 True，将尝试融合 cast 和 scalar_mul_by_tensor 以提升性能。
+        如果设置为 True，将尝试融合 cast 和 scalar_mul_by_tensor 以提升性能。
     
         示例：
 
@@ -422,7 +421,7 @@ reset_docstr(
     r"""
     set_zero_redundancy_optimizer_mode(mode)
 
-    设置模式以移除冗余优化步骤。
+        设置模式以移除冗余优化步骤。
         此优化将根据 ZeRO https://arxiv.org/abs/1910.02054 的描述来减少优化步骤的内存消耗。
 
         示例：
@@ -480,7 +479,7 @@ reset_docstr(
     r"""
     enable_xla_jit(value)
 
-    是否在 xrt 中使用 xla_jit。
+        是否在 xrt 中使用 xla_jit。
 
         启用此选项时，oneflow 将检查所有算子是否被 xla_jit 支持，将支持的算子聚为子图，并用 xla_jit 运算子图。
            XLA: https://www.tensorflow.org/xla
@@ -521,7 +520,7 @@ reset_docstr(
 
         启用此选项时，oneflow 将检查所有算子是否被 tensorrt 支持，将支持的算子聚为子图，并用 xla_jit 运算子图。
 
-           TensorRT: https://developer.nvidia.com/tensorrt
+        TensorRT: https://developer.nvidia.com/tensorrt
 
         如果需要使用 XLA 来优化模型运行速度，则需要编译 TensorRT 版本的 oneflow 。
 
@@ -559,8 +558,8 @@ reset_docstr(
 
         启用此选项时，oneflow 将检查所有算子是否被 openvino 支持，将支持的算子聚为子图，并用 xla_jit 运算子图。
 
-            请注意，openvino 仅支持引用模式。
-            OpenVINO: https://developer.nvidia.com/tensorrt
+        请注意，openvino 仅支持引用模式。
+        OpenVINO: https://developer.nvidia.com/tensorrt
 
         如果需要使用 XLA 来优化模型运行速度，则需要编译 TensorRT 版本的 oneflow 。
 
@@ -672,7 +671,5 @@ reset_docstr(
             graph = Graph()
 
         """
-
-
 
 )

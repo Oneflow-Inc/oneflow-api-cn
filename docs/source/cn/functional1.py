@@ -620,7 +620,7 @@ reset_docstr(
 reset_docstr(
     oneflow.nn.functional.conv_transpose1d,
     r"""
-    conv_transpose1d(input,weight,bias,stride,padding,output_padding,froups,dilation)
+    conv_transpose1d(input, weight, bias, stride, padding, output_padding, groups, dilation)
 
     此文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose1d.html
 
@@ -654,7 +654,7 @@ reset_docstr(
 reset_docstr(
     oneflow.nn.functional.conv_transpose2d,
     r"""
-    conv_transpose2d(input,weight,bias,stride,padding,output_padding,groups,dilation)
+    conv_transpose2d(input, weight, bias, stride, padding, output_padding, groups, dilation)
 
     此文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose2d.html
 
@@ -688,7 +688,7 @@ reset_docstr(
 reset_docstr(
     oneflow.nn.functional.conv_transpose3d,
     r"""
-    conv_transpose3d(input,weight,bias,stride,padding,output_padding,groups,dilation)
+    conv_transpose3d(input, weight, bias, stride, padding, output_padding, groups, dilation)
 
     此文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose3d.html
 
@@ -717,6 +717,5 @@ reset_docstr(
         >>> weights = flow.randn(16, 33, 3, 3, 3)
         >>> outputs = F.conv_transpose3d(inputs, weights)
         """,
-
 
 )
