@@ -124,55 +124,6 @@ reset_docstr(
     """,
 )
 
-reset_docstr(
-    oneflow._C.upsample,
-    r"""upsample(x: Tensor, height_scale: Float, width_scale: Float, align_corners: Bool, interpolation: str, data_format: str = "channels_first") -> Tensor
-  
-    对给定的多通道 2D（空间）数据进行上采样。
-
-    假设输入数据的形式为 `minibatch x channels x height x width`。因此，对于空间输入，4D 张量是被期待的。
-
-    可用于上采样的算法分别是最近邻、双线性、4D 输入张量。
-
-    参数：
-        - **height_scale** (float) - 空间大小的乘数。如果它是元组，则必须匹配输入大小。
-        - **width_scale** (float) - 空间大小的乘数。如果它是元组，则必须匹配输入大小。
-        - **align_corners** (bool) - 如果为 ``True``，则输入和输出张量的角像素对齐，从而保留这些像素的值。这仅在 ``mode`` 为 ``'bilinear'`` 时有效。  
-        - **interpolation** (str, optional) - 上采样算法，可以为 ``'nearest'`` 或 ``'bilinear'``。
-        - **data_format** (str, optional) - 默认为 ``'channels_first'``。
-
-    形状：
-        - Input: : :math:`(N, C, H_{in}, W_{in})`
-        - Output: :math:`(N, C, H_{out}, W_{out})` ，其中
-  
-    .. math::
-        H_{out} = \left\lfloor H_{in} \times \text{height_scale} \right\rfloor
-
-    .. math::
-        W_{out} = \left\lfloor W_{in} \times \text{width_scale} \right\rfloor
-
-  
-    示例：
-
-    .. code-block:: python
-
-        >>> import numpy as np
-
-        >>> import oneflow as flow
-
-        >>> input = flow.tensor(np.arange(1, 5).reshape((1, 1, 2, 2)), dtype=flow.float32)  
-        >>> output = flow.nn.functional.upsample(input, height_scale=2.0, width_scale=2.0, align_corners=False, interpolation="nearest")
-    
-        >>> output
-        tensor([[[[1., 1., 2., 2.],
-                  [1., 1., 2., 2.],
-                  [3., 3., 4., 4.],
-                  [3., 3., 4., 4.]]]], dtype=oneflow.float32)
-
-    参考 :class:`~oneflow.nn.Upsample` 获得更多细节。
-
-    """,
-)
 
 reset_docstr(
     oneflow.nn.functional.affine_grid,
