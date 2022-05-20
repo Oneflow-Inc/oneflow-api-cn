@@ -380,12 +380,13 @@
 <dl class="py class">
 <dt id="oneflow.nn.graph.graph_config.GraphConfig">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.graph.graph_config.</span></code><code class="sig-name descname"><span class="pre">GraphConfig</span></code><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig" title="Permalink to this definition">¶</a></dt>
-<dd><p>For configuration of nn.Graph.</p>
+<dd><p>用于 nn.Graph 的配置。</p>
 <dl class="py method">
 <dt id="oneflow.nn.graph.graph_config.GraphConfig.enable_amp">
-<code class="sig-name descname"><span class="pre">enable_amp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig.enable_amp" title="Permalink to this definition">¶</a></dt>
-<dd><p>If set to true, then graph will use mixed precision mode, it means use both float16 and float32 during model training.</p>
-<p>For example:</p>
+<code class="sig-name descname"><span class="pre">enable_amp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig.enable_amp" title="Permalink to this definition">¶</a></dt>
+<dd><p>如果设置为 True ，graph 会使用混合的精度模式，即在模型训练中同时使用 float16 和 float32。</p>
+<blockquote>
+<div><p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
 <span class="k">class</span> <span class="nc">Graph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
@@ -399,17 +400,19 @@
 <span class="n">graph</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mode</strong> (<em>bool</em><em>, </em><em>optional</em>) – The default vaule is True.</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>mode</strong> (bool, 可选): 默认值为 True 。</p></li>
+</ul>
 </dd>
 </dl>
+</div></blockquote>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.graph.graph_config.GraphConfig.allow_fuse_model_update_ops">
-<code class="sig-name descname"><span class="pre">allow_fuse_model_update_ops</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig.allow_fuse_model_update_ops" title="Permalink to this definition">¶</a></dt>
-<dd><p>If set to true, try to fuse cast + scale + l1_l2_regularize_gradient + model_update to one op to improve performance.</p>
-<p>For example:</p>
+<code class="sig-name descname"><span class="pre">allow_fuse_model_update_ops</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig.allow_fuse_model_update_ops" title="Permalink to this definition">¶</a></dt>
+<dd><p>如果设置为 True ，将尝试融合 cast + scale + l1_l2_regularize_gradient + model_update 为一次操作以提升性能。</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
 <span class="k">class</span> <span class="nc">Graph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
@@ -423,17 +426,18 @@
 <span class="n">graph</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mode</strong> (<em>bool</em><em>, </em><em>optional</em>) – The default vaule is True.</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>mode</strong> (bool, 可选): 默认值为 True 。</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.graph.graph_config.GraphConfig.allow_fuse_add_to_output">
-<code class="sig-name descname"><span class="pre">allow_fuse_add_to_output</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig.allow_fuse_add_to_output" title="Permalink to this definition">¶</a></dt>
-<dd><p>If set to true, try to fuse a binary element-wise add operetor to one of the predecessors to improve performance.</p>
-<p>For example:</p>
+<code class="sig-name descname"><span class="pre">allow_fuse_add_to_output</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig.allow_fuse_add_to_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>如果设置为 True，将尝试融合一个二进制 element-wise add 运算符进入前置算子以提升性能。</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
 <span class="k">class</span> <span class="nc">Graph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
@@ -449,17 +453,18 @@
 <span class="n">graph</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mode</strong> (<em>bool</em><em>, </em><em>optional</em>) – The default vaule is True.</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>mode</strong> (bool, 可选): 默认值为 True 。</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.graph.graph_config.GraphConfig.allow_fuse_cast_scale">
-<code class="sig-name descname"><span class="pre">allow_fuse_cast_scale</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig.allow_fuse_cast_scale" title="Permalink to this definition">¶</a></dt>
-<dd><p>If set to true, try to fuse cast and scalar_mul_by_tensor to improve performance.</p>
-<p>For example:</p>
+<code class="sig-name descname"><span class="pre">allow_fuse_cast_scale</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig.allow_fuse_cast_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>如果设置为 True，将尝试融合 cast 和 scalar_mul_by_tensor 以提升性能。</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
 <span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -476,17 +481,19 @@
 <span class="n">graph</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mode</strong> (<em>bool</em><em>, </em><em>optional</em>) – The default vaule is True.</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>mode</strong> (bool, 可选): 默认值为 True 。</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.graph.graph_config.GraphConfig.set_gradient_accumulation_steps">
 <code class="sig-name descname"><span class="pre">set_gradient_accumulation_steps</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig.set_gradient_accumulation_steps" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set num of steps to accumulate gradient.</p>
-<p>For example:</p>
+<dd><p>设置累加梯度的步数。</p>
+<blockquote>
+<div><p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
 <span class="k">class</span> <span class="nc">Graph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
@@ -501,19 +508,20 @@
 <span class="n">graph</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – num of steps.</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>value</strong> (int): 步数的数量。</p></li>
+</ul>
 </dd>
 </dl>
+</div></blockquote>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.graph.graph_config.GraphConfig.set_zero_redundancy_optimizer_mode">
-<code class="sig-name descname"><span class="pre">set_zero_redundancy_optimizer_mode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'distributed_split'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig.set_zero_redundancy_optimizer_mode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set mode to remove redundancy of optimizer states.
-This optimzation will reduce optimizer states memory consumption as described
-by ZeRO <a class="reference external" href="https://arxiv.org/abs/1910.02054">https://arxiv.org/abs/1910.02054</a> .</p>
-<p>For example:</p>
+<code class="sig-name descname"><span class="pre">set_zero_redundancy_optimizer_mode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig.set_zero_redundancy_optimizer_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>设置模式以移除冗余优化步骤。
+此优化将根据 ZeRO <a class="reference external" href="https://arxiv.org/abs/1910.02054">https://arxiv.org/abs/1910.02054</a> 的描述来减少优化步骤的内存消耗。</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
 <span class="k">class</span> <span class="nc">Graph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
@@ -527,19 +535,19 @@ by ZeRO <a class="reference external" href="https://arxiv.org/abs/1910.02054">ht
 <span class="n">graph</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mode</strong> (<em>str</em>) – “distributed_split” or “non_distributed”. “distributed_split” mode
-will shard each optimizer state across devices. “non_distributed” mode
-will place each optimizer state to only one device.</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>mode</strong> (str): “distributed_split” 或 “non_distributed” 。 “distributed_split” 模式将把每个优化步骤分散到每个设备，而 “non_distributed” 将把每个优化步骤放到一个设备上。</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.graph.graph_config.GraphConfig.set_zero_redundancy_optimizer_min_size_after_split">
 <code class="sig-name descname"><span class="pre">set_zero_redundancy_optimizer_min_size_after_split</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig.set_zero_redundancy_optimizer_min_size_after_split" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the min size of optimizer state/grad/parameter after split.</p>
-<p>For example:</p>
+<dd><p>设置切分后优化器步骤/梯度/参数的最小值。</p>
+<blockquote>
+<div><p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
 <span class="k">class</span> <span class="nc">Graph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
@@ -554,55 +562,56 @@ will place each optimizer state to only one device.</p>
 <span class="n">graph</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – min size value.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p><strong>value</strong> (int): 最小值。</p></li>
+</ul>
 </dd>
 </dl>
+</div></blockquote>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.graph.graph_config.GraphConfig.enable_xla_jit">
-<code class="sig-name descname"><span class="pre">enable_xla_jit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig.enable_xla_jit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Whether use xla_jit in xrt or not.</p>
-<p>When this option enable, oneflow will check all operators is supported by xla_jit or not. Clustering supported operators as subgraph, then runing subgraph by xla_jit.</p>
-<blockquote>
-<div><p>XLA: <a class="reference external" href="https://www.tensorflow.org/xla">https://www.tensorflow.org/xla</a></p>
-</div></blockquote>
-<p>If you need to use XLA to optimize the model running speed, you need to compile the XLA version of oneflow.</p>
-<p>Tutorial for build with XLA:</p>
+<code class="sig-name descname"><span class="pre">enable_xla_jit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig.enable_xla_jit" title="Permalink to this definition">¶</a></dt>
+<dd><p>是否在 xrt 中使用 xla_jit。</p>
+<dl class="simple">
+<dt>启用此选项时，oneflow 将检查所有算子是否被 xla_jit 支持，将支持的算子聚为子图，并用 xla_jit 运算子图。</dt><dd><p>XLA: <a class="reference external" href="https://www.tensorflow.org/xla">https://www.tensorflow.org/xla</a></p>
+</dd>
+</dl>
+<p>如果需要使用 XLA 来优化模型运行速度，则需要编译 XLA 版本的 oneflow 。</p>
+<p>使用 XLA 构建 oneflow 的教程：</p>
 <p><a class="reference external" href="https://github.com/Oneflow-Inc/oneflow/blob/master/oneflow/xrt/README.md#build-with-xla">https://github.com/Oneflow-Inc/oneflow/blob/master/oneflow/xrt/README.md#build-with-xla</a></p>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
 <span class="k">class</span> <span class="nc">Graph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">linear</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">enable_xla_jit</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> <span class="c1"># Use xla_jit in xrt.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">enable_xla_jit</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> <span class="c1"># 在 xrt 中使用 xla_jit 。</span>
     <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
 <span class="n">graph</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>value</strong> (<em>bool</em><em>, </em><em>optional</em>) – The default vaule is True.</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>value</strong> (bool, 可选): 默认值为 True.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.graph.graph_config.GraphConfig.enable_tensorrt">
-<code class="sig-name descname"><span class="pre">enable_tensorrt</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig.enable_tensorrt" title="Permalink to this definition">¶</a></dt>
-<dd><p>Whether use tensorrt in xrt or not.</p>
-<p>When this option enable, oneflow will check all operators is supported by tensorrt or not. Clustering supported operators as subgraph, then runing subgraph by tensorrt.</p>
-<blockquote>
-<div><p>TensorRT: <a class="reference external" href="https://developer.nvidia.com/tensorrt">https://developer.nvidia.com/tensorrt</a></p>
-</div></blockquote>
-<p>If you need to use TensorRT to optimize the model running speed, you need to compile the TensorRT version of oneflow.</p>
-<p>Tutorial for build with TensorRT:</p>
+<code class="sig-name descname"><span class="pre">enable_tensorrt</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig.enable_tensorrt" title="Permalink to this definition">¶</a></dt>
+<dd><p>是否在 xrt 中使用 tensorrt。</p>
+<p>启用此选项时，oneflow 将检查所有算子是否被 tensorrt 支持，将支持的算子聚为子图，并用 xla_jit 运算子图。</p>
+<p>TensorRT: <a class="reference external" href="https://developer.nvidia.com/tensorrt">https://developer.nvidia.com/tensorrt</a></p>
+<p>如果需要使用 XLA 来优化模型运行速度，则需要编译 TensorRT 版本的 oneflow 。</p>
+<p>使用 TensorRT 构建 oneflow 的教程：</p>
 <p><a class="reference external" href="https://github.com/Oneflow-Inc/oneflow/blob/master/oneflow/xrt/README.md#build-with-tensorrt">https://github.com/Oneflow-Inc/oneflow/blob/master/oneflow/xrt/README.md#build-with-tensorrt</a></p>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
 <span class="k">class</span> <span class="nc">Graph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
@@ -616,47 +625,49 @@ will place each optimizer state to only one device.</p>
 <span class="n">graph</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>value</strong> (<em>bool</em><em>, </em><em>optional</em>) – The default vaule is True.</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>value</strong> (bool, 可选): 默认值为 True.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.graph.graph_config.GraphConfig.enable_openvino">
-<code class="sig-name descname"><span class="pre">enable_openvino</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig.enable_openvino" title="Permalink to this definition">¶</a></dt>
-<dd><p>Whether use openvino in xrt or not.</p>
-<p>When this option enable, oneflow will check all operators is supported by openvino or not. Clustering supported operators as subgraph, then runing subgraph by openvino.</p>
-<blockquote>
-<div><p>Please note that, openvino only support inference mode.</p>
-<p>OpenVINO: <a class="reference external" href="https://www.intel.com/content/www/us/en/developer/tools/openvino-toolkit/overview.html">https://www.intel.com/content/www/us/en/developer/tools/openvino-toolkit/overview.html</a></p>
-</div></blockquote>
-<p>It is also necessary to compile the XLA or TensorRT version of oneflow, tutorial: <a class="reference external" href="https://github.com/Oneflow-Inc/oneflow/tree/master/oneflow/xrt#readme">https://github.com/Oneflow-Inc/oneflow/tree/master/oneflow/xrt#readme</a></p>
-<p>For example:</p>
+<code class="sig-name descname"><span class="pre">enable_openvino</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig.enable_openvino" title="Permalink to this definition">¶</a></dt>
+<dd><p>是否在 xrt 中使用 openvino。</p>
+<p>启用此选项时，oneflow 将检查所有算子是否被 openvino 支持，将支持的算子聚为子图，并用 xla_jit 运算子图。</p>
+<p>请注意，openvino 仅支持引用模式。
+OpenVINO: <a class="reference external" href="https://developer.nvidia.com/tensorrt">https://developer.nvidia.com/tensorrt</a></p>
+<p>如果需要使用 XLA 来优化模型运行速度，则需要编译 TensorRT 版本的 oneflow 。</p>
+<p>同时也需要编译 XLA 或者 TensorRT 版本的 oneflow ,教程见下：</p>
+<p><a class="reference external" href="https://github.com/Oneflow-Inc/oneflow/blob/master/oneflow/xrt/README.md#build-with-tensorrt">https://github.com/Oneflow-Inc/oneflow/blob/master/oneflow/xrt/README.md#build-with-tensorrt</a></p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
 <span class="k">class</span> <span class="nc">Graph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">linear</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">enable_openvino</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> <span class="c1"># Use openvino in xrt.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">enable_tensorrt</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> <span class="c1"># Use tensorrt in xrt.</span>
     <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
 <span class="n">graph</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>value</strong> (<em>bool</em><em>, </em><em>optional</em>) – The default vaule is True.</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>value</strong> (bool, 可选): 默认值为 True.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py method">
 <dt id="oneflow.nn.graph.graph_config.GraphConfig.enable_cudnn_conv_heuristic_search_algo">
-<code class="sig-name descname"><span class="pre">enable_cudnn_conv_heuristic_search_algo</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig.enable_cudnn_conv_heuristic_search_algo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Whether enable cudnn conv operatioin to use heuristic search algorithm.</p>
-<p>For example:</p>
+<code class="sig-name descname"><span class="pre">enable_cudnn_conv_heuristic_search_algo</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.graph.graph_config.GraphConfig.enable_cudnn_conv_heuristic_search_algo" title="Permalink to this definition">¶</a></dt>
+<dd><p>是否启用 cudnn conv 操作来使用启发式搜索算法。</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
 <span class="k">class</span> <span class="nc">Graph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
@@ -671,9 +682,10 @@ will place each optimizer state to only one device.</p>
 <span class="n">graph</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mode</strong> (<em>bool</em><em>, </em><em>optional</em>) – The default vaule is True.</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>value</strong> (bool, 可选): 默认值为 True.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -681,17 +693,17 @@ will place each optimizer state to only one device.</p>
 <dl class="py class">
 <dt id="oneflow.nn.graph.block_config.BlockConfig">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.nn.graph.block_config.</span></code><code class="sig-name descname"><span class="pre">BlockConfig</span></code><a class="headerlink" href="#oneflow.nn.graph.block_config.BlockConfig" title="Permalink to this definition">¶</a></dt>
-<dd><p>Configurations on Module Block in nn.Graph.</p>
-<p>When an nn.Module is added into an nn.Graph, it is wrapped into a ModuleBlock. You can set or get optimization configs on an nn.Module with it’s <cite>ModuleBlock.config</cite>.</p>
+<dd><p>nn.Graph ModuleBlock 的配置。</p>
+<p>当一个 nn.Module 被加至 nn.Graph 时，他会被包络在一个 ModuleBlock 中。你可以在一个 nn.Module 使用 <cite>ModuleBlock.config</cite> 设置或获取优化参数。</p>
 <dl class="py method">
 <dt id="oneflow.nn.graph.block_config.BlockConfig.stage_id">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">stage_id</span></code><a class="headerlink" href="#oneflow.nn.graph.block_config.BlockConfig.stage_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set/Get stage id of nn.Module/ModuleBlock in pipeline parallelism.</p>
-<p>When calling stage_id(value: int = None), set different module’s stage id to hint the graph preparing right num of buffers in pipeline.</p>
-<p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># m_stage0 and m_stage1 are the two pipeline stages of the network, respectively.</span>
-<span class="c1"># We can set Stage ID by setting the config.stage_id attribute of Module.</span>
-<span class="c1"># The Stage ID is numbered starting from 0 and increasing by 1.</span>
+<dd><p>设置/获取 nn.Module/ModuleBlock 在并行管线中的 stage id 。</p>
+<p>在调用 stage_id(value: int = None) 时，将设置不同 module 的 id 以使得 graph 在管线中准备正确数量的缓冲。</p>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># m_stage0 和 m_stage1 是网络的两个管线阶段。</span>
+<span class="c1"># 我们可以通过设置 config.stage_id 属性来设置 Stage ID 。</span>
+<span class="c1"># Stage ID 从 0 开始以整数计数。</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">module_pipeline</span><span class="o">.</span><span class="n">m_stage0</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">stage_id</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">module_pipeline</span><span class="o">.</span><span class="n">m_stage1</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">stage_id</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
@@ -700,8 +712,8 @@ will place each optimizer state to only one device.</p>
 <dl class="py method">
 <dt id="oneflow.nn.graph.block_config.BlockConfig.activation_checkpointing">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">activation_checkpointing</span></code><a class="headerlink" href="#oneflow.nn.graph.block_config.BlockConfig.activation_checkpointing" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set/Get whether do activation checkpointing in this nn.Module.</p>
-<p>For example:</p>
+<dd><p>设置/获取是否在此 nn.Module 中执行 activation checkpointing 。</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 
 <span class="k">class</span> <span class="nc">Graph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>

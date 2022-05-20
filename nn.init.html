@@ -255,27 +255,22 @@ performance on ImageNet classification</cite> - He, K. et al. (2015) 中描述�
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.init.orthogonal_">
-<code class="sig-prename descclassname"><span class="pre">oneflow.nn.init.</span></code><code class="sig-name descname"><span class="pre">orthogonal_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.init.orthogonal_" title="Permalink to this definition">¶</a></dt>
-<dd><p>The interface is consistent with PyTorch.
-The documentation is referenced from: <a class="reference external" href="https://pytorch.org/docs/stable/nn.init.html">https://pytorch.org/docs/stable/nn.init.html</a>.</p>
-<p>Fills the input <cite>Tensor</cite> with a (semi) orthogonal matrix, as
-described in <cite>Exact solutions to the nonlinear dynamics of learning in deep
-linear neural networks</cite> - Saxe, A. et al. (2013). The input tensor must have
-at least 2 dimensions, and for tensors with more than 2 dimensions the
-trailing dimensions are flattened.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>tensor</strong> – an n-dimensional <cite>torch.Tensor</cite>, where <span class="math notranslate nohighlight">\(n \geq 2\)</span></p></li>
-<li><p><strong>gain</strong> – optional scaling factor</p></li>
+<code class="sig-prename descclassname"><span class="pre">oneflow.nn.init.</span></code><code class="sig-name descname"><span class="pre">orthogonal_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.init.orthogonal_" title="Permalink to this definition">¶</a></dt>
+<dd><p>此接口与 PyTorch 一致。
+此文档参考自： <a class="reference external" href="https://pytorch.org/docs/stable/nn.init.html">https://pytorch.org/docs/stable/nn.init.html</a>.
+根据 <cite>Exact solutions to the nonlinear dynamics of learning in deep
+linear neural networks</cite> - Saxe, A. et al. (2013) 的描述，将输入 <cite>Tensor</cite> 用一个（半）正交矩阵填充。
+输入张量必须拥有至少两个维度，对于多于两个维度的张量，多余的张量将被扁平化。</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>tensor:</strong> 一个 n 维的 <cite>torch.Tensor</cite>，其中 <span class="math notranslate nohighlight">\(n \geq 2\)</span></p></li>
+<li><p><strong>gain:</strong> 可选的缩放因子</p></li>
 </ul>
 </dd>
+<dt>示例：</dt><dd><p>&gt; w = flow.empty(3, 5)
+&gt; nn.init.orthogonal_(w)</p>
+</dd>
 </dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">orthogonal_</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
-</pre></div>
-</div>
 </dd></dl>
 </div>
 </div>

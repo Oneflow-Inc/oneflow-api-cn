@@ -217,28 +217,24 @@
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.functional.conv_transpose1d">
-<code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">conv_transpose1d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.conv_transpose1d" title="Permalink to this definition">¶</a></dt>
-<dd><p>The documentation is referenced from: <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose1d.html">https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose1d.html</a></p>
-<p>Applies a 1D transposed convolution operator over an input signal composed of several input planes, sometimes also called “deconvolution”.</p>
-<p>See <a class="reference internal" href="nn.html#oneflow.nn.ConvTranspose1d" title="oneflow.nn.ConvTranspose1d"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConvTranspose1d</span></code></a> for details and output shape.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> – input tensor of shape <span class="math notranslate nohighlight">\((\text{minibatch} , \text{in_channels} , iW)\)</span></p></li>
-<li><p><strong>weight</strong> – filters of shape <span class="math notranslate nohighlight">\((\text{in_channels} , \frac{\text{out_channels}}{\text{groups}} , kW)\)</span></p></li>
-<li><p><strong>bias</strong> – optional bias of shape <span class="math notranslate nohighlight">\((\text{out_channels})\)</span>. Default: None.</p></li>
-<li><p><strong>stride</strong> – the stride of the convolving kernel. Can be a single number or a
-tuple <cite>(sW,)</cite>. Default: 1</p></li>
-<li><p><strong>padding</strong> – <cite>dilation * (kernel_size - 1) - padding</cite> zero-padding will be added to both sides of each dimension in the input. Can be a single number or a tuple <cite>(padW,)</cite>. Default: 0</p></li>
-<li><p><strong>output_padding</strong> – additional size added to one side of each dimension in the output shape. Can be a single number or a tuple <cite>(out_padW)</cite>. Default: 0</p></li>
-<li><p><strong>groups</strong> – split input into groups, <span class="math notranslate nohighlight">\(\text{in_channels}\)</span> should be divisible by the
-number of groups. Default: 1</p></li>
-<li><p><strong>dilation</strong> – the spacing between kernel elements. Can be a single number or
-a tuple <cite>(dW,)</cite>. Default: 1</p></li>
+<code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">conv_transpose1d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_padding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.conv_transpose1d" title="Permalink to this definition">¶</a></dt>
+<dd><p>此文档参考自： <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose1d.html">https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose1d.html</a></p>
+<p>对多个输入面信号应用一个 1D 转置卷积算子，有时也被称为“反卷积”。</p>
+<p>关于输出形状和更多细节，见 <a class="reference internal" href="nn.html#oneflow.nn.ConvTranspose1d" title="oneflow.nn.ConvTranspose1d"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConvTranspose1d</span></code></a></p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>input</strong>: 形状为 <span class="math notranslate nohighlight">\((\text{minibatch} , \text{in_channels} , iW)\)</span> 的输入张量</p></li>
+<li><p><strong>weight</strong>: 形状为 <span class="math notranslate nohighlight">\((\text{in_channels} , \frac{\text{out_channels}}{\text{groups}} , kW)\)</span> 的过滤层</p></li>
+<li><p><strong>bias</strong>: 可选的形状为 <span class="math notranslate nohighlight">\((\text{out_channels})\)</span> 的过滤 bias 。默认值：None</p></li>
+<li><p><strong>stride</strong>: 卷积核的步长。可以是单个数字，也可以是一个 <cite>(sW,)</cite> 元组。默认值：1</p></li>
+<li><p><strong>padding</strong>: <cite>dilation * (kernel_size - 1) - padding</cite> 零填充将会被加至所有输入维度的两侧。可以是单个数字，也可以是一个 <cite>(padW,)</cite> 元组。默认值：0</p></li>
+<li><p><strong>output_padding</strong>: 被加至输出形状的所有维度一侧的额外尺寸。可以是单个数字，也可以是一个 <cite>(out_padW)</cite> 元组。默认值：0</p></li>
+<li><p><strong>groups</strong>: 将输入切分成组， <span class="math notranslate nohighlight">\(\text{in_channels}\)</span> 需要被组的数量整除。默认值：1</p></li>
+<li><p><strong>dilation</strong>: 内核元素的区间。可以是单个数字，也可以是一个 <cite>(dW,)</cite> 元组。默认值：1</p></li>
 </ul>
 </dd>
 </dl>
-<p>For examples:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow.nn.functional</span> <span class="kn">as</span> <span class="nn">F</span>
 
@@ -250,28 +246,24 @@ a tuple <cite>(dW,)</cite>. Default: 1</p></li>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.functional.conv_transpose2d">
-<code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">conv_transpose2d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.conv_transpose2d" title="Permalink to this definition">¶</a></dt>
-<dd><p>The documentation is referenced from: <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose3d.html">https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose3d.html</a></p>
-<p>Applies a 2D transposed convolution operator over an input image composed of several input planes, sometimes also called “deconvolution”.</p>
-<p>See <a class="reference internal" href="nn.html#oneflow.nn.ConvTranspose2d" title="oneflow.nn.ConvTranspose2d"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConvTranspose2d</span></code></a> for details and output shape.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> – input tensor of shape <span class="math notranslate nohighlight">\((\text{minibatch} , \text{in_channels} , iH , iW)\)</span></p></li>
-<li><p><strong>weight</strong> – filters of shape <span class="math notranslate nohighlight">\((\text{in_channels} , \frac{\text{out_channels}}{\text{groups}} , kH , kW)\)</span></p></li>
-<li><p><strong>bias</strong> – optional bias of shape <span class="math notranslate nohighlight">\((\text{out_channels})\)</span>. Default: None.</p></li>
-<li><p><strong>stride</strong> – the stride of the convolving kernel. Can be a single number or a
-tuple <cite>(sH, sW)</cite>. Default: 1</p></li>
-<li><p><strong>padding</strong> – <cite>dilation * (kernel_size - 1) - padding</cite> zero-padding will be added to both sides of each dimension in the input. Can be a single number or a tuple <cite>(padH, padW)</cite>. Default: 0</p></li>
-<li><p><strong>output_padding</strong> – additional size added to one side of each dimension in the output shape. Can be a single number or a tuple <cite>(out_padH, out_padW)</cite>. Default: 0</p></li>
-<li><p><strong>groups</strong> – split input into groups, <span class="math notranslate nohighlight">\(\text{in_channels}\)</span> should be divisible by the
-number of groups. Default: 1</p></li>
-<li><p><strong>dilation</strong> – the spacing between kernel elements. Can be a single number or
-a tuple <cite>(dH, dW)</cite>. Default: 1</p></li>
+<code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">conv_transpose2d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_padding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.conv_transpose2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>此文档参考自： <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose2d.html">https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose2d.html</a></p>
+<p>对多个输入面信号应用一个 2D 转置卷积算子，有时也被称为 <code class="docutils literal notranslate"><span class="pre">反卷积</span></code>。</p>
+<p>关于输出形状和更多细节，见 <a class="reference internal" href="nn.html#oneflow.nn.ConvTranspose2d" title="oneflow.nn.ConvTranspose2d"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConvTranspose2d</span></code></a></p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>input</strong>: 形状为 <span class="math notranslate nohighlight">\((\text{minibatch} , \text{in_channels} , iH , iW)\)</span> 的输入张量</p></li>
+<li><p><strong>weight</strong>: 形状为 <span class="math notranslate nohighlight">\((\text{in_channels} , \frac{\text{out_channels}}{\text{groups}} , kH , kW)\)</span> 的过滤层</p></li>
+<li><p><strong>bias</strong>: 可选的形状为 <span class="math notranslate nohighlight">\((\text{out_channels})\)</span> 的过滤 bias 。默认值：None</p></li>
+<li><p><strong>stride</strong>: 卷积核的步长。可以是单个数字，也可以是一个  <cite>(sH, sW)</cite> 元组。默认值：1</p></li>
+<li><p><strong>padding</strong>: <cite>dilation * (kernel_size - 1) - padding</cite> 零填充将会被加至所有输入维度的两侧。可以是单个数字，也可以是一个  <cite>(padH, padW)</cite> 元组。默认值：0</p></li>
+<li><p><strong>output_padding</strong>: 被加至输出形状的所有维度一侧的额外尺寸。可以是单个数字，也可以是一个 <cite>(out_padH, out_padW)</cite> 元组。默认值：0</p></li>
+<li><p><strong>groups</strong>: 将输入切分成组， <span class="math notranslate nohighlight">\(\text{in_channels}\)</span> 需要被组的数量整除。默认值：1</p></li>
+<li><p><strong>dilation</strong>: 内核元素的区间。可以是单个数字，也可以是一个 <cite>(dH, dW)</cite> 元组。默认值：1</p></li>
 </ul>
 </dd>
 </dl>
-<p>For examples:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow.nn.functional</span> <span class="kn">as</span> <span class="nn">F</span>
 
@@ -283,30 +275,24 @@ a tuple <cite>(dH, dW)</cite>. Default: 1</p></li>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.nn.functional.conv_transpose3d">
-<code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">conv_transpose3d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.conv_transpose3d" title="Permalink to this definition">¶</a></dt>
-<dd><p>The documentation is referenced from: <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose3d.html">https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose3d.html</a></p>
-<p>Applies a 3D transposed convolution operator over an input image composed of several input planes, sometimes also called “deconvolution”.</p>
-<p>See <a class="reference internal" href="nn.html#oneflow.nn.ConvTranspose3d" title="oneflow.nn.ConvTranspose3d"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConvTranspose3d</span></code></a> for details and output shape.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> – input tensor of shape
-<span class="math notranslate nohighlight">\((\text{minibatch} , \text{in_channels} , iT , iH , iW)\)</span></p></li>
-<li><p><strong>weight</strong> – filters of shape
-<span class="math notranslate nohighlight">\((\text{in_channels} , \frac{\text{out_channels}}{\text{groups}} , kT , kH , kW)\)</span></p></li>
-<li><p><strong>bias</strong> – optional bias of shape <span class="math notranslate nohighlight">\((\text{out_channels})\)</span>. Default: None.</p></li>
-<li><p><strong>stride</strong> – the stride of the convolving kernel. Can be a single number or a
-tuple <cite>(sD, sH, sW)</cite>. Default: 1</p></li>
-<li><p><strong>padding</strong> – <cite>dilation * (kernel_size - 1) - padding</cite> zero-padding will be added to both sides of each dimension in the input. Can be a single number or a tuple <cite>(padT, padH, padW)</cite>. Default: 0</p></li>
-<li><p><strong>output_padding</strong> – additional size added to one side of each dimension in the output shape. Can be a single number or a tuple <cite>(out_padT, out_padH, out_padW)</cite>. Default: 0</p></li>
-<li><p><strong>groups</strong> – split input into groups, <span class="math notranslate nohighlight">\(\text{in_channels}\)</span> should be
-divisible by the number of groups. Default: 1</p></li>
-<li><p><strong>dilation</strong> – the spacing between kernel elements. Can be a single number or
-a tuple <cite>(dT, dH, dW)</cite>. Default: 1</p></li>
+<code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">conv_transpose3d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_padding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.conv_transpose3d" title="Permalink to this definition">¶</a></dt>
+<dd><p>此文档参考自： <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose3d.html">https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose3d.html</a></p>
+<p>对多个输入面信号应用一个 3D 转置卷积算子，有时也被称为 <code class="docutils literal notranslate"><span class="pre">反卷积</span></code>。</p>
+<p>关于输出形状和更多细节，见 <a class="reference internal" href="nn.html#oneflow.nn.ConvTranspose3d" title="oneflow.nn.ConvTranspose3d"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConvTranspose3d</span></code></a></p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>input</strong>: 形状为 <span class="math notranslate nohighlight">\((\text{minibatch} , \text{in_channels} , iT , iH , iW)\)</span> 的输入张量</p></li>
+<li><p><strong>weight</strong>: 形状为 <span class="math notranslate nohighlight">\((\text{in_channels} , \frac{\text{out_channels}}{\text{groups}} , kT , kH , kW)\)</span> 的过滤层</p></li>
+<li><p><strong>bias</strong>: 可选的形状为 <span class="math notranslate nohighlight">\((\text{out_channels})\)</span> 的过滤 bias 。默认值：None</p></li>
+<li><p><strong>stride</strong>: 卷积核的步长。可以是单个数字，也可以是一个  <cite>(sD, sH, sW)</cite> 元组。默认值：1</p></li>
+<li><p><strong>padding</strong>: <cite>dilation * (kernel_size - 1) - padding</cite> 零填充将会被加至所有输入维度的两侧。可以是单个数字，也可以是一个  <cite>(padT, padH, padW)</cite> 元组。默认值：0</p></li>
+<li><p><strong>output_padding</strong>: 被加至输出形状的所有维度一侧的额外尺寸。可以是单个数字，也可以是一个 <cite>(out_padT, out_padH, out_padW)</cite> 元组。默认值：0</p></li>
+<li><p><strong>groups</strong>: 将输入切分成组， <span class="math notranslate nohighlight">\(\text{in_channels}\)</span> 需要被组的数量整除。默认值：1</p></li>
+<li><p><strong>dilation</strong>: 内核元素的区间。可以是单个数字，也可以是一个 <cite>(dT, dH, dW)</cite> 元组。默认值：1</p></li>
 </ul>
 </dd>
 </dl>
-<p>For examples:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow.nn.functional</span> <span class="kn">as</span> <span class="nn">F</span>
 
@@ -951,48 +937,6 @@ a tuple <cite>(dT, dH, dW)</cite>. Default: 1</p></li>
 <p>参考 <a class="reference internal" href="nn.html#oneflow.nn.Dropout" title="oneflow.nn.Dropout"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dropout</span></code></a> 获得更多细节。</p>
 </dd></dl>
 <dl class="py function">
-<dt id="oneflow.nn.functional.upsample">
-<code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">upsample</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height_scale</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width_scale</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'channels_first'</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.nn.functional.upsample" title="Permalink to this definition">¶</a></dt>
-<dd><p>对给定的多通道 2D（空间）数据进行上采样。</p>
-<p>假设输入数据的形式为 <cite>minibatch x channels x height x width</cite>。因此，对于空间输入，4D 张量是被期待的。</p>
-<p>可用于上采样的算法分别是最近邻、双线性、4D 输入张量。</p>
-<dl class="simple">
-<dt>参数：</dt><dd><ul class="simple">
-<li><p><strong>height_scale</strong> (float) - 空间大小的乘数。如果它是元组，则必须匹配输入大小。</p></li>
-<li><p><strong>width_scale</strong> (float) - 空间大小的乘数。如果它是元组，则必须匹配输入大小。</p></li>
-<li><p><strong>align_corners</strong> (bool) - 如果为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，则输入和输出张量的角像素对齐，从而保留这些像素的值。这仅在 <code class="docutils literal notranslate"><span class="pre">mode</span></code> 为 <code class="docutils literal notranslate"><span class="pre">'bilinear'</span></code> 时有效。</p></li>
-<li><p><strong>interpolation</strong> (str, optional) - 上采样算法，可以为 <code class="docutils literal notranslate"><span class="pre">'nearest'</span></code> 或 <code class="docutils literal notranslate"><span class="pre">'bilinear'</span></code>。</p></li>
-<li><p><strong>data_format</strong> (str, optional) - 默认为 <code class="docutils literal notranslate"><span class="pre">'channels_first'</span></code>。</p></li>
-</ul>
-</dd>
-<dt>形状：</dt><dd><ul class="simple">
-<li><p>Input: : <span class="math notranslate nohighlight">\((N, C, H_{in}, W_{in})\)</span></p></li>
-<li><p>Output: <span class="math notranslate nohighlight">\((N, C, H_{out}, W_{out})\)</span> ，其中</p></li>
-</ul>
-</dd>
-</dl>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[H_{out} = \left\lfloor H_{in} \times \text{height_scale} \right\rfloor\]</div></div>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[W_{out} = \left\lfloor W_{in} \times \text{width_scale} \right\rfloor\]</div></div>
-<p>示例：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">upsample</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">height_scale</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">width_scale</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s2">"nearest"</span><span class="p">)</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span>
-<span class="go">tensor([[[[1., 1., 2., 2.],</span>
-<span class="go">          [1., 1., 2., 2.],</span>
-<span class="go">          [3., 3., 4., 4.],</span>
-<span class="go">          [3., 3., 4., 4.]]]], dtype=oneflow.float32)</span>
-</pre></div>
-</div>
-<p>参考 <a class="reference internal" href="nn.html#oneflow.nn.Upsample" title="oneflow.nn.Upsample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Upsample</span></code></a> 获得更多细节。</p>
-</dd></dl>
-<dl class="py function">
 <dt id="oneflow.nn.functional.affine_grid">
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">affine_grid</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.affine_grid" title="Permalink to this definition">¶</a></dt>
 <dd><p>此接口与 PyTorch 一致。文档参考自： <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.affine_grid.html?highlight=affine_grid#torch.nn.functional.affine_grid">https://pytorch.org/docs/stable/generated/torch.nn.functional.affine_grid.html?highlight=affine_grid#torch.nn.functional.affine_grid</a> 。</p>
@@ -1259,30 +1203,20 @@ a tuple <cite>(dT, dH, dW)</cite>. Default: 1</p></li>
 <code class="sig-prename descclassname"><span class="pre">oneflow.nn.functional.</span></code><code class="sig-name descname"><span class="pre">cross_entropy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.nn.functional.cross_entropy" title="Permalink to this definition">¶</a></dt>
 <dd><p>文档参考自： <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.cross_entropy.html?highlight=nn%20functional%20cross_entropy#torch.nn.functional.cross_entropy">https://pytorch.org/docs/stable/generated/torch.nn.functional.cross_entropy.html?highlight=nn%20functional%20cross_entropy#torch.nn.functional.cross_entropy</a> 。
 查看 <a class="reference internal" href="nn.html#oneflow.nn.CrossEntropyLoss" title="oneflow.nn.CrossEntropyLoss"><code class="xref py py-class docutils literal notranslate"><span class="pre">CrossEntropyLoss</span></code></a> 获得更多细节。</p>
-<dl>
-<dt>参数：</dt><dd><dl>
-<dt>input (Tensor)<span class="classifier"><span class="math notranslate nohighlight">\((N, C)\)</span> where <cite>C = number of classes</cite> or <span class="math notranslate nohighlight">\((N, C, H, W)\)</span></span></dt><dd><p>in case of 2D Loss, or <span class="math notranslate nohighlight">\((N, C, d_1, d_2, ..., d_K)\)</span> where <span class="math notranslate nohighlight">\(K \geq 1\)</span>
-in the case of K-dimensional loss. <cite>input</cite> is expected to contain unnormalized scores
-(often referred to as logits).</p>
-</dd>
-<dt>target (Tensor)<span class="classifier">If containing class indices, shape <span class="math notranslate nohighlight">\((N)\)</span> where each value is</span></dt><dd><p><span class="math notranslate nohighlight">\(0 \leq \text{targets}[i] \leq C-1\)</span>, or <span class="math notranslate nohighlight">\((N, d_1, d_2, ..., d_K)\)</span> with
-<span class="math notranslate nohighlight">\(K \geq 1\)</span> in the case of K-dimensional loss. If containing class probabilities,
-same shape as the input.</p>
-</dd>
-<dt>weight (Tensor, optional) - a manual rescaling weight given to each</dt><dd><p>class. If given, has to be a Tensor of size <cite>C</cite></p>
-</dd>
-<dt>ignore_index (int, optional) - Specifies a target value that is ignored</dt><dd><p>and does not contribute to the input gradient. When <code class="xref py py-attr docutils literal notranslate"><span class="pre">size_average</span></code> is
-<code class="docutils literal notranslate"><span class="pre">True</span></code>, the loss is averaged over non-ignored targets. Note that
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">ignore_index</span></code> is only applicable when the target contains class indices.
-Default: -100</p>
-</dd>
-<dt>reduction (string, optional) - Specifies the reduction to apply to the output:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction will be applied,
-<code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided by the number of
-elements in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be summed. Note: <code class="xref py py-attr docutils literal notranslate"><span class="pre">size_average</span></code>
-and <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduce</span></code> are in the process of being deprecated, and in the meantime,
-specifying either of those two args will override <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code>. Default: <code class="docutils literal notranslate"><span class="pre">'mean'</span></code></p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>input</strong> (Tensor) : 2D 损失的情况下为 <span class="math notranslate nohighlight">\((N, C)\)</span> ，其中 <cite>C = 类的数量</cite> 或 <span class="math notranslate nohighlight">\((N, C, H, W)\)</span> ；K 维损失下为 <span class="math notranslate nohighlight">\((N, C, d_1, d_2, ..., d_K)\)</span> ，其中 <span class="math notranslate nohighlight">\(K \geq 1\)</span> 。 <cite>input</cite> 需包括未被规格化的指数。（通常被称为 logits）</p></li>
+<li><p><strong>target</strong> (Tensor) : 如果包括了类索引，形状为 <span class="math notranslate nohighlight">\((N)\)</span> ，其中每个值为 <span class="math notranslate nohighlight">\(0 \leq \text{targets}[i] \leq C-1\)</span> ，在 K 维损失下，则为 <span class="math notranslate nohighlight">\((N, d_1, d_2, ..., d_K)\)</span> ，其中 <span class="math notranslate nohighlight">\(K \geq 1\)</span> 。如果包括类可能性，则与输入相同。</p></li>
+<li><p><strong>weight</strong> (Tensor, 可选): 一个手动重设尺寸的权重，分配给每个类。如果被指定，需要是一个尺寸为 <cite>C</cite> 的张量。</p></li>
+<li><p><strong>ignore_index</strong> (int, 可选): 指定一个将被忽略且不计入输入梯度的目标值。当 <code class="xref py py-attr docutils literal notranslate"><span class="pre">size_average</span></code> 为真时，损失将为不被忽略的目标的平均。注意 <code class="xref py py-attr docutils literal notranslate"><span class="pre">ignore_index</span></code> 只有在目标包括类索引时可用。默认值：-100</p></li>
+<li><dl class="simple">
+<dt><strong>reduction</strong> (string, 可选): 指定应用于输出的转置：</dt><dd><p><code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: 没有转置将被应用，
+<code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: 输出的和将被除以输出元素个数， <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: 输出将被总和。注意： <code class="xref py py-attr docutils literal notranslate"><span class="pre">size_average</span></code> 和 <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduce</span></code> 即将被弃用，而与此同时
+指定任意两参数都会覆盖 <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> 。默认值： <code class="docutils literal notranslate"><span class="pre">'mean'</span></code></p>
 </dd>
 </dl>
+</li>
+</ul>
 </dd>
 </dl>
 <p>示例：</p>

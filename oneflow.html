@@ -3342,7 +3342,7 @@ two medians is returned.</p>
 <li><p><strong>device</strong> (flow.device, optional) - 返回张量的所需设备。默认值：如果为 None，则与此张量相同的 flow.device。</p></li>
 <li><p><strong>placement</strong> (flow.placement, optional) - 返回的全局张量的期望位置。默认值：如果为 None，则返回的张量是使用参数 device 的本地张量。</p></li>
 <li><p><strong>sbp</strong> (flow.sbp.sbp or tuple of flow.sbp.sbp, optional) - 返回的全局张量所需的 sbp 描述符。默认值：如果为 None，则返回的张量是使用参数device的本地张量</p></li>
-<li><p><strong>requires_grad</strong> (flow.bool, optional) - 如果 autograd 在返回的张量上记录操作。默认值：False。</p></li>
+<li><p><strong>requires_grad</strong> (flow.bool, optional) - 如果 autograd 在返回的张量上记录操作。默认值：False。        &gt;&gt;&gt; import numpy as np</p></li>
 </ul>
 </dd>
 </dl>

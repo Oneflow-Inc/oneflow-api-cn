@@ -209,7 +209,7 @@ limitations under the License.</p>
 </dd></dl>
 <dl class="py class">
 <dt id="oneflow.utils.data.DataLoader">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.data.</span></code><code class="sig-name descname"><span class="pre">DataLoader</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">dataset:</span> <span class="pre">oneflow.utils.data.dataset.Dataset[T_co],</span> <span class="pre">batch_size:</span> <span class="pre">Optional[int]</span> <span class="pre">=</span> <span class="pre">1,</span> <span class="pre">shuffle:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">sampler:</span> <span class="pre">Optional[oneflow.utils.data.sampler.Sampler[int]]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">batch_sampler:</span> <span class="pre">Optional[oneflow.utils.data.sampler.Sampler[Sequence[int]]]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">num_workers:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0,</span> <span class="pre">collate_fn:</span> <span class="pre">Optional[Callable[[List[T]],</span> <span class="pre">Any]]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">drop_last:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">timeout:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0,</span> <span class="pre">worker_init_fn:</span> <span class="pre">Optional[Callable[[int],</span> <span class="pre">None]]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">multiprocessing_context=None,</span> <span class="pre">generator=&lt;oneflow._oneflow_internal.Generator</span> <span class="pre">object&gt;,</span> <span class="pre">*,</span> <span class="pre">prefetch_factor:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">2,</span> <span class="pre">persistent_workers:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.data.DataLoader" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">oneflow.utils.data.</span></code><code class="sig-name descname"><span class="pre">DataLoader</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">dataset:</span> <span class="pre">oneflow.utils.data.dataset.Dataset[T_co],</span> <span class="pre">batch_size:</span> <span class="pre">Optional[int]</span> <span class="pre">=</span> <span class="pre">1,</span> <span class="pre">shuffle:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">sampler:</span> <span class="pre">Optional[oneflow.utils.data.sampler.Sampler[int]]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">batch_sampler:</span> <span class="pre">Optional[oneflow.utils.data.sampler.Sampler[Sequence[int]]]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">num_workers:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0,</span> <span class="pre">collate_fn:</span> <span class="pre">Optional[Callable[[List[T]],</span> <span class="pre">Any]]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">pin_memory:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">drop_last:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">timeout:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0,</span> <span class="pre">worker_init_fn:</span> <span class="pre">Optional[Callable[[int],</span> <span class="pre">None]]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">multiprocessing_context=None,</span> <span class="pre">generator=&lt;oneflow._oneflow_internal.Generator</span> <span class="pre">object&gt;,</span> <span class="pre">*,</span> <span class="pre">prefetch_factor:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">2,</span> <span class="pre">persistent_workers:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#oneflow.utils.data.DataLoader" title="Permalink to this definition">¶</a></dt>
 <dd><p>数据加载器。结合一个数据集和采样器，并为数据集提供一个可迭代对象。
 数据加载器同时支持 map-style 和 iterable-style 数据集的单/多线程加载，且可以自定义加载顺序和可选的自动处理和内存锁定。
 查看 <code class="xref py py-mod docutils literal notranslate"><span class="pre">flow.utils.data</span></code> 文档页面以获取更多信息。</p>
@@ -265,6 +265,10 @@ batch 的样本将被采取 dropout 操作。遗憾的是， OneFlow 通常无�
 <dl class="py attribute">
 <dt id="oneflow.utils.data.DataLoader.num_workers">
 <code class="sig-name descname"><span class="pre">num_workers</span></code><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#oneflow.utils.data.DataLoader.num_workers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="oneflow.utils.data.DataLoader.pin_memory">
+<code class="sig-name descname"><span class="pre">pin_memory</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#oneflow.utils.data.DataLoader.pin_memory" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="py attribute">
 <dt id="oneflow.utils.data.DataLoader.prefetch_factor">
@@ -536,23 +540,23 @@ limitations under the License.</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.utils.from_torch">
-<code class="sig-prename descclassname"><span class="pre">oneflow.utils.</span></code><code class="sig-name descname"><span class="pre">from_torch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">torch_tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.utils.from_torch" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a oneflow tensor from torch tensor.</p>
-<p>The returned tensor and torch tensor share the same memory.</p>
+<code class="sig-prename descclassname"><span class="pre">oneflow.utils.</span></code><code class="sig-name descname"><span class="pre">from_torch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.utils.from_torch" title="Permalink to this definition">¶</a></dt>
+<dd><p>从 torch 张量新建一个 oneflow 张量。
+返回的张量和 torch 张量共享内存。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Currently only cpu tensor, local tensor is supported.</p>
-<p>This function can be used in special data processing stages, torch’s some cpu ops can be used.</p>
+<p>目前仅支持 cpu 张量和本地张量。</p>
+<p>此函数可被用于空间数据处理阶段和 torch 的一些 cpu 操作。</p>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>input</strong> (<em>torch.Tensor</em>) – Input Tensor</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>input</strong> (torch.Tensor): 输入张量</p></li>
+</ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>oneflow.Tensor</p>
+<dt>返回值：</dt><dd><p>oneflow.Tensor</p>
 </dd>
 </dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 <span class="kn">import</span> <span class="nn">torch</span>
 
@@ -560,26 +564,26 @@ limitations under the License.</p>
 <span class="n">flow_t</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_t</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This feature <code class="docutils literal notranslate"><span class="pre">from_torch</span></code> is at Alpha Stage.</p>
+<p>此 <code class="docutils literal notranslate"><span class="pre">from_torch</span></code> 功能尚在测试阶段。</p>
 </dd></dl>
 <dl class="py function">
 <dt id="oneflow.utils.to_torch">
-<code class="sig-prename descclassname"><span class="pre">oneflow.utils.</span></code><code class="sig-name descname"><span class="pre">to_torch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow_tensor</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.utils.to_torch" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a torch tensor from oneflow tensor.</p>
-<p>The returned tensor and oneflow tensor share the same memory.</p>
+<code class="sig-prename descclassname"><span class="pre">oneflow.utils.</span></code><code class="sig-name descname"><span class="pre">to_torch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span> → <span class="pre">Tensor</span><a class="headerlink" href="#oneflow.utils.to_torch" title="Permalink to this definition">¶</a></dt>
+<dd><p>从 oneflow 张量新建一个 torch 张量。</p>
+<p>返回的函数和 oneflow 张量共享内存。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Currently only cpu tensor, local tensor is supported.</p>
+<p>目前仅支持 cpu 张量和本地张量。</p>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>input</strong> (<a class="reference internal" href="tensor.html#oneflow.Tensor" title="oneflow.Tensor"><em>oneflow.Tensor</em></a>) – Input Tensor</p>
+<dl class="simple">
+<dt>参数：</dt><dd><ul class="simple">
+<li><p><strong>input</strong> (oneflow.Tensor): 输入张量</p></li>
+</ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>torch.Tensor</p>
+<dt>返回值：</dt><dd><p>torch.Tensor</p>
 </dd>
 </dl>
-<p>For example:</p>
+<p>示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oneflow</span> <span class="kn">as</span> <span class="nn">flow</span>
 <span class="kn">import</span> <span class="nn">torch</span>
 
@@ -587,7 +591,7 @@ limitations under the License.</p>
 <span class="n">torch_t</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="n">flow_t</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This feature <code class="docutils literal notranslate"><span class="pre">to_torch</span></code> is at Alpha Stage.</p>
+<p>此 <code class="docutils literal notranslate"><span class="pre">to_torch</span></code> 功能尚在测试阶段。</p>
 </dd></dl>
 </div>
 </div>
