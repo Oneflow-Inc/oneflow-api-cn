@@ -39,7 +39,7 @@ reset_docstr(
 
 reset_docstr(
     oneflow.optim.Optimizer.zero_grad,
-    """将所有已优化的张量的梯度设置为零。
+    r"""将所有已优化的张量的梯度设置为零。
 
         参数:
             - **set_to_none** (bool) - 设置 grads 为 None 而不是 0。一般来说，这将有较低的内存占用，并能适度地提高性能。然而，这会导致一些不同的行为。
@@ -52,4 +52,42 @@ reset_docstr(
 
         """
 )
+
+
+
+
+reset_docstr(
+    oneflow.optim.Optimizer.step,
+    r"""执行一个优化步骤。
+
+        参数:
+            - **closure** (callable, optional) - 重新测试模型并返回损失的闭包。
+        """
+)
+
+reset_docstr(
+    oneflow.optim.SGD.step,
+    r"""执行一个优化步骤。
+
+        参数:
+            - **closure** (callable, optional) - 重新测试模型并返回损失的闭包。
+        """
+)
+
+reset_docstr(
+    oneflow.optim.SGD.step,
+    r"""执行一个优化步骤。
+
+        参数:
+            - **closure** (callable, optional) - 重新测试模型并返回损失的闭包。
+        """
+)
+
+reset_docstr(
+    oneflow.optim.lr_scheduler.LambdaLR.step,
+    r"""执行一个优化步骤。
+
+        """
+)
+
 

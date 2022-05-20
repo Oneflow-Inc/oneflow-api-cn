@@ -263,3 +263,413 @@ reset_docstr(
             nn.Graph 的属性字典只能在第一次调用 Graph 前被加载。
         """
 )
+
+reset_docstr(
+    oneflow.nn.graph.graph_config.GraphConfig,
+    r"""
+    用于 nn.Graph 的配置。
+    """
+)
+
+reset_docstr(
+    oneflow.nn.graph.graph_config.GraphConfig.enable_amp,
+    r"""
+    enable_amp(mode)
+
+    如果设置为 True ，graph 会使用混合的精度模式，即在模型训练中同时使用 float16 和 float32。
+
+        示例：
+
+        .. code-block:: python
+
+            import oneflow as flow
+
+            class Graph(flow.nn.Graph):
+                def __init__(self):
+                    super().__init__()
+                    self.linear = flow.nn.Linear(3, 8, False)
+                    self.config.enable_amp(True) # Use mixed precision mode.
+                def build(self, x):
+                    return self.linear(x)
+
+            graph = Graph()
+
+        参数：
+            - **mode** (bool, 可选): 默认值为 True 。
+        """
+)
+
+reset_docstr(
+    oneflow.nn.graph.graph_config.GraphConfig.allow_fuse_model_update_ops,
+    r"""
+    allow_fuse_model_update_ops(mode)
+
+        如果设置为 True ，将尝试融合 cast + scale + l1_l2_regularize_gradient + model_update 为一次操作以提升性能。
+
+        示例：
+
+        .. code-block:: python
+
+            import oneflow as flow
+
+            class Graph(flow.nn.Graph):
+                def __init__(self):
+                    super().__init__()
+                    self.linear = flow.nn.Linear(3, 8, False)
+                    self.config.allow_fuse_model_update_ops(True)
+                def build(self, x):
+                    return self.linear(x)
+
+            graph = Graph()
+
+        参数：
+            - **mode** (bool, 可选): 默认值为 True 。
+        """
+)
+
+reset_docstr(
+    oneflow.nn.graph.graph_config.GraphConfig.allow_fuse_add_to_output,
+    r"""
+    allow_fuse_add_to_output(mode)
+
+        如果设置为 True，将尝试融合一个二进制 element-wise add 运算符进入前置算子以提升性能。
+
+        示例：
+
+        .. code-block:: python
+
+            import oneflow as flow
+
+            class Graph(flow.nn.Graph):
+                def __init__(self):
+                    super().__init__()
+                    self.bn1 = flow.nn.BatchNorm1d(100)
+                    self.config.allow_fuse_add_to_output(True)
+                def build(self, x):
+                    bn = self.bn1(x) 
+                    out = bn + x
+                    return out
+
+            graph = Graph()
+
+        参数：
+            - **mode** (bool, 可选): 默认值为 True 。
+        """
+)
+
+reset_docstr(
+    oneflow.nn.graph.graph_config.GraphConfig.allow_fuse_cast_scale,
+    r"""
+    allow_fuse_cast_scale(mode)
+
+        如果设置为 True，将尝试融合 cast 和 scalar_mul_by_tensor 以提升性能。
+    
+        示例：
+
+        .. code-block:: python
+
+            import oneflow as flow
+
+            def model(x):
+                return flow.mul(1,flow.cast(x,flow.int8))
+
+            class Graph(flow.nn.Graph):
+                def __init__(self):
+                    super().__init__()
+                    self.m=model
+                    self.config.allow_fuse_cast_scale(True)
+                def build(self, x):
+                    return self.m(x)
+
+            graph = Graph()
+
+        参数：
+            - **mode** (bool, 可选): 默认值为 True 。
+        """
+)
+reset_docstr(
+    oneflow.nn.graph.graph_config.GraphConfig.set_gradient_accumulation_steps,
+    r"""
+    set_gradient_accumulation_steps(value)
+
+    设置累加梯度的步数。
+
+        示例：
+
+        .. code-block:: python
+
+            import oneflow as flow
+
+            class Graph(flow.nn.Graph):
+                def __init__(self):
+                    super().__init__()
+                    self.linear = flow.nn.Linear(3, 8, False)
+                    # Let graph do gradient accumulation, such as pipelining parallelism depends on gradient accumulation.
+                    self.config.set_gradient_accumulation_steps(4)
+                def build(self, x):
+                    return self.linear(x)
+
+            graph = Graph()
+
+        参数：
+            - **value** (int): 步数的数量。
+        """
+)
+
+reset_docstr(
+    oneflow.nn.graph.graph_config.GraphConfig.set_zero_redundancy_optimizer_mode,
+    r"""
+    set_zero_redundancy_optimizer_mode(mode)
+
+        设置模式以移除冗余优化步骤。
+        此优化将根据 ZeRO https://arxiv.org/abs/1910.02054 的描述来减少优化步骤的内存消耗。
+
+        示例：
+
+        .. code-block:: python
+
+            import oneflow as flow
+
+            class Graph(flow.nn.Graph):
+                def __init__(self):
+                    super().__init__()
+                    self.linear = flow.nn.Linear(3, 8, False)
+                    self.config.set_zero_redundancy_optimizer_mode("distributed_split")
+                def build(self, x):
+                    return self.linear(x)
+
+            graph = Graph()
+
+        参数：
+            - **mode** (str): "distributed_split" 或 "non_distributed" 。 "distributed_split" 模式将把每个优化步骤分散到每个设备，而 "non_distributed" 将把每个优化步骤放到一个设备上。
+        """
+)
+
+reset_docstr(
+    oneflow.nn.graph.graph_config.GraphConfig.set_zero_redundancy_optimizer_min_size_after_split,
+    r"""
+    set_zero_redundancy_optimizer_min_size_after_split(value)
+    
+    设置切分后优化器步骤/梯度/参数的最小值。
+
+        示例：
+
+        .. code-block:: python
+
+            import oneflow as flow
+
+            class Graph(flow.nn.Graph):
+                def __init__(self):
+                    super().__init__()
+                    self.linear = flow.nn.Linear(3, 8, False)
+                    self.config.set_zero_redundancy_optimizer_mode("distributed_split")
+                    self.config.set_zero_redundancy_optimizer_min_size_after_split(1)
+                def build(self, x):
+                    return self.linear(x)
+
+            graph = Graph()
+
+        Args:
+            - **value** (int): 最小值。
+        """
+)
+
+reset_docstr(
+    oneflow.nn.graph.graph_config.GraphConfig.enable_xla_jit,
+    r"""
+    enable_xla_jit(value)
+
+        是否在 xrt 中使用 xla_jit。
+
+        启用此选项时，oneflow 将检查所有算子是否被 xla_jit 支持，将支持的算子聚为子图，并用 xla_jit 运算子图。
+           XLA: https://www.tensorflow.org/xla
+
+        如果需要使用 XLA 来优化模型运行速度，则需要编译 XLA 版本的 oneflow 。
+        
+        使用 XLA 构建 oneflow 的教程：
+        
+        https://github.com/Oneflow-Inc/oneflow/blob/master/oneflow/xrt/README.md#build-with-xla
+
+        示例：
+
+        .. code-block:: python
+
+            import oneflow as flow
+
+            class Graph(flow.nn.Graph):
+                def __init__(self):
+                    super().__init__()
+                    self.linear = flow.nn.Linear(3, 8, False)
+                    self.config.enable_xla_jit(True) # 在 xrt 中使用 xla_jit 。
+                def build(self, x):
+                    return self.linear(x)
+
+            graph = Graph()
+
+        参数：
+            - **value** (bool, 可选): 默认值为 True.
+        """
+)
+
+reset_docstr(
+    oneflow.nn.graph.graph_config.GraphConfig.enable_tensorrt,
+    r"""
+    enable_tensorrt(value)
+
+        是否在 xrt 中使用 tensorrt。
+
+        启用此选项时，oneflow 将检查所有算子是否被 tensorrt 支持，将支持的算子聚为子图，并用 xla_jit 运算子图。
+
+        TensorRT: https://developer.nvidia.com/tensorrt
+
+        如果需要使用 XLA 来优化模型运行速度，则需要编译 TensorRT 版本的 oneflow 。
+
+        使用 TensorRT 构建 oneflow 的教程：
+        
+        https://github.com/Oneflow-Inc/oneflow/blob/master/oneflow/xrt/README.md#build-with-tensorrt
+
+        示例：
+
+        .. code-block:: python
+
+            import oneflow as flow
+
+            class Graph(flow.nn.Graph):
+                def __init__(self):
+                    super().__init__()
+                    self.linear = flow.nn.Linear(3, 8, False)
+                    self.config.enable_tensorrt(True) # Use tensorrt in xrt.
+                def build(self, x):
+                    return self.linear(x)
+
+            graph = Graph()
+
+        参数：
+            - **value** (bool, 可选): 默认值为 True.
+        """
+)
+
+reset_docstr(
+    oneflow.nn.graph.graph_config.GraphConfig.enable_openvino,
+    r"""
+    enable_openvino(value)
+
+        是否在 xrt 中使用 openvino。
+
+        启用此选项时，oneflow 将检查所有算子是否被 openvino 支持，将支持的算子聚为子图，并用 xla_jit 运算子图。
+
+        请注意，openvino 仅支持引用模式。
+        OpenVINO: https://developer.nvidia.com/tensorrt
+
+        如果需要使用 XLA 来优化模型运行速度，则需要编译 TensorRT 版本的 oneflow 。
+
+        同时也需要编译 XLA 或者 TensorRT 版本的 oneflow ,教程见下：
+        
+        https://github.com/Oneflow-Inc/oneflow/blob/master/oneflow/xrt/README.md#build-with-tensorrt
+
+        示例：
+
+        .. code-block:: python
+
+            import oneflow as flow
+
+            class Graph(flow.nn.Graph):
+                def __init__(self):
+                    super().__init__()
+                    self.linear = flow.nn.Linear(3, 8, False)
+                    self.config.enable_tensorrt(True) # Use tensorrt in xrt.
+                def build(self, x):
+                    return self.linear(x)
+
+            graph = Graph()
+
+        参数：
+            - **value** (bool, 可选): 默认值为 True.
+        """
+)
+
+reset_docstr(
+    oneflow.nn.graph.graph_config.GraphConfig.enable_cudnn_conv_heuristic_search_algo,
+    r"""
+    enable_cudnn_conv_heuristic_search_algo(value)
+    
+        是否启用 cudnn conv 操作来使用启发式搜索算法。
+
+        示例：
+
+        .. code-block:: python
+
+            import oneflow as flow
+
+            class Graph(flow.nn.Graph):
+                def __init__(self):
+                    super().__init__()
+                    self.m = flow.nn.Conv2d(16, 32, (3, 5), stride=(2, 1), padding=(4, 2), dilation=(3, 1))
+                    # Do not enable the cudnn conv operation to use the heuristic search algorithm.
+                    self.config.enable_cudnn_conv_heuristic_search_algo(False)
+                def build(self, x):
+                    return self.m(x)
+
+            graph = Graph()
+    
+        参数：
+            - **value** (bool, 可选): 默认值为 True.
+        """
+)
+
+reset_docstr(
+    oneflow.nn.graph.block_config.BlockConfig,
+    r"""nn.Graph ModuleBlock 的配置。
+
+    当一个 nn.Module 被加至 nn.Graph 时，他会被包络在一个 ModuleBlock 中。你可以在一个 nn.Module 使用 `ModuleBlock.config` 设置或获取优化参数。
+    """
+)
+
+reset_docstr(
+    oneflow.nn.graph.block_config.BlockConfig.stage_id,
+    r"""设置/获取 nn.Module/ModuleBlock 在并行管线中的 stage id 。
+        
+        在调用 stage_id(value: int = None) 时，将设置不同 module 的 id 以使得 graph 在管线中准备正确数量的缓冲。
+
+        示例：
+
+        .. code-block:: python
+
+            # m_stage0 和 m_stage1 是网络的两个管线阶段。
+            # 我们可以通过设置 config.stage_id 属性来设置 Stage ID 。
+            # Stage ID 从 0 开始以整数计数。
+            self.module_pipeline.m_stage0.config.stage_id = 0
+            self.module_pipeline.m_stage1.config.stage_id = 1
+
+        """
+
+)
+
+reset_docstr(
+    oneflow.nn.graph.block_config.BlockConfig.activation_checkpointing,
+    r"""设置/获取是否在此 nn.Module 中执行 activation checkpointing 。
+
+        示例：
+
+        .. code-block:: python
+
+            import oneflow as flow
+
+            class Graph(flow.nn.Graph):
+                def __init__(self):
+                    super().__init__()
+                    self.linear1 = flow.nn.Linear(3, 5, False)
+                    self.linear2 = flow.nn.Linear(5, 8, False)
+                    self.linear1.config.activation_checkpointing = True
+                    self.linear2.config.activation_checkpointing = True
+
+                def build(self, x):
+                    y_pred = self.linear1(x)
+                    y_pred = self.linear2(y_pred)
+                    return y_pred
+
+            graph = Graph()
+
+        """
+
+)
