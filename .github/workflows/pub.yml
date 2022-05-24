@@ -14,4 +14,4 @@ jobs:
       env:
         API_TOKEN: ${{ secrets.READ_THE_DOCS_TOKEN }}
       run: |
-        curl -X POST -H "Authorization: Token ${API_TOKEN}" https://readthedocs.org/api/v3/projects/oneflow-cn/versions/latest/builds/
+        curl -X POST -H "Authorization: Token ${API_TOKEN}" https://readthedocs.org/api/v3/projects/oneflow-apis/versions/master/builds/
