@@ -165,15 +165,15 @@ reset_docstr(
             :attr:`ord`              矩阵范数                          向量范数
             ==============  ============================  =================================
             None             Frobenius norm                `2`-norm
-            `'fro'`          Frobenius norm                -- not supported --
-            `'nuc'`          -- 尚不支持 --                 -- not supported --
+            `'fro'`          Frobenius norm                -- 尚不支持 --
+            `'nuc'`          -- 尚不支持 --                 -- 尚不支持 --
             `inf`            `max(sum(abs(x), dim=1))`     `max(abs(x))`
             `-inf`           `min(sum(abs(x), dim=1))`     `min(abs(x))`
             `0`              -- 尚不支持 --                 `sum(x != 0)`
-            `1`              `max(sum(abs(x), dim=0))`     as below
-            `-1`             `min(sum(abs(x), dim=0))`     as below
-            `2`              -- 尚不支持 --                 as below
-            `-2`             -- 尚不支持 --                 as below
+            `1`              `max(sum(abs(x), dim=0))`     见下
+            `-1`             `min(sum(abs(x), dim=0))`     见下
+            `2`              -- 尚不支持 --                 见下
+            `-2`             -- 尚不支持 --                 见下
             其他             -- 不支持 --                  `sum(abs(x)^{ord})^{(1 / ord)}`
             ==============  ============================  =================================
 
@@ -627,4 +627,125 @@ reset_docstr(
 
     """,
 
+)
+
+reset_docstr(
+    oneflow.utils.from_torch,
+    r"""
+    from_torch(input) -> Tensor
+
+    从 torch 张量新建一个 oneflow 张量。
+    返回的张量和 torch 张量共享内存。
+    
+    .. note::
+        目前仅支持 cpu 张量和本地张量。
+
+        此函数可被用于空间数据处理阶段和 torch 的一些 cpu 操作。
+
+    参数：
+        - **input** (torch.Tensor): 输入张量
+
+    返回值：
+        oneflow.Tensor
+
+    示例：
+
+    .. code-block:: python
+
+        import oneflow as flow
+        import torch
+
+        torch_t = torch.tensor([[1, 2, 3], [4, 5, 6]])
+        flow_t = flow.utils.from_torch(torch_t)
+    
+    此 ``from_torch`` 功能尚在测试阶段。
+    """
+
+
+)
+
+reset_docstr(
+    oneflow.utils.to_torch,
+    r"""
+    to_torch(input) -> Tensor
+
+    从 oneflow 张量新建一个 torch 张量。
+
+    返回的函数和 oneflow 张量共享内存。
+    
+    .. note::
+        目前仅支持 cpu 张量和本地张量。
+
+    参数：
+        - **input** (oneflow.Tensor): 输入张量
+
+    返回值：
+        torch.Tensor
+
+
+    示例：
+
+    .. code-block:: python
+
+        import oneflow as flow
+        import torch
+
+        flow_t = flow.tensor([[1, 2, 3], [4, 5, 6]])
+        torch_t = flow.utils.to_torch(flow_t)
+
+    此 ``to_torch`` 功能尚在测试阶段。
+    """
+)
+
+reset_docstr(
+    oneflow.nn.init.orthogonal_,
+    r"""
+    orthogonal_(tensor, gain)
+    
+    此接口与 PyTorch 一致。
+    此文档参考自： https://pytorch.org/docs/stable/nn.init.html.
+    根据 `Exact solutions to the nonlinear dynamics of learning in deep
+    linear neural networks` - Saxe, A. et al. (2013) 的描述，将输入 `Tensor` 用一个（半）正交矩阵填充。
+    输入张量必须拥有至少两个维度，对于多于两个维度的张量，多余的张量将被扁平化。
+
+    参数：
+        - **tensor:** 一个 n 维的 `torch.Tensor`，其中 :math:`n \geq 2`
+        - **gain:** 可选的缩放因子
+
+    示例：
+        > w = flow.empty(3, 5)
+        > nn.init.orthogonal_(w)
+    """
+)
+
+
+reset_docstr(
+  oneflow.new_ones,
+    r"""
+    new_ones(x, size=None, dtype=None, device=None, placement=None, sbp=None, requires_grad=False) -> Tensor
+
+    返回一个大小为 1 的张量，默认情况下，返回的张量具有与此张量相同的 oneflow.dtype 和 oneflow.device。
+
+    参数：
+        - **size** (int...) - 一个 list, tuple, 或者 flow，定义输出张量形状的大小。
+        - **dtype** (flow.dtype, optional) - 返回张量的所需类型。默认值：如果为 None，则与此张量相同的 flow.dtype。
+        - **device** (flow.device, optional) - 返回张量的所需设备。默认值：如果为 None，则与此张量相同的 flow.device。
+        - **placement** (flow.placement, optional) - 返回的全局张量的期望位置。默认值：如果为 None，则返回的张量是使用参数 device 的本地张量。
+        - **sbp** (flow.sbp.sbp or tuple of flow.sbp.sbp, optional) - 返回的全局张量所需的 sbp 描述符。默认值：如果为 None，则返回的张量是使用参数device的本地张量
+        - **requires_grad** (flow.bool, optional) - 如果 autograd 在返回的张量上记录操作。默认值：False。        >>> import numpy as np
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import numpy as np
+        >>> import oneflow as flow
+
+        >>> x = flow.Tensor(np.ones((1, 2, 3)))
+        >>> y = x.new_ones((2, 2))
+        >>> y
+        tensor([[1., 1.],
+                [1., 1.]], dtype=oneflow.float32)
+
+    """,
 )

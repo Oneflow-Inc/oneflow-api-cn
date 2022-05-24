@@ -124,55 +124,6 @@ reset_docstr(
     """,
 )
 
-reset_docstr(
-    oneflow._C.upsample,
-    r"""upsample(x: Tensor, height_scale: Float, width_scale: Float, align_corners: Bool, interpolation: str, data_format: str = "channels_first") -> Tensor
-  
-    对给定的多通道 2D（空间）数据进行上采样。
-
-    假设输入数据的形式为 `minibatch x channels x height x width`。因此，对于空间输入，4D 张量是被期待的。
-
-    可用于上采样的算法分别是最近邻、双线性、4D 输入张量。
-
-    参数：
-        - **height_scale** (float) - 空间大小的乘数。如果它是元组，则必须匹配输入大小。
-        - **width_scale** (float) - 空间大小的乘数。如果它是元组，则必须匹配输入大小。
-        - **align_corners** (bool) - 如果为 ``True``，则输入和输出张量的角像素对齐，从而保留这些像素的值。这仅在 ``mode`` 为 ``'bilinear'`` 时有效。  
-        - **interpolation** (str, optional) - 上采样算法，可以为 ``'nearest'`` 或 ``'bilinear'``。
-        - **data_format** (str, optional) - 默认为 ``'channels_first'``。
-
-    形状：
-        - Input: : :math:`(N, C, H_{in}, W_{in})`
-        - Output: :math:`(N, C, H_{out}, W_{out})` ，其中
-  
-    .. math::
-        H_{out} = \left\lfloor H_{in} \times \text{height_scale} \right\rfloor
-
-    .. math::
-        W_{out} = \left\lfloor W_{in} \times \text{width_scale} \right\rfloor
-
-  
-    示例：
-
-    .. code-block:: python
-
-        >>> import numpy as np
-
-        >>> import oneflow as flow
-
-        >>> input = flow.tensor(np.arange(1, 5).reshape((1, 1, 2, 2)), dtype=flow.float32)  
-        >>> output = flow.nn.functional.upsample(input, height_scale=2.0, width_scale=2.0, align_corners=False, interpolation="nearest")
-    
-        >>> output
-        tensor([[[[1., 1., 2., 2.],
-                  [1., 1., 2., 2.],
-                  [3., 3., 4., 4.],
-                  [3., 3., 4., 4.]]]], dtype=oneflow.float32)
-
-    参考 :class:`~oneflow.nn.Upsample` 获得更多细节。
-
-    """,
-)
 
 reset_docstr(
     oneflow.nn.functional.affine_grid,
@@ -386,7 +337,7 @@ reset_docstr(
         ...     labels=labels, logits=logits
         ... )
         >>> output
-        tensor([0.2975, 1.1448, -0.0000], dtype=oneflow.float32)
+        tensor([ 2.9751e-01,  1.1448e+00, -1.4305e-06], dtype=oneflow.float32)
     """
 )
 
@@ -455,27 +406,14 @@ reset_docstr(
     查看 :class:`~oneflow.nn.CrossEntropyLoss` 获得更多细节。
 
     参数：
-        input (Tensor) : :math:`(N, C)` where `C = number of classes` or :math:`(N, C, H, W)`
-            in case of 2D Loss, or :math:`(N, C, d_1, d_2, ..., d_K)` where :math:`K \geq 1`
-            in the case of K-dimensional loss. `input` is expected to contain unnormalized scores
-            (often referred to as logits).
-        target (Tensor) : If containing class indices, shape :math:`(N)` where each value is
-            :math:`0 \leq \text{targets}[i] \leq C-1`, or :math:`(N, d_1, d_2, ..., d_K)` with
-            :math:`K \geq 1` in the case of K-dimensional loss. If containing class probabilities,
-            same shape as the input.
-        weight (Tensor, optional) - a manual rescaling weight given to each
-            class. If given, has to be a Tensor of size `C`
-        ignore_index (int, optional) - Specifies a target value that is ignored
-            and does not contribute to the input gradient. When :attr:`size_average` is
-            ``True``, the loss is averaged over non-ignored targets. Note that
-            :attr:`ignore_index` is only applicable when the target contains class indices.
-            Default: -100
-        reduction (string, optional) - Specifies the reduction to apply to the output:
-            ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'``: no reduction will be applied,
-            ``'mean'``: the sum of the output will be divided by the number of
-            elements in the output, ``'sum'``: the output will be summed. Note: :attr:`size_average`
-            and :attr:`reduce` are in the process of being deprecated, and in the meantime,
-            specifying either of those two args will override :attr:`reduction`. Default: ``'mean'``
+        - **input** (Tensor) : 2D 损失的情况下为 :math:`(N, C)` ，其中 `C = 类的数量` 或 :math:`(N, C, H, W)` ；K 维损失下为 :math:`(N, C, d_1, d_2, ..., d_K)` ，其中 :math:`K \geq 1` 。 `input` 需包括未被规格化的指数。（通常被称为 logits） 
+        - **target** (Tensor) : 如果包括了类索引，形状为 :math:`(N)` ，其中每个值为 :math:`0 \leq \text{targets}[i] \leq C-1` ，在 K 维损失下，则为 :math:`(N, d_1, d_2, ..., d_K)` ，其中 :math:`K \geq 1` 。如果包括类可能性，则与输入相同。
+        - **weight** (Tensor, 可选): 一个手动重设尺寸的权重，分配给每个类。如果被指定，需要是一个尺寸为 `C` 的张量。
+        - **ignore_index** (int, 可选): 指定一个将被忽略且不计入输入梯度的目标值。当 :attr:`size_average` 为真时，损失将为不被忽略的目标的平均。注意 :attr:`ignore_index` 只有在目标包括类索引时可用。默认值：-100 
+        - **reduction** (string, 可选): 指定应用于输出的转置：
+            ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'``: 没有转置将被应用， 
+            ``'mean'``: 输出的和将被除以输出元素个数， ``'sum'``: 输出将被总和。注意： :attr:`size_average` 和 :attr:`reduce` 即将被弃用，而与此同时
+            指定任意两参数都会覆盖 :attr:`reduction` 。默认值： ``'mean'`` 
 
     示例：
 
@@ -628,4 +566,107 @@ reset_docstr(
                 [0, 0, 1, 0, 0]], dtype=oneflow.int64)
     
     """
+)
+
+reset_docstr(
+    oneflow.nn.functional.conv_transpose1d,
+    r"""
+    conv_transpose1d(input, weight, bias, stride, padding, output_padding, groups, dilation)
+
+    此文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose1d.html
+
+    对多个输入面信号应用一个 1D 转置卷积算子，有时也被称为“反卷积”。
+
+    关于输出形状和更多细节，见 :class:`~oneflow.nn.ConvTranspose1d` 
+
+    参数：
+        - **input**: 形状为 :math:`(\text{minibatch} , \text{in_channels} , iW)` 的输入张量
+        - **weight**: 形状为 :math:`(\text{in_channels} , \frac{\text{out_channels}}{\text{groups}} , kW)` 的过滤层
+        - **bias**: 可选的形状为 :math:`(\text{out_channels})` 的过滤 bias 。默认值：None 
+        - **stride**: 卷积核的步长。可以是单个数字，也可以是一个 `(sW,)` 元组。默认值：1
+        - **padding**: `dilation * (kernel_size - 1) - padding` 零填充将会被加至所有输入维度的两侧。可以是单个数字，也可以是一个 `(padW,)` 元组。默认值：0 
+        - **output_padding**: 被加至输出形状的所有维度一侧的额外尺寸。可以是单个数字，也可以是一个 `(out_padW)` 元组。默认值：0 
+        - **groups**: 将输入切分成组， :math:`\text{in_channels}` 需要被组的数量整除。默认值：1
+        - **dilation**: 内核元素的区间。可以是单个数字，也可以是一个 `(dW,)` 元组。默认值：1
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import oneflow.nn.functional as F
+        
+        >>> inputs = flow.randn(20, 16, 50)
+        >>> weights = flow.randn(16, 33, 5)
+        >>> outputs = F.conv_transpose1d(inputs, weights)
+        """,
+)
+
+reset_docstr(
+    oneflow.nn.functional.conv_transpose2d,
+    r"""
+    conv_transpose2d(input, weight, bias, stride, padding, output_padding, groups, dilation)
+
+    此文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose2d.html
+
+    对多个输入面信号应用一个 2D 转置卷积算子，有时也被称为 ``反卷积``。
+
+    关于输出形状和更多细节，见 :class:`~oneflow.nn.ConvTranspose2d` 
+
+    参数：
+        - **input**: 形状为 :math:`(\text{minibatch} , \text{in_channels} , iH , iW)` 的输入张量
+        - **weight**: 形状为 :math:`(\text{in_channels} , \frac{\text{out_channels}}{\text{groups}} , kH , kW)` 的过滤层
+        - **bias**: 可选的形状为 :math:`(\text{out_channels})` 的过滤 bias 。默认值：None 
+        - **stride**: 卷积核的步长。可以是单个数字，也可以是一个  `(sH, sW)` 元组。默认值：1
+        - **padding**: `dilation * (kernel_size - 1) - padding` 零填充将会被加至所有输入维度的两侧。可以是单个数字，也可以是一个  `(padH, padW)` 元组。默认值：0 
+        - **output_padding**: 被加至输出形状的所有维度一侧的额外尺寸。可以是单个数字，也可以是一个 `(out_padH, out_padW)` 元组。默认值：0 
+        - **groups**: 将输入切分成组， :math:`\text{in_channels}` 需要被组的数量整除。默认值：1
+        - **dilation**: 内核元素的区间。可以是单个数字，也可以是一个 `(dH, dW)` 元组。默认值：1
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import oneflow.nn.functional as F
+        
+        >>> inputs = flow.randn(1, 4, 5, 5)
+        >>> weights = flow.randn(4, 8, 3, 3)
+        >>> outputs = F.conv_transpose2d(inputs, weights, padding=1)
+        """,
+)
+
+reset_docstr(
+    oneflow.nn.functional.conv_transpose3d,
+    r"""
+    conv_transpose3d(input, weight, bias, stride, padding, output_padding, groups, dilation)
+
+    此文档参考自： https://pytorch.org/docs/stable/generated/torch.nn.functional.conv_transpose3d.html
+
+    对多个输入面信号应用一个 3D 转置卷积算子，有时也被称为 ``反卷积``。
+
+    关于输出形状和更多细节，见 :class:`~oneflow.nn.ConvTranspose3d` 
+
+    参数：
+        - **input**: 形状为 :math:`(\text{minibatch} , \text{in_channels} , iT , iH , iW)` 的输入张量
+        - **weight**: 形状为 :math:`(\text{in_channels} , \frac{\text{out_channels}}{\text{groups}} , kT , kH , kW)` 的过滤层
+        - **bias**: 可选的形状为 :math:`(\text{out_channels})` 的过滤 bias 。默认值：None 
+        - **stride**: 卷积核的步长。可以是单个数字，也可以是一个  `(sD, sH, sW)` 元组。默认值：1
+        - **padding**: `dilation * (kernel_size - 1) - padding` 零填充将会被加至所有输入维度的两侧。可以是单个数字，也可以是一个  `(padT, padH, padW)` 元组。默认值：0 
+        - **output_padding**: 被加至输出形状的所有维度一侧的额外尺寸。可以是单个数字，也可以是一个 `(out_padT, out_padH, out_padW)` 元组。默认值：0 
+        - **groups**: 将输入切分成组， :math:`\text{in_channels}` 需要被组的数量整除。默认值：1
+        - **dilation**: 内核元素的区间。可以是单个数字，也可以是一个 `(dT, dH, dW)` 元组。默认值：1
+
+    示例：
+
+    .. code-block:: python
+
+        >>> import oneflow as flow
+        >>> import oneflow.nn.functional as F
+        
+        >>> inputs = flow.randn(20, 16, 50, 10, 20)
+        >>> weights = flow.randn(16, 33, 3, 3, 3)
+        >>> outputs = F.conv_transpose3d(inputs, weights)
+        """,
+
 )
