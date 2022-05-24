@@ -1,4 +1,4 @@
-name: Doc Build
+name: Document Release
 
 on:
   push:
@@ -6,34 +6,12 @@ on:
       - master
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  API_Document_Release:
+    name: API Document Release
+    runs-on: ubuntu-18.04
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.9.1
-        with:
-          access_token: ${{ github.token }}
-
-      - uses: actions/checkout@v2
-
-      - name: Pip Install Requirements
-        run: |
-          python3 -m pip install pybind11 --user
-          python3 -m pip install -r docs/requirements.txt --user
-
-      - name: Install docreset
-        run: |
-          python3 setup.py install --user
-
-      - name: DocTest
-        run: |
-          cd docs && make html SPHINXOPTS="-W --keep-going"
-          cd ../
-          mkdir _site
-          cp -r docs/build-cn/html/* ./_site/
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site
+    - name: Build triggering
+      env:
+        API_TOKEN: ${{ secrets.READ_THE_DOCS_TOKEN }}
+      run: |
+        curl -X POST -H "Authorization: Token ${API_TOKEN}" https://readthedocs.org/api/v3/projects/oneflow-cn/versions/latest/builds/
