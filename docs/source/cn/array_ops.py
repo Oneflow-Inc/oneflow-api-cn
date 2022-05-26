@@ -739,7 +739,7 @@ reset_docstr(
 
     参数：
         - **path** (str): 对象所在的路径
-        - **global_src_rank** (int, optional): 加载全局 (global) 张量的需要的秩 (rank)。被指定时，只有秩与 global_src_rank相等的进程才会真正读取 `path` 中的文件，并且被加载对象中的张量会与  placement = `flow.placement('cuda', [global_src_rank])` 全局。
+        - **global_src_rank** (int, optional): 指定加载对象的进程。当这个参数不为 None 时，只有 rank 值与 global_src_rank 相等的进程才会真正读取 `path` 指定的文件，加载之后的张量是一个全局张量，且 placement 为 `flow.placement(device_type, [global_src_rank])` 。反之如果这个参数为 None 时，则每个 rank 都会读取文件，加载之后的张量为各进程的本地张量（local Tensor）。
 
     返回类型：
         加载好的对象
